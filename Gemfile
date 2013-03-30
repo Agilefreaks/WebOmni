@@ -7,6 +7,8 @@ gem 'rails', '4.0.0.beta1'
 gem 'thin'
 
 gem 'haml-rails'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,8 +21,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem 'therubyracer'
-  gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
