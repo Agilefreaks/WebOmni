@@ -19,9 +19,9 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'therubyracer'
 end
 
+gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 
 gem 'jquery-rails'
@@ -46,6 +46,7 @@ gem 'turbolinks'
 
 group :development do
   gem 'sqlite3'
+  gem 'quiet_assets'
 end
 
 group :production do
