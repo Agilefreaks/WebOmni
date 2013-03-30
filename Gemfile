@@ -18,10 +18,8 @@ group :assets do
   # gem 'therubyracer', platforms: :ruby
 
   gem 'uglifier', '>= 1.0.3'
-
 end
 
-gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 
 gem 'jquery-rails'
@@ -51,4 +49,6 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
