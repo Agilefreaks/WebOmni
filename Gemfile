@@ -28,21 +28,6 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 1.0.1'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', group: :development
-
-# To use debugger
-# gem 'debugger'
-
 group :development do
   gem 'sqlite3'
   gem 'quiet_assets'
@@ -52,4 +37,23 @@ group :production do
   gem 'pg'
   gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+end
+
+group :development, :test do
+  gem 'awesome_print'
+  gem 'rb-inotify', '~> 0.9'
+end
+
+group :test do
+  gem 'spork'
+  gem 'spork-rails', github: 'A-gen/spork-rails'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'rspec-set'
+  gem 'accept_values_for'
+  gem 'shoulda'
+  gem 'simplecov'
+  gem 'webrat'
+  gem 'email_spec'
 end
