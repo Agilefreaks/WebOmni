@@ -5,6 +5,9 @@ WebOmni::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'pages#welcome'
 
+  get 'about' => 'pages#about', :as => :about
+  get 'contact' => 'pages#contact', :as => :contact
+
   devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
   namespace :api do

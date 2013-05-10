@@ -8,8 +8,10 @@ gem 'mongoid', '~> 4.0.0', github: 'mongoid/mongoid'
 
 gem 'thin'
 
+gem 'haml'
 gem 'haml-rails'
 gem 'less-rails'
+gem 'cells'
 
 gem 'devise', '~> 3.0.0.rc'
 gem 'omniauth-google-oauth2'
@@ -27,7 +29,6 @@ group :assets do
 end
 
 gem 'twitter-bootstrap-rails'
-
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -52,6 +53,7 @@ group :test do
   gem 'spork-rails', github: 'A-gen/spork-rails'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'rspec-cells'
   gem 'guard-spork', require: 'guard'
   gem 'guard-rspec', require: 'guard'
   gem 'database_cleaner'

@@ -63,6 +63,9 @@ GEM
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
+    cells (3.8.8)
+      actionpack (>= 3.0)
+      railties (>= 3.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.0.9)
@@ -201,6 +204,10 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    rspec-cells (0.1.7)
+      cells (~> 3.4)
+      railties (>= 3.0, < 4.1)
+      rspec-rails (~> 2.2)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -272,12 +279,14 @@ PLATFORMS
 DEPENDENCIES
   accept_values_for
   awesome_print
+  cells
   coffee-rails (~> 4.0.0.beta1)
   database_cleaner
   devise (~> 3.0.0.rc)
   email_spec
   guard-rspec
   guard-spork
+  haml
   haml-rails
   jquery-rails
   less-rails
@@ -290,6 +299,7 @@ DEPENDENCIES
   rails_log_stdout!
   rb-inotify (~> 0.9)
   rspec
+  rspec-cells
   rspec-rails
   rspec-set
   shoulda
