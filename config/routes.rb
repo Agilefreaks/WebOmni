@@ -5,6 +5,8 @@ WebOmni::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'pages#welcome'
 
+  devise_for :users
+
   namespace :api do
     get 'activate/:token' => 'activation#activate'
   end
