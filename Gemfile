@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'less-rails'
 
 gem 'devise', '~> 3.0.0.rc'
+gem 'omniauth-google-oauth2'
 
 # Gems used only for assets and not required
 # in production environments by default.

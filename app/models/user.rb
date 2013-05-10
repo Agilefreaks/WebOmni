@@ -1,14 +1,16 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
   ## Database authenticatable
-  field :email,              :type => String, :default => ""
-  field :encrypted_password, :type => String, :default => ""
+  field :email,              :type => String, :default => ''
+  field :encrypted_password, :type => String, :default => ''
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -37,4 +39,22 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  # fields
+  field :first_name, :type => String
+  field :last_name, :type => String
+  field :nickname, :type => String
+  field :early_adopter, :type => Boolean, :default => false
+  field :image_url, :type => String
+                                 p
+  # relations
+  embeds_many :providers
+
+  def find_provider(uid, name)
+    providers.where(:uid => uid, :name => name).first
+  end
+
+  def self.find_by_provider(email, provider)
+    User.where('providers.email' => email, 'providers.name' => provider).first
+  end
 end
