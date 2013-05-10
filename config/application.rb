@@ -30,5 +30,7 @@ module WebOmni
     config.generators do |g|
       g.view_specs false
     end
+
+    config.assets.initialize_on_precompile = false
   end
 end

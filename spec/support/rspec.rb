@@ -10,8 +10,6 @@ RSpec.configure do |config|
 
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
-  config.use_transactional_fixtures = false
-
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.

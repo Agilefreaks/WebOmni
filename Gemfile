@@ -11,6 +11,8 @@ gem 'thin'
 gem 'haml-rails'
 gem 'less-rails'
 
+gem 'devise', '~> 3.0.0.rc'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -49,6 +51,8 @@ group :test do
   gem 'spork-rails', github: 'A-gen/spork-rails'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'guard-spork', require: 'guard'
+  gem 'guard-rspec', require: 'guard'
   gem 'database_cleaner'
   gem 'rspec-set'
   gem 'accept_values_for'
