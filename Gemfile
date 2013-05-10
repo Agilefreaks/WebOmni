@@ -56,4 +56,5 @@ group :test do
   gem 'simplecov'
   gem 'webrat'
   gem 'email_spec'
+  gem 'mongoid-rspec'
 end

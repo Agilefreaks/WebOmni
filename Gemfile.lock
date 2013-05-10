@@ -107,6 +107,10 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.4)
+    mongoid-rspec (1.8.1)
+      mongoid (>= 3.0.1)
+      rake
+      rspec (>= 2.9)
     moped (1.4.5)
     multi_json (1.7.3)
     nokogiri (1.5.9)
@@ -213,6 +217,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mongoid (~> 4.0.0)!
+  mongoid-rspec
   quiet_assets
   rails (= 4.0.0.rc1)
   rails3_serve_static_assets!
