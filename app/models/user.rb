@@ -47,6 +47,10 @@ class User
   field :early_adopter, :type => Boolean, :default => false
   field :image_url, :type => String
   field :devices, :type => Array
+  field :token, :type => String, :default => Moped::BSON::ObjectId.new
+
+  # indexes
+  index({token: 1}, {unique: true})
 
   # relations
   embeds_many :providers

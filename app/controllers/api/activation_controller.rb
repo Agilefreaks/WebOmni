@@ -1,15 +1,13 @@
 class Api::ActivationController < ApplicationController
-
   respond_to :json
 
   def activate
+    user = User.find_by(token: params[:token])
 
-    activation_data = {}
-    result = { :activation_data => activation_data}
-    if params[:token] == "testToken"
-      activation_data[:channel]= "test"
-    else
-      activation_data[:errors] = "Token not found"
+    result = Jbuilder.encode do |json|
+      json.activation_data do
+        json.channel user.email
+      end
     end
 
     respond_with result
