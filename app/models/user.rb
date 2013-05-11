@@ -47,7 +47,7 @@ class User
   field :early_adopter, :type => Boolean, :default => false
   field :image_url, :type => String
   field :devices, :type => Array
-  field :token, :type => String, :default => Moped::BSON::ObjectId.new
+  field :token, :type => String, :default => SecureRandom.uuid
 
   # indexes
   index({token: 1}, {unique: true})

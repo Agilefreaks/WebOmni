@@ -5,9 +5,7 @@ class Api::ActivationController < ApplicationController
     user = User.find_by(token: params[:token])
 
     result = Jbuilder.encode do |json|
-      json.activation_data do
-        json.channel user.email
-      end
+      json.channel user.email
     end
 
     respond_with result

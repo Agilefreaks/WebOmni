@@ -9,7 +9,7 @@ describe Api::ActivationController do
 
       it 'returns a valid activation data object' do
         get :activate, token: 'someToken', :format => :json
-        response.body.should == '{"activation_data":{"channel":"test"}}'
+        response.body.should == '{"channel":"test"}'
       end
     end
 
