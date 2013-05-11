@@ -10,6 +10,8 @@ WebOmni::Application.routes.draw do
 
   devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
+  resources :users, only: [:update]
+
   namespace :api do
     get 'activate/:token' => 'activation#activate'
   end

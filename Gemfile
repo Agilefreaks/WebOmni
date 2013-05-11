@@ -12,6 +12,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'less-rails'
 gem 'cells'
+gem 'simple_form', '~> 3.0.0.rc'
 
 gem 'devise', '~> 3.0.0.rc'
 gem 'omniauth-google-oauth2'

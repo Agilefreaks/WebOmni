@@ -46,7 +46,8 @@ class User
   field :nickname, :type => String
   field :early_adopter, :type => Boolean, :default => false
   field :image_url, :type => String
-                                 p
+  field :devices, :type => Array
+
   # relations
   embeds_many :providers
 

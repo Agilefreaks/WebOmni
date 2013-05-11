@@ -227,6 +227,9 @@ GEM
     shoulda-context (1.1.1)
     shoulda-matchers (2.1.0)
       activesupport (>= 3.0.0)
+    simple_form (3.0.0.rc)
+      actionpack (>= 4.0.0.rc1, < 4.1)
+      activemodel (>= 4.0.0.rc1, < 4.1)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -303,6 +306,7 @@ DEPENDENCIES
   rspec-rails
   rspec-set
   shoulda
+  simple_form (~> 3.0.0.rc)
   simplecov
   spork
   spork-rails!
