@@ -1,8 +1,8 @@
 module Users
   class APIV1 < Grape::API
 
-    resource :user do
-      desc 'Activates a user'
+    resources :users do
+      desc 'Activate a user'
       params do
         requires :token, type: String, desc: 'Activation token'
       end
