@@ -17,7 +17,8 @@ gem 'simple_form', '~> 3.0.0.rc'
 gem 'devise', '~> 3.0.0.rc'
 gem 'omniauth-google-oauth2'
 
-gem 'jbuilder'
+gem 'grape'
+gem 'grape-entity'
 
 # Gems used only for assets and not required
 # in production environments by default.

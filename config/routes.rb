@@ -12,9 +12,7 @@ WebOmni::Application.routes.draw do
 
   resources :users, only: [:update]
 
-  namespace :api do
-    get 'activate/:token' => 'activation#activate'
-  end
+  mount API => '/api'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
