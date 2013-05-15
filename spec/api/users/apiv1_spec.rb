@@ -8,7 +8,7 @@ describe Users::APIV1 do
       before { User.stub(find_by: user) }
 
       it 'should be succesfull' do
-        get '/api/v1/users/activate/42'
+        get '/api/v1/users/activate/43'
         response.status.should == 200
       end
     end
