@@ -1,6 +1,6 @@
 class API < Grape::API
 
-  version 'v1', :using => :header, vendor: 'omnipaste', cascade: false
+  version 'v1', :using => :path, vendor: 'omnipaste', cascade: false
   format :json
   default_error_formatter :json
 
