@@ -20,6 +20,8 @@ gem 'omniauth-google-oauth2'
 gem 'grape'
 gem 'grape-entity'
 
+gem 'useragent'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
