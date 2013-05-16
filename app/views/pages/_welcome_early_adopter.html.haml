@@ -1,5 +1,5 @@
 .well
-  = link_to 'Download Windows client', "https://s3.amazonaws.com/omnipaste/win/Omnipaste.application?token=#{current_user.token}", class: 'btn btn-large btn-success'
+  = link_to 'Download Windows client', "#{winomni_url}?token=#{current_user.token}", class: 'btn btn-large btn-success'
   %p
     %small
       One click to install the windows client customized for you.

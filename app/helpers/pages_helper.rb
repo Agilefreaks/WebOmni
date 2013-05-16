@@ -10,4 +10,12 @@ module PagesHelper
   def devices_options
     ['Windows', 'Windows 8', 'Linux', 'Mac', 'Android', 'IPhone', 'Backberry']
   end
+
+  def winomni_url
+    if Rails.env.staging?
+      'https://s3.amazonaws.com/omnipaste/win_staging/Omnipaste.application'
+    else
+      'https://s3.amazonaws.com/omnipaste/win/Omnipaste.application'
+    end
+  end
 end
