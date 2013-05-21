@@ -1,12 +1,11 @@
-%ul.nav.nav-pills.pull-right
-  = render partial: 'menu'
+= render partial: 'menu'
 
-  %li.dropdown
-    = link_to '#', class: 'dropdown-toggle dropdown', 'data-toggle' => 'dropdown' do
-      -#= image_tag(@current_user.image_url, class: 'img-rounded img-profile')
-      Welcome #{@current_user.first_name}
-      %b.caret
+%li.dropdown
+  = link_to '#', class: 'dropdown-toggle dropdown', 'data-toggle' => 'dropdown' do
+    -#= image_tag(@current_user.image_url, class: 'img-rounded img-profile')
+    Welcome #{@current_user.first_name}
+    %b.caret
 
-    %ul.dropdown-menu
-      %li
-        = link_to 'Sign out', destroy_user_session_path, :method => :delete
+  %ul.dropdown-menu
+    %li
+      = link_to 'Sign out', destroy_user_session_path, :method => :delete

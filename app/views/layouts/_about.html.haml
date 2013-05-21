@@ -1,0 +1,26 @@
+#about.container-fluid
+  .container.light
+    %h1 What can we offer
+    %ul.thumbnails
+      %li.span3
+        .thumbnail
+          = image_tag( 'icon1.png')
+          %h3 Well Connected
+          %p You can connect all your devices and instantly synchronize your clipboard between them.
+      %li.span3
+        .thumbnail
+          = image_tag( 'icon2.png')
+          %h3 Award Winning
+          %p
+            Omnipaste is a
+            =link_to "Startup Weekend Cluj winner", 'http://cluj.startupweekend.org/2013/03/05/winning-teams-at-startup-weekend-cluj-2013/', target: '_blank'
+      %li.span3
+        .thumbnail
+          = image_tag( 'icon3.png')
+          %h3 Requirements
+          %p Our initial version will require at least Windows XP and Android 2.2
+      %li.span3
+        .thumbnail
+          = image_tag( 'icon4.png')
+          %h3 Seamless Integration
+          %p Omnipaste comes well integrated with your operating systems. You will continue using Ctrl+C and Ctrl+V.
