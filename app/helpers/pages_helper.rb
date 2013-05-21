@@ -1,5 +1,5 @@
 module PagesHelper
-  def render_welcome
+  def render_logon
     render partial: (current_user ? 'pages/welcome_logged' : 'pages/welcome_not_logged')
   end
 

@@ -1,0 +1,36 @@
+#contact.container-fluid
+  .container.dark
+    %h1 Get in contact with us
+    .span5
+      %form
+        .control-group
+          %label.control-label{:for => "inputName"} Name
+          .controls
+            %input#inputName.span4{:placeholder => "Name", :type => "text"}/
+        .control-group
+          %label.control-label{:for => "inputEmail"} Email
+          .controls
+            %input#inputEmail.span4{:placeholder => "Email", :type => "text"}/
+        .control-group
+          %label.control-label{:for => "inputContact"} Message
+          .controls
+            %textarea#inputContact.span4
+        .control-group
+          .controls
+            %button.btn.btn-purple{:type => "submit"} Contact Us
+    .span4
+      %h2 Pop in for a chat
+      %p Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit.
+      %address
+        %strong Your Company, Inc.
+        %br/
+        95 Folsom Ave, Suite 600
+        %br/
+        San Francisco, CA 94107
+        %br/
+        %abbr{:title => "Phone"} P:
+        (123) 456-7890
+      %address
+        %strong Full Name
+        %br/
+        %a{:href => "mailto:#"} first.last@example.com
