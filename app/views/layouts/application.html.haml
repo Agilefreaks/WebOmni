@@ -2,48 +2,52 @@
 %html
   %head
   %meta(charset="utf-8")
-    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "Omnipaste - Your Clipboard Manager in the cloud"
-    = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application"
-    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "http://fonts.googleapis.com/css?family=Raleway:200", :rel => "stylesheet", :type => "text/css"}/
-    / IE Fix for HTML5 Tags
-    /[if lt IE 9]
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+  %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  %title= content_for?(:title) ? yield(:title) : "Omnipaste - Your Clipboard Manager in the cloud"
+  = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
+  = javascript_include_tag "application"
+  = csrf_meta_tag
+  %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300", :rel => "stylesheet", :type => "text/css"}/
+  %link{:href => "http://fonts.googleapis.com/css?family=Raleway:200", :rel => "stylesheet", :type => "text/css"}/
+  / IE Fix for HTML5 Tags
+  /[if lt IE 9]
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   %body
-    / Navbar
-    = render_navbar
-    / end Navbar
-    / #intro
-    = yield
-    / ends Intro
-    / #about
-    = render_about
-    / ends About
-    / #team
-    = render_team
-    / End Team
-    / #contact
-    = render_contact
-    / End Contact
-    :javascript
-      $(function () {
-          $(window).scroll(function(){
-          // global scroll to top button
-              if ($(this).scrollTop() > 300) {
-                  $('.scrolltop').fadeIn();
-              } else {
-                  $('.scrolltop').fadeOut();
-              }        
-          });
-          
-          // scroll nav
-          $('.scroller').click(function(){
-          	var section = $($(this).data("section"));
-          	var top = section.offset().top-82;
-              $("html, body").animate({ scrollTop: top }, 700);
-              return false;
-          });          
-      });
+    = bootstrap_flash
+    
+  / Navbar
+  = render_navbar
+  / end Navbar
+  / #intro    
+  = yield
+  / ends Intro
+  / #about
+  = render_about
+  / ends About
+  / #team
+  = render_team
+  / End Team
+  / #contact
+  = render_contact
+  / End Contact
+
+  :javascript
+    $(function () {
+        $(window).scroll(function(){
+        // global scroll to top button
+            if ($(this).scrollTop() > 300) {
+                $('.scrolltop').fadeIn();
+            } else {
+                $('.scrolltop').fadeOut();
+            }        
+        });
+        
+        // scroll nav
+        $('.scroller').click(function(){
+        	var section = $($(this).data("section"));
+        	var top = section.offset().top-82;
+            $("html, body").animate({ scrollTop: top }, 700);
+            return false;
+        });          
+    });

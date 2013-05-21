@@ -2,35 +2,32 @@
   .container.dark
     %h1 Get in contact with us
     .span5
-      %form
+      = form_for Message.new, :url => contact_index_url, :method => :post, :remote => true do |form|
         .control-group
-          %label.control-label{:for => "inputName"} Name
-          .controls
-            %input#inputName.span4{:placeholder => "Name", :type => "text"}/
+          = form.label :name
+          = form.text_field :name
         .control-group
-          %label.control-label{:for => "inputEmail"} Email
-          .controls
-            %input#inputEmail.span4{:placeholder => "Email", :type => "text"}/
+          = form.label :email
+          = form.text_field :email
+          
         .control-group
-          %label.control-label{:for => "inputContact"} Message
-          .controls
-            %textarea#inputContact.span4
+          = form.label :body
+          = form.text_area :body
         .control-group
           .controls
             %button.btn.btn-purple{:type => "submit"} Contact Us
     .span4
       %h2 Pop in for a chat
-      %p Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit.
+      %p You can meet us for a chat at our lovely office!
+      %p Coffee's on us!
       %address
-        %strong Your Company, Inc.
+        %strong Omnipaste
         %br/
-        95 Folsom Ave, Suite 600
+        Strada Avram Iancu, nr. 1-3, Ap. 5
         %br/
-        San Francisco, CA 94107
+        Sibiu
         %br/
         %abbr{:title => "Phone"} P:
-        (123) 456-7890
-      %address
-        %strong Full Name
-        %br/
-        %a{:href => "mailto:#"} first.last@example.com
+        +40745857479
+      
+      
