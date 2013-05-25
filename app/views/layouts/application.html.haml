@@ -13,41 +13,41 @@
   / IE Fix for HTML5 Tags
   /[if lt IE 9]
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  %body
+  %b1ody
     = bootstrap_flash
-    
-  / Navbar
-  = render_navbar
-  / end Navbar
-  / #intro    
-  = yield
-  / ends Intro
-  / #about
-  = render_about
-  / ends About
-  / #team
-  = render_team
-  / End Team
-  / #contact
-  = render_contact
-  / End Contact
+    / Navbar
+    = render_navbar
+    / end Navbar
+    .main-container
+      / #intro    
+      = yield
+      / ends Intro
+      / #about
+      = render_about
+      / ends About
+      / #team
+      = render_team
+      / End Team
+      / #contact
+      = render_contact
+      / End Contact
 
-  :javascript
-    $(function () {
-        $(window).scroll(function(){
-        // global scroll to top button
-            if ($(this).scrollTop() > 300) {
-                $('.scrolltop').fadeIn();
-            } else {
-                $('.scrolltop').fadeOut();
-            }        
+      :javascript
+        $(function () {
+            $(window).scroll(function(){
+            // global scroll to top button
+                if ($(this).scrollTop() > 300) {
+                    $('.scrolltop').fadeIn();
+                } else {
+                    $('.scrolltop').fadeOut();
+                }        
+            });
+            
+            // scroll nav
+            $('.scroller').click(function(){
+            	var section = $($(this).data("section"));
+            	var top = section.offset().top-82;
+                $("html, body").animate({ scrollTop: top }, 700);
+                return false;
+            });          
         });
-        
-        // scroll nav
-        $('.scroller').click(function(){
-        	var section = $($(this).data("section"));
-        	var top = section.offset().top-82;
-            $("html, body").animate({ scrollTop: top }, 700);
-            return false;
-        });          
-    });
