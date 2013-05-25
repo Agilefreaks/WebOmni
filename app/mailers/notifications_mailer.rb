@@ -1,5 +1,5 @@
 class NotificationsMailer < ActionMailer::Base
-  default to: "calinoiu.alexandru@agilefreaks.com;nistor.adrian@agilefreaks.com"
+  default to: "calinoiu.alexandru@agilefreaks.com;nistor.adrian@agilefreaks.com;ciprian.stavar@gmail.com"
   default from: "nistor.adrian@agilefreaks.com"
 
   def new_message(message)
