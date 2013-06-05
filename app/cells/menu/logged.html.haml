@@ -2,8 +2,7 @@
 
 %li.dropdown
   = link_to '#', class: 'dropdown-toggle dropdown', 'data-toggle' => 'dropdown' do
-    -#= image_tag(@current_user.image_url, class: 'img-rounded img-profile')
-    Welcome #{@current_user.first_name}
+    Welcome #{@current_user.name}
     %b.caret
 
   %ul.dropdown-menu

@@ -55,6 +55,10 @@ class User
   # relations
   embeds_many :providers
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def find_provider(uid, name)
     providers.where(:uid => uid, :name => name).first
   end

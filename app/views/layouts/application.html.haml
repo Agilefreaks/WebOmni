@@ -1,53 +1,57 @@
 !!!
 %html
   %head
-  %meta(charset="utf-8")
-  %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
-  %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-  %title= content_for?(:title) ? yield(:title) : "Omnipaste - Your Clipboard Manager in the cloud"
-  = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
-  = javascript_include_tag "application"
-  = csrf_meta_tag
-  %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300", :rel => "stylesheet", :type => "text/css"}/
-  %link{:href => "http://fonts.googleapis.com/css?family=Raleway:200", :rel => "stylesheet", :type => "text/css"}/
-  / IE Fix for HTML5 Tags
-  /[if lt IE 9]
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  %b1ody
-    = bootstrap_flash
-    / Navbar
-    = render_navbar
-    / end Navbar
-    .main-container
-      / #intro    
-      = yield
-      / ends Intro
-      / #about
-      = render_about
-      / ends About
-      / #team
-      = render_team
-      / End Team
-      / #contact
-      = render_contact
-      / End Contact
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "Omnipaste - Your Clipboard Manager in the cloud"
+    = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
+    = csrf_meta_tag
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Raleway:200", :rel => "stylesheet", :type => "text/css"}/
+    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
+    %link(href="favicon.ico" rel="shortcut icon")
 
-      :javascript
-        $(function () {
-            $(window).scroll(function(){
-            // global scroll to top button
-                if ($(this).scrollTop() > 300) {
-                    $('.scrolltop').fadeIn();
-                } else {
-                    $('.scrolltop').fadeOut();
-                }        
-            });
-            
-            // scroll nav
-            $('.scroller').click(function(){
-            	var section = $($(this).data("section"));
-            	var top = section.offset().top-82;
-                $("html, body").animate({ scrollTop: top }, 700);
-                return false;
-            });          
-        });
+    / IE Fix for HTML5 Tags
+    /[if lt IE 9]
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+    = render partial: 'layouts/google'
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to 'Omnipaste', '#', class: 'brand scroller', 'data-section' => 'html'
+          .nav-collapse.collapse
+            %ul.nav.pull-right
+              = render_cell :menu, :show, user: current_user
+
+    = bootstrap_flash
+
+    .main-container
+      = yield
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    :javascript
+      $(function () {
+          $(window).scroll(function(){
+          // global scroll to top button
+              if ($(this).scrollTop() > 300) {
+                  $('.scrolltop').fadeIn();
+              } else {
+                  $('.scrolltop').fadeOut();
+              }
+          });
+
+          // scroll nav
+          $('.scroller').click(function(){
+              var section = $($(this).data("section"));
+              var top = section.offset().top-82;
+              $("html, body").animate({ scrollTop: top }, 700);
+              return false;
+          });
+      });

@@ -4,7 +4,6 @@ class ContactController < ApplicationController
     
     if @message.valid?
       NotificationsMailer.new_message(@message).deliver
-
       render
     end
   end

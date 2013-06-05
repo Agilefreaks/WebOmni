@@ -6,16 +6,19 @@
         .control-group
           = form.label :name
           = form.text_field :name
+
         .control-group
           = form.label :email
-          = form.text_field :email
+          = form.email_field :email
           
         .control-group
           = form.label :body
           = form.text_area :body
+
         .control-group
           .controls
-            %button.btn.btn-purple{:type => "submit"} Contact Us
+            = form.submit 'Contact Us', class: 'btn btn-purple'
+
     .span4
       %h2 Pop in for a chat
       %p You can meet us for a chat at our lovely office!
