@@ -1,7 +1,6 @@
-.well
-  = link_to "#{winomni_url}?token=#{current_user.token}", class: 'btn btn-large btn-success' do
-    = image_tag('clients/windows.jpg')
-    Download Windows client
-  %p
-    %small
-      One click to install the windows client customized for you.
+= link_to "#{winomni_url}?token=#{current_user.token}", class: 'btn btn-large btn-success btn-purple' do
+  = image_tag('clients/windows.jpg')
+  Download Windows client
+%p
+  %small
+    One click to install the windows client customized for you.
