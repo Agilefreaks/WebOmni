@@ -38,7 +38,7 @@
 
     :javascript
       $(function () {
-          $(window).scroll(function(){
+          $(window).scroll(function() {
           // global scroll to top button
               if ($(this).scrollTop() > 300) {
                   $('.scrolltop').fadeIn();
@@ -48,10 +48,14 @@
           });
 
           // scroll nav
-          $('.scroller').click(function(){
-              var section = $($(this).data("section"));
-              var top = section.offset().top-82;
-              $("html, body").animate({ scrollTop: top }, 700);
-              return false;
+          $('.scroller').click(function() {
+            var link = $(this);
+            var section = $(link.data("section"));
+            var top = section.offset().top-82;
+            $("html, body").animate({ scrollTop: top }, 700);
+
+            window.location.hash = link.attr('href');
+
+            return false;
           });
       });

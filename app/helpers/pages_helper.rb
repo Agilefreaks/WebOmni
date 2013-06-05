@@ -1,4 +1,12 @@
 module PagesHelper
+  def render_team
+    render partial: 'pages/team'
+  end
+
+  def render_contact
+    render partial: 'pages/contact'
+  end
+
   def render_logon
     render partial: (current_user ? 'pages/welcome_logged' : 'pages/welcome_not_logged')
   end
