@@ -24,7 +24,8 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          = link_to 'Omnipaste', '#', class: 'brand scroller', 'data-section' => 'html'
+          = link_to '#', class: 'brand scroller', 'data-section' => 'html' do
+            = image_tag('logo-omnipaste.png')
           .nav-collapse.collapse
             %ul.nav.pull-right
               = render_cell :menu, :show, user: current_user
