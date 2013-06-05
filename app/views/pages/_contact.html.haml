@@ -10,10 +10,10 @@
         .control-group
           = form.label :email
           = form.email_field :email
-          
+
         .control-group
           = form.label :body
-          = form.text_area :body
+          = form.text_area :body, placeholder: 'You are awesome, give me a invite now!'
 
         .control-group
           .controls
@@ -32,5 +32,3 @@
         %br/
         %abbr{:title => "Phone"} P:
         +40745857479
-      
-      

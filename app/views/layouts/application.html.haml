@@ -34,28 +34,33 @@
     .main-container
       = yield
 
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  %footer
+    %p &copy; Omnipaste 2013
+    %p.small.muted Android is a trademark of Google Inc.
+    %p.small.muted Windows is a registered trademark of Microsoft Corporation in the United States and other countries.
 
-    :javascript
-      $(function () {
-          $(window).scroll(function() {
-          // global scroll to top button
-              if ($(this).scrollTop() > 300) {
-                  $('.scrolltop').fadeIn();
-              } else {
-                  $('.scrolltop').fadeOut();
-              }
-          });
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
-          // scroll nav
-          $('.scroller').click(function() {
-            var link = $(this);
-            var section = $(link.data("section"));
-            var top = section.offset().top-82;
-            $("html, body").animate({ scrollTop: top }, 700);
+  :javascript
+    $(function () {
+        $(window).scroll(function() {
+        // global scroll to top button
+            if ($(this).scrollTop() > 300) {
+                $('.scrolltop').fadeIn();
+            } else {
+                $('.scrolltop').fadeOut();
+            }
+        });
 
-            window.location.hash = link.attr('href');
+        // scroll nav
+        $('.scroller').click(function() {
+          var link = $(this);
+          var section = $(link.data("section"));
+          var top = section.offset().top-82;
+          $("html, body").animate({ scrollTop: top }, 700);
 
-            return false;
-          });
-      });
+          window.location.hash = link.attr('href');
+
+          return false;
+        });
+    });
