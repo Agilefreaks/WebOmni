@@ -1,4 +1,17 @@
 %p
   Omnipaste is a clipboard manager in the cloud and works like your short-term memory.
   With our services you can transfer data between your devices running Windows&trade; operating system or Android&trade;. Simple as Copy & Paste.
-= link_to 'Sign up today', user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-xlarge btn-purple'
+
+= link_to 'See it in action!', '#demo', class: 'btn btn-xlarge btn-purple', 'data-toggle' => 'modal'
+
+%p
+  = link_to 'Sign up today', user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-xlarge btn-purple'
+
+
+#demo.modal.hide.fade{role: 'dialog', 'aria-labelledby' => 'demo', 'aria-hidden' => true}
+  .modal-header
+    #h3 Demo
+  .modal-body
+    %iframe{:allowfullscreen => false, :frameborder => "0", :height => "480", :width => "640", :mozallowfullscreen => false, :src => "http://player.vimeo.com/video/67749998?autoplay=1", :webkitallowfullscreen => "", id: 'demo_frame'}
+  .modal-footer
+    = button_tag 'Close', class: 'btn', 'data-dismiss' => 'modal', 'aria-hidden' => true
