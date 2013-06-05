@@ -2,22 +2,14 @@
   .container.dark
     %h1 Get in contact with us
     .span5
-      = form_for Message.new, :url => contact_index_url, :method => :post, :remote => true do |form|
-        .control-group
-          = form.label :name
-          = form.text_field :name
-
-        .control-group
-          = form.label :email
-          = form.email_field :email
-
-        .control-group
-          = form.label :body
-          = form.text_area :body, placeholder: 'You are awesome, give me a invite now!'
+      = simple_form_for :message, :url => contact_index_path, :method => :post, :remote => true do |f|
+        = f.input :name
+        = f.input :email
+        = f.input :body, :as => :text, placeholder: 'You are awesome, give me a invite now!'
 
         .control-group
           .controls
-            = form.submit 'Contact Us', class: 'btn btn-purple'
+            = f.submit 'Contact Us', class: 'btn btn-purple'
 
     .span4
       %h2 Pop in for a chat
