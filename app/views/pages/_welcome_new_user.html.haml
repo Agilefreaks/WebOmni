@@ -1,11 +1,20 @@
-.well
-  :css
-    .form-horizontal {
-      text-align: left;
-    }
-  = simple_form_for(current_user, :html => { :class => 'form-horizontal' }) do |f|
-    %legend
-      %p.lead We have received your request and are processing it, once we accept you in the early adopter program we will notify you via email and you will be able to download the client applications.
-    = f.input :devices, collection: devices_options, :as => :check_boxes, hint: 'While you are waiting, please tell us which kind of devices are you using.'
-    .form-actions
-      = f.button :submit, 'This ones, now hurry with that email already!', class: 'btn-success'
+.container-fluid
+  .container.light
+    %h1 We have received your request and are processing it, once we accept you in the early adopter program we will notify you via email and you will be able to download the client applications.
+    :css
+      .form-horizontal {
+        text-align: left;
+      }
+
+      .form-horizontal label {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 20px
+      }
+
+    = simple_form_for(current_user, :html => { :class => 'form-horizontal' }) do |f|
+      = f.input :devices, collection: devices_options, :as => :check_boxes, hint: 'While you are waiting, please tell us which kind of devices are you using.'
+      .control-group
+        .controls
+          = f.button :submit, 'This ones, now hurry with that email already!', class: 'btn-purple'
