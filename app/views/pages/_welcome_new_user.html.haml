@@ -13,8 +13,11 @@
         line-height: 20px
       }
 
+    %p.help-block
+      While you are waiting, please tell us which kind of devices are you using:
+
     = simple_form_for(current_user, :html => { :class => 'form-horizontal' }) do |f|
-      = f.input :devices, collection: devices_options, :as => :check_boxes, hint: 'While you are waiting, please tell us which kind of devices are you using.'
+      = f.input :devices, collection: devices_options, :as => :check_boxes, label: false
       .control-group
         .controls
           = f.button :submit, 'This ones, now hurry with that email already!', class: 'btn-purple'
