@@ -15,6 +15,10 @@ module PagesHelper
     "https://s3.amazonaws.com/omnipaste-#{Rails.env.downcase}/win/Omnipaste.application"
   end
 
+  def android_url
+    "https://s3.amazonaws.com/omnipaste-#{Rails.env.downcase}/android/omnipaste.apk"
+  end
+
   def render_windows_client
      render partial: 'pages/windows_client' if !!(user_agent(request.env["HTTP_USER_AGENT"]).os =~ (/Windows/i))
   end
