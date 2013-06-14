@@ -12,11 +12,7 @@ module PagesHelper
   end
 
   def winomni_url
-    if Rails.env.staging?
-      'https://s3.amazonaws.com/omnipaste/win_staging/Omnipaste.application'
-    else
-      'https://s3.amazonaws.com/omnipaste/win/Omnipaste.application'
-    end
+    "https://s3.amazonaws.com/omnipaste-#{Rails.env.downcase}/win/Omnipaste.application"
   end
 
   def render_windows_client
