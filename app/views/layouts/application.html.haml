@@ -24,7 +24,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          = link_to '#', class: 'brand scroller', 'data-section' => 'html' do
+          = link_to root_path, class: 'brand scroller' do
             = image_tag('logo-omnipaste.png')
           .nav-collapse.collapse
             %ul.nav.pull-right
@@ -33,7 +33,16 @@
     = bootstrap_flash
 
     .main-container
-      = yield
+      #intro.container-fluid
+        .container
+          .row.span12.center
+            = yield
+
+  = render partial: 'pages/about'
+
+  = render partial: 'pages/team'
+
+  = render partial: 'pages/contact'
 
   %footer
     .row.span12.center

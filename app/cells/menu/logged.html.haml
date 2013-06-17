@@ -7,4 +7,6 @@
 
   %ul.dropdown-menu
     %li
+      = link_to 'Whats my token?', token_path
+    %li
       = link_to 'Sign out', destroy_user_session_path, :method => :delete
