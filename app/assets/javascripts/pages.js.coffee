@@ -7,3 +7,15 @@ $('#demo').on('hide', ->
   $('#demo_frame').attr('src', '')
   $('#demo_frame').attr('src', url)
 )
+
+$('#windows_download_redirect_link').click(->
+  document.getElementById('windows_download_link').click()
+  redirectUrl = $(this).data('redirect')
+
+  setTimeout((->
+    window.location.href = redirectUrl),
+    2000
+  )
+
+  return false;
+)
