@@ -4,16 +4,16 @@ describe PagesHelper do
   describe 'winomni_url' do
     subject { helper.winomni_url }
 
-    context 'when Rails.env.staging? is true' do
-      before { Rails.stub_chain(:env, :staging?).and_return(true) }
+    context 'when Rails.env is staging' do
+      before { Rails.stub_chain(env: 'Staging') }
 
-      it { should == 'https://s3.amazonaws.com/omnipaste/win_staging/Omnipaste.application' }
+      it { should == 'https://s3.amazonaws.com/omnipaste-staging/win/Omnipaste.application' }
     end
 
-    context 'when Rails.env.staging? is false' do
-      before { Rails.stub_chain(:env, :staging?).and_return(false) }
+    context 'when Rails.env is production' do
+      before { Rails.stub_chain(env: 'Production') }
 
-      it { should == 'https://s3.amazonaws.com/omnipaste/win/Omnipaste.application' }
+      it { should == 'https://s3.amazonaws.com/omnipaste-production/win/Omnipaste.application' }
     end
   end
 end

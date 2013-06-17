@@ -9,6 +9,9 @@ WebOmni::Application.routes.draw do
 
   resources :users, only: [:update]
   resources :contact, only: [:create]
+  resource :token, only: [:show]
+
+  get "whatsmytoken", to: 'token#show'
 
   mount API => '/api'
 

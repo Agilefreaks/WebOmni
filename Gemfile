@@ -53,13 +53,13 @@ end
 group :development, :test do
   gem 'awesome_print'
   gem 'rb-inotify', '~> 0.9'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :test do
   gem 'spork'
   gem 'spork-rails', github: 'A-gen/spork-rails'
   gem 'rspec'
-  gem 'rspec-rails'
   gem 'rspec-cells'
   gem 'guard-spork', require: 'guard'
   gem 'guard-rspec', require: 'guard'

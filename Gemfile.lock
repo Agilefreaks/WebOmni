@@ -336,7 +336,7 @@ DEPENDENCIES
   rb-inotify (~> 0.9)
   rspec
   rspec-cells
-  rspec-rails
+  rspec-rails (~> 2.0)
   rspec-set
   shoulda
   simple_form (~> 3.0.0.rc)
