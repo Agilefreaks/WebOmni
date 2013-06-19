@@ -1,4 +1,4 @@
-= link_to "#", class: 'btn btn-large btn-success btn-purple', id: 'windows_download_redirect_link', :'data-redirect' => token_url do
+= link_to "#", class: 'btn btn-large btn-success btn-purple', id: 'windows_download_redirect_link', :'data-redirect' => installation_url do
   = image_tag('clients/windows.jpg')
   Download Windows client
 = link_to "#", "#{winomni_url}?token=#{current_user.token}", class: 'hidden', id: 'windows_download_link', target: '_blank'

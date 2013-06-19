@@ -13,6 +13,11 @@ WebOmni::Application.routes.draw do
 
   get "whatsmytoken", to: 'tokens#show'
 
+  # installations
+  get 'installations/chrome'
+  get 'installations/firefox'
+  get 'installations/ie'
+
   mount API => '/api'
 
   # Example of regular route:

@@ -14,7 +14,7 @@ $('#windows_download_redirect_link').click(->
 
   setTimeout((->
     window.location.href = redirectUrl),
-    2000
+    1000
   )
 
   return false;

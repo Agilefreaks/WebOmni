@@ -12,7 +12,11 @@ module PagesHelper
   end
 
   def winomni_url
-    "https://s3.amazonaws.com/omnipaste-#{Rails.env.downcase}/win/Omnipaste.application"
+    if Rails.env.staging?
+      'https://s3.amazonaws.com/omnipaste-staging/win/Omnipaste-staging.application'
+    else
+      'https://s3.amazonaws.com/omnipaste-production/win/Omnipaste.application'
+    end
   end
 
   def android_url
@@ -20,15 +24,25 @@ module PagesHelper
   end
 
   def render_windows_client
-     render partial: 'pages/windows_client' if !!(user_agent(request.env["HTTP_USER_AGENT"]).os =~ (/Windows/i))
+     render partial: 'pages/windows_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Windows/i))
   end
 
   def render_linux_client
-     render partial: 'pages/linux_client' if !!(user_agent(request.env["HTTP_USER_AGENT"]).os =~ (/Linux/i))
+     render partial: 'pages/linux_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Linux/i))
   end
 
   def render_mac_client
-    render partial: 'pages/mac_client' if !!(user_agent(request.env["HTTP_USER_AGENT"]).os =~ (/Macintosh/i))
+    render partial: 'pages/mac_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Macintosh/i))
+  end
+
+  def installation_url
+    if !!(user_agent(request.env['HTTP_USER_AGENT']).browser =~ (/Chrome/i))
+      installations_chrome_url
+    elsif !!(user_agent(request.env['HTTP_USER_AGENT']).browser =~ (/Firefox/i))
+      installations_firefox_url
+    else
+      installations_ie_url
+    end
   end
 
   def render_android_client

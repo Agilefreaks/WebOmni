@@ -1,5 +1,5 @@
 class TokensController < ApplicationController
-  before_filter :authenticate_user!, only: [:show]
+  before_action :check_authentication, only: [:show]
 
   respond_to :html
 

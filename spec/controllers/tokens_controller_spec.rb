@@ -5,7 +5,7 @@ describe TokensController do
 
   describe "GET 'show'" do
     before do
-      controller.stub(authenticate_user!: true)
+      controller.stub(check_authentication: true)
       controller.stub(current_user: user)
       get :show
     end

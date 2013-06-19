@@ -5,13 +5,13 @@ describe PagesHelper do
     subject { helper.winomni_url }
 
     context 'when Rails.env is staging' do
-      before { Rails.stub_chain(env: 'Staging') }
+      before { Rails.stub_chain(:env, :staging?).and_return(true) }
 
-      it { should == 'https://s3.amazonaws.com/omnipaste-staging/win/Omnipaste.application' }
+      it { should == 'https://s3.amazonaws.com/omnipaste-staging/win/Omnipaste-staging.application' }
     end
 
     context 'when Rails.env is production' do
-      before { Rails.stub_chain(env: 'Production') }
+      before { Rails.stub_chain(:env, :staging?).and_return(false) }
 
       it { should == 'https://s3.amazonaws.com/omnipaste-production/win/Omnipaste.application' }
     end
