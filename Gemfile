@@ -43,6 +43,7 @@ gem 'turbolinks'
 
 group :development do
   gem 'quiet_assets'
+  gem 'letter_opener'
 end
 
 group :production do
