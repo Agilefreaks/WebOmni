@@ -29,7 +29,8 @@ describe UserFactory do
     let(:auth) { mock('auth', :info => info) }
 
     it 'should call create on user' do
-      User.should_receive(:create)
+      User.should_receive(:create).and_return(mock_model(User))
+      NotificationsMailer.stub_chain(:welcome, :deliver)
       factory.create_from_social(auth)
     end
   end

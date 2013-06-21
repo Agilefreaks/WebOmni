@@ -12,11 +12,15 @@ class UserFactory
 
   def create_from_social(auth)
     match = auth.to_s.match(/image=\"(.*?)\"/)
-    User.create(:first_name => auth.info.first_name,
-                :last_name => auth.info.last_name,
-                :email => auth.info.email,
-                :password => Devise.friendly_token[0, 20],
-                :image_url => match ? match[1] : nil)
+    user = User.create(:first_name => auth.info.first_name,
+                       :last_name => auth.info.last_name,
+                       :email => auth.info.email,
+                       :password => Devise.friendly_token[0, 20],
+                       :image_url => match ? match[1] : nil)
+
+    NotificationsMailer.welcome(user.id).deliver
+
+    user
   end
 
   def create_or_update_provider(auth, user)

@@ -10,7 +10,11 @@ class NotificationsMailer < ActionMailer::Base
          })
   end
 
-  def welcome
-
+  def welcome(user_id)
+    @user = User.find(user_id)
+    mail({
+             subject: 'Welcome to Omnipaste',
+             to: @user.email
+         })
   end
 end
