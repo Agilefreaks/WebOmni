@@ -15,6 +15,10 @@ class InstallationsController < ApplicationController
     respond_with @token
   end
 
+  def default
+    respond_with @token
+  end
+
   private
 
   def populate_token

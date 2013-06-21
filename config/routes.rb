@@ -17,6 +17,7 @@ WebOmni::Application.routes.draw do
   get 'installations/chrome'
   get 'installations/firefox'
   get 'installations/ie'
+  get 'installations/default'
 
   mount API => '/api'
 
