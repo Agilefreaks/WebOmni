@@ -1,11 +1,12 @@
 class UserFactory
   include Singleton
 
-  def self.from_social(auth, user)
+  def self.from_social(auth, user, state = '')
     factory = UserFactory.instance
 
     user ||= factory.create_from_social(auth)
     factory.create_or_update_provider(auth, user)
+    factory.set_early_adopter(user, state)
 
     user
   end
@@ -31,5 +32,9 @@ class UserFactory
     else
       user.providers.create(:name => auth.provider, :uid => auth.uid, :auth => auth, :email => auth.info.email)
     end
+  end
+
+  def set_early_adopter(user, state)
+    user.update_attribute(:early_adopter, true) if state == 'chile'
   end
 end

@@ -1,4 +1,5 @@
 WebOmni::Application.routes.draw do
+  get "registrations/startupchile"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,7 +12,8 @@ WebOmni::Application.routes.draw do
   resources :contact, only: [:create]
   resource :token, only: [:show]
 
-  get "whatsmytoken", to: 'tokens#show'
+  get 'whatsmytoken', to: 'tokens#show'
+  get 'startupchile', to: 'registrations#startupchile'
 
   # installations
   get 'installations/chrome'

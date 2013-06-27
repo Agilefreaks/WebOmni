@@ -12,6 +12,7 @@ Spork.prefork do
   require 'email_spec'
   require 'rspec/rails'
   require 'rspec/autorun'
+  require 'rspec-spies'
 
   # Require all of the RSpec Support libraries
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
