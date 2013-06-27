@@ -10,6 +10,7 @@ describe UserFactory do
       it 'should call create_from_social and update_social' do
         UserFactory.any_instance.should_receive(:create_from_social).with(auth)
         UserFactory.any_instance.should_receive(:create_or_update_provider)
+        UserFactory.any_instance.should_receive(:set_early_adopter)
         UserFactory.from_social(auth, nil)
       end
     end
@@ -19,17 +20,19 @@ describe UserFactory do
 
       it "should update the providers" do
         UserFactory.any_instance.should_receive(:create_or_update_provider).with(auth, user)
+        UserFactory.any_instance.should_receive(:set_early_adopter)
         UserFactory.from_social(auth, user)
       end
     end
   end
 
   describe '#create_from_social' do
-    let(:info) { mock('info', :first_name => 'Blind', :last_name => 'Naked', :email => 'sucker@love.com', ) }
+    let(:info) { mock('info', :first_name => 'Blind', :last_name => 'Naked', :email => 'sucker@love.com',) }
     let(:auth) { mock('auth', :info => info) }
 
     it 'should call create on user' do
-      User.should_receive(:create)
+      User.should_receive(:create).and_return(mock_model(User))
+      NotificationsMailer.stub_chain(:welcome, :deliver)
       factory.create_from_social(auth)
     end
   end
@@ -59,6 +62,24 @@ describe UserFactory do
         provider.should_receive(:update_attributes)
         factory.create_or_update_provider(auth, user)
       end
+    end
+  end
+
+  describe '#set_early_adopter' do
+    subject { double('user', update_attribute: true) }
+
+    before(:each) { factory.set_early_adopter(subject, state) }
+
+    context 'with state chile' do
+      let(:state) { 'chile' }
+
+      it { should have_received(:update_attribute).with(:early_adopter, true) }
+    end
+
+    context 'with no state' do
+      let(:state) { '' }
+
+      it { should_not have_received(:update_attribute).with(:early_adopter, true) }
     end
   end
 end

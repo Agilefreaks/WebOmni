@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '4.0.0'
 
 gem 'mongoid', '~> 4.0.0', github: 'mongoid/mongoid'
 
@@ -26,7 +26,7 @@ gem 'useragent'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
@@ -43,6 +43,7 @@ gem 'turbolinks'
 
 group :development do
   gem 'quiet_assets'
+  gem 'letter_opener'
 end
 
 group :production do
@@ -54,12 +55,12 @@ group :development, :test do
   gem 'awesome_print'
   gem 'rb-inotify', '~> 0.9'
   gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-spies'
 end
 
 group :test do
   gem 'spork'
   gem 'spork-rails', github: 'A-gen/spork-rails'
-  gem 'rspec'
   gem 'rspec-cells'
   gem 'guard-spork', require: 'guard'
   gem 'guard-rspec', require: 'guard'

@@ -1,12 +1,20 @@
 class NotificationsMailer < ActionMailer::Base
-  default to: "calinoiu.alexandru@agilefreaks.com;nistor.adrian@agilefreaks.com;ciprian.stavar@gmail.com"
-  default from: "nistor.adrian@agilefreaks.com"
+  default from: 'Omnipaste <team@omnipasteapp.com>'
 
   def new_message(message)
     @message = message
     mail({
-      :from => @message.email, 
-      :subject => "[Omnipaste] - New message"
-    })
+             to: 'calinoiu.alexandru@agilefreaks.com;nistor.adrian@agilefreaks.com;ciprian.stavar@gmail.com',
+             from: @message.email,
+             subject: '[Omnipaste] - New message'
+         })
+  end
+
+  def welcome(user_id)
+    @user = User.find(user_id)
+    mail({
+             subject: 'Welcome to Omnipaste',
+             to: @user.email
+         })
   end
 end
