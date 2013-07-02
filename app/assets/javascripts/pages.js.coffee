@@ -9,6 +9,8 @@ $('#demo').on('hide', ->
 )
 
 $('#windows_download_redirect_link').click(->
+  _gaq.push(['_trackEvent', 'Download', 'Windows', $("#windows_download_link").data('user')])
+
   document.getElementById('windows_download_link').click()
   redirectUrl = $(this).data('redirect')
 
@@ -18,4 +20,9 @@ $('#windows_download_redirect_link').click(->
   )
 
   return false;
+)
+
+$("#android_download_link").click(->
+  _gaq.push(['_trackEvent', 'Download', 'Android', $("#android_download_link").data('user')])
+  console.log('Logged')
 )
