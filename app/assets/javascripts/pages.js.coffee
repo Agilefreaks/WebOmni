@@ -2,6 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+PagesHelper = {}
+
+trackDownloadEvent = (platform, user) ->
+  _gaq.push(['_trackEvent', 'Download', platform, user])
+
+PagesHelper =
+  trackDownloadEvent: trackDownloadEvent
+
 $('#demo').on('hide', ->
   url = $('#demo_frame').attr('src')
   $('#demo_frame').attr('src', '')
@@ -9,7 +17,7 @@ $('#demo').on('hide', ->
 )
 
 $('#windows_download_redirect_link').click(->
-  _gaq.push(['_trackEvent', 'Download', 'Windows', $("#windows_download_link").data('user')])
+  PagesHelper.trackDownloadEvent('Windows', $("#windows_download_link").data('user'))
 
   document.getElementById('windows_download_link').click()
   redirectUrl = $(this).data('redirect')
@@ -23,6 +31,5 @@ $('#windows_download_redirect_link').click(->
 )
 
 $("#android_download_link").click(->
-  _gaq.push(['_trackEvent', 'Download', 'Android', $("#android_download_link").data('user')])
-  console.log('Logged')
+  PagesHelper.trackDownloadEvent('Android', $("#android_download_link").data('user'))
 )
