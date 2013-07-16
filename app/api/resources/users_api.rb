@@ -1,6 +1,5 @@
-module Users
-  class APIV1 < Grape::API
-
+module WebOmni
+  class Resources::UsersAPI < Grape::API
     resources :users do
       desc 'Activate a user'
       params do
@@ -8,7 +7,7 @@ module Users
       end
       get 'activate/:token' do
         user = User.find_by(token: params[:token])
-        present user, :with => Users::UserActivateResponseEntity
+        present user, :with => Entities::UserActivateResponseEntity
       end
     end
   end

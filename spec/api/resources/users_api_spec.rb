@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Users::APIV1 do
+describe Resources::UsersAPI do
   describe "GET 'api/v1/user/activate/:token'" do
     context 'when a user with that token exist' do
       let(:user) { mock_model(User) }

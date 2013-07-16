@@ -1,5 +1,4 @@
 WebOmni::Application.routes.draw do
-  get "registrations/startupchile"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,6 +6,9 @@ WebOmni::Application.routes.draw do
   root to: 'pages#welcome'
 
   devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
+
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :users, only: [:update]
   resources :contact, only: [:create]
@@ -21,7 +23,7 @@ WebOmni::Application.routes.draw do
   get 'installations/ie'
   get 'installations/default'
 
-  mount API => '/api'
+  mount WebOmni::API => '/'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
