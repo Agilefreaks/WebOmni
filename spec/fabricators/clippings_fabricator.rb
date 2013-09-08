@@ -1,0 +1,2 @@
+Fabricator(:clipping) do
+end

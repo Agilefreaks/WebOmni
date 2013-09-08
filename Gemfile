@@ -74,4 +74,5 @@ group :test do
   gem 'webrat'
   gem 'email_spec'
   gem 'mongoid-rspec'
+  gem 'fabrication'
 end
