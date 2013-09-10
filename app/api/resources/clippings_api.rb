@@ -21,6 +21,17 @@ module WebOmni
       get '/:id' do
         Clipping.find(params[:id])
       end
+
+      describe 'Gets the last clipping on the specified channel'
+      params do
+        requires :channel, type: String
+      end
+      get '/:channel/last' do
+        Clipping
+        .find_by(token: params[:channel])
+        .sort_by { |c| c.created_at }
+        .last
+      end
     end
   end
 end
