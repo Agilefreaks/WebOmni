@@ -14,14 +14,6 @@ module WebOmni
         new_clipping
       end
 
-      desc 'Get a clipping'
-      params do
-        requires :id, type: String, desc: 'Clipping id.'
-      end
-      get '/:id' do
-        Clipping.find(params[:id])
-      end
-
       desc 'Get latest clipping for a given :token'
       get '/' do
         channel = headers['Channel']

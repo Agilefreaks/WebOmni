@@ -1,26 +1,6 @@
 require 'spec_helper'
 
 describe Resources::ClippingsAPI do
-  describe "GET 'api/v1/clippings/:id'" do
-    context 'when the clipping doesnt exist for current user' do
-      it 'should return not found' do
-        get '/api/v1/clippings/43'
-        response.status.should == 404
-      end
-    end
-
-    context 'when the clipping exists' do
-      let(:clipping) { mock_model(Clipping) }
-
-      before { Clipping.stub(:find, clipping) }
-
-      it 'should be successful' do
-        get '/api/v1/clippings/43'
-        response.status.should == 200
-      end
-    end
-  end
-
   describe "POST 'api/v1/clippings'" do
     context 'when there are no validation errors' do
       before { Clipping.stub(:create!, Clipping.new) }
