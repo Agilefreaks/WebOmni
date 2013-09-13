@@ -22,13 +22,12 @@ module WebOmni
         Clipping.find(params[:id])
       end
 
-      describe 'Gets the last clipping on the specified channel'
-      params do
-        requires :channel, type: String
-      end
-      get '/:channel/last' do
+      desc 'Get latest clipping for a given :token'
+      get '/' do
+        channel = headers['Channel']
+        error!('Unauthorized', 401) if channel.nil?
         Clipping
-        .find_by(token: params[:channel])
+        .find_by(token: channel)
         .sort_by { |c| c.created_at }
         .last
       end

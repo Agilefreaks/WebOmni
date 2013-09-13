@@ -39,7 +39,7 @@ describe Resources::ClippingsAPI do
     end
   end
 
-  describe "GET 'api/v1/clippings/:channel/last'" do
+  describe "GET 'api/v1/clippings'" do
     context "when channel exists and has only one clipping" do
       let(:clipping) { stub_model(Clipping, {:token => 'email@domain.com', :content => 'content'}) }
 
@@ -49,10 +49,11 @@ describe Resources::ClippingsAPI do
       end
 
       it 'returns the clipping' do
-        get '/api/v1/clippings/email%40domain%2Ecom/last'
+        get '/api/v1/clippings', nil, { :Channel => 'email@domain.com'}
         response.body.should == clipping.to_json
       end
     end
+
 
     context 'When channel exists and has more than one clippings' do
       let(:first_clipping) { stub_model(Clipping, {:created_at => Date.today - 1,:token => 'email@domain.com', :content => 'first content'}) }
@@ -64,7 +65,7 @@ describe Resources::ClippingsAPI do
       end
 
       it 'returns the last clipping' do
-        get '/api/v1/clippings/email%40domain%2Ecom/last'
+        get '/api/v1/clippings', nil, { :Channel => 'email@domain.com'}
         response.body.should == last_clipping.to_json
       end
     end
@@ -79,7 +80,7 @@ describe Resources::ClippingsAPI do
       end
 
       it 'returns the last clipping' do
-        get '/api/v1/clippings/email%40domain%2Ecom/last'
+        get '/api/v1/clippings', nil, { :Channel => 'email@domain.com' }
         response.body.should == last_clipping.to_json
       end
     end
@@ -91,7 +92,7 @@ describe Resources::ClippingsAPI do
       end
 
       it 'is successful but with null result' do
-        get '/api/v1/clippings/email%40domain%2Ecom/last'
+        get '/api/v1/clippings/', nil, { :Channel => 'email@domain.com' }
         response.body.should == 'null'
       end
     end
