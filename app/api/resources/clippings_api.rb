@@ -1,13 +1,19 @@
 module WebOmni
   class Resources::ClippingsAPI < Grape::API
     resources :clippings do
+      helpers do
+        def permitted_params
+          ActionController::Parameters.new(params).permit(:content, :token)
+        end
+      end
+
       desc 'Create a clipping'
       params do
         requires :token, type: String
         requires :content, type: String
       end
       post '/' do
-        new_clipping = Clipping.new(params[:clipping_params])
+        new_clipping = Clipping.new(permitted_params)
         new_clipping.save!
 
         status 201
@@ -18,15 +24,11 @@ module WebOmni
       get '/' do
         channel = headers['Channel']
         error!('Unauthorized', 401) if channel.nil?
-        last_clipping = Clipping.find_by(token: channel).sort_by { |c| c.created_at }.last
+        channel_clippings = Clipping.find_by(token: channel)
+        last_clipping = channel_clippings.sort_by { |c| c.created_at }.last
 
         present last_clipping, :with => Entities::ClippingEntity
       end
-    end
-
-    private
-    def clipping_params
-      params.require(:clipping).permit(:content, :token)
     end
   end
 end
