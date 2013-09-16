@@ -5,23 +5,23 @@ describe Resources::ClippingsAPI do
     context 'when there are no validation errors' do
       before { Clipping.stub(:create!, Clipping.new) }
 
-      it 'should be successful' do
-        post '/api/v1/clippings', {:token => 'token', :content => 'content'}.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-        response.status.should == 201
+      it 'is successful' do
+        post '/api/v1/clippings', {token: 'token', content: 'content'}.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+        expect(response.status).to eql 201
       end
     end
 
     context 'when there are validation errors' do
-      it 'should return error' do
-        post '/api/v1/clippings', {}.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-        response.status.should == 400
+      it 'returns error' do
+        post '/api/v1/clippings', {}.to_json, { 'CONTENT_TYPE' =>'application/json', 'ACCEPT' => 'application/json' }
+        expect(response.status).to eql 400
       end
     end
   end
 
   describe "GET 'api/v1/clippings'" do
-    context "when channel exists and has only one clipping" do
-      let(:clipping) { stub_model(Clipping, {:token => 'email@domain.com', :content => 'content'}) }
+    context 'when channel exists and has only one clipping' do
+      let(:clipping) { Clipping.new token: 'email@domain.com', content: 'content' }
 
       before do
         clippings = [clipping]
@@ -29,15 +29,16 @@ describe Resources::ClippingsAPI do
       end
 
       it 'returns the clipping' do
-        get '/api/v1/clippings', nil, { :Channel => 'email@domain.com'}
-        response.body.should == clipping.to_json
+        get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
+        expect(response.body).to eql clipping.to_json
       end
     end
 
 
     context 'When channel exists and has more than one clippings' do
-      let(:first_clipping) { stub_model(Clipping, {:created_at => Date.today - 1,:token => 'email@domain.com', :content => 'first content'}) }
-      let(:last_clipping) {stub_model(Clipping, {:created_at => Date.today,:token => 'email@domain.com', :content => 'latest content'})}
+      let(:first_clipping) { Clipping.new created_at: Date.today - 1, token: 'email@domain.com', content: 'first content' }
+      let(:last_clipping) { Clipping.new created_at: Date.today, token: 'email@domain.com', content: 'latest content'
+      }
 
       before do
         clippings = [ first_clipping, last_clipping ]
@@ -45,14 +46,14 @@ describe Resources::ClippingsAPI do
       end
 
       it 'returns the last clipping' do
-        get '/api/v1/clippings', nil, { :Channel => 'email@domain.com'}
-        response.body.should == last_clipping.to_json
+        get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
+        expect(response.body).to eql last_clipping.to_json
       end
     end
 
     context 'When channel exists and has more than one clippings that are not in order' do
-      let(:first_clipping) { stub_model(Clipping, {:created_at => Date.today - 1,:token => 'email@domain.com', :content => 'first content'}) }
-      let(:last_clipping) {stub_model(Clipping, {:created_at => Date.today,:token => 'email@domain.com', :content => 'latest content'})}
+      let(:first_clipping) { Clipping.new created_at: Date.today - 1, token: 'email@domain.com', content: 'first content' }
+      let(:last_clipping) { Clipping.new created_at: Date.today, token: 'email@domain.com', content: 'latest content' }
 
       before do
         clippings = [ last_clipping, first_clipping]
@@ -60,8 +61,8 @@ describe Resources::ClippingsAPI do
       end
 
       it 'returns the last clipping' do
-        get '/api/v1/clippings', nil, { :Channel => 'email@domain.com' }
-        response.body.should == last_clipping.to_json
+        get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
+        expect(response.body).to eql last_clipping.to_json
       end
     end
 
@@ -72,8 +73,8 @@ describe Resources::ClippingsAPI do
       end
 
       it 'is successful but with null result' do
-        get '/api/v1/clippings/', nil, { :Channel => 'email@domain.com' }
-        response.body.should == 'null'
+        get '/api/v1/clippings/', nil, {Channel: 'email@domain.com'}
+        expect(response.body).to eql 'null'
       end
     end
   end
