@@ -11,17 +11,16 @@ module WebOmni
         new_clipping.save!
 
         status 201
-        new_clipping
+        present new_clipping, :with => Entities::ClippingEntity
       end
 
       desc 'Get latest clipping for a given :token'
       get '/' do
         channel = headers['Channel']
         error!('Unauthorized', 401) if channel.nil?
-        Clipping
-        .find_by(token: channel)
-        .sort_by { |c| c.created_at }
-        .last
+        last_clipping = Clipping.find_by(token: channel).sort_by { |c| c.created_at }.last
+
+        present last_clipping, :with => Entities::ClippingEntity
       end
     end
   end

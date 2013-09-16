@@ -30,7 +30,7 @@ describe Resources::ClippingsAPI do
 
       it 'returns the clipping' do
         get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql clipping.to_json
+        expect(response.body).to eql Entities::ClippingEntity.new(clipping).to_json
       end
     end
 
@@ -47,7 +47,7 @@ describe Resources::ClippingsAPI do
 
       it 'returns the last clipping' do
         get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql last_clipping.to_json
+        expect(response.body).to eql Entities::ClippingEntity.new(last_clipping).to_json
       end
     end
 
@@ -62,7 +62,7 @@ describe Resources::ClippingsAPI do
 
       it 'returns the last clipping' do
         get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql last_clipping.to_json
+        expect(response.body).to eql Entities::ClippingEntity.new(last_clipping).to_json
       end
     end
 
