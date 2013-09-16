@@ -7,7 +7,7 @@ module WebOmni
         requires :content, type: String
       end
       post '/' do
-        new_clipping = Clipping.new({ :content => params[:content], :token => params[:token] })
+        new_clipping = Clipping.new(params[:clipping_params])
         new_clipping.save!
 
         status 201
@@ -22,6 +22,11 @@ module WebOmni
 
         present last_clipping, :with => Entities::ClippingEntity
       end
+    end
+
+    private
+    def clipping_params
+      params.require(:clipping).permit(:content, :token)
     end
   end
 end
