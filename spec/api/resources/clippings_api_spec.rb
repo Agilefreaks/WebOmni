@@ -25,7 +25,7 @@ describe Resources::ClippingsAPI do
 
       before do
         clippings = [clipping]
-        Clipping.stub_chain([:find_by]).and_return(clippings)
+        Clipping.stub_chain([:where, :desc]).and_return(clippings)
       end
 
       it 'returns the clipping' do
@@ -41,8 +41,8 @@ describe Resources::ClippingsAPI do
       }
 
       before do
-        clippings = [ first_clipping, last_clipping ]
-        Clipping.stub_chain(:find_by).and_return(clippings)
+        clippings = [last_clipping, first_clipping]
+        Clipping.stub_chain([:where, :desc]).and_return(clippings)
       end
 
       it 'returns the last clipping' do
@@ -57,7 +57,7 @@ describe Resources::ClippingsAPI do
 
       before do
         clippings = [ last_clipping, first_clipping]
-        Clipping.stub_chain(:find_by).and_return(clippings)
+        Clipping.stub_chain([:where, :desc]).and_return(clippings)
       end
 
       it 'returns the last clipping' do
