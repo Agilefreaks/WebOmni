@@ -18,6 +18,7 @@ module WebOmni
     end
 
     mount Resources::UsersAPI
+    mount Resources::ClippingsAPI
 
     add_swagger_documentation(
         base_path: "#{Rails.configuration.action_mailer.asset_host}/api",
