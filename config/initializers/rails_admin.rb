@@ -32,7 +32,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = ['Admin', 'Provider', 'User']
 
   # Include specific models (exclude the others):
-  config.included_models = ['User']
+  config.included_models = %w(User Clipping)
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
