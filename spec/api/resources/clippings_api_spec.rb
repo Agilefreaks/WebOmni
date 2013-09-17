@@ -34,12 +34,7 @@ describe Resources::ClippingsAPI do
 
   describe "GET 'api/v1/clippings'" do
     context 'when channel exists and has only one clipping' do
-      let(:clipping) { Clipping.new token: 'email@domain.com', content: 'content' }
-
-      before do
-        clippings = [clipping]
-        Clipping.stub_chain([:where, :desc]).and_return(clippings)
-      end
+      let!(:clipping) { Fabricate(:clipping, token: 'email@domain.com', content: 'content') }
 
       it 'returns the clipping' do
         get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
@@ -47,43 +42,18 @@ describe Resources::ClippingsAPI do
       end
     end
 
-    context 'When channel exists and has more than one clippings' do
-      let(:first_clipping) { Clipping.new created_at: Date.today - 1, token: 'email@domain.com', content: 'first content' }
-      let(:last_clipping) { Clipping.new created_at: Date.today, token: 'email@domain.com', content: 'latest content'
-      }
+    context 'when channel exists and has more than one clippings' do
+      let!(:first_clipping) { Fabricate(:clipping, created_at: 1.day.ago, token: 'email@domain.com', content: 'first content') }
+      let!(:second_clipping) { Fabricate(:clipping, created_at: Date.today, token: 'email@domain.com', content: 'second content') }
+      let!(:last_clipping) { Fabricate(:clipping, created_at: 1.week.ago, token: 'email@domain.com', content: 'latest content') }
 
-      before do
-        clippings = [last_clipping, first_clipping]
-        Clipping.stub_chain([:where, :desc]).and_return(clippings)
-      end
-
-      it 'returns the last clipping' do
+      it 'returns the most recent clipping' do
         get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql Entities::ClippingEntity.new(last_clipping).to_json
-      end
-    end
-
-    context 'When channel exists and has more than one clippings that are not in order' do
-      let(:first_clipping) { Clipping.new created_at: Date.today - 1, token: 'email@domain.com', content: 'first content' }
-      let(:last_clipping) { Clipping.new created_at: Date.today, token: 'email@domain.com', content: 'latest content' }
-
-      before do
-        clippings = [last_clipping, first_clipping]
-        Clipping.stub_chain([:where, :desc]).and_return(clippings)
-      end
-
-      it 'returns the last clipping' do
-        get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql Entities::ClippingEntity.new(last_clipping).to_json
+        expect(response.body).to eql Entities::ClippingEntity.new(second_clipping).to_json
       end
     end
 
     context 'When there is no clipping for that channel' do
-      before do
-        clippings = []
-        Clipping.stub_chain(:find_by).and_return(clippings)
-      end
-
       it 'is successful but with null result' do
         get '/api/v1/clippings/', nil, {Channel: 'email@domain.com'}
         expect(response.body).to eql 'null'

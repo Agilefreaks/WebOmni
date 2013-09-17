@@ -20,9 +20,9 @@ module WebOmni
       get '/' do
         channel = headers['Channel']
         error!('Unauthorized', 401) if channel.nil?
-        last_clipping = Clipping.where(:token => channel).desc(:created_at).first
 
-        present last_clipping, :with => Entities::ClippingEntity
+        latest = Clipping.for_channel(channel).first
+        present latest, :with => Entities::ClippingEntity
       end
     end
   end
