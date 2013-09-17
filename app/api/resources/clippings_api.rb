@@ -13,11 +13,7 @@ module WebOmni
         requires :content, type: String
       end
       post '/' do
-        new_clipping = Clipping.new(permitted_params)
-        new_clipping.save!
-
-        status 201
-        present new_clipping, :with => Entities::ClippingEntity
+        present Clipping.create(permitted_params), :with => Entities::ClippingEntity
       end
 
       desc 'Get latest clipping for a given :token'

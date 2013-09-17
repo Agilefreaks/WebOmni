@@ -2,19 +2,32 @@ require 'spec_helper'
 
 describe Resources::ClippingsAPI do
   describe "POST 'api/v1/clippings'" do
-    context 'when there are no validation errors' do
-      before { Clipping.stub(:create!, Clipping.new) }
+    let(:options) { {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'} }
 
-      it 'is successful' do
-        post '/api/v1/clippings', {token: 'token', content: 'content'}.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-        expect(response.status).to eql 201
+    context 'when there are no validation errors' do
+      subject { post '/api/v1/clippings', {token: 'token', content: 'content'}.to_json, options }
+
+      it { should == 201 }
+
+      it 'adds a clipping' do
+        expect { subject }.to change { Clipping.count }.by 1
+      end
+
+      it 'creates a clipping with the correct fields' do
+        subject
+        clipping = Clipping.last
+        expect(clipping.token).to eq('token')
+        expect(clipping.content).to eq('content')
       end
     end
 
     context 'when there are validation errors' do
-      it 'returns error' do
-        post '/api/v1/clippings', {}.to_json, { 'CONTENT_TYPE' =>'application/json', 'ACCEPT' => 'application/json' }
-        expect(response.status).to eql 400
+      subject { post '/api/v1/clippings', {}.to_json, options }
+
+      it { should == 400 }
+
+      it 'does not add a clipping' do
+        expect { subject }.not_to change { Clipping.count }
       end
     end
   end
@@ -33,7 +46,6 @@ describe Resources::ClippingsAPI do
         expect(response.body).to eql Entities::ClippingEntity.new(clipping).to_json
       end
     end
-
 
     context 'When channel exists and has more than one clippings' do
       let(:first_clipping) { Clipping.new created_at: Date.today - 1, token: 'email@domain.com', content: 'first content' }
@@ -56,7 +68,7 @@ describe Resources::ClippingsAPI do
       let(:last_clipping) { Clipping.new created_at: Date.today, token: 'email@domain.com', content: 'latest content' }
 
       before do
-        clippings = [ last_clipping, first_clipping]
+        clippings = [last_clipping, first_clipping]
         Clipping.stub_chain([:where, :desc]).and_return(clippings)
       end
 
