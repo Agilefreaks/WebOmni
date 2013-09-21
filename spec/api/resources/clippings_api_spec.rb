@@ -18,6 +18,7 @@ describe Resources::ClippingsAPI do
         clipping = Clipping.last
         expect(clipping.token).to eq('token')
         expect(clipping.content).to eq('content')
+        expect(clipping.type).to eq(:phone_number)
       end
     end
 
