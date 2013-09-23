@@ -3,32 +3,11 @@ require 'spec_helper'
 describe Resources::ClippingsAPI do
   describe "POST 'api/v1/clippings'" do
     let(:options) { {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'} }
+    let(:params) { {"content" => 'content', "token" => 'token'} }
 
-    context 'when there are no validation errors' do
-      subject { post '/api/v1/clippings', {token: 'token', content: 'content'}.to_json, options }
-
-      it { should == 201 }
-
-      it 'adds a clipping' do
-        expect { subject }.to change { Clipping.count }.by 1
-      end
-
-      it 'creates a clipping with the correct fields' do
-        subject
-        clipping = Clipping.last
-        expect(clipping.token).to eq('token')
-        expect(clipping.content).to eq('content')
-      end
-    end
-
-    context 'when there are validation errors' do
-      subject { post '/api/v1/clippings', {}.to_json, options }
-
-      it { should == 400 }
-
-      it 'does not add a clipping' do
-        expect { subject }.not_to change { Clipping.count }
-      end
+    it 'will call ClippingFactory.create' do
+      expect(ClippingFactory).to receive(:create).with(params)
+      post '/api/v1/clippings', params.to_json, options
     end
   end
 

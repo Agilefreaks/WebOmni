@@ -18,7 +18,7 @@ describe UserFactory do
     context 'with user' do
       let(:user) { mock_model(User) }
 
-      it "should update the providers" do
+      it 'should update the providers' do
         UserFactory.any_instance.should_receive(:create_or_update_provider).with(auth, user)
         UserFactory.any_instance.should_receive(:set_early_adopter)
         UserFactory.from_social(auth, user)
@@ -66,20 +66,24 @@ describe UserFactory do
   end
 
   describe '#set_early_adopter' do
-    subject { double('user', update_attribute: true) }
+    let(:user) { Fabricate(:user, early_adopter: false) }
 
-    before(:each) { factory.set_early_adopter(subject, state) }
+    subject { factory.set_early_adopter(user, state) }
 
     context 'with state chile' do
       let(:state) { 'chile' }
 
-      it { should have_received(:update_attribute).with(:early_adopter, true) }
+      it 'will change the early adopter flag' do
+        expect { subject }.to change(user, :early_adopter).to(true)
+      end
     end
 
     context 'with no state' do
       let(:state) { '' }
 
-      it { should_not have_received(:update_attribute).with(:early_adopter, true) }
+      it 'will change the early adopter flag' do
+        expect { subject }.not_to change(user, :early_adopter)
+      end
     end
   end
 end

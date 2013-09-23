@@ -22,6 +22,7 @@ gem 'grape-entity'
 gem 'grape-swagger'
 
 gem 'useragent'
+gem 'phone'
 
 # Gems used only for assets and not required
 # in production environments by default.
