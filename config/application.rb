@@ -34,7 +34,7 @@ module WebOmni
     config.assets.initialize_on_precompile = false
 
     config.paths.add "app/api", glob: "**/*.rb"
-    config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
+    config.autoload_paths += Dir["#{Rails.root}/app/api/*", "#{Rails.root}/app/factories/*"]
 
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp

@@ -13,7 +13,7 @@ module WebOmni
         requires :content, type: String
       end
       post '/' do
-        present Clipping.create(permitted_params.merge(type: Clipping::TYPES[:phone_number])), :with => Entities::ClippingEntity
+        present ClippingFactory.create(permitted_params), :with => Entities::ClippingEntity
       end
 
       desc 'Get latest clipping for a given :token'

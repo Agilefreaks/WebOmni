@@ -3,7 +3,8 @@ class Clipping
   include Mongoid::Timestamps
 
   TYPES = {
-      :phone_number => :phone_number
+      :phone_number => :phone_number,
+      :unknown => :unknown
   }
 
   field :token, :type => String
