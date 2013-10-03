@@ -13,7 +13,7 @@ describe ActivationToken do
     let!(:expired_token) { Fabricate(:activation_token, is_active: false) }
     let!(:active_token) { Fabricate(:activation_token, is_active: true) }
 
-    it 'should  only return tokens that are valid' do
+    it 'only returns tokens that have not been activated' do
       expect(ActivationToken.active.count).to eq 1
     end
   end
