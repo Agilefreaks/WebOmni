@@ -7,11 +7,11 @@ describe ActivationToken do
 
   it { expect(subject.type).to eq :none }
 
-  it { expect(subject.valid).to eq true }
+  it { expect(subject.active?).to eq true }
 
   describe 'active scope' do
-    let!(:expired_token) { Fabricate(:activation_token, valid: false) }
-    let!(:active_token) { Fabricate(:activation_token, valid: true) }
+    let!(:expired_token) { Fabricate(:activation_token, active?: false) }
+    let!(:active_token) { Fabricate(:activation_token, active?: true) }
 
     it 'should  only return tokens that are valid' do
       expect(ActivationToken.active.count).to eq 1
