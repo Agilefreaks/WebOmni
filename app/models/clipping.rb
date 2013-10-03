@@ -7,9 +7,9 @@ class Clipping
       :unknown => :unknown
   }
 
-  field :token, :type => String
-  field :content, :type => String
-  field :type, :type => Symbol
+  field :token, type: String
+  field :content, type: String
+  field :type, type: Symbol
 
   validates_presence_of :token, :content
 
