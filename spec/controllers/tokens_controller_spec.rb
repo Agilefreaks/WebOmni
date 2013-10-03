@@ -7,9 +7,11 @@ describe TokensController do
     before do
       controller.stub(check_authentication: true)
       controller.stub(current_user: user)
+
       get :show
     end
 
-    it { assigns(:token).should == '42' }
+    it { expect(assigns(:token)).to eq '42' }
+
   end
 end
