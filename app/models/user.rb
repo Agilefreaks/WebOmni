@@ -49,14 +49,14 @@ class User
   field :devices, :type => Array
   field :token, :type => String, :default => ->{SecureRandom.uuid}
 
-  # indexes
-  index({token: 1}, {unique: true})
-
   # relations
   embeds_many :providers
   accepts_nested_attributes_for :providers
 
   embeds_many :activation_tokens
+
+  # indexes
+  index({token: 1}, {unique: true})
 
   def name
     "#{first_name} #{last_name}"
