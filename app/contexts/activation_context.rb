@@ -1,17 +1,25 @@
 class ActivationContext
   attr_reader :user, :token, :device
 
-  def self.call(user, token, book)
-    ActivationContext.new(user, token, book).call
+  def self.activate(user, token, book)
+    ActivationContext.new(user, token, book).activate
   end
 
-  def initialize(user, token, device)
+  def self.get_activation_token(user)
+    ActivationContext.new(user).get_activation_token
+  end
+
+  def initialize(user, token = '', device = '')
     @user, @token, @device = user, token, device
 
     @user.extend Inactive
   end
 
-  def call
+  def activate
     @user.activate(@token, @device)
+  end
+
+  def get_activation_token
+    @user.get_activation_token
   end
 end
