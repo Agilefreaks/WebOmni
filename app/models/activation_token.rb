@@ -3,18 +3,16 @@ class ActivationToken
   include Mongoid::Timestamps
 
   TYPES = {
-    :none => :none,
-    :windows => :windows,
-    :android => :android
+    'unknown' => :unknown,
+    'windows' => :windows,
+    'android' => :android
   }
 
-  scope :active, where(:is_active => true)
-
+  default_scope where(:used => false)
 
   field :content, type: String, default: SecureRandom.uuid
-  field :type, type: Symbol, default: TYPES[:none]
-  field :is_active, type: Boolean, default: true
-  embeds_one :user
+  field :type, type: Symbol, default: TYPES['unknown']
+  field :used, type: Boolean, default: false
 
   index created_at: -1
 end

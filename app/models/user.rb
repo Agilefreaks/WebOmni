@@ -56,6 +56,8 @@ class User
   embeds_many :providers
   accepts_nested_attributes_for :providers
 
+  embeds_many :activation_tokens
+
   def name
     "#{first_name} #{last_name}"
   end
