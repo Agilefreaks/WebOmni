@@ -10,7 +10,7 @@ describe TokensController do
     end
 
     context 'when the user has an unused activation_token' do
-      let(:activation_token) { Fabricate.build(:activation_token, :content => '42', :used => false) }
+      let!(:activation_token) { Fabricate.build(:activation_token, :content => '42', :used => false) }
 
       before do
         user.activation_tokens.push(activation_token)
@@ -23,11 +23,15 @@ describe TokensController do
     end
 
     context "when the user doesn't have an unused token" do
-      subject { get :show }
+      let!(:activation_token) { Fabricate.build(:activation_token, :content => '42', :used => true) }
+
+      before do
+        user.activation_tokens.push(activation_token)
+      end
 
       it 'generates a new activation_token for that user' do
-        # TODO: mama lui default_scope
-        expect { subject }.to change { ActivationToken.count }.from(0).to(1)
+        get :show
+        expect(user.reload.activation_tokens.count).to eq 2
       end
     end
   end

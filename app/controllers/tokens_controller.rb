@@ -4,7 +4,7 @@ class TokensController < ApplicationController
   respond_to :html
 
   def show
-    @token = ActivationContext.get_activation_token(current_user).content
+    @token = ActivationService.new.get_activation_token(current_user.id).content
     respond_with @token
   end
 end

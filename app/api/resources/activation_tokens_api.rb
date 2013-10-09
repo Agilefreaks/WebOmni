@@ -3,7 +3,7 @@ module WebOmni
     resources :activation_tokens do
       put '/' do
         user = User.where('activation_tokens.content' => headers['Token']).first
-        activated = ActivationContext.activate(user, headers['Token'], headers['Device'])
+        activated = ActivationService.new.activate(user.id, headers['Token'], headers['Device'])
         present user, :with => Entities::UserActivateResponseEntity if activated
       end
     end
