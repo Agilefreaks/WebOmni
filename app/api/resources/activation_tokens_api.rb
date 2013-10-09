@@ -3,8 +3,8 @@ module WebOmni
     resources :activation_tokens do
       put '/' do
         user = User.elem_match(activation_tokens: {content: headers['Token']}).first
-
-        ActivationContext.activate(user, headers['Token'], headers['Device'])
+        activated = ActivationContext.activate(user, headers['Token'], headers['Device'])
+        present user, :with => Entities::UserActivateResponseEntity if activated
       end
     end
   end
