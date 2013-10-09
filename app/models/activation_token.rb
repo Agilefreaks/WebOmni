@@ -2,8 +2,6 @@ class ActivationToken
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  default_scope where(:used => false)
-
   TYPES = {
     'unknown' => :unknown,
     'windows' => :windows,
