@@ -1,0 +1,2 @@
+class ActivationTokenNotFound < StandardError
+end

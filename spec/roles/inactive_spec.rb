@@ -28,6 +28,12 @@ describe Inactive do
           expect(user.activation_tokens.first.type).to eq ActivationToken::TYPES['unknown']
         end
       end
+
+      context 'with invalid token id' do
+        it 'raises document not found exception' do
+          expect { user.activate('111111', 'windows') }.to raise_exception(ActivationTokenNotFound)
+        end
+      end
     end
   end
 
