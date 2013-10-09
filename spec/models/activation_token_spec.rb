@@ -1,18 +1,19 @@
 require 'spec_helper'
 
 describe ActivationToken do
-  it { expect(subject.class.method_defined?(:content)) }
+  it { should be_embedded_in(:user) }
 
-  it { expect(subject.type).to eq :unknown }
+  it { should respond_to(:content) }
 
-  it { expect(subject.used).to eq false }
+  its(:type) { should eq :unknown }
+
+  its(:used) { should eq false }
 
   describe 'default scope' do
-    let!(:used_token) { Fabricate(:activation_token, used: true) }
-    let!(:unused_token) { Fabricate(:activation_token, used: false) }
+    let(:user) { Fabricate(:user, activation_tokens: [Fabricate.build(:activation_token, used: true), Fabricate.build(:activation_token, used: false)]) }
 
     it 'only returns tokens that have not been used' do
-      expect(ActivationToken.count).to eq 1
+      expect(user.activation_tokens.count).to eq 1
     end
   end
 end
