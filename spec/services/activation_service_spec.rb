@@ -47,9 +47,11 @@ describe ActivationService do
     subject { ActivationService.new.get_activation_token(user.id) }
 
     context 'when the user has an unused token' do
+      let(:used_activation_token) { Fabricate.build(:activation_token, content: '42', used: true) }
       let(:activation_token) { Fabricate.build(:activation_token, content: '112233', used: false) }
 
       before do
+        user.activation_tokens.push(used_activation_token)
         user.activation_tokens.push(activation_token)
       end
 

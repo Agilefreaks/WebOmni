@@ -15,6 +15,6 @@ class ActivationService
     user = User.find(user_id)
     user.activation_tokens.create! if user.activation_tokens.unused.count == 0
 
-    user.activation_tokens.first
+    user.activation_tokens.unused.first
   end
 end
