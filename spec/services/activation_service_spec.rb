@@ -3,10 +3,12 @@ require 'spec_helper'
 describe ActivationService do
   let!(:user) { Fabricate(:user) }
 
-  describe '#activate 'do
+  describe '#activate ' do
     let(:activation_token) { Fabricate.build(:activation_token, content: '112233') }
+    let(:token) { '112233' }
+    let(:device) { 'windows' }
 
-    subject { ActivationService.new }
+    subject { ActivationService.new.activate(token, device) }
 
     before do
       user.activation_tokens.push(activation_token)
@@ -14,25 +16,29 @@ describe ActivationService do
 
     context 'with known and valid token' do
       it 'activates the token' do
-        expect{subject.activate('112233', 'windows')}.to change{user.reload.activation_tokens.first.used}.from(false).to(true)
-      end
-    end
-
-    context 'with invalid token id' do
-      it 'raises document not found exception' do
-        expect { subject.activate('111111', 'windows') }.to raise_exception(Mongoid::Errors::DocumentNotFound)
+        expect { subject }.to change { user.reload.activation_tokens.first.used }.from(false).to(true)
       end
     end
 
     context 'with valid device type' do
       it 'sets the device type' do
-        expect{subject.activate('112233', 'windows')}.to change{user.reload.activation_tokens.first.type}.from(:unknown).to(:windows)
+        expect { subject }.to change { user.reload.activation_tokens.first.type }.from(:unknown).to(:windows)
+      end
+    end
+
+    context 'with invalid token id' do
+      let(:token) { '111111' }
+
+      it 'raises document not found exception' do
+        expect { subject }.to raise_exception(Mongoid::Errors::DocumentNotFound)
       end
     end
 
     context 'with invalid device type' do
+      let(:device) { 'some unsupported' }
+
       it 'sets the unknown device type' do
-        expect{subject.activate('112233', 'some unsupported')}.to_not change{user.reload.activation_tokens.first.type}
+        expect { subject }.to_not change { user.reload.activation_tokens.first.type }
       end
     end
   end
@@ -52,7 +58,7 @@ describe ActivationService do
       end
 
       it 'returns that token' do
-        expect(subject).to eq activation_token
+        expect(subject._id).to eq activation_token._id
       end
     end
 
