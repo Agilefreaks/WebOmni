@@ -2,7 +2,7 @@ class ActivationToken
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  scope :unused, -> { where(:used => false) }
+  scope :unused, where(:used => false)
 
   TYPES = {
       'unknown' => :unknown,
@@ -17,4 +17,8 @@ class ActivationToken
   embedded_in :user
 
   index created_at: -1
+
+  def self.first_unused(content)
+    unused.where(content: content).first
+  end
 end

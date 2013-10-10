@@ -16,13 +16,13 @@ describe ActivationService do
 
     context 'with known and valid token' do
       it 'activates the token' do
-        expect { subject }.to change { user.reload.activation_tokens.first.used }.from(false).to(true)
+        expect { subject }.to change { activation_token.reload.used }.from(false).to(true)
       end
     end
 
     context 'with valid device type' do
       it 'sets the device type' do
-        expect { subject }.to change { user.reload.activation_tokens.first.type }.from(:unknown).to(:windows)
+        expect { subject }.to change { activation_token.reload.type }.from(:unknown).to(:windows)
       end
     end
 
@@ -38,7 +38,7 @@ describe ActivationService do
       let(:device) { 'some unsupported' }
 
       it 'sets the unknown device type' do
-        expect { subject }.to_not change { user.reload.activation_tokens.first.type }
+        expect { subject }.to_not change { activation_token.reload.type }
       end
     end
   end
