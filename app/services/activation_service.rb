@@ -1,9 +1,9 @@
 class ActivationService
-  def activate(user_id, token, device)
-    user = User.find(user_id)
+  def activate(token, device)
+    user = User.find_by('activation_tokens.content' => token)
     activation_token = user.activation_tokens.unused.where(content: token).first
 
-    if (activation_token.nil?)
+    if activation_token.nil?
       raise ActivationTokenNotFound.new
     end
 

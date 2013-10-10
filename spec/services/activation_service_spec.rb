@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ActivationService do
   let!(:user) { Fabricate(:user) }
+
   describe '#activate 'do
     let(:activation_token) { Fabricate.build(:activation_token, content: '112233') }
 
@@ -13,25 +14,25 @@ describe ActivationService do
 
     context 'with known and valid token' do
       it 'activates the token' do
-        expect{subject.activate(user.id, '112233', 'windows')}.to change{user.reload.activation_tokens.first.used}.from(false).to(true)
+        expect{subject.activate('112233', 'windows')}.to change{user.reload.activation_tokens.first.used}.from(false).to(true)
       end
     end
 
     context 'with invalid token id' do
       it 'raises document not found exception' do
-        expect { subject.activate(user.id, '111111', 'windows') }.to raise_exception(ActivationTokenNotFound)
+        expect { subject.activate('111111', 'windows') }.to raise_exception(Mongoid::Errors::DocumentNotFound)
       end
     end
 
     context 'with valid device type' do
       it 'sets the device type' do
-        expect{subject.activate(user.id, '112233', 'windows')}.to change{user.reload.activation_tokens.first.type}.from(:unknown).to(:windows)
+        expect{subject.activate('112233', 'windows')}.to change{user.reload.activation_tokens.first.type}.from(:unknown).to(:windows)
       end
     end
 
     context 'with invalid device type' do
       it 'sets the unknown device type' do
-        expect{subject.activate(user.id, '112233', 'some unsupported')}.to_not change{user.reload.activation_tokens.first.type}
+        expect{subject.activate('112233', 'some unsupported')}.to_not change{user.reload.activation_tokens.first.type}
       end
     end
   end

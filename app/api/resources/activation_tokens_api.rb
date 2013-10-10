@@ -7,8 +7,7 @@ module WebOmni
         requires :device, type: String, desc: 'this is the device type. Possible devices are windows or android'
       end
       put '/' do
-        user = User.where('activation_tokens.content' => params[:token]).first
-        activated = ActivationService.new.activate(user.id, params[:token], params[:device])
+        activated = ActivationService.new.activate(params[:token], params[:device])
 
         present user, :with => Entities::UserActivateResponseEntity if activated
       end
