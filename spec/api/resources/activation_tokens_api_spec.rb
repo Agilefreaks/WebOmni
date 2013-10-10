@@ -7,21 +7,18 @@ describe Resources::ActivationTokensAPI do
 
     context 'unused activation_token is set in the body' do
       it 'is successful' do
-        #noinspection RubyStringKeysInHashInspection
-        put 'api/v1/activation_tokens', {'token' => '112233', 'device' => 'some_device'}
+        put 'api/v1/activation_tokens', {:'token' => '112233', :'device' => 'some_device'}
         expect(response.status).to eql 200
       end
 
       it 'marks the activation_token as used' do
-         #noinspection RubyStringKeysInHashInspection
-        put 'api/v1/activation_tokens', {'token' => '112233', 'device' => 'some_device' }
+        put 'api/v1/activation_tokens', {:'token' => '112233', :'device' => 'some_device' }
         activation_token.reload
         expect(activation_token.reload.used).to eq(true)
       end
 
       it 'marks the activation_token as used' do
-        #noinspection RubyStringKeysInHashInspection
-        put 'api/v1/activation_tokens', {'token' => '112233', 'device' => 'windows' }
+        put 'api/v1/activation_tokens', {:'token' => '112233', :'device' => 'windows' }
         activation_token.reload
         expect(activation_token.reload.type).to eq(:windows)
       end

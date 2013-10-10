@@ -9,6 +9,7 @@ module WebOmni
       put '/' do
         user = User.where('activation_tokens.content' => params[:token]).first
         activated = ActivationService.new.activate(user.id, params[:token], params[:device])
+
         present user, :with => Entities::UserActivateResponseEntity if activated
       end
     end
