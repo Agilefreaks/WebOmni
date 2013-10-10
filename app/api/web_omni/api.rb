@@ -8,13 +8,8 @@ module WebOmni
     format :json
     default_error_formatter :json
 
-    [
-      Mongoid::Errors::DocumentNotFound,
-      ActivationTokenNotFound
-    ].each do |exception|
-      rescue_from exception do
-        rack_response({error: {message: "We didn't find what we were looking for"}}.to_json, 404)
-      end
+    rescue_from Mongoid::Errors::DocumentNotFound do
+      rack_response({error: {message: "We didn't find what we were looking for"}}.to_json, 404)
     end
 
     before do
