@@ -2,12 +2,12 @@ class ActivationToken
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  scope :unused, where(:used => false)
+  scope :unused, -> { where(:used => false) }
 
   TYPES = {
-    'unknown' => :unknown,
-    'windows' => :windows,
-    'android' => :android
+      'unknown' => :unknown,
+      'windows' => :windows,
+      'android' => :android
   }
 
   field :content, type: String, default: SecureRandom.uuid
