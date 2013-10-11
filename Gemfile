@@ -30,7 +30,7 @@ gem 'phone'
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # See https://github.com/sstephenson/execjs#readme for more supported runtime
   # gem 'therubyracer', platforms: :ruby
 
   gem 'uglifier', '>= 1.0.3'
@@ -63,11 +63,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'spork'
-  gem 'spork-rails', github: 'A-gen/spork-rails'
   gem 'rspec-cells'
-  gem 'guard-spork', require: 'guard'
-  gem 'guard-rspec', require: 'guard'
   gem 'database_cleaner'
   gem 'rspec-set'
   gem 'accept_values_for'
@@ -77,4 +73,5 @@ group :test do
   gem 'email_spec'
   gem 'mongoid-rspec'
   gem 'fabrication'
+  gem 'zeus', '0.13.4.pre2'
 end

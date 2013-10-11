@@ -20,3 +20,7 @@ public/uploads
 
 # Ignore coverage reports
 coverage
+
+# Zeus
+zeus.json
+custom_plan.rb
