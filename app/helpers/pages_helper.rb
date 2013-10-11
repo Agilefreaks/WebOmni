@@ -8,7 +8,7 @@ module PagesHelper
   end
 
   def devices_options
-    ['Windows', 'Windows 8', 'Linux', 'Mac', 'Android', 'IPhone', 'Backberry']
+    ['Windows', 'Windows 8', 'Linux', 'Mac', 'Android', 'IPhone', 'Blackberry']
   end
 
   def winomni_url
