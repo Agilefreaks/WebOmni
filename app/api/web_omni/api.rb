@@ -8,7 +8,7 @@ module WebOmni
     format :json
     default_error_formatter :json
 
-    rescue_from Mongoid::Errors::DocumentNotFound do |error|
+    rescue_from Mongoid::Errors::DocumentNotFound do
       rack_response({error: {message: "We didn't find what we were looking for"}}.to_json, 404)
     end
 
@@ -19,6 +19,7 @@ module WebOmni
 
     mount Resources::UsersAPI
     mount Resources::ClippingsAPI
+    mount Resources::ActivationTokensAPI
 
     add_swagger_documentation(
         base_path: "#{Rails.configuration.action_mailer.asset_host}/api",

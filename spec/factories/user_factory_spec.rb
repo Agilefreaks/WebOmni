@@ -4,7 +4,7 @@ describe UserFactory do
   let(:factory) { UserFactory.instance }
 
   describe 'from_social' do
-    let(:auth) { mock("auth") }
+    let(:auth) { double("auth") }
 
     context 'with no user' do
       it 'should call create_from_social and update_social' do
@@ -27,8 +27,8 @@ describe UserFactory do
   end
 
   describe '#create_from_social' do
-    let(:info) { mock('info', :first_name => 'Blind', :last_name => 'Naked', :email => 'sucker@love.com',) }
-    let(:auth) { mock('auth', :info => info) }
+    let(:info) { double('info', :first_name => 'Blind', :last_name => 'Naked', :email => 'sucker@love.com',) }
+    let(:auth) { double('auth', :info => info) }
 
     it 'should call create on user' do
       User.should_receive(:create).and_return(mock_model(User))
@@ -39,13 +39,13 @@ describe UserFactory do
 
   describe '#create_or_update_provider' do
     let(:user) { mock_model(User) }
-    let(:auth) { mock('auth', :provider => 'google', :uid => '42', :info => mock('info', :email => 'bags@email.com')) }
+    let(:auth) { double('auth', :provider => 'google', :uid => '42', :info => double('info', :email => 'bags@email.com')) }
 
     context 'when find_provider return nil' do
       before { user.stub(:find_provider).and_return(nil) }
 
       it 'should call social create' do
-        providers = mock('providers')
+        providers = double('providers')
         user.stub(:providers).and_return(providers)
         providers.should_receive(:create)
         factory.create_or_update_provider(auth, user)
