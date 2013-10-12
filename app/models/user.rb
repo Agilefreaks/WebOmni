@@ -54,6 +54,7 @@ class User
   accepts_nested_attributes_for :providers
 
   embeds_many :activation_tokens
+  accepts_nested_attributes_for :activation_tokens
 
   # indexes
   index({token: 1}, {unique: true})
