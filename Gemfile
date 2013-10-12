@@ -4,7 +4,7 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-gem 'mongoid', '~> 4.0.0', github: 'mongoid/mongoid'
+gem 'mongoid', '~> 4.0.0', github: 'mongoid/mongoid', ref: '06b708d37cdebdc50b69614e9ff84dd953993a12'
 gem 'bson_ext'
 
 gem 'thin'
