@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe InstallationsController do
-  let(:user) { mock_model(User, token: '42') }
+  let!(:activation_token) { Fabricate.build(:activation_token, :content => 42) }
+  let(:user) { Fabricate(:user, :activation_tokens => [activation_token]) }
 
   before do
     controller.stub(check_authentication: true)

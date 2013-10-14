@@ -22,6 +22,6 @@ class InstallationsController < ApplicationController
   private
 
   def populate_token
-    @token = current_user.token
+    @token = ActivationService.new.get_activation_token(current_user.id).content
   end
 end
