@@ -79,17 +79,21 @@ test:
         max_retries: 1
         retry_interval: 0
 
-production:
+staging:
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      database: omnipaste_staging
+      hosts:
+        - 10.54.94.18:27017
+        - 10.54.94.19:27017
+        - 10.54.94.20:27017
       options:
         consistency: :strong
         allow_dynamic_fields: false
         use_utc: true
         identity_map_enabled: true
 
-staging:
+production:
   sessions:
     default:
       uri: <%= ENV['MONGOLAB_URI'] %>
