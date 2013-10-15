@@ -53,7 +53,7 @@ group :development do
   gem 'capistrano', '~> 3.0', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm', require: false, github: 'capistrano/rvm'
+  gem 'capistrano-rvm', require: false
 end
 
 group :production do

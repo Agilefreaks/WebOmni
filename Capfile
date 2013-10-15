@@ -14,7 +14,7 @@ require 'capistrano/deploy'
 #   https://github.com/capistrano/bundler
 #   https://github.com/capistrano/rails/tree/master/assets
 #   https://github.com/capistrano/rails/tree/master/migrations
-#
+
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'

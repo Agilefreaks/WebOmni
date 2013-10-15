@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/capistrano/rvm.git
-  revision: 05e37c4ec2f6f27104d5db84d5b84e27bcbcb74a
-  specs:
-    capistrano-rvm (0.0.2)
-      capistrano
-
-GIT
   remote: git://github.com/heroku/rails3_serve_static_assets.git
   revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
   specs:
@@ -75,6 +68,8 @@ GEM
     capistrano-bundler (1.0.0)
       capistrano (>= 3.0.0.pre)
     capistrano-rails (1.0.0)
+      capistrano
+    capistrano-rvm (0.0.2)
       capistrano
     cells (3.8.8)
       actionpack (>= 3.0)
@@ -342,7 +337,7 @@ DEPENDENCIES
   capistrano (~> 3.0)
   capistrano-bundler
   capistrano-rails
-  capistrano-rvm!
+  capistrano-rvm
   cells
   coffee-rails (~> 4.0.0)
   database_cleaner
