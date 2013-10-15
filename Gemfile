@@ -7,7 +7,7 @@ gem 'rails', '4.0.0'
 gem 'mongoid', '~> 4.0.0', github: 'mongoid/mongoid', ref: '06b708d37cdebdc50b69614e9ff84dd953993a12'
 gem 'bson_ext'
 
-gem 'thin'
+gem 'puma', '2.5.1'
 
 gem 'haml'
 gem 'haml-rails'
@@ -48,6 +48,12 @@ gem 'rails_admin'
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
+
+  # deploy
+  gem 'capistrano', '~> 3.0', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm', require: false
 end
 
 group :production do
