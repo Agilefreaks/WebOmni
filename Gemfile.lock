@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/balauru/capistrano-puma.git
+  revision: 5a2c5fced42a1d58a9eed845078ea8e7618759d7
+  specs:
+    capistrano-puma (0.0.1)
+      capistrano (>= 3.0.0.pre)
+
+GIT
   remote: git://github.com/heroku/rails3_serve_static_assets.git
   revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
   specs:
@@ -337,6 +344,7 @@ DEPENDENCIES
   bson_ext
   capistrano (~> 3.0)
   capistrano-bundler
+  capistrano-puma!
   capistrano-rails
   capistrano-rvm
   cells
