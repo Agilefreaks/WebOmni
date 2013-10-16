@@ -1,6 +1,6 @@
 set :stage, :staging
 
-set :branch, 'wo-12'
+set :branch, 'staging'
 
 set :rails_env, :staging
 
