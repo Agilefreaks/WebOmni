@@ -9,7 +9,7 @@ namespace :puma do
   end
 
   task :stop do
-    on roles(:web), in: :sequence do
+    on roles(:web), in: :parallel do
       within shared_path do
         pid_file = "#{shared_path}/sockets/puma.pid"
 
