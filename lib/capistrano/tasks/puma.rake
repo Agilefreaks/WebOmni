@@ -67,7 +67,7 @@ namespace :puma do
 
   def start_options
     if config_file
-      "--debug -C #{config_file}"
+      "-C #{config_file}"
     else
       "-q -debug -e #{puma_env} -b '#{fetch(:puma_socket)}' -S #{state_path} --control 'unix://#{shared_path}/sockets/pumactl.sock'"
     end

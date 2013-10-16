@@ -2,7 +2,7 @@ rails_env = 'staging'
 
 environment rails_env
 
-daemonize false
+daemonize true
 
 threads 0,16
 
