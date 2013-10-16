@@ -1,9 +1,5 @@
 rails_env = 'staging'
 
-environment rails_env
-
-daemonize true
-
 threads 0,16
 
 pidfile "/var/www/omnipaste_#{rails_env}/shared/sockets/puma.pid"
