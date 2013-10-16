@@ -1,7 +1,7 @@
 namespace :puma do
   desc 'Start puma'
   task :start do
-    on roles(:app) do
+    on roles(:web) do
       within release_path do
         execute :bundle, :exec, 'puma --config config/puma.rb'
       end
@@ -9,7 +9,7 @@ namespace :puma do
   end
 
   task :stop do
-    on roles(:app), in: :sequence do
+    on roles(:web), in: :sequence do
       within shared_path do
         pid_file = "#{shared_path}/sockets/puma.pid"
 
