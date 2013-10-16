@@ -2,7 +2,7 @@ rails_env = 'staging'
 
 threads 0,16
 
-worker 1
+workers 1
 
 pidfile "/var/www/omnipaste_#{rails_env}/shared/sockets/puma.pid"
 state_path "/var/www/omnipaste_#{rails_env}/shared/sockets/puma.state"
