@@ -4,8 +4,8 @@ set :repo_url, 'git@github.com:balauru/WebOmni.git'
 set :rvm_ruby_version, 'ruby-2.0.0@webomni'
 set :rvm_type, :system
 
-role :web, %w(root@50.23.95.218 root@50.23.95.220)
-role :app, %w(root@50.23.95.218 root@50.23.95.220)
+role :web, %w(root@50.23.95.218)
+role :app, %w(root@50.23.95.218)
 
 set :keep_releases, 5
 
