@@ -28,4 +28,8 @@ WebOmni::Application.configure do
   # action mailer configurration
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :letter_opener
+
+  # keys
+  GOOGLE_KEY = '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com'
+  GOOGLE_SECRET = 'pZ4j5qWvZYZ3rlo0cXqr8REB'
 end

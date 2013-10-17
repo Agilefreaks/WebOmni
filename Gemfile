@@ -41,6 +41,7 @@ end
 
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+gem 'humane-rails', github: 'balauru/humane-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

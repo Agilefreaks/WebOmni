@@ -220,10 +220,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :google_oauth2,
-                  ENV['GOOGLE_KEY'] || '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com',
-                  ENV['GOOGLE_SECRET'] || 'pZ4j5qWvZYZ3rlo0cXqr8REB',
-                  { access_type: 'offline', approval_prompt: 'auto' }
+  config.omniauth :google_oauth2, GOOGLE_KEY, GOOGLE_SECRET, { access_type: 'offline', approval_prompt: 'auto' }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

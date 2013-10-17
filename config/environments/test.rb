@@ -33,4 +33,8 @@ WebOmni::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # keys
+  GOOGLE_KEY = '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com'
+  GOOGLE_SECRET = 'pZ4j5qWvZYZ3rlo0cXqr8REB'
 end

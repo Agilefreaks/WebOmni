@@ -79,4 +79,8 @@ WebOmni::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # keys
+  GOOGLE_KEY = '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com'
+  GOOGLE_SECRET = '4mLcVIVpj0zHuIR9sbmSPoSH'
 end

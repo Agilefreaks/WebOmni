@@ -11,7 +11,7 @@ WebOmni::Application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -22,7 +22,7 @@ WebOmni::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor  = :uglifier
+  config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Whether to fallback to assets pipeline if a precompiled asset is missed.
@@ -63,7 +63,7 @@ WebOmni::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'http://www.omnipasteapp.com' }
+  config.action_mailer.default_url_options = {:host => 'http://www.omnipasteapp.com'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
 
@@ -79,4 +79,9 @@ WebOmni::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # keys
+  GOOGLE_KEY = ENV['GOOGLE_KEY']
+  GOOGLE_SECRET = ENV['GOOGLE_SECRET']
+
 end
