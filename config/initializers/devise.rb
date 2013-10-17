@@ -222,7 +222,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :google_oauth2,
                   ENV['GOOGLE_KEY'] || '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com',
-                  ENV['GOOGLE_SECRET'] || 'pZ4j5qWvZYZ3rlo0cXqr8REB',
+                  ENV['GOOGLE_SECRET'] || '4mLcVIVpj0zHuIR9sbmSPoSH',
                   { access_type: 'offline', approval_prompt: 'auto' }
 
   # ==> Warden configuration
