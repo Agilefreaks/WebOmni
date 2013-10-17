@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/balauru/humane-rails.git
-  revision: 99666535b91a8b413143a53ca7a3ac01f9a61004
+  revision: cb722958a4c841433ef735a1d201debfec42e859
   specs:
     humane-rails (3.0.5.0.1.5)
 

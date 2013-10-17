@@ -13,22 +13,26 @@ module PagesHelper
 
   def winomni_url
     if Rails.env.staging?
-      'https://s3.amazonaws.com/omnipaste-staging/win/Omnipaste-staging.application'
+      'http://cdn.omnipasteapp.com/staging/win/Omnipaste-staging.application'
     else
       'https://s3.amazonaws.com/omnipaste-production/win/Omnipaste.application'
     end
   end
 
   def android_url
-    "https://s3.amazonaws.com/omnipaste-#{Rails.env.downcase}/android/omnipaste.apk"
+    if Rails.env.staging?
+      'http://cdn.omnipasteapp.com/staging/android/omnipaste.apk'
+    else
+      'https://s3.amazonaws.com/omnipaste-production/android/omnipaste.apk'
+    end
   end
 
   def render_windows_client
-     render partial: 'pages/windows_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Windows/i))
+    render partial: 'pages/windows_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Windows/i))
   end
 
   def render_linux_client
-     render partial: 'pages/linux_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Linux/i))
+    render partial: 'pages/linux_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Linux/i))
   end
 
   def render_mac_client
@@ -43,7 +47,7 @@ module PagesHelper
     elsif !!(user_agent(request.env['HTTP_USER_AGENT']).browser =~ (/Internet Explorer/i))
       installations_ie_url
     else
-    installations_default_url
+      installations_default_url
     end
   end
 
