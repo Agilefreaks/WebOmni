@@ -6,6 +6,12 @@ GIT
       capistrano (>= 3.0.0.pre)
 
 GIT
+  remote: git://github.com/balauru/humane-rails.git
+  revision: 99666535b91a8b413143a53ca7a3ac01f9a61004
+  specs:
+    humane-rails (3.0.5.0.1.5)
+
+GIT
   remote: git://github.com/heroku/rails3_serve_static_assets.git
   revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
   specs:
@@ -358,6 +364,7 @@ DEPENDENCIES
   grape-swagger
   haml
   haml-rails
+  humane-rails!
   jquery-rails
   less-rails
   letter_opener
