@@ -1,6 +1,6 @@
 set :stage, :production
 
-set :branch, 'production'
+set :branch, 'master'
 
 set :rails_env, :production
 
