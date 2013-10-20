@@ -9,9 +9,13 @@ describe RegistrationsController do
 
     it { should respond_with(200) }
 
-    it { assigns(:welcome).should == 'Hi there Startup Chile folks, glad you dropped by, Omnipaste is a clipboard manager in the cloud and works like your short-term memory.' }
+    it 'assigns welcome' do
+      expect(assigns(:welcome)).to eq 'Hi there Startup Chile folks, glad you dropped by, Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
+    end
 
-    it { assigns(:state).should == :chile }
+    it 'assigns state' do
+      expect(assigns(:state)).to eq :chile
+    end
   end
 
   describe "GET 'soft32'" do
@@ -21,8 +25,12 @@ describe RegistrationsController do
 
     it { should respond_with(200) }
 
-    it { assigns(:welcome).should == 'Hi there soft32 visitor, glad you dropped by, Omnipaste is a clipboard manager in the cloud and works like your short-term memory.' }
+    it 'assigns welcome' do
+      expect(assigns(:welcome)).to eq 'Hi there soft32 visitor, glad you dropped by, Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
+    end
 
-    it { assigns(:state).should == :soft32 }
+    it 'assigns state' do
+      expect(assigns(:state)).to eq :soft32
+    end
   end
 end

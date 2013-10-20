@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe UserFactory do
   let(:factory) { UserFactory.instance }
@@ -74,7 +74,10 @@ describe UserFactory do
       context "with state #{state}" do
         let(:state) { state }
 
-        it { should have_received(:update_attribute).with(:early_adopter, true) }
+        it 'sets early adopter to true' do
+          subject
+          expect(user.early_adopter).to eq true
+        end
       end
     end
 
