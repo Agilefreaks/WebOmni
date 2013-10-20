@@ -1,6 +1,8 @@
 class UserFactory
   include Singleton
 
+  PRE_APPROVED_STATES = [:chile, :soft32]
+
   def self.from_social(auth, user, state = '')
     factory = UserFactory.instance
 
@@ -35,6 +37,6 @@ class UserFactory
   end
 
   def set_early_adopter(user, state)
-    user.update_attribute(:early_adopter, true) if state == 'chile'
+    user.update_attribute(:early_adopter, true) if PRE_APPROVED_STATES.include?(state.to_sym)
   end
 end

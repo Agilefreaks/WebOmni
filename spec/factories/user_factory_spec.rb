@@ -70,11 +70,11 @@ describe UserFactory do
 
     subject { factory.set_early_adopter(user, state) }
 
-    context 'with state chile' do
-      let(:state) { 'chile' }
+    [:chile, :soft32].each do |state|
+      context "with state #{state}" do
+        let(:state) { state }
 
-      it 'will change the early adopter flag' do
-        expect { subject }.to change(user, :early_adopter).to(true)
+        it { should have_received(:update_attribute).with(:early_adopter, true) }
       end
     end
 

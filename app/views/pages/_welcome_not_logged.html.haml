@@ -1,12 +1,12 @@
 %p
-  Omnipaste is a clipboard manager in the cloud and works like your short-term memory.
+  = @welcome || 'Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
   %br
     With our services you can transfer data between your devices running Windows&trade; operating system or Android&trade;. Simple as Copy & Paste.
 
 = link_to 'See it in action!', '#demo', class: 'btn btn-xlarge btn-purple', 'data-toggle' => 'modal'
 
 %p
-  = link_to 'Sign up today', user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-xlarge btn-purple'
+  = link_to 'Sign up today', user_omniauth_authorize_path(:google_oauth2, state: @state), class: 'btn btn-xlarge btn-purple'
 
 
 #demo.modal.hide.fade{role: 'dialog', 'aria-labelledby' => 'demo', 'aria-hidden' => true}
