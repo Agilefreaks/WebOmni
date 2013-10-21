@@ -16,19 +16,16 @@
   %body
     #wrap
       .container
-        .header
+        .header.card
           %ul.nav.nav-pills.pull-right
             = render_cell :menu, :show, user: current_user
           = link_to root_path, class: 'brand scroller' do
             = image_tag('logo-omnipaste.png')
-        .jumbotron
-          %h1 Jumbotron heading
-          %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-          %p
-            %a.btn.btn-lg.btn-success{href: "#"} Sign up today
-    #footer
-      .container
-        %p © Company 2013
+        .jumbotron.card
+          = yield
+        .footer.card
+          .container
+            %p © Omnipaste 2013
     / /container
     /
       Bootstrap core JavaScript

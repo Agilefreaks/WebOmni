@@ -1,0 +1,12 @@
+%h1 Copy & Paste between your devices. Simple as Ctrl+C, Ctrl+V
+
+%p
+  This feature is still under construction. We are working hard to develop this feature.
+  If you really want it, let us know.
+  While you'll enjoy our free version you can share with us your thoughts.
+
+%ul.list-unstyled
+  %li
+    = link_to 'I really want this', user_omniauth_authorize_path(:google_oauth2, state: @state), class: 'btn btn-lg btn-success'
+  %li
+    = link_to 'Neah. You suck', user_omniauth_authorize_path(:google_oauth2, state: @state), class: 'btn btn-lg btn-danger'

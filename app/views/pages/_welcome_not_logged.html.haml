@@ -1,18 +1,29 @@
-%p
-  = @welcome || 'Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
-  %br
-    With our services you can transfer data between your devices running Windows&trade; operating system or Android&trade;. Simple as Copy & Paste.
-
-= link_to 'See it in action!', '#demo', class: 'btn btn-xlarge btn-purple', 'data-toggle' => 'modal'
-
-%p
-  = link_to 'Sign up today', user_omniauth_authorize_path(:google_oauth2, state: @state), class: 'btn btn-xlarge btn-purple'
-
-
-#demo.modal.hide.fade{role: 'dialog', 'aria-labelledby' => 'demo', 'aria-hidden' => true}
-  .modal-header
-    #h3 Demo
-  .modal-body
-    %iframe{:allowfullscreen => false, :frameborder => "0", :height => "480", :width => "640", :mozallowfullscreen => false, :src => "http://player.vimeo.com/video/67749998", :webkitallowfullscreen => "", id: 'demo_frame'}
-  .modal-footer
-    = button_tag 'Close', class: 'btn', 'data-dismiss' => 'modal', 'aria-hidden' => true
+.text-left
+  %p
+    = @welcome || 'Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
+    %br
+    With our services you can transfer data between your devices running Windows&trade; operating system or Android&trade;
+  %hr
+  .row
+    .col-md-7
+      %iframe{:allowfullscreen => false, :frameborder => "0", :height => "480", :width => "640", :mozallowfullscreen => false, :src => "http://player.vimeo.com/video/67749998", :webkitallowfullscreen => "", id: 'demo_frame', class: 'inline'}
+    .col-md-5
+      %dl
+        %dt
+          .icon-android
+          .icon-long-arrow-right
+          .icon-windows
+          Links 2 Browser
+        %dd
+          Copy a link from computer and just tap to open the browser on your smartphone.
+        %dt
+          .icon-windows
+          .icon-long-arrow-right
+          .icon-android
+          Phone 2 Call
+        %dd
+          Ctrl+C a phone number from computer's browser and tap your phone to call.
+      .text-center
+        = link_to 'Sign up today', pricing_path, class: 'btn btn-lg btn-success'
+%hr
+  %p

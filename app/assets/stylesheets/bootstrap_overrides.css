@@ -1,0 +1,33 @@
+body {
+    background: url('../assets/background.png') repeat;
+}
+
+.container .jumbotron {
+    border-radius: 0px;
+}
+
+.footer,
+.header {
+    background-color: rgba(255,255,255,.5);
+    padding: 12px;
+}
+
+
+.container h1 {
+    font-size: 32px;
+}
+
+dl {
+    margin-top: 0px;
+}
+
+hr {
+    border-top-color: #D14670;
+}
+
+dd { margin-bottom: 20px; }
+dt { clear: both; }
+
+.card {
+    margin-bottom: 20px;
+}

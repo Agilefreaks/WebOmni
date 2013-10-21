@@ -17,6 +17,8 @@ WebOmni::Application.routes.draw do
   get 'whatsmytoken', to: 'tokens#show'
   get 'startupchile', to: 'registrations#startupchile'
   get 'soft32', to: 'registrations#soft32'
+  get 'pricing', to: 'pages#pricing'
+  get 'sorry', to: 'pages#sorry'
 
   # installations
   get 'installations/chrome'
