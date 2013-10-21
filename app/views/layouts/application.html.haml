@@ -1,81 +1,38 @@
 !!!
-%html
+%html{lang: "en"}
   %head
-    %meta(charset="utf-8")
-    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    %link{href: "../../assets/ico/favicon.png", rel: "shortcut icon"}/
     %title= content_for?(:title) ? yield(:title) : "Omnipaste - Your Clipboard Manager in the cloud"
     = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
     = csrf_meta_tag
-    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "http://fonts.googleapis.com/css?family=Raleway:200", :rel => "stylesheet", :type => "text/css"}/
-    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
-    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
-    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
-    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-    %link(href="favicon.ico" rel="shortcut icon")
-
-    / IE Fix for HTML5 Tags
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-
-    = render partial: 'layouts/google'
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
+    #wrap
+      .container
+        .header
+          %ul.nav.nav-pills.pull-right
+            = render_cell :menu, :show, user: current_user
           = link_to root_path, class: 'brand scroller' do
             = image_tag('logo-omnipaste.png')
-          .nav-collapse.collapse
-            %ul.nav.pull-right
-              = render_cell :menu, :show, user: current_user
-
-    .div.alert
-      %strong
-        Warning!
-      We've update the hosting, you need re-download your clients (yeah still beta!)
-
-    .main-container
-      #intro.container-fluid
-        .container
-          .row.span12.center
-            = yield
-
-  = render partial: 'pages/about'
-
-  = render partial: 'pages/team'
-
-  = render partial: 'pages/contact'
-
-  %footer
-    .row.span12.center
-      %p Omnipaste © 2013
-      %p DISCLAIMER: Android™ is a trademark of Google Inc. Windows™ is a registered trademark of Microsoft Corporation in the United States and other countries.
-
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+        .jumbotron
+          %h1 Jumbotron heading
+          %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          %p
+            %a.btn.btn-lg.btn-success{href: "#"} Sign up today
+    #footer
+      .container
+        %p © Company 2013
+    / /container
+    /
+      Bootstrap core JavaScript
+      \==================================================
+    / Placed at the end of the document so the pages load faster
 
   = humane_flash_messages.html_safe
-
-  :javascript
-    $(function () {
-        $(window).scroll(function() {
-        // global scroll to top button
-            if ($(this).scrollTop() > 300) {
-                $('.scrolltop').fadeIn();
-            } else {
-                $('.scrolltop').fadeOut();
-            }
-        });
-
-        // scroll nav
-        $('.scroller').click(function() {
-          var link = $(this);
-          var section = $(link.data("section"));
-          var top = section.offset().top-82;
-          $("html, body").animate({ scrollTop: top }, 700);
-
-          window.location.hash = link.attr('href');
-
-          return false;
-        });
-    });

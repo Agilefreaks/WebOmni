@@ -39,7 +39,6 @@ group :assets do
   gem 'therubyracer'
 end
 
-gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'humane-rails', github: 'balauru/humane-rails'
 
