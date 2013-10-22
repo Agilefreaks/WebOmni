@@ -1,7 +1,3 @@
-body {
-    background: url('../assets/background.png') repeat;
-}
-
 .movie-placeholder {
     background-image: url('../assets/movie-placeholder.png');
     width: 640px;
@@ -14,7 +10,6 @@ body {
 
 .footer,
 .header {
-    background-color: rgba(255,255,255,.7);
     padding: 12px;
 }
 
