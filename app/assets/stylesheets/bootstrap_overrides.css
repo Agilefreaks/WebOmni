@@ -2,6 +2,12 @@ body {
     background: url('../assets/knitted-netting.png') repeat;
 }
 
+.movie-placeholder {
+    background-image: url('../assets/movie-placeholder.png');
+    width: 640px;
+    height: 480px;
+}
+
 .container .jumbotron {
     border-radius: 0px;
 }
@@ -25,10 +31,6 @@ dl {
     margin-top: 0px;
 }
 
-hr {
-    border-top-color: #D14670;
-}
-
 dd { margin-bottom: 20px; }
 dt { clear: both; }
 
@@ -50,7 +52,7 @@ dt { clear: both; }
 }
 
 .panel-body {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .row .panel-heading {

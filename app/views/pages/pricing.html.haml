@@ -30,8 +30,6 @@
         Unlimited devices
         %hr
         Smart actions
-        %strong{data: {togle: 'popover', container: 'body', placement: 'right' }, title: 'Initiate call from computer'}
-          ?
       .panel-footer.text-center
         = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-default'
   .col-xs-12.col-md-3
@@ -46,7 +44,7 @@
         %hr
         Unlimited devices
         %hr
-        Smart Actions (?)
+        Smart Actions
         %hr
         History
       .panel-footer.text-center
@@ -61,7 +59,8 @@
         %hr
         Unlimited devices
         %hr
-        Smart Actions (?)
+        %a{data: {toggle: 'popover', trigger: 'hover', content: 'asdf', title: 'zxcv', container: 'body'}}
+          Smart Actions
         %hr
         History
         %hr
