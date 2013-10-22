@@ -1,5 +1,5 @@
 body {
-    background: url('../assets/background.png') repeat;
+    background: url('../assets/knitted-netting.png') repeat;
 }
 
 .container .jumbotron {
@@ -30,4 +30,8 @@ dt { clear: both; }
 
 .card {
     margin-bottom: 20px;
+}
+
+.box {
+    background: #fff;
 }
