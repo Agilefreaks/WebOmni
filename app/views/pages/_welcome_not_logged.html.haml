@@ -6,7 +6,7 @@
   %hr
   .row
     .col-md-7
-      %iframe{:allowfullscreen => false, :frameborder => "0", :height => "480", :width => "640", :mozallowfullscreen => false, :src => "http://player.vimeo.com/video/67749998", :webkitallowfullscreen => "", id: 'demo_frame', class: 'inline'}
+      %iframe{:allowfullscreen => false, :frameborder => "0", :height => "480", :width => "640", :mozallowfullscreen => false, :src => "http://player.vimeo.com/video/67749998?title=0&amp;byline=0&amp;portrait=0", :webkitallowfullscreen => "", id: 'demo_frame', class: 'inline'}
     .col-md-5
       %dl
         %dt
@@ -15,15 +15,24 @@
           .icon-windows
           Links 2 Browser
         %dd
-          Copy a link from computer and just tap to open the browser on your smartphone.
+          Copy a link from your smartphone and you'll have it in the clipboard ready to be pasted in the browser.
         %dt
           .icon-windows
           .icon-long-arrow-right
           .icon-android
           Phone 2 Call
         %dd
-          Ctrl+C a phone number from computer's browser and tap your phone to call.
+          Copy a phone number from the computer and tap your phone to call.
+        %dt
+          .icon-mobile-phone
+          .icon-long-arrow-right
+          .icon-file
+          .icon-long-arrow-right
+          .icon-laptop
+          Transfer Files
+        %dd
+          Send files from a device to another in one step
       .text-center
-        = link_to 'Sign up today', pricing_path, class: 'btn btn-lg btn-success'
+        = link_to 'Find out MORE', pricing_path, class: 'btn btn-lg btn-default'
 %hr
   %p

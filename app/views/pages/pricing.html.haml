@@ -1,62 +1,70 @@
-%h1 Copy & Paste between your devices. Simple as Ctrl+C, Ctrl+V
+%h1 Omnipaste suits everyone. Which plan suits you?
+%p
+  You can have the basic application with Copy & Paste functionality for free.
+  %br
+  Why not to try for a month our
+  %strong
+    premium features?
 .row
   .col-xs-12.col-md-3
-    .panel.panel-default
+    .box.panel.panel-default
       .panel-heading
         .panel-title
-          Goldfish
+          Goldfish (Free)
       .panel-body
-        this is
+        Copy & Paste
         %hr
-        the most
-        %hr
-        awesome feature
-        %hr
-        and we want
+        2 devices
       .panel-footer.text-center
-        = link_to 'Choose', user_omniauth_authorize_path(:google_oauth2, state: @state), class: 'btn btn-sm btn-info'
+        %a.btn.btn-sm.btn-default{href: free_transfer_between_devices_path}
+          .icon-google-plus
+          Sign up now
   .col-xs-12.col-md-3
-    .panel.panel-default
+    .box.panel.panel-default
       .panel-heading
         .panel-title
-          Trained Goldfish
+          Trained Goldfish ($0.99/Mo)
       .panel-body
-        this is
+        Copy & Paste
         %hr
-        the most
+        Unlimited devices
         %hr
-        awesome feature
-        %hr
-        and we want
+        Smart actions
+        %strong{data: {togle: 'popover', container: 'body', placement: 'right' }, title: 'Initiate call from computer'}
+          ?
       .panel-footer.text-center
-        = link_to 'Choose', sorry_path, class: 'btn btn-sm btn-info'
+        = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-default'
   .col-xs-12.col-md-3
-    .panel.panel-info
+    .box.panel.panel-success
       .panel-heading
         .panel-title
-          Whale
+          Whale ($1.99/Mo)
+          %span.label.label-success
+            recommended
       .panel-body
-        this is
+        Copy & Paste
         %hr
-        the most
+        Unlimited devices
         %hr
-        awesome feature
+        Smart Actions (?)
         %hr
-        and we want
+        History
       .panel-footer.text-center
-        = link_to 'Choose', sorry_path, class: 'btn btn-sm btn-danger'
+        = link_to 'Try for free', android_clipboard_history_path, class: 'btn btn-sm btn-default'
   .col-xs-12.col-md-3
-    .panel.panel-default
+    .box.panel.panel-default
       .panel-heading
         .panel-title
-          Shark
+          Shark ($2.99/Mo)
       .panel-body
-        this is
+        Copy & Paste
         %hr
-        the most
+        Unlimited devices
         %hr
-        awesome feature
+        Smart Actions (?)
         %hr
-        and we want
+        History
+        %hr
+        File support
       .panel-footer.text-center
-        = link_to 'Choose', sorry_path, class: 'btn btn-xs btn-info'
+        = link_to 'Try for free', android_file_transfer_path, class: 'btn btn-xs btn-default'

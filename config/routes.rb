@@ -18,8 +18,13 @@ WebOmni::Application.routes.draw do
   get 'startupchile', to: 'registrations#startupchile'
   get 'soft32', to: 'registrations#soft32'
   get 'pricing', to: 'pages#pricing'
-  get 'sorry', to: 'pages#sorry'
 
+  get 'free_transfer_between_devices', to: 'pages#free'
+
+  get 'android_file_transfer', to: 'pages#android_file_transfer'
+  get 'android_clipboard_history', to: 'pages#android_clipboard_history'
+  get 'smart_actions_between_devices', to: 'pages#smart_actions_between_devices'
+                                                                                          ``
   # installations
   get 'installations/chrome'
   get 'installations/firefox'

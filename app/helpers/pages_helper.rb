@@ -7,6 +7,10 @@ module PagesHelper
     render partial: (current_user.early_adopter ? 'pages/welcome_early_adopter' : 'pages/welcome_new_user')
   end
 
+  def render_try_free
+    render partial: 'pages/try_free'
+  end
+
   def devices_options
     ['Windows', 'Windows 8', 'Linux', 'Mac', 'Android', 'IPhone', 'Blackberry']
   end
