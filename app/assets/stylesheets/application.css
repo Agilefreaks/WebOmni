@@ -12,7 +12,6 @@
  *= require original
  *= require_tree .
  *= require jumbotron-narrow
- *= require sticky_footer
  *= require bootstrap_overrides
  *= require bootstrap
  */
