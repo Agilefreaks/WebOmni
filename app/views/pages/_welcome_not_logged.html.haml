@@ -1,9 +1,8 @@
 .text-left
   %p
-    = @welcome || 'Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
-    %br
+    = @welcome
+    Omnipaste is a clipboard manager in the cloud and works like your short-term memory.
     With our services you can transfer data between your devices running Windows&trade; operating system or Android&trade;
-  %hr
   .row
     .col-md-7
       .movie-placeholder
@@ -35,5 +34,3 @@
           Send files from a device to another in one step.
       .text-center
         = link_to 'Find out more', pricing_path, class: 'btn btn-lg btn-default'
-%hr
-  %p
