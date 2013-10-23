@@ -43,18 +43,29 @@ dt { clear: both; }
 }
 
 .row .panel-body {
-    height: 322px;
+    height: 222px;
 }
 
 .panel-body {
     font-size: 14px;
 }
 
+.panel-heading {
+    padding: 5px;
+    height: 62px;
+}
+
 .panel-title {
     font-weight: bold;
 }
 
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.panel-body hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.bad {
+    top: 0px;
+    bottom: 0px;
+    display: block;
 }

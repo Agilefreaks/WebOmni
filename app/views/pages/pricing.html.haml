@@ -13,47 +13,52 @@
         .panel-title
           Goldfish (Free)
       .panel-body
-        Copy & Paste
-        %hr
-        2 devices
-      .panel-footer.text-center
         %a.btn.btn-sm.btn-default{href: free_transfer_between_devices_path}
           .icon-google-plus
           Sign up now
+        %p
+        Copy & Paste
+        %hr
+        2 devices
+
   .col-xs-12.col-md-3
     .box.panel.panel-default
       .panel-heading
         .panel-title
           Trained Goldfish ($0.99/Mo)
       .panel-body
+        = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-default'
+        %p
         Copy & Paste
         %hr
         Unlimited devices
         %hr
         Smart actions
-      .panel-footer.text-center
-        = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-default'
   .col-xs-12.col-md-3
-    .box.panel.panel-success
+    .box.panel.panel-default
       .panel-heading
         .panel-title
           Whale ($1.99/Mo)
+          %span.label.label-success.bad
+            recommended
       .panel-body
+        = link_to 'Try for free', android_clipboard_history_path, class: 'btn btn-sm btn-default'
+        %p
         Copy & Paste
         %hr
         Unlimited devices
         %hr
         Smart Actions
         %hr
-        History
-      .panel-footer.text-center
-        = link_to 'Try for free', android_clipboard_history_path, class: 'btn btn-sm btn-default'
+        Clippings History
   .col-xs-12.col-md-3
     .box.panel.panel-default
       .panel-heading
         .panel-title
           Shark ($2.99/Mo)
       .panel-body
+        = link_to 'Try for free', android_file_transfer_path, class: 'btn btn-sm btn-default'
+        %p
         Copy & Paste
         %hr
         Unlimited devices
@@ -61,8 +66,6 @@
         %a{data: {toggle: 'popover', trigger: 'hover', content: 'asdf', title: 'zxcv', container: 'body'}}
           Smart Actions
         %hr
-        History
+        Clippings History
         %hr
-        File support
-      .panel-footer.text-center
-        = link_to 'Try for free', android_file_transfer_path, class: 'btn btn-sm btn-default'
+        File transfer
