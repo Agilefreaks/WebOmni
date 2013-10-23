@@ -14,4 +14,5 @@
  *= require jumbotron-narrow
  *= require bootstrap_overrides
  *= require bootstrap
+ *= require font-awesome
  */

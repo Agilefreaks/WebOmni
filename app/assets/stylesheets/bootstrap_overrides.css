@@ -50,8 +50,8 @@ dt { clear: both; }
     font-size: 14px;
 }
 
-.row .panel-heading {
-    height: 88px;
+.panel-title {
+    font-weight: bold;
 }
 
 hr {
