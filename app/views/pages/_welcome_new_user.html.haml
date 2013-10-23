@@ -1,23 +1,21 @@
-.container-fluid
-  .container.light
-    %h1 We have received your request and are we processing it. Once we'll accept you in the early adopter program we will notify you via email and you will be able to download the client applications.
-    :css
-      .form-horizontal {
-        text-align: left;
-      }
+.text-left
+  %p
+    We have received your request and are we processing it. Once we'll accept you in the early adopter program we will notify you via email and you will be able to download the client applications.
+  :css
+    .form-horizontal {
+      text-align: left;
+    }
 
-      .form-horizontal label {
-        color: #fff;
-        font-size: 24px;
-        font-weight: 300;
-        line-height: 20px
-      }
+    .form-horizontal label {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 20px
+    }
+  %p
+    While you are waiting, please tell us which kind of devices are you using:
 
-    %p.help-block
-      While you are waiting, please tell us which kind of devices are you using:
-
-    = simple_form_for(current_user, :html => { :class => 'form-horizontal' }) do |f|
-      = f.input :devices, collection: devices_options, :as => :check_boxes, label: false
-      .control-group
-        .controls
-          = f.button :submit, 'Ok, now hurry with that email already!', class: 'btn-purple'
+  = simple_form_for(current_user, :html => { :class => 'form-horizontal' }) do |f|
+    = f.input :devices, collection: devices_options, :as => :check_boxes, label: false
+    .control-group
+      .controls
+        = f.button :submit, 'Ok, now hurry with that email already!', class: 'btn btn-lg btn-default'
