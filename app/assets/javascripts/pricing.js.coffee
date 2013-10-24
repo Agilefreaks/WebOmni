@@ -6,6 +6,9 @@ $('.popover-link').popover({ html : true, container: 'body' })
 $('.popover-link').popover().on 'shown.bs.popover', ->
   $(this).addClass('toggled')
 
+$('.popover-link').popover().on 'hidden.bs.popover', ->
+  $(this).removeClass('toggled')
+
 $("body").on "click", (e) ->
   $openedPopoverLink = $(".popover-link.toggled")
   if $openedPopoverLink.has(e.target).length == 0
