@@ -13,7 +13,7 @@ describe ClippingFactory do
 
       it 'will add a clipping with unknown type' do
         subject
-        expect(Clipping.last.type).to eq(:unknown)
+        expect(Clipping.last.content_type).to eq(:unknown)
       end
     end
 
@@ -22,7 +22,16 @@ describe ClippingFactory do
 
       it 'will add a clipping with phone_number type' do
         subject
-        expect(Clipping.last.type).to eq(:phone_number)
+        expect(Clipping.last.content_type).to eq(:phone_number)
+      end
+    end
+
+    context 'when content is https link' do
+      let(:content) { 'https://news.ycombinator.com/item?id=6602902' }
+
+      it 'saves the correct content' do
+        subject
+        expect(Clipping.last.content).to eq('https://news.ycombinator.com/item?id=6602902')
       end
     end
   end
