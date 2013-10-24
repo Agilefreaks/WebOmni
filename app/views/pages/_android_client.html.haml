@@ -1,6 +1,6 @@
-= link_to android_url, class: 'btn btn-large btn-success btn-purple', id: 'android_download_link', :'data-user' => current_user.email do
-  = image_tag('clients/android.jpg')
+= link_to android_url, class: 'btn btn-sm btn-default', id: 'android_download_link', :'data-user' => current_user.email do
+  %i.icon-2x.icon-android
   Download Android client
-%p
+%p.left
   %small
     = link_to 'Installation instructions', 'http://www.talkandroid.com/guides/beginner/install-apk-files-on-android/', target: '_blank'
