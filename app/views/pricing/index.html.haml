@@ -6,6 +6,7 @@
   %strong
     premium features?
   No credit card required. No contract.
+
 .row
   .col-xs-12.col-md-3
     .box.panel.panel-default
@@ -13,7 +14,7 @@
         .panel-title
           Goldfish (Free)
       .panel-body
-        %a.btn.btn-sm.btn-default{href: free_transfer_between_devices_path}
+        = link_to free_transfer_between_devices_path, class: 'btn btn-sm btn-omni' do
           .icon-google-plus
           Sign up now
         %p
@@ -27,13 +28,14 @@
         .panel-title
           Trained Goldfish ($0.99/Mo)
       .panel-body
-        = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-default'
+        = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-omni'
         %p
         Copy & Paste
         %hr
         Unlimited devices
         %hr
         Smart actions
+
   .col-xs-12.col-md-3
     .box.panel.panel-default
       .panel-heading
@@ -42,7 +44,7 @@
           %span.label.label-success.bad
             recommended
       .panel-body
-        = link_to 'Try for free', android_clipboard_history_path, class: 'btn btn-sm btn-default'
+        = link_to 'Try for free', android_clipboard_history_path, class: 'btn btn-sm btn-omni'
         %p
         Copy & Paste
         %hr
@@ -51,13 +53,14 @@
         Smart Actions
         %hr
         Clippings History
+
   .col-xs-12.col-md-3
     .box.panel.panel-default
       .panel-heading
         .panel-title
           Shark ($2.99/Mo)
       .panel-body
-        = link_to 'Try for free', android_file_transfer_path, class: 'btn btn-sm btn-default'
+        = link_to 'Try for free', android_file_transfer_path, class: 'btn btn-sm btn-omni'
         %p
         Copy & Paste
         %hr

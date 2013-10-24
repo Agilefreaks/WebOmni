@@ -6,7 +6,7 @@
   .row
     .col-md-7
       .movie-placeholder
-        %iframe{:allowfullscreen => false, :frameborder => "0", :height => "480", :width => "640", :mozallowfullscreen => false, :src => "http://player.vimeo.com/video/67749998?title=0&amp;byline=0&amp;portrait=0", :webkitallowfullscreen => "", id: 'demo_frame', class: 'inline'}
+        %iframe{:allowfullscreen => false, :frameborder => '0', :height => '480', :width => '640', :mozallowfullscreen => false, :src => 'https://player.vimeo.com/video/67749998?title=0&amp;byline=0&amp;portrait=0', :webkitallowfullscreen => '', id: 'demo_frame', class: 'inline'}
     .col-md-5
       %dl
         %dt
@@ -33,4 +33,4 @@
         %dd
           Send files from a device to another in one step.
       .text-center
-        = link_to 'Find out more', pricing_path, class: 'btn btn-lg btn-default'
+        = link_to 'Find out more', pricing_index_path, class: 'btn btn-lg btn-omni'

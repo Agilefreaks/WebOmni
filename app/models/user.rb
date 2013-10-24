@@ -44,7 +44,7 @@ class User
   field :first_name, :type => String
   field :last_name, :type => String
   field :nickname, :type => String
-  field :early_adopter, :type => Mongoid::Boolean, :default => false
+  field :early_adopter, :type => Mongoid::Boolean, :default => -> { User.where(early_adopter: true).count < WebOmni::Application::USER_LIMIT }
   field :image_url, :type => String
   field :devices, :type => Array
   field :token, :type => String, :default => ->{SecureRandom.uuid}

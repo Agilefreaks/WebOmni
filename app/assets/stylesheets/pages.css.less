@@ -1,20 +1,18 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Less here: http://lesscss.org/
-.img-profile {
-  width: 25px;
-  height: 25px;
+
+@import "twitter/variables";
+@import "twitter/mixins";
+@import "twitter/buttons";
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
 }
 
-.alert {
-  margin-top: 100px;
-}
-
-#demo {
-  width: 670px;
-  margin-left: -280px;
-}
-
-#demo .modal-body {
-  max-height: 640px;
+.btn-omni {
+  .btn-default;
+  background: #D14670;
+  color: white;
 }

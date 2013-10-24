@@ -6,7 +6,8 @@
     %meta{content: "", name: "description"}/
     %meta{content: "", name: "author"}/
     %link{href: "../../assets/ico/favicon.png", rel: "shortcut icon"}/
-    %title= content_for?(:title) ? yield(:title) : "Omnipaste - Your Clipboard Manager in the cloud"
+    %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Your Clipboard Manager in the cloud'
+    = favicon_link_tag
     = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
     = csrf_meta_tag
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -16,10 +17,7 @@
     #wrap
       .container
         .header.card
-          %ul.nav.nav-pills.pull-right
-            = render_cell :menu, :show, user: current_user
-          = link_to root_path, class: 'brand scroller' do
-            = image_tag('logo-omnipaste.png')
+          = render partial: 'layouts/header'
         .jumbotron.card
           = yield
         .footer.card
