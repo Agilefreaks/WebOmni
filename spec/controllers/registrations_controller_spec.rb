@@ -10,7 +10,7 @@ describe RegistrationsController do
     it { should respond_with(200) }
 
     it 'assigns welcome' do
-      expect(assigns(:welcome)).to eq 'Hi there Startup Chile folks, glad you dropped by, Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
+      expect(assigns(:welcome)).to eq 'Hi there Startup Chile folks, glad you dropped by.'
     end
 
     it 'assigns state' do
@@ -26,7 +26,7 @@ describe RegistrationsController do
     it { should respond_with(200) }
 
     it 'assigns welcome' do
-      expect(assigns(:welcome)).to eq 'Hi there soft32 visitor, glad you dropped by, Omnipaste is a clipboard manager in the cloud and works like your short-term memory.'
+      expect(assigns(:welcome)).to eq 'Hi there Soft32 visitor, glad you dropped by.'
     end
 
     it 'assigns state' do
