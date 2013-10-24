@@ -9,7 +9,7 @@ class Clipping
 
   field :token, type: String
   field :content, type: String
-  field :content_type, type: Symbol
+  field :type, type: Symbol
 
   validates_presence_of :token, :content
 
