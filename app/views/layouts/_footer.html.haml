@@ -1,0 +1,33 @@
+.row
+  .col-md-2
+    %ul.nav.nav-stacked
+      %li
+        = link_to 'Plans', pricing_index_path
+      %li
+        = link_to 'Team', team_path
+      %li
+        = link_to 'Contact', contact_path
+
+  .col-md-2
+    %ul.nav.nav-stacked
+      %li
+        = link_to 'Home', root_path
+      %li
+        = link_to 'Partners', partners_path
+      %li
+        = link_to 'Term of service', tos_path
+
+  .col-md-1
+    .fb-like{'data-action' => 'like', 'data-colorscheme' => 'light', 'data-height' => 'The pixel height of the plugin', 'data-href' => 'https://facebook.com/omnipaste', 'data-layout' => 'box_count', 'data-send' => 'false', 'data-show-faces' => 'true', 'data-width' => 'The pixel width of the plugin'}
+
+  .col-md-1
+    = link_to 'Follow @omnipaste', 'https://twitter.com/omnipaste', {class: 'twitter-follow-button', 'data-show-count' => 'false', 'data-show-screen-name' => 'false', 'data-size' => 'large'}
+
+.row
+  .col-md-12
+    %p
+    © 2013 Omnipaste
+    %br
+    Android&trade; is a trademark of Google Inc
+    %br
+    Windows&trade; is a trademark of Microsoft Corporation in the United States and other countries

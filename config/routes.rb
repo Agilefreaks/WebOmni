@@ -14,14 +14,16 @@ WebOmni::Application.routes.draw do
   resources :contact, only: [:create]
   resource :token, only: [:show]
   resources :pricing, only: [:index, :show]
+  resources :downloads, only: [:index, :show]
 
   get 'whatsmytoken', to: 'tokens#show'
 
   get 'free_transfer_between_devices', to: 'pages#free'
 
-  get 'about', to: 'pages#about'
-  get 'team', to: 'pages#team'
-  get 'contact', to: 'pages#contact'
+  get :team, to: 'pages#team'
+  get :contact, to: 'pages#contact'
+  get :tos, to: 'pages#tos'
+  get :partners, to: 'pages#partners'
 
   # partner pages
   [:startupchile, :soft32].each do |partner|

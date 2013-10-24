@@ -10,7 +10,7 @@ describe NotificationsMailer do
 
     it { should deliver_to('ciprian@test.com') }
 
-    it { should deliver_from('Omnipaste <team@omnipasteapp.com>') }
+    it { should deliver_from('Calin <calin@omnipasteapp.com>') }
 
     it { should have_subject('Welcome to Omnipaste') }
   end

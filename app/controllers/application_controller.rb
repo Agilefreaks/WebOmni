@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   def check_authentication
     authenticate_user!
   end
+
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User)
+      downloads_path
+    else
+      request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+    end
+  end
 end
