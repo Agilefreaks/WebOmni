@@ -35,6 +35,14 @@ module PagesHelper
     render partial: 'pages/windows_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Windows/i))
   end
 
+  def render_linux_client
+    render partial: 'pages/linux_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Linux/i))
+  end
+
+  def render_mac_client
+    render partial: 'pages/mac_client' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Macintosh/i))
+  end
+
   def installation_url
     if !!(user_agent(request.env['HTTP_USER_AGENT']).browser =~ (/Chrome/i))
       installations_chrome_url
