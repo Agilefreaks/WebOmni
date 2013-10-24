@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Resources::ClippingsAPI do
   describe "POST 'api/v1/clippings'" do
-    let(:options) { {'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json'} }
-    let(:params) { {"content" => 'content', "token" => 'token'} }
+    let!(:user) { Fabricate(:user, email: 'token@user.com') }
+    let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json'} }
+    let(:params) { {:'content' => 'content', :'token' => 'token@user.com'} }
 
-    it 'will call ClippingFactory.create' do
-      expect(ClippingFactory).to receive(:create).with(params)
-      post '/api/v1/clippings', params.to_json, options
+    it 'will call insert a new clipping' do
+      expect { post '/api/v1/clippings', params.to_json, options }.to change(Clipping, :count).by(1)
     end
   end
 
