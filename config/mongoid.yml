@@ -96,7 +96,11 @@ staging:
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      database: omnipaste
+      hosts:
+        - 10.54.94.18:27017
+        - 10.54.94.19:27017
+        - 10.54.94.20:27017
       options:
         consistency: :strong
         allow_dynamic_fields: false
