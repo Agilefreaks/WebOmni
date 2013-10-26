@@ -81,7 +81,6 @@ WebOmni::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # keys
-  GOOGLE_KEY = ENV['GOOGLE_KEY']
-  GOOGLE_SECRET = ENV['GOOGLE_SECRET']
-
+  GOOGLE_KEY = '930634995806.apps.googleusercontent.com'
+  GOOGLE_SECRET = 'v9pqN_LsLoe8f0dY2i2a06lk'
 end
