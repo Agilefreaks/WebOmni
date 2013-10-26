@@ -83,4 +83,7 @@ WebOmni::Application.configure do
   # keys
   GOOGLE_KEY = '930634995806.apps.googleusercontent.com'
   GOOGLE_SECRET = 'v9pqN_LsLoe8f0dY2i2a06lk'
+
+  # Omniauth
+  OmniAuth.config.full_host = 'https://www.omnipasteapp.com'
 end
