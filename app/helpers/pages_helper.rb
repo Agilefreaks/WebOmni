@@ -19,7 +19,7 @@ module PagesHelper
     if Rails.env.staging?
       'http://cdn.omnipasteapp.com/staging/win/Omnipaste-staging.application'
     else
-      'https://s3.amazonaws.com/omnipaste-production/win/Omnipaste.application'
+      'http://cdn.omnipasteapp.com/production/win/Omnipaste.application'
     end
   end
 
@@ -27,7 +27,7 @@ module PagesHelper
     if Rails.env.staging?
       'http://cdn.omnipasteapp.com/staging/android/omnipaste.apk'
     else
-      'https://s3.amazonaws.com/omnipaste-production/android/omnipaste.apk'
+      'http://cdn.omnipasteapp.com/production/android/omnipaste.apk'
     end
   end
 

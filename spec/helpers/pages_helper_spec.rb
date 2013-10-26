@@ -13,7 +13,7 @@ describe PagesHelper do
     context 'when Rails.env is production' do
       before { Rails.stub_chain(:env, :staging?).and_return(false) }
 
-      it { should == 'https://s3.amazonaws.com/omnipaste-production/win/Omnipaste.application' }
+      it { should == 'http://cdn.omnipasteapp.com/production/win/Omnipaste.application' }
     end
   end
 
@@ -29,7 +29,7 @@ describe PagesHelper do
     context 'when Rails.env is production' do
       before { Rails.stub_chain(:env, :staging?).and_return(false) }
 
-      it { should == 'https://s3.amazonaws.com/omnipaste-production/android/omnipaste.apk' }
+      it { should == 'http://cdn.omnipasteapp.com/production/android/omnipaste.apk' }
     end
   end
 end
