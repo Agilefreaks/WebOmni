@@ -15,14 +15,16 @@ WebOmni::Application.routes.draw do
   resource :token, only: [:show]
 
   get 'whatsmytoken', to: 'tokens#show'
-  get 'startupchile', to: 'registrations#startupchile'
-  get 'soft32', to: 'registrations#soft32'
 
   get 'pricing', to: 'pages#pricing'
 
   get 'free_transfer_between_devices', to: 'pages#free'
 
-  #sorry pages
+  # partner pages
+  get 'startupchile', to: 'registrations#startupchile'
+  get 'soft32', to: 'registrations#soft32'
+
+  # sorry pages
   get 'android_file_transfer', to: 'pages#android_file_transfer'
   get 'android_clipboard_history', to: 'pages#android_clipboard_history'
   get 'smart_actions_between_devices', to: 'pages#smart_actions_between_devices'

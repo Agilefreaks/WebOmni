@@ -2,35 +2,27 @@ require 'spec_helper'
 
 describe RegistrationsController do
 
-  describe "GET 'startupchile'" do
+  shared_examples_for 'partner site' do |partner, welcome|
     before :each do
-      get :startupchile
+      get partner
     end
 
     it { should respond_with(200) }
 
     it 'assigns welcome' do
-      expect(assigns(:welcome)).to eq 'Hi there Startup Chile folks, glad you dropped by.'
+      expect(assigns(:welcome)).to eq welcome
     end
 
-    it 'assigns state' do
-      expect(assigns(:state)).to eq :chile
+    it 'assigns partner cookie' do
+      expect(response.cookies['partner']).to eq 'true'
     end
   end
 
+  describe "GET 'startupchile'" do
+    it_behaves_like 'partner site', :startupchile, 'Hi there Startup Chile folks, glad you dropped by.'
+  end
+
   describe "GET 'soft32'" do
-    before :each do
-      get :soft32
-    end
-
-    it { should respond_with(200) }
-
-    it 'assigns welcome' do
-      expect(assigns(:welcome)).to eq 'Hi there Soft32 visitor, glad you dropped by.'
-    end
-
-    it 'assigns state' do
-      expect(assigns(:state)).to eq :soft32
-    end
+    it_behaves_like 'partner site', :soft32, 'Hi there Soft32 visitor, glad you dropped by.'
   end
 end
