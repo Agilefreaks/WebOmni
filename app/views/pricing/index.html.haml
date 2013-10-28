@@ -6,6 +6,7 @@
   %strong
     premium features?
   No credit card required. No contract.
+
 .row
   .col-xs-12.col-md-3
     .box.panel.panel-default
@@ -13,7 +14,7 @@
         .panel-title
           Goldfish (Free)
       .panel-body
-        %a.btn.btn-sm.btn-default{href: free_transfer_between_devices_path}
+        = link_to free_transfer_between_devices_path, class: 'btn btn-sm btn-default' do
           .icon-google-plus
           Sign up now
         %p
@@ -34,6 +35,7 @@
         Unlimited devices
         %hr
         Smart actions
+
   .col-xs-12.col-md-3
     .box.panel.panel-default
       .panel-heading
@@ -51,6 +53,7 @@
         Smart Actions
         %hr
         Clippings History
+
   .col-xs-12.col-md-3
     .box.panel.panel-default
       .panel-heading
