@@ -16,10 +16,7 @@
     #wrap
       .container
         .header.card
-          %ul.nav.nav-pills.pull-right
-            = render_cell :menu, :show, user: current_user
-          = link_to root_path, class: 'brand scroller' do
-            = image_tag('logo-omnipaste.png')
+          = render partial: 'layouts/header'
         .jumbotron.card
           = yield
         .footer.card
