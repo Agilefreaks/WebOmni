@@ -32,5 +32,7 @@ module WebOmni
 
     config.paths.add "app/api", glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*", "#{Rails.root}/app/factories/*"]
+
+    USER_LIMIT = 1500
   end
 end
