@@ -13,26 +13,25 @@ WebOmni::Application.routes.draw do
   resources :users, only: [:update]
   resources :contact, only: [:create]
   resource :token, only: [:show]
+  resources :pricing, only: [:index, :show]
 
   get 'whatsmytoken', to: 'tokens#show'
 
-  get 'pricing', to: 'pages#pricing'
-
   get 'free_transfer_between_devices', to: 'pages#free'
+
+  get 'about', to: 'pages#about'
+  get 'team', to: 'pages#team'
+  get 'contact', to: 'pages#contact'
 
   # partner pages
   get 'startupchile', to: 'registrations#startupchile'
   get 'soft32', to: 'registrations#soft32'
 
   # sorry pages
-  get 'android_file_transfer', to: 'pages#android_file_transfer'
-  get 'android_clipboard_history', to: 'pages#android_clipboard_history'
-  get 'smart_actions_between_devices', to: 'pages#smart_actions_between_devices'
+  [:android_file_transfer, :android_clipboard_history, :smart_actions_between_devices].each do |action|
+    get action, to: 'pricing#show'
+  end
 
-  get 'about', to: 'pages#about'
-  get 'team', to: 'pages#team'
-  get 'contact', to: 'pages#contact'
-                                                                                          ``
   # installations
   get 'installations/chrome'
   get 'installations/firefox'
