@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/balauru/capistrano-puma.git
-  revision: 5a2c5fced42a1d58a9eed845078ea8e7618759d7
+  revision: 1065e4f7b66a00d1bc3245eb72a818d980c780d9
   specs:
     capistrano-puma (0.0.1)
       capistrano (>= 3.0.0.pre)
@@ -300,7 +300,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sshkit (1.0.0)
+    sshkit (1.1.0)
       net-scp
       net-ssh
       term-ansicolor
