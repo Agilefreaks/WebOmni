@@ -1,7 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = find_or_create(request.env['omniauth.auth'], current_user, params[:state])
+    @user = find_or_create(request.env['omniauth.auth'], current_user, cookies.delete('partner'))
 
     if @user.persisted?
       flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => "Google")
@@ -14,11 +14,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def find_or_create(auth, signed_in_resource, state)
+  def find_or_create(auth, signed_in_resource, partner)
     user = signed_in_resource ||
         User.find_by_provider(auth.info.email, auth.provider) ||
         User.where(:email => auth.info.email).first
 
-    UserFactory.from_social(auth, user, state)
+    UserFactory.from_social(auth, user, partner)
   end
 end

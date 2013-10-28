@@ -24,8 +24,9 @@ WebOmni::Application.routes.draw do
   get 'contact', to: 'pages#contact'
 
   # partner pages
-  get 'startupchile', to: 'registrations#startupchile'
-  get 'soft32', to: 'registrations#soft32'
+  [:startupchile, :soft32].each do |partner|
+    get partner, to: "registrations##{partner}"
+  end
 
   # sorry pages
   [:android_file_transfer, :android_clipboard_history, :smart_actions_between_devices].each do |action|

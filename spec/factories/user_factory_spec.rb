@@ -4,13 +4,12 @@ describe UserFactory do
   let(:factory) { UserFactory.instance }
 
   describe 'from_social' do
-    let(:auth) { double("auth") }
+    let(:auth) { double('auth') }
 
     context 'with no user' do
       it 'should call create_from_social and update_social' do
         UserFactory.any_instance.should_receive(:create_from_social).with(auth)
         UserFactory.any_instance.should_receive(:create_or_update_provider)
-        UserFactory.any_instance.should_receive(:set_early_adopter)
         UserFactory.from_social(auth, nil)
       end
     end
@@ -20,7 +19,6 @@ describe UserFactory do
 
       it 'should update the providers' do
         UserFactory.any_instance.should_receive(:create_or_update_provider).with(auth, user)
-        UserFactory.any_instance.should_receive(:set_early_adopter)
         UserFactory.from_social(auth, user)
       end
     end
@@ -68,25 +66,9 @@ describe UserFactory do
   describe '#set_early_adopter' do
     let(:user) { Fabricate(:user, early_adopter: false) }
 
-    subject { factory.set_early_adopter(user, state) }
-
-    [:chile, :soft32].each do |state|
-      context "with state #{state}" do
-        let(:state) { state }
-
-        it 'sets early adopter to true' do
-          subject
-          expect(user.early_adopter).to eq true
-        end
-      end
-    end
-
-    context 'with no state' do
-      let(:state) { '' }
-
-      it 'will change the early adopter flag' do
-        expect { subject }.not_to change(user, :early_adopter)
-      end
+    it 'sets early adopter to true' do
+      factory.set_early_adopter(user)
+      expect(user.early_adopter).to eq true
     end
   end
 end
