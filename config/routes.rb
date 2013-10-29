@@ -19,7 +19,6 @@ WebOmni::Application.routes.draw do
 
   get 'free_transfer_between_devices', to: 'pages#free'
 
-  get 'about', to: 'pages#about'
   get 'team', to: 'pages#team'
   get 'contact', to: 'pages#contact'
 
