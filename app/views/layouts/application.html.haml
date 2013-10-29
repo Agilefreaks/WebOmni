@@ -14,13 +14,11 @@
     /[if lt IE 9]
     = render partial: 'layouts/google'
   %body
-    #wrap
-      .container
-        = render partial: 'layouts/header'
-        .jumbotron.card
-          = yield
-        .footer.card
-          = render partial: 'layouts/footer'
+    .container
+      = render partial: 'layouts/header'
+      = yield
+      .footer
+        = render partial: 'layouts/footer'
 
   = humane_flash_messages.html_safe
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
