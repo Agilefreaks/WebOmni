@@ -20,8 +20,10 @@ WebOmni::Application.routes.draw do
 
   get 'free_transfer_between_devices', to: 'pages#free'
 
-  get 'team', to: 'pages#team'
-  get 'contact', to: 'pages#contact'
+  get :team, to: 'pages#team'
+  get :contact, to: 'pages#contact'
+  get :tos, to: 'pages#tos'
+  get :partners, to: 'pages#partners'
 
   # partner pages
   [:startupchile, :soft32].each do |partner|
