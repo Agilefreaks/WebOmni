@@ -83,4 +83,5 @@ group :test do
   gem 'mongoid-rspec'
   gem 'fabrication'
   gem 'zeus', '0.13.4.pre2'
+  gem 'guard-zeus'
 end
