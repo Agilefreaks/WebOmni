@@ -1,2 +1,37 @@
 %h1 Copy & Paste between your devices. Simple as Ctrl+C, Ctrl+V
-= render_logon
+.text-left
+  %p
+    = @welcome
+    Omnipaste is a clipboard manager in the cloud and works like your short-term memory.
+    With our services you can transfer data between your devices running Windows&trade; operating system or Android&trade;
+  .row
+    .col-md-7
+      .movie-placeholder
+        %iframe{:allowfullscreen => false, :frameborder => '0', :height => '480', :width => '640', :mozallowfullscreen => false, :src => 'https://player.vimeo.com/video/67749998?title=0&amp;byline=0&amp;portrait=0', :webkitallowfullscreen => '', id: 'demo_frame', class: 'inline'}
+    .col-md-5
+      %dl
+        %dt
+          .icon-android
+          .icon-long-arrow-right
+          .icon-windows
+          Links 2 Browser
+        %dd
+          Copy a link from your smartphone and you'll have it in the clipboard ready to be pasted in the browser.
+        %dt
+          .icon-windows
+          .icon-long-arrow-right
+          .icon-android
+          Phone 2 Call
+        %dd
+          Copy a phone number from the computer and tap your phone to call.
+        %dt
+          .icon-mobile-phone
+          .icon-long-arrow-right
+          .icon-file
+          .icon-long-arrow-right
+          .icon-laptop
+          Transfer Files
+        %dd
+          Send files from a device to another in one step.
+      .text-center
+        = link_to 'Find out more', pricing_index_path, class: 'btn btn-lg btn-omni'
