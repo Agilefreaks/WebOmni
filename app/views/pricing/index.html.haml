@@ -1,73 +1,74 @@
-%h1 Omnipaste suits everyone. Which plan suits you?
-%p
-  You can have the basic application with Copy & Paste functionality for free.
-  %br
-  Why not to try for a month our
-  %strong
-    premium features?
-  No credit card required. No contract.
+.jumbotron
+  .page-header
+    %h1 Omnipaste suits everyone. Which plan suits you?
 
-.row
-  .col-xs-12.col-md-3
-    .box.panel.panel-default
-      .panel-heading
-        .panel-title
-          Goldfish (Free)
-      .panel-body
-        = link_to free_transfer_between_devices_path, class: 'btn btn-sm btn-omni' do
-          .icon-google-plus
-          Sign up now
-        %p
-        Copy & Paste
-        %hr
-        2 devices
+  %p
+    You can have the basic application with Copy & Paste functionality for free.
+    %br
+    Why not to try for a month our
+    %strong
+      premium features?
+    No credit card required. No contract.
 
-  .col-xs-12.col-md-3
-    .box.panel.panel-default
-      .panel-heading
-        .panel-title
-          Trained Goldfish ($0.99/Mo)
-      .panel-body
-        = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-omni'
-        %p
-        Copy & Paste
-        %hr
-        Unlimited devices
-        %hr
-        Smart actions
+  .row
+    .col-xs-12.col-md-3
+      .box.panel.panel-default
+        .panel-heading
+          .panel-title
+            Goldfish (Free)
+        .panel-body
+          = render_try_free_link(user_signed_in?)
+          %p
+          Copy & Paste
+          %hr
+          2 devices
 
-  .col-xs-12.col-md-3
-    .box.panel.panel-default
-      .panel-heading
-        .panel-title
-          Whale ($1.99/Mo)
-          %span.label.label-success.bad
-            recommended
-      .panel-body
-        = link_to 'Try for free', android_clipboard_history_path, class: 'btn btn-sm btn-omni'
-        %p
-        Copy & Paste
-        %hr
-        Unlimited devices
-        %hr
-        Smart Actions
-        %hr
-        Clippings History
+    .col-xs-12.col-md-3
+      .box.panel.panel-default
+        .panel-heading
+          .panel-title
+            Trained Goldfish ($0.99/Mo)
+        .panel-body
+          = link_to 'Try for free', smart_actions_between_devices_path, class: 'btn btn-sm btn-omni'
+          %p
+          Copy & Paste
+          %hr
+          Unlimited devices
+          %hr
+          Smart actions
 
-  .col-xs-12.col-md-3
-    .box.panel.panel-default
-      .panel-heading
-        .panel-title
-          Shark ($2.99/Mo)
-      .panel-body
-        = link_to 'Try for free', android_file_transfer_path, class: 'btn btn-sm btn-omni'
-        %p
-        Copy & Paste
-        %hr
-        Unlimited devices
-        %hr
-        Smart Actions
-        %hr
-        Clippings History
-        %hr
-        File transfer
+    .col-xs-12.col-md-3
+      .box.panel.panel-default
+        .panel-heading
+          .panel-title
+            Whale ($1.99/Mo)
+            %span.label.label-success.bad
+              recommended
+        .panel-body
+          = link_to 'Try for free', android_clipboard_history_path, class: 'btn btn-sm btn-omni'
+          %p
+          Copy & Paste
+          %hr
+          Unlimited devices
+          %hr
+          Smart Actions
+          %hr
+          Clippings History
+
+    .col-xs-12.col-md-3
+      .box.panel.panel-default
+        .panel-heading
+          .panel-title
+            Shark ($2.99/Mo)
+        .panel-body
+          = link_to 'Try for free', android_file_transfer_path, class: 'btn btn-sm btn-omni'
+          %p
+          Copy & Paste
+          %hr
+          Unlimited devices
+          %hr
+          Smart Actions
+          %hr
+          Clippings History
+          %hr
+          File transfer
