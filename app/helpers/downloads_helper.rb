@@ -16,7 +16,7 @@ module DownloadsHelper
   end
 
   def render_index
-    render partial: (current_user.early_adopter ? 'pages/welcome_early_adopter' : 'pages/welcome_new_user')
+    render partial: (current_user.early_adopter ? 'downloads/index_early_adopter' : 'downloads/index_new_user')
   end
 
   def render_windows_client
