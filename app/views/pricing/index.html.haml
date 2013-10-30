@@ -1,4 +1,4 @@
-.jumbotron
+= content_for :jumbotron do
   .page-header
     %h1 Omnipaste suits everyone. Which plan suits you?
 
@@ -17,9 +17,7 @@
           .panel-title
             Goldfish (Free)
         .panel-body
-          = link_to free_transfer_between_devices_path, class: 'btn btn-sm btn-omni' do
-            .icon-google-plus
-            Sign up now
+          = render_try_free_link(user_signed_in?)
           %p
           Copy & Paste
           %hr
