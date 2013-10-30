@@ -1,4 +1,4 @@
-.jumbotron
+= content_for :jumbotron do
   .page-header
     %h1 Omnipaste suits everyone. Which plan suits you?
 
@@ -17,7 +17,7 @@
           .panel-title
             Goldfish (Free)
         .panel-body
-          = render_try_free_link
+          = render_try_free_link(user_signed_in?)
           %p
           Copy & Paste
           %hr

@@ -19,7 +19,13 @@
 
     .container
       = render partial: 'layouts/header'
-      = yield
+
+      - if content_for?(:jumbotron)
+        .jumbotron
+          = yield :jumbotron
+      .container
+        = yield
+
       .footer
         = render partial: 'layouts/footer'
 
