@@ -10,7 +10,7 @@ class ActivationToken
       'android' => :android
   }
 
-  field :content, type: String, default: SecureRandom.uuid
+  field :content, type: String, default: -> { SecureRandom.uuid }
   field :type, type: Symbol, default: TYPES['unknown']
   field :used, type: Boolean, default: false
 
