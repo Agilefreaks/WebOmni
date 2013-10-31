@@ -1,7 +1,7 @@
-= link_to "#", class: 'btn btn-large btn-default', id: 'windows_download_redirect_link', :'data-redirect' => installation_url, :'data-user' => current_user.email do
+= link_to "#", class: 'btn btn-large btn-omni', id: 'windows_download_redirect_link', :'data-redirect' => installation_url, :'data-user' => current_user.email do
   %i.icon-2x.icon-windows
   Download Windows client
-= link_to "#", "#{winomni_url}?token=#{current_user.token}", class: 'hidden', id: 'windows_download_link', target: '_blank'
+= link_to '#', "#{winomni_url}?token=#{current_user.token}", class: 'hidden', id: 'windows_download_link', target: '_blank'
 %p
   %small
     One click to install the windows client customized for you.
