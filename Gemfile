@@ -47,6 +47,8 @@ gem 'turbolinks'
 
 gem 'rails_admin'
 
+gem 'gcm'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

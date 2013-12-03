@@ -56,6 +56,9 @@ class User
   embeds_many :activation_tokens
   accepts_nested_attributes_for :activation_tokens
 
+  embeds_many :devices
+  accepts_nested_attributes_for :devices
+
   # indexes
   index({token: 1}, {unique: true})
 

@@ -19,6 +19,7 @@ module WebOmni
 
     mount Resources::UsersAPI
     mount Resources::ClippingsAPI
+    mount Resources::DevicesAPI
     mount Resources::ActivationTokensAPI
 
     add_swagger_documentation(
