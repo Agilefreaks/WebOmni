@@ -1,6 +1,12 @@
 class ClippingFactory
   def self.create(params)
-    Clipping.create(params.merge(type: get_type(params[:content])))
+    clipping = Clipping.create(content: params[:content],
+                               token: params[:token],
+                               type: get_type(params[:content]))
+
+    Notify.user(params[:token], params[:registrationId])
+
+    clipping
   end
 
   def self.get_type(content)

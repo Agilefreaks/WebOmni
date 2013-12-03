@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe ClippingFactory do
   describe 'create' do
-    subject { ClippingFactory.create(content: content, token: 'token') }
+    subject { ClippingFactory.create(content: content, token: 'token', registrationId: '42') }
+
+    before :each do
+      allow(Notify).to receive(:user).and_return(nil)
+    end
 
     context 'when content is string' do
       let(:content) { 'some' }
@@ -14,6 +18,11 @@ describe ClippingFactory do
       it 'will add a clipping with unknown type' do
         subject
         expect(Clipping.last.type).to eq(:unknown)
+      end
+
+      it 'will call Notify with correct args' do
+        expect(Notify).to receive(:user).with('token', '42')
+        subject
       end
     end
 
