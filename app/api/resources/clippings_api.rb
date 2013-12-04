@@ -3,7 +3,7 @@ module WebOmni
     resources :clippings do
       helpers do
         def permitted_params
-          ActionController::Parameters.new(params).permit(:content, :token)
+          ActionController::Parameters.new(params).permit(:content, :token, :registrationId)
         end
       end
 
