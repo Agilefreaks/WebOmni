@@ -12,7 +12,7 @@ class Unregister
 
   def execute
     user = User.find_by(email: @channel)
-    device = user.devices.find_by(registration_id: @registration_id)
+    device = user.registered_devices.find_by(registration_id: @registration_id)
     device.destroy
   end
 end

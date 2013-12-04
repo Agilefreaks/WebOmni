@@ -12,7 +12,7 @@ class Register
 
   def execute
     User.find_by(email: @channel).
-        devices.
+        registered_devices.
         find_or_create_by(registration_id: @registration_id)
   end
 end

@@ -47,6 +47,7 @@ class User
   field :early_adopter, :type => Mongoid::Boolean, :default => -> { User.where(early_adopter: true).count < WebOmni::Application::USER_LIMIT }
   field :image_url, :type => String
   field :token, :type => String, :default => ->{SecureRandom.uuid}
+  field :devices, :type => Array
 
   # relations
   embeds_many :providers
@@ -55,8 +56,8 @@ class User
   embeds_many :activation_tokens
   accepts_nested_attributes_for :activation_tokens
 
-  embeds_many :devices
-  accepts_nested_attributes_for :devices
+  embeds_many :registered_devices
+  accepts_nested_attributes_for :registered_devices
 
   # indexes
   index({token: 1}, {unique: true})

@@ -6,13 +6,13 @@ describe Unregister do
 
     context 'with a existing device' do
       before :each do
-        user.devices.create(registration_id: '132')
+        user.registered_devices.create(registration_id: '132')
       end
 
       it 'will delete the existing device' do
         Unregister.device('some@user.com', '132')
         user.reload
-        expect(user.devices.count).to eq(0)
+        expect(user.registered_devices.count).to eq(0)
       end
     end
 

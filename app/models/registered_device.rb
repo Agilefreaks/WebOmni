@@ -1,4 +1,4 @@
-class Device
+class RegisteredDevice
   include Mongoid::Document
   include Mongoid::Timestamps
 

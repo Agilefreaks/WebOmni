@@ -6,13 +6,13 @@ describe Register do
 
     context 'when user has a device with the same registration id' do
       before :each do
-        user.devices.create(registration_id: '123')
+        user.registered_devices.create(registration_id: '123')
       end
 
       it 'will update the existing device' do
         Register.device('user@email.com', '123')
         user.reload
-        expect(user.devices.count).to eq(1)
+        expect(user.registered_devices.count).to eq(1)
       end
     end
 
@@ -20,7 +20,7 @@ describe Register do
       it 'will create a new device' do
         Register.device('user@email.com', '123')
         user.reload
-        expect(user.devices.count).to eq 1
+        expect(user.registered_devices.count).to eq 1
       end
     end
   end
