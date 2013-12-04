@@ -17,6 +17,6 @@ class Call
     gcm = GCM.new('AIzaSyDiX6YE0kjKmnjSygNRC_sYq6MBUfzsg2I')
 
     options = {data: {registration_id: from_registration_id, phone_number: phone_number}, collapse_key: 'phone'}
-    gcm.send_notification(user.devices.map(&:registration_id), options) if user.devices.any?
+    gcm.send_notification(user.registered_devices.map(&:registration_id), options) if user.registered_devices.any?
   end
 end
