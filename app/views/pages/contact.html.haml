@@ -12,6 +12,9 @@
   Sibiu, ROMANIA
   %br/
   %abbr{:title => "Phone"} P:
-  +40745857479
+  - if user_signed_in?
+    = link_to '+40745857479', '#', {id: 'contact_call', :'data-email' => current_user.email, :'data-phone-number' => '+40745857479', :'data-root-url' => root_url}
+  - else
+    '+40745857479'
   %br/
   <a href="mailto:#">team@omnipasteapp.com</a>
