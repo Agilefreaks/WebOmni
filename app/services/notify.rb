@@ -15,7 +15,7 @@ class Notify
 
     gcm = GCM.new('AIzaSyDiX6YE0kjKmnjSygNRC_sYq6MBUfzsg2I')
 
-    options = {data: {registration_id: from_registration_id}, collapse_key: 'clipboard'}
+    options = {data: {registration_id: from_registration_id || 'other'}, collapse_key: 'clipboard'}
     gcm.send_notification(user.registered_devices.map(&:registration_id), options) if user.registered_devices.any?
   end
 end
