@@ -11,14 +11,14 @@ development:
       hosts:
         - localhost:27017
       options:
-        # Change whether the session persists in safe mode by default.
-        # (default: false)
-        # safe: false
+        # Change the default write concern. (default = { w: 1 })
+        # write:
+        # w: 1
 
-        # Change the default consistency model to :eventual or :strong.
-        # :eventual will send reads to secondaries, :strong sends everything
-        # to master. (default: :eventual)
-        # consistency: :eventual
+        # Change the default consistency model to primary, secondary.
+        # 'secondary' will send reads to secondaries, 'primary' sends everything
+        # to master. (default: primary)
+        # read: secondary_preferred
 
         # How many times Moped should attempt to retry an operation after
         # failure. (default: 30)
@@ -29,13 +29,6 @@ development:
         # retry_interval: 1
   # Configure Mongoid specific options. (optional)
   options:
-    # Configuration for whether or not to allow access to fields that do
-    # not have a field definition on the model. (default: true)
-    # allow_dynamic_fields: true
-
-    # Enable the identity map, needed for eager loading. (default: false)
-    # identity_map_enabled: false
-
     # Includes the root model name in json serialization. (default: false)
     # include_root_in_json: false
 
@@ -46,34 +39,32 @@ development:
     # inheritance. (default: false)
     # preload_models: false
 
-    # Protect id and type from mass assignment. (default: true)
-    # protect_sensitive_fields: true
-
     # Raise an error when performing a #find and the document is not found.
     # (default: true)
-    # raise_not_found_error: true
+    raise_not_found_error: true
 
     # Raise an error when defining a scope with the same name as an
     # existing method. (default: false)
-    # scope_overwrite_exception: false
+    scope_overwrite_exception: true
 
     # Skip the database version check, used when connecting to a db without
     # admin access. (default: false)
     # skip_version_check: false
 
-    # User Active Support's time zone in conversions. (default: true)
-    # use_activesupport_time_zone: true
+    # Use Active Support's time zone in conversions. (default: true)
+    use_activesupport_time_zone: true
 
     # Ensure all times are UTC in the app side. (default: false)
-    # use_utc: false
+    use_utc: true
+
 test:
   sessions:
     default:
-      database: omni_test
+      database: web_omni_test
       hosts:
         - localhost:27017
       options:
-        consistency: :strong
+        read: primary
         # In the test environment we lower the retries and retry interval to
         # low amounts for fast failures.
         max_retries: 1
@@ -88,10 +79,10 @@ staging:
         - 10.54.94.19:27017
         - 10.54.94.20:27017
       options:
-        consistency: :strong
         allow_dynamic_fields: false
+        raise_not_found_error: true
         use_utc: true
-        identity_map_enabled: true
+        use_activesupport_time_zone: true
 
 production:
   sessions:
@@ -102,7 +93,7 @@ production:
         - 10.54.94.19:27017
         - 10.54.94.20:27017
       options:
-        consistency: :strong
         allow_dynamic_fields: false
+        raise_not_found_error: true
         use_utc: true
-        identity_map_enabled: true
+        use_activesupport_time_zone: true
