@@ -12,8 +12,12 @@ describe User do
   end
 
   context 'create' do
+    #noinspection RubyGlobalVariableNamingConvention
     before do
+      # use this to remove the 'already initialized constant' warning
+      v, $VERBOSE = $VERBOSE, nil
       WebOmni::Application::USER_LIMIT = 1
+      $VERBOSE = v
     end
 
     subject { User.new }
