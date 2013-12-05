@@ -8,7 +8,5 @@ require 'email_spec'
 require 'rspec/rails'
 require 'rspec-spies'
 
-ENV['RAILS_ENV'] = 'test'
-
 # Require all of the RSpec Support libraries
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

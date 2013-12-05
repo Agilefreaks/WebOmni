@@ -81,7 +81,7 @@ group :test do
   gem 'accept_values_for'
   gem 'shoulda'
   gem 'simplecov'
-  gem 'webrat'
+  gem 'capybara'
   gem 'email_spec'
   gem 'mongoid-rspec'
   gem 'fabrication'

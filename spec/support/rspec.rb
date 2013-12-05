@@ -19,6 +19,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.include(EmailSpec::Helpers)
-  config.include(EmailSpec::Matchers)
+  config.include Capybara::DSL
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
 end
