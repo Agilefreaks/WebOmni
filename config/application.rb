@@ -33,8 +33,9 @@ module WebOmni
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
     config.paths.add 'app/api', glob: "**/*.rb"
-    config.autoload_paths += Dir["#{Rails.root}/app/api/*", "#{Rails.root}/app/factories/*"]
+    config.autoload_paths += Dir["#{Rails.root}/app/api/*", "#{Rails.root}/app/factories/*", "#{Rails.root}/app/finders/*"]
 
     USER_LIMIT = 1500
+    GOOGLE_API_KEY = 'AIzaSyDiX6YE0kjKmnjSygNRC_sYq6MBUfzsg2I'
   end
 end

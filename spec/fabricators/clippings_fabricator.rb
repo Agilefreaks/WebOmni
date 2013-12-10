@@ -1,2 +1,0 @@
-Fabricator(:clipping) do
-end

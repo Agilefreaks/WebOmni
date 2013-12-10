@@ -16,6 +16,16 @@ module WebOmni
       header['Access-Control-Request-Method'] = '*'
     end
 
+    helpers do
+      def current_user
+        @current_user ||= User.where(email: headers['Channel']).first
+      end
+
+      def authenticate!
+        error!('401 Unauthorized', 401) unless current_user
+      end
+    end
+
     mount Resources::ClippingsAPI
     mount Resources::DevicesAPI
     mount Resources::ActivationTokensAPI

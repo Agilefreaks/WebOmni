@@ -1,6 +1,5 @@
 require 'spec_helper'
 
 describe Clipping do
-  it { should validate_presence_of :token }
-  it { should validate_presence_of :content }
+  it { should be_embedded_in :user }
 end

@@ -1,47 +1,35 @@
 require 'spec_helper'
 
 describe ClippingFactory do
-  describe 'create' do
-    subject { ClippingFactory.create(content: content, token: 'token', registrationId: '42') }
+  let(:factory) { ClippingFactory.new }
 
-    before :each do
-      allow(Notify).to receive(:user).and_return(nil)
-    end
+  describe 'create' do
+    let(:user) { Fabricate(:user) }
+
+    subject { factory.create(user.email, content) }
 
     context 'when content is string' do
       let(:content) { 'some' }
 
-      it 'will add a new clipping' do
-        expect { subject }.to change(Clipping, :count).by(1)
-      end
+      its(:new_record?) { should == false }
 
-      it 'will add a clipping with unknown type' do
-        subject
-        expect(Clipping.last.type).to eq(:unknown)
-      end
+      its(:user) { should == user }
 
-      it 'will call Notify with correct args' do
-        expect(Notify).to receive(:user).with('token', '42')
-        subject
-      end
+      its(:type) { should == :unknown }
+
+      its(:content) { should == 'some' }
     end
 
     context 'when content is phone' do
       let(:content) { '+40745857479' }
 
-      it 'will add a clipping with phone_number type' do
-        subject
-        expect(Clipping.last.type).to eq(:phone_number)
-      end
+      its(:type) { should == :phone_number}
     end
 
     context 'when content is https link' do
       let(:content) { 'https://news.ycombinator.com/item?id=6602902' }
 
-      it 'saves the correct content' do
-        subject
-        expect(Clipping.last.content).to eq('https://news.ycombinator.com/item?id=6602902')
-      end
+      its(:content) { should == 'https://news.ycombinator.com/item?id=6602902' }
     end
   end
 end
