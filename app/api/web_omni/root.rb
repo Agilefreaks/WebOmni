@@ -16,7 +16,6 @@ module WebOmni
       header['Access-Control-Request-Method'] = '*'
     end
 
-    mount Resources::UsersAPI
     mount Resources::ClippingsAPI
     mount Resources::DevicesAPI
     mount Resources::ActivationTokensAPI

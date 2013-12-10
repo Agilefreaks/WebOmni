@@ -46,7 +46,6 @@ class User
   field :nickname, :type => String
   field :early_adopter, :type => Mongoid::Boolean, :default => -> { User.where(early_adopter: true).count < WebOmni::Application::USER_LIMIT }
   field :image_url, :type => String
-  field :token, :type => String, :default => ->{SecureRandom.uuid}
   field :devices, :type => Array
 
   # relations
@@ -58,9 +57,6 @@ class User
 
   embeds_many :registered_devices
   accepts_nested_attributes_for :registered_devices
-
-  # indexes
-  index({token: 1}, {unique: true})
 
   def name
     "#{first_name} #{last_name}"
