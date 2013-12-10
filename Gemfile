@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
 
 gem 'mongoid', '4.0.0.alpha1'
 gem 'bson_ext'
@@ -41,7 +41,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'humane-rails', github: 'balauru/humane-rails'
+gem 'humane-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -62,16 +62,13 @@ group :development do
   gem 'capistrano-puma', require: false, github: 'balauru/capistrano-puma'
 end
 
-group :production do
-  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
-  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
-end
-
 group :development, :test do
   gem 'awesome_print'
   gem 'rb-inotify', '~> 0.9'
   gem 'rspec-rails', '~> 2.0'
   gem 'rspec-spies'
+  # use this to fetch the UI page one time
+  gem 'grape-swagger-rails', github: 'balauru/grape-swagger-rails'
 end
 
 group :test do
