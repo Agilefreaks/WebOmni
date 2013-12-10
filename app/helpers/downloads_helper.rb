@@ -1,9 +1,9 @@
 module DownloadsHelper
   def winomni_url
     if Rails.env.staging?
-      'http://cdn.omnipasteapp.com/staging/win/Omnipaste-staging.application'
+      "http://cdn.omnipasteapp.com/staging/win/Omnipaste-staging.application"
     else
-      'http://cdn.omnipasteapp.com/production/win/Omnipaste.application'
+      "http://cdn.omnipasteapp.com/production/win/Omnipaste.application"
     end
   end
 
@@ -20,7 +20,7 @@ module DownloadsHelper
   end
 
   def render_windows_client
-    render partial: 'downloads/download_windows' if !!(user_agent(request.env['HTTP_USER_AGENT']).os =~ (/Windows/i))
+    render partial: 'downloads/download_windows'
   end
 
   def render_linux_client
