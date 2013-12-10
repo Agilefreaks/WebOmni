@@ -30,9 +30,9 @@ module WebOmni
     end
 
     config.assets.initialize_on_precompile = false
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
-    config.paths.add "app/api", glob: "**/*.rb"
+    config.paths.add 'app/api', glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*", "#{Rails.root}/app/factories/*"]
 
     USER_LIMIT = 1500
