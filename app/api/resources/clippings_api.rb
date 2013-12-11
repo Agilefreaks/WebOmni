@@ -8,7 +8,7 @@ module WebOmni
         end
       end
 
-      desc 'Create a clipping', {
+      desc 'Create a clipping.', {
           headers: {
               :'Channel' => {
                   description: 'The channel this clipping should be propagated to, usually the users email address',
@@ -24,7 +24,7 @@ module WebOmni
         present CreateClipping.with(post_params), :with => Entities::ClippingEntity
       end
 
-      desc 'Get latest clipping for a given Channel and Device', {
+      desc 'Get latest clipping.', {
           headers: {
               :'Channel' => {
                   description: 'The channel this clipping should be propagated to, usually the users email address',
