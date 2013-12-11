@@ -12,8 +12,8 @@ describe Resources::ClippingsAPI do
       let(:email) { current_user.email }
 
       it 'will call create with the correct params on the factory' do
-        ClippingFactory.stub_chain(create: Clipping.new)
-        expect(ClippingFactory).to receive(:create).with('content' => 'content', 'channel' => email)
+        allow(CreateClipping).to receive(:with).and_return(Clipping.new)
+        expect(CreateClipping).to receive(:with).with('content' => 'content', 'channel' => email)
 
         post '/api/v1/clippings', params.to_json, options
       end
@@ -35,7 +35,7 @@ describe Resources::ClippingsAPI do
 
       context 'and only 1 clipping' do
         let(:email) { current_user.email }
-        let(:clipping) { Fabricate.build(:clipping, content: 'content') }
+        let(:clipping) { Clipping.new(content: 'content') }
 
         it 'calls FindClipping for with correct argument' do
           allow(FindClipping).to receive(:for).with(email).and_return(clipping)

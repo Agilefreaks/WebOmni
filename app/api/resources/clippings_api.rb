@@ -21,7 +21,7 @@ module WebOmni
       end
       post '/' do
         authenticate!
-        present ClippingFactory.create(post_params), :with => Entities::ClippingEntity
+        present CreateClipping.with(post_params), :with => Entities::ClippingEntity
       end
 
       desc 'Get latest clipping for a given Channel and Device', {
