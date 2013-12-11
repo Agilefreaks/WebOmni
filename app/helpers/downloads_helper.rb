@@ -1,12 +1,4 @@
 module DownloadsHelper
-  def winomni_url
-    if Rails.env.staging?
-      "http://cdn.omnipasteapp.com/staging/win/Omnipaste-staging.application"
-    else
-      "http://cdn.omnipasteapp.com/production/win/Omnipaste.application"
-    end
-  end
-
   def android_url
     if Rails.env.staging?
       'http://cdn.omnipasteapp.com/staging/android/omnipaste.apk'

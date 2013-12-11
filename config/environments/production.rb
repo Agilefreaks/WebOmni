@@ -86,4 +86,7 @@ WebOmni::Application.configure do
 
   # Omniauth
   OmniAuth.config.full_host = 'https://www.omnipasteapp.com'
+
+  # download links
+  WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://cdn.omnipasteapp.com/production/win/omnipaste-setup.exe'
 end
