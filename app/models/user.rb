@@ -21,6 +21,8 @@ class User
 
   embeds_many :registered_devices
   accepts_nested_attributes_for :registered_devices
+  
+  embeds_many :clippings
 
   def name
     "#{first_name} #{last_name}"

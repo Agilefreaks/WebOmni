@@ -1,41 +1,47 @@
 require 'spec_helper'
 
 describe Resources::ClippingsAPI do
-  describe "POST 'api/v1/clippings'" do
-    let!(:user) { Fabricate(:user, email: 'token@user.com') }
-    let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json'} }
-    let(:params) { {:'content' => 'content', :'token' => 'token@user.com'} }
+  let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'Channel' => email} }
 
-    it 'will call insert a new clipping' do
-      expect { post '/api/v1/clippings', params.to_json, options }.to change(Clipping, :count).by(1)
+  describe "POST 'api/v1/clippings'" do
+    let(:params) { {:'content' => 'content'} }
+
+    context 'with a valid channel' do
+      include_context :logged_in_as_user
+
+      let(:email) { current_user.email }
+
+      it 'will call create with the correct params on the factory' do
+        ClippingFactory.stub_chain(create: Clipping.new)
+        expect(ClippingFactory).to receive(:create).with('content' => 'content', 'channel' => email)
+
+        post '/api/v1/clippings', params.to_json, options
+      end
+    end
+
+    context 'with a invalid channel' do
+      let(:email) { 'some@other.com' }
+
+      it 'will raise error' do
+        post '/api/v1/clippings', params.to_json, options
+        expect(response.code).to eq('401')
+      end
     end
   end
 
   describe "GET 'api/v1/clippings'" do
-    context 'when channel exists and has only one clipping' do
-      let!(:clipping) { Fabricate(:clipping, token: 'email@domain.com', content: 'content') }
+    context 'with a valid channel' do
+      include_context :logged_in_as_user
 
-      it 'returns the clipping' do
-        get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql Entities::ClippingEntity.new(clipping).to_json
-      end
-    end
+      context 'and only 1 clipping' do
+        let(:email) { current_user.email }
+        let(:clipping) { Fabricate.build(:clipping, content: 'content') }
 
-    context 'when channel exists and has more than one clippings' do
-      let!(:first_clipping) { Fabricate(:clipping, created_at: 1.day.ago, token: 'email@domain.com', content: 'first content') }
-      let!(:second_clipping) { Fabricate(:clipping, created_at: Date.today, token: 'email@domain.com', content: 'second content') }
-      let!(:last_clipping) { Fabricate(:clipping, created_at: 1.week.ago, token: 'email@domain.com', content: 'latest content') }
-
-      it 'returns the most recent clipping' do
-        get '/api/v1/clippings', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql Entities::ClippingEntity.new(second_clipping).to_json
-      end
-    end
-
-    context 'When there is no clipping for that channel' do
-      it 'is successful but with null result' do
-        get '/api/v1/clippings/', nil, {Channel: 'email@domain.com'}
-        expect(response.body).to eql 'null'
+        it 'calls FindClipping for with correct argument' do
+          allow(FindClipping).to receive(:for).with(email).and_return(clipping)
+          get '/api/v1/clippings', nil, options
+          expect(response.body).to eql Entities::ClippingEntity.new(clipping).to_json
+        end
       end
     end
   end

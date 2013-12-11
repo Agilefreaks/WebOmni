@@ -7,6 +7,8 @@ describe User do
 
   it { should embed_many(:registered_devices) }
 
+  it { should embed_many(:clippings) }
+
   context 'create' do
     #noinspection RubyGlobalVariableNamingConvention
     before do
