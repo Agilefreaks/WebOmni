@@ -19,17 +19,16 @@ module WebOmni
 
       desc 'Register a device'
       params do
-        requires :registrationId, type: String
+        requires :registrationId, type: String, desc: 'The unique identifier for your device.'
       end
       post '/' do
         Register.device(channel, permitted_params[:registrationId])
       end
 
-      desc 'Unregister a device'
       params do
-        requires :registrationId, type: String
+        requires :registrationId, type: String, desc: 'The unique identifier for your device.'
       end
-      delete ':registrationId' do
+      delete '/' do
         Unregister.device(channel, permitted_params[:registrationId])
       end
 
@@ -39,6 +38,23 @@ module WebOmni
       end
       post '/call' do
         Call.device(channel, call_permitted_params[:registrationId], call_permitted_params[:phone_number])
+      end
+
+      desc 'Activate a new device using an activation token.', {
+          :headers => {
+              :'Token' => {
+                  desc: 'Secret activation_token. You can get this from the /whatsmytoken page after logging in.',
+                  require: true
+              }
+          }
+      }
+      params do
+        requires :device, type: Symbol, values: [], desc: 'Device type. Possible devices are windows or android'
+      end
+      put '/activate' do
+        activation_token = ActivationService.new.activate(params[:token], params[:device])
+
+        present activation_token.user, :with => Entities::UserActivateResponseEntity if activation_token
       end
     end
   end
