@@ -1,18 +1,23 @@
 class Register
-  def self.device(channel, registration_id)
-    Register.new(channel, registration_id).execute
+  def self.device(params)
+    Register.new(params['channel'], params['identifier'], params['name']).execute
   end
 
-  attr_accessor :channel, :registration_id
+  attr_accessor :channel, :identifier, :name
 
-  def initialize(channel, registration_id)
+  def initialize(channel, identifier, name)
     @channel = channel
-    @registration_id = registration_id
+    @identifier = identifier
+    @name = name
   end
 
   def execute
-    User.find_by(email: @channel).
-        registered_devices.
-        find_or_create_by(registration_id: @registration_id)
+    user = User.find_by(email: @channel)
+
+    registered_device = user.registered_devices.find_or_initialize_by(:identifier => @identifier)
+    registered_device.name = name
+    registered_device.save!
+
+    registered_device
   end
 end

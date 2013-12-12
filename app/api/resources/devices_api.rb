@@ -2,16 +2,9 @@ module WebOmni
   class Resources::DevicesAPI < Grape::API
     resources :devices do
       helpers do
-        def permitted_params
-          ActionController::Parameters.new(params).permit(:registrationId)
-        end
-
-        def call_permitted_params
-          ActionController::Parameters.new(params).permit(:registrationId, :phone_number)
-        end
-
-        def channel
-          headers['Channel']
+        def register_params
+          result = params.merge(channel: headers['Channel'])
+          ActionController::Parameters.new(result).permit(:channel, :identifier, :name)
         end
       end
 
@@ -24,11 +17,12 @@ module WebOmni
           }
       }
       params do
-        requires :registrationId, type: String, desc: 'The unique identifier for your device.'
+        requires :identifier, type: String, desc: 'Unique device identifier.'
+        optional :name, type: String, desc: 'The name of the device.'
       end
       post '/' do
         authenticate!
-        Register.device(channel, permitted_params[:registrationId])
+        Register.device(register_params)
       end
 
       desc 'Unregister a device.', {
@@ -47,7 +41,23 @@ module WebOmni
         Unregister.device(channel, permitted_params[:registrationId])
       end
 
-      desc 'Call the number'
+      desc 'Activate a device.', {
+          headers: {
+              :'Channel' => {
+                  description: 'The channel this clipping should be propagated to, usually the users email address',
+                  required: true
+              }
+          }
+      }
+
+      desc 'Call the number', {
+          headers: {
+              :'Channel' => {
+                  description: 'The channel this clipping should be propagated to, usually the users email address',
+                  required: true
+              }
+          }
+      }
       params do
         requires :phone_number, type: String
       end

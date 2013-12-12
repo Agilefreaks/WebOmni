@@ -3,8 +3,10 @@ class RegisteredDevice
   include Mongoid::Timestamps
 
   field :registration_id, type: String
+  field :name, type: String
+  field :identifier, type: String
 
   embedded_in :user
 
-  validates_presence_of :registration_id
+  validates_presence_of :identifier
 end

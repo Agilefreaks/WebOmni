@@ -4,11 +4,11 @@ describe Resources::DevicesAPI do
   describe "POST 'api/v1/devices'" do
     include_context :logged_in_as_user
 
-    let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => current_user.email} }
-    let(:params) { {:'registrationId' => '123'} }
+    let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'Channel' => current_user.email} }
+    let(:params) { {:'identifier' => 'Omega prime', :'name' => 'The truck'} }
 
     it 'will call Register.device with the correct params' do
-      expect(Register).to receive(:device).with(current_user.email, '123')
+      expect(Register).to receive(:device).with('channel' => current_user.email, 'identifier' => 'Omega prime', 'name' => 'The truck')
       post '/api/v1/devices', params.to_json, options
     end
   end
