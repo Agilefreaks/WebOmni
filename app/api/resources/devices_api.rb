@@ -93,21 +93,6 @@ module WebOmni
           present DeactivateDevice.with(deactivate_params), with: Entities::RegisteredDeviceEntity
         end
       end
-
-      desc 'Call the number', {
-          headers: {
-              :'Channel' => {
-                  description: 'The channel, usually the users email address',
-                  required: true
-              }
-          }
-      }
-      params do
-        requires :phone_number, type: String
-      end
-      post '/call' do
-        Call.device(channel, call_permitted_params[:registrationId], call_permitted_params[:phone_number])
-      end
     end
   end
 end

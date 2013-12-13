@@ -29,6 +29,7 @@ module WebOmni
     mount Resources::ClippingsAPI
     mount Resources::DevicesAPI
     mount Resources::ActivationAPI
+    mount Resources::PhonesAPI
 
     if Rails.env.development?
       add_swagger_documentation(

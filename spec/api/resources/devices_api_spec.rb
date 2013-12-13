@@ -47,13 +47,4 @@ describe Resources::DevicesAPI do
       put '/api/v1/devices/sony%20tv/deactivate', '', options
     end
   end
-
-  describe "POST 'api/v1/devices/call'" do
-    let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => 'token@user.com'} }
-
-    it 'will call Call.device with the correct params' do
-      expect(Call).to receive(:device).with('token@user.com', '123', 'phone_number')
-      post '/api/v1/devices/call', {:'phone_number' => 'phone_number', :'registrationId' => '123'}.to_json, options
-    end
-  end
 end
