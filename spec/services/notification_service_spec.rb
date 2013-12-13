@@ -42,8 +42,8 @@ describe NotificationService do
 
     context 'when user has registered devices' do
       before :each do
-        user.registered_devices.create(registration_id: '42')
-        user.registered_devices.create(registration_id: '43')
+        user.registered_devices.create(registration_id: '42', identifier: 'tv')
+        user.registered_devices.create(registration_id: '43', identifier: 'radio')
       end
 
       it 'will call send_notification with the correct params' do
