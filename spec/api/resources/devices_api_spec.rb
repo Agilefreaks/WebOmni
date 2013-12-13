@@ -17,11 +17,34 @@ describe Resources::DevicesAPI do
     include_context :logged_in_as_user
 
     let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => current_user.email} }
-    let(:params) { {:'registrationId' => '123'} }
+    let(:params) { {:'identifier' => 'sony tv'} }
 
     it 'will call Unregister device with the correct params' do
-      expect(Unregister).to receive(:device).with(current_user.email, '123')
+      expect(Unregister).to receive(:device).with('channel' => current_user.email, 'identifier' => 'sony tv')
       delete '/api/v1/devices', params.to_json, options
+    end
+  end
+
+  describe "POST 'api/v1/devices/:identifier/activate'" do
+    include_context :logged_in_as_user
+
+    let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => current_user.email} }
+    let(:params) { {:'registration_id' => '42'} }
+
+    it 'will call Unregister device with the correct params' do
+      expect(ActivateDevice).to receive(:with).with('channel' => current_user.email, 'identifier' => 'sony tv', 'registration_id' => '42')
+      post '/api/v1/devices/sony%20tv/activate', params.to_json, options
+    end
+  end
+
+  describe "PUT 'api/v1/devices/:identifier/deactivate'" do
+    include_context :logged_in_as_user
+
+    let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => current_user.email} }
+
+    it 'will call Unregister device with the correct params' do
+      expect(DeactivateDevice).to receive(:with).with('channel' => current_user.email, 'identifier' => 'sony tv')
+      put '/api/v1/devices/sony%20tv/deactivate', '', options
     end
   end
 

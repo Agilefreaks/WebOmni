@@ -10,7 +10,7 @@ module WebOmni
           }
       }
       put '/' do
-        present Activate.with(headers['Token']), :with => Entities::UserActivateResponseEntity
+        present ActivateUser.with(headers['Token']), :with => Entities::UserActivateResponseEntity
       end
     end
   end

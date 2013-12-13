@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Activate do
+describe ActivateUser do
   describe :activate do
     let(:user) { Fabricate(:user) }
 
-    subject { Activate.with(activation_token.content) }
+    subject { ActivateUser.with(activation_token.content) }
 
     context 'with un-used activation token' do
       let(:activation_token) { user.activation_tokens.create }

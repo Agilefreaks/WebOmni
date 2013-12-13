@@ -9,4 +9,6 @@ class RegisteredDevice
   embedded_in :user
 
   validates_presence_of :identifier
+
+  index({identifier: 1}, {unique: true})
 end

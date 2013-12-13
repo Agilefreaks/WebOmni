@@ -1,18 +1,18 @@
 class Unregister
-  def self.device(channel, registration_id)
-    Unregister.new(channel, registration_id).execute
+  def self.device(params)
+    Unregister.new(params['channel'], params['identifier']).execute
   end
 
-  attr_accessor :channel, :registration_id
+  attr_accessor :channel, :identifier
 
-  def initialize(channel, registration_id)
+  def initialize(channel, identifier)
     @channel = channel
-    @registration_id = registration_id
+    @identifier = identifier
   end
 
   def execute
     user = User.find_by(email: @channel)
-    device = user.registered_devices.find_by(registration_id: @registration_id)
+    device = user.registered_devices.find_by(identifier: @identifier)
     device.destroy
   end
 end

@@ -6,11 +6,11 @@ describe Unregister do
 
     context 'with a existing device' do
       before :each do
-        user.registered_devices.create(registration_id: '132')
+        user.registered_devices.create(identifier: '132')
       end
 
       it 'will delete the existing device' do
-        Unregister.device('some@user.com', '132')
+        Unregister.device('channel' => 'some@user.com', 'identifier' => '132')
         user.reload
         expect(user.registered_devices.count).to eq(0)
       end
@@ -18,7 +18,7 @@ describe Unregister do
 
     context 'with a non existing device' do
       it 'will raise DocumentNotFound' do
-        expect { Unregister.device('some@user.com', '132') }.to raise_exception(Mongoid::Errors::DocumentNotFound)
+        expect { Unregister.device('channel' => 'some@user.com', 'identifier' => '132') }.to raise_exception(Mongoid::Errors::DocumentNotFound)
       end
     end
   end

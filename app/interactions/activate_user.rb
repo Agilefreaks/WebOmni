@@ -1,6 +1,6 @@
-class Activate
+class ActivateUser
   def self.with(token)
-    Activate.new(token).activate
+    ActivateUser.new(token).execute
   end
 
   attr_reader :token
@@ -9,7 +9,7 @@ class Activate
     @token = token
   end
 
-  def activate
+  def execute
     user = User.find_by('activation_tokens.content' => @token, 'activation_tokens.used' => false)
 
     activation_token = user.activation_tokens.first_unused(@token)
