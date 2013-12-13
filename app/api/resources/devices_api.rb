@@ -11,7 +11,7 @@ module WebOmni
       desc 'Register a device', {
           headers: {
               :'Channel' => {
-                  description: 'The channel this clipping should be propagated to, usually the users email address',
+                  description: 'The channel, usually the users email address',
                   required: true
               }
           }
@@ -22,13 +22,13 @@ module WebOmni
       end
       post '/' do
         authenticate!
-        Register.device(register_params)
+        present Register.device(register_params), with: Entities::RegisteredDeviceEntity
       end
 
       desc 'Unregister a device.', {
           headers: {
               :'Channel' => {
-                  description: 'The channel this clipping should be propagated to, usually the users email address',
+                  description: 'The channel, usually the users email address',
                   required: true
               }
           }
@@ -41,19 +41,10 @@ module WebOmni
         Unregister.device(channel, permitted_params[:registrationId])
       end
 
-      desc 'Activate a device.', {
-          headers: {
-              :'Channel' => {
-                  description: 'The channel this clipping should be propagated to, usually the users email address',
-                  required: true
-              }
-          }
-      }
-
       desc 'Call the number', {
           headers: {
               :'Channel' => {
-                  description: 'The channel this clipping should be propagated to, usually the users email address',
+                  description: 'The channel, usually the users email address',
                   required: true
               }
           }
