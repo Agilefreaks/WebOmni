@@ -5,8 +5,6 @@ describe ActivationToken do
 
   it { should respond_to(:content) }
 
-  its(:type) { should eq :unknown }
-
   its(:used) { should eq false }
 
   describe 'unused scope' do
