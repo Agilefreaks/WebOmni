@@ -2,34 +2,66 @@ require 'spec_helper'
 
 describe NotificationService do
   let(:service) { NotificationService.new }
+  let(:gcm) { double(:gcm) }
+  let(:user) { Fabricate(:user) }
+
+  before :each do
+    service.gcm = gcm
+    allow(gcm).to receive(:send_notification)
+  end
 
   describe :notify do
-    let(:gcm) { double(:gcm) }
-    let(:user) { Fabricate(:user) }
-    let(:clipping) { Clipping.new(user: user) }
+    context 'when model is clipping' do
+      let(:clipping) { Clipping.new }
 
-    before :each do
-      service.gcm = gcm
-      allow(gcm).to receive(:send_notification)
+      it 'will call clipping and pass model' do
+        allow(service).to receive(:clipping)
+        expect(service).to receive(:clipping).with(clipping)
+        service.notify(clipping)
+      end
     end
 
+    context 'when model is PhoneNumber' do
+      let(:phone_number) { PhoneNumber.new }
+
+      it 'will call phone_number and pass model' do
+        allow(service).to receive(:phone_number)
+        expect(service).to receive(:phone_number).with(phone_number)
+        service.notify(phone_number)
+      end
+    end
+  end
+
+  shared_examples :gcm_notification do |hash|
     context 'when user has no registered devices' do
       it 'will not call send_notification' do
         expect(gcm).to_not receive(:send_notification)
-        service.notify(clipping)
+        service.notify(model)
       end
     end
 
     context 'when user has registered devices' do
       before :each do
-        user.registered_devices.create(registration_id: '42')
-        user.registered_devices.create(registration_id: '43')
+        user.registered_devices.create(registration_id: '42', identifier: 'tv')
+        user.registered_devices.create(registration_id: '43', identifier: 'radio')
       end
 
       it 'will call send_notification with the correct params' do
-        expect(gcm).to receive(:send_notification).with(%w(42 43), {data: {registration_id: 'other'}, collapse_key: 'clipboard'}).once
-        service.notify(clipping)
+        expect(gcm).to receive(:send_notification).with(%w(42 43), hash).once
+        service.notify(model)
       end
     end
+  end
+
+  describe :clipping do
+    let(:model) { Clipping.new(user: user) }
+
+    it_behaves_like :gcm_notification, {data: {registration_id: 'other'}, collapse_key: 'clipboard'}
+  end
+
+  describe :phone_number do
+    let(:model) { PhoneNumber.new(user: user, content: '123') }
+
+    it_behaves_like :gcm_notification, {data: {registration_id: 'other', phone_number: '123'}, collapse_key: 'call'}
   end
 end

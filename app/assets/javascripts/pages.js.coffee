@@ -17,9 +17,6 @@ $('#demo').on('hide', ->
 )
 
 $('#windows_download_redirect_link').click(->
-  PagesHelper.trackDownloadEvent('Windows', $("#windows_download_link").data('user'))
-
-  document.getElementById('windows_download_link').click()
   redirectUrl = $(this).data('redirect')
 
   setTimeout((->
@@ -27,7 +24,7 @@ $('#windows_download_redirect_link').click(->
     1000
   )
 
-  return false;
+  return true;
 )
 
 $("#android_download_link").click(->

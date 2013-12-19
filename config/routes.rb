@@ -14,7 +14,11 @@ WebOmni::Application.routes.draw do
   resources :contact, only: [:create]
   resource :token, only: [:show]
   resources :pricing, only: [:index, :show]
-  resources :downloads, only: [:index, :show]
+  resources :downloads, only: [:index] do
+    collection do
+      get 'windows'
+    end
+  end
 
   get 'whatsmytoken', to: 'tokens#show'
 
