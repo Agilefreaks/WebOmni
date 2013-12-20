@@ -32,7 +32,7 @@ module WebOmni
               }
           }
       }
-      get '/' do
+      get '/last' do
         authenticate!
         present FindClipping.for(current_user.email), :with => Entities::ClippingEntity
       end

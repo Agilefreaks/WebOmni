@@ -29,7 +29,7 @@ describe Resources::ClippingsAPI do
     end
   end
 
-  describe "GET 'api/v1/clippings'" do
+  describe "GET 'api/v1/clippings/last'" do
     context 'with a valid channel' do
       include_context :logged_in_as_user
 
@@ -39,7 +39,7 @@ describe Resources::ClippingsAPI do
 
         it 'calls FindClipping for with correct argument' do
           allow(FindClipping).to receive(:for).with(email).and_return(clipping)
-          get '/api/v1/clippings', nil, options
+          get '/api/v1/clippings/last', nil, options
           expect(response.body).to eql Entities::ClippingEntity.new(clipping).to_json
         end
       end

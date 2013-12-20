@@ -13,19 +13,18 @@ describe Resources::DevicesAPI do
     end
   end
 
-  describe "DELETE 'api/v1/devices'" do
+  describe "DELETE 'api/v1/devices/:identifier'" do
     include_context :logged_in_as_user
 
     let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => current_user.email} }
-    let(:params) { {:'identifier' => 'sony tv'} }
 
     it 'will call Unregister device with the correct params' do
       expect(Unregister).to receive(:device).with('channel' => current_user.email, 'identifier' => 'sony tv')
-      delete '/api/v1/devices', params.to_json, options
+      delete '/api/v1/devices/sony%20tv', nil, options
     end
   end
 
-  describe "POST 'api/v1/devices/:identifier/activate'" do
+  describe "PUT 'api/v1/devices/:identifier/activate'" do
     include_context :logged_in_as_user
 
     let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => current_user.email} }
@@ -33,7 +32,7 @@ describe Resources::DevicesAPI do
 
     it 'will call Unregister device with the correct params' do
       expect(ActivateDevice).to receive(:with).with('channel' => current_user.email, 'identifier' => 'sony tv', 'registration_id' => '42')
-      post '/api/v1/devices/sony%20tv/activate', params.to_json, options
+      put '/api/v1/devices/sony%20tv/activate', params.to_json, options
     end
   end
 
