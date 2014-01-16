@@ -53,6 +53,7 @@ gem 'gcm'
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
+  gem 'pry-rails'
 
   # deploy
   gem 'capistrano', '~> 3.0', require: false
