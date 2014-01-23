@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CreateClipping do
-  let(:service) { CreateClipping.new('channel', 'some content') }
+  let(:service) { CreateClipping.new({'channel' => 'channel', 'content' => 'some content', 'identifier' => '42'}) }
 
   describe :with do
     let(:clipping_factory) { double(ClippingFactory) }
@@ -22,7 +22,7 @@ describe CreateClipping do
     end
 
     it 'will call NotificationService#notify' do
-      expect(notification_service).to receive(:notify).with(clipping)
+      expect(notification_service).to receive(:notify).with(clipping, '42')
       service.create
     end
 

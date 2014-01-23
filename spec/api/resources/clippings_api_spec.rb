@@ -4,7 +4,7 @@ describe Resources::ClippingsAPI do
   let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'Channel' => email} }
 
   describe "POST 'api/v1/clippings'" do
-    let(:params) { {:'content' => 'content'} }
+    let(:params) { {:'content' => 'content', 'identifier' => '42'} }
 
     context 'with a valid channel' do
       include_context :logged_in_as_user
@@ -13,7 +13,7 @@ describe Resources::ClippingsAPI do
 
       it 'will call create with the correct params on the factory' do
         allow(CreateClipping).to receive(:with).and_return(Clipping.new)
-        expect(CreateClipping).to receive(:with).with('content' => 'content', 'channel' => email)
+        expect(CreateClipping).to receive(:with).with('content' => 'content', 'channel' => email, 'identifier' => '42')
 
         post '/api/v1/clippings', params.to_json, options
       end

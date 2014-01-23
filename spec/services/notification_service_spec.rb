@@ -4,6 +4,7 @@ describe NotificationService do
   let(:service) { NotificationService.new }
   let(:gcm) { double(:gcm) }
   let(:user) { Fabricate(:user) }
+  let(:source_identifier) { 'tv' }
 
   before :each do
     service.gcm = gcm
@@ -16,8 +17,8 @@ describe NotificationService do
 
       it 'will call clipping and pass model' do
         allow(service).to receive(:clipping)
-        expect(service).to receive(:clipping).with(clipping)
-        service.notify(clipping)
+        expect(service).to receive(:clipping).with(clipping, source_identifier)
+        service.notify(clipping, source_identifier)
       end
     end
 
@@ -26,8 +27,8 @@ describe NotificationService do
 
       it 'will call phone_number and pass model' do
         allow(service).to receive(:phone_number)
-        expect(service).to receive(:phone_number).with(phone_number)
-        service.notify(phone_number)
+        expect(service).to receive(:phone_number).with(phone_number, source_identifier)
+        service.notify(phone_number, source_identifier)
       end
     end
   end
@@ -36,7 +37,7 @@ describe NotificationService do
     context 'when user has no registered devices' do
       it 'will not call send_notification' do
         expect(gcm).to_not receive(:send_notification)
-        service.notify(model)
+        service.notify(model, source_identifier)
       end
     end
 
@@ -47,8 +48,8 @@ describe NotificationService do
       end
 
       it 'will call send_notification with the correct params' do
-        expect(gcm).to receive(:send_notification).with(%w(42 43), hash).once
-        service.notify(model)
+        expect(gcm).to receive(:send_notification).with(%w(43), hash).once
+        service.notify(model, source_identifier)
       end
     end
   end
