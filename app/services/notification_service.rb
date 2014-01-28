@@ -11,7 +11,7 @@ class NotificationService
   end
 
   def phone_number(model, source_identifier)
-    options = {data: {registration_id: 'other', phone_number: model.content}, collapse_key: 'call'}
+    options = {data: {registration_id: 'other', phone_number: model.content}, collapse_key: 'phone'}
     gcm_send(model.user, source_identifier, options)
   end
 

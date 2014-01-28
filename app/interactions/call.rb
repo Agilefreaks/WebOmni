@@ -15,6 +15,6 @@ class Call
     user = User.find_by(email: channel)
 
     @notification_service ||= NotificationService.new
-    @notification_service.notify(PhoneNumber.new(user: user, content: phone_number))
+    @notification_service.notify(PhoneNumber.new(user: user, content: phone_number), '')
   end
 end
