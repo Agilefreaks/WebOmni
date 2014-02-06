@@ -10,7 +10,7 @@ describe NewRelic::Agent::Instrumentation::Grape do
       .should_receive(:perform_action_with_newrelic_trace)
       .and_yield
 
-      get '/api/v1/clippings', nil, {Channel: current_user.email}
+      get '/api/v1/clippings/last', nil, {Channel: current_user.email}
 
       expect(response.status).to eq 200
     end

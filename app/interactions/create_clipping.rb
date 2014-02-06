@@ -1,14 +1,15 @@
 class CreateClipping
   def self.with(params)
-    CreateClipping.new(params['channel'], params['content']).create
+    CreateClipping.new(params).create
   end
 
-  attr_reader :channel, :content
+  attr_reader :channel, :content, :identifier
   attr_accessor :clipping_factory, :notification_service
 
-  def initialize(channel, content)
-    @channel = channel
-    @content = content
+  def initialize(args)
+    @channel = args['channel']
+    @content = args['content']
+    @identifier = args['identifier']
   end
 
   def create
@@ -16,7 +17,7 @@ class CreateClipping
     @notification_service ||= NotificationService.new
 
     clipping = @clipping_factory.create(@channel, @content)
-    @notification_service.notify(clipping)
+    @notification_service.notify(clipping, @identifier)
 
     clipping
   end

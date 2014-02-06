@@ -51,9 +51,11 @@ module WebOmni
       params do
         requires :identifier, type: String, desc: 'Unique device identifier.'
       end
-      delete '/' do
-        authenticate!
-        Unregister.device(unregister_params)
+      route_param :identifier do
+        delete '/' do
+          authenticate!
+          Unregister.device(unregister_params)
+        end
       end
 
       desc 'Activate.', {
@@ -69,11 +71,9 @@ module WebOmni
         requires :identifier, type: String, desc: 'The unique device identifier.'
         optional :provider, type: Symbol, values: [:gcm], desc: 'The push notification provider'
       end
-      route_param :identifier do
-        post 'activate' do
-          authenticate!
-          present ActivateDevice.with(activate_params), with: Entities::RegisteredDeviceEntity
-        end
+      put 'activate' do
+        authenticate!
+        present ActivateDevice.with(activate_params), with: Entities::RegisteredDeviceEntity
       end
 
       desc 'Deactivate.', {
@@ -87,11 +87,9 @@ module WebOmni
       params do
         requires :identifier, type: String, desc: 'The unique device identifier.'
       end
-      route_param :identifier do
-        put 'deactivate' do
-          authenticate!
-          present DeactivateDevice.with(deactivate_params), with: Entities::RegisteredDeviceEntity
-        end
+      put 'deactivate' do
+        authenticate!
+        present DeactivateDevice.with(deactivate_params), with: Entities::RegisteredDeviceEntity
       end
     end
   end
