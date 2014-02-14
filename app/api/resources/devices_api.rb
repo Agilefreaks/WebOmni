@@ -23,6 +23,7 @@ module WebOmni
         end
       end
 
+
       desc 'Register a device', {
           headers: {
               :'Channel' => {
