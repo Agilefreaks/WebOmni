@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/balauru/fabrication.git
-  revision: 06d923c5f5f6d6930108ac91dc68f9b3c06aa277
+  revision: 27a421fbd5a0fe1c77fe55fcef4f2f16e44e8044
   branch: 203
   specs:
     fabrication (2.9.7)
