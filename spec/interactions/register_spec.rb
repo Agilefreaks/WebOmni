@@ -4,7 +4,7 @@ describe Register do
   describe 'execute' do
     let!(:user) { Fabricate(:user, email: 'user@email.com') }
 
-    subject { Register.device('channel' => 'user@email.com', 'identifier' => 'Tu La', 'name' => 'Tu mem') }
+    subject { Register.device('channel' => 'user@email.com', 'identifier' => 'Tu La', 'name' => 'Tu mem', 'provider' => :gcm) }
 
     shared_examples :registered_device do
       its(:user) { should == user }
@@ -15,7 +15,7 @@ describe Register do
     end
 
     context 'when user has a device with the same identifier' do
-      let!(:registered_device) { user.registered_devices.create(identifier: 'Tu La') }
+      let!(:registered_device) { user.registered_devices.create(identifier: 'Tu La', provider: :gcm) }
 
       it_behaves_like :registered_device
 

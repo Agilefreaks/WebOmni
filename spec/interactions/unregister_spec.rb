@@ -6,7 +6,7 @@ describe Unregister do
 
     context 'with a existing device' do
       before :each do
-        user.registered_devices.create(identifier: '132')
+        user.registered_devices.create(identifier: '132', provider: :gcm)
       end
 
       it 'will delete the existing device' do

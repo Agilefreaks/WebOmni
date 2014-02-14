@@ -4,11 +4,11 @@ describe ActivateDevice do
   describe 'with' do
     let(:user) { Fabricate(:user) }
 
-    subject { ActivateDevice.with('channel' => user.email, 'identifier' => 'flute', 'registration_id' => '42') }
+    subject { ActivateDevice.with('channel' => user.email, 'identifier' => 'flute', 'registration_id' => '42', 'provider' => :gcm) }
 
     context 'with an existing registered device' do
       before :each do
-        user.registered_devices.create(identifier: 'flute')
+        user.registered_devices.create(identifier: 'flute', provider: :gcm)
       end
 
       its(:registration_id) { should == '42' }
