@@ -4,8 +4,8 @@ ruby '2.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-gem 'mongoid', '4.0.0.alpha2'
-gem 'bson_ext'
+gem 'mongoid', '4.0.0.beta1'
+gem 'bson'
 
 gem 'puma'
 

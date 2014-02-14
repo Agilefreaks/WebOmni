@@ -11,7 +11,7 @@ module WebOmni
         end
 
         def activate_params
-          ActionController::Parameters.new(merged_params).permit(:channel, :identifier, :registration_id)
+          ActionController::Parameters.new(merged_params).permit(:channel, :identifier, :registration_id, :provider)
         end
 
         def deactivate_params
@@ -22,6 +22,7 @@ module WebOmni
           params.merge(channel: headers['Channel'])
         end
       end
+
 
       desc 'Register a device', {
           headers: {
@@ -69,7 +70,7 @@ module WebOmni
       params do
         requires :registration_id, type: String, desc: 'The registration id for the push notification service.'
         requires :identifier, type: String, desc: 'The unique device identifier.'
-        optional :provider, type: Symbol, values: [:gcm], desc: 'The push notification provider'
+        requires :provider, type: Symbol, values: [:gcm, :omni], desc: 'The push notification provider'
       end
       put 'activate' do
         authenticate!

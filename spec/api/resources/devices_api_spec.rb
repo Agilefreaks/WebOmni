@@ -28,10 +28,10 @@ describe Resources::DevicesAPI do
     include_context :logged_in_as_user
 
     let(:options) { {:'CONTENT_TYPE' => 'application/json', :'ACCEPT' => 'application/json', :'CHANNEL' => current_user.email} }
-    let(:params) { {:'registration_id' => '42', :'identifier' => 'sony tv'} }
+    let(:params) { {:'registration_id' => '42', :'identifier' => 'sony tv', :'provider' => :gcm} }
 
     it 'will call ActivateDevice with the correct params' do
-      expect(ActivateDevice).to receive(:with).with('channel' => current_user.email, 'identifier' => 'sony tv', 'registration_id' => '42')
+      expect(ActivateDevice).to receive(:with).with('channel' => current_user.email, 'identifier' => 'sony tv', 'registration_id' => '42', 'provider' => :gcm)
       put '/api/v1/devices/activate', params.to_json, options
     end
   end

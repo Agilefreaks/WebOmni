@@ -8,7 +8,7 @@ describe DeactivateDevice do
 
     context 'with an existing registered device' do
       before :each do
-        user.registered_devices.create(identifier: 'violin', registration_id: '42')
+        user.registered_devices.create(identifier: 'violin', registration_id: '42', provider: :gcm)
       end
 
       its(:registration_id) { should == nil }
