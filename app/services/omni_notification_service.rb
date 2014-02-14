@@ -4,6 +4,7 @@ require 'json'
 
 class OmniNotificationService
   include HTTParty
+
   PUSH_URL = 'http://localhost:3001'
   base_uri PUSH_URL
   default_timeout 30
