@@ -6,6 +6,13 @@ GIT
       capistrano (>= 3.0.0.pre)
 
 GIT
+  remote: git://github.com/balauru/fabrication.git
+  revision: 06d923c5f5f6d6930108ac91dc68f9b3c06aa277
+  branch: 203
+  specs:
+    fabrication (2.9.7)
+
+GIT
   remote: git://github.com/balauru/grape-swagger-rails.git
   revision: 93f25b2d21d65ff871d68d38d5f3551923313b06
   specs:
@@ -107,7 +114,6 @@ GEM
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.0.2)
-    fabrication (2.9.7)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
@@ -404,7 +410,7 @@ DEPENDENCIES
   database_cleaner
   devise
   email_spec
-  fabrication
+  fabrication!
   gcm
   grape
   grape-entity

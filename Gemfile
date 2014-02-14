@@ -68,7 +68,6 @@ group :development, :test do
   gem 'rb-inotify', '~> 0.9'
   gem 'rspec-rails', '~> 2.0'
   gem 'rspec-spies'
-  gem 'fabrication'
   # use this to fetch the UI page one time
   gem 'grape-swagger-rails', github: 'balauru/grape-swagger-rails'
 end
@@ -82,6 +81,7 @@ group :test do
   gem 'simplecov'
   gem 'capybara'
   gem 'email_spec'
+  gem 'fabrication', github: 'balauru/fabrication', branch: '203'
   gem 'mongoid-rspec'
   gem 'zeus', '0.13.4.pre2'
   gem 'guard'
