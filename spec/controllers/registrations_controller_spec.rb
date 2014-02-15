@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rspec-rails'
 
 describe RegistrationsController do
 
@@ -7,7 +8,7 @@ describe RegistrationsController do
       get partner
     end
 
-    it { should respond_with(200) }
+    its('response.status') { should eq(200) }
 
     it 'assigns welcome' do
       expect(assigns(:welcome)).to eq welcome

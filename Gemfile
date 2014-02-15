@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0.beta1'
 
 gem 'mongoid', '4.0.0.alpha2'
 gem 'bson_ext'
@@ -61,15 +61,18 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
   gem 'capistrano-puma', require: false, github: 'balauru/capistrano-puma'
+
+  # use this to fetch the UI page one time
+  gem 'grape-swagger-rails', github: 'balauru/grape-swagger-rails'
 end
 
 group :development, :test do
   gem 'awesome_print'
   gem 'rb-inotify', '~> 0.9'
+  gem 'spring-commands-rspec'
   gem 'rspec-rails', '~> 2.0'
   gem 'rspec-spies'
-  # use this to fetch the UI page one time
-  gem 'grape-swagger-rails', github: 'balauru/grape-swagger-rails'
+  gem 'guard-rspec'
 end
 
 group :test do
@@ -77,13 +80,9 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-set'
   gem 'accept_values_for'
-  gem 'shoulda'
   gem 'simplecov'
   gem 'capybara'
   gem 'email_spec'
   gem 'fabrication', github: 'balauru/fabrication', branch: '203'
   gem 'mongoid-rspec'
-  gem 'zeus', '0.13.4.pre2'
-  gem 'guard'
-  gem 'guard-zeus'
 end
