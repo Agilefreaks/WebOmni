@@ -83,6 +83,6 @@ group :test do
   gem 'simplecov'
   gem 'capybara'
   gem 'email_spec'
-  gem 'fabrication', github: 'balauru/fabrication', branch: '203'
+  gem 'fabrication'
   gem 'mongoid-rspec'
 end
