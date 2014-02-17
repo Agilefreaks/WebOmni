@@ -81,6 +81,7 @@ group :test do
   gem 'rspec-set'
   gem 'accept_values_for'
   gem 'simplecov'
+  gem 'simplecov-teamcity-summary'
   gem 'capybara'
   gem 'email_spec'
   gem 'fabrication'

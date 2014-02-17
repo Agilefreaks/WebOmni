@@ -337,6 +337,8 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    simplecov-teamcity-summary (0.1.0)
+      simplecov
     slop (3.4.7)
     spring (1.1.1)
     spring-commands-rspec (1.0.1)
@@ -435,6 +437,7 @@ DEPENDENCIES
   rspec-spies
   simple_form
   simplecov
+  simplecov-teamcity-summary
   spring-commands-rspec
   therubyracer
   turbolinks

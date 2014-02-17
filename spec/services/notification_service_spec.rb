@@ -63,6 +63,6 @@ describe NotificationService do
   describe :phone_number do
     let(:model) { PhoneNumber.new(user: user, content: '123') }
 
-    it_behaves_like :gcm_notification, {data: {registration_id: 'other', phone_number: '123'}, collapse_key: 'call'}
+    it_behaves_like :gcm_notification, {data: {registration_id: 'other', phone_number: '123'}, collapse_key: 'phone'}
   end
 end
