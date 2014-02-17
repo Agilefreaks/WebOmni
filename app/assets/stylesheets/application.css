@@ -13,7 +13,7 @@
  *= require jumbotron-narrow
  *= require bootstrap_overrides
  *= require font-awesome
- *= require original
+ *= require humane-rails/original
  *= require pages
  *= require pricing
  */
