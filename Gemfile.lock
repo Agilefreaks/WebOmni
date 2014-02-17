@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/balauru/capistrano-puma.git
-  revision: 1065e4f7b66a00d1bc3245eb72a818d980c780d9
-  specs:
-    capistrano-puma (0.0.1)
-      capistrano (>= 3.0.0.pre)
-
-GIT
   remote: git://github.com/balauru/grape-swagger-rails.git
   revision: 93f25b2d21d65ff871d68d38d5f3551923313b06
   specs:
@@ -74,6 +67,8 @@ GEM
     capistrano-rvm (0.1.1)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano3-puma (0.2.2)
+      capistrano (~> 3.0)
     capybara (2.2.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -402,9 +397,9 @@ DEPENDENCIES
   bson_ext
   capistrano (~> 3.0)
   capistrano-bundler
-  capistrano-puma!
   capistrano-rails
   capistrano-rvm
+  capistrano3-puma
   capybara
   cells
   coffee-rails (~> 4.0.0)

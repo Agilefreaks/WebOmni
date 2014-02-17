@@ -60,7 +60,7 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano-puma', require: false, github: 'balauru/capistrano-puma'
+  gem 'capistrano3-puma', require: false
 
   # use this to fetch the UI page one time
   gem 'grape-swagger-rails', github: 'balauru/grape-swagger-rails'
