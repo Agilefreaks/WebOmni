@@ -79,7 +79,6 @@ staging:
         - 10.54.94.19:27017
         - 10.54.94.20:27017
       options:
-        allow_dynamic_fields: false
         raise_not_found_error: true
         use_utc: true
         use_activesupport_time_zone: true
@@ -93,7 +92,6 @@ production:
         - 10.54.94.19:27017
         - 10.54.94.20:27017
       options:
-        allow_dynamic_fields: false
         raise_not_found_error: true
         use_utc: true
         use_activesupport_time_zone: true
