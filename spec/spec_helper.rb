@@ -1,7 +1,7 @@
-ENV['RAILS_ENV'] ||= 'test' 
+ENV['RAILS_ENV'] ||= 'test'
 
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'teamcity'
 
 require 'rubygems'
 

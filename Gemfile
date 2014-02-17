@@ -4,7 +4,7 @@ ruby '2.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.beta1'
 
-gem 'mongoid', '4.0.0.alpha2'
+gem 'mongoid', '4.0.0.beta1'
 gem 'bson_ext'
 
 gem 'puma'
@@ -60,7 +60,7 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano-puma', require: false, github: 'balauru/capistrano-puma'
+  gem 'capistrano3-puma', require: false
 
   # use this to fetch the UI page one time
   gem 'grape-swagger-rails', github: 'balauru/grape-swagger-rails'
@@ -79,8 +79,9 @@ group :test do
   gem 'rspec-cells'
   gem 'database_cleaner'
   gem 'rspec-set'
-  gem 'accept_values_for'
   gem 'simplecov'
+  gem 'simplecov-teamcity-summary', github: 'balauru/simplecov-teamcity-summary'
+  gem 'accept_values_for'
   gem 'capybara'
   gem 'email_spec'
   gem 'fabrication'
