@@ -52,7 +52,6 @@ GEM
       ice_nine (~> 0.9)
     bcrypt-ruby (3.1.2)
     bson (2.2.0)
-    bson_ext (1.5.1)
     builder (3.2.2)
     capistrano (3.1.0)
       i18n
@@ -394,7 +393,6 @@ PLATFORMS
 DEPENDENCIES
   accept_values_for
   awesome_print
-  bson_ext
   capistrano (~> 3.0)
   capistrano-bundler
   capistrano-rails
