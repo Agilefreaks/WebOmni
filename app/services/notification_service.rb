@@ -6,12 +6,12 @@ class NotificationService
   end
 
   def clipping(model, source_identifier)
-    options = {data: {registration_id: 'other', :provider => :clipboard}}
+    options = {data: {registration_id: 'other', :provider => 'clipboard'}}
     gcm_send(model.user, source_identifier, options)
   end
 
   def phone_number(model, source_identifier)
-    options = {data: {registration_id: 'other', phone_number: model.content, :provider => :phone}}
+    options = {data: {registration_id: 'other', phone_number: model.content, :provider => 'phone'}}
     gcm_send(model.user, source_identifier, options)
   end
 
