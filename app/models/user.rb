@@ -28,6 +28,10 @@ class User
     "#{first_name} #{last_name}"
   end
 
+  def active_registered_devices
+    registered_devices.active
+  end
+
   def find_provider(uid, name)
     providers.where(:uid => uid, :name => name).first
   end

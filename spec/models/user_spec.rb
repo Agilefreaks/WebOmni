@@ -30,4 +30,14 @@ describe User do
       its(:early_adopter) { should eq false }
     end
   end
+
+  describe :active_registered_devices do
+    let(:user) { Fabricate(:user) }
+    let!(:active_registered_device) { user.registered_devices.create(registration_id: '42') }
+    let!(:inactive_registered_device) { user.registered_devices.create }
+
+    subject { user.active_registered_devices }
+
+    it { should == [active_registered_device] }
+  end
 end
