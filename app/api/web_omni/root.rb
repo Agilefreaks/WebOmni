@@ -30,6 +30,7 @@ module WebOmni
     mount Resources::DevicesAPI
     mount Resources::ActivationAPI
     mount Resources::PhonesAPI
+    mount Resources::VersionAPI
 
     if Rails.env.development?
       add_swagger_documentation(
