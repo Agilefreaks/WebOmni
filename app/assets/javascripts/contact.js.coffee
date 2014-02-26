@@ -12,7 +12,7 @@ $('#contact_call').click (event) ->
 
   $.ajax {
     type: 'POST',
-    url: rootUrl + "api/v1/devices/call",
+    url: rootUrl + "api/v1/phones/call",
     headers: {'Channel': email},
     dataType: 'json'
     data: {
