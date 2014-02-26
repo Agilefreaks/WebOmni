@@ -1,7 +1,7 @@
 set :application, 'omnipaste'
 set :repo_url, 'git@github.com:balauru/WebOmni.git'
 
-set :rvm_ruby_version, 'ruby-2.1.0@webomni'
+set :rvm_ruby_version, 'ruby-2.1.1@webomni'
 set :rvm_type, :system
 
 role :web, %w(root@50.23.95.218 root@50.23.95.220)
