@@ -1,29 +1,15 @@
-class User
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class User < ActiveResource::Base
+  # include Concerns::UserDevise
 
-  include Concerns::UserDevise
+  schema do
+    string :first_name
+    string :last_name
+    string :nickname
+    string :image_url
+  end
 
-  # fields
-  field :first_name, :type => String
-  field :last_name, :type => String
-  field :nickname, :type => String
-  field :early_adopter, :type => Mongoid::Boolean, :default => -> { User.where(early_adopter: true).count < WebOmni::Application::USER_LIMIT }
-  field :image_url, :type => String
-  field :devices, :type => Array
-
-  # relations
-  embeds_many :providers
-  accepts_nested_attributes_for :providers
-
-  embeds_many :activation_tokens
-  accepts_nested_attributes_for :activation_tokens
-
-  embeds_many :registered_devices
-  accepts_nested_attributes_for :registered_devices
-  
-  embeds_many :clippings
-  accepts_nested_attributes_for :clippings
+  # # fields
+  # field :devices, :type => Array
 
   def name
     "#{first_name} #{last_name}"

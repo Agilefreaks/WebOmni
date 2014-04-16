@@ -2,9 +2,8 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0.rc1'
-
-gem 'mongoid', '4.0.0.beta1'
+gem 'rails', '4.1.0'
+gem 'activeresource'
 
 gem 'puma'
 
@@ -17,25 +16,20 @@ gem 'simple_form'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 
-gem 'grape'
-gem 'grape-entity'
-gem 'grape-swagger'
-
 gem 'useragent'
 gem 'phone'
 
 gem 'newrelic_rpm'
-gem 'newrelic-grape'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtime
   # gem 'therubyracer', platforms: :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 2.5.0'
   gem 'therubyracer'
 end
 
@@ -44,10 +38,6 @@ gem 'humane-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
-gem 'rails_admin'
-
-gem 'gcm'
 
 group :development do
   gem 'quiet_assets'
@@ -60,29 +50,22 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
   gem 'capistrano3-puma', require: false
-
-  # use this to fetch the UI page one time
-  gem 'grape-swagger-rails', github: 'balauru/grape-swagger-rails'
 end
 
 group :development, :test do
   gem 'awesome_print'
   gem 'rb-inotify', '~> 0.9'
   gem 'spring-commands-rspec'
-  gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails'
   gem 'rspec-spies'
   gem 'guard-rspec'
 end
 
 group :test do
   gem 'rspec-cells'
-  gem 'database_cleaner'
-  gem 'rspec-set'
   gem 'simplecov'
   gem 'simplecov-teamcity-summary', github: 'balauru/simplecov-teamcity-summary'
   gem 'accept_values_for'
   gem 'capybara'
   gem 'email_spec'
-  gem 'fabrication'
-  gem 'mongoid-rspec'
 end

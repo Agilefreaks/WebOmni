@@ -62,13 +62,4 @@ describe UserFactory do
       end
     end
   end
-
-  describe '#set_early_adopter' do
-    let(:user) { Fabricate(:user, early_adopter: false) }
-
-    it 'sets early adopter to true' do
-      factory.set_early_adopter(user)
-      expect(user.early_adopter).to eq true
-    end
-  end
 end

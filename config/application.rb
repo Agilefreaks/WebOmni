@@ -2,9 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 require 'rails'
+require 'active_resource/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
-require "action_view/railtie"
+require 'action_view/railtie'
 require 'sprockets/railtie'
 
 # Assets should be precompiled for production (so we don't need the gems loaded then)
@@ -36,8 +37,10 @@ module WebOmni
     config.paths.add 'app/api', glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*",
                                  "#{Rails.root}/app/factories/*",
-                                 "#{Rails.root}/app/finders/*",
                                  "#{Rails.root}/app/interactions/*"]
+
+    config.active_resource.format = :json
+    config.active_resource.site = 'http://localhost:9292'
 
     USER_LIMIT = 1500
     GOOGLE_API_KEY = 'AIzaSyDiX6YE0kjKmnjSygNRC_sYq6MBUfzsg2I'

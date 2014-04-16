@@ -5,10 +5,7 @@ WebOmni::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'pages#welcome'
 
-  devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
-
-  devise_for :admins
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  # devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
   resources :users, only: [:update]
   resources :contact, only: [:create]
@@ -44,6 +41,4 @@ WebOmni::Application.routes.draw do
   get 'installations/firefox'
   get 'installations/ie'
   get 'installations/default'
-
-  mount WebOmni::Root => '/api'
 end
