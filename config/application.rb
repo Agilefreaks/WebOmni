@@ -39,10 +39,9 @@ module WebOmni
                                  "#{Rails.root}/app/factories/*",
                                  "#{Rails.root}/app/interactions/*"]
 
+    # active resource
+    config.active_resource.site = 'http://localhost:9292/api/v1'
     config.active_resource.format = :json
-    config.active_resource.site = 'http://localhost:9292'
-
-    USER_LIMIT = 1500
-    GOOGLE_API_KEY = 'AIzaSyDiX6YE0kjKmnjSygNRC_sYq6MBUfzsg2I'
+    config.active_resource.include_format_in_path = false
   end
 end

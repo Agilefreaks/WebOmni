@@ -1,15 +1,21 @@
 class User < ActiveResource::Base
-  # include Concerns::UserDevise
+  include Timestamps
+  include Concerns::UserDevise
 
   schema do
+    string :email
     string :first_name
     string :last_name
     string :nickname
     string :image_url
   end
 
+  attr_accessor :first_name
+
   # # fields
   # field :devices, :type => Array
+
+  has_many :providers
 
   def name
     "#{first_name} #{last_name}"
@@ -20,10 +26,15 @@ class User < ActiveResource::Base
   end
 
   def find_provider(uid, name)
-    providers.where(:uid => uid, :name => name).first
+    providers.select { |provider| provider.uid == uid && provider.name == name }.first
   end
 
-  def self.find_by_provider(email, provider)
-    User.find_by('providers.email' => email, 'providers.name' => provider)
+  def self.find_by_provider_or_email(email, provider)
+    User.where(email: email, provider_name: provider).first
+  end
+
+  # needed for devise
+  def [](attribute)
+    send(attribute)
   end
 end
