@@ -1,19 +1,11 @@
 class User < ActiveResource::Base
   include Timestamps
+  include Concerns::Attributes
   include Concerns::UserDevise
 
-  schema do
-    string :email
-    string :first_name
-    string :last_name
-    string :nickname
-    string :image_url
-  end
+  headers['Authorization'] = Configuration.client_access_token
 
-  attr_accessor :first_name
-
-  # # fields
-  # field :devices, :type => Array
+  attr_accesible :id, :first_name, :last_name, :nickname, :image_url
 
   has_many :providers
 
