@@ -12,30 +12,26 @@ module Concerns::UserDevise
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
-    schema do
-      # Database authenticatable
-      string :email
-      string :encrypted_password
+    # Database authenticatable
+    attr_accesible :email, :encrypted_password
 
-      # Recoverable
-      string :reset_password_token
-      string :reset_password_sent_at
+    # Recoverable
+    attr_accesible :reset_password_token, :reset_password_sent_at
 
-      # Rememberable
-      string :remember_created_at
+    # Rememberable
+    attr_accesible :remember_created_at
 
-      # Trackable
-      integer :sign_in_count
-      string :current_sign_in_at
-      string :last_sign_in_at
-      string :current_sign_in_ip
-      string :last_sign_in_ip
-    end
+    # Trackable
+    attr_accesible :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip
   end
 
   module ClassMethods
     def to_adapter
       ActiveResource::OrmAdapter.new(self)
     end
+  end
+
+  def as_json(options = nil)
+    self.attributes
   end
 end
