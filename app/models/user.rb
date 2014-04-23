@@ -1,29 +1,13 @@
-class User
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class User < ActiveResource::Base
+  include Timestamps
+  include Concerns::Attributes
   include Concerns::UserDevise
 
-  # fields
-  field :first_name, :type => String
-  field :last_name, :type => String
-  field :nickname, :type => String
-  field :early_adopter, :type => Mongoid::Boolean, :default => -> { User.where(early_adopter: true).count < WebOmni::Application::USER_LIMIT }
-  field :image_url, :type => String
-  field :devices, :type => Array
+  headers['Authorization'] = Configuration.client_access_token
 
-  # relations
-  embeds_many :providers
-  accepts_nested_attributes_for :providers
+  attr_accesible :id, :first_name, :last_name, :nickname, :image_url
 
-  embeds_many :activation_tokens
-  accepts_nested_attributes_for :activation_tokens
-
-  embeds_many :registered_devices
-  accepts_nested_attributes_for :registered_devices
-  
-  embeds_many :clippings
-  accepts_nested_attributes_for :clippings
+  has_many :providers
 
   def name
     "#{first_name} #{last_name}"
@@ -34,10 +18,15 @@ class User
   end
 
   def find_provider(uid, name)
-    providers.where(:uid => uid, :name => name).first
+    providers.select { |provider| provider.uid == uid && provider.name == name }.first
   end
 
-  def self.find_by_provider(email, provider)
-    User.find_by('providers.email' => email, 'providers.name' => provider)
+  def self.find_by_provider_or_email(email, provider)
+    User.where(email: email, provider_name: provider).first
+  end
+
+  # needed for devise
+  def [](attribute)
+    send(attribute)
   end
 end

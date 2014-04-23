@@ -7,9 +7,6 @@ WebOmni::Application.routes.draw do
 
   devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
-  devise_for :admins
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
   resources :users, only: [:update]
   resources :contact, only: [:create]
   resource :token, only: [:show]
@@ -44,6 +41,4 @@ WebOmni::Application.routes.draw do
   get 'installations/firefox'
   get 'installations/ie'
   get 'installations/default'
-
-  mount WebOmni::Root => '/api'
 end

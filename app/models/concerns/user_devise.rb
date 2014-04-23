@@ -1,43 +1,37 @@
+require_relative '../../../lib/orm_adapter/adapters/active_resource'
+
 module Concerns::UserDevise
   extend ActiveSupport::Concern
 
   included do
+    extend Devise::Models
+
     # Include default devise modules. Others available are:
-    # :token_authenticatable, :confirmable,
+    # :token_authenticatable, :confirmable, :validatable
     # :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
+           :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
-    ## Database authenticatable
-    field :email,              :type => String, :default => ''
-    field :encrypted_password, :type => String, :default => ''
+    # Database authenticatable
+    attr_accesible :email, :encrypted_password
 
-    ## Recoverable
-    field :reset_password_token,   :type => String
-    field :reset_password_sent_at, :type => Time
+    # Recoverable
+    attr_accesible :reset_password_token, :reset_password_sent_at
 
-    ## Rememberable
-    field :remember_created_at, :type => Time
+    # Rememberable
+    attr_accesible :remember_created_at
 
-    ## Trackable
-    field :sign_in_count,      :type => Integer, :default => 0
-    field :current_sign_in_at, :type => Time
-    field :last_sign_in_at,    :type => Time
-    field :current_sign_in_ip, :type => String
-    field :last_sign_in_ip,    :type => String
+    # Trackable
+    attr_accesible :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip
+  end
 
-    ## Confirmable
-    # field :confirmation_token,   :type => String
-    # field :confirmed_at,         :type => Time
-    # field :confirmation_sent_at, :type => Time
-    # field :unconfirmed_email,    :type => String # Only if using reconfirmable
+  module ClassMethods
+    def to_adapter
+      ActiveResource::OrmAdapter.new(self)
+    end
+  end
 
-    ## Lockable
-    # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
-    # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
-    # field :locked_at,       :type => Time
-
-    ## Token authenticatable
-    # field :authentication_token, :type => String
+  def as_json(options = nil)
+    self.attributes
   end
 end

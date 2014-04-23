@@ -1,13 +1,14 @@
-class Provider
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Provider < ActiveResource::Base
+  include Timestamps
 
   # fields
-  field :name, :type => String
-  field :uid, :type => String
-  field :auth, :type => String
-  field :email, :type =>String
+  schema do
+    string :name
+    string :uid
+    string :auth
+    string :email
+  end
 
   # relations
-  embedded_in :user
+  belongs_to :user
 end
