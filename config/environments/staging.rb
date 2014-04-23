@@ -86,4 +86,8 @@ WebOmni::Application.configure do
 
   # download links
   WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://cdn.omnipasteapp.com/staging/win/omnipaste-setup.exe'
+
+  # API
+  config.active_resource.site = 'https://apistaging.omnipasteapp.com/api/v1'
+  CLIENT_ACCESS_TOKEN = 'yiccuZCgQGrB4OMyglhK2nDr2dKaHFiFOx/hXT3tWpwVstHkZhjcun8h759m5+jQvKJDnEc06z8xIjncfV1d9g=='
 end

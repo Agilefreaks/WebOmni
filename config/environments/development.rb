@@ -35,4 +35,8 @@ WebOmni::Application.configure do
 
   # download links
   WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://cdn.omnipasteapp.com/production/win/omnipaste-setup.exe'
+
+  # API
+  config.active_resource.site = 'http://localhost:9292/api/v1'
+  CLIENT_ACCESS_TOKEN = 'ENAh0+Xo8+oqlDzWVQP5wAEqiW4G82ptbJBR2N5ak6DACr4TRFbVslalonwMIA1Aj/tHJvWxawBD5dix+WNsww=='
 end

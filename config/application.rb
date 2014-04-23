@@ -40,7 +40,6 @@ module WebOmni
                                  "#{Rails.root}/app/interactions/*"]
 
     # active resource
-    config.active_resource.site = 'http://localhost:9292/api/v1'
     config.active_resource.format = :json
     config.active_resource.include_format_in_path = false
   end
