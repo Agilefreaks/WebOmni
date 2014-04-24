@@ -298,7 +298,7 @@ DEPENDENCIES
   accept_values_for
   activeresource
   awesome_print
-  capistrano (~> 3.0)
+  capistrano (~> 3.1)
   capistrano-bundler
   capistrano-rails
   capistrano-rvm

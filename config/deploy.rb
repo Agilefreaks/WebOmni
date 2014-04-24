@@ -1,28 +1,18 @@
+# config valid only for Capistrano 3.2
+lock '3.2.1'
+
 set :application, 'omnipaste'
-set :repo_url, 'git@github.com:balauru/WebOmni.git'
+set :repo_url, 'git@github.com:Agilefreaks/WebOmni.git'
 
 set :rvm_ruby_version, 'ruby-2.1.1@webomni'
-set :rvm_type, :system
 
-role :web, %w(root@50.23.95.218 root@50.23.95.220)
-role :app, %w(root@50.23.95.218 root@50.23.95.220)
+role :app, %w(deploy@37.58.66.30)
+role :web, %w(deploy@37.58.66.30)
 
-set :keep_releases, 5
+set :assets_roles, [:web, :app]
 
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-
-# set :deploy_to, '/var/www/my_app'
-# set :scm, :git
-
-# set :format, :pretty
-# set :log_level, :debug
-# set :pty, true
-
-# set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
+set :puma_workers, 4
+set :puma_preload_app, true
 
 namespace :deploy do
 
@@ -34,6 +24,8 @@ namespace :deploy do
     end
   end
 
+  after :publishing, :restart
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -43,5 +35,4 @@ namespace :deploy do
     end
   end
 
-  after :finishing, 'deploy:cleanup'
 end

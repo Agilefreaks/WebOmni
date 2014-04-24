@@ -45,7 +45,7 @@ group :development do
   gem 'pry-rails'
 
   # deploy
-  gem 'capistrano', '~> 3.0', require: false
+  gem 'capistrano', '~> 3.1', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
