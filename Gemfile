@@ -10,8 +10,6 @@ gem 'puma'
 gem 'haml'
 gem 'haml-rails'
 gem 'less-rails'
-gem 'cells'
-gem 'simple_form'
 
 gem 'devise'
 gem 'omniauth-google-oauth2'
@@ -62,7 +60,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-cells'
   gem 'simplecov'
   gem 'simplecov-teamcity-summary', github: 'balauru/simplecov-teamcity-summary'
   gem 'accept_values_for'

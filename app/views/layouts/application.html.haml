@@ -14,21 +14,9 @@
     /[if lt IE 9]
     = render partial: 'layouts/google'
   %body
-    = render partial: 'layouts/facebook'
-    = render partial: 'layouts/twitter'
-
     .container
-      = render partial: 'layouts/header'
-
-      - if content_for?(:jumbotron)
-        .jumbotron
-          = yield :jumbotron
-      .container
+      .jumbotron
         = yield
 
-      .footer
-        = render partial: 'layouts/footer'
-
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
-  = render partial: 'layouts/olark'
   = humane_flash_messages.html_safe

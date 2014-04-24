@@ -1,6 +1,5 @@
-class User < ActiveResource::Base
-  include Timestamps
-  include Concerns::Attributes
+class User < ApiModel
+  include Concerns::Timestamps
   include Concerns::UserDevise
 
   headers['Authorization'] = Configuration.client_access_token
@@ -11,10 +10,6 @@ class User < ActiveResource::Base
 
   def name
     "#{first_name} #{last_name}"
-  end
-
-  def active_registered_devices
-    registered_devices.active
   end
 
   def find_provider(uid, name)
