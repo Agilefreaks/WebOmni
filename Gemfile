@@ -11,7 +11,7 @@ gem 'haml'
 gem 'haml-rails'
 
 gem 'devise'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '0.2.2'
 
 gem 'useragent'
 gem 'phone'
