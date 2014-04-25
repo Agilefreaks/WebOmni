@@ -1,8 +1,6 @@
-class User < ApiModel
+class User < ClientApiModel
   include Concerns::Timestamps
   include Concerns::UserDevise
-
-  headers['Authorization'] = Configuration.client_access_token
 
   attr_accesible :id, :first_name, :last_name, :nickname, :image_url
 

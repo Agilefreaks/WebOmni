@@ -20,6 +20,7 @@ gem 'newrelic_rpm'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-script'
+gem 'coffee-rails'
 gem 'uglifier'
 
 gem 'jquery-rails'

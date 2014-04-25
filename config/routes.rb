@@ -6,4 +6,6 @@ WebOmni::Application.routes.draw do
   root to: 'pages#welcome'
 
   devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
+
+  resource :authorization_code, only: [:create]
 end
