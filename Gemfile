@@ -22,6 +22,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-script'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'therubyracer'
 
 gem 'jquery-rails'
 gem 'humane-rails'
