@@ -25,6 +25,7 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'humane-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'cells'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -57,4 +58,5 @@ group :test do
   gem 'accept_values_for'
   gem 'capybara'
   gem 'email_spec'
+  gem 'rspec-cells'
 end
