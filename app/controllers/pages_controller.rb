@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  def free
-    redirect_to user_omniauth_authorize_path(:google_oauth2)
+  def welcome
+    render user_signed_in? ? :welcome_signed_in : :welcome
   end
 end

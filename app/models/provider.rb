@@ -1,13 +1,7 @@
-class Provider < ActiveResource::Base
-  include Timestamps
+class Provider < ApiModel
+  include Concerns::Timestamps
 
-  # fields
-  schema do
-    string :name
-    string :uid
-    string :auth
-    string :email
-  end
+  attr_accesible :name, :uid, :auth, :email
 
   # relations
   belongs_to :user

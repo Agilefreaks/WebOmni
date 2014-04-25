@@ -1,0 +1,8 @@
+%h2
+  Welcome #{current_user.name}
+%p.lead
+  After you donwload the apps if your need an authorization code use the button bellow to request one.
+%p
+  = link_to 'Get authorization code', authorization_code_path, class: 'btn btn-lg btn-success', 'data-remote' => true, method: :post, 'disable_with' => 'Generating ...'
+%p
+  %span.bg-info.authorization_code

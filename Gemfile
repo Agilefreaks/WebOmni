@@ -9,32 +9,24 @@ gem 'puma'
 
 gem 'haml'
 gem 'haml-rails'
-gem 'less-rails'
-gem 'cells'
-gem 'simple_form'
 
 gem 'devise'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '0.2.2'
 
 gem 'useragent'
 gem 'phone'
 
 gem 'newrelic_rpm'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'coffee-rails', '~> 4.0.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtime
-  # gem 'therubyracer', platforms: :ruby
-
-  gem 'uglifier', '>= 2.5.0'
-  gem 'therubyracer'
-end
+gem 'sass-rails', '~> 4.0.3'
+gem 'coffee-script'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'humane-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'cells'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -62,10 +54,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-cells'
   gem 'simplecov'
   gem 'simplecov-teamcity-summary', github: 'balauru/simplecov-teamcity-summary'
   gem 'accept_values_for'
   gem 'capybara'
   gem 'email_spec'
+  gem 'rspec-cells'
 end

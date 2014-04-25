@@ -1,8 +1,9 @@
 class MenuCell < Cell::Rails
-
-  def show(params)
-    @current_user = params[:user]
-    render view: @current_user ? 'logged' : 'not_logged'
+  build do
+    UnauthorizedMenuCell unless user_signed_in?
   end
 
+  def show
+    render
+  end
 end

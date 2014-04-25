@@ -4,7 +4,7 @@ describe NotificationsMailer do
   describe '#welcome' do
     let(:user) { mock_model(User, email: 'ciprian@test.com', name: 'Ion') }
 
-    before { User.stub(find: user) }
+    before { allow(User).to receive(:find).with('42').and_return(user) }
 
     subject { NotificationsMailer.welcome('42') }
 

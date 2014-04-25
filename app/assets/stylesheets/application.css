@@ -9,11 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require twitter/bootstrap
- *= require jumbotron-narrow
- *= require bootstrap_overrides
- *= require font-awesome
- *= require humane-rails/original
+ *= require default
+ *= require humane-rails/jackedup
  *= require pages
- *= require pricing
  */
