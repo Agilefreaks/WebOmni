@@ -33,8 +33,8 @@ WebOmni::Application.configure do
   GOOGLE_KEY = '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com'
   GOOGLE_SECRET = 'pZ4j5qWvZYZ3rlo0cXqr8REB'
 
-  # download links
-  WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://cdn.omnipasteapp.com/production/win/omnipaste-setup.exe'
+  # download links 
+ WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://cdn.omnipasteapp.com/staging/win/OmnipasteSetup.exe'
 
   # API
   config.active_resource.site = 'http://localhost:9292/api/v1'
