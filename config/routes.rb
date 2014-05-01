@@ -8,4 +8,10 @@ WebOmni::Application.routes.draw do
   devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
   resource :authorization_code, only: [:create]
+
+  resources :downloads, only: [:index] do
+    collection do
+      get 'windows_client'
+    end 
+  end
 end
