@@ -5,6 +5,7 @@ ruby '2.1.1'
 gem 'rails', '4.1.0'
 gem 'mongoid', '4.0.0.beta1'
 gem 'activeresource', :require => 'active_resource'
+gem 'httparty'
 
 gem 'puma'
 

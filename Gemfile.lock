@@ -123,6 +123,9 @@ GEM
       railties (>= 4.0.1)
     hashie (2.1.1)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     humane-rails (5.0.2)
       rails (>= 3.1.0)
     i18n (0.6.9)
@@ -325,6 +328,7 @@ DEPENDENCIES
   guard-rspec
   haml
   haml-rails
+  httparty
   humane-rails
   jquery-rails
   letter_opener
