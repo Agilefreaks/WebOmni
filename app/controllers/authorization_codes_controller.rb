@@ -4,6 +4,6 @@ class AuthorizationCodesController < ApplicationController
   respond_to :js
 
   def create
-    @authorization_code = AuthorizationCode.create(user_id: current_user.id)
+    @authorization_code = OmniApi::AuthorizationCode.create(user_access_token: current_user.access_token)
   end
 end

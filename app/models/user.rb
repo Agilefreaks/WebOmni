@@ -1,25 +1,44 @@
-class User < ClientApiModel
-  include Concerns::Timestamps
-  include Concerns::UserDevise
+class User
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  attr_accesible :id, :first_name, :last_name, :nickname, :image_url
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable
+  devise :database_authenticatable,
+         :registerable,
+         :rememberable,
+         :trackable,
+         :validatable,
+         :omniauthable,
+         :omniauth_providers => [:google_oauth2]
 
-  has_many :providers
+  ## Database authenticatable
+  field :email,              type: String, default: ''
+  field :encrypted_password, type: String, default: ''
+
+  ## Recoverable
+  field :reset_password_token,   type: String
+  field :reset_password_sent_at, type: Time
+
+  ## Rememberable
+  field :remember_created_at, type: Time
+
+  ## Trackable
+  field :sign_in_count,      type: Integer, default: 0
+  field :current_sign_in_at, type: Time
+  field :last_sign_in_at,    type: Time
+  field :current_sign_in_ip, type: String
+  field :last_sign_in_ip,    type: String
+
+  field :access_token
+
+  field :first_name
+  field :last_name
+  field :image_url
+
+  validates_uniqueness_of :email
 
   def name
     "#{first_name} #{last_name}"
-  end
-
-  def find_provider(uid, name)
-    providers.select { |provider| provider.uid == uid && provider.name == name }.first
-  end
-
-  def self.find_by_provider_or_email(email, provider)
-    User.where(email: email, provider_name: provider).first
-  end
-
-  # needed for devise
-  def [](attribute)
-    send(attribute)
   end
 end
