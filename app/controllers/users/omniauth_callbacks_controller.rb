@@ -17,7 +17,7 @@ module Users
 
     def find_or_create(auth, signed_in_resource)
       user = signed_in_resource ||
-          User.find_by_provider_or_email(auth.info.email, auth.provider)
+          User.where(email: auth.info.email).first
 
       user = UserFactory.from_social(auth, user) unless user
       user

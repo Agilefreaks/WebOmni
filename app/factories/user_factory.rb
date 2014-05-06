@@ -8,14 +8,19 @@ class UserFactory
 
   def create_from_social(auth)
     match = auth.to_s.match(/image=\"(.*?)\"/)
-    user = User.new(:first_name => auth.info.first_name,
-                       :last_name => auth.info.last_name,
-                       :email => auth.info.email,
-                       :password => Devise.friendly_token[0, 20],
-                       :image_url => match ? match[1] : nil)
-    user.providers = []
-    user.providers.push(Provider.new(:name => auth.provider, :uid => auth.uid, :auth => auth, :email => auth.info.email))
-    user.save
+
+    api_user = OmniApi::User.where(email: auth.info.email).first ||
+        OmniApi::User.new(:first_name => auth.info.first_name,
+                          :last_name => auth.info.last_name,
+                          :email => auth.info.email)
+    api_user.save
+
+    user = User.create(first_name: auth.info.first_name,
+                       last_name: auth.info.last_name,
+                       email: auth.info.email,
+                       password: Devise.friendly_token[0, 20],
+                       image_url: match ? match[1] : nil,
+                       access_token: api_user.access_token)
 
     NotificationsMailer.welcome(user.id).deliver
 

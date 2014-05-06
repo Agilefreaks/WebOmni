@@ -9,7 +9,7 @@ describe AuthorizationCodesController do
     subject { xhr :post, :create }
 
     it 'will call create on AuthorizationCode' do
-      expect(AuthorizationCode).to receive(:create).with(user_id: current_user.id)
+      expect(CreateAuthorizationCode).to receive(:for).with(current_user)
       subject
     end
   end

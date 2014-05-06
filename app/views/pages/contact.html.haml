@@ -1,0 +1,9 @@
+%address
+  Sibiu, Avram Iancu, nr. 1 - 3, ap. 5
+
+%phone
+  Alexandru Calinoiu:
+  - if user_signed_in?
+    = link_to '+40745857479', call_path(phone_number: '+40745857479'), method: :post, remote: true, id: 'phone_number'
+  - else
+    +40745857479

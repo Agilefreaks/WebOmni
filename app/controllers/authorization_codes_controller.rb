@@ -4,6 +4,6 @@ class AuthorizationCodesController < ApplicationController
   respond_to :js
 
   def create
-    @authorization_code = AuthorizationCode.create(user_id: current_user.id)
+    @authorization_code = CreateAuthorizationCode.for(current_user)
   end
 end

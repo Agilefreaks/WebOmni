@@ -14,4 +14,7 @@ WebOmni::Application.routes.draw do
       get 'windows_client'
     end 
   end
+
+  get 'contact', as: :contact, to: 'pages#contact'
+  post 'call', as: :call, to: 'pages#call'
 end

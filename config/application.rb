@@ -29,6 +29,8 @@ module WebOmni
 
     config.generators do |g|
       g.view_specs false
+      g.orm :mongoid
+      g.template_engine :haml
     end
 
     config.assets.initialize_on_precompile = false
