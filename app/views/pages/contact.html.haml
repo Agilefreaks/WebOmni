@@ -7,3 +7,10 @@
     = link_to '+40745857479', call_path(phone_number: '+40745857479'), method: :post, remote: true, id: 'phone_number'
   - else
     +40745857479
+
+%phone
+  Adrian Nistor:
+  - if user_signed_in?
+    = link_to '+40747074372', call_path(phone_number: '+40747074372'), method: :post, remote: true, id: 'phone_number'
+  - else
+    +40747074372
