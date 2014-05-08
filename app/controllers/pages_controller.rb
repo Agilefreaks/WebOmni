@@ -7,10 +7,9 @@ class PagesController < ApplicationController
   end
 
   def call
-    OmniApi::Phones::Call.for(current_user).with(params[:phone_number])
+    phone_number = params[:phone_number]
+    OmniApi::Phones::Call.for(current_user).with(phone_number)
 
-    respond_to do |format|
-      format.js {}
-    end
+    redirect_to contact_path, notice: "Pick up your phone, it's calling #{phone_number}"
   end
 end
