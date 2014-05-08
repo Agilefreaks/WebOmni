@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'omnipaste'
-set :repo_url, 'git@github.com:Agilefreaks/WebOmni.git'
+set :repo_url, 'git@github.com:balauru/WebOmni.git'
 
 set :rvm_ruby_version, 'ruby-2.1.1@webomni'
 
