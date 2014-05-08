@@ -8,7 +8,7 @@
     %link{href: "../../assets/favicon.ico", rel: "shortcut icon"}/
     %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
     = favicon_link_tag
-    = stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', :media => 'all'
     = csrf_meta_tag
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
@@ -19,5 +19,5 @@
       .jumbotron
         = yield
 
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application'
   = humane_flash_messages.html_safe
