@@ -22,7 +22,7 @@ class UserFactory
                        image_url: match ? match[1] : nil,
                        access_token: api_user.access_token)
 
-    NotificationsMailer.welcome(user.id).deliver
+    # NotificationsMailer.welcome(user.id).deliver
 
     user
   end
