@@ -15,6 +15,5 @@ WebOmni::Application.routes.draw do
     end 
   end
 
-  get 'contact', as: :contact, to: 'pages#contact'
   post 'call', as: :call, to: 'pages#call'
 end
