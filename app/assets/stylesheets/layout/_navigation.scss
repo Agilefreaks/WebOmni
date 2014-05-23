@@ -27,7 +27,7 @@
   &.styled {
 
     #logo a {
-      background: url(../images/logo_s.png) no-repeat;
+      background: image-url("logo_s.png") no-repeat;
     }
 
     .icon-bar {
@@ -50,7 +50,7 @@
   @include size(174px, 24px);
 
   a {
-    background: url(../images/logo.png) no-repeat;
+    background: image-url("logo.png") no-repeat;
     display: block;
     text-indent: -9999px;
     @include size(174px, 24px);

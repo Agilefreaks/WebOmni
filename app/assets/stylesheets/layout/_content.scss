@@ -63,7 +63,7 @@
 // =====================================================
 
 .message-block {
-  background-image: url(../images/header_bg.jpg);
+  background-image: image-url('header_bg.jpg');
   background-repeat: no-repeat;
   background-position: top center;
   background-attachment: fixed;
@@ -95,7 +95,7 @@
 // Device block
 
 .device-block, .about-block {
-  background-image: url(../images/bg_light.png);
+  background-image: image-url("bg_light.png");
   background-repeat: no-repeat;
   background-position: top center;
   -webkit-background-size: cover;
@@ -262,7 +262,7 @@
   }
 
   .bg {
-    background: url(../images/dual_bg.jpg) no-repeat;
+    background: image-url("dual_bg.jpg") no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
     position: absolute;

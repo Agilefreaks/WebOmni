@@ -15,6 +15,16 @@
     /[if lt IE 9]
     = render partial: 'layouts/google'
   %body
+    = render partial: 'layouts/header'
+
+    .wrapper
+      .main.main#fullpage
+        = render partial: 'layouts/home'
+        = render partial: 'layouts/devices'
+        = render partial: 'layouts/feedback'
+        = render partial: 'layouts/about'
+
+      = render partial: 'layouts/footer'
 
   = javascript_include_tag 'application'
   = humane_flash_messages.html_safe
