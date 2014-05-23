@@ -1,0 +1,45 @@
+%section#about-block.full-block.section.about-block.light-bg
+  .container
+    .middle-wrap
+      .middle-cell
+        %header.title.center
+          %h2 About Us
+          %p
+            Creative, commercial and customer focused
+            %br/
+            a team you’ll enjoy working with.
+        %ul.team-list
+          %li
+            %figure
+              = link_to '#' do
+                = image_tag 'team/calin.jpg', alt: 'Calin'
+            %footer
+              %h4 Calin
+              %p co-founder/developer
+              %phone
+                - if user_signed_in?
+                  = link_to '+40745857479', call_path(phone_number: '+40745857479'), method: :post, data: { disable_with: 'Please wait ...' }
+                - else
+                  +40745857479
+          %li
+            %figure
+              = link_to '#' do
+                = image_tag 'team/adi.jpg', alt: 'Adi'
+            %footer
+              %h4 Adi
+              %p co-founder/developer
+              %phone
+                - if user_signed_in?
+                  = link_to '+40747074372', call_path(phone_number: '+40747074372'), method: :post, data: { disable_with: 'Please wait ...' }
+                - else
+                  +40747074372
+
+        %ul.partners
+          %li
+            %strong Our Partners:
+          %li
+            = link_to 'http://www.softlayer.com/', target: '_blank' do
+              = image_tag 'partners/soft_layer.jpg', alt: 'Soft Layer'
+          %li
+            = link_to 'http://lisbon-challenge.com/blog/gwp/2013/08/07/the-full-list-of-the-selected-teams-participating-in-lisbon-challenge-2013/', target: '_blank' do
+              = image_tag 'partners/lisbon_challenge.jpg', alt: 'Lisbon'

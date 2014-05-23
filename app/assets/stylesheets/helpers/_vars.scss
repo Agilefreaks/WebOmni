@@ -1,0 +1,57 @@
+// Colors
+// =================================
+
+$color-text: #454545;
+$device-bg: #faf9f7;
+$block-grey: #f5f3f0;
+$border: #cccccc;
+$footer-links: #505259;
+$footer-text: #808080;
+
+$brand-color1: #03818f;
+$brand-color2: #4e5ca9;
+$brand-color3: #ffb31a;
+$brand-color4: #009bf2;
+$brand-color5: #565966;
+
+$tooltip-bg: $brand-color5;
+
+$btn-default-bg: #ebeae8;
+$btn-default-hover: darken($btn-default-bg, 10%);
+$btn-default-color: #818599;
+
+$btn-primary-bg: $brand-color3;
+$btn-primary-hover: #ffbb33;
+$btn-primary-color: rgba(#000, .4);
+
+$btn-info-bg: $brand-color4;
+$btn-info-hover: #00aaff;
+$btn-info-color: #fff;
+
+// Font
+// =================================
+
+@mixin font-normal() {
+  font-family: 'museo_sans500', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+@mixin font-light() {
+  font-family: 'museo_sans300', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+@mixin font-thin() {
+  font-family: 'museo_sans100', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+@mixin font-semibold() {
+  font-family: 'proxima_nova_ltsemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+@mixin font-bold() {
+  font-family: 'museo_sans700', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}

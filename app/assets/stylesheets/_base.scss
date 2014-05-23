@@ -1,0 +1,41 @@
+@import "helpers/vars";
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  background: #fff;
+  font-size: 16px;
+  @include font-light;
+  color: $color-text;
+  overflow-x: hidden;
+}
+
+strong {
+  @include font-bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+.container {
+  @include container-fixed();
+
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-md;
+  }
+}

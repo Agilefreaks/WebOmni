@@ -1,4 +1,8 @@
-.header
-  = render_cell :menu, :show
-  %h3.text-muted
-    = link_to 'Omnipaste', root_path
+%nav#header-bar.navbar.navbar-default.navbar-fixed-top{role: 'navigation'}
+  .container
+    %h1#logo
+      = link_to 'WEBOMNI', root_url
+    %button.menu-trigger{type: 'button'}
+      %span.icon-bar.icon-top
+      %span.icon-bar.icon-mid
+      %span.icon-bar.icon-bot
