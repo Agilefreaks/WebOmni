@@ -30,6 +30,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'jquery-rails'
 gem 'humane-rails'
 gem 'animate-rails'
+gem 'modernizr-rails'
 
 gem 'cells'
 

@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.easing
+//= require jquery.slimscroll
+//= require jquery.fullPage
 //= require bootstrap
 //= require humane-rails
-//= require jquery.fullPage
 //= require_tree .
