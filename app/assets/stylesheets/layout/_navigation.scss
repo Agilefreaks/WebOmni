@@ -1,0 +1,130 @@
+@import "helpers";
+
+// Header navigation
+// ==============================
+
+#header-bar {
+  background-color: rgba(39, 61, 87, .1);
+  height: 80px;
+  border: 0;
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+  @include transition(all .25s ease-in-out);
+
+  &.slide-up {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  &.slide-down {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  &.styled {
+
+    #logo a {
+      background: url(../images/logo_s.png) no-repeat;
+    }
+
+    .icon-bar {
+      background: $brand-color4;
+    }
+
+    .active {
+      .icon-mid {
+        background: none;
+      }
+    }
+  }
+}
+
+#logo {
+  float: left;
+  margin: 0;
+  position: relative;
+  top: 28px;
+  @include size(174px, 24px);
+
+  a {
+    background: url(../images/logo.png) no-repeat;
+    display: block;
+    text-indent: -9999px;
+    @include size(174px, 24px);
+    @include transition(all .3s);
+  }
+}
+
+.menu-trigger {
+  position: relative;
+  top: 28px;
+  background: none;
+  border: 0;
+  outline: none;
+  float: right;
+  @include size(30px, 23px);
+  width: 30px;
+  @include transition(all .3s);
+
+  .icon-bar {
+    background: #fff;
+    display: block;
+    height: 5px;
+    margin: 0 0 4px;
+    position: relative;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    @include transition(all .3s);
+  }
+
+  &.active {
+    .icon-mid {
+      background: none;
+    }
+
+    .icon-top {
+      @include rotate(-45deg);
+      top: 9px;
+    }
+
+    .icon-bot {
+      @include rotate(45deg);
+      top: -9px;
+    }
+  }
+}
+
+// Footer navigation
+// =====================================================
+
+.footer-nav {
+  display: table;
+  margin: 0 auto 15px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+    border-right: 1px solid $footer-links;
+    padding: 0 9px 0 12px;
+    line-height: 1;
+
+    &:first-child {
+      border-left: 1px solid $footer-links;
+    }
+  }
+
+  a {
+    display: block;
+    color: $footer-links;
+    font-size: (14/16) + em;
+    line-height: 1;
+  }
+}

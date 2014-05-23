@@ -1,0 +1,20 @@
+@import "helpers";
+
+// Footer
+// =====================================================
+
+.footer {
+  background: #fff;
+  padding: 25px 0;
+
+  .copy {
+    text-align: center;
+
+    p {
+      color: $footer-text;
+      font-size: (12/16) + em;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+}

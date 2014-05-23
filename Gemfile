@@ -16,7 +16,6 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 
 gem 'useragent'
-gem 'phone'
 
 gem 'newrelic_rpm'
 
@@ -26,14 +25,13 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
 
+gem 'compass-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'jquery-rails'
 gem 'humane-rails'
-gem 'bootstrap-sass', '~> 3.1.1'
-gem 'cells'
+gem 'animate-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-gem 'jquery-turbolinks'
+gem 'cells'
 
 group :development do
   gem 'quiet_assets'
@@ -41,7 +39,7 @@ group :development do
   gem 'pry-rails'
 
   # deploy
-  gem 'capistrano', '~> 3.1', require: false
+  gem 'capistrano', '~> 3.2', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
