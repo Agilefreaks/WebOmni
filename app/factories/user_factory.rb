@@ -24,9 +24,12 @@ class UserFactory
         access_token: api_user.access_token
     }
 
-    user ? user.update(params) : user.create(params)
-
-    # NotificationsMailer.welcome(user.id).deliver
+    if user
+      user.update(params)
+    else
+      user = User.create(params)
+      NotificationsMailer.welcome(user.id).deliver
+    end
 
     user
   end

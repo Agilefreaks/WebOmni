@@ -10,7 +10,7 @@ WebOmni::Application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -23,7 +23,7 @@ WebOmni::Application.configure do
   # config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.
-  config.assets.debug = true  
+  config.assets.debug = true
 
   # action mailer configuration
   config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
@@ -34,7 +34,7 @@ WebOmni::Application.configure do
   GOOGLE_SECRET = 'pZ4j5qWvZYZ3rlo0cXqr8REB'
 
   # download links 
- WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://cdn.omnipasteapp.com/staging/win/OmnipasteSetup.exe'
+  WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://cdn.omnipasteapp.com/staging/win/OmnipasteSetup.exe'
 
   # API
   config.active_resource.site = 'http://localhost:9292/api/v1'
