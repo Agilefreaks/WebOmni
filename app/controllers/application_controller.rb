@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def authenticate!
     authenticate_user!
   end
+
+  def js_redirect_to(path)
+    render js: %(window.location.href='#{path}')
+  end
 end

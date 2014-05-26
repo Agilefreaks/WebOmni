@@ -12,5 +12,16 @@ describe AuthorizationCodesController do
       expect(CreateAuthorizationCode).to receive(:for).with(current_user)
       subject
     end
+
+    context 'when create returns and Authorization Error' do
+      it 'will sign user out' do
+        response = OpenStruct.new(code: 500, message: 'Internal Server Error')
+        allow(CreateAuthorizationCode).to receive(:for).
+                                              with(current_user).
+                                              and_raise(ActiveResource::ServerError.new(response, ''))
+        expect(controller).to receive(:sign_out).with(User)
+        subject
+      end
+    end
   end
 end
