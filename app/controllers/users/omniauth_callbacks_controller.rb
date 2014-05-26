@@ -19,8 +19,7 @@ module Users
       user = signed_in_resource ||
           User.where(email: auth.info.email).first
 
-      user = UserFactory.from_social(auth, user) unless user
-      user
+      UserFactory.from_social(auth, user)
     end
   end
 end
