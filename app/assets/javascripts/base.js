@@ -13,6 +13,10 @@ var webOmniApp = {
     $fullPage: $('#fullpage')
   },
 
+  appendHome: function () {
+    window.location.hash = '#home';
+  },
+
   callbacks: {
     toggleMenu: function () {
       var $this = $(this);
@@ -62,6 +66,7 @@ var webOmniApp = {
       if ($container.length) {
         $container.fullpage({
           verticalCentered: true,
+          scrollOverflow: true,
           anchors: ['home', 'seemore', 'feedback', 'team'],
           resize: false,
           easing: 'easeInQuart',
@@ -95,6 +100,7 @@ var webOmniApp = {
   },
 
   init: function () {
+    this.appendHome();
     this.appPlugins.init();
     this.attachHandles();
   }
