@@ -17,6 +17,12 @@ var webOmniApp = {
     window.location.hash = '#home';
   },
 
+  runAnimation: function (i, timeline) {
+    setTimeout(function () {
+      $('.anim-list li').eq(i).addClass('active').siblings().removeClass('active');
+    }, timeline);
+  },
+
   callbacks: {
     toggleMenu: function () {
       var $this = $(this);
@@ -49,6 +55,15 @@ var webOmniApp = {
       e.preventDefault();
 
       $.fn.fullpage.moveSectionDown();
+    },
+    animationTimeline: function () {
+      var timeline = 0,
+        $animList = $('.anim-list li');
+
+        for (var i = 0; i < $animList.length; i++) {
+          timeline = parseInt($animList.eq(i).data('time'), 10) + parseInt(timeline, 10);
+          webOmniApp.runAnimation(i, timeline);
+        }
     }
   },
 
@@ -83,6 +98,17 @@ var webOmniApp = {
               }, 500);
             } else {
               $('#device-list').removeClass('animated fadeInUpBig');
+            }
+          },
+
+          onSlideLeave: function (anchorLink, index, slideIndex, direction) {
+            //start list animation
+            webOmniApp.callbacks.animationTimeline();
+
+            if (slideIndex >= 0) {
+              $('#header-bar').removeClass('styled');
+            } else {
+              $('#header-bar').addClass('styled');
             }
           }
         });

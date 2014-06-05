@@ -17,4 +17,5 @@
 //= require jquery.fullPage
 //= require bootstrap
 //= require humane-rails
+//= require edge.3.0.0.min
 //= require_tree .
