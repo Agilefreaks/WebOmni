@@ -472,6 +472,35 @@
   }
 }
 
+/// Slides navigation
+// =====================================================
+#fullPage-nav, .fullPage-slidesNav {
+  
+  li {
+    margin: 0 0 4px;
+  }
+
+  
+  li .active {
+    top: -3px;
+
+    span {
+      background: transparent;
+      width: 10px;
+      height: 10px;
+      border: 1px solid rgba(0,0,0,.3);
+      left: -1px;
+    }
+  }
+
+  span {
+    width: 4px;
+    height: 4px;
+    border: 1px solid transparent;
+    background: rgba(0,0,0,.3);
+  }
+}
+
 // Animations
 // =====================================================
 

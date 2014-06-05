@@ -46,14 +46,14 @@
   float: left;
   margin: 0;
   position: relative;
-  top: 28px;
-  @include size(174px, 24px);
+  top: 20px;
+  @include size(175px, 40px);
 
   a {
     background: image-url("logo.png") no-repeat;
     display: block;
     text-indent: -9999px;
-    @include size(174px, 24px);
+    @include size(175px, 40px);
     @include transition(all .3s);
   }
 }

@@ -67,6 +67,7 @@ var webOmniApp = {
         $container.fullpage({
           verticalCentered: true,
           scrollOverflow: true,
+          navigation: true,
           anchors: ['home', 'seemore', 'feedback', 'team'],
           resize: false,
           easing: 'easeInQuart',
