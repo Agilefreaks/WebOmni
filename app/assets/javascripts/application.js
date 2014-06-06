@@ -17,5 +17,8 @@
 //= require jquery.fullPage
 //= require bootstrap
 //= require humane-rails
-//= require edge.3.0.0.min
 //= require_tree .
+
+// remove the unwanted animation files, the will be loaded in the edgePreload with load
+//= stub anim1/animation-1_edge.js.erb
+//= stub anim1/animation-1_edgeActions
