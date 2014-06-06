@@ -50,8 +50,8 @@ if(document.addEventListener ){
    };
 
    aLoader = [      
-      //{ load: <%= asset_path('anim1/animation-1_edge.js') %>},
-      //{ load: <%= asset_path('anim1/animation-1_edgeActions.js') %>}
+      { load: '<%= asset_path('anim1/animation-1_edge.js') %>' },
+      { load: '<%= asset_path('anim1/animation-1_edgeActions.js') %>' }
       ];
 
 if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResources=doLoadResources; AdobeEdge.playWhenReady=playWhenReady; }
