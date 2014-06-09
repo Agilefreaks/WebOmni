@@ -36,7 +36,7 @@ module WebOmni
     config.assets.initialize_on_precompile = false
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += %w( .svg .eot .woff .ttf
-                                    animation-1_edge.js animation-1_edgeActions.js animation-1_edgePreload.js edge.3.0.0.min )
+                                    anim1/animation-1_edge.js anim1/animation-1_edgeActions.js anim1/animation-1_edgePreload.js edge.3.0.0.min.js )
 
     config.paths.add 'app/api', glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*",
