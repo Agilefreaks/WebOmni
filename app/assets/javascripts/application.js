@@ -18,3 +18,7 @@
 //= require bootstrap
 //= require humane-rails
 //= require_tree .
+
+// remove the unwanted animation files, the will be loaded in the edgePreload with load
+//= stub anim1/animation-1_edge.js.erb
+//= stub anim1/animation-1_edgeActions

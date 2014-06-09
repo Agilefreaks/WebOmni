@@ -10,11 +10,18 @@ var webOmniApp = {
     $goTo: $('.go-to'),
     $lightPanel: $(".light-bg"),
     $navBar: $('#header-bar'),
-    $fullPage: $('#fullpage')
+    $fullPage: $('#fullpage'),
+    $deviceContinue: $('#device-continue')
   },
 
   appendHome: function () {
     window.location.hash = '#home';
+  },
+
+  runAnimation: function (i, timeline) {
+    setTimeout(function () {
+      $('.anim-list li').eq(i).addClass('active').siblings().removeClass('active');
+    }, timeline);
   },
 
   callbacks: {
@@ -49,6 +56,22 @@ var webOmniApp = {
       e.preventDefault();
 
       $.fn.fullpage.moveSectionDown();
+    },
+    animationTimeline: function () {
+      var timeline = 0,
+        $animList = $('.anim-list li');
+
+        for (var i = 0; i < $animList.length; i++) {
+          timeline = parseInt($animList.eq(i).data('time'), 10) + parseInt(timeline, 10);
+          webOmniApp.runAnimation(i, timeline);
+        }
+    },
+
+    startAnimation: function() {
+      setTimeout(function() {
+        comp.play();
+        webOmniApp.callbacks.animationTimeline();
+      }, 500);
     }
   },
 
@@ -57,6 +80,7 @@ var webOmniApp = {
     this.config.$menuTrigger.on('click', webOmniApp.callbacks.toggleMenu);
     this.config.$deviceList.on('change', 'input', webOmniApp.callbacks.toggleDevice);
     this.config.$goTo.on('click', webOmniApp.callbacks.goTo);
+    this.config.$deviceContinue.on('click', webOmniApp.callbacks.startAnimation);
   },
 
   appPlugins: {
@@ -85,6 +109,15 @@ var webOmniApp = {
             } else {
               $('#device-list').removeClass('animated fadeInUpBig');
             }
+          },
+
+          onSlideLeave: function (anchorLink, index, slideIndex, direction) {
+            
+            if (slideIndex >= 0) {
+              $('#header-bar').removeClass('styled');
+            } else {
+              $('#header-bar').addClass('styled');
+            }
           }
         });
       }
@@ -107,8 +140,13 @@ var webOmniApp = {
   }
 };
 
+  var comp;
+  AdobeEdge.bootstrapCallback(function(compId) {
+    comp = AdobeEdge.getComposition('EDGE-88305247').getStage();
+  });
+
 $(function () {
-  webOmniApp.init();
+  webOmniApp.init();  
 });
 
 

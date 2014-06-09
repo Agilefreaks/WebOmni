@@ -472,33 +472,65 @@
   }
 }
 
-/// Slides navigation
+
+// slides
 // =====================================================
-#fullPage-nav, .fullPage-slidesNav {
-  
-  li {
-    margin: 0 0 4px;
-  }
 
-  
-  li .active {
-    top: -3px;
-
-    span {
-      background: transparent;
-      width: 10px;
-      height: 10px;
-      border: 1px solid rgba(0,0,0,.3);
-      left: -1px;
+.slides {
+  .inside-slide {
+    background: $brand-color6 url(bg_icons.png) no-repeat top left;
+    .title {
+      color: #fff;
+      text-align: left;
+      margin: 0 0 22px;
+      font-size: (34/16) + em;
     }
   }
+}
 
-  span {
-    width: 4px;
-    height: 4px;
-    border: 1px solid transparent;
-    background: rgba(0,0,0,.3);
+// Anim list
+// =====================================================
+
+.controlArrow {
+  display: none;
+}
+
+.anim-list {
+  list-style: none;
+  margin: 0 20px 0 0;
+
+
+  li {
+    margin: 0 0 2px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: (15/16) + em;
+    padding: 9px 10px;
+    @include transition(background .3s);
+
+    &.active {
+      background: rgba(255,255,255,0.4);
+    }   
   }
+  
+  .badge {
+    background: rgba(255, 255, 255, .8);
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    margin: 0 8px 0 0;
+    text-align: center;
+    color: #3892ab;
+    font-size: (13/16) + em;
+  }
+}
+
+.anim-wrap {  
+  width: 500px;
+  position: relative;
+  top: 80px;
 }
 
 // Animations

@@ -1,34 +1,61 @@
 %section#device-block.full-block.section.device-block.light-bg
-  .container
-    .middle-wrap
-      .middle-cell
-        %header.title
-          %h3 Please choose devices that you want to connect
-        .device-wrap
-          = image_tag 'click_to_select.png', alt: 'Click to select', id: 'device-help'
-          %form{action: ""}
-            %ul#device-list
-              %li.device-laptop
-                %input#device-laptop{checked: 'checked', name: 'device_laptop', type: 'checkbox'}/
-                %label.inner{for: 'device-laptop'}
-                  %span.device-graphic
-                  %strong Laptop
-              %li.device-phone
-                %input#device-phone{name: 'device_phone', type: 'checkbox'}/
-                %label.inner{for: 'device-phone'}
-                  %span.device-graphic
-                  %strong Phone
-              %li.device-tablet
-                %input#device-tablet{name: 'device_tablet', type: 'checkbox'}/
-                %label.inner{for: 'device-tablet'}
-                  %span.device-graphic
-                  %strong Tablet
-              %li.device-tv
-                %input#device-tv{name: 'device_tv', type: 'checkbox'}/
-                %label.inner{for: 'device-tv'}
-                  %span.device-graphic
-                  %strong TV
-            .btn-wrap.center
-              #device-disabled-wrap{'data-placement' => 'top', "data-toggle" => 'tooltip', title: 'Select two devices for a custom experience'}
-                %button#device-continue.btn.btn-info{disabled: 'disabled', type: 'button'}
-                  Continue
+  .slide
+    .container
+      .middle-wrap
+        .middle-cell
+          %header.title
+            %h3 Please choose devices that you want to connect
+          .device-wrap
+            = image_tag 'click_to_select.png', alt: 'Click to select', id: 'device-help'
+            %form{action: ""}
+              %ul#device-list
+                %li.device-laptop
+                  %input#device-laptop{checked: 'checked', name: 'device_laptop', type: 'checkbox'}/
+                  %label.inner{for: 'device-laptop'}
+                    %span.device-graphic
+                    %strong Laptop
+                %li.device-phone
+                  %input#device-phone{name: 'device_phone', type: 'checkbox'}/
+                  %label.inner{for: 'device-phone'}
+                    %span.device-graphic
+                    %strong Phone
+                %li.device-tablet
+                  %input#device-tablet{name: 'device_tablet', type: 'checkbox'}/
+                  %label.inner{for: 'device-tablet'}
+                    %span.device-graphic
+                    %strong Tablet
+                %li.device-tv
+                  %input#device-tv{name: 'device_tv', type: 'checkbox'}/
+                  %label.inner{for: 'device-tv'}
+                    %span.device-graphic
+                    %strong TV
+              .btn-wrap.center
+                #device-disabled-wrap{'data-placement' => 'top', "data-toggle" => 'tooltip', title: 'Select two devices for a custom experience'}
+                  %button#device-continue.btn.btn-info.toSlide{disabled: 'disabled', type: 'button', :data => {'index' => '2'}} Continue
+    .slide.inside-slide
+      .row
+        .col-md-6
+          .anim-wrap
+            #Stage.EDGE-88305247
+        .col-md-6
+          %h2.title Lorem ipsum dolor sit amet, sed do eiusmod
+          %ul.anim-list
+            %li.active{'data-time' => '1500'}
+              %span.badge 1
+              Browser, navigate to a restaurant
+            %li{'data-time' => '3000'}
+              %span.badge 2
+              Right click copy address
+            %li{'data-time' => '2000'}
+              %span.badge 3
+              Pull down notifications
+            %li{'data-time' => '1500'}
+              %span.badge 4
+              See notification with address and click to navigate button
+            %li{'data-time' => '1000'}
+              %span.badge 5
+              Click navigate
+            %li{'data-time' => '1500'}
+              %span.badge 6
+              Open maps app
+
