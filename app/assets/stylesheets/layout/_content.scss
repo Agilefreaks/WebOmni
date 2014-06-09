@@ -13,6 +13,12 @@
   .container {
     height: 100%;
   }
+
+  .inside-slide {
+	  .container {
+		  height: auto;
+	  }
+  }
 }
 
 .title {
@@ -486,6 +492,15 @@
       font-size: (34/16) + em;
     }
   }
+
+	.btn-wrap {
+		padding: 80px 0 0;
+		text-align: center;
+
+		.btn {
+			margin: 0 0 0 10px;
+		}
+	}
 }
 
 // Anim list
@@ -527,10 +542,9 @@
   }
 }
 
-.anim-wrap {  
-  width: 500px;
+.anim-wrap {
   position: relative;
-  top: 80px;
+  top: 90px;
 }
 
 // Animations

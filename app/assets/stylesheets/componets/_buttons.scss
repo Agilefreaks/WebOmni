@@ -43,6 +43,21 @@
   }
 }
 
+.btn-white {
+	background: #fff;
+	border: 0;
+	color: #5a6177;
+	position: relative;
+	z-index: 1;
+	padding-right: 45px;
+	padding-left: 45px;
+
+	&:hover {
+		background: #fff;
+		color: #5a6177;
+	}
+}
+
 .btn-info {
   background: $btn-info-bg;
   border: 0;
