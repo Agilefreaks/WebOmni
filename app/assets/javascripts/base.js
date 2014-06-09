@@ -10,7 +10,8 @@ var webOmniApp = {
     $goTo: $('.go-to'),
     $lightPanel: $(".light-bg"),
     $navBar: $('#header-bar'),
-    $fullPage: $('#fullpage')
+    $fullPage: $('#fullpage'),
+    $deviceContinue: $('#device-continue')
   },
 
   appendHome: function () {
@@ -64,6 +65,13 @@ var webOmniApp = {
           timeline = parseInt($animList.eq(i).data('time'), 10) + parseInt(timeline, 10);
           webOmniApp.runAnimation(i, timeline);
         }
+    },
+
+    startAnimation: function() {
+      setTimeout(function() {
+        comp.play();
+        webOmniApp.callbacks.animationTimeline();
+      }, 500);
     }
   },
 
@@ -72,6 +80,7 @@ var webOmniApp = {
     this.config.$menuTrigger.on('click', webOmniApp.callbacks.toggleMenu);
     this.config.$deviceList.on('change', 'input', webOmniApp.callbacks.toggleDevice);
     this.config.$goTo.on('click', webOmniApp.callbacks.goTo);
+    this.config.$deviceContinue.on('click', webOmniApp.callbacks.startAnimation);
   },
 
   appPlugins: {
@@ -102,9 +111,7 @@ var webOmniApp = {
           },
 
           onSlideLeave: function (anchorLink, index, slideIndex, direction) {
-            //start list animation
-            webOmniApp.callbacks.animationTimeline();
-
+            
             if (slideIndex >= 0) {
               $('#header-bar').removeClass('styled');
             } else {
@@ -132,8 +139,13 @@ var webOmniApp = {
   }
 };
 
+  var comp;
+  AdobeEdge.bootstrapCallback(function(compId) {
+    comp = AdobeEdge.getComposition('EDGE-88305247').getStage();
+  });
+
 $(function () {
-  webOmniApp.init();
+  webOmniApp.init();  
 });
 
 

@@ -55,7 +55,11 @@ if(document.addEventListener ){
       { load: '<%= asset_path('anim1/animation-1_edgeActions.js') %>' }
       ];
 
-if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResources=doLoadResources; AdobeEdge.playWhenReady=playWhenReady; }
+if (AdobeEdge.bootstrapLoading) { 
+   signaledLoading = true; 
+   AdobeEdge.loadResources=doLoadResources; 
+   AdobeEdge.playWhenReady=playWhenReady; 
+}
 
 loadResources(aLoader, doDelayLoad);
 
