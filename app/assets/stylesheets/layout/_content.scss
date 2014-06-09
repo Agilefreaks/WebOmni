@@ -478,7 +478,7 @@
 
 .slides {
   .inside-slide {
-    background: $brand-color6 url(bg_icons.png) no-repeat top left;
+    background: $brand-color6 image-url("bg_icons.png") no-repeat top left;
     .title {
       color: #fff;
       text-align: left;
