@@ -17,7 +17,6 @@
 //= require jquery.fullPage
 //= require bootstrap
 //= require humane-rails
-//= require edge.3.0.0.min.js
 //= require_tree .
 
 // remove the unwanted animation files, the will be loaded in the edgePreload with load
