@@ -82,7 +82,7 @@ var webOmniApp = {
 
         goToDevice: function () {
             var $checked = [];
-            $('#device-list input:checked').each(function () {
+            $('#device-list').find('input:checked').each(function () {
                 $checked.push($(this).prop('name'));
             });
 

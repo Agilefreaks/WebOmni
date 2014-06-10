@@ -17,12 +17,13 @@
 //= require jquery.fullPage
 //= require bootstrap
 //= require humane-rails
+//= require edge.3.0.0.min.js
 //= require_tree .
 
 // remove the unwanted animation files, the will be loaded in the edgePreload with load
-//= stub anim1/animation-1_edge.js.erb
-//= stub anim1/animation-1_edgeActions
-//= stub anim2/animation-2_edge.js.erb
-//= stub anim2/animation-2_edgeActions
-//= stub anim3/animation-3_edge.js.erb
-//= stub anim3/animation-3_edgeActions
+//= stub smart_clipping/anim1/animation-1_edge.js.erb
+//= stub smart_clipping/anim1/animation-1_edgeActions
+//= stub smart_clipping/anim2/animation-2_edge.js.erb
+//= stub smart_clipping/anim2/animation-2_edgeActions
+//= stub smart_clipping/anim3/animation-3_edge.js.erb
+//= stub smart_clipping/anim3/animation-3_edgeActions
