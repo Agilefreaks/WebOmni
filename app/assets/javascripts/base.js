@@ -95,6 +95,12 @@ var webOmniApp = {
 
             webOmniApp.callbacks.startAnimation(comp, $listId);
             e.preventDefault();
+        },
+
+        restartAnimation: function () {
+            comp.stop(0);
+            comp2.stop(0);
+            comp3.stop(0);
         }
     },
 
@@ -139,7 +145,7 @@ var webOmniApp = {
                     },
 
                     afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
-
+                        webOmniApp.callbacks.restartAnimation();
                         switch (slideAnchor) {
                             case "laptop-phone":
                                 webOmniApp.callbacks.startAnimation(comp, '#anim1-list');
