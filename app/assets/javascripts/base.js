@@ -24,12 +24,9 @@ var webOmniApp = {
     }
   },
 
-
   runAnimation: function (i, timeline, animList) {
-    $(animList).find('.active').removeClass('active');
-    $(animList).eq(0).addClass('active');
     setTimeout(function () {
-      $(animList + ' li').eq(i).addClass('active').siblings().removeClass('active');
+      $(animList).eq(i).addClass('active').siblings().removeClass('active');
     }, timeline);
   },
 
@@ -86,15 +83,24 @@ var webOmniApp = {
 
       for (var i = 0; i < $animList.length; i++) {
         timeline = parseInt($animList.eq(i).data('time'), 10) + parseInt(timeline, 10);
-        webOmniApp.runAnimation(i, timeline, animList);
+        webOmniApp.runAnimation(i, timeline, $animList);
       }
     },
 
-    startAnimation: function (comp, animList) {
-      setTimeout(function () {
-        comp.play("start");
-        webOmniApp.callbacks.animationTimeline(animList);
-      }, 200);
+    startAnimation: function (compAnim, animList) {
+      switch (compAnim) {
+        case "comp":
+          comp.play("start");
+          break;
+        case "comp2":
+          comp2.play("start");
+          break;
+        case "comp3":
+          comp3.play("start");
+          break;
+      }
+
+      webOmniApp.callbacks.animationTimeline(animList);
     },
 
     goToDevice: function () {
@@ -108,10 +114,17 @@ var webOmniApp = {
 
     replayAnimation: function (e) {
       var $this = $(this),
-          $listId = '#' + $this.closest('.slide').find('.anim-list').attr('id');
+          $listId = '#' + $this.closest('.slide').find('.anim-list').attr('id'),
+          compAnim = $this.data('composition');
 
-      webOmniApp.callbacks.startAnimation(comp, $listId);
+      webOmniApp.callbacks.startAnimation(compAnim, $listId);
       e.preventDefault();
+    },
+
+    restartAnimation: function () {
+      comp.stop(0);
+      comp2.stop(0);
+      comp3.stop(0);
     }
   },
 
@@ -158,16 +171,17 @@ var webOmniApp = {
           },
 
           afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
+            webOmniApp.callbacks.restartAnimation();
 
             switch (slideAnchor) {
               case "laptop-phone":
-                webOmniApp.callbacks.startAnimation(comp, '#anim1-list');
+                webOmniApp.callbacks.startAnimation("comp", '#anim1-list');
                 break;
               case "laptop-tablet":
-                webOmniApp.callbacks.startAnimation(comp2, '#anim2-list');
+                webOmniApp.callbacks.startAnimation("comp2", '#anim2-list');
                 break;
               case "phone-tablet":
-                webOmniApp.callbacks.startAnimation(comp3, '#anim3-list');
+                webOmniApp.callbacks.startAnimation("comp3", '#anim3-list');
                 break;
             }
 
