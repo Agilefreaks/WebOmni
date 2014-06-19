@@ -1,0 +1,221 @@
+// Responsive
+// =====================================================
+
+@media (max-width: 980px) {
+
+  .device-wrap #device-help {
+    right: 0;
+    top: -79px;
+  }
+
+  .device-block .title {
+    margin-bottom: 120px;
+  }
+
+  .device-wrap {
+    ul {
+      margin-bottom: 50px;
+
+      li {
+        width: 50%;
+        padding: 10px;
+      }
+    }
+  }
+
+// Dual block
+// =====================================================
+  #dual-block {
+    padding: 0;
+
+    .container {
+      padding: 0;
+      width: 100%;
+    }
+
+    .t-wrap {
+      display: block;
+      padding: 0;
+      margin: 0;
+    }
+
+    .t-cell {
+      display: block;
+      width: 100%;
+      padding: 35px;
+      text-align: center;
+    }
+  }
+
+  .dual-sep {
+    display: none;
+  }
+
+  .dual-block {
+    h2 {
+      font-size: (26/16) + em;
+    }
+
+    h5 {
+      text-align: center;
+      font-size: 1em;
+      padding-bottom: 30px;
+    }
+
+    p {
+      font-size: (14/16) + em;
+      text-align: center;
+      margin: 0 0 20px;
+    }
+  }
+
+  .download-list {
+    margin-bottom: 20px;
+  }
+
+  .dual-block {
+    .form-wrap {
+      width: 100%;
+    }
+
+    .form-group + .btn {
+      margin-top: 0;
+    }
+  }
+
+}
+
+@media (max-width: 780px) {
+  // Main
+  // =====================================================
+  html {
+    overflow: visible;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+
+  // header
+  // =====================================================
+  #header-bar {
+    height: 60px;
+  }
+
+  #logo {
+    top: 10px;
+  }
+
+  .menu-trigger {
+    top: 19px;
+  }
+
+  // Content
+  // =====================================================
+
+  .message-block h2, .title h2 {
+    font-size: (26/16) + em;
+  }
+
+  .title h3 {
+    font-size: (20/16) + em;
+  }
+
+  .inside-slide {
+    display: none;
+  }
+
+  .full-block {
+    padding: 35px 0;
+    height: auto;
+  }
+
+  .slide {
+    float: none;
+  }
+
+  #dual-block .t-cell {
+    padding: 35px 15px;
+  }
+
+  .partners {
+    height: auto;
+    padding: 30px 10px 10px;
+    display: block;
+    position: relative;
+
+    &:before {
+      content: "Our partners:";
+      position: absolute;
+      top: 13px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #454545;
+      font-size: 1em;
+    }
+
+    .title {
+      display: none;
+    }
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  #about-block {
+    padding-bottom: 0;
+
+    .title {
+      margin: 0;
+    }
+  }
+
+  // main menu
+  // =====================================================
+  .menu-overlay {
+    nav {
+      text-align: center;
+      position: relative;
+      top: 50%;
+      height: 60%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+
+      li {
+        min-height: 50px;
+      }
+
+      a {
+        font-size: 24px;
+        line-height: 50px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+
+  #message-block {
+    height: 500px;
+  }
+
+  .message-block {
+    -webkit-background-size: auto;
+    background-size: auto;
+  }
+
+  // team
+  // =====================================================
+  .team-list {
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 30px;
+
+    li {
+      float: none;
+      margin-bottom: 20px;
+    }
+  }
+}
