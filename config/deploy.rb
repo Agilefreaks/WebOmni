@@ -6,9 +6,6 @@ set :repo_url, 'git@github.com:Agilefreaks/WebOmni.git'
 
 set :rvm_ruby_version, 'ruby-2.1.2@webomni'
 
-role :app, %w(deploy@37.58.66.30)
-role :web, %w(deploy@37.58.66.30)
-
 set :assets_roles, [:web, :app]
 
 set :puma_workers, 4
