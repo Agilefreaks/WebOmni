@@ -10,19 +10,12 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require jquery-2.1.1.min
 //= require jquery_ujs
 //= require jquery.easing
 //= require jquery.slimscroll
-//= require jquery.fullPage
+//= require jquery.fullPage.min
+//= require handlebars-v1.3.0
 //= require bootstrap
 //= require humane-rails
-//= require_tree .
-
-// remove the unwanted animation files, the will be loaded in the edgePreload with load
-//= stub smart_clipping/anim1/animation-1_edge.js.erb
-//= stub smart_clipping/anim1/animation-1_edgeActions
-//= stub smart_clipping/anim2/animation-2_edge.js.erb
-//= stub smart_clipping/anim2/animation-2_edgeActions
-//= stub smart_clipping/anim3/animation-3_edge.js.erb
-//= stub smart_clipping/anim3/animation-3_edgeActions
+//= require_directory .

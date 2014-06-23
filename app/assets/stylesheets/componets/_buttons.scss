@@ -100,6 +100,35 @@
   }
 }
 
+// Slide buttons
+// =====================================================
+.controlArrow {
+  display: none !important;
+}
+
+.slide-nav {
+  position: absolute;
+  display: block;
+  text-indent: -9999px;
+  top: 50%;
+  margin-top: -(ceil(icons-sprite-height(slide_prev)/2));
+
+  &.slide-back {
+    @include icons-sprite(slide_prev, true);
+    left: -10%;
+  }
+
+  &.slide-next {
+    @include icons-sprite(slide_next, true);
+    right: -10%;
+  }
+
+  &.slide-down {
+    @include icons-sprite(slide_down, true);
+    right: -10%;
+  }
+}
+
 // Helper
 // =====================================================
 .btn-wrap {

@@ -32,99 +32,44 @@
               .btn-wrap.center
                 #device-disabled-wrap{'data-placement' => 'top', "data-toggle" => 'tooltip', title: 'Select two devices for a custom experience'}
                   %button#device-continue.btn.btn-info.toSlide{disabled: 'disabled', type: 'button'} Continue
-  .slide.inside-slide{'data-anchor' => 'laptop-phone'}
+  .slide.inside-slide#e-anim1{'data-anchor' => 'laptop-phone', 'style' => 'display: none'}
     .container
-      .row
-        .col-md-6
-          .anim-wrap
-            #Stage.EDGE-88305247
-        .col-md-6
-          %h2.title Lorem ipsum dolor sit amet, sed do eiusmod
-          %ul#anim1-list.anim-list
-            %li{'data-time' => '1500'}
-              %span.badge 1
-              Browser, navigate to a restaurant
-            %li{'data-time' => '3000'}
-              %span.badge 2
-              Right click copy address
-            %li{'data-time' => '2000'}
-              %span.badge 3
-              Pull down notifications
-            %li{'data-time' => '1500'}
-              %span.badge 4
-              See notification with address and click to navigate button
-            %li{'data-time' => '1000'}
-              %span.badge 5
-              Click navigate
-            %li{'data-time' => '1500'}
-              %span.badge 6
-              Open maps app
+      = link_to 'Back', '#', class: 'slide-nav slide-back'
+      = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
       .row
         .col-md-12
-          .btn-wrap
-            = link_to 'Replay', '#', class: 'btn btn-white btn-replay', data: { composition: 'comp' }
-            = link_to 'Next', '#', class: 'btn btn-white go-to'
-  .slide.inside-slide{'data-anchor' => 'laptop-tablet'}
+          .anim-title
+            %h2 Animation title
+          .anim-wrap#anim-1-wrap
+  .slide.inside-slide#e-anim2{'data-anchor' => 'laptop-tablet', 'style' => 'display: none'}
     .container
-      .row
-        .col-md-6
-          .anim-wrap
-            #Stage2.EDGE-88305242
-        .col-md-6
-          %h2.title Lorem ipsum dolor sit amet, sed do eiusmod
-          %ul#anim2-list.anim-list
-            %li{'data-time' => '1500'}
-              %span.badge 1
-              Browser, navigate to a restaurant
-            %li{'data-time' => '3000'}
-              %span.badge 2
-              Right click copy address
-            %li{'data-time' => '2000'}
-              %span.badge 3
-              Pull down notifications
-            %li{'data-time' => '1500'}
-              %span.badge 4
-              See notification with address and click to navigate button
-            %li{'data-time' => '1000'}
-              %span.badge 5
-              Click navigate
-            %li{'data-time' => '1500'}
-              %span.badge 6
-              Open maps app
+      = link_to 'Back', '#', class: 'slide-nav slide-back'
+      = link_to 'Next Section', '#', class: 'slide-nav slide-next go-to'
       .row
         .col-md-12
-          .btn-wrap
-            = link_to 'Replay', '#', class: 'btn btn-white btn-replay', data: { composition: 'comp2' }
-            = link_to 'Next', '#', class: 'btn btn-white go-to'
-  .slide.inside-slide{'data-anchor' => 'phone-tablet'}
+          .anim-title
+            %h2 Animation title
+          .anim-wrap#anim-2-wrap
+  .slide.inside-slide#e-anim3{'data-anchor' => 'phone-tablet', 'style' => 'display: none'}
     .container
-      .row
-        .col-md-6
-          .anim-wrap
-            #Stage3.EDGE-88305243
-        .col-md-6
-          %h2.title Lorem ipsum dolor sit amet, sed do eiusmod
-          %ul#anim3-list.anim-list
-            %li{'data-time' => '1500'}
-              %span.badge 1
-              Browser, navigate to a restaurant
-            %li{'data-time' => '3000'}
-              %span.badge 2
-              Right click copy address
-            %li{'data-time' => '2000'}
-              %span.badge 3
-              Pull down notifications
-            %li{'data-time' => '1500'}
-              %span.badge 4
-              See notification with address and click to navigate button
-            %li{'data-time' => '1000'}
-              %span.badge 5
-              Click navigate
-            %li{'data-time' => '1500'}
-              %span.badge 6
-              Open maps app
+      = link_to 'Back', '#', class: 'slide-nav slide-back'
+      = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
       .row
         .col-md-12
-          .btn-wrap
-            = link_to 'Replay', '#', class: 'btn btn-white btn-replay', data: { composition: 'comp3' }
-            = link_to 'Next', '#', class: 'btn btn-white go-to'
+          .anim-title
+            %h2 Animation title
+          .anim-wrap#anim-3-wrap
+  %script{:type => "text/x-handlebars-template", :id  => "anim-1"}
+    = link_to 'Replay', '#', class: 'btn btn-white btn-replay-1'
+    #Stage1.EDGE-88305247
+    %script{:src => "/assets/smart_clipping/anim1/animation-1_edgePreload.js.erb"}
+
+  %script{:type => "text/x-handlebars-template", :id  => "anim-2"}
+    = link_to 'Replay', '#', class: 'btn btn-white btn-replay-2'
+    #Stage2.EDGE-88305242
+    %script{:src => "/assets/smart_clipping/anim2/animation-2_edgePreload.js.erb"}
+
+  %script{:type => "text/x-handlebars-template", :id  => "anim-3"}
+    = link_to 'Replay', '#', class: 'btn btn-white btn-replay-3'
+    #Stage3.EDGE-88305243
+    %script{:src  => "/assets/smart_clipping/anim3/animation-3_edgePreload.js.erb"}
