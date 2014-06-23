@@ -55,15 +55,11 @@ if(document.addEventListener ){
       { load: '<%= asset_path('smart_clipping/anim1/animation-1_edgeActions.js') %>' }
       ];
 
-if (AdobeEdge.bootstrapLoading) { 
-   signaledLoading = true; 
-   AdobeEdge.loadResources=doLoadResources; 
-   AdobeEdge.playWhenReady=playWhenReady; 
-}
+if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResources=doLoadResources; AdobeEdge.playWhenReady=playWhenReady; }
 
 loadResources(aLoader, doDelayLoad);
 
-var plSTF="width",ctrPlS="both",minPlW="0",maxPlW=undefined,plWidth="400px",plHeight="400px";
+var plSTF="none",ctrPlS="both",minPlW="0",maxPlW=undefined,plWidth="600px",plHeight="600px";
 
 preContent={dom: [ ]};//simpleContent
 

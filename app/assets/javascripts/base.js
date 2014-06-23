@@ -32,12 +32,6 @@ var webOmniApp = {
     }
   },
 
-  runAnimation: function (i, timeline, animList) {
-    setTimeout(function () {
-      $(animList).eq(i).addClass('active').siblings().removeClass('active');
-    }, timeline);
-  },
-
   callbacks: {
     toggleMenu: function () {
       var $this = $(this);
@@ -102,20 +96,9 @@ goTo: function (e) {
   e.preventDefault();
 
   $.fn.fullpage.moveSectionDown();
-}
-,
-animationTimeline: function (animList) {
-  var timeline = 0,
-      $animList = $(animList + ' li');
+},
 
-  for (var i = 0; i < $animList.length; i++) {
-    timeline = parseInt($animList.eq(i).data('time'), 10) + parseInt(timeline, 10);
-    webOmniApp.runAnimation(i, timeline, $animList);
-  }
-}
-,
-
-startAnimation: function (compAnim, animList) {
+startAnimation: function (compAnim) {
   switch (compAnim) {
     case "comp":
       comp.play("start");
@@ -127,8 +110,6 @@ startAnimation: function (compAnim, animList) {
       comp3.play("start");
       break;
   }
-
-  webOmniApp.callbacks.animationTimeline(animList);
 }
 ,
 
@@ -144,10 +125,9 @@ goToDevice: function () {
 
 replayAnimation: function (e) {
   var $this = $(this),
-      $listId = '#' + $this.closest('.slide').find('.anim-list').attr('id'),
       compAnim = $this.data('composition');
 
-  webOmniApp.callbacks.startAnimation(compAnim, $listId);
+  webOmniApp.callbacks.startAnimation(compAnim);
   e.preventDefault();
 }
 ,
@@ -167,9 +147,7 @@ attachHandles: function () {
   this.config.$goTo.on('click', webOmniApp.callbacks.goTo);
   this.config.$deviceContinue.on('click', webOmniApp.callbacks.goToDevice);
   this.config.$btnReplay.on('click', webOmniApp.callbacks.replayAnimation);
-}
-,
-
+},
 
 appPlugins: {
   initFullPage: function () {
@@ -195,6 +173,8 @@ appPlugins: {
 
             window.location.hash = '#seemore';
 
+            $('.controlArrow').hide();
+
             setTimeout(function () {
               $('#device-list').addClass('animated fadeInUpBig');
             }, 500);
@@ -208,20 +188,22 @@ appPlugins: {
 
           switch (slideAnchor) {
             case "laptop-phone":
-              webOmniApp.callbacks.startAnimation("comp", '#anim1-list');
+              webOmniApp.callbacks.startAnimation("comp");
               break;
             case "laptop-tablet":
-              webOmniApp.callbacks.startAnimation("comp2", '#anim2-list');
+              webOmniApp.callbacks.startAnimation("comp2");
               break;
             case "phone-tablet":
-              webOmniApp.callbacks.startAnimation("comp3", '#anim3-list');
+              webOmniApp.callbacks.startAnimation("comp3");
               break;
           }
 
           if (slideIndex == 0) {
             $('#header-bar').addClass('styled');
+            $('.controlArrow').hide();
           } else {
             $('#header-bar').removeClass('styled');
+            $('.controlArrow').show();
           }
         }
       });
@@ -251,7 +233,6 @@ init: function () {
   this.appPlugins.init();
   this.attachHandles();
 
-  console.log(webOmniApp.mobileCheck());
   AdobeEdge.bootstrapCallback(function () {
     comp = AdobeEdge.getComposition('EDGE-88305247').getStage();
     comp2 = AdobeEdge.getComposition('EDGE-88305242').getStage();
