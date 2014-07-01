@@ -14,15 +14,25 @@
 //= require jquery_ujs
 //= require jquery.easing
 //= require jquery.slimscroll
-//= require jquery.fullPage
+//= require jquery.fullPage.min
+//= require handlebars-v1.3.0
 //= require bootstrap
 //= require humane-rails
 //= require_tree .
 
 // remove the unwanted animation files, the will be loaded in the edgePreload with load
+//= stub smart_clipping/anim1/animation-1_edgePreload.js.erb
 //= stub smart_clipping/anim1/animation-1_edge.js.erb
 //= stub smart_clipping/anim1/animation-1_edgeActions
-//= stub smart_clipping/anim2/animation-2_edge.js.erb
+//= stub smart_clipping/anim1/jquery-2.0.3.min
+//= stub smart_clipping/anim1/edge.3.0.0.min
+//= stub smart_clipping/anim2/animation-2_edgePreload.js.erb
+// = stub smart_clipping/anim2/animation-2_edge.js.erb
 //= stub smart_clipping/anim2/animation-2_edgeActions
-//= stub smart_clipping/anim3/animation-3_edge.js.erb
+//= stub smart_clipping/anim2/jquery-2.0.3.min
+//= stub smart_clipping/anim2/edge.3.0.0.min
+//= stub smart_clipping/anim3/animation-3_edgePreload.js.erb
+// = stub smart_clipping/anim3/animation-3_edge.js.erb
 //= stub smart_clipping/anim3/animation-3_edgeActions
+//= stub smart_clipping/anim3/edge.3.0.0.min
+//= stub smart_clipping/anim3/jquery-2.0.3.min

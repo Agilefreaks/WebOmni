@@ -50,7 +50,8 @@ if(document.addEventListener ){
    };
 
    aLoader = [
-         { load: '<%= asset_path('edge.3.0.0.min.js') %>' },
+         { load: '<%= asset_path('smart_clipping/anim2/jquery-2.0.3.min.js') %>' },
+         { load: '<%= asset_path('smart_clipping/anim2/edge.3.0.0.min.js') %>' },
          { load: '<%= asset_path('smart_clipping/anim2/animation-2_edge.js') %>' },
          { load: '<%= asset_path('smart_clipping/anim2/animation-2_edgeActions.js') %>' }
          ];
@@ -59,10 +60,12 @@ if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResource
 
 loadResources(aLoader, doDelayLoad);
 
-var plSTF="none",ctrPlS="both",minPlW="0",maxPlW=undefined,plWidth="400px",plHeight="400px";
+var plSTF="none",ctrPlS="both",minPlW="0",maxPlW=undefined,plWidth="600px",plHeight="600px";
 
 preContent={dom: [ ]};//simpleContent
 
 dlContent={dom: [ ]};//simpleContent
+
+window.onDocLoaded = onDocLoaded;
 
 })( "EDGE-88305242");
