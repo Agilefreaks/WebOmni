@@ -50,7 +50,8 @@ if(document.addEventListener ){
    };
 
    aLoader = [
-         { load: '<%= asset_path('edge.3.0.0.min.js') %>' },
+         { load: '<%= asset_path('smart_clipping/anim3/jquery-2.0.3.min.js') %>' },
+         { load: '<%= asset_path('smart_clipping/anim3/edge.3.0.0.min.js') %>' },
          { load: '<%= asset_path('smart_clipping/anim3/animation-3_edge.js') %>' },
          { load: '<%= asset_path('smart_clipping/anim3/animation-3_edgeActions.js') %>' }
          ];
@@ -64,5 +65,7 @@ var plSTF="none",ctrPlS="both",minPlW="0",maxPlW=undefined,plWidth="600px",plHei
 preContent={dom: [ ]};//simpleContent
 
 dlContent={dom: [ ]};//simpleContent
+
+window.onDocLoaded = onDocLoaded;
 
 })( "EDGE-88305243");

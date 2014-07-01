@@ -103,17 +103,29 @@
 // Slide buttons
 // =====================================================
 .controlArrow {
-  border: 0;
+  display: none !important;
+}
+
+.slide-nav {
+  position: absolute;
+  display: block;
+  text-indent: -9999px;
+  top: 50%;
   margin-top: -(ceil(icons-sprite-height(slide_prev)/2));
 
-  &.prev {
+  &.slide-back {
     @include icons-sprite(slide_prev, true);
-    left: 10%;
+    left: -10%;
   }
 
-  &.next {
+  &.slide-next {
     @include icons-sprite(slide_next, true);
-    right: 10%;
+    right: -10%;
+  }
+
+  &.slide-down {
+    @include icons-sprite(slide_down, true);
+    right: -10%;
   }
 }
 

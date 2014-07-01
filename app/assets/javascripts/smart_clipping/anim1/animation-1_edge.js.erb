@@ -465,7 +465,7 @@ var symbols = {
             fromState: "Base State",
             toState: "",
             duration: 20260,
-            autoPlay: false,
+            autoPlay: true,
             labels: {
                 "start": 0
             },
@@ -693,7 +693,9 @@ Edge.registerCompositionDefn(compId, symbols, fonts, resources, opts);
 /**
  * Adobe Edge DOM Ready Event Handler
  */
-$(window).ready(function() {
-     Edge.launchComposition(compId);
+
+$(window).on( "animationReady", function() {
+   Edge.launchComposition(compId);
 });
+
 })(jQuery, AdobeEdge, "EDGE-88305247");

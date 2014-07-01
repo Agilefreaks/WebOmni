@@ -221,7 +221,7 @@ var symbols = {
                 id: 'message-2',
                 type: 'image',
                 rect: ['297px', '335px','160px','160px','auto', 'auto'],
-                fill: ["rgba(0,0,0,0)","<%= asset_path("animation/message-2.svg") %>",'0px','0px']
+                fill: ["rgba(0,0,0,0)","<%= asset_path("animation/message-2-tablet.svg") %>",'0px','0px']
             }],
             symbolInstances: [
 
@@ -484,7 +484,7 @@ var symbols = {
             fromState: "Base State",
             toState: "",
             duration: 20260,
-            autoPlay: false,
+            autoPlay: true,
             labels: {
                 "start": 0
             },
@@ -706,7 +706,7 @@ Edge.registerCompositionDefn(compId, symbols, fonts, resources, opts);
 /**
  * Adobe Edge DOM Ready Event Handler
  */
-$(window).ready(function() {
-     Edge.launchComposition(compId);
+$(window).on( "animationReady", function() {
+   Edge.launchComposition(compId);
 });
 })(jQuery, AdobeEdge, "EDGE-88305242");
