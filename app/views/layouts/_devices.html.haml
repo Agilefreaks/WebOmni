@@ -30,7 +30,7 @@
                     %span.device-graphic
                     %strong TV
               .btn-wrap.center
-                #device-disabled-wrap{'data-placement' => 'top', "data-toggle" => 'tooltip', title: 'Select two devices for a custom experience'}
+                #device-disabled-wrap{'data-placement' => 'top', 'data-toggle' => 'tooltip', title: 'Select two devices for a custom experience'}
                   %button#device-continue.btn.btn-info.toSlide{disabled: 'disabled', type: 'button'} Continue
   .slide.inside-slide#e-anim1{'data-anchor' => 'laptop-phone', 'style' => 'display: none'}
     .container
@@ -39,7 +39,7 @@
       .row
         .col-md-12
           .anim-title
-            %h2 Animation title
+            %h2 Smart Clipping
           .anim-wrap#anim-1-wrap
   .slide.inside-slide#e-anim2{'data-anchor' => 'laptop-tablet', 'style' => 'display: none'}
     .container
@@ -48,7 +48,7 @@
       .row
         .col-md-12
           .anim-title
-            %h2 Animation title
+            %h2 Smart Clipping
           .anim-wrap#anim-2-wrap
   .slide.inside-slide#e-anim3{'data-anchor' => 'phone-tablet', 'style' => 'display: none'}
     .container
@@ -57,19 +57,19 @@
       .row
         .col-md-12
           .anim-title
-            %h2 Animation title
+            %h2 Smart Clipping
           .anim-wrap#anim-3-wrap
   %script{:type => "text/x-handlebars-template", :id  => "anim-1"}
     = link_to 'Replay', '#', class: 'btn btn-white btn-replay-1'
     #Stage1.EDGE-88305247
-    %script{:src => "/assets/smart_clipping/anim1/animation-1_edgePreload.js.erb"}
+    %script{:src => asset_path('smart_clipping/anim1/animation-1_edgePreload.js.erb')}
 
   %script{:type => "text/x-handlebars-template", :id  => "anim-2"}
     = link_to 'Replay', '#', class: 'btn btn-white btn-replay-2'
     #Stage2.EDGE-88305242
-    %script{:src => "/assets/smart_clipping/anim2/animation-2_edgePreload.js.erb"}
+    %script{:src => asset_path('smart_clipping/anim2/animation-2_edgePreload.js.erb')}
 
   %script{:type => "text/x-handlebars-template", :id  => "anim-3"}
     = link_to 'Replay', '#', class: 'btn btn-white btn-replay-3'
     #Stage3.EDGE-88305243
-    %script{:src  => "/assets/smart_clipping/anim3/animation-3_edgePreload.js.erb"}
+    %script{:src  => asset_path('smart_clipping/anim3/animation-3_edgePreload.js.erb')}
