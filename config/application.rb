@@ -40,7 +40,9 @@ module WebOmni
                                     jquery-2.1.1.min.js
                                     smart_clipping/anim1/animation-1_edge.js smart_clipping/anim1/animation-1_edgeActions.js smart_clipping/anim1/animation-1_edgePreload.js
                                     smart_clipping/anim2/animation-2_edge.js smart_clipping/anim2/animation-2_edgeActions.js smart_clipping/anim2/animation-2_edgePreload.js
-                                    smart_clipping/anim3/animation-3_edge.js smart_clipping/anim3/animation-3_edgeActions.js smart_clipping/anim3/animation-3_edgePreload.js )
+                                    smart_clipping/anim3/animation-3_edge.js smart_clipping/anim3/animation-3_edgeActions.js smart_clipping/anim3/animation-3_edgePreload.js
+                                    events/anim1/animation-1_edge.js events/anim1/animation-1_edgeActions.js events/anim1/animation-1_edgePreload.js
+                                    events/anim1/animation-2_edge.js events/anim1/animation-2_edgeActions.js events/anim1/animation-2_edgePreload.js )
 
     config.paths.add 'app/api', glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*",
