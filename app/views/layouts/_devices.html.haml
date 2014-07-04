@@ -34,18 +34,28 @@
                   %button#device-continue.btn.btn-info.toSlide{disabled: 'disabled', type: 'button'} Continue
   .slide.inside-slide#e-anim1{'data-anchor' => 'laptop-phone', 'style' => 'display: none'}
     .container
-      = link_to 'Back', '#', class: 'slide-nav slide-back'
+      = link_to 'Back', '#', class: 'slide-nav slide-back slide-go-back'
+
+      = link_to 'Next Section', '#', class: 'slide-nav slide-next toSlide go-to-event', data: { event: 'laptop-phone-event' }
+      .row
+        .col-md-12
+          .anim-title
+            %h2 Smart Clipping
+          .anim-wrap#anim-1-wrap
+  .slide.inside-slide#e-event1{'data-anchor' => 'laptop-phone-event', 'style' => 'display: none'}
+    .container
+      = link_to 'Back', '#', class: 'slide-nav slide-back toSlide go-to-event', data: { event: 'laptop-phone' }
 
       = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
       .row
         .col-md-12
           .anim-title
             %h2 Smart Clipping
-          .anim-wrap#anim-1-wrap
+          .anim-wrap#event-1-wrap
   .slide.inside-slide#e-anim2{'data-anchor' => 'laptop-tablet', 'style' => 'display: none'}
     .container
-      = link_to 'Back', '#', class: 'slide-nav slide-back'
-      = link_to 'Next Section', '#', class: 'slide-nav slide-next go-to'
+      = link_to 'Back', '#', class: 'slide-nav slide-back slide-go-back'
+      = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
       .row
         .col-md-12
           .anim-title
@@ -53,13 +63,23 @@
           .anim-wrap#anim-2-wrap
   .slide.inside-slide#e-anim3{'data-anchor' => 'phone-tablet', 'style' => 'display: none'}
     .container
-      = link_to 'Back', '#', class: 'slide-nav slide-back'
-      = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
+      = link_to 'Back', '#', class: 'slide-nav slide-back slide-go-back'
+      = link_to 'Next Section', '#', class: 'slide-nav slide-next toSlide go-to-event', data: { event: 'phone-tablet-event' }
       .row
         .col-md-12
           .anim-title
             %h2 Smart Clipping
           .anim-wrap#anim-3-wrap
+  .slide.inside-slide#e-event2{'data-anchor' => 'phone-tablet-event', 'style' => 'display: none'}
+    .container
+      = link_to 'Back', '#', class: 'slide-nav slide-back toSlide go-to-event', data: { event: 'phone-tablet' }
+
+      = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
+      .row
+        .col-md-12
+          .anim-title
+            %h2 Smart Clipping
+          .anim-wrap#event-2-wrap
   %script{:type => "text/x-handlebars-template", :id  => "anim-1"}
     = link_to 'Replay', '#', class: 'btn btn-white btn-replay-1'
     #Stage1.EDGE-88305247
@@ -74,3 +94,13 @@
     = link_to 'Replay', '#', class: 'btn btn-white btn-replay-3'
     #Stage3.EDGE-88305243
     %script{:src  => asset_path('smart_clipping/anim3/animation-3_edgePreload.js')}
+
+  %script{:type => "text/x-handlebars-template", :id  => "anim-4"}
+    = link_to 'Replay', '#', class: 'btn btn-white btn-replay-4'
+    #Stage4.EDGE-628389270
+    %script{:src  => asset_path('events/anim1/event1_edgePreload.js')}
+
+  %script{:type => "text/x-handlebars-template", :id  => "anim-5"}
+    = link_to 'Replay', '#', class: 'btn btn-white btn-replay-5'
+    #Stage4.EDGE-628389271
+    %script{:src  => asset_path('events/anim2/event2_edgePreload.js')}

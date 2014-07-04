@@ -20,8 +20,9 @@ jQuery(function($) {
       $fullPage: $('#fullpage'),
       $deviceContinue: $('#device-continue'),
       $btnReplay: $('.btn-replay'),
-      $slideBack: $('.slide-back'),
-      $slideDown: $('.slide-down')
+      $slideBack: $('.slide-go-back'),
+      $slideDown: $('.slide-down'),
+      $goToEvent: $('.go-to-event')
     },
 
     getTemplate: function ($template) {
@@ -32,9 +33,8 @@ jQuery(function($) {
     },
 
     resetAnim: function () {
-      console.log('reset anim');
       $(window).off("animationReady");
-      $('#anim-1-wrap, #anim-2-wrap, #anim-3-wrap').empty();
+      $('#anim-1-wrap, #anim-2-wrap, #anim-3-wrap, #event-1-wrap, #event-2-wrap').empty();
     },
 
     setupAnimationView: function (template, htmlWrap) {
@@ -64,6 +64,18 @@ jQuery(function($) {
             AdobeEdge.getComposition('EDGE-88305243').getStage().play("start");
           });
           break;
+        case "#event-1-wrap":
+          jQuery('#event-1-wrap').on('click', '.btn-replay-4', function(e) {
+            e.preventDefault();
+            AdobeEdge.getComposition('EDGE-628389270').getStage().play("start");
+          });
+          break;
+        case "#event-2-wrap":
+          jQuery('#event-2-wrap').on('click', '.btn-replay-5', function(e) {
+            e.preventDefault();
+            AdobeEdge.getComposition('EDGE-628389271').getStage().play("start");
+          });
+          break;
       }
 
       //detect if edge is loaded yet
@@ -82,9 +94,7 @@ jQuery(function($) {
           }
 
           if (hasComposition) {
-            console.log('hasComposition');
             setTimeout(function () {
-              console.log('trigger');
               jQuery(window).trigger("animationReady");
             }, 100);
             return;
@@ -144,9 +154,6 @@ jQuery(function($) {
       },
 
       goToBlock: function (id) {
-
-        console.log($(id).offset().top);
-
         $('html, body').animate({
           scrollTop: $(id).offset().top
         }, 1000);
@@ -209,6 +216,30 @@ jQuery(function($) {
         }
 
         $.fn.fullpage.moveTo(2, $checked[0] + "-" + $checked[1]);
+      },
+
+      goToEvent: function() {
+        var $this = $(this),
+            dataEvent = $this.data('event')
+        webOmniApp.resetAnim();
+        $('.slide[data-anchor="' + dataEvent + '"]').show();
+
+        switch (dataEvent) {
+          case "laptop-phone-event":
+            webOmniApp.setupAnimationView('#anim-4', '#event-1-wrap');
+            break;
+          case "phone-tablet-event":
+            webOmniApp.setupAnimationView('#anim-5', '#event-2-wrap');
+            break;
+          case "laptop-phone":
+            webOmniApp.setupAnimationView('#anim-1', '#anim-1-wrap');
+            break;
+          case "phone-tablet":
+            webOmniApp.setupAnimationView('#anim-3', '#anim-3-wrap');
+            break;
+        }
+
+        $.fn.fullpage.moveTo(2, dataEvent);
       }
     },
 
@@ -220,6 +251,7 @@ jQuery(function($) {
       this.config.$goTo.on('click', webOmniApp.callbacks.goTo);
       this.config.$slideBack.on('click', webOmniApp.callbacks.goBack);
       this.config.$deviceContinue.on('click', webOmniApp.callbacks.goToDevice);
+      this.config.$goToEvent.on('click', webOmniApp.callbacks.goToEvent);
     },
 
     appPlugins: {
