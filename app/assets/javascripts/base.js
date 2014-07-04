@@ -1,7 +1,3 @@
-var comp, comp2, comp3;
-
-jQuery.noConflict();
-
 jQuery(function($) {
 
   var webOmniApp = {
