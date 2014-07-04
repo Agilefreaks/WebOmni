@@ -30,6 +30,10 @@
       background: image-url("logo_s.png") no-repeat;
     }
 
+    .main-nav a {
+      color: $brand-color4;
+    }
+
     .icon-bar {
       background: $brand-color4;
     }
@@ -100,7 +104,39 @@
 
 // Main menu
 // =====================================================
+.main-nav {
+  float: right;
 
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  li {
+    float: left;
+  }
+
+  a {
+    display: block;
+    line-height: 80px;
+    padding: 0 20px;
+    color: #fff;
+    font-size: (16/16) + em;
+    @include font-normal;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+
+    &:hover {
+      text-decoration: none;
+      background: rgba(0, 0, 0, .05);
+    }
+  }
+}
+
+// Mobile menu
+// =====================================================
 .menu-overlay {
   background: rgba(39, 61, 87, .9);
   position: fixed;
