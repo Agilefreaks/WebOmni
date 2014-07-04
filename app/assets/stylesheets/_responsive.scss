@@ -1,6 +1,10 @@
 // Responsive
 // =====================================================
 
+.on-mobile {
+  display: none;
+}
+
 @media (max-width: 980px) {
 
   .device-wrap #device-help {
@@ -96,6 +100,10 @@
     overflow-y: auto;
   }
 
+  .on-mobile {
+    display: block;
+  }
+
   // header
   // =====================================================
   #header-bar {
@@ -108,6 +116,10 @@
 
   .menu-trigger {
     top: 19px;
+  }
+
+  .main-nav {
+    display: none;
   }
 
   // Content
