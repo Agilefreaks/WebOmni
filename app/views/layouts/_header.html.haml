@@ -2,7 +2,7 @@
   .container
     %h1#logo
       = link_to 'WEBOMNI', root_url
-    %button.menu-trigger.on-mobile{type: 'button'}
+    = button_tag class: 'menu-trigger on-mobile' do
       %span.icon-bar.icon-top
       %span.icon-bar.icon-mid
       %span.icon-bar.icon-bot
