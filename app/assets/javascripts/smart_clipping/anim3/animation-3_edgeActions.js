@@ -27,11 +27,10 @@
     });
     //Edge binding end
 
-    Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 17260, function(sym, e) {
-      //sym.stop();
+    Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 17828, function(sym, e) {
+      sym.stop();
 
     });
-    //Edge binding end
 
 
     Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 19260, function(sym, e) {
