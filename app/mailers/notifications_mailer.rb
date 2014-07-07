@@ -1,6 +1,4 @@
-class NotificationsMailer < ActionMailer::Base
-  default from: 'Omnipaste <team@omnipasteapp.com>'
-
+class NotificationsMailer < BaseMailer
   def welcome(user_id)
     @user = User.find(user_id)
     mail({

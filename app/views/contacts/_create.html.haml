@@ -1,13 +1,13 @@
-%h2 Do you want to know when we will release?
+%h2 Do you have a suggestion/issue/praise?
 %p
-  Fill the form bellow, email is the only thing we need, we will only use it once to let you know when
-  we release, no spam or any other nasty stuff.
+  Fill the form bellow, email is the only thing we need, we will only use it to reply to you
+  if the case might be.
 .form-wrap
-  = form_for contact do |f|
+  = form_for contact, remote: true do |f|
     .form-group
       = f.text_field :name, placeholder: 'Your name', class: 'form-control'
     .form-group
       = f.email_field :email, placeholder: 'Your email', class: 'form-control'
     .form-group
       = f.text_area :message, placeholder: 'Message...', class: 'form-control'
-    = f.submit 'Subscribe', class: 'btn btn-info'
+    = f.submit 'Send', class: 'btn btn-info', data: { disable_with: 'Sending...' }

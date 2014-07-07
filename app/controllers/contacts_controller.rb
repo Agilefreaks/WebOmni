@@ -1,7 +1,9 @@
 class ContactsController < ApplicationController
+  respond_to :js
+
   def create
-    Contact.create(contact_params)
-    redirect_to root_url, notice: 'Got it, will let you know as soon as possible.'
+    contact = Contact.new(contact_params)
+    ContactMailer.email(contact).deliver
   end
 
   def contact_params
