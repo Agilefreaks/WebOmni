@@ -14,13 +14,12 @@
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
     = render partial: 'layouts/google'
-    = render partial: 'layouts/crowd_process'
   %body
     .container
       .middle-wrap
         .middle-cell
           = yield
 
-  -# load the manifest file
-  = javascript_include_tag 'application'
-  = humane_flash_messages.html_safe
+    -# load the manifest file
+    = javascript_include_tag 'application'
+    = humane_flash_messages.html_safe
