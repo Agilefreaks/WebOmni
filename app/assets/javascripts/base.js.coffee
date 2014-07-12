@@ -1,26 +1,25 @@
 jQuery ($) ->
-
   Laptop = () -> {
     name: 'Laptop'
     className: 'device-laptop'
-    handlers: ['smart clipping', 'incoming call']
-    events: ['smart clipping']
+    handlers: ['navigation', 'incoming call']
+    events: ['navigation']
     isChecked: true
   }
 
   Tablet = () -> {
     name: 'Tablet'
     className: 'device-tablet'
-    handlers: ['smart clipping', 'incoming call']
-    events: ['smart clipping']
+    handlers: ['navigation', 'incoming call']
+    events: ['navigation']
     isChecked: false
   }
 
   Phone = () -> {
     name: 'Phone'
     className: 'device-phone'
-    handlers: ['smart clipping']
-    events: ['smart clipping', 'incoming call']
+    handlers: ['navigation']
+    events: ['navigation', 'incoming call']
     isChecked: false
   }
 
@@ -42,9 +41,8 @@ jQuery ($) ->
 
       deviceCount: 2
       $devices: devices
-      $deviceList: () ->
-        $("#devices-wrapper")
-      $deviceContinue: $("#device-continue")
+      $devicesWrapper: $("#devices-wrapper")
+      $showUsecases: $("#device-continue")
 
       $fullBlock: $(".full-block")
       $menuTrigger: $(".menu-trigger")
@@ -58,6 +56,8 @@ jQuery ($) ->
       $slideBack: $(".slide-go-back")
       $slideDown: $(".slide-down")
 
+    showCaseManager: ShowcaseManager
+
     getTemplate: ($template) ->
       source = $($template).html()
       template = Handlebars.compile(source)
@@ -65,7 +65,6 @@ jQuery ($) ->
 
     resetAnim: ->
       $(window).off "animationReady"
-      $("#anim-1-wrap, #anim-2-wrap, #anim-3-wrap, #event-1-wrap, #event-2-wrap").empty()
       return
 
     setupAnimationView: (template, htmlWrap) ->
@@ -174,15 +173,18 @@ jQuery ($) ->
         return
 
       toggleDevice: ->
-        $this = $(this)
-        $parent = $this.closest("#device-list")
-        if $parent.find("input:checked").length is $webOmniApp.config.deviceCount
-          $parent.find(":not(input:checked)").prop("disabled", true).end().closest("form").find("#device-continue").prop "disabled", false
+        $devicesWrapper = $webOmniApp.config.$devicesWrapper
+        if $devicesWrapper.find("input:checked").length is $webOmniApp.config.deviceCount
+          $devicesWrapper
+            .find(":not(input:checked)").prop("disabled", true).end()
+            .closest(".device-wrap").find("#device-continue").prop "disabled", false
 
           #disable tooltip
           $("#device-disabled-wrap").tooltip "destroy"
         else
-          $parent.find("input:disabled").prop("disabled", false).end().closest("form").find("#device-continue").prop "disabled", true
+          $devicesWrapper
+            .find("input:disabled").prop("disabled", false).end()
+            .closest(".device-wrap").find("#device-continue").prop "disabled", true
 
           #enable tooltip
           $("#device-disabled-wrap").tooltip()
@@ -200,17 +202,11 @@ jQuery ($) ->
 
       showUsecasesForSelectedDevices: ->
         $webOmniApp.resetAnim()
-        checkedDevices = _.pluck($("#device-list").find("input:checked"), 'name')
-
+        checkedDevicesNames = _.pluck($("#device-list").find("input:checked"), 'name')
         selectedDevices = _.filter($webOmniApp.config.$devices, (device) ->
-          _.contains(checkedDevices, device.name))
+          _.contains(checkedDevicesNames, device.name))
 
-        availableUsecases = _.union(
-          _.intersection(selectedDevices[0].events, selectedDevices[1].handlers),
-          _.intersection(selectedDevices[0].handlers, selectedDevices[1].events)
-        )
-
-        renderUsecases(selectedDevices, availableUsecases)
+        $webOmniApp.showCaseManager.showFor(selectedDevices[0], selectedDevices[1])
 
         return
 
@@ -218,11 +214,9 @@ jQuery ($) ->
       @config.$win.resize $webOmniApp.callbacks.resize
       @config.$menuTrigger.on "click", $webOmniApp.callbacks.toggleMenu
       @config.$menuOverlay.on "click", "a", $webOmniApp.callbacks.closeMenu
-      @config.$deviceList().on "change", "input", $webOmniApp.callbacks.toggleDevice
+      @config.$devicesWrapper.on "change", "input", $webOmniApp.callbacks.toggleDevice
       @config.$goTo.on "click", $webOmniApp.callbacks.goTo
-      @config.$slideBack.on "click", $webOmniApp.callbacks.goBack
-      @config.$deviceContinue.on "click", $webOmniApp.callbacks.showUsecasesForSelectedDevices
-      @config.$goToEvent.on "click", $webOmniApp.callbacks.goToEvent
+      @config.$showUsecases.on "click", $webOmniApp.callbacks.showUsecasesForSelectedDevices
       return
 
     appPlugins:

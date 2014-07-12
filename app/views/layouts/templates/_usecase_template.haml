@@ -1,0 +1,11 @@
+%script{:type => 'text/x-handlebars-template', :id  => 'usecase_template'}
+  .slide{'data-anchor' => '{{device1}}-{{device2}}-{{name}}', 'style' => 'display: none'}
+    .container
+      = link_to 'Back', '#', class: 'slide-nav slide-back toSlide go-to-event', data: { event: '{{device1}}-{{device2}}' }
+
+      = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
+      .row
+        .col-md-12
+          .anim-title
+            %h2 {{name}}
+          .anim-wrap
