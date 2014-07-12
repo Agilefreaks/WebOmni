@@ -1,0 +1,9 @@
+%script{:type => 'text/x-handlebars-template', :id  => 'devices-template'}
+  %ul#device-list
+    {{#each devices}}
+    %li{class:  '{{className}}'}
+      <input type='checkbox' id='{{className}}' name='{{name}}' {{#if isChecked}} checked='checked' {{/if}}/>
+      %label.inner{for: '{{className}}'}
+        %span.device-graphic
+        %strong {{name}}
+    {{/each}}

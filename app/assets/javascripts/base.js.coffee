@@ -1,5 +1,40 @@
 jQuery ($) ->
-  webOmniApp =
+
+  Laptop = () -> {
+    name: 'Laptop'
+    className: 'device-laptop'
+    handlers: ['smart clipping', 'incoming call']
+    events: ['smart clipping']
+    isChecked: true
+  }
+
+  Tablet = () -> {
+    name: 'Tablet'
+    className: 'device-tablet'
+    handlers: ['smart clipping', 'incoming call']
+    events: ['smart clipping']
+    isChecked: false
+  }
+
+  Phone = () -> {
+    name: 'Phone'
+    className: 'device-phone'
+    handlers: ['smart clipping']
+    events: ['smart clipping', 'incoming call']
+    isChecked: false
+  }
+
+  TV = () -> {
+      name: 'TV'
+      className: 'device-tv'
+      handlers: []
+      events: []
+      isChecked: false
+    }
+
+  devices = [Laptop(), Phone(), Tablet(), TV()]
+
+  $webOmniApp =
     config:
       $win: $(window)
       $doc: $(document)
@@ -7,7 +42,8 @@ jQuery ($) ->
       $fullBlock: $(".full-block")
       $menuTrigger: $(".menu-trigger")
       $menuOverlay: $(".menu-overlay")
-      $deviceList: $("#device-list")
+      $deviceList: () ->
+        $("#device-list")
       $htmlBody: $("html, body")
       $goTo: $(".go-to")
       $lightPanel: $(".light-bg")
@@ -18,6 +54,7 @@ jQuery ($) ->
       $slideBack: $(".slide-go-back")
       $slideDown: $(".slide-down")
       $goToEvent: $(".go-to-event")
+      $devices: devices
 
     getTemplate: ($template) ->
       source = $($template).html()
@@ -33,7 +70,7 @@ jQuery ($) ->
       $(htmlWrap).empty()
       window.AdobeEdge = `undefined`
       AdobeEdge = `undefined`
-      html = webOmniApp.getTemplate(template)
+      html = $webOmniApp.getTemplate(template)
       jQuery(htmlWrap).html html
       switch htmlWrap
         when "#anim-1-wrap"
@@ -108,14 +145,14 @@ jQuery ($) ->
       toggleMenu: ->
         $this = $(this)
         if $this.hasClass("active")
-          webOmniApp.callbacks.closeMenu()
+          $webOmniApp.callbacks.closeMenu()
         else
-          webOmniApp.callbacks.openMenu()
+          $webOmniApp.callbacks.openMenu()
         return
 
       openMenu: ->
-        webOmniApp.config.$menuTrigger.addClass "active"
-        webOmniApp.config.$menuOverlay.addClass "open"
+        $webOmniApp.config.$menuTrigger.addClass "active"
+        $webOmniApp.config.$menuOverlay.addClass "open"
         return
 
       closeMenu: (e) ->
@@ -123,9 +160,9 @@ jQuery ($) ->
         if $(window).width() < 600
           e.preventDefault()
           blockId = $this.data("id")
-          webOmniApp.callbacks.goToBlock blockId
-        webOmniApp.config.$menuTrigger.removeClass "active"
-        webOmniApp.config.$menuOverlay.removeClass "open"
+          $webOmniApp.callbacks.goToBlock blockId
+        $webOmniApp.config.$menuTrigger.removeClass "active"
+        $webOmniApp.config.$menuOverlay.removeClass "open"
         return
 
       goToBlock: (id) ->
@@ -137,7 +174,7 @@ jQuery ($) ->
       toggleDevice: ->
         $this = $(this)
         $parent = $this.closest("#device-list")
-        if $parent.find("input:checked").length is webOmniApp.config.deviceCount
+        if $parent.find("input:checked").length is $webOmniApp.config.deviceCount
           $parent.find(":not(input:checked)").prop("disabled", true).end().closest("form").find("#device-continue").prop "disabled", false
 
           #disable tooltip
@@ -161,7 +198,7 @@ jQuery ($) ->
 
       goToDevice: ->
         $checked = []
-        webOmniApp.resetAnim()
+        $webOmniApp.resetAnim()
         $("#device-list").find("input:checked").each ->
           $checked.push $(this).prop("name")
           return
@@ -170,45 +207,45 @@ jQuery ($) ->
         $(".slide[data-anchor=\"" + $checked[0] + "-" + $checked[1] + "\"]").show()
         switch $checked[0] + "-" + $checked[1]
           when "laptop-phone"
-            webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
+            $webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
           when "laptop-tablet"
-            webOmniApp.setupAnimationView "#anim-2", "#anim-2-wrap"
+            $webOmniApp.setupAnimationView "#anim-2", "#anim-2-wrap"
           when "phone-tablet"
-            webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
+            $webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
         $.fn.fullpage.moveTo 2, $checked[0] + "-" + $checked[1]
         return
 
       goToEvent: ->
         $this = $(this)
         dataEvent = $this.data("event")
-        webOmniApp.resetAnim()
+        $webOmniApp.resetAnim()
         $(".slide[data-anchor=\"" + dataEvent + "\"]").show()
         switch dataEvent
           when "laptop-phone-event"
-            webOmniApp.setupAnimationView "#anim-4", "#event-1-wrap"
+            $webOmniApp.setupAnimationView "#anim-4", "#event-1-wrap"
           when "phone-tablet-event"
-            webOmniApp.setupAnimationView "#anim-5", "#event-2-wrap"
+            $webOmniApp.setupAnimationView "#anim-5", "#event-2-wrap"
           when "laptop-phone"
-            webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
+            $webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
           when "phone-tablet"
-            webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
+            $webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
         $.fn.fullpage.moveTo 2, dataEvent
         return
 
     attachHandles: ->
-      @config.$win.resize webOmniApp.callbacks.resize
-      @config.$menuTrigger.on "click", webOmniApp.callbacks.toggleMenu
-      @config.$menuOverlay.on "click", "a", webOmniApp.callbacks.closeMenu
-      @config.$deviceList.on "change", "input", webOmniApp.callbacks.toggleDevice
-      @config.$goTo.on "click", webOmniApp.callbacks.goTo
-      @config.$slideBack.on "click", webOmniApp.callbacks.goBack
-      @config.$deviceContinue.on "click", webOmniApp.callbacks.goToDevice
-      @config.$goToEvent.on "click", webOmniApp.callbacks.goToEvent
+      @config.$win.resize $webOmniApp.callbacks.resize
+      @config.$menuTrigger.on "click", $webOmniApp.callbacks.toggleMenu
+      @config.$menuOverlay.on "click", "a", $webOmniApp.callbacks.closeMenu
+      @config.$deviceList().on "change", "input", $webOmniApp.callbacks.toggleDevice
+      @config.$goTo.on "click", $webOmniApp.callbacks.goTo
+      @config.$slideBack.on "click", $webOmniApp.callbacks.goBack
+      @config.$deviceContinue.on "click", $webOmniApp.callbacks.goToDevice
+      @config.$goToEvent.on "click", $webOmniApp.callbacks.goToEvent
       return
 
     appPlugins:
       initFullPage: ->
-        $container = webOmniApp.config.$fullPage
+        $container = $webOmniApp.config.$fullPage
         if $container.length
           $container.fullpage
             verticalCentered: true
@@ -239,6 +276,13 @@ jQuery ($) ->
                 $("#header-bar").removeClass "styled"
               return
 
+            afterRender: () ->
+              devicesTemplate = $("#devices-template").html()
+              template = Handlebars.compile(devicesTemplate)
+              $("#devices-wrapper").append template({ devices: $webOmniApp.config.$devices})
+
+              $webOmniApp.attachHandles()
+
         return
 
       initBootstrapTooltip: ->
@@ -253,8 +297,7 @@ jQuery ($) ->
     init: ->
       @appendHome()  if $(window).width() > 600
       @appPlugins.init()
-      @attachHandles()
       return
 
-  webOmniApp.init()
+  $webOmniApp.init()
   return
