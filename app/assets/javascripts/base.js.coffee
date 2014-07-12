@@ -176,7 +176,7 @@ jQuery ($) ->
         $devicesWrapper = $webOmniApp.config.$devicesWrapper
         if $devicesWrapper.find("input:checked").length is $webOmniApp.config.deviceCount
           $devicesWrapper
-            .find(":not(input:checked)").prop("disabled", true).end()
+            .find("input:not(input:checked)").prop("disabled", true).end()
             .closest(".device-wrap").find("#device-continue").prop "disabled", false
 
           #disable tooltip
@@ -208,6 +208,8 @@ jQuery ($) ->
 
         $webOmniApp.showCaseManager.showFor(selectedDevices[0], selectedDevices[1])
 
+        $webOmniApp.config.$fullPage.fullpage.reBuild()
+
         return
 
     attachHandles: ->
@@ -223,16 +225,13 @@ jQuery ($) ->
       initFullPage: ->
         $container = $webOmniApp.config.$fullPage
         $container.fullpage
-          verticalCentered: true
-          scrollOverflow: true
           anchors: ["home", "seemore", "feedback", "team"]
-          loopHorizontal: false
-          resize: true
-          css3: true
-          easing: "easeInQuart"
+          scrollOverflow: true
+          verticalCentered: false
+          resize: false
 
           onLeave: (index, nextIndex) ->
-            if $(".section").eq(nextIndex - 1).hasClass("light-bg")
+            if $(".fp-section").eq(nextIndex - 1).hasClass("light-bg")
               $("#header-bar").addClass "styled"
             else
               $("#header-bar").removeClass "styled"
