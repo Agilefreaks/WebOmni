@@ -1,5 +1,5 @@
 %script{:type => 'text/x-handlebars-template', :id  => 'usecase_template'}
-  .slide{'data-anchor' => '{{device1}}-{{device2}}-{{name}}', 'style' => 'display: none'}
+  .animation{'data-anchor' => '{{device1}}-{{device2}}-{{name}}'}
     .container
       = link_to 'Back', '#', class: 'slide-nav slide-back toSlide go-to-event', data: { event: '{{device1}}-{{device2}}' }
 

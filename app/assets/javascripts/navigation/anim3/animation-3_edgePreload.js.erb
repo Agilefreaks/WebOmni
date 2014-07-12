@@ -52,8 +52,8 @@ if(document.addEventListener ){
    aLoader = [
          { load: '<%= asset_path('jquery-2.1.1.min.js') %>' },
          { load: '<%= asset_path('edge.3.0.0.min.js') %>' },
-         { load: '<%= asset_path('smart_clipping/anim2/animation-2_edge.js') %>' },
-         { load: '<%= asset_path('smart_clipping/anim2/animation-2_edgeActions.js') %>' }
+         { load: '<%= asset_path('navigation/anim3/animation-3_edge.js') %>' },
+         { load: '<%= asset_path('navigation/anim3/animation-3_edgeActions.js') %>' }
          ];
 
 if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResources=doLoadResources; AdobeEdge.playWhenReady=playWhenReady; }
@@ -68,4 +68,4 @@ dlContent={dom: [ ]};//simpleContent
 
 window.onDocLoaded = onDocLoaded;
 
-})( "EDGE-88305242");
+})( "EDGE-88305243");

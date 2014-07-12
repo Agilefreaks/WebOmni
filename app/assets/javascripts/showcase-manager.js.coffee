@@ -1,4 +1,9 @@
 window.ShowcaseManager =
+  events: [
+    {id: 'incoming-call', displayName: 'Incoming Call'}
+    {id: 'navigation', displayName: 'Smart clipping - Navigation'}
+  ]
+
   showFor: (device1, device2) ->
     availableUsecases = _.map(
       _.union(
@@ -6,11 +11,10 @@ window.ShowcaseManager =
         _.intersection(device1.handlers, device2.events)
       ),
       (eventName) ->
-        {
         name: eventName
         device1: device1.name
         device2: device2.name
-        }
+
     )
     this.renderUsecases(availableUsecases)
 

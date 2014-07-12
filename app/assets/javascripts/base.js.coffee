@@ -2,7 +2,7 @@ jQuery ($) ->
   Laptop = () -> {
     name: 'Laptop'
     className: 'device-laptop'
-    handlers: ['navigation', 'incoming call']
+    handlers: ['navigation', 'incoming-call']
     events: ['navigation']
     isChecked: true
   }
@@ -10,7 +10,7 @@ jQuery ($) ->
   Tablet = () -> {
     name: 'Tablet'
     className: 'device-tablet'
-    handlers: ['navigation', 'incoming call']
+    handlers: ['navigation', 'incoming-call']
     events: ['navigation']
     isChecked: false
   }
@@ -19,7 +19,7 @@ jQuery ($) ->
     name: 'Phone'
     className: 'device-phone'
     handlers: ['navigation']
-    events: ['navigation', 'incoming call']
+    events: ['navigation', 'incoming-call']
     isChecked: false
   }
 
@@ -222,42 +222,35 @@ jQuery ($) ->
     appPlugins:
       initFullPage: ->
         $container = $webOmniApp.config.$fullPage
-        if $container.length
-          $container.fullpage
-            verticalCentered: true
-            scrollOverflow: true
-            navigation: true
-            anchors: [
-              "home"
-              "seemore"
-              "feedback"
-              "team"
-            ]
-            loopHorizontal: false
-            resize: false
-            css3: true
-            easing: "easeInQuart"
-            onLeave: (index, nextIndex) ->
-              if $(".section").eq(nextIndex - 1).hasClass("light-bg")
-                $("#header-bar").addClass "styled"
-              else
-                $("#header-bar").removeClass "styled"
-              window.location.hash = "#seemore"  if nextIndex is "2"
-              return
+        $container.fullpage
+          verticalCentered: true
+          scrollOverflow: true
+          anchors: ["home", "seemore", "feedback", "team"]
+          loopHorizontal: false
+          resize: true
+          css3: true
+          easing: "easeInQuart"
 
-            afterSlideLoad: (anchorLink, index, slideAnchor, slideIndex) ->
-              if slideIndex is 0
-                $("#header-bar").addClass "styled"
-              else
-                $("#header-bar").removeClass "styled"
-              return
+          onLeave: (index, nextIndex) ->
+            if $(".section").eq(nextIndex - 1).hasClass("light-bg")
+              $("#header-bar").addClass "styled"
+            else
+              $("#header-bar").removeClass "styled"
+            return
 
-            afterRender: () ->
-              devicesTemplate = $("#devices-template").html()
-              template = Handlebars.compile(devicesTemplate)
-              $("#devices-wrapper").append template({ devices: $webOmniApp.config.$devices})
+          afterSlideLoad: (anchorLink, index, slideAnchor, slideIndex) ->
+            if slideIndex is 0
+              $("#header-bar").addClass "styled"
+            else
+              $("#header-bar").removeClass "styled"
+            return
 
-              $webOmniApp.attachHandles()
+          afterRender: () ->
+            devicesTemplate = $("#devices-template").html()
+            template = Handlebars.compile(devicesTemplate)
+            $("#devices-wrapper").append template({ devices: $webOmniApp.config.$devices})
+
+            $webOmniApp.attachHandles()
 
         return
 

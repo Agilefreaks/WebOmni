@@ -39,11 +39,11 @@ module WebOmni
                                     edge.3.0.0.min.js
                                     jquery-2.1.1.min.js
                                     presentation.js presentation.css
-                                    smart_clipping/anim1/animation-1_edge.js smart_clipping/anim1/animation-1_edgeActions.js smart_clipping/anim1/animation-1_edgePreload.js
-                                    smart_clipping/anim2/animation-2_edge.js smart_clipping/anim2/animation-2_edgeActions.js smart_clipping/anim2/animation-2_edgePreload.js
-                                    smart_clipping/anim3/animation-3_edge.js smart_clipping/anim3/animation-3_edgeActions.js smart_clipping/anim3/animation-3_edgePreload.js
-                                    events/anim1/animation-1_edge.js events/anim1/animation-1_edgeActions.js events/anim1/animation-1_edgePreload.js
-                                    events/anim1/animation-2_edge.js events/anim1/animation-2_edgeActions.js events/anim1/animation-2_edgePreload.js )
+                                    navigation/anim1/animation-1_edge.js navigation/anim1/animation-1_edgeActions.js navigation/anim1/animation-1_edgePreload.js
+                                    navigation/anim2/animation-2_edge.js navigation/anim2/animation-2_edgeActions.js navigation/anim2/animation-2_edgePreload.js
+                                    navigation/anim3/animation-3_edge.js navigation/anim3/animation-3_edgeActions.js navigation/anim3/animation-3_edgePreload.js
+                                    incoming-call/anim1/animation-1_edge.js incoming-call/anim1/animation-1_edgeActions.js incoming-call/anim1/animation-1_edgePreload.js
+                                    incoming-call/anim1/animation-2_edge.js incoming-call/anim1/animation-2_edgeActions.js incoming-call/anim1/animation-2_edgePreload.js )
 
     config.paths.add 'app/api', glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*",
