@@ -32,29 +32,32 @@ jQuery ($) ->
       isChecked: false
     }
 
-  devices = [Laptop(), Phone(), Tablet(), TV()]
+  devices = []
+  devices.push(Laptop(), Tablet(), Phone(), TV())
 
   $webOmniApp =
     config:
       $win: $(window)
       $doc: $(document)
+
       deviceCount: 2
+      $devices: devices
+      $deviceList: () ->
+        $("#devices-wrapper")
+      $deviceContinue: $("#device-continue")
+
       $fullBlock: $(".full-block")
       $menuTrigger: $(".menu-trigger")
       $menuOverlay: $(".menu-overlay")
-      $deviceList: () ->
-        $("#device-list")
       $htmlBody: $("html, body")
       $goTo: $(".go-to")
       $lightPanel: $(".light-bg")
       $navBar: $("#header-bar")
       $fullPage: $("#fullpage")
-      $deviceContinue: $("#device-continue")
       $btnReplay: $(".btn-replay")
       $slideBack: $(".slide-go-back")
       $slideDown: $(".slide-down")
       $goToEvent: $(".go-to-event")
-      $devices: devices
 
     getTemplate: ($template) ->
       source = $($template).html()
@@ -193,24 +196,21 @@ jQuery ($) ->
 
       goBack: (e) ->
         e.preventDefault()
-        $.fn.fullpage.moveSlideLeft()
+        $.fn.fullpage.moveSlideRight()
         return
 
       goToDevice: ->
-        $checked = []
         $webOmniApp.resetAnim()
-        $("#device-list").find("input:checked").each ->
-          $checked.push $(this).prop("name")
-          return
+        $checked = _.pluck($("#device-list").find("input:checked"), 'name')
 
         $(".inside-slide").hide()
         $(".slide[data-anchor=\"" + $checked[0] + "-" + $checked[1] + "\"]").show()
         switch $checked[0] + "-" + $checked[1]
-          when "laptop-phone"
+          when "Laptop-Phone"
             $webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
-          when "laptop-tablet"
+          when "Laptop-Tablet"
             $webOmniApp.setupAnimationView "#anim-2", "#anim-2-wrap"
-          when "phone-tablet"
+          when "Phone-Tablet"
             $webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
         $.fn.fullpage.moveTo 2, $checked[0] + "-" + $checked[1]
         return
@@ -221,13 +221,13 @@ jQuery ($) ->
         $webOmniApp.resetAnim()
         $(".slide[data-anchor=\"" + dataEvent + "\"]").show()
         switch dataEvent
-          when "laptop-phone-event"
+          when "Laptop-Phone-event"
             $webOmniApp.setupAnimationView "#anim-4", "#event-1-wrap"
-          when "phone-tablet-event"
+          when "Phone-Tablet-event"
             $webOmniApp.setupAnimationView "#anim-5", "#event-2-wrap"
-          when "laptop-phone"
+          when "Laptop-Phone"
             $webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
-          when "phone-tablet"
+          when "Phone-Tablet"
             $webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
         $.fn.fullpage.moveTo 2, dataEvent
         return
