@@ -57,7 +57,6 @@ jQuery ($) ->
       $btnReplay: $(".btn-replay")
       $slideBack: $(".slide-go-back")
       $slideDown: $(".slide-down")
-      $goToEvent: $(".go-to-event")
 
     getTemplate: ($template) ->
       source = $($template).html()
@@ -199,37 +198,20 @@ jQuery ($) ->
         $.fn.fullpage.moveSlideRight()
         return
 
-      goToDevice: ->
+      showUsecasesForSelectedDevices: ->
         $webOmniApp.resetAnim()
-        $checked = _.pluck($("#device-list").find("input:checked"), 'name')
+        checkedDevices = _.pluck($("#device-list").find("input:checked"), 'name')
 
-        $(".inside-slide").hide()
-        $(".slide[data-anchor=\"" + $checked[0] + "-" + $checked[1] + "\"]").show()
-        switch $checked[0] + "-" + $checked[1]
-          when "Laptop-Phone"
-            $webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
-          when "Laptop-Tablet"
-            $webOmniApp.setupAnimationView "#anim-2", "#anim-2-wrap"
-          when "Phone-Tablet"
-            $webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
-        $.fn.fullpage.moveTo 2, $checked[0] + "-" + $checked[1]
-        return
+        selectedDevices = _.filter($webOmniApp.config.$devices, (device) ->
+          _.contains(checkedDevices, device.name))
 
-      goToEvent: ->
-        $this = $(this)
-        dataEvent = $this.data("event")
-        $webOmniApp.resetAnim()
-        $(".slide[data-anchor=\"" + dataEvent + "\"]").show()
-        switch dataEvent
-          when "Laptop-Phone-event"
-            $webOmniApp.setupAnimationView "#anim-4", "#event-1-wrap"
-          when "Phone-Tablet-event"
-            $webOmniApp.setupAnimationView "#anim-5", "#event-2-wrap"
-          when "Laptop-Phone"
-            $webOmniApp.setupAnimationView "#anim-1", "#anim-1-wrap"
-          when "Phone-Tablet"
-            $webOmniApp.setupAnimationView "#anim-3", "#anim-3-wrap"
-        $.fn.fullpage.moveTo 2, dataEvent
+        availableUsecases = _.union(
+          _.intersection(selectedDevices[0].events, selectedDevices[1].handlers),
+          _.intersection(selectedDevices[0].handlers, selectedDevices[1].events)
+        )
+
+        renderUsecases(selectedDevices, availableUsecases)
+
         return
 
     attachHandles: ->
@@ -239,7 +221,7 @@ jQuery ($) ->
       @config.$deviceList().on "change", "input", $webOmniApp.callbacks.toggleDevice
       @config.$goTo.on "click", $webOmniApp.callbacks.goTo
       @config.$slideBack.on "click", $webOmniApp.callbacks.goBack
-      @config.$deviceContinue.on "click", $webOmniApp.callbacks.goToDevice
+      @config.$deviceContinue.on "click", $webOmniApp.callbacks.showUsecasesForSelectedDevices
       @config.$goToEvent.on "click", $webOmniApp.callbacks.goToEvent
       return
 
