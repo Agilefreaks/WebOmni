@@ -56,7 +56,7 @@ jQuery ($) ->
       $slideBack: $(".slide-go-back")
       $slideDown: $(".slide-down")
 
-    showCaseManager: ShowcaseManager
+    showcaseManager: ShowcaseManager
 
     getTemplate: ($template) ->
       source = $($template).html()
@@ -206,7 +206,7 @@ jQuery ($) ->
         selectedDevices = _.filter($webOmniApp.config.$devices, (device) ->
           _.contains(checkedDevicesNames, device.name))
 
-        $webOmniApp.showCaseManager.showFor(selectedDevices[0], selectedDevices[1])
+        $webOmniApp.showcaseManager.showFor(selectedDevices[0], selectedDevices[1])
 
         $webOmniApp.config.$fullPage.fullpage.reBuild()
 
