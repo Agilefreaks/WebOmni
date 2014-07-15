@@ -16,7 +16,10 @@
     = render partial: 'layouts/google'
     = render partial: 'layouts/crowd_process'
   %body
-    = yield
+    .container
+      .middle-wrap
+        .middle-cell
+          = yield
 
   = javascript_include_tag 'jquery-2.1.1.min.js'
   -# load the manifest file
