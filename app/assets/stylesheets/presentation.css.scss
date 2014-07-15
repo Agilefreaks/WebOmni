@@ -6,6 +6,7 @@
 @import "bootstrap";
 @import "humane-rails/jackedup";
 @import "animate";
+@import "jquery.fullPage";
 @import "fonts";
 
 // icons
@@ -18,8 +19,6 @@ $icons-layout: smart;
 
 // views
 @import "layout";
-@import "pages";
-@import "authorization_code";
 
 // responsive
 @import "responsive";

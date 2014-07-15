@@ -7,7 +7,7 @@ WebOmni::Application.routes.draw do
 
   devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
-  resource :authorization_code, only: [:create]
+  resource :authorization_codes, only: [:create]
   resources :contacts, only: [:create]
 
   resources :downloads, only: [:index] do
@@ -17,4 +17,6 @@ WebOmni::Application.routes.draw do
   end
 
   post 'call', as: :call, to: 'pages#call'
+
+  get 'tos', to: 'pages#tos', as: :tos
 end
