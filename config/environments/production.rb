@@ -92,5 +92,5 @@ WebOmni::Application.configure do
 
   # API
   config.active_resource.site = 'https://api.omnipasteapp.com/api/v1'
-  CLIENT_ACCESS_TOKEN = 'sA68l04m7wwR6wLvQh0c0kpoB9vQ0frQEKDRlg43uLOC9rTgXy8MlszgBuCt8my3el0Cr3im5Qep1k/qzkmU6g=='
+  CLIENT_ACCESS_TOKEN = 'JJuOfwneMP6Pf6Qci0/WLhRDqh5MGQSQPo39NyscYbQ+S07bS29i9IaeT8m6ePUbkBOjqnYH1jx233rdqdL8PA=='
 end
