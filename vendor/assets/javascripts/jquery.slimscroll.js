@@ -299,9 +299,6 @@
 
         function _onWheel(e) {
           // use mouse wheel only when mouse is over
-          if (!isOverPanel) {
-            return;
-          }
 
           var e = e || window.event;
 

@@ -9,3 +9,6 @@
           .anim-title
             %h2 {{event.displayName}}
           .anim-wrap
+            = link_to 'Replay', '#', class: 'btn btn-white btn-replay'
+            <div class='{{event.id}}_{{device1}}_{{device2}}'> </div>
+            %script{:src  => asset_path('assets/animations/{{event.id}}_{{device1}}_{{device2}}/{{event.id}}_{{device1}}_{{device2}}_edgePreload.js')}
