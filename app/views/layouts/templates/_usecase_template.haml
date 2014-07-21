@@ -1,14 +1,12 @@
 %script{:type => 'text/x-handlebars-template', :id  => 'usecase_template'}
-  .animation{'data-anchor' => '{{device1}}-{{device2}}-{{event.id}}'}
-    .container
-      = link_to 'Back', '#', class: 'slide-nav slide-back toSlide go-to-event', data: { event: '{{device1}}-{{device2}}' }
-
-      = link_to 'Next Section', '#', class: 'slide-nav slide-down go-to'
-      .row
-        .col-md-12
-          .anim-title
-            %h2 {{event.displayName}}
-          .anim-wrap
-            = link_to 'Replay', '#', class: 'btn btn-white btn-replay'
-            <div class='{{event.id}}_{{device1}}_{{device2}}'> </div>
-            %script{:src  => asset_path('assets/animations/{{event.id}}_{{device1}}_{{device2}}/{{event.id}}_{{device1}}_{{device2}}_edgePreload.js')}
+  .middle-wrap
+    .middle-cell
+      .animation{'data-anchor' => '{{device1}}-{{device2}}-{{event.id}}'}
+        .row
+          .col-xs-12.col-md-6.col-md-offset-3
+            .anim-title
+              %h2 {{event.displayName}}
+            .anim-wrap
+              <div class='edge-animation {{event.id}}_{{device1}}_{{device2}}'> </div>
+              = link_to 'Replay', '#', class: 'btn btn-white btn-replay'
+              %script{:src  => asset_path('assets/animations/{{event.id}}_{{device1}}_{{device2}}/{{event.id}}_{{device1}}_{{device2}}_edgePreload.js')}

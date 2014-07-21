@@ -12,8 +12,16 @@ window.ShowcasePresenter =
       ),
       (eventName) ->
         event: events[eventName]
-        device1: device1.id
-        device2: device2.id
+        device1: () ->
+          if _.contains(device1.events, eventName)
+            device1.id
+          else
+            device2.id
+        device2: () ->
+          if _.contains(device1.events, eventName)
+            device2.id
+          else
+            device1.id
     )
     @renderUsecases(availableUsecases)
     return
@@ -49,10 +57,10 @@ window.ShowcasePresenter =
         template = Handlebars.compile($("#usecase_template").html())
         compiledTemplate = template(usecase)
         $("#usecases-wrapper").append(compiledTemplate)
-
+        $("#usecases-wrapper").last('.middle-wrap').height(window.innerHeight)
         $("#usecases-wrapper").last('.btn-replay').on "click", (e) ->
           e.preventDefault()
-          AdobeEdge.getComposition(string.concat(usecase.id, '_', usecase.device1, '_',usecase.device2)).getStage().play "start"
+          AdobeEdge.getComposition(usecase.id + '_' + usecase.device1 + '_' +usecase.device2).getStage().play "start"
           return
 
         $this.edgeDetectionFunction()
