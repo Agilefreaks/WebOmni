@@ -50,6 +50,7 @@ if(document.addEventListener ){
    };
 
    aLoader = [
+     { load: "assets/jquery-2.1.1.min.js"},
       { load: "assets/edge.4.0.0.min.js"},
       { load: "assets/animations/incoming_call_phone_tablet/incoming_call_phone_tablet_edge.js"},
       { load: "assets/animations/incoming_call_phone_tablet/incoming_call_phone_tablet_edgeActions.js"}];
@@ -58,12 +59,12 @@ if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResource
 
 loadResources(aLoader, doDelayLoad);
 
-var plSTF="none",ctrPlS="none",minPlW="0",maxPlW=undefined,plWidth="600px",plHeight="600px";
+var plSTF="width",ctrPlS="none",minPlW="0",maxPlW=undefined,plWidth="600px",plHeight="600px";
 
 preContent={dom: [ ]};//simpleContent
 
 dlContent={dom: [ ]};//simpleContent
 
-window.onDocLoaded = onDocLoaded;
+window.onDocLoaded = onDocLoaded
 
 })( "incoming_call_phone_tablet");

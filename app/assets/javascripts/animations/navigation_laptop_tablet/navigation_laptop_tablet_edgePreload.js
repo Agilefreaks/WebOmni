@@ -50,20 +50,21 @@ if(document.addEventListener ){
    };
 
    aLoader = [
-      { load: "assets/edge.4.0.0.min.js"},
-      { load: "assets/animations/navigation_laptop_tablet/navigation_laptop_tablet_edge.js"},
-      { load: "assets/animations/navigation_laptop_tablet/navigation_laptop_tablet_edgeActions.js"}];
+     { load: "assets/jquery-2.1.1.min.js"},
+     { load: "assets/edge.4.0.0.min.js"},
+     { load: "assets/animations/navigation_laptop_tablet/navigation_laptop_tablet_edge.js"},
+     { load: "assets/animations/navigation_laptop_tablet/navigation_laptop_tablet_edgeActions.js"}];
 
 if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResources=doLoadResources; AdobeEdge.playWhenReady=playWhenReady; }
 
 loadResources(aLoader, doDelayLoad);
 
-var plSTF="none",ctrPlS="both",minPlW="0",maxPlW=undefined,plWidth="600px",plHeight="600px";
+var plSTF="width",ctrPlS="both",minPlW="0",maxPlW=undefined,plWidth="600px",plHeight="600px";
 
 preContent={dom: [ ]};//simpleContent
 
 dlContent={dom: [ ]};//simpleContent
 
-window.onDocLoaded = onDocLoaded;
+window.onDocLoaded = onDocLoaded
 
 })( "navigation_laptop_tablet");

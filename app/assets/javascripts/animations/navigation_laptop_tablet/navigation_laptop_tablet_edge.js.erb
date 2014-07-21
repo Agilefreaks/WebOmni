@@ -19,7 +19,7 @@ var symbols = {
     minimumCompatibleVersion: "4.0.0",
     build: "4.0.0.359",
     baseState: "Base State",
-    scaleToFit: "none",
+    scaleToFit: "width",
     centerStage: "both",
     initialState: "Base State",
     gpuAccelerate: false,
@@ -236,10 +236,10 @@ var symbols = {
             "${_touch}": [
                 ["style", "top", '367px'],
                 ["color", "background-color", 'rgba(0,0,0,0.30)'],
-                ["style", "clip", [0,0,0,0], {valueTemplate:'rect(@@0@@px @@1@@px @@2@@px @@3@@px)'} ],
+                ["style", "left", '365px'],
                 ["style", "height", '22px'],
                 ["style", "opacity", '1'],
-                ["style", "left", '365px'],
+                ["style", "clip", [0,0,0,0], {valueTemplate:'rect(@@0@@px @@1@@px @@2@@px @@3@@px)'} ],
                 ["style", "width", '22px']
             ],
             "${_address}": [
@@ -257,40 +257,14 @@ var symbols = {
                 ["style", "clip", [0,46,0,0], {valueTemplate:'rect(@@0@@px @@1@@px @@2@@px @@3@@px)'} ],
                 ["style", "left", '308px']
             ],
-            "${_browser-bar}": [
-                ["color", "background-color", 'rgba(235,232,228,1.00)'],
-                ["style", "top", '218px'],
-                ["style", "height", '22px'],
-                ["style", "right", '163px'],
-                ["style", "left", 'auto'],
-                ["style", "width", '0px']
-            ],
-            "${_sound}": [
-                ["style", "border-top-left-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
-                ["style", "border-bottom-right-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
-                ["transform", "scaleX", '1'],
-                ["style", "right", '288px'],
-                ["style", "border-top-right-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
-                ["style", "width", '0px'],
-                ["style", "top", '186px'],
-                ["style", "border-bottom-left-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
-                ["transform", "scaleY", '1'],
-                ["style", "left", 'auto'],
-                ["style", "opacity", '1']
-            ],
-            "${_btn-min}": [
-                ["color", "background-color", 'rgba(247,198,91,1.00)'],
+            "${_webcam}": [
+                ["style", "top", '209px'],
                 ["transform", "scaleY", '0'],
+                ["color", "background-color", 'rgba(165,164,164,1.00)'],
+                ["style", "height", '6px'],
                 ["transform", "scaleX", '0'],
-                ["style", "left", '182px'],
-                ["style", "top", '224px']
-            ],
-            "${_restaurant}": [
-                ["style", "top", '282px'],
-                ["transform", "scaleY", '0'],
-                ["transform", "scaleX", '0'],
-                ["style", "opacity", '1'],
-                ["style", "left", '223px']
+                ["style", "left", '297px'],
+                ["style", "width", '6px']
             ],
             "${_notification-bg}": [
                 ["color", "background-color", 'rgba(71,78,93,1.00)'],
@@ -304,23 +278,43 @@ var symbols = {
                 ["style", "height", '0px'],
                 ["style", "border-top-right-radius", [0,0], {valueTemplate:'@@0@@px @@1@@px'} ]
             ],
+            "${_select-text}": [
+                ["style", "top", '336px'],
+                ["color", "background-color", 'rgba(0,155,242,1.00)'],
+                ["style", "border-style", 'none'],
+                ["style", "height", '18px'],
+                ["style", "opacity", '0'],
+                ["style", "left", '198px'],
+                ["style", "width", '210px']
+            ],
+            "${_restaurant}": [
+                ["style", "top", '282px'],
+                ["transform", "scaleY", '0'],
+                ["transform", "scaleX", '0'],
+                ["style", "opacity", '1'],
+                ["style", "left", '223px']
+            ],
+            "${_message-3}": [
+                ["style", "top", '75px'],
+                ["transform", "scaleX", '0'],
+                ["style", "left", '327px'],
+                ["transform", "scaleY", '0']
+            ],
             "${_btn}": [
                 ["style", "top", '377px'],
                 ["transform", "scaleY", '0'],
-                ["style", "height", '10px'],
                 ["transform", "scaleX", '0'],
+                ["style", "height", '10px'],
                 ["style", "opacity", '1'],
                 ["style", "left", '295px'],
                 ["style", "width", '10px']
             ],
-            "${_select-text}": [
-                ["style", "top", '336px'],
-                ["color", "background-color", 'rgba(0,155,242,1.00)'],
-                ["style", "opacity", '0'],
-                ["style", "height", '18px'],
-                ["style", "border-style", 'none'],
-                ["style", "left", '198px'],
-                ["style", "width", '210px']
+            "${_btn-min}": [
+                ["color", "background-color", 'rgba(247,198,91,1.00)'],
+                ["transform", "scaleY", '0'],
+                ["transform", "scaleX", '0'],
+                ["style", "left", '182px'],
+                ["style", "top", '224px']
             ],
             "${_click}": [
                 ["color", "background-color", 'rgba(255,255,255,0.00)'],
@@ -346,16 +340,6 @@ var symbols = {
                 ["style", "height", '12px'],
                 ["style", "left", '218px']
             ],
-            "${_btn-copy}": [
-                ["style", "top", '305px'],
-                ["subproperty", "boxShadow.inset", ''],
-                ["subproperty", "boxShadow.color", 'rgba(0,0,0,0.10)'],
-                ["style", "opacity", '0'],
-                ["subproperty", "boxShadow.offsetH", '2px'],
-                ["subproperty", "boxShadow.offsetV", '2px'],
-                ["style", "left", '343px'],
-                ["subproperty", "boxShadow.blur", '0px']
-            ],
             "${_btn-max}": [
                 ["color", "background-color", 'rgba(94,216,149,1.00)'],
                 ["transform", "scaleY", '0'],
@@ -363,34 +347,64 @@ var symbols = {
                 ["style", "left", '194px'],
                 ["style", "top", '224px']
             ],
+            "${_btn-copy}": [
+                ["style", "top", '305px'],
+                ["subproperty", "boxShadow.inset", ''],
+                ["subproperty", "boxShadow.blur", '0px'],
+                ["subproperty", "boxShadow.color", 'rgba(0,0,0,0.10)'],
+                ["style", "left", '343px'],
+                ["subproperty", "boxShadow.offsetV", '2px'],
+                ["subproperty", "boxShadow.offsetH", '2px'],
+                ["style", "opacity", '0']
+            ],
             "${_message-2}": [
+                ["style", "top", '324px'],
                 ["transform", "scaleX", '0'],
-                ["transform", "scaleY", '0'],
                 ["style", "left", '384px'],
-                ["style", "top", '324px']
+                ["transform", "scaleY", '0']
             ],
             "${_laptop-support}": [
                 ["transform", "scaleX", '0'],
-                ["style", "top", '336px'],
                 ["style", "left", '120px'],
-                ["transform", "scaleY", '0']
+                ["transform", "scaleY", '0'],
+                ["style", "top", '336px']
             ],
             "${_message-1}": [
                 ["transform", "scaleX", '0'],
-                ["style", "top", '122px'],
                 ["style", "left", '70px'],
-                ["transform", "scaleY", '0']
+                ["transform", "scaleY", '0'],
+                ["style", "top", '122px']
             ],
-            "${_map}": [
-                ["style", "border-top-left-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
-                ["style", "border-bottom-right-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
+            "${_display}": [
+                ["style", "top", '300px'],
+                ["transform", "scaleY", '1'],
+                ["style", "height", '0px'],
+                ["transform", "scaleX", '1'],
+                ["color", "background-color", 'rgba(255,255,255,1.00)'],
+                ["style", "left", '300px'],
+                ["style", "width", '0px']
+            ],
+            "${_shadow}": [
+                ["style", "top", '420px'],
+                ["transform", "scaleY", '0'],
+                ["transform", "scaleX", '0'],
+                ["color", "background-color", 'rgba(0,0,0,0.00)'],
+                ["style", "left", '203px'],
+                ["style", "width", '194px']
+            ],
+            "${_info}": [
+                ["style", "top", '213px'],
+                ["transform", "scaleY", '0'],
                 ["transform", "scaleX", '0'],
                 ["style", "opacity", '1'],
-                ["style", "border-top-right-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
-                ["style", "top", '169px'],
-                ["style", "border-bottom-left-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
+                ["style", "left", '290px']
+            ],
+            "${_restaurant-address}": [
+                ["style", "top", '318px'],
                 ["transform", "scaleY", '0'],
-                ["style", "left", '210px']
+                ["transform", "scaleX", '0'],
+                ["style", "opacity", '1'],
+                ["style", "left", '201px']
             ],
             "${_displayBase}": [
                 ["color", "background-color", 'rgba(54,59,70,1.00)'],
@@ -404,45 +418,25 @@ var symbols = {
                 ["style", "border-bottom-left-radius", [0,0], {valueTemplate:'@@0@@px @@1@@px'} ],
                 ["transform", "scaleY", '1'],
                 ["style", "height", '0px'],
-                ["style", "bottom", '300px'],
-                ["style", "left", 'auto']
+                ["style", "left", 'auto'],
+                ["style", "bottom", '300px']
             ],
-            "${_restaurant-address}": [
-                ["style", "top", '318px'],
-                ["transform", "scaleY", '0'],
+            "${_map}": [
+                ["style", "border-top-left-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
+                ["style", "border-bottom-right-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
                 ["transform", "scaleX", '0'],
                 ["style", "opacity", '1'],
-                ["style", "left", '201px']
-            ],
-            "${_info}": [
-                ["style", "top", '213px'],
+                ["style", "border-top-right-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
+                ["style", "top", '169px'],
+                ["style", "border-bottom-left-radius", [1397,1397], {valueTemplate:'@@0@@px @@1@@px'} ],
                 ["transform", "scaleY", '0'],
-                ["transform", "scaleX", '0'],
-                ["style", "opacity", '1'],
-                ["style", "left", '290px']
-            ],
-            "${_shadow}": [
-                ["color", "background-color", 'rgba(0,0,0,0.00)'],
-                ["transform", "scaleY", '0'],
-                ["transform", "scaleX", '0'],
-                ["style", "top", '420px'],
-                ["style", "left", '203px'],
-                ["style", "width", '194px']
-            ],
-            "${_display}": [
-                ["style", "top", '300px'],
-                ["transform", "scaleY", '1'],
-                ["transform", "scaleX", '1'],
-                ["style", "height", '0px'],
-                ["color", "background-color", 'rgba(255,255,255,1.00)'],
-                ["style", "left", '300px'],
-                ["style", "width", '0px']
+                ["style", "left", '210px']
             ],
             "${_btn-close}": [
                 ["color", "background-color", 'rgba(239,93,91,1.00)'],
                 ["transform", "scaleY", '0'],
-                ["transform", "scaleX", '0'],
                 ["style", "height", '8px'],
+                ["transform", "scaleX", '0'],
                 ["style", "top", '224px'],
                 ["style", "left", '170px'],
                 ["style", "width", '8px']
@@ -456,9 +450,9 @@ var symbols = {
             ],
             "${_Stage}": [
                 ["color", "background-color", 'rgba(73,190,222,1.00)'],
-                ["style", "width", '600px'],
+                ["style", "overflow", 'visible'],
                 ["style", "height", '600px'],
-                ["style", "overflow", 'visible']
+                ["style", "width", '600px']
             ],
             "${_cursor}": [
                 ["style", "top", '360px'],
@@ -466,20 +460,26 @@ var symbols = {
                 ["style", "left", '437px'],
                 ["style", "clip", [0,0,21,0], {valueTemplate:'rect(@@0@@px @@1@@px @@2@@px @@3@@px)'} ]
             ],
-            "${_message-3}": [
-                ["transform", "scaleX", '0'],
-                ["transform", "scaleY", '0'],
-                ["style", "left", '327px'],
-                ["style", "top", '75px']
+            "${_sound}": [
+                ["style", "border-top-left-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
+                ["style", "border-bottom-right-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
+                ["transform", "scaleX", '1'],
+                ["style", "right", '288px'],
+                ["style", "border-top-right-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
+                ["style", "width", '0px'],
+                ["style", "top", '186px'],
+                ["style", "border-bottom-left-radius", [3,3], {valueTemplate:'@@0@@px @@1@@px'} ],
+                ["transform", "scaleY", '1'],
+                ["style", "opacity", '1'],
+                ["style", "left", 'auto']
             ],
-            "${_webcam}": [
-                ["color", "background-color", 'rgba(165,164,164,1.00)'],
-                ["transform", "scaleY", '0'],
-                ["style", "top", '209px'],
-                ["style", "height", '6px'],
-                ["transform", "scaleX", '0'],
-                ["style", "left", '297px'],
-                ["style", "width", '6px']
+            "${_browser-bar}": [
+                ["color", "background-color", 'rgba(235,232,228,1.00)'],
+                ["style", "top", '218px'],
+                ["style", "height", '22px'],
+                ["style", "right", '163px'],
+                ["style", "left", 'auto'],
+                ["style", "width", '0px']
             ]
         }
     },
@@ -488,7 +488,7 @@ var symbols = {
             fromState: "Base State",
             toState: "",
             duration: 20260,
-            autoPlay: true,
+            autoPlay: false,
             labels: {
                 "start": 0
             },
@@ -561,7 +561,7 @@ var symbols = {
                 { id: "eid726", tween: [ "style", "${_select-text}", "opacity", '0.15', { fromValue: '0'}], position: 5119, duration: 178, easing: "swing" },
                 { id: "eid728", tween: [ "style", "${_select-text}", "opacity", '0', { fromValue: '0.15'}], position: 6286, duration: 178, easing: "swing" },
                 { id: "eid625", tween: [ "style", "${_map-road}", "top", '213px', { fromValue: '213px'}], position: 15760, duration: 0 },
-                { id: "eid342", tween: [ "style", "${_map}", "opacity", '0', { fromValue: '1'}], position: 19260, duration: 500 },
+                { id: "eid252", tween: [ "transform", "${_info}", "scaleX", '1.1', { fromValue: '0'}], position: 11119, duration: 586 },
                 { id: "eid125", tween: [ "transform", "${_restaurant-address}", "scaleX", '1', { fromValue: '0'}], position: 2250, duration: 500 },
                 { id: "eid636", tween: [ "transform", "${_message-1}", "scaleX", '1', { fromValue: '0'}], position: 2750, duration: 620, easing: "easeInQuad" },
                 { id: "eid642", tween: [ "transform", "${_message-1}", "scaleX", '0', { fromValue: '1'}], position: 4000, duration: 500, easing: "easeInQuad" },
@@ -573,7 +573,7 @@ var symbols = {
                 { id: "eid68", tween: [ "style", "${_display}", "width", '274px', { fromValue: '0px'}], position: 0, duration: 500 },
                 { id: "eid76", tween: [ "style", "${_display}", "width", '130px', { fromValue: '274px'}], position: 10247, duration: 500 },
                 { id: "eid368", tween: [ "style", "${_display}", "width", '0px', { fromValue: '130px'}], position: 19760, duration: 500 },
-                { id: "eid404", tween: [ "style", "${_displayBase}", "border-bottom-right-radius", [7,7], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 10247, duration: 500 },
+                { id: "eid399", tween: [ "style", "${_displayBase}", "border-top-left-radius", [7,7], { valueTemplate: '@@0@@px @@1@@px', fromValue: [7,7]}], position: 10247, duration: 0 },
                 { id: "eid126", tween: [ "transform", "${_restaurant-address}", "scaleY", '1', { fromValue: '0'}], position: 2250, duration: 500 },
                 { id: "eid619", tween: [ "style", "${_map}", "left", '210px', { fromValue: '210px'}], position: 14499, duration: 0, easing: "swing" },
                 { id: "eid620", tween: [ "style", "${_map}", "left", '210px', { fromValue: '210px'}], position: 15760, duration: 0, easing: "swing" },
@@ -615,20 +615,20 @@ var symbols = {
                 { id: "eid392", tween: [ "style", "${_laptop-support}", "top", '395px', { fromValue: '336px'}], position: 230, duration: 270 },
                 { id: "eid423", tween: [ "style", "${_laptop-support}", "top", '270px', { fromValue: '395px'}], position: 10212, duration: 558 },
                 { id: "eid714", tween: [ "style", "${_select-text}", "width", '210px', { fromValue: '210px'}], position: 5297, duration: 0, easing: "swing" },
-                { id: "eid534", tween: [ "style", "${_webcam}", "top", '209px', { fromValue: '209px'}], position: 650, duration: 0 },
-                { id: "eid488", tween: [ "style", "${_webcam}", "top", '186px', { fromValue: '209px'}], position: 10247, duration: 500 },
+                { id: "eid569", tween: [ "style", "${_restaurant}", "left", '223px', { fromValue: '223px'}], position: 2500, duration: 0 },
                 { id: "eid69", tween: [ "style", "${_display}", "left", '163px', { fromValue: '300px'}], position: 0, duration: 500 },
                 { id: "eid77", tween: [ "style", "${_display}", "left", '235px', { fromValue: '163px'}], position: 10247, duration: 500 },
                 { id: "eid367", tween: [ "style", "${_display}", "left", '300px', { fromValue: '235px'}], position: 19760, duration: 500 },
                 { id: "eid535", tween: [ "style", "${_browser-bar}", "top", '218px', { fromValue: '218px'}], position: 750, duration: 0 },
                 { id: "eid730", tween: [ "style", "${_notification-bg}", "border-top-left-radius", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 10955, duration: 0 },
                 { id: "eid717", tween: [ "style", "${_select-text}", "left", '198px', { fromValue: '198px'}], position: 5297, duration: 0, easing: "swing" },
-                { id: "eid533", tween: [ "style", "${_webcam}", "left", '297px', { fromValue: '297px'}], position: 650, duration: 0 },
-                { id: "eid607", tween: [ "style", "${_webcam}", "left", '316px', { fromValue: '297px'}], position: 10247, duration: 500 },
-                { id: "eid485", tween: [ "color", "${_webcam}", "background-color", 'rgba(165,164,164,1.00)', { animationColorSpace: 'RGB', valueTemplate: undefined, fromValue: 'rgba(165,164,164,1.00)'}], position: 837, duration: 0 },
-                { id: "eid252", tween: [ "transform", "${_info}", "scaleX", '1.1', { fromValue: '0'}], position: 11119, duration: 586 },
+                { id: "eid666", tween: [ "style", "${_message-3}", "left", '327px', { fromValue: '327px'}], position: 12445, duration: 0, easing: "easeInQuad" },
+                { id: "eid391", tween: [ "transform", "${_laptop-support}", "scaleY", '1', { fromValue: '0'}], position: 230, duration: 270 },
+                { id: "eid397", tween: [ "transform", "${_laptop-support}", "scaleY", '0', { fromValue: '1'}], position: 10212, duration: 558 },
+                { id: "eid342", tween: [ "style", "${_map}", "opacity", '0', { fromValue: '1'}], position: 19260, duration: 500 },
                 { id: "eid523", tween: [ "transform", "${_sound}", "scaleX", '0', { fromValue: '1'}], position: 19260, duration: 500 },
-                { id: "eid204", tween: [ "style", "${_cursor}", "opacity", '0', { fromValue: '1'}], position: 8503, duration: 1007, easing: "swing" },
+                { id: "eid390", tween: [ "transform", "${_laptop-support}", "scaleX", '1', { fromValue: '0'}], position: 230, duration: 270 },
+                { id: "eid396", tween: [ "transform", "${_laptop-support}", "scaleX", '0', { fromValue: '1'}], position: 10212, duration: 558 },
                 { id: "eid681", tween: [ "style", "${_click}", "top", '332px', { fromValue: '331px'}], position: 4993, duration: 0, easing: "swing" },
                 { id: "eid686", tween: [ "style", "${_click}", "top", '305px', { fromValue: '332px'}], position: 6066, duration: 47, easing: "swing" },
                 { id: "eid280", tween: [ "style", "${_click}", "top", '283px', { fromValue: '305px'}], position: 6615, duration: 4008, easing: "swing" },
@@ -638,67 +638,67 @@ var symbols = {
                 { id: "eid517", tween: [ "transform", "${_webcam}", "scaleX", '0', { fromValue: '1'}], position: 19260, duration: 500 },
                 { id: "eid332", tween: [ "style", "${_map-pin}", "opacity", '1', { fromValue: '0'}], position: 16260, duration: 500 },
                 { id: "eid340", tween: [ "style", "${_map-pin}", "opacity", '0', { fromValue: '1'}], position: 19260, duration: 500 },
-                { id: "eid654", tween: [ "transform", "${_message-3}", "scaleX", '1', { fromValue: '0'}], position: 11913, duration: 620, easing: "easeInQuad" },
-                { id: "eid662", tween: [ "transform", "${_message-3}", "scaleX", '0', { fromValue: '1'}], position: 13163, duration: 500, easing: "easeInQuad" },
+                { id: "eid674", tween: [ "style", "${_btn-copy}", "top", '305px', { fromValue: '305px'}], position: 5623, duration: 0, easing: "easeInQuad" },
                 { id: "eid738", tween: [ "style", "${_notification-bg}", "left", '235px', { fromValue: '235px'}], position: 10955, duration: 0 },
                 { id: "eid739", tween: [ "style", "${_notification-bg}", "left", '235px', { fromValue: '235px'}], position: 11585, duration: 0 },
-                { id: "eid338", tween: [ "style", "${_map-road}", "opacity", '0', { fromValue: '1'}], position: 19260, duration: 500 },
+                { id: "eid204", tween: [ "style", "${_cursor}", "opacity", '0', { fromValue: '1'}], position: 8503, duration: 1007, easing: "swing" },
                 { id: "eid351", tween: [ "style", "${_notification-bg}", "opacity", '0', { fromValue: '1'}], position: 15260, duration: 500 },
                 { id: "eid577", tween: [ "style", "${_click}", "left", '289px', { fromValue: '289px'}], position: 4993, duration: 0, easing: "swing" },
                 { id: "eid684", tween: [ "style", "${_click}", "left", '358px', { fromValue: '289px'}], position: 6066, duration: 47, easing: "swing" },
                 { id: "eid279", tween: [ "style", "${_click}", "left", '289px', { fromValue: '358px'}], position: 6615, duration: 4008, easing: "swing" },
                 { id: "eid285", tween: [ "style", "${_click}", "left", '289px', { fromValue: '289px'}], position: 14762, duration: 0, easing: "swing" },
-                { id: "eid674", tween: [ "style", "${_btn-copy}", "top", '305px', { fromValue: '305px'}], position: 5623, duration: 0, easing: "easeInQuad" },
+                { id: "eid198", tween: [ "style", "${_restaurant}", "opacity", '0', { fromValue: '1'}], position: 8503, duration: 1007 },
                 { id: "eid744", tween: [ "style", "${_notification-bg}", "top", '197px', { fromValue: '197px'}], position: 10955, duration: 0 },
                 { id: "eid745", tween: [ "style", "${_notification-bg}", "top", '197px', { fromValue: '197px'}], position: 11585, duration: 0 },
                 { id: "eid721", tween: [ "style", "${_select-text}", "height", '18px', { fromValue: '18px'}], position: 5297, duration: 0, easing: "swing" },
                 { id: "eid344", tween: [ "style", "${_address}", "opacity", '0', { fromValue: '1'}], position: 15260, duration: 500 },
-                { id: "eid310", tween: [ "transform", "${_map}", "scaleY", '0.66', { fromValue: '0'}], position: 14499, duration: 1261 },
+                { id: "eid326", tween: [ "transform", "${_map-pin}", "scaleY", '0.4', { fromValue: '0'}], position: 16260, duration: 500 },
                 { id: "eid491", tween: [ "style", "${_sound}", "width", '30px', { fromValue: '0px'}], position: 10747, duration: 165 },
-                { id: "eid71", tween: [ "style", "${_display}", "top", '218px', { fromValue: '300px'}], position: 0, duration: 500 },
-                { id: "eid79", tween: [ "style", "${_display}", "top", '197px', { fromValue: '218px'}], position: 10247, duration: 500 },
-                { id: "eid365", tween: [ "style", "${_display}", "top", '301px', { fromValue: '197px'}], position: 19760, duration: 500 },
-                { id: "eid399", tween: [ "style", "${_displayBase}", "border-top-left-radius", [7,7], { valueTemplate: '@@0@@px @@1@@px', fromValue: [7,7]}], position: 10247, duration: 0 },
+                { id: "eid612", tween: [ "style", "${_address}", "left", '260px', { fromValue: '260px'}], position: 11705, duration: 0 },
+                { id: "eid404", tween: [ "style", "${_displayBase}", "border-bottom-right-radius", [7,7], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 10247, duration: 500 },
                 { id: "eid45", tween: [ "style", "${_displayBase}", "width", '300px', { fromValue: '0px'}], position: 0, duration: 500 },
                 { id: "eid60", tween: [ "style", "${_displayBase}", "width", '150px', { fromValue: '300px'}], position: 10247, duration: 500 },
                 { id: "eid371", tween: [ "style", "${_displayBase}", "width", '0px', { fromValue: '150px'}], position: 19760, duration: 500 },
-                { id: "eid267", tween: [ "style", "${_touch}", "left", '343px', { fromValue: '365px'}], position: 13601, duration: 217 },
-                { id: "eid270", tween: [ "style", "${_touch}", "left", '289px', { fromValue: '343px'}], position: 13818, duration: 442 },
-                { id: "eid316", tween: [ "style", "${_map}", "border-top-left-radius", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [1397,1397]}], position: 14762, duration: 998, easing: "easeOutQuad" },
-                { id: "eid264", tween: [ "style", "${_touch}", "clip", [0,22,22,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,0,0,0]}], position: 13601, duration: 217 },
-                { id: "eid139", tween: [ "transform", "${_click}", "scaleX", '1', { fromValue: '0'}], position: 4993, duration: 503, easing: "swing" },
-                { id: "eid171", tween: [ "transform", "${_click}", "scaleX", '1', { fromValue: '0'}], position: 6113, duration: 503, easing: "swing" },
-                { id: "eid281", tween: [ "transform", "${_click}", "scaleX", '1', { fromValue: '0'}], position: 14260, duration: 503, easing: "swing" },
+                { id: "eid318", tween: [ "style", "${_map}", "border-bottom-right-radius", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [1397,1397]}], position: 14762, duration: 998, easing: "easeOutQuad" },
+                { id: "eid107", tween: [ "transform", "${_btn-max}", "scaleX", '1', { fromValue: '0'}], position: 1250, duration: 500 },
+                { id: "eid187", tween: [ "transform", "${_btn-max}", "scaleX", '0', { fromValue: '1'}], position: 8754, duration: 500 },
                 { id: "eid157", tween: [ "style", "${_btn-copy}", "opacity", '1', { fromValue: '0'}], position: 5373, duration: 250, easing: "swing" },
                 { id: "eid203", tween: [ "style", "${_btn-copy}", "opacity", '0', { fromValue: '1'}], position: 6500, duration: 1007, easing: "swing" },
-                { id: "eid500", tween: [ "transform", "${_btn}", "scaleX", '1', { fromValue: '0'}], position: 10697, duration: 132 },
-                { id: "eid519", tween: [ "transform", "${_btn}", "scaleX", '0', { fromValue: '1'}], position: 19260, duration: 500 },
+                { id: "eid572", tween: [ "style", "${_restaurant-address}", "top", '318px', { fromValue: '318px'}], position: 2750, duration: 0 },
+                { id: "eid630", tween: [ "style", "${_map-road}", "left", '308px', { fromValue: '308px'}], position: 15760, duration: 0 },
+                { id: "eid325", tween: [ "transform", "${_map-pin}", "scaleX", '0.4', { fromValue: '0'}], position: 16260, duration: 500 },
                 { id: "eid223", tween: [ "transform", "${_shadow}", "scaleX", '1.98', { fromValue: '0'}], position: 500, duration: 250, easing: "easeInQuad" },
                 { id: "eid228", tween: [ "transform", "${_shadow}", "scaleX", '0.44', { fromValue: '1.98'}], position: 10010, duration: 737, easing: "easeInQuad" },
                 { id: "eid377", tween: [ "transform", "${_shadow}", "scaleX", '0', { fromValue: '0.44'}], position: 19760, duration: 500 },
-                { id: "eid325", tween: [ "transform", "${_map-pin}", "scaleX", '0.4', { fromValue: '0'}], position: 16260, duration: 500 },
-                { id: "eid572", tween: [ "style", "${_restaurant-address}", "top", '318px', { fromValue: '318px'}], position: 2750, duration: 0 },
-                { id: "eid630", tween: [ "style", "${_map-road}", "left", '308px', { fromValue: '308px'}], position: 15760, duration: 0 },
-                { id: "eid107", tween: [ "transform", "${_btn-max}", "scaleX", '1', { fromValue: '0'}], position: 1250, duration: 500 },
-                { id: "eid187", tween: [ "transform", "${_btn-max}", "scaleX", '0', { fromValue: '1'}], position: 8754, duration: 500 },
-                { id: "eid318", tween: [ "style", "${_map}", "border-bottom-right-radius", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [1397,1397]}], position: 14762, duration: 998, easing: "easeOutQuad" },
+                { id: "eid500", tween: [ "transform", "${_btn}", "scaleX", '1', { fromValue: '0'}], position: 10697, duration: 132 },
+                { id: "eid519", tween: [ "transform", "${_btn}", "scaleX", '0', { fromValue: '1'}], position: 19260, duration: 500 },
+                { id: "eid139", tween: [ "transform", "${_click}", "scaleX", '1', { fromValue: '0'}], position: 4993, duration: 503, easing: "swing" },
+                { id: "eid171", tween: [ "transform", "${_click}", "scaleX", '1', { fromValue: '0'}], position: 6113, duration: 503, easing: "swing" },
+                { id: "eid281", tween: [ "transform", "${_click}", "scaleX", '1', { fromValue: '0'}], position: 14260, duration: 503, easing: "swing" },
+                { id: "eid264", tween: [ "style", "${_touch}", "clip", [0,22,22,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,0,0,0]}], position: 13601, duration: 217 },
+                { id: "eid316", tween: [ "style", "${_map}", "border-top-left-radius", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [1397,1397]}], position: 14762, duration: 998, easing: "easeOutQuad" },
+                { id: "eid267", tween: [ "style", "${_touch}", "left", '343px', { fromValue: '365px'}], position: 13601, duration: 217 },
+                { id: "eid270", tween: [ "style", "${_touch}", "left", '289px', { fromValue: '343px'}], position: 13818, duration: 442 },
                 { id: "eid70", tween: [ "style", "${_display}", "height", '164px', { fromValue: '0px'}], position: 0, duration: 500 },
                 { id: "eid78", tween: [ "style", "${_display}", "height", '170px', { fromValue: '164px'}], position: 10247, duration: 500 },
                 { id: "eid366", tween: [ "style", "${_display}", "height", '0px', { fromValue: '170px'}], position: 19760, duration: 500 },
-                { id: "eid612", tween: [ "style", "${_address}", "left", '260px', { fromValue: '260px'}], position: 11705, duration: 0 },
-                { id: "eid326", tween: [ "transform", "${_map-pin}", "scaleY", '0.4', { fromValue: '0'}], position: 16260, duration: 500 },
-                { id: "eid596", tween: [ "style", "${_btn}", "top", '377px', { fromValue: '377px'}], position: 10829, duration: 0 },
+                { id: "eid71", tween: [ "style", "${_display}", "top", '218px', { fromValue: '300px'}], position: 0, duration: 500 },
+                { id: "eid79", tween: [ "style", "${_display}", "top", '197px', { fromValue: '218px'}], position: 10247, duration: 500 },
+                { id: "eid365", tween: [ "style", "${_display}", "top", '301px', { fromValue: '197px'}], position: 19760, duration: 500 },
+                { id: "eid310", tween: [ "transform", "${_map}", "scaleY", '0.66', { fromValue: '0'}], position: 14499, duration: 1261 },
+                { id: "eid338", tween: [ "style", "${_map-road}", "opacity", '0', { fromValue: '1'}], position: 19260, duration: 500 },
                 { id: "eid400", tween: [ "style", "${_displayBase}", "border-top-right-radius", [7,7], { valueTemplate: '@@0@@px @@1@@px', fromValue: [7,7]}], position: 10247, duration: 0 },
                 { id: "eid655", tween: [ "transform", "${_message-3}", "scaleY", '1', { fromValue: '0'}], position: 11913, duration: 620, easing: "easeInQuad" },
                 { id: "eid663", tween: [ "transform", "${_message-3}", "scaleY", '0', { fromValue: '1'}], position: 13163, duration: 500, easing: "easeInQuad" },
-                { id: "eid390", tween: [ "transform", "${_laptop-support}", "scaleX", '1', { fromValue: '0'}], position: 230, duration: 270 },
-                { id: "eid396", tween: [ "transform", "${_laptop-support}", "scaleX", '0', { fromValue: '1'}], position: 10212, duration: 558 },
-                { id: "eid198", tween: [ "style", "${_restaurant}", "opacity", '0', { fromValue: '1'}], position: 8503, duration: 1007 },
-                { id: "eid391", tween: [ "transform", "${_laptop-support}", "scaleY", '1', { fromValue: '0'}], position: 230, duration: 270 },
-                { id: "eid397", tween: [ "transform", "${_laptop-support}", "scaleY", '0', { fromValue: '1'}], position: 10212, duration: 558 },
-                { id: "eid666", tween: [ "style", "${_message-3}", "left", '327px', { fromValue: '327px'}], position: 12445, duration: 0, easing: "easeInQuad" },
+                { id: "eid654", tween: [ "transform", "${_message-3}", "scaleX", '1', { fromValue: '0'}], position: 11913, duration: 620, easing: "easeInQuad" },
+                { id: "eid662", tween: [ "transform", "${_message-3}", "scaleX", '0', { fromValue: '1'}], position: 13163, duration: 500, easing: "easeInQuad" },
+                { id: "eid596", tween: [ "style", "${_btn}", "top", '377px', { fromValue: '377px'}], position: 10829, duration: 0 },
+                { id: "eid485", tween: [ "color", "${_webcam}", "background-color", 'rgba(165,164,164,1.00)', { animationColorSpace: 'RGB', valueTemplate: undefined, fromValue: 'rgba(165,164,164,1.00)'}], position: 837, duration: 0 },
+                { id: "eid533", tween: [ "style", "${_webcam}", "left", '297px', { fromValue: '297px'}], position: 650, duration: 0 },
+                { id: "eid607", tween: [ "style", "${_webcam}", "left", '316px', { fromValue: '297px'}], position: 10247, duration: 500 },
                 { id: "eid719", tween: [ "style", "${_select-text}", "top", '336px', { fromValue: '336px'}], position: 5297, duration: 0, easing: "swing" },
-                { id: "eid569", tween: [ "style", "${_restaurant}", "left", '223px', { fromValue: '223px'}], position: 2500, duration: 0 }            ]
+                { id: "eid534", tween: [ "style", "${_webcam}", "top", '209px', { fromValue: '209px'}], position: 650, duration: 0 },
+                { id: "eid488", tween: [ "style", "${_webcam}", "top", '186px', { fromValue: '209px'}], position: 10247, duration: 500 }            ]
         }
     }
 }
@@ -710,7 +710,7 @@ Edge.registerCompositionDefn(compId, symbols, fonts, resources, opts);
 /**
  * Adobe Edge DOM Ready Event Handler
  */
-$(window).on( "animationReady", function() {
-   Edge.launchComposition(compId);
+$(window).ready(function() {
+     Edge.launchComposition(compId);
 });
 })(jQuery, AdobeEdge, "navigation_laptop_tablet");
