@@ -1,10 +1,6 @@
 %p.lead
   Welcome #{current_user.name} (#{current_user.email})
-%p.lead
-  = render partial: 'downloads/links'
 
-%p.lead
-  After you download the apps if your need an authorization code use the button bellow to request one.
 %p
   = link_to 'Get authorization code', authorization_codes_path, class: 'btn btn-primary', 'data-remote' => true, method: :post, data: { disable_with: 'Generating ...' }
 %p

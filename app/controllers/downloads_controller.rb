@@ -1,10 +1,7 @@
 require 'open-uri'
 
 class DownloadsController < ApplicationController
-  #before_action :authenticate!	
-  
-  def index
-  end
+  before_action :authenticate!
 
   def windows_client
     @authorization_code = CreateAuthorizationCode.for(current_user)
