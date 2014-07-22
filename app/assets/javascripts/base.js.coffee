@@ -55,13 +55,6 @@ jQuery ($) ->
               $("#header-bar").removeClass "styled"
             return
 
-          afterSlideLoad: (anchorLink, index, slideAnchor, slideIndex) ->
-            if slideIndex is 0
-              $("#header-bar").addClass "styled"
-            else
-              $("#header-bar").removeClass "styled"
-            return
-
           afterRender: () ->
             $webOmniApp.devicesPresenter.showDevices()
 
@@ -81,6 +74,7 @@ jQuery ($) ->
     init: ->
       @appendHome()  if $(window).width() > 600
       @appPlugins.init()
+      @showcasePresenter.init()
       @menuPresenter.init()
 
       return

@@ -3,6 +3,20 @@ window.ShowcasePresenter =
     'incoming-call': {id: 'incoming_call', displayName: 'Incoming Call'}
     'navigation': {id: 'navigation', displayName: 'Smart clipping - Navigation'}
 
+  init: () ->
+    $("#usecases-wrapper").on 'click', '.btn-replay', (e) ->
+      e.preventDefault()
+      animationContainer = $(this).closest('.animation')
+      edgeAnimation = animationContainer.find('.edge-animation')[0]
+      AdobeEdge.getComposition(edgeAnimation.id).getStage().play "start"
+      return
+
+    $("#usecases-wrapper").on 'inview', '.anim-wrap', (event, isInView) ->
+      if isInView
+        edgeAnimation = $(this).find('.edge-animation')[0]
+        AdobeEdge.getComposition(edgeAnimation.id).getStage().play()
+      return
+
   showFor: (device1, device2) ->
     events = @events
     availableUsecases = _.map(
@@ -11,17 +25,15 @@ window.ShowcasePresenter =
         _.intersection(device1.handlers, device2.events)
       ),
       (eventName) ->
+        if _.contains(device1.events, eventName)
+          emitterDevice = device1.id
+          handlerDevice = device2.id
+        else
+          emitterDevice = device2.id
+          handlerDevice = device1.id
         event: events[eventName]
-        device1: () ->
-          if _.contains(device1.events, eventName)
-            device1.id
-          else
-            device2.id
-        device2: () ->
-          if _.contains(device1.events, eventName)
-            device2.id
-          else
-            device1.id
+        device1: emitterDevice
+        device2: handlerDevice
     )
     @renderUsecases(availableUsecases)
     return
@@ -57,12 +69,6 @@ window.ShowcasePresenter =
         template = Handlebars.compile($("#usecase_template").html())
         compiledTemplate = template(usecase)
         $("#usecases-wrapper").append(compiledTemplate)
-        $("#usecases-wrapper").last('.middle-wrap').height(window.innerHeight)
-        $("#usecases-wrapper").last('.btn-replay').on "click", (e) ->
-          e.preventDefault()
-          AdobeEdge.getComposition(usecase.id + '_' + usecase.device1 + '_' +usecase.device2).getStage().play "start"
-          return
-
         $this.edgeDetectionFunction()
         return
     )
