@@ -56,6 +56,7 @@ group :development, :test do
   gem 'rspec-spies'
   gem 'guard-rspec'
   gem 'mongoid-rspec'
+  gem 'rspec-activemodel-mocks'
 end
 
 group :test do

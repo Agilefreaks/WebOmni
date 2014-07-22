@@ -244,6 +244,10 @@ GEM
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
+    rspec-activemodel-mocks (1.0.1)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-cells (0.2.1)
       cells (>= 3.4.0)
       railties (>= 3.0)
@@ -355,6 +359,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.4)
   rb-inotify (~> 0.9)
+  rspec-activemodel-mocks
   rspec-cells
   rspec-rails
   rspec-spies
