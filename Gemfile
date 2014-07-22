@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-spies'
   gem 'guard-rspec'
+  gem 'mongoid-rspec'
 end
 
 group :test do
