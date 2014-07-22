@@ -8,27 +8,7 @@
           .device-wrap
             = image_tag 'click_to_select.png', alt: 'Click to select', id: 'device-help'
             %form{action: ""}
-              %ul#device-list
-                %li.device-laptop
-                  %input#device-laptop{checked: 'checked', name: 'laptop', type: 'checkbox'}/
-                  %label.inner{for: 'device-laptop'}
-                    %span.device-graphic
-                    %strong Laptop
-                %li.device-phone
-                  %input#device-phone{name: 'phone', type: 'checkbox'}/
-                  %label.inner{for: 'device-phone'}
-                    %span.device-graphic
-                    %strong Phone
-                %li.device-tablet
-                  %input#device-tablet{name: 'tablet', type: 'checkbox'}/
-                  %label.inner{for: 'device-tablet'}
-                    %span.device-graphic
-                    %strong Tablet
-                %li.device-tv
-                  %input#device-tv{name: 'tv', type: 'checkbox'}/
-                  %label.inner{for: 'device-tv'}
-                    %span.device-graphic
-                    %strong TV
+              = render partial: 'devices/list'
               .btn-wrap.center
                 #device-disabled-wrap{'data-placement' => 'top', 'data-toggle' => 'tooltip', title: 'Select two devices for a custom experience'}
                   %button#device-continue.btn.btn-info.toSlide{disabled: 'disabled', type: 'button'} Continue

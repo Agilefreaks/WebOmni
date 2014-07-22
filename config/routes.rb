@@ -5,15 +5,16 @@ WebOmni::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'pages#welcome'
 
-  devise_for :users, controllers: {:omniauth_callbacks => 'users/omniauth_callbacks'}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resource :authorization_codes, only: [:create]
   resources :contacts, only: [:create]
+  resources :install
 
   resources :downloads, only: [:index] do
     collection do
       get 'windows_client'
-    end 
+    end
   end
 
   post 'call', as: :call, to: 'pages#call'

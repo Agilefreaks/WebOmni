@@ -42,9 +42,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    animate-rails (1.0.6)
-      rails
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (2.1.1.20140710)
+      execjs
     awesome_print (1.2.0)
     bcrypt (3.1.7)
     bootstrap-sass (3.2.0.0)
@@ -308,6 +308,8 @@ GEM
     useragent (0.10.0)
     warden (1.2.3)
       rack (>= 1.0)
+    wicked (1.0.3)
+      rails (>= 3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -317,7 +319,7 @@ PLATFORMS
 DEPENDENCIES
   accept_values_for
   activeresource
-  animate-rails
+  autoprefixer-rails
   awesome_print
   bootstrap-sass (~> 3.2.0)
   capistrano (~> 3.2)
@@ -358,3 +360,4 @@ DEPENDENCIES
   therubyracer
   uglifier
   useragent
+  wicked

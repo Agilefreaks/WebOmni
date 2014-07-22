@@ -8,7 +8,7 @@
     %link{href: "../../assets/favicon.ico", rel: "shortcut icon"}/
     %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
     = favicon_link_tag
-    = stylesheet_link_tag 'presentation', :media => 'all'
+    = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag :modernizr
     = csrf_meta_tag
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -18,15 +18,13 @@
     = render partial: 'layouts/header'
 
     .wrapper
-      .main#fullpage
-        = render partial: 'layouts/home'
-        = render partial: 'layouts/devices'
-        = render partial: 'layouts/feedback'
-        = render partial: 'layouts/team'
+      .main
+        %section.full-block.light-bg
+          .container
+            .middle-wrap
+              .middle-cell
+                = yield
 
-  -# adds this 2 files here and not in the manifest so that they can be cached by the browser
-  = javascript_include_tag 'jquery-2.1.1.min.js'
-  = javascript_include_tag 'edge.3.0.0.min.js'
   -# load the manifest file
-  = javascript_include_tag 'presentation'
+  = javascript_include_tag 'application'
   = humane_flash_messages.html_safe
