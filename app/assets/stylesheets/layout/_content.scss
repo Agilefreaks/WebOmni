@@ -79,10 +79,7 @@
 // =====================================================
 
 .message-block {
-  background-image: image-url('header_bg.jpg');
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-attachment: fixed;
+  background: image-url('header_bg.jpg') no-repeat fixed top center;
   -webkit-background-size: cover;
   background-size: cover;
 
