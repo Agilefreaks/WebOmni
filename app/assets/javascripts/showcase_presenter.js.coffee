@@ -12,21 +12,13 @@ window.ShowcasePresenter =
       e.preventDefault()
       animationContainer = $(this).closest('.animation')
       edgeAnimation = animationContainer.find('.edge-animation')[0]
-      $this.playAnimation(edgeAnimation.id)
-      AdobeEdge.getComposition(edgeAnimation.id).getStage().play "start"
-      return
+      $this.loadedAnimations[edgeAnimation.id].play()
 
     $("#usecases-wrapper").on 'inview', '.anim-wrap', (event, isInView) ->
       if isInView
         edgeAnimation = $(this).find('.edge-animation')[0]
         if (!$this.loadedAnimations[edgeAnimation.id].played)
-          $this.playAnimation(edgeAnimation.id)
-      return
-
-    return
-
-  playAnimation: (animationId) ->
-      AdobeEdge.getComposition(animationId).getStage().play "start"
+          $this.loadedAnimations[edgeAnimation.id].play()
 
   showFor: (device1, device2) ->
     events = @events
@@ -72,12 +64,30 @@ window.ShowcasePresenter =
     return
 
   loadAnimation: (animationId) ->
+    $this = $(this)
+
     @loadedAnimations[animationId] =
       composition: AdobeEdge.getComposition(animationId)
-      played: false
       $container: $("#"+animationId).closest(".anim-wrap")
+      played: false
+
       showReplayButton: ->
         @$container.find('.btn-replay').show()
+
+      hideReplayButton: ->
+        @$container.find('.btn-replay').hide()
+
+      play: ->
+        @composition.getStage().play('start')
+
+    AdobeEdge.Symbol.bindTimelineAction(animationId, "stage", "Default Timeline", "play", () ->
+      $this[0].loadedAnimations[animationId].played = true;
+    )
+
+    AdobeEdge.Symbol.bindTimelineAction(animationId, "stage", "Default Timeline", "stop", (sym, e) ->
+      if (e.timeline.currentPosition > 0)
+        $this[0].loadedAnimations[animationId].showReplayButton()
+    )
 
   renderUsecases: (usecases) ->
     $this = this
@@ -95,18 +105,6 @@ window.ShowcasePresenter =
     )
 
     AdobeEdge.bootstrapCallback((compId) ->
-      $this.loadedAnimations[compId] = {
-        composition: AdobeEdge.getComposition(compId)
-      }
-
-      AdobeEdge.Symbol.bindTimelineAction(compId, "stage", "Default Timeline", "play", () ->
-        $this.loadedAnimations[compId].played = true;
-      )
-      AdobeEdge.Symbol.bindTimelineAction(compId, "stage", "Default Timeline", "stop", (sym, e) ->
-        if (e.timeline.currentPosition > 0)
-          $this.loadedAnimations[compId].showReplayButton()
-      )
-
       $this.loadAnimation(compId)
     )
 
