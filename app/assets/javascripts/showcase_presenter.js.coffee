@@ -12,6 +12,7 @@ window.ShowcasePresenter =
       e.preventDefault()
       animationContainer = $(this).closest('.animation')
       edgeAnimation = animationContainer.find('.edge-animation')[0]
+      $this.playAnimation(edgeAnimation.id)
       AdobeEdge.getComposition(edgeAnimation.id).getStage().play "start"
       return
 
@@ -19,10 +20,13 @@ window.ShowcasePresenter =
       if isInView
         edgeAnimation = $(this).find('.edge-animation')[0]
         if (!$this.loadedAnimations[edgeAnimation.id].played)
-          AdobeEdge.getComposition(edgeAnimation.id).getStage().play "start"
+          $this.playAnimation(edgeAnimation.id)
       return
 
     return
+
+  playAnimation: (animationId) ->
+      AdobeEdge.getComposition(animationId).getStage().play "start"
 
   showFor: (device1, device2) ->
     events = @events
@@ -67,6 +71,14 @@ window.ShowcasePresenter =
     setTimeout @edgeDetectionFunction, 1000
     return
 
+  loadAnimation: (animationId) ->
+    @loadedAnimations[animationId] =
+      composition: AdobeEdge.getComposition(animationId)
+      played: false
+      $container: $("#"+animationId).closest(".anim-wrap")
+      showReplayButton: ->
+        @$container.find('.btn-replay').show()
+
   renderUsecases: (usecases) ->
     $this = this
     $this.resetAnim()
@@ -90,12 +102,12 @@ window.ShowcasePresenter =
       AdobeEdge.Symbol.bindTimelineAction(compId, "stage", "Default Timeline", "play", () ->
         $this.loadedAnimations[compId].played = true;
       )
-      AdobeEdge.Symbol.bindTimelineAction(compId, "stage", "Default Timeline", "complete", () ->
+      AdobeEdge.Symbol.bindTimelineAction(compId, "stage", "Default Timeline", "stop", (sym, e) ->
+        if (e.timeline.currentPosition > 0)
+          $this.loadedAnimations[compId].showReplayButton()
       )
 
-      $this.loadedAnimations[compId] = {
-        composition: AdobeEdge.getComposition(compId)
-      }
+      $this.loadAnimation(compId)
     )
 
     return
