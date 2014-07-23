@@ -8,10 +8,10 @@ class NotificationsMailer < BaseMailer
          })
   end
 
-  def install_instructions(step, user_id)
+  def install_instructions_android(user_id)
     @user = User.find(user_id)
     mail({
-             subject: 'Welcome to Omnipaste',
+             subject: 'Omnipaste installation instructions',
              content_type: 'text/html',
              to: @user.email
          })

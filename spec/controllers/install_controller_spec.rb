@@ -33,6 +33,22 @@ describe InstallController do
       end
     end
 
+    context 'for :phone' do
+      include_context :logged_in_as_user
+
+      let(:step) { :phone }
+
+      before :each do
+        current_user.wizard = Wizard.new(devices: [:phone])
+      end
+
+      it 'will create an authorization code for the logged user' do
+        expect(NotificationsMailer).to receive(:install_instructions_android).and_return(double(:mail, deliver: true))
+        expect(CreateAuthorizationCode).to receive(:for).with(current_user.id)
+        subject
+      end
+    end
+
     context 'for :finish' do
       include_context :logged_in_as_user
 

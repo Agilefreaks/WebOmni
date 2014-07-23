@@ -19,7 +19,8 @@ class InstallController < ApplicationController
           @wizard = Wizard.new
         end
       when :phone, :tablet
-        NotificationsMailer.install_instructions(step, current_user.id).deliver
+        CreateAuthorizationCode.for(current_user.id)
+        NotificationsMailer.install_instructions_android(current_user.id).deliver
       when :finish
         current_user.wizard.delete if current_user.wizard
       else
@@ -39,7 +40,7 @@ class InstallController < ApplicationController
     current_user.save
 
     redirect_to install_path(:devices_selection)
- end
+  end
 
   private
 

@@ -6,8 +6,8 @@ class AuthorizationCodesController < ApplicationController
   respond_to :js
 
   def create
-    @authorization_code = CreateAuthorizationCode.for(current_user)
-  rescue ActiveResource::ServerError => e
+    @authorization_code = CreateAuthorizationCode.for(current_user.id)
+  rescue ActiveResource::ServerError => _
     sign_out(User)
 
     flash[:notice] = 'Please log back in. We closed your current session.'
