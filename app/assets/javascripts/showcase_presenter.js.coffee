@@ -3,7 +3,11 @@ window.ShowcasePresenter =
     'incoming-call': {id: 'incoming_call', displayName: 'Incoming Call'}
     'navigation': {id: 'navigation', displayName: 'Smart clipping - Navigation'}
 
+  loadedAnimations: {}
+
   init: () ->
+    $this = $(this)[0]
+
     $("#usecases-wrapper").on 'click', '.btn-replay', (e) ->
       e.preventDefault()
       animationContainer = $(this).closest('.animation')
@@ -14,8 +18,11 @@ window.ShowcasePresenter =
     $("#usecases-wrapper").on 'inview', '.anim-wrap', (event, isInView) ->
       if isInView
         edgeAnimation = $(this).find('.edge-animation')[0]
-        AdobeEdge.getComposition(edgeAnimation.id).getStage().play()
+        if (!$this.loadedAnimations[edgeAnimation.id].played)
+          AdobeEdge.getComposition(edgeAnimation.id).getStage().play "start"
       return
+
+    return
 
   showFor: (device1, device2) ->
     events = @events
@@ -35,7 +42,9 @@ window.ShowcasePresenter =
         device1: emitterDevice
         device2: handlerDevice
     )
+
     @renderUsecases(availableUsecases)
+
     return
 
   edgeDetectionFunction: ->
@@ -73,10 +82,26 @@ window.ShowcasePresenter =
         return
     )
 
+    AdobeEdge.bootstrapCallback((compId) ->
+      $this.loadedAnimations[compId] = {
+        composition: AdobeEdge.getComposition(compId)
+      }
+
+      AdobeEdge.Symbol.bindTimelineAction(compId, "stage", "Default Timeline", "play", () ->
+        $this.loadedAnimations[compId].played = true;
+      )
+      AdobeEdge.Symbol.bindTimelineAction(compId, "stage", "Default Timeline", "complete", () ->
+      )
+
+      $this.loadedAnimations[compId] = {
+        composition: AdobeEdge.getComposition(compId)
+      }
+    )
+
     return
 
   resetAnim: ->
     $(window).off "animationReady"
-    window.AdobeEdge = undefined;
     AdobeEdge = undefined;
+    @loadedAnimations = {}
     return

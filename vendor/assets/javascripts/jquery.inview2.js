@@ -37,16 +37,16 @@
   }
 
   function showOrHideElementBasedOnAmountVisible($element, percentInvisible) {
-    var inView = $el.data('inview');
+    var inView = $element.data('inview');
     if (percentInvisible < 50) {
       if (!inView) {
         // object has entered viewport
-        $el.data('inview', true).trigger('inview', [true]);
+        $element.data('inview', true).trigger('inview', [true]);
       }
     }
     else if (inView) {
       // object has left viewport
-      $el.data('inview', false).trigger('inview', [false]);
+      $element.data('inview', false).trigger('inview', [false]);
     }
   }
 
