@@ -74,13 +74,13 @@ window.ShowcasePresenter =
         @$container.find('.btn-replay').hide()
 
       play: ->
-        @composition.getStage().play('start')
+        @composition.getStage().play()
 
     AdobeEdge.Symbol.bindTimelineAction(animationId, "stage", "Default Timeline", "play", () ->
       $this[0].loadedAnimations[animationId].played = true;
     )
 
-    AdobeEdge.Symbol.bindTimelineAction(animationId, "stage", "Default Timeline", "complete", (sym, e) ->
+    AdobeEdge.Symbol.bindTimelineAction(animationId, "stage", "Default Timeline", "stop", (sym, e) ->
       if (e.timeline.currentPosition > 0)
         $this[0].loadedAnimations[animationId].showReplayButton()
     )
@@ -97,7 +97,7 @@ window.ShowcasePresenter =
     _.each(
       usecases,
       (usecase) ->
-        template = Handlebars.compile($("#usecase_template").html())
+        template = Handlebars.compile($("#usecase-template").html())
         compiledTemplate = template(usecase)
         $("#usecases-wrapper").append(compiledTemplate)
         $this.edgeDetectionFunction()
