@@ -29,7 +29,6 @@ jQuery ($) ->
       showUsecasesForSelectedDevices: ->
         selectedDevices = $webOmniApp.devicesPresenter.getSelectedDevices()
         $webOmniApp.showcasePresenter.showFor(selectedDevices[0], selectedDevices[1])
-
         $webOmniApp.config.$fullPage.fullpage.reBuild()
 
         return

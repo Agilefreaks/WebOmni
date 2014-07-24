@@ -50,7 +50,6 @@ if(document.addEventListener ){
    };
 
    aLoader = [
-      { load: "assets/jquery-2.1.1.min.js"},
       { load: "assets/edge.4.0.0.min.js"},
       { load: "assets/animations/navigation_tablet_phone/navigation_tablet_phone_edge.js"},
       { load: "assets/animations/navigation_tablet_phone/navigation_tablet_phone_edgeActions.js"}];

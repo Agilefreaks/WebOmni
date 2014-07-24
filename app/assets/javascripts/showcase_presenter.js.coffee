@@ -39,7 +39,7 @@ window.ShowcasePresenter =
         device2: handlerDevice
     )
 
-    @renderUsecases(availableUsecases)
+    @renderUseCases(availableUsecases)
 
     return
 
@@ -51,11 +51,6 @@ window.ShowcasePresenter =
         for key of AdobeEdge.compositionDefns
           hasComposition = true
           break
-      if hasComposition
-        setTimeout(()->
-          jQuery(window).trigger "animationReady"
-          return
-        , 100)
         return
     else if AdobeEdge
       window.onDocLoaded()
@@ -84,14 +79,18 @@ window.ShowcasePresenter =
       $this[0].loadedAnimations[animationId].played = true;
     )
 
-    AdobeEdge.Symbol.bindTimelineAction(animationId, "stage", "Default Timeline", "stop", (sym, e) ->
+    AdobeEdge.Symbol.bindTimelineAction(animationId, "stage", "Default Timeline", "complete", (sym, e) ->
       if (e.timeline.currentPosition > 0)
         $this[0].loadedAnimations[animationId].showReplayButton()
     )
 
-  renderUsecases: (usecases) ->
+  scrollToElement: (el, ms) ->
+    $(el).closest(".fp-scrollable").animate({scrollTop: $(el).offset().top})
+    $(el).closest(".fp-scrollable").slimScroll({scrollTo: $(el).offset().top})
+
+  renderUseCases: (usecases) ->
     $this = this
-    $this.resetAnim()
+    $this.resetAnimations()
 
     $("#usecases-wrapper").empty()
     _.each(
@@ -108,9 +107,14 @@ window.ShowcasePresenter =
       $this.loadAnimation(compId)
     )
 
+    setTimeout(()->
+      $this.scrollToElement("#usecases-wrapper")
+      return
+    , 1000)
+
     return
 
-  resetAnim: ->
+  resetAnimations: ->
     $(window).off "animationReady"
     AdobeEdge = undefined;
     @loadedAnimations = {}
