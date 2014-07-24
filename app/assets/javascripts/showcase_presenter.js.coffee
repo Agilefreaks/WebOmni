@@ -86,7 +86,10 @@ window.ShowcasePresenter =
     )
 
   scrollToElement: (el, ms) ->
-    $(el).closest(".fp-scrollable").animate({scrollTop: $(el).offset().top})
+    $(el).closest(".fp-scrollable").animate(
+      { scrollTop: $(el).offset().top }
+      , 1000
+      , 'easeInQuart')
     $(el).closest(".fp-scrollable").slimScroll({scrollTo: $(el).offset().top})
 
   renderUseCases: (usecases) ->
@@ -111,7 +114,7 @@ window.ShowcasePresenter =
     setTimeout(()->
       $this.scrollToElement("#usecases-wrapper")
       return
-    , 1000)
+    , 500)
 
     return
 

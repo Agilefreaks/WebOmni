@@ -38,7 +38,7 @@
 
   function showOrHideElementBasedOnAmountVisible($element, percentInvisible) {
     var inView = $element.data('inview');
-    if (percentInvisible < 25) {
+    if (percentInvisible < 50) {
       if (!inView) {
         // object has entered viewport
         $element.data('inview', true).trigger('inview', [true]);
