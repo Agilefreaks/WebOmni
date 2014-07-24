@@ -31,6 +31,23 @@ window.MenuPresenter =
     , 1000
     return
 
+  makeDark: () ->
+    $('#header-bar').addClass('styled')
+
+  makeLight: () ->
+    $('#header-bar').removeClass('styled')
+
+  adjustForegroundColor: () ->
+    $headerStyleModifier = $('#logo').nearest('.header-style-modifier').last()
+    if $headerStyleModifier.hasClass('light-bg')
+      window.MenuPresenter.makeDark()
+    else
+      window.MenuPresenter.makeLight()
+
   init: () ->
     @$menuTrigger.on "click", @toggleMenu
     @$menuOverlay.on "click", "a", @closeMenu
+
+    $('.header-style-modifier').on('scroll slimscrolling resize scrollstop', (e, data) ->
+      window.MenuPresenter.adjustForegroundColor()
+    )

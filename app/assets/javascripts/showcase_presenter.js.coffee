@@ -1,4 +1,5 @@
 window.ShowcasePresenter =
+  menuPresenter: window.MenuPresenter
   events:
     'incoming-call': {id: 'incoming_call', displayName: 'Incoming Call'}
     'navigation': {id: 'navigation', displayName: 'Smart clipping - Navigation'}

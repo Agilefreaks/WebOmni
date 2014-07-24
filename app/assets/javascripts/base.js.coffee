@@ -47,12 +47,8 @@ jQuery ($) ->
           verticalCentered: false
           resize: false
 
-          onLeave: (index, nextIndex) ->
-            if $(".fp-section").eq(nextIndex - 1).hasClass("light-bg")
-              $("#header-bar").addClass "styled"
-            else
-              $("#header-bar").removeClass "styled"
-            return
+          afterLoad: (index, nextIndex) ->
+            $webOmniApp.menuPresenter.adjustForegroundColor()
 
           afterRender: () ->
             $webOmniApp.devicesPresenter.showDevices()
