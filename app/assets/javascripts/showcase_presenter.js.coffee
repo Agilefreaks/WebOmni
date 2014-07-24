@@ -61,6 +61,10 @@ window.ShowcasePresenter =
 
   loadAnimation: (animationId) ->
     $this = $(this)
+    modalId = animationId+'_more';
+    $moreInfoModal = $('#'+animationId).nearest('.modal.unnamed').last()
+    $moreInfoModal.attr('id', modalId)
+    $moreInfoModal.removeClass('unnamed')
 
     @loadedAnimations[animationId] =
       composition: AdobeEdge.getComposition(animationId)
