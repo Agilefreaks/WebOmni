@@ -103,6 +103,7 @@ window.ShowcasePresenter =
         template = Handlebars.compile($("#usecase-template").html())
         compiledTemplate = template(usecase)
         $("#usecases-wrapper").append(compiledTemplate)
+#        $('#usecases-wrapper').find('.animation').last().height(window.innerHeight)
         $this.edgeDetectionFunction()
         return
     )
@@ -114,7 +115,7 @@ window.ShowcasePresenter =
     setTimeout(()->
       $this.scrollToElement("#usecases-wrapper")
       return
-    , 500)
+    , 1000)
 
     return
 

@@ -1,6 +1,6 @@
 %script{:type => 'text/x-handlebars-template', :id  => 'usecase-template'}
-  .full-block.section.middle-wrap.header-style-modifier
-    .middle-cell
+  .full-block.section.table.header-style-modifier
+    .tableCell
       .animation{'data-anchor' => '{{device1}}-{{device2}}-{{event.id}}'}
         .row
           .col-xs-12.col-md-6.col-md-offset-3
@@ -8,5 +8,8 @@
               %h2 {{event.displayName}}
             .anim-wrap
               <div class='edge-animation {{event.id}}_{{device1}}_{{device2}}' id='{{event.id}}_{{device1}}_{{device2}}'> </div>
-              = link_to 'Replay', '#', class: 'btn btn-white btn-replay'
+              %a.btn.btn-white.btn-replay{'href' => '#'}
+                %span.icon
+              %a.btn.btn-white.btn-more{'href' => '#', 'data-toggle' => 'modal', 'data-target' => '#{{event.id}}_{{device1}}_{{device2}}_more'}
+                %span.icon
               <script src='assets/animations/{{event.id}}_{{device1}}_{{device2}}/{{event.id}}_{{device1}}_{{device2}}_edgePreload.js' />

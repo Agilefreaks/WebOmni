@@ -7,7 +7,6 @@ jQuery ($) ->
     config:
       $win: $(window)
       $doc: $(document)
-      $devicesWrapper: $("#devices-wrapper")
       $fullPage: $("#fullpage")
       $showUsecases: $("#device-continue")
 
@@ -29,7 +28,7 @@ jQuery ($) ->
       showUsecasesForSelectedDevices: ->
         selectedDevices = $webOmniApp.devicesPresenter.getSelectedDevices()
         $webOmniApp.showcasePresenter.showFor(selectedDevices[0], selectedDevices[1])
-        $webOmniApp.config.$fullPage.fullpage.reBuild()
+        $webOmniApp.config.$fullPage.fullpage.reBuild() if $(window).width() > 600
 
         return
 
@@ -51,19 +50,24 @@ jQuery ($) ->
             $webOmniApp.menuPresenter.adjustForegroundColor()
 
           afterRender: () ->
-            $webOmniApp.devicesPresenter.showDevices()
-
-            $webOmniApp.attachHandles()
-
+            $webOmniApp.appPlugins.initComplete()
         return
 
       initBootstrapTooltip: ->
         $("[data-toggle=tooltip]").tooltip()
         return
 
+      initComplete: ->
+        $webOmniApp.devicesPresenter.showDevices()
+        $webOmniApp.attachHandles()
+
       init: ->
         @initBootstrapTooltip()
-        @initFullPage()  if $(window).width() > 600
+
+        if $(window).width() > 600
+          @initFullPage()
+        else
+          @initComplete();
         return
 
     init: ->
