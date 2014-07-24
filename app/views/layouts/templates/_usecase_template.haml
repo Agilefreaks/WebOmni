@@ -1,5 +1,5 @@
 %script{:type => 'text/x-handlebars-template', :id  => 'usecase-template'}
-  %section.full-block.section.middle-wrap.header-style-modifier
+  .full-block.section.middle-wrap.header-style-modifier
     .middle-cell
       .animation{'data-anchor' => '{{device1}}-{{device2}}-{{event.id}}'}
         .row
@@ -9,4 +9,4 @@
             .anim-wrap
               <div class='edge-animation {{event.id}}_{{device1}}_{{device2}}' id='{{event.id}}_{{device1}}_{{device2}}'> </div>
               = link_to 'Replay', '#', class: 'btn btn-white btn-replay'
-              %script{:src  => asset_path('assets/animations/{{event.id}}_{{device1}}_{{device2}}/{{event.id}}_{{device1}}_{{device2}}_edgePreload.js')}
+              <script src="asset_path('assets/animations/{{event.id}}_{{device1}}_{{device2}}/{{event.id}}_{{device1}}_{{device2}}_edgePreload.js')" />
