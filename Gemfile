@@ -24,7 +24,6 @@ gem 'coffee-script'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
-gem 'underscore-rails'
 
 gem 'compass-rails'
 gem 'bootstrap-sass', '~> 3.2.0'

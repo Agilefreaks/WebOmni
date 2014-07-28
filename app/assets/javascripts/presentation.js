@@ -13,12 +13,8 @@
 //= require jquery-2.1.1.min
 //= require jquery_ujs
 //= require jquery.easing
-//= require jquery.slimscroll.min
-//= require jquery.fullPage.min
 //= require jquery.nearest.min
-//= require jquery.inview2
 //= require handlebars-v1.3.0
 //= require bootstrap
 //= require humane-rails
-//= require underscore
 //= require_directory .

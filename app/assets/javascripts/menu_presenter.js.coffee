@@ -48,6 +48,5 @@ window.MenuPresenter =
     @$menuTrigger.on "click", @toggleMenu
     @$menuOverlay.on "click", "a", @closeMenu
 
-    $('.header-style-modifier').on('scroll slimscrolling resize scrollstop', (e, data) ->
+    window.onscroll = (e) ->
       window.MenuPresenter.adjustForegroundColor()
-    )
