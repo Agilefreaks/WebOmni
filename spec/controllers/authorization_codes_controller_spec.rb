@@ -9,7 +9,7 @@ describe AuthorizationCodesController do
     subject { xhr :post, :create }
 
     it 'will call create on AuthorizationCode' do
-      expect(CreateAuthorizationCode).to receive(:for).with(current_user)
+      expect(CreateAuthorizationCode).to receive(:for).with(current_user.id)
       subject
     end
 
@@ -17,7 +17,7 @@ describe AuthorizationCodesController do
       it 'will sign user out' do
         response = OpenStruct.new(code: 500, message: 'Internal Server Error')
         allow(CreateAuthorizationCode).to receive(:for).
-                                              with(current_user).
+                                              with(current_user.id).
                                               and_raise(ActiveResource::ServerError.new(response, ''))
         expect(controller).to receive(:sign_out).with(User)
         subject
