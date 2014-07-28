@@ -17,4 +17,3 @@
 //= require handlebars-v1.3.0
 //= require bootstrap
 //= require humane-rails
-//= require_directory .
