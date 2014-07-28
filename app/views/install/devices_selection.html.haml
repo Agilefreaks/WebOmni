@@ -1,8 +1,0 @@
-.device-wrap
-  = image_tag 'click_to_select.png', alt: 'Click to select', id: 'device-help'
-  = form_for @wizard, url: install_path, method: :put do |f|
-    = render partial: 'devices/list'
-
-    .form-group
-      = f.submit 'Install on selected devices', class: 'btn btn-primary'
-      %p.help-block we will guide you through the installation process

@@ -32,9 +32,6 @@ gem 'jquery-rails'
 gem 'humane-rails'
 gem 'modernizr-rails'
 
-gem 'cells'
-gem 'wicked'
-
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

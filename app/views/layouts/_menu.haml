@@ -1,6 +1,6 @@
 %ul
   %li
-    = link_to 'Install', install_path(:login), data: {id: '#device-block'}
+    = link_to 'Install', user_omniauth_authorize_path(:google_oauth2), data: {id: '#device-block'}
   %li
     = link_to 'Learn More', '#seemore', data: {id: '#device-block'}
   %li

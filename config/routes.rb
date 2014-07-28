@@ -9,7 +9,6 @@ WebOmni::Application.routes.draw do
 
   resource :authorization_codes, only: [:create]
   resources :contacts, only: [:create]
-  resources :install
 
   resources :downloads, only: [:index] do
     collection do

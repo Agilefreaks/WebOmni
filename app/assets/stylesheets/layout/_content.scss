@@ -527,23 +527,6 @@
   }
 }
 
-.anim-wrap {
-  background: image-url("anim-loader.gif") no-repeat center center;
-  width: 600px;
-  height: 400px;
-  margin: 0 auto;
-  position: relative;
-  top: -10px;
-
-  .btn {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    margin: 0 0 0 -75px;
-    z-index: 1000;
-  }
-}
-
 // Spinner
 // =====================================================
 .spinner {
