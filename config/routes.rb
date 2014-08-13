@@ -13,6 +13,7 @@ WebOmni::Application.routes.draw do
   resources :downloads, only: [:new] do
     collection do
       get 'windows_client'
+      get 'android_client'
     end
   end
 

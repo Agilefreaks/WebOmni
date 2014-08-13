@@ -28,7 +28,6 @@ class UserFactory
       user.update(params)
     else
       user = User.create(params)
-      NotificationsMailer.welcome(user.id).deliver
     end
 
     user
