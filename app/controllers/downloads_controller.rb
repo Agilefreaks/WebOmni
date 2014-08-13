@@ -17,6 +17,6 @@ class DownloadsController < ApplicationController
 
   def android_client
     @authorization_code = CreateAuthorizationCode.for(current_user)
-    redirect_to 'https://play.google.com/store/apps/details?id=com.omnipaste.droidomni'
+    redirect_to ANDROID_CLIENT_DOWNLOAD_LINK
   end
 end
