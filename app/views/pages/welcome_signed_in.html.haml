@@ -5,6 +5,7 @@
   = link_to 'Get authorization code', authorization_codes_path, class: 'btn btn-primary', 'data-remote' => true, method: :post, data: { disable_with: 'Generating ...' }
 %p
   %span.bg-info.authorization_code
+    = authorization_code
 
 %p
   = link_to 'Sign out', destroy_user_session_path, method: :delete

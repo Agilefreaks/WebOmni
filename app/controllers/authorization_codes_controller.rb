@@ -3,16 +3,30 @@ class AuthorizationCodesController < ApplicationController
 
   before_action :authenticate!
 
-  respond_to :js
+  respond_to :js, only: [:create]
+
+  def new
+    @authorization_code = create_authorization_code(current_user)
+    render template: 'pages/welcome_signed_in', layout: 'presentation'
+  end
 
   def create
-    @authorization_code = CreateAuthorizationCode.for(current_user.id)
+    @authorization_code = create_authorization_code(current_user)
+  end
+
+  private
+
+  def create_authorization_code(current_user)
+    CreateAuthorizationCode.for(current_user.id)
   rescue ActiveResource::ServerError => _
     sign_out(User)
 
     flash[:notice] = 'Please log back in. We closed your current session.'
     flash.keep(:notice)
 
-    js_redirect_to(root_path)
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { js_redirect_to(root_path) }
+    end
   end
 end
