@@ -21,6 +21,6 @@
             %i.icon
           %li.d-linux
             %i.icon
-        = link_to 'Download', user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-primary'
+        = link_to 'Download', download_path(user_signed_in?), class: 'btn btn-primary'
       #leave-feedback-wrap.t-cell
         = render partial: 'contacts/create', locals: { contact: contact(@contact) }

@@ -10,7 +10,7 @@ WebOmni::Application.routes.draw do
   resource :authorization_codes, only: [:create]
   resources :contacts, only: [:create]
 
-  resources :downloads, only: [:index] do
+  resources :downloads, only: [:new] do
     collection do
       get 'windows_client'
     end

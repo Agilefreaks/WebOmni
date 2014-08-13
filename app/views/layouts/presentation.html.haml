@@ -28,3 +28,16 @@
   -# load the manifest file
   = javascript_include_tag 'presentation'
   = humane_flash_messages.html_safe
+
+  :javascript
+    $(document).ready( function() {
+      urlParam = function(name) {
+          var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+          return results[1] || 0;
+      };
+
+      if (urlParam('download')) {
+        var destination = "#{windows_client_downloads_path}";
+        setTimeout("window.location='" + destination + "'", 3000);
+      }
+    } );
