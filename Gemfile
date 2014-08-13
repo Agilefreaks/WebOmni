@@ -54,6 +54,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'mongoid-rspec'
   gem 'rspec-activemodel-mocks'
+  gem 'fabrication'
+  gem 'database_cleaner'
 end
 
 group :test do
@@ -62,5 +64,4 @@ group :test do
   gem 'accept_values_for'
   gem 'capybara'
   gem 'email_spec'
-  gem 'rspec-cells'
 end

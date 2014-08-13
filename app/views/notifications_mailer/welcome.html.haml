@@ -6,7 +6,7 @@ Howdy,
 %p
   = link_to 'Window installer', url_for(controller: :downloads, action: 'windows_client', only_path: false)
 %p
-  = link_to 'Android Installer', ANDROID_CLIENT_DOWNLOAD_LINK
+  = link_to 'Android Installer', @android_download_url
 #div
   %p
     = link_to 'Authorization code', url_for(controller: :authorization_codes, action: 'new', only_path: false)

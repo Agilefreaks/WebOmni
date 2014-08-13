@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-
 describe AuthorizationCodesController do
-
   describe "POST 'create'" do
     include_context :logged_in_as_user
 
