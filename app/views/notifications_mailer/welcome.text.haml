@@ -1,11 +1,15 @@
-Hi,
+Howdy,
 \
-I'm Calin, co-founder and CTO of Omnipasteapp. Glad to have you on board!
+We are glad to send this email to you. Use it to install Omnipaste on each of your devices.
 \
-You can download the free Windows and Android clients by following this link:
+For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
 \
-= Rails.configuration.action_mailer.default_url_options[:host]
+= url_for(controller: :downloads, action: 'windows_client', only_path: false)
 \
-Beware though, the applications are still a bit rough around the edges but bear with us, things will get better. Reply to this email with any suggestion/question/praise I will be reading every email.
+= url_for(controller: :downloads, action: 'android_client', only_path: false)
 \
-Thank you, and don't hesitate to contact us if you have any questions.
+Take care,
+Omni Team
+\
+\
+PS: You can contact me by replying to this email
