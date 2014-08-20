@@ -1,11 +1,15 @@
-%p.lead
-  Welcome #{current_user.name} (#{current_user.email})
+= link_to 'Get Omnipaste', download_path(user_signed_in?), { class: 'button button--orange', title: 'Get omnipaste' }
 
-%p
-  = link_to 'Get authorization code', authorization_codes_path, class: 'btn btn-primary', 'data-remote' => true, method: :post, data: { disable_with: 'Generating ...' }
-%p
-  %span.bg-info.authorization_code
-    = authorization_code
+= link_to 'Get Authorization Code', authorization_codes_path, { class: 'button button--transparent button--double js-get-auth-code', title: 'Get Authorization Code', remote: true, method: :post }
 
-%p
-  = link_to 'Sign out', destroy_user_session_path, method: :delete
+-#%p.lead
+-#  Welcome #{current_user.name} (#{current_user.email})
+-#
+-#%p
+-#  = link_to 'Get authorization code', authorization_codes_path, class: 'btn btn-primary', 'data-remote' => true, method: :post, data: { disable_with: 'Generating ...' }
+-#%p
+-#  %span.bg-info.authorization_code
+-#    = authorization_code
+-#
+-#%p
+-#  = link_to 'Sign out', destroy_user_session_path, method: :delete

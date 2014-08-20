@@ -59,13 +59,13 @@
                   Make it simple & quick to switch between your computer and your mobile
                   %br devices. Get Omnipaste and redefine your multidevice experience.
                 .section__play
-                  %a.button.button--play.js-omni-video{"data-action" => "play", "data-id" => "omni-video", :href => "#omni-video", :title => "Play video"}
+                  = link_to 'omni-video', { class: 'button button--play js-omni-video', title: 'Play video', data: { action: 'play', id: 'omni-video' } } do
                     %i.icon.icon__play
                   %span See the video
                 .section__button.section__button--hero
-                  %a.button.button--orange.js-toggle-dropdown{"data-id" => "sign-up", :href => "#sign-up", :title => "Sign up for Omnipaste"} Sign up for free
+                  = yield
                 .section__button
-                  %a.button.button--transparent.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
+                  = link_to '#faq', { class: 'button button--transparent js-goto-section', title: 'Learn more', data: { id: 'faq' } } do
                     Learn more
                     %i.icon.icon__arrowhead-down
 
