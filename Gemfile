@@ -19,6 +19,8 @@ gem 'newrelic_rpm'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'cells'
+
 gem 'coffee-script'
 gem 'coffee-rails'
 gem 'uglifier'
@@ -49,6 +51,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'rspec-spies'
+  gem 'rspec-cells'
   gem 'guard-rspec'
   gem 'mongoid-rspec'
   gem 'rspec-activemodel-mocks'

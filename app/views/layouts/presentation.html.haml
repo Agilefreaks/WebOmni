@@ -40,15 +40,7 @@
                       %img{:alt => "Omnipaste Logo", :height => "40", :src => image_path('logo.png'), :srcset => image_path('logo.svg 2x'), :width => "175"}
                 .col-md-7.col-md-offset-2.col-lg-7.col-lg-offset-2.hidden-xs
                   %nav.header__nav.js-header-nav-content
-                    %ul.list-to-nav.list-to-nav--horizontal
-                      %li.header__nav__item
-                        %a.js-toggle-dropdown{"data-id" => "sign-up", :href => "#sign-up"} Get Omnipaste
-                      %li.header__nav__item
-                        %a.js-goto-section{"data-id" => "faq", :href => "#faq"} FAQ
-                      %li.header__nav__item
-                        %a.js-goto-section{"data-id" => "contact", :href => "#contact"} Contact
-                      %li.header__nav__item.header__nav__item--separator
-                        %a.js-toggle-dropdown{"data-id" => "sign-up", :href => "#sign-in"} Sign in
+                    = render_cell :menu, :show, user: current_user
 
         %article.section__container.section__container--table-cell
           .container
@@ -158,7 +150,7 @@
         .section__container
           .container
             .row
-              .col-xs-12.col-sm-5.col-sm-offset-1.col-md-5.col-md-offset-2.col-lg-3.col-lg-offset-3
+              .col-xs-12.col-sm-5.col-sm-offset-1.col-md-5.col-md-offset-2.col-lg-4.col-lg-offset-3
                 .founders__left
                   .founders__picture
                     %img{:alt => 'Alexandru Calinoiu', :height => '85', :src => image_path('common/profile-calin.png'), :width => '85'}
@@ -167,7 +159,7 @@
                     %span.founders__title Co-founder/developer
                     %br/
                     %a.founders__phone{:href => 'tel:+40745857479', :title => 'Call Alex'} +40 745 857 479
-              .col-xs-12.col-sm-5.col-md-5.col-md-offset-0.col-lg-3.col-lg-offset-0
+              .col-xs-12.col-sm-5.col-md-5.col-md-offset-0.col-lg-4.col-lg-offset-0
                 .founders__right
                   .founders__picture
                     %img{:alt => 'Adrian Nistor', :height => '85', :src => image_path('common/profile-adi.png'), :width => '85'}

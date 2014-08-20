@@ -71,6 +71,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cells (3.11.2)
+      actionpack (>= 3.0)
+      railties (>= 3.0)
+      uber (~> 0.0.8)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -239,6 +243,10 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
+    rspec-cells (0.2.1)
+      cells (>= 3.4.0)
+      railties (>= 3.0)
+      rspec-rails (>= 2.14)
     rspec-collection_matchers (1.0.0)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.1)
@@ -295,6 +303,7 @@ GEM
       railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uber (0.0.8)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -318,6 +327,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-puma
   capybara
+  cells
   coffee-rails
   coffee-script
   database_cleaner
@@ -342,6 +352,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rb-inotify (~> 0.9)
   rspec-activemodel-mocks
+  rspec-cells
   rspec-rails
   rspec-spies
   simplecov
