@@ -16,24 +16,7 @@
 
   %body#home.body.js-body-action.omni-video__overlay
     %header.header
-      %article#sign-up.dropdown.js-dropdown
-        .section.section--download.section--center
-          .section__container
-            .container
-              .row
-                .col-xs-12
-                  %a.animate.animate--swirll.section__close.js-toggle-dropdown{:'data-id' => 'sign-up', :href => '#close', :title => 'Close dropdown'}
-                    %i.icon.icon__close
-                  %h1.section__title.section__title--hero Sign up
-                  %h2.section__subtitle.section__subtitle--hero
-                    Create a single identity to link your devices.
-                    %a{:href => '#', :title => 'Security Policy'} Read our security policy.
-                  %a.section__button.button.button--orange{:href => '#', :title => 'Sign up for Omnipaste with your Google Account'} Sign up with Google
-                  .section__text
-                    %p This option makes installing on your device much easier because it links with your Play Store account
-                    %p
-                      \...or sign up with
-                      %a.js-toggle-dropdown{:'data-id' => 'sign-up-email', :href => '#sign-up-email', :title => 'Sign up with your e-mail address'} e-mail
+      = render partial: 'layouts/presentation/login'
 
       .section.hero.section--table.section--center
 

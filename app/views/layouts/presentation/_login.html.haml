@@ -1,0 +1,18 @@
+%article#sign-up.dropdown.js-dropdown
+  .section.section--download.section--center
+    .section__container
+      .container
+        .row
+          .col-xs-12
+            = link_to '#close', { class: 'animate animate--swirll section__close js-toggle-dropdown', title: 'Close dropdown', data: { id: 'sign-up' } } do
+              %i.icon.icon__close
+            %h1.section__title.section__title--hero Sign up
+            %h2.section__subtitle.section__subtitle--hero
+              Create a single identity to link your devices.
+              = link_to 'Read our security policy.', '#', { title: 'Security Policy' }
+            = link_to 'Sign up with Google', user_omniauth_authorize_path(:google_oauth2), { class: 'section__button button button--orange', title: 'Sign up for Omnipaste with your Google Account' }
+            .section__text
+              %p This option makes installing on your device much easier because it links with your Play Store account
+              %p
+                \...or sign up with
+                = link_to 'e-mail', '#', { title: 'Sign up with your e-mail address' }
