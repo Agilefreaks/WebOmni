@@ -1,0 +1,262 @@
+// 
+// Name: Less Global Styles
+// Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
+//
+
+// Global
+
+/* !Global Classes */ 
+/* ==|========================================================================= */
+
+/* Selection Color */
+::-moz-selection { background: @select-background-color; color: @select-color; text-shadow: none; }
+::selection { background: @select-background-color; color: @select-color; text-shadow: none; }
+
+/* Border Box */
+*, *:before, *:after, input, select {
+ 	.box-sizing(border-box);
+}
+ 
+html { 
+	font-size: @base-font-size;
+	height: 100%;
+}
+
+body { 
+	.default-text(); 
+	height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: @default-font-family; }
+
+h1 {
+	color: @h1-color;
+	font-size: @h1-font-size;
+	font-weight: @h1-font-weight;
+	line-height: @h1-line-height;
+}
+
+h2 { 
+	color: @h2-color;
+	font-size: @h2-font-size;
+	font-weight: @h2-font-weight;
+	line-height: @h2-line-height;
+}
+
+h3 { 
+	color: @h3-color;
+	font-size: @h3-font-size;
+	font-weight: @h3-font-weight;
+	line-height: @h3-line-height;
+}
+
+a {
+	color: @link-color;
+	font-weight: @link-font-weight;
+	text-decoration: @link-text-decoration;
+	&:hover {
+		color: @link-hover-color;
+		text-decoration: @link-hover-text-decoration;
+	}
+}
+
+p {  
+	.default-text(); 
+}
+
+
+/* !Header */
+/* ==|========================================================================= */
+.header {
+	position: relative;
+	margin-bottom: 8 * @rem;	
+	min-height: 750 * @rem;
+	height: 100%;
+
+	&__container {
+		position: relative;
+		z-index: 10;
+		height: 80 * @rem;
+		//background-color: rgba(0,0,0,.4);
+		
+		.transition( background-color 0.3s ease-in-out );	
+
+	}
+
+	&__logo { margin-top: 15 * @rem;}
+	
+	&__nav { 
+		float: right;
+		margin: 25 * @rem 5 * @rem 0 0;
+		color: @color-bright;
+		font-weight: 200;
+		
+		&__item {
+			padding-right: 30 * @rem;
+			
+			&:last-child { padding-right: 0; }
+
+/*			&--separator:before { 
+				content: "|";
+				display: inline-block;
+				padding-right: 30 @rem;
+			}
+*/
+		}
+	
+		a {
+			.transition( color 0.2s ease-in-out);	
+		}	
+		a:hover, a.current { 
+			color: @color-light-blue; 
+			
+			.header__nav__picture { 
+				border-color: @color-light-blue;
+			}
+		}
+		&__picture {
+			display: inline-block;
+			border: 2 * @rem solid rgba(255,255,255, .4);
+			.border-radius(50%);
+			
+			.transition(border-color 0.2s ease-in-out);
+		}
+	}
+	&--floating {
+		.hero { padding-top: 80 * @rem; }
+		.header__container {
+			position: fixed;
+			top: 0;
+			z-index: 10;
+			width: 100%;
+			height: 80 * @rem;
+			background-color: rgba(0,0,0,.4);
+
+			.box-shadow(1 * @rem 0 2 * @rem rgba(0,0,0,.8));			
+		}
+	}
+}
+
+/* !Footer */
+/* ==|========================================================================= */
+.footer {
+	text-align: center;
+	padding-top: 30 * @rem;	
+
+	&__nav {
+	
+		&__item:after {
+			content:"|";
+			padding: 0 8 * @rem;
+		}
+		&__item:first-child:before { 
+			content:"|";
+			padding: 0 8 * @rem 0 0;
+		}
+		a { 
+			color: @color-light-grey;
+			font-size: 14 * @rem;
+			font-weight: 500;
+			&:hover, &.current {  color: @color-dark-grey; }
+		}
+	}
+	
+	&__copyright {
+		margin: 40 * @rem 0;
+		color: @color-light-grey;
+		font-size: 12 * @rem;
+		font-weight: 300;
+	}
+}
+
+/* !Global semantic helpers */
+/* ==|========================================================================= */
+
+/* General alignment, padding, border */
+.float-right { float: right; }
+.float-left { float: left; }
+.align-left { text-align: left; }
+.align-right { text-align: right; }
+.align-justify { text-align: justify; }
+.align-center { text-align: center; }
+.no-wrap { white-space: nowrap; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.block { display: block; }
+.upper { text-transform: uppercase }
+.no-emphasis { font-style: normal; font-weight: normal; }
+.center { margin: 0 auto; }
+.clearfix { .clearfix; }
+.no-margin { margin: 0; }
+.no-padding { padding: 0; }
+
+// Display Table
+.table {
+	display: table;
+	width: 100%;
+	padding-left: 0;
+	
+	&--cell {
+		display: table-cell;
+		text-align: center;
+
+		&:last-child { text-align: right; }
+		&:first-child { text-align: left; }
+	}
+}
+
+.list-to-nav { 
+	margin: 0;
+	padding: 0; 
+	list-style: none;
+	
+	&--horizontal li { display:  inline-block; }
+	&--vertical li { display: block; }
+}
+
+// Equal Height Boxes
+.equal-height { .display( flex ) };
+.equal-height-item {
+    .flex( 1 0 auto );
+}
+.no-flexbox .equal-height { overflow: hidden; }
+.no-flexbox .equal-height-item {
+	margin-bottom: -99999px;
+	padding-bottom: 99999px;
+}
+
+/* !Default Error Message */
+.error { border: 1px solid red !important; }
+.notice { display: none; margin: 0 auto; }
+
+/* !Default Placeholder Color (only works with placeholder.js) */
+.placeholder(#c4c4c4);
+
+/* !Allow only vertical resizing of textarea */
+textarea { resize: vertical; }
+
+/* Fix scrolling performance when hovering */
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+
+
+/* Global Print Styles */
+/* ==|========================================================================= */
+ 
+@media print {
+	* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
+	a, a:visited { text-decoration: underline; }
+	a[href]:after { content: " (" attr(href) ")"; }
+	abbr[title]:after { content: " (" attr(title) ")"; }
+	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } 
+	pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+	thead { display: table-header-group; }
+	tr, img { page-break-inside: avoid; }
+	img { max-width: 100% !important; }
+	@page { margin: 0.5cm; }
+	p, h2, h3 { orphans: 3; widows: 3; }
+	h2, h3 { page-break-after: avoid; }
+	nav { display: none; }
+}

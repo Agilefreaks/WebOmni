@@ -1,0 +1,102 @@
+// 
+// Name: Less Variables
+// Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
+// 
+
+
+// !Typography
+// ==|=========================================================================
+
+// Font Families
+@sans-font-family:		"MuseoSansRounded", Helvetica, Arial, sans-serif;
+@serif-font-family:		Times, serif;
+@mono-font-family:		Menlo, Monaco, Consolas, "Courier New", monospace;
+@condensed-font-family:		Arial, sans-serif;
+
+@default-font-family:	@sans-font-family;
+@second-font-family:	@condensed-font-family;
+@third-font-family:		@serif-font-family;
+
+// Base
+@default-font-size:		16 * @rem;
+@default-line-height:	25 * @rem;
+@default-font-weight:	300;
+@default-color:			@color-grey;	
+
+//H1
+@h1-font-size:		44 * @rem;
+@h1-line-height:	44 * @rem;
+@h1-font-weight:	700;
+@h1-color:			@color-bright;
+
+//H2
+@h2-font-size:		18 * @rem;
+@h2-line-height:	25 * @rem;
+@h2-font-weight:	300;
+@h2-color:			@color-bright;
+
+//H3
+@h3-font-size:		18 * @rem;
+@h3-line-height:	25 * @rem;
+@h3-font-weight:	700;
+@h3-color:			@color-dark-grey;
+
+//Hero
+@hero-h1-font-size:		55 * @rem;
+@hero-h1-line-height:	55 * @rem;
+@hero-h1-font-weight:	500;
+@hero-h1-color:			@color-bright;
+
+@hero-p-font-size:		55 * @rem;
+@hero-p-line-height:	55 * @rem;
+@hero-p-font-weight:	500;
+@hero-p-color:			@color-bright;
+
+// !Colors
+// ==|=========================================================================
+
+// Colors
+@color-grey:		#ababa9; // Grey
+@color-dark-grey:	#6d6d6b; // Dark Grey
+@color-light-grey:	#b4b4b4; // Light Grey (footer)
+@color-bright-grey:	#f5f4f1; // Bright Grey (background)
+
+
+@color-green:		#3fc6e4; // Color Green
+@color-green-start:	#38b9db; // Color Green Start
+@color-green-end:	#55edff; // Color Green End
+@color-light-green:	#baf2ff; // Light Green
+
+@color-yellow:		#ffb31a; // Color Yellow
+
+
+@color-blue:		#42cbe7; // Color Blue
+@color-light-blue:	#3cc0e0; // Light Blue
+
+@color-bright:		#fff;	// White
+@color-dark:		#000;	// Black
+
+@color-red:			#ff0000; // Red
+
+// Select Color
+@select-color:				@color-bright;
+@select-background-color:	@color-green;
+
+// Links
+@link-color:					inherit;
+@link-font-weight:				inherit;
+@link-text-decoration:			none;
+
+@link-hover-color:				inherit;
+@link-hover-font-weight:		700;
+@link-hover-text-decoration:	none;
+
+
+// ! Variables for em / rem use
+// ==|========================================================================= 
+
+@base-font-size: 100%;
+
+@base-font-size-px: 16;
+@rem: (1 / @base-font-size-px) + 0rem;
+@em: (1 / @base-font-size-px) + 0em;

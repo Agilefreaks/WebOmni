@@ -1,11 +1,10 @@
 !!!
 %html{lang: "en"}
   %head
-    %meta{charset: "utf-8"}/
-    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
-    %meta{content: "", name: "description"}/
-    %meta{content: "", name: "author"}/
-    %link{href: "../../assets/favicon.ico", rel: "shortcut icon"}/
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}/
+    %meta{content: 'Take control of your multiscreen world', name: 'description'}/
+    %meta{content: 'Agile Freaks', name: 'author'}/
     %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
     = favicon_link_tag
     = stylesheet_link_tag 'presentation', :media => 'all'
@@ -14,30 +13,215 @@
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
     = render partial: 'layouts/google'
-  %body
-    = render partial: 'layouts/header'
 
-    .wrapper
-      .main#fullpage
-        = render partial: 'layouts/home'
-        = render partial: 'layouts/feedback'
-        = render partial: 'layouts/team'
+  %body#home.body.js-body-action.omni-video__overlay
+    %header.header
+      %article#sign-up.dropdown.js-dropdown
+        .section.section--download.section--center
+          .section__container
+            .container
+              .row
+                .col-xs-12
+                  %a.animate.animate--swirll.section__close.js-toggle-dropdown{:'data-id' => 'sign-up', :href => '#close', :title => 'Close dropdown'}
+                    %i.icon.icon__close
+                  %h1.section__title.section__title--hero Sign up
+                  %h2.section__subtitle.section__subtitle--hero
+                    Create a single identity to link your devices.
+                    %a{:href => '#', :title => 'Security Policy'} Read our security policy.
+                  %a.section__button.button.button--orange{:href => '#', :title => 'Sign up for Omnipaste with your Google Account'} Sign up with Google
+                  .section__text
+                    %p This option makes installing on your device much easier because it links with your Play Store account
+                    %p
+                      \...or sign up with
+                      %a.js-toggle-dropdown{:'data-id' => 'sign-up-email', :href => '#sign-up-email', :title => 'Sign up with your e-mail address'} e-mail
 
-  -# adds this 2 files here and not in the manifest so that they can be cached by the browser
-  = javascript_include_tag 'jquery-2.1.1.min.js'
-  -# load the manifest file
+      .section.hero.section--table.section--center
+
+        #omni-video.omni-video
+          %a.animate.animate--swirll.omni-video__close.js-omni-video{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "Close video"}
+            %i.icon.icon__close
+          %video.omni-video__content.js-omni-video-player
+            %source{:src => asset_path('omnipaste.mp4', type: :media), :type => "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\""}
+              %source{:src => asset_path('omnipaste.webm', type: :media), :type => "video/webm; codecs=\"vp8, vorbis\""}
+                %source{:src => asset_path('assets/media/omnipaste.ogv', type: :media), :type => "video/ogg; codecs=\"theora, vorbis\""}
+          .omni-video__controls
+            %input.omni-video__seek.js-omni-video-seek{:type => "range", :value => "0"}
+
+        .header__meta.section__container.section__container--reset
+          .header__container
+            .container
+              .row
+                .col-xs-3.col-md-3
+                  .header__logo
+                    %a.js-goto-section{"data-id" => "home", :href => "#home", :title => "Omnipaste"}
+                      %img{:alt => "Omnipaste Logo", :height => "40", :src => image_url('logo.png'), :srcset => image_url('logo.svg 2x'), :width => "175"}
+                .col-md-7.col-md-offset-2.col-lg-7.col-lg-offset-2.hidden-xs
+                  %nav.header__nav.js-header-nav-content
+                    %ul.list-to-nav.list-to-nav--horizontal
+                      %li.header__nav__item
+                        %a.js-toggle-dropdown{"data-id" => "sign-up", :href => "#sign-up"} Get Omnipaste
+                      %li.header__nav__item
+                        %a.js-goto-section{"data-id" => "faq", :href => "#faq"} FAQ
+                      %li.header__nav__item
+                        %a.js-goto-section{"data-id" => "contact", :href => "#contact"} Contact
+                      %li.header__nav__item.header__nav__item--separator
+                        %a.js-toggle-dropdown{"data-id" => "sign-up", :href => "#sign-in"} Sign in
+
+        %article.section__container.section__container--table-cell
+          .container
+            .row
+              .col-xs-12
+                %h1.section__title.section__title--hero Link your devices
+                %h2.section__subtitle.section__subtitle--hero
+                  Make it simple  quick to switch between your computer and your mobile
+                  %br devices. Get Omnipaste and redefine your multidevice experience.
+                  .section__play
+                    %a.button.button--play.js-omni-video{"data-action" => "play", "data-id" => "omni-video", :href => "#omni-video", :title => "Play video"}
+                      %i.icon.icon__play
+                    %span See the video
+                  .section__button.section__button--hero
+                    %a.button.button--orange.js-toggle-dropdown{"data-id" => "sign-up", :href => "#sign-up", :title => "Sign up for Omnipaste"} Sign up for free
+                  .section__button
+                    %a.button.button--transparent.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
+                      Learn more
+                      %i.icon.icon__arrowhead-down
+
+    %main#main.main
+      #partners.section.partners
+        .section__container
+          .container
+            .row
+              .col-xs-12
+                %p.align-center Companies we partner with
+            .row
+              .partners__logos.col-xs-12.col-sm-6.col-md-3
+                %img{:alt => 'Softlayer Logo', :height => '70', :src => image_path('logos/logo-softlayer.png'), :width => '170'}
+              .partners__logos.col-xs-12.col-sm-6.col-md-2
+                %img{:alt => 'Lisbon Challenge Logo', :height => '70', :src => image_path('logos/logo-lisbon-challenge.png'), :width => '105'}
+              .partners__logos.col-xs-12.col-sm-6.col-md-4
+                %img{:alt => 'Agile Freaks Logo', :height => '70', :src => image_path('logos/logo-agile-freaks.png'), :width => '240'}
+              .partners__logos.col-xs-12.col-sm-6.col-md-3
+                %img{:alt => 'Hub Raum Logo', :height => '70', :src => image_path('logos/logo-hub-raum.png'), :width => '175'}
+
+      %article#faq.section.section--questions.section--dark.section--left.faq
+        .section__container
+          .container
+            .row
+              %header.col-xs-12
+                %h1.section__title FAQ
+                %h2.section__subtitle Stuff that you might need to know about Omnipaste app.
+            .row
+              .section__column.col-xs-12.col-sm-6
+                %h3.faq__title What can I do with Omni?
+                %p.faq__content
+                  You should get an email right away once you done with the payment, please notes that the download link will be emailed to you.
+              .section__column.col-xs-12.col-sm-6
+                %h3.faq__title Will I be able to link my TV too?
+                %p.faq__content Yes, but don't redistribute the whole set in your templates or themes. And also don't include the vector files.
+            .row
+              .section__column.col-xs-12.col-sm-6
+                %h3.faq__title Why can I get Omni only for Android and Windows?
+                %p.faq__content Behavioral design is all about feeling in control. Includes: usability, understanding, but also the feel.
+              .section__column.col-xs-12.col-sm-6
+                %h3.faq__title Is Omnipaste secure?
+                %p.faq__content I think advertising is a brilliant concept.
+            .section__button.align-center
+              %a.button.button--transparent.button--dark.js-goto-section{"data-id" => "contact", :href => "#contact", :title => "E-mail us your question"} E-mail us your question
+
+      %article#contact.section.section--center.contact
+        .section__container
+          .container
+            .row
+              .col-xs-12
+                %header
+                  %h1.section__title Get in touch with us
+                  %h2.section__subtitle We’ll be happy to hear your thoughts on our app.
+                %form.form.js-contact-form{:action => "/", :method => "post", :name => "contact", :novalidate => ""}
+                  .form__content.js-contact-form-content
+                    .form__single
+                      .form__item
+                        %label.form__label Your name
+                        %input.form__input{:autocorrect => "off", :name => "contact_name", :pattern => ".{3,}[A-z]", :placeholder => "Your name", :required => "", :spellcheck => "false", :type => "text"}/
+                        %span.form__message.form__valid The name you've entered is too short.
+                      .form__item
+                        %label.form__label Your e-mail
+                        %input.form__input{:autocorrect => "off", :name => "contact_email", :pattern => "[^@]+@[^@]+\\.[a-zA-Z]{2,6}", :placeholder => "Your e-mail", :required => "", :spellcheck => "false", :type => "email"}/
+                        %span.form__message.form__valid The e-mail you've entered is incorrect.
+                      .form__item
+                        %label.form__label Your message
+                        %textarea.form__textarea{:name => "contact_message", :pattern => ".{10,}", :placeholder => "Your message", :required => ""}
+                        %span.form__message.form__valid The message you've entered is too short.
+                      .form__footer
+                        %input{:name => "form_type", :type => "hidden", :value => "contact"}/
+                        %button.form__button.button.button--transparent.js-contact-submit{"data-unlock" => "Unlock button first!", :type => "submit"} Send message
+                  .form__notice.js-contact-notice Your message was sent :)
+            .row
+              .col-xs-12
+                %ul.social.list-to-nav.list-to-nav--horizontal
+                  %li.social__item
+                    %a{:href => "#", :title => "LinkedIn"}
+                      %i.icon.icon__linkedin
+                  %li.social__item
+                    %a{:href => "#", :title => "Facebook"}
+                      %i.icon.icon__facebook
+                  %li.social__item
+                    %a{:href => "#", :title => "Google+"}
+                      %i.icon.icon__googleplus
+                  %li.social__item
+                    %a{:href => "#", :title => "Twitter"}
+                      %i.icon.icon__twitter
+
+      %article.section.founders{:id => "#founders"}
+        .section__container
+          .container
+            .row
+              .col-xs-12.col-sm-5.col-sm-offset-1.col-md-5.col-md-offset-2.col-lg-3.col-lg-offset-3
+                .founders__left
+                  .founders__picture
+                    %img{:alt => 'Alexandru Calinoiu', :height => '85', :src => image_path('common/profile-calin.png'), :width => '85'}
+                  .founders__contact
+                    %h3.founders__name Alex
+                    %span.founders__title Co-founder/developer
+                    %br/
+                    %a.founders__phone{:href => 'tel:+40745857479', :title => 'Call Alex'} +40 745 857 479
+              .col-xs-12.col-sm-5.col-md-5.col-md-offset-0.col-lg-3.col-lg-offset-0
+                .founders__right
+                  .founders__picture
+                    %img{:alt => 'Adrian Nistor', :height => '85', :src => image_path('common/profile-adi.png'), :width => '85'}
+                  .founders__contact
+                    %h3.founders__name Adi
+                    %span.founders__title Co-founder/developer
+                    %br/
+                    %a.founders__phone{:href => 'tel:+40745857479', :title => 'Call Adi'} +40 745 857 479
+
+    %footer.footer
+      .container
+        %ul.footer__nav.list-to-nav.list-to-nav--horizontal
+          %li.footer__nav__item
+            %a.js-goto-section{"data-id" => "faq", :href => "#learn-more", :title => "How it works"} Learn More
+          %li.footer__nav__item
+            %a.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "FAQ"} FAQ
+          %li.footer__nav__item
+            %a.js-toggle-dropdown{"data-id" => "policy", :href => "#privacy", :title => "Privacy Policy"} Privacy Policy
+        %p.footer__copyright
+          \© 2014 Omnipaste.
+          %br/
+          Android™ is a trademark of Google Inc.
+          %br/
+          Windows™ is a trademark of Microsoft Corporation in the United States and other countries.
+
+  = javascript_include_tag 'browser.update'
   = javascript_include_tag 'presentation'
-  = humane_flash_messages.html_safe
 
-  :javascript
-    $(document).ready( function() {
-      urlParam = function(name) {
-          var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
-          return results[1] || 0;
-      };
-
-      if (urlParam('download')) {
-        var destination = "#{windows_client_downloads_path}";
-        setTimeout("window.location='" + destination + "'", 3000);
-      }
-    } );
+  -#:javascript
+  -#  $(document).ready( function() {
+  -#    urlParam = function(name) {
+  -#        var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+  -#        return results[1] || 0;
+  -#    };
+  -#
+  -#    if (urlParam('download')) {
+  -#      var destination = "#{windows_client_downloads_path}";
+  -#      setTimeout("window.location='" + destination + "'", 3000);
+  -#    }
+  -#  } );

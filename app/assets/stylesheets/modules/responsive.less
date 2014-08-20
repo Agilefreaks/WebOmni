@@ -1,0 +1,58 @@
+// 
+// Name: Responsive Browser Styles
+// Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
+//
+
+// Responsive Specific Styles
+
+
+/* ! Responsive Specific Styles */
+/* ==|========================================================================= */
+
+@media @650h {
+	html { font-size: 85% }
+}
+
+@media @400w {
+	html { font-size: 85%; }
+
+	.contact { padding: 20 * @rem 0 320 * @rem 0; }
+
+	.founders {
+		margin-top: -240 * @rem;
+		padding: 20 * @rem 0;
+
+		&__left, &__right {
+			width: 320 * @rem;
+			margin: 0 auto;
+		}
+		
+	}
+
+}
+@media @iPhone-portrait {
+	html { font-size: 75%; }
+
+	.founders {
+		margin-top: -275 * @rem;
+	}
+}
+
+@media @320w {
+	html { font-size: 70%; }
+
+	.contact { padding: 20 * @rem 0 320 * @rem 0; }
+
+	.founders {
+		margin-top: -285 * @rem;
+		padding: 20 * @rem 0;
+
+		&__left, &__right {
+			width: 320 * @rem;
+			margin: 0 auto;
+		}
+		
+	}
+}
+
+

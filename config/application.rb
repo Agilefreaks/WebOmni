@@ -28,16 +28,16 @@ module WebOmni
     config.i18n.enforce_available_locales = true
 
     config.generators do |g|
+      g.stylesheet_engine :less
       g.view_specs false
       g.orm :mongoid
       g.template_engine :haml
     end
 
     config.assets.initialize_on_precompile = false
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts') << Rails.root.join('app', 'assets', 'media')
     config.assets.precompile += %w( .svg .eot .woff .ttf
-                                    jquery-2.1.1.min.js
-                                    presentation.js presentation.css)
+                                    presentation.js presentation/presentation.css.less)
 
     config.paths.add 'app/api', glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*",

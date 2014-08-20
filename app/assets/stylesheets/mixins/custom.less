@@ -1,0 +1,115 @@
+// 
+// Name: Less Custom Mixins
+// Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
+//
+
+// !Text Transform
+// ==|=========================================================================
+
+.uppercase(@letter-spacing: 0) {
+    text-transform: uppercase;
+    letter-spacing: @letter-spacing;
+}
+.lowercase(@letter-spacing: 0) {
+    text-transform: lowercase;
+    letter-spacing: @letter-spacing;
+}
+.resetcase() {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.remove-list-styles() {
+    list-style: none;
+    margin: 0;
+    
+    li { margin: 0; }
+}
+
+.hide-text() {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.default-text() {
+	color: @default-color;
+	font-family: @default-font-family;
+	font-size: @default-font-size;
+	font-weight: @default-font-weight;
+	line-height: @default-line-height;
+}
+
+
+// !Breakpoints
+// ==|=========================================================================
+
+@320w:				~"only screen and (max-device-width : 320px)";
+@400w:				~"only screen and (max-device-width : 400px)";
+
+@650h:				~"only screen and (max-device-height : 600px)";
+
+@iPhone-portrait:	~"only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait)";
+@iPhone-landscape:	~"only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape)";
+
+@iPad-portrait:		~"only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)";
+@iPad-landscape:	~"only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)";
+
+@mobile:			~"only screen and (max-width: 529px)";
+@tablet:			~"only screen and (min-width: 530px) and (max-width: 949px)";
+@tablet-portrait:	~"only screen and (max-width: 768px)";
+@desktop:			~"only screen and (min-width: 950px) and (max-width: 1128px)";
+@desktop-xl:		~"only screen and (min-width: 1129px)";
+
+
+// !Clearfix
+// ==|=========================================================================
+
+.clearfix() {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+// !Truncate Text
+// ==|=========================================================================
+
+.truncate-text() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// !Resizable Elements
+// ==|=========================================================================
+
+.resizable(@direction: both) {
+	// Options: horizontal, vertical, both
+	resize: @direction;
+	// Safari fix
+	overflow: auto;
+}
+
+// !Center Block
+// ==|=========================================================================
+.center-block() {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// !Retina Support
+// ==|=========================================================================
+@retina: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+.retina(@path, @w: auto, @h: auto) {
+	background-image: url(@path);
+	@retina_path: ~`@{path}.replace(/\.\w+$/, function(match) { return "@2x" + match; })`;
+
+	@media @retina {
+		background-image: url("@{retina_path}");
+		background-size: @w @h;
+	}
+}

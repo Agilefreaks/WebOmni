@@ -9,9 +9,6 @@ gem 'httparty'
 
 gem 'puma'
 
-gem 'haml'
-gem 'haml-rails'
-
 gem 'devise'
 gem 'omniauth-google-oauth2'
 
@@ -19,17 +16,18 @@ gem 'useragent'
 
 gem 'newrelic_rpm'
 
-gem 'sass-rails', '~> 4.0.3'
+gem 'haml'
+gem 'haml-rails'
+
 gem 'coffee-script'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
 
-gem 'compass-rails'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
-gem 'humane-rails'
 gem 'modernizr-rails'
 
 group :development do
