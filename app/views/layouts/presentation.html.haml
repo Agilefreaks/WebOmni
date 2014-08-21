@@ -115,16 +115,16 @@
               .col-xs-12
                 %ul.social.list-to-nav.list-to-nav--horizontal
                   %li.social__item
-                    %a{:href => "#", :title => "LinkedIn"}
+                    = link_to 'https://www.linkedin.com/company/omnipaste', { title: 'LinkedIn', target: '_blank' } do
                       %i.icon.icon__linkedin
                   %li.social__item
-                    %a{:href => "#", :title => "Facebook"}
+                    = link_to 'https://www.facebook.com/Omnipaste', { title: 'Facebook', target: '_blank' } do
                       %i.icon.icon__facebook
                   %li.social__item
-                    %a{:href => "#", :title => "Google+"}
+                    = link_to 'https://plus.google.com/b/109174370304988591538/109174370304988591538/about/p/pub?hl=en&service=PLUS', { title: 'Google+', target: '_blank' } do
                       %i.icon.icon__googleplus
                   %li.social__item
-                    %a{:href => "#", :title => "Twitter"}
+                    = link_to 'https://twitter.com/omnipaste', { title: 'Twitter', target: '_blank' } do
                       %i.icon.icon__twitter
 
       %article#founders.section.founders
