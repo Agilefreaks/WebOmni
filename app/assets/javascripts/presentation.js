@@ -17,6 +17,7 @@
 //= require jquery.cookie
 //= require jquery.placeholder
 //= require jquery.h5validate
+//= require humane-rails
 
 // !IE10 Viewport Fix
 // --------------------------------------------------------------
@@ -30,46 +31,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
 }
 
-// !Scroll Performance Fix
-// --------------------------------------------------------------
-/*
- var body = document.body,
- timer;
-
- window.addEventListener('scroll', function() {
- clearTimeout(timer);
- if(!body.classList.contains('disable-hover')) {
- body.classList.add('disable-hover')
- }
-
- timer = setTimeout(function(){
- body.classList.remove('disable-hover')
- },500);
- }, false);
- */
-// --------------------------------------------------------------
-
 jQuery(document).ready(function ($) {
-
-  // Browser Warning Init
-  if ($('html').hasClass('oldie')) {
-    old_browser_warning();
-  }
-
-  // Detect Safari / Chrome
-  /*
-   function isChrome() {
-   if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) ) { return true; }
-   return false;
-   }
-   function isSafari() {
-   if (/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor) ) { return true; }
-   return false;
-   }
-   if ( isSafari() ) { $('html').addClass(' safari'); }
-   if ( isChrome() ) { $('html').addClass(' chrome'); }
-   */
-
   // Open in new window links with rel=external code
   $('a[rel="external"]').attr("target", "_blank");
 
@@ -77,10 +39,6 @@ jQuery(document).ready(function ($) {
   $('a[href="#"]').click(function (e) {
     e.preventDefault();
   });
-
-  // Placeholders for IE
-  $('input, textarea').placeholder();
-
 
   // Delay scroll input method
   $.fn.scrolled = function (waitTime, fn) {
@@ -129,31 +87,14 @@ jQuery(document).ready(function ($) {
     }
     //Check for scroll direction - Hide on scroll down
     if (scrollDirection > lastScrollTop && win.scrollTop() > menuTrigger.offset().top + menuTrigger.outerHeight(true)) {
-      // Downscroll
+      // Down scroll
       menuTrigger.removeClass(menuActive);
 
     } else if (scrollDirection < lastScrollTop && win.scrollTop() > menuOffset) {
-      // Upscroll
+      // Up scroll
       menuTrigger.addClass(menuActive);
     }
-    /*
-     // Simple Menu Logic (Hide on Offset)
-     if(win.scrollTop() > menuOffset){
-     // If scroll beyond main visible area stick menu to scroll
-     menuTrigger.addClass(menuActive);
 
-     } else {
-     // If scroll in main visible area move menu to top
-     menuTrigger.removeClass(menuActive);
-
-     if(win.scrollTop() <  menuOffset ){
-     // If menu bar still visible
-     menuTrigger.removeClass(menuActive);
-     } else {
-     menuTrigger.addClass(menuActive);
-     }
-     }
-     */
     lastScrollTop = scrollDirection;
   });
 
@@ -195,11 +136,19 @@ jQuery(document).ready(function ($) {
   $('.js-omni-video').on('click', function (e) {
     var bodyTrigger = $('.js-body-action');
     var bodyClass = "omni-video--action";
+
+    var dropdownClass = "dropdown--action";
+    var globalDropdown = $('.dropdown');
+    var dropdownActive = "dropdown--open";
+
     var videoActive = "omni-video--active";
     var videoID = $(this).attr("data-id");
     var videoAction = $(this).attr("data-action");
 
     var videoPlayer = $('.js-omni-video-player').get(0);
+
+    $(globalDropdown).removeClass(dropdownActive);
+    $(bodyTrigger).removeClass(dropdownClass);
 
     $('#' + videoID).toggleClass(videoActive);
     $(bodyTrigger).toggleClass(bodyClass);

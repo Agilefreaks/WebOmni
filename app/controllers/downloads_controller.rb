@@ -5,7 +5,7 @@ class DownloadsController < ApplicationController
 
   def new
     NotificationsMailer.welcome(current_user.id).deliver
-    redirect_to root_url(download: true), notice: 'Your download will start any moment.'
+    redirect_to root_url(download: true)
   end
 
   def windows_client

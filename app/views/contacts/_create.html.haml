@@ -1,13 +1,40 @@
-%h2 Do you have a suggestion/issue/praise?
-%p
-  Fill the form bellow, email is the only thing we need, we will only use it to reply to you
-  if the case might be.
-.form-wrap
-  = form_for contact, remote: true do |f|
-    .form-group
-      = f.text_field :name, placeholder: 'Your name', class: 'form-control'
-    .form-group
-      = f.email_field :email, placeholder: 'Your email', class: 'form-control'
-    .form-group
-      = f.text_area :message, placeholder: 'Message...', class: 'form-control'
-    = f.submit 'Send', class: 'btn btn-info', data: { disable_with: 'Sending...' }
+%header
+  %h1.section__title Get in touch with us
+  %h2.section__subtitle We’ll be happy to hear your thoughts on our app.
+%form.form.js-contact-form{:action => "/", :method => "post", :name => "contact", :novalidate => "", :spellcheck => "false"}
+  .form__content.js-contact-form-content
+    .row
+      .col-xs-12.col-md-4.col-md-offset-2
+        .form__item
+          %label.form__label Your name
+          %input.form__input{:name => "contact_name", :pattern => ".{3,}[A-z]", :placeholder => "Your name", :required => "", :type => "text"}/
+          %span.form__message.form__valid Please enter your name
+        .form__item
+          %label.form__label Your e-mail
+          %input.form__input{:name => "contact_email", :pattern => "[^@]+@[^@]+\\.[a-zA-Z]{2,6}", :placeholder => "Your e-mail", :required => "", :type => "email"}/
+          %span.form__message.form__valid The email you've entered is not valid
+      .col-xs-12.col-md-4.align-left
+        .form__item
+          %label.form__label Your message
+          %textarea.form__textarea{:name => "contact_message", :pattern => ".{10,}", :placeholder => "Your message", :required => ""}
+          %span.form__message.form__valid Please enter a message
+    .row
+      .col-xs-12
+        .form__footer
+          %input{:name => "form_type", :type => "hidden", :value => "contact"}/
+          %button.form__button.button.button--transparent.js-contact-submit{"data-unlock" => "Unlock button first!", :type => "submit"} Send message
+  .form__notice.js-contact-notice Your message was sent :)
+
+-#%h2 Do you have a suggestion/issue/praise?
+-#%p
+-#  Fill the form bellow, email is the only thing we need, we will only use it to reply to you
+-#  if the case might be.
+-#.form-wrap
+-#  = form_for contact, remote: true do |f|
+-#    .form-group
+-#      = f.text_field :name, placeholder: 'Your name', class: 'form-control'
+-#    .form-group
+-#      = f.email_field :email, placeholder: 'Your email', class: 'form-control'
+-#    .form-group
+-#      = f.text_area :message, placeholder: 'Message...', class: 'form-control'
+-#    = f.submit 'Send', class: 'btn btn-info', data: { disable_with: 'Sending...' }

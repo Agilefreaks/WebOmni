@@ -1,15 +1,40 @@
-= link_to 'Get Omnipaste', download_path(user_signed_in?), { class: 'button button--orange', title: 'Get omnipaste' }
+.col-xs-12.col-sm-5.col-sm-offset-1.col-md-4.col-md-offset-2
+  .section__button
+    = link_to 'Get Omnipaste', download_path(user_signed_in?), { class: 'button button--orange button--right', title: 'Get omnipaste' }
+.col-xs-12.col-sm-5.col-md-4
+  = link_to 'Get Authorization Code', authorization_codes_path, { class: 'button button--transparent button--transparent-hero button--left js-get-auth-code', title: 'Get Authorization Code', remote: true, method: :post }
 
-= link_to 'Get Authorization Code', authorization_codes_path, { class: 'button button--transparent button--double js-get-auth-code', title: 'Get Authorization Code', remote: true, method: :post }
-
--#%p.lead
--#  Welcome #{current_user.name} (#{current_user.email})
--#
--#%p
--#  = link_to 'Get authorization code', authorization_codes_path, class: 'btn btn-primary', 'data-remote' => true, method: :post, data: { disable_with: 'Generating ...' }
--#%p
--#  %span.bg-info.authorization_code
--#    = authorization_code
--#
--#%p
--#  = link_to 'Sign out', destroy_user_session_path, method: :delete
+= content_for :header do
+  .row
+    .col-xs-12
+      %a.animate.animate--swirll.section__close.js-toggle-dropdown{"data-id" => "sign-up", :href => "#close", :title => "Close dropdown"}
+        %i.icon.icon__close
+      %h1.section__title.section__title--hero Download in progress...
+      %h2.section__subtitle.section__subtitle--hero
+        The installer package is being downloaded. If download does not
+        %br/
+        start automatically in a few seconds,
+        %a{:href => '#', :title => 'Download Omnipaste'} click here.
+  .row.hidden-xs.hidden-sm
+    .col-xs-12.col-md-4
+      .download__step
+        %i.download__icon.icon.icon__step-download
+        %span.download__text
+          Go to your Downloads folder
+          = succeed '' do
+            %br
+            and run the app
+    .col-xs-12.col-md-4
+      .download__step
+        %i.download__icon.icon.icon__step-install
+        %span.download__text Follow the Installer instructions.
+    .col-xs-12.col-md-4
+      .download__step
+        %i.download__icon.icon.icon__step-action
+        %span.download__text Ready for action.
+  .row
+    .col-xs-12
+      .section__button.section__button--hero
+        %a.button.button--transparent.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
+          See what you get
+          %i.icon.icon__arrowhead-down

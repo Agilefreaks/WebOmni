@@ -10,49 +10,89 @@
 /* ==|========================================================================= */
 
 @media @650h {
-	html { font-size: 85% }
+  html { font-size: 85% }
 }
 
-@media @400w {
-	html { font-size: 85%; }
+@media @320h {
+             .founders {
+               margin-top: -240 * @rem;
+               padding: 20 * @rem 0;
+             }
+           }
+@media @990w {
 
-	.contact { padding: 20 * @rem 0 320 * @rem 0; }
+             .form {
+               min-height: 350 * @rem;
+               &__footer { text-align: center; }
+             }
+             .contact { padding: 20 * @rem 0 210 * @rem 0; }
 
-	.founders {
-		margin-top: -240 * @rem;
-		padding: 20 * @rem 0;
+           }
 
-		&__left, &__right {
-			width: 320 * @rem;
-			margin: 0 auto;
-		}
-		
-	}
+@media @767w {
+             .button--left {
+               float: none;
+               margin-top: 20 * @rem;
+             }
+             .button--right {
+               float: none;
+             }
 
-}
+             .faq {
+               min-height: 850 * @rem;
+             }
+             .founders {
+               &__left, &__right {
+                 width: 320 * @rem;
+                 margin: 0 auto;
+               }
+             }
+           }
+
+@media @460w {
+             html { font-size: 85%; }
+
+             .contact { padding: 20 * @rem 0 320 * @rem 0; }
+
+             .founders {
+               margin-top: -240 * @rem;
+               padding: 20 * @rem 0;
+
+               &__left, &__right {
+                 width: 320 * @rem;
+                 margin: 0 auto;
+               }
+
+             }
+
+           }
 @media @iPhone-portrait {
-	html { font-size: 75%; }
+  html { font-size: 75%; }
 
-	.founders {
-		margin-top: -275 * @rem;
-	}
+  .contact { padding: 20 * @rem 0 320 * @rem 0; }
+
+  .founders {
+    padding: 20 * @rem 0;
+    margin-top: -275 * @rem;
+  }
 }
 
 @media @320w {
-	html { font-size: 70%; }
+             html { font-size: 70%; }
 
-	.contact { padding: 20 * @rem 0 320 * @rem 0; }
+             .faq {
+               min-height: 950 * @rem;
+             }
+             .contact { padding: 20 * @rem 0 320 * @rem 0; }
 
-	.founders {
-		margin-top: -285 * @rem;
-		padding: 20 * @rem 0;
+             .founders {
+               margin-top: -285 * @rem;
+               padding: 20 * @rem 0;
 
-		&__left, &__right {
-			width: 320 * @rem;
-			margin: 0 auto;
-		}
-		
-	}
-}
+               &__left, &__right {
+                 width: 320 * @rem;
+                 margin: 0 auto;
+               }
 
-
+             }
+           }

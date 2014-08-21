@@ -20,6 +20,7 @@ gem 'haml'
 gem 'haml-rails'
 
 gem 'cells'
+gem 'humane-rails', '~> 5.0.2'
 
 gem 'coffee-script'
 gem 'coffee-rails'

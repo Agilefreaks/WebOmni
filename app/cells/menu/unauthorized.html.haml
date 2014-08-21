@@ -1,2 +1,2 @@
-%li.header__nav__item.header__nav__item--separator
-  %a.js-toggle-dropdown{"data-id" => "sign-up", :href => "#sign-in"} Sign in
+%li.header__nav__item
+  = link_to 'Sign in', user_omniauth_authorize_path(:google_oauth2), { title: 'Sign in' }

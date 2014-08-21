@@ -8,97 +8,101 @@
 
 /* !Buttons */
 /* ==|========================================================================= */
-.button { 
-	display: inline-block;
-	padding: 15 * @rem 30 * @rem;
-	.border-radius(25 * @rem);
-	
-	font-size: 20 * @rem;
-	font-weight: 700;
-	
-	text-decoration: none;
+.button {
+  display: inline-block;
+  padding: 15 * @rem 30 * @rem;
+  .border-radius(25 * @rem);
 
-	.transition( all 0.3s ease-in-out );	
+  font-size: 20 * @rem;
+  font-weight: 700;
 
-	&--orange {		
-		background-color: @color-yellow;
-		color: rgba(0,0,0, .4);
-		.box-shadow(0px 1px 0px 0px rgba(0, 0, 0, .1));
-	
-		&:hover {
-			background-color: lighten(@color-yellow, 5%);
-			color: rgba(0,0,0, .4);
-		}
-	}
-	&--transparent {		
-		margin-top: 20 * @rem;
-		background-color: transparent;
-		border: 2 * @rem solid rgba(255, 255, 255, .2);
-		padding: 8 * @rem 25 * @rem;
+  text-decoration: none;
 
-		.border-radius(35 * @rem);
-		color: @color-bright;
-		font-size: 16 * @rem;
-		font-weight: 500;
-		cursor: pointer;
-		
-		
-		&:hover {
-			background-color: transparent;
-			border-color: rgba(255, 255, 255, .4);
-			color: @color-bright;
-			.icon { .opacity (.5); }
-		}
-		
-		.icon { 
-			margin-left: 5 * @rem;
-			.opacity (.3); 
-			vertical-align: middle;
-		}
-	}
-	&--double {
-		padding: 15 * @rem 30 * @rem 11 * @rem;
-		margin: 0 0 0 25 * @rem;
-	}
-	&--dark {
-		border-color: @color-dark-grey;
-		color: @color-dark-grey;
+  .transition( all 0.3s ease-in-out );
 
-		&:hover {
-			border-color: lighten( @color-dark-grey, 10%);			
-			color: lighten( @color-dark-grey, 10%);
-		}
-	}
+  &--orange {
+    background-color: @color-yellow;
+    color: rgba(0,0,0, .4);
+    .box-shadow(0px 1px 0px 0px rgba(0, 0, 0, .1));
 
-	&--play {
-		.border-radius(50%);
-		border: 4px solid  @color-bright;
-		padding: 0 0 0 3 * @rem;
-		text-align: center;
-		line-height: 1 * @rem;
+    &:hover {
+      background-color: lighten(@color-yellow, 5%);
+      color: rgba(0,0,0, .4);
+    }
+  }
+  &--transparent {
+    background-color: transparent;
+    border: 2 * @rem solid rgba(255, 255, 255, .2);
+    padding: 8 * @rem 25 * @rem;
 
-		.transition( all 0.3s cubic-bezier(.27,1.64,.32,.95));	
-		
-		&:hover { 
-			background-color: @color-bright; 
-			.transform(scale(1.08));
-		
-			.icon:after { 
-				.transition( all 0.3 ease-in-out);	
-				border-color: transparent transparent transparent @color-dark-grey;
-			}
-		}
-		
-	}
-	
-	&--text {
-		padding: 0; 
-		color:  rgba(255, 255, 255, .4);
-		font-size: 16 * @rem;
-		
-		.transition( color 0.3s linear );	
-		
-		&:hover { color: @color-blue; }
-	}
-	
+    .border-radius(35 * @rem);
+    color: @color-bright;
+    font-size: 16 * @rem;
+    font-weight: 500;
+    cursor: pointer;
+
+
+    &:hover {
+      background-color: transparent;
+      border-color: rgba(255, 255, 255, .4);
+      color: @color-bright;
+      .icon { .opacity (.5); }
+    }
+
+    .icon {
+      margin-left: 5 * @rem;
+      .opacity (.3);
+      vertical-align: middle;
+    }
+
+    &-hero {
+      padding: 15 * @rem 30 * @rem 11 * @rem;
+    }
+
+  }
+  &--dark {
+    border-color: @color-dark-grey;
+    color: @color-dark-grey;
+
+    &:hover {
+      border-color: lighten( @color-dark-grey, 10%);
+      color: lighten( @color-dark-grey, 10%);
+    }
+  }
+  &--invisible { .opacity(0); }
+  &--right { float: right; }
+  &--left {
+    float: left;
+  }
+  &--play {
+    .border-radius(50%);
+    border: 4px solid  @color-bright;
+    padding: 0 0 0 3 * @rem;
+    text-align: center;
+    line-height: 1 * @rem;
+
+    .transition( all 0.3s cubic-bezier(.27,1.64,.32,.95));
+
+    &:hover {
+      background-color: @color-bright;
+      .transform(scale(1.08));
+
+      .icon:after {
+        .transition( all 0.3 ease-in-out);
+        border-color: transparent transparent transparent @color-dark-grey;
+      }
+    }
+
+  }
+
+  &--text {
+    padding: 0;
+    color:  rgba(255, 255, 255, .4);
+    font-size: 16 * @rem;
+
+    .transition( color 0.3s linear );
+
+    &:hover { color: @color-blue; }
+  }
+
 }

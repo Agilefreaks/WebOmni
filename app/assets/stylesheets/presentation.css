@@ -2,4 +2,5 @@
 *= require_self
 *= require twitter-bootstrap-static/bootstrap
 *= require presentation/presentation
+*= require humane-rails/jackedup
 */

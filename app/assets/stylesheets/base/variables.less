@@ -100,3 +100,27 @@
 @base-font-size-px: 16;
 @rem: (1 / @base-font-size-px) + 0rem;
 @em: (1 / @base-font-size-px) + 0em;
+
+// !Breakpoints
+// ==|=========================================================================
+
+@320w:				~"only screen and (max-width : 320px)";
+@460w:				~"only screen and (max-width : 460px)";
+@990w:				~"only screen and (max-width : 990px)";
+@767w:				~"only screen and (max-width : 767px)";
+
+@320h:				~"only screen and (max-height : 320px)";
+@650h:				~"only screen and (max-height : 600px)";
+
+
+@iPhone-portrait:	~"only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait)";
+@iPhone-landscape:	~"only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape)";
+
+@iPad-portrait:		~"only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)";
+@iPad-landscape:	~"only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)";
+
+@mobile:			~"only screen and (max-width: 529px)";
+@tablet:			~"only screen and (min-width: 530px) and (max-width: 949px)";
+@tablet-portrait:	~"only screen and (max-width: 768px)";
+@desktop:			~"only screen and (min-width: 950px) and (max-width: 1128px)";
+@desktop-xl:		~"only screen and (min-width: 1129px)";
