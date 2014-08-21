@@ -243,7 +243,6 @@ jQuery(document).ready(function ($) {
         data: data,
         type: 'post',
         success: function (msg) {
-
           // Place error message in notice
           //$('.js-contact-notice').html(msg);
 
