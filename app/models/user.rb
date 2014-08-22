@@ -41,8 +41,6 @@ class User
 
   validates_uniqueness_of :email
 
-  embeds_one :wizard
-
   def name
     "#{first_name} #{last_name}"
   end
