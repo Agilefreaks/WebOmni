@@ -1,5 +1,8 @@
 %li.header__nav__item
-  = link_to 'Get Omnipaste', download_path(user_signed_in?), { title: 'Get omnipaste' }
+  - if user_signed_in?
+    = link_to 'Get Omnipaste', download_path(user_signed_in?), { title: 'Get omnipaste' }
+  - else
+    = link_to 'Get Omnipaste', '#sign-up', { class: 'js-toggle-dropdown', title: 'Get Omnipaste', data: { id: 'sign-up' } }
 %li.header__nav__item
   %a.js-goto-section{"data-id" => "faq", :href => "#faq"} FAQ
 %li.header__nav__item
