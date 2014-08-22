@@ -1,4 +1,6 @@
 class NotificationsMailer < BaseMailer
+  default template_path: "mailers/#{self.name.underscore}"
+
   def welcome(user_id)
     @user = User.find(user_id)
     @android_download_url = url_for(controller: :downloads, action: :android_client, email: @user.email)

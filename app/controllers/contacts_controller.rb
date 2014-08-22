@@ -4,6 +4,8 @@ class ContactsController < ApplicationController
   def create
     contact = Contact.new(contact_params)
     ContactMailer.email(contact).deliver
+
+    head :ok
   end
 
   def contact_params

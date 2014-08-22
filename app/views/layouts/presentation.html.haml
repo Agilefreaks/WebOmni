@@ -64,30 +64,7 @@
                     %i.icon.icon__arrowhead-down
 
     %main#main.main
-      %article#faq.section.section--questions.section--dark.section--left.faq
-        .section__container
-          .container
-            .row
-              %header.col-xs-12
-                %h1.section__title FAQ
-                %h2.section__subtitle Stuff that you might need to know about Omnipaste app.
-            .row
-              .section__column.col-xs-12.col-sm-6
-                %h3.faq__title What can I do with Omni?
-                %p.faq__content
-                  You should get an email right away once you done with the payment, please notes that the download link will be emailed to you.
-              .section__column.col-xs-12.col-sm-6
-                %h3.faq__title Will I be able to link my TV too?
-                %p.faq__content Yes, but don't redistribute the whole set in your templates or themes. And also don't include the vector files.
-            .row
-              .section__column.col-xs-12.col-sm-6
-                %h3.faq__title Why can I get Omni only for Android and Windows?
-                %p.faq__content Behavioral design is all about feeling in control. Includes: usability, understanding, but also the feel.
-              .section__column.col-xs-12.col-sm-6
-                %h3.faq__title Is Omnipaste secure?
-                %p.faq__content I think advertising is a brilliant concept.
-            .section__button.section__button--page.align-center
-              = link_to 'E-mail us your question', '#contact', { class: 'button button--transparent button--dark js-goto-section', title: 'E-mail us your question', data: { id: 'contact' } }
+      = render partial: 'layouts/presentation/faq'
 
       %article#partners.section.partners
         .section__container

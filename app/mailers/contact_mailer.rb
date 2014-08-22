@@ -1,4 +1,6 @@
 class ContactMailer < BaseMailer
+  default template_path: "mailers/#{self.name.underscore}"
+
   def email(contact)
     @message = contact.message
 

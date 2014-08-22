@@ -1,0 +1,35 @@
+%article#faq.section.section--questions.section--dark.section--left.faq
+  .section__container
+    .container
+      .row
+        %header.col-xs-12
+          %h1.section__title FAQ
+          %h2.section__subtitle Stuff that you might need to know about Omnipaste app.
+      .row
+        .section__column.col-xs-12.col-sm-6
+          %h3.faq__title What can I do with Omni?
+          %p.faq__content
+            Easily and semsly transfer data between devices and cut down on that phone checking because you will get all your sms's and calls right on your latop or tablet.
+        .section__column.col-xs-12.col-sm-6
+          %h3.faq__title Will I be able to link my TV too?
+          %p.faq__content
+            Not yet, Smart TV's will be supported soon. You will be able to copy and paste your favorite show link
+            or have that youtube video play on your smart TV by simply copying the link from you phone or laptop.
+            Not to mention the useful notification will also show on the big screen.
+      .row
+        .section__column.col-xs-12.col-sm-6
+          %h3.faq__title Why can I get Omni only for Android and Windows?
+          %p.faq__content
+            For now this are our only supported devices, more are to come follow us on
+            = link_to 'twitter', 'https://twitter.com/omnipaste', { title: 'Twitter', target: '_blank' }
+            or
+            = link_to 'facebook', 'https://www.facebook.com/Omnipaste', { title: 'Facebook', target: '_blank' }
+            for updates. You can also
+            = link_to 'drop us a email', '#contact', { class: 'js-goto-section', title: 'drop us a email', data: { id: 'contact' } }
+            and tell how much you will like us to support your device.
+        .section__column.col-xs-12.col-sm-6
+          %h3.faq__title Is Omnipaste secure?
+          %p.faq__content
+            Yes, we take security very seriously we use top of the class encryption algorithms and authentication methods used by industry giants like google and facebook.
+      .section__button.section__button--page.align-center
+        = link_to 'E-mail us your question', '#contact', { class: 'button button--transparent button--dark js-goto-section', title: 'E-mail us your question', data: { id: 'contact' } }
