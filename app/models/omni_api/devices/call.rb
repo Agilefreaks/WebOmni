@@ -1,5 +1,5 @@
 module OmniApi
-  module Phones
+  module Devices
     class Call
       include HTTParty
 
@@ -22,7 +22,7 @@ module OmniApi
             }
         }
 
-        self.class.post('/phones/call', params)
+        self.class.post('/devices/call', params)
       end
 
       private
