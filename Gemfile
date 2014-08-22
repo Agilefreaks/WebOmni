@@ -33,6 +33,8 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'modernizr-rails'
 
+gem 'gravtastic'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

@@ -1,6 +1,6 @@
 %li.header__nav__item.header__nav__item--user
   = link_to '#' do
-    %img.header__nav__picture{:alt => 'placeholder-user', :height => '24', :src => image_path('placeholders/placeholder-user.png'), :width => '24'}
+    = image_tag current_user.gravatar_url, height: '24', width: '24', class: 'header__nav__picture'
     Hi #{current_user.name}
 %li.header__nav__item.header__nav__item--separator
   = link_to 'Sign out', destroy_user_session_path, method: :delete
