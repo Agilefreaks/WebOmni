@@ -104,28 +104,7 @@
                     = link_to 'https://twitter.com/omnipaste', { title: 'Twitter', target: '_blank' } do
                       %i.icon.icon__twitter
 
-      %article#founders.section.founders
-        .section__container
-          .container
-            .row
-              .col-xs-12.col-sm-5.col-sm-offset-1.col-md-5.col-md-offset-2.col-lg-4.col-lg-offset-3
-                .founders__left
-                  .founders__picture
-                    %img{:alt => 'Alexandru Calinoiu', :height => '85', :src => image_path('common/profile-calin.png'), :width => '85'}
-                  .founders__contact
-                    %h3.founders__name Alex
-                    %span.founders__title Co-founder/developer
-                    %br/
-                    %a.founders__phone{:href => 'tel:+40745857479', :title => 'Call Alex'} +40 745 857 479
-              .col-xs-12.col-sm-5.col-md-5.col-md-offset-0.col-lg-4.col-lg-offset-0
-                .founders__right
-                  .founders__picture
-                    %img{:alt => 'Adrian Nistor', :height => '85', :src => image_path('common/profile-adi.png'), :width => '85'}
-                  .founders__contact
-                    %h3.founders__name Adi
-                    %span.founders__title Co-founder/developer
-                    %br/
-                    %a.founders__phone{:href => 'tel:+40745857479', :title => 'Call Adi'} +40 745 857 479
+      = render partial: 'layouts/presentation/founders'
 
     %footer.footer
       .container
