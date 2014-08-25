@@ -63,6 +63,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'cucumber-rails', :require => false
   gem 'simplecov'
   gem 'simplecov-teamcity-summary', github: 'balauru/simplecov-teamcity-summary'
   gem 'accept_values_for'
