@@ -14,7 +14,7 @@
         The installer package is being downloaded. If download does not
         %br/
         start automatically in a few seconds,
-        %a{:href => '#', :title => 'Download Omnipaste'} click here.
+        = link_to 'click here.', download_path(user_signed_in?), { title: 'Download Omnipaste' }
   .row.hidden-xs.hidden-sm
     .col-xs-12.col-md-4
       .download__step

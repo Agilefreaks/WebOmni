@@ -19,8 +19,8 @@
       = render partial: 'layouts/presentation/header'
 
       .section.hero.section--center
-        #omni-video.omni-video
-          %a.animate.animate--swirll.omni-video__close.js-omni-video{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "Close video"}
+        #omni-video.omni-video.js-omni-video
+          %a.animate.animate--swirll.omni-video__close.js-omni-video-toggle{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "Close video"}
             %i.icon.icon__close
           %video.omni-video__content.js-omni-video-player
             %source{:src => asset_path('omnipaste.mp4', type: :media), :type => "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\""}
@@ -38,7 +38,7 @@
                     = link_to root_path, { title: 'Omnipaste', data: { id: 'home' } } do
                       = image_tag 'logo.png', { alt: 'Omnipaste Logo', height: '40', width: '175', :srcset => image_path('logo.svg 2x') }
                 .col-md-7.col-md-offset-2.col-lg-7.col-lg-offset-2.hidden-xs
-                  %nav.header__nav.js-header-nav-content
+                  %nav.header__nav
                     = render_cell :menu, :show
 
         .header__nav--filler
@@ -52,7 +52,7 @@
                   %br/
                   devices. Get Omnipaste and redefine your multidevice experience.
                 .section__play
-                  %a.button.button--play.js-omni-video{"data-action" => "play", "data-id" => "omni-video", :href => "#omni-video", :title => "Play video"}
+                  = link_to '#omni-video', { class: 'button button--play js-omni-video-toggle', title: 'Play video', data: { id: 'omni-video', action: 'play' } } do
                     %i.icon.icon__play
                   %span See the video
             .row
@@ -62,7 +62,7 @@
                 .section__button.section__button--hero
                   %a.button.button--text.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
                     Learn more
-                    %i.icon.icon__arrowhead-down
+                    %i.icon.icon__arrowhead--double-down
 
     %main#main.main
       = render partial: 'layouts/presentation/faq'
