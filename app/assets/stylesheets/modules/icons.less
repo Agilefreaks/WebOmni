@@ -8,85 +8,100 @@
 /* !Animate */
 /* ==|========================================================================= */
 .animate {
-	.transition( 0.5s cubic-bezier(.27,1.64,.32,.95) );	
-	line-height: 1px;
-	&--swirll{
-		&:hover {
-			.transform(rotate(90deg));
-		}
-	}
+  .transition(0.5s cubic-bezier(.27, 1.64, .32, .95));
+  line-height: 1px;
+  &--swirll {
+    &:hover {
+      .transform(rotate(90deg));
+    }
+  }
 }
-
 
 /* !Icons */
 /* ==|========================================================================= */
 
 .icon {
-	display: inline-block;
-	
-	
-	&__close {
-		width: 32px;
-		height: 32px;
-		.svg-button-close;		
-	}
-	&__play {
-		position: relative;
-		width: 50px;
-		height: 50px;
-		
-		&:after {
-			content: "";
-			position: absolute;
-			width: 0;
-			height: 0;
-			top: 13px;
-			left: 16px;
-			border-style: solid;
-			border-width: 12.5px 0 12.5px 21.7px;
-			border-color: transparent transparent transparent @color-bright;
-		}
-	}
-	&__arrowhead-down {
-		width: 12px;
-		height: 12px;
-		.svg-icon-arrowhead-down;
-	}
-	&__linkedin {
-		width: 26px;
-		height: 26px;
-		.svg-icon-linkedin;
-	}
-	&__googleplus {
-		width: 26px;
-		height: 26px;
-		.svg-icon-googleplus;
-	}
-	&__twitter {
-		width: 26px;
-		height: 26px;
-		.svg-icon-twitter;
-	}
-	&__facebook {
-		width: 26px;
-		height: 26px;
-		.svg-icon-facebook;
-	}
+  display: inline-block;
 
-	&__step-action {
-		width: 115px;
-		height: 90px;
-		.svg-step-action;		
-	}
-	&__step-download {
-		width: 90px;
-		height: 90px;
-		.svg-step-download;
-	}
-	&__step-install {
-		width: 75px;
-		height: 90px;
+  &__close {
+    width: 32px;
+    height: 32px;
+    .svg-button-close;
+  }
+  &__play {
+    position: relative;
+    width: 50px;
+    height: 50px;
 
-		.svg-step-install
-	}
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 13px;
+      left: 16px;
+      border-style: solid;
+      border-width: 12.5px 0 12.5px 21.7px;
+      border-color: transparent transparent transparent @color-bright;
+    }
+  }
+  &__arrowhead {
+
+    &--down {
+      width: 12px;
+      height: 12px;
+      .svg-icon-arrowhead-down;
+    }
+    &--double-down {
+      display: block;
+      margin: 0 auto;
+      width: 12px;
+      height: 15px;
+      .svg-icon-double-arrowhead-down;
+
+    }
+    &--double-left {
+      width: 15px;
+      height: 8px;
+      .svg-icon-double-arrowhead-left;
+    }
+
+  }
+  &__linkedin {
+    width: 26px;
+    height: 26px;
+    .svg-icon-linkedin;
+  }
+  &__googleplus {
+    width: 26px;
+    height: 26px;
+    .svg-icon-googleplus;
+  }
+  &__twitter {
+    width: 26px;
+    height: 26px;
+    .svg-icon-twitter;
+  }
+  &__facebook {
+    width: 26px;
+    height: 26px;
+    .svg-icon-facebook;
+  }
+
+  &__step-action {
+    width: 115px;
+    height: 90px;
+    .svg-step-action;
+  }
+  &__step-download {
+    width: 90px;
+    height: 90px;
+    .svg-step-download;
+  }
+  &__step-install {
+    width: 75px;
+    height: 90px;
+
+    .svg-step-install
+  }
 }

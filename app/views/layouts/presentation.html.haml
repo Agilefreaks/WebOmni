@@ -18,7 +18,7 @@
     %header.header
       = render partial: 'layouts/presentation/header'
 
-      .section.hero.section--table.section--center
+      .section.hero.section--center
         #omni-video.omni-video
           %a.animate.animate--swirll.omni-video__close.js-omni-video{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "Close video"}
             %i.icon.icon__close
@@ -29,7 +29,7 @@
           .omni-video__controls
             %input.omni-video__seek.js-omni-video-seek{:type => "range", :value => "0"}
 
-        .header__meta.section__container.section__container--reset
+        .header__meta.section__container.js-header-nav-content
           .header__container
             .container
               .row
@@ -41,7 +41,8 @@
                   %nav.header__nav.js-header-nav-content
                     = render_cell :menu, :show
 
-        %article.section__container.section__container--table-cell
+        .header__nav--filler
+        %article.section__container.section--center-content.section--fit-viewport.hero__main-content
           .container
             .row
               .col-xs-12
@@ -59,7 +60,7 @@
             .row
               .col-xs-12
                 .section__button.section__button--hero
-                  %a.button.button--transparent.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
+                  %a.button.button--text.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
                     Learn more
                     %i.icon.icon__arrowhead-down
 
@@ -82,7 +83,7 @@
               .partners__logos.col-xs-12.col-sm-6.col-md-3
                 %img{:alt => 'Hub Raum Logo', :height => '70', :src => image_path('logos/logo-hub-raum.png'), :width => '175'}
 
-      %article#contact.section.section--center.contact
+      %article#contact.section.section--center.section--center-content.contact
         .section__container
           .container
             .row

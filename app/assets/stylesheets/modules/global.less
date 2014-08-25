@@ -75,22 +75,27 @@ p {
   height: 100%;
 
   &__container {
-    position: relative;
-    z-index: 10;
     height: 80 * @rem;
-    //background-color: rgba(0,0,0,.4);
 
-    .transition( background-color 0.3s ease-in-out );
-
+    .transform(translate(0, 0));
+    .transition(transform 0.1s, background 0.3s);
+    .user-select(none);
   }
 
   &__logo { margin-top: 15 * @rem;}
-
+  &__meta {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .transform(translate(0, 0));
+  }
   &__nav {
     float: right;
     margin: 25 * @rem 5 * @rem 0 0;
     color: @color-bright;
-    font-weight: 200;
+    font-weight: 300;
 
     &__item {
       padding-right: 30 * @rem;
@@ -128,18 +133,25 @@ p {
       .transition( opacity 0.2s ease-in-out);
     }
   }
-  &--floating {
-    .hero { padding-top: 80 * @rem; }
-    .header__container {
-      position: fixed;
-      top: 0;
-      z-index: 10;
-      width: 100%;
-      height: 80 * @rem;
-      background-color: rgba(0,0,0,.4);
+  &--hidden {
+    .transform(translate(0, -100 * @rem));
+    .transition(transform 0.3s, background 0.3s);
+  }
+  &--visible {
+    .transform(translate(0, 0));
+    .transition(transform 0.3s, background 0.3s);
+  }
+  &--detached {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 80 * @rem;
+    background-color: rgba(0,0,0,.4);
 
-      .box-shadow(1 * @rem 0 2 * @rem rgba(0,0,0,.8));
-    }
+    .box-shadow(1px 0 2px rgba(0,0,0,0.8));
+
+    .transition( transform 0.1s, background 0.1s, color 0.1s );
   }
 }
 
