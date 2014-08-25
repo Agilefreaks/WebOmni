@@ -22,154 +22,164 @@
 // !IE10 Viewport Fix
 // --------------------------------------------------------------
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement("style");
-  msViewportStyle.appendChild(
-    document.createTextNode(
-      "@-ms-viewport{width:auto!important}"
-    )
-  );
-  document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  var msViewportStyle = document.createElement('style');
+  msViewportStyle.appendChild(document.createTextNode('@-ms-viewport{ width:auto !important }'));
+  document.getElementsByTagName('head')[0].appendChild(msViewportStyle);
 }
 
-jQuery(document).ready(function ($) {
+// !Document ready (loaded)
+// --------------------------------------------------------------
+jQuery(document).ready(function($) {
+
+  // Detect Safari / Chrome
+  /*
+   function isChrome() {
+   if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) ) { return true; }
+   return false;
+   }
+   function isSafari() {
+   if (/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor) ) { return true; }
+   return false;
+   }
+   if (isSafari()) { $('html').addClass(' safari'); }
+   if (isChrome()) { $('html').addClass(' chrome'); }
+   */
+
   // Open in new window links with rel=external code
-  $('a[rel="external"]').attr("target", "_blank");
+  $('a[rel="external"]').attr('target','_blank');
 
-  // Prevent default on # links
-  $('a[href="#"]').click(function (e) {
-    e.preventDefault();
-  });
+  // Prevent default action on # (hash) links
+  $('a[href="#"]').click( function(e) { e.preventDefault(); });
 
-  // Delay scroll input method
-  $.fn.scrolled = function (waitTime, fn) {
-    var tag = "scrollTimer";
-    this.scroll(function () {
-      var self = $(this);
-      var timer = self.data(tag);
-      if (timer) {
-        clearTimeout(timer);
-      }
-      timer = setTimeout(function () {
-        self.data(tag, null);
-        fn();
-      }, waitTime);
-      self.data(tag, timer);
-    });
-  };
+  // Initialize scroll vars
+  var didScroll;
+  var lastScrollTop	= 0;
+  var poolingDelay	= 250;
 
-  // Menu Logic
-  //Init var for scroll direction
-  var lastScrollTop = 0;
-  $(window).scrolled(10, function () {
-    var menuTrigger = $('.js-body-action');
-    var menuContent = menuTrigger;
-    var menuActive = 'header--floating';
-    var menuOffset = 10;
-    var win = $(window);
-    var scrollDirection = win.scrollTop();
+  // Check for scroll function
+  $(window).scroll(function(e) { didScroll = true; });
 
-    // Complex Menu Logic (Show on scrollUp)
-    // Check for scroll position
-    if (win.scrollTop() > menuTrigger.offset().top + menuTrigger.outerHeight(true)) {
-      // If scroll beyond main visible area stick menu to scroll
-      menuContent.addClass(menuActive);
+  // Do scroll polling at 250ms intervals
+  setInterval (function() {
+    if (didScroll) {
+      hasScrolled();
+      didScroll = false;
+    }
+  }, poolingDelay);
+
+  // If we have scroll detected do stuff
+  function hasScrolled() {
+    var menuContent		= $('.js-header-nav-content');
+    var menuDetached	= 'header--detached';
+    var menuVisible		= 'header--visible';
+    var menuHidden		= 'header--hidden';
+    var navbarHeight	= menuContent.outerHeight();
+    var currentPosition	= $(this).scrollTop();
+    var delta			= 5;
+    var detachDelay		= 200;
+
+    // Make sure the scroll is more than delta
+    if (Math.abs(lastScrollTop - currentPosition) <= delta) { return; }
+
+    if ( currentPosition > navbarHeight ) {
+      // Needs to fire after menuHidden to prevent hide animation
+      setTimeout(function() {
+        // Detach menu
+        menuContent.addClass(menuDetached);
+      }, detachDelay);
     } else {
-      // If scroll in main visible area move menu to top
-      menuContent.removeClass(menuActive);
+      // Attach menu
+      menuContent.removeClass(menuDetached);
+    }
+    // Hide on scroll down
+    if (currentPosition > lastScrollTop && currentPosition > navbarHeight) {
+      // Scroll down
+      menuContent.removeClass(menuVisible).addClass(menuHidden);
 
-      if (win.scrollTop() < menuTrigger.offset().top + menuTrigger.outerHeight(true)) {
-        // If menu bar still visible
-        menuContent.removeClass(menuActive);
-
-      } else {
-        menuContent.addClass(menuActive);
+    } else {
+      // Scroll Up
+      if (currentPosition + $(window).height() < $(document).height()) {
+        menuContent.removeClass(menuHidden).addClass(menuVisible);
       }
     }
-    //Check for scroll direction - Hide on scroll down
-    if (scrollDirection > lastScrollTop && win.scrollTop() > menuTrigger.offset().top + menuTrigger.outerHeight(true)) {
-      // Down scroll
-      menuTrigger.removeClass(menuActive);
-
-    } else if (scrollDirection < lastScrollTop && win.scrollTop() > menuOffset) {
-      // Up scroll
-      menuTrigger.addClass(menuActive);
-    }
-
-    lastScrollTop = scrollDirection;
-  });
-
-  // Scroll To ID Function
-  function scrollToID(id, speed) {
-    var offSet = 0;
-    var targetOffset = $(id).offset().top - offSet;
-
-    $("html,body").animate({scrollTop: targetOffset}, speed);
+    lastScrollTop = currentPosition;
   }
 
-  function scrollToTop(speed) {
-    $('html, body').animate({scrollTop: 0}, speed);
+  // Scroll to top function
+  function scrollToTop (speed) { $('html, body').animate({ scrollTop: 0 }, speed); }
+
+  // Scroll to ID function
+  function scrollToID (id, speed){
+    var scrollOffset	= 0;
+    var targetOffset	= $('#' + id).offset().top - scrollOffset;
+
+    $('html,body').animate({ scrollTop: targetOffset }, speed);
   }
 
-  // Scroll To ID
-  $('.js-goto-section').on('click', function (e) {
+  // Scroll to section
+  $('.js-goto-section').on('click', function(e) {
+    var sectionID	= $(this).attr('data-id');
+    var scrollDelay	= 750;
+
+    // Scroll
+    scrollToID(sectionID, scrollDelay);
+    //Prevent default action
     e.preventDefault();
-    var sectionID = $(this).attr("data-id");
-    scrollToID('#' + sectionID, 750);
   });
 
   // Section Toggle
   $('.js-toggle-dropdown').on('click', function (e) {
-    var bodyTrigger = $('.js-body-action');
-    var bodyClass = "dropdown--action";
-    var dropdownActive = "dropdown--open";
-    var dropdownID = $(this).attr("data-id");
+    var bodyTrigger		= $('.js-body-action');
+    var bodyClass		= 'dropdown--action';
+    var dropdownActive	= 'dropdown--open';
+    var dropdownID		= $('#' + $(this).attr('data-id'));
+    var scrollDelay		= 750;
 
-    $('#' + dropdownID).toggleClass(dropdownActive);
-    $(bodyTrigger).toggleClass(bodyClass);
+    dropdownID.toggleClass(dropdownActive);
+    bodyTrigger.toggleClass(bodyClass);
 
-    scrollToTop(750);
-
+    // Scroll to top
+    scrollToTop(scrollDelay);
+    // Prevent default action
     e.preventDefault();
   });
 
   //Video Play
   $('.js-omni-video').on('click', function (e) {
-    var bodyTrigger = $('.js-body-action');
-    var bodyClass = "omni-video--action";
+    var bodyTrigger		= $('.js-body-action');
+    var bodyClass		= 'omni-video--action';
+    var dropdownClass	= 'dropdown--action';
+    var globalDropdown	= $('.dropdown');
+    var dropdownActive	= 'dropdown--open';
+    var video			= $('.js-omni-video-player').get(0);
+    var videoActive		= 'omni-video--active';
+    var videoID			= $('#' + $(this).attr('data-id'));
+    var videoAction		= $(this).attr("data-action");
+    var scrollDelay		= 750;
 
-    var dropdownClass = "dropdown--action";
-    var globalDropdown = $('.dropdown');
-    var dropdownActive = "dropdown--open";
+    globalDropdown.removeClass(dropdownActive);
+    bodyTrigger.removeClass(dropdownClass);
 
-    var videoActive = "omni-video--active";
-    var videoID = $(this).attr("data-id");
-    var videoAction = $(this).attr("data-action");
-
-    var videoPlayer = $('.js-omni-video-player').get(0);
-
-    $(globalDropdown).removeClass(dropdownActive);
-    $(bodyTrigger).removeClass(dropdownClass);
-
-    $('#' + videoID).toggleClass(videoActive);
-    $(bodyTrigger).toggleClass(bodyClass);
+    videoID.toggleClass(videoActive);
+    bodyTrigger.toggleClass(bodyClass);
 
     if (videoAction == 'play') {
-      videoPlayer.play();
+      video.play();
     } else {
-      videoPlayer.pause();
-      videoPlayer.currentTime = 0;
-      videoPlayer.load();
+      video.pause();
+      video.currentTime = 0;
+      video.load();
     }
-
-    scrollToTop(750);
-
+    // Scroll to top
+    scrollToTop(scrollDelay);
+    // Prevent default action
     e.preventDefault();
   });
 
-  // Video PLay / Pause Toggle
-  var $js_omni_video_player = $('.js-omni-video-player');
-  $js_omni_video_player.on('click', function (e) {
-    video = $('.js-omni-video-player').get(0);
+  // Video play / pause toggle
+  var $omni_video_player = $('.js-omni-video-player');
+  $omni_video_player.on('click', function () {
+    var video = $('.js-omni-video-player').get(0);
 
     if (video.paused === false) {
       video.pause();
@@ -178,100 +188,120 @@ jQuery(document).ready(function ($) {
     }
   });
 
+  // Close video on end
+  $omni_video_player.on('ended', function() {
+    var video			= $('.js-omni-video-player').get(0);
+    var videoContainer	= $('#omni-video');
+    var videoActive		= 'omni-video--active';
+    var bodyTrigger		= $('.js-body-action');
+    var bodyClass		= 'omni-video--action';
+    var videoTimeout	= 1000;
+
+    timer = setTimeout( function() {
+
+      video.currentTime = 0;
+      video.load();
+      videoContainer.toggleClass(videoActive);
+      bodyTrigger.toggleClass(bodyClass);
+
+    }, videoTimeout);
+  });
+
   // Full screen on double click
-  $js_omni_video_player.on('dblclick', function () {
-    video = $('.js-omni-video-player').get(0);
+  $omni_video_player.on('dblclick', function() {
+    var video = $('.js-omni-video-player').get(0);
 
     if (video.requestFullscreen) {
       video.requestFullscreen();
+
     } else if (video.mozRequestFullScreen) {
       video.mozRequestFullScreen(); // Firefox
+
     } else if (video.webkitRequestFullscreen) {
       video.webkitRequestFullscreen(); // Chrome and Safari
     }
   });
 
-  // Hook the slider with the video
-  var $js_omni_video_seek = $('.js-omni-video-seek');
-  $js_omni_video_seek.on('change', function () {
-    seekBar = $('.js-omni-video-seek').get(0);
-    video = $('.js-omni-video-player').get(0);
-
-    // Calculate the new time
-    var time = video.duration * (seekBar.value / 100);
-
-    // Update the video time
-    video.currentTime = time;
-  });
   // Update the slider with the video progress
-  $js_omni_video_player.on('timeupdate', function () {
-    seekBar = $('.js-omni-video-seek').get(0);
-    video = $('.js-omni-video-player').get(0);
+  $omni_video_player.on('timeupdate', function() {
+    var seekBar	= $('.js-omni-video-seek').get(0);
+    var video	= $('.js-omni-video-player').get(0);
+    var value;
 
     // Calculate the slider value
-    var value = (100 / video.duration) * video.currentTime;
-
+    value = (100 / video.duration) * video.currentTime;
     // Update the slider value
     seekBar.value = value;
   });
 
+  // Hook the slider with the video
+  var $js_omni_video_seek = $('.js-omni-video-seek');
+  $js_omni_video_seek.on('change', function() {
+    var seekBar	= $('.js-omni-video-seek').get(0);
+    var video	= $('.js-omni-video-player').get(0);
+
+    // Calculate the new time
+    video.currentTime = video.duration * (seekBar.value / 100);
+  });
+
   // Pause the video when the slider handle is being dragged
-  $js_omni_video_seek.on("mousedown", function () {
-    video = $('.js-omni-video-player').get(0);
+  $js_omni_video_seek.on("mousedown", function() {
+    var video = $('.js-omni-video-player').get(0);
+
     video.pause();
   });
   // Play the video when the slider handle is dropped
-  $js_omni_video_seek.on("mouseup", function () {
-    video = $('.js-omni-video-player').get(0);
+  $js_omni_video_seek.on("mouseup", function() {
+    var video = $('.js-omni-video-player').get(0);
+
     video.play();
   });
 
-  //Validate Contact Form
+  // Validate Contact Form
   var $js_contact_form = $('.js-contact-form');
   $js_contact_form.h5Validate();
-  $js_contact_form.submit(function (event) {
 
-    var result = $('.js-contact-form').h5Validate('allValid');
-    if (result === true) {
+  // Process Contact Form
+  $js_contact_form.submit(function(e) {
+    var result		= $('.js-contact-form').h5Validate('allValid');
+    var notice		= $('.js-contact-notice');
+    var fields		= $('.js-contact-form input, .js-contact-form textarea');
+    var container	= $('.js-contact-form-content');
+    var data;
+    var url;
+
+    if ( result === true ) {
       // Serialize contact data
       data = $(this).serialize();
-      // Send request
+      // Get URL from action
       url = $(this).attr('action');
 
+      // Send request
       $.ajax({
         url: url,
         data: data,
-        type: 'post',
-        success: function (msg) {
-          // Place error message in notice
-          //$('.js-contact-notice').html(msg);
-
-          // Push Google Analytics event
-          //_gaq.push(['_trackEvent', 'Contact', 'Contact request', 'Contact sent!']);
-        }
+        type: 'post'
       });
 
       // Fade out & display message
-      $('.js-contact-form-content').fadeOut(800);
-
-      timer1 = setTimeout(function () {
-        $('.js-contact-notice').fadeIn(1000);
-        $('.js-contact-form input, .js-contact-form textarea').val('');
-      }, 1000);
+      container.fadeOut(800);
+      var timer1 = setTimeout(function() {
+        notice.fadeIn(1000);
+        fields.val('');
+      },1000);
 
       // Fade out & reset form
-      timer2 = setTimeout(function () {
-        $('.js-contact-notice').fadeOut(800);
-      }, 4500);
+      var timer2 = setTimeout(function() {
+        notice.fadeOut(800);
+      },4500);
 
       // Fade in form
-      timer3 = setTimeout(function () {
-        $('.js-contact-form-content').fadeIn(1000);
-      }, 5500);
+      var timer3 = setTimeout( function() {
+        container.fadeIn(1000);
+      },5500);
     }
-
-    //Return false so we don't actually submit the form
-    return false;
+    // Prevent actual form submit
+    e.preventDefault();
   });
 
 
@@ -279,9 +309,10 @@ jQuery(document).ready(function ($) {
 });
 
 
+// !Document load (in process of loading) function
 // --------------------------------------------------------------
 
-jQuery(window).load(function ($) {
+jQuery(window).load(function($) {
 
-// !---- End Window Load Function ----
+// !---- End Document Load Function ----
 });
