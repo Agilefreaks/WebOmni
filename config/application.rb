@@ -40,7 +40,6 @@ module WebOmni
                                     presentation.js presentation.css
                                     browser.update.js)
 
-    config.paths.add 'app/api', glob: "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/api/*",
                                  "#{Rails.root}/app/factories/*",
                                  "#{Rails.root}/app/interactions/*"]

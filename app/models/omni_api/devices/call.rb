@@ -3,7 +3,7 @@ module OmniApi
     class Call
       include HTTParty
 
-      base_uri Rails.application.config.active_resource.site
+      base_uri OmniApi.config.base_url
 
       attr_accessor :authorization
 

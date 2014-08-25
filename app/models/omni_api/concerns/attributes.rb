@@ -4,8 +4,8 @@ module OmniApi
       extend ActiveSupport::Concern
 
       module ClassMethods
-        def attr_accesible(*attribs)
-          attribs.each do |a|
+        def attr_accessible(*attr)
+          attr.each do |a|
             define_method(a) { attributes[a] }
             define_method("#{a}=") { |val| attributes[a] = val }
           end

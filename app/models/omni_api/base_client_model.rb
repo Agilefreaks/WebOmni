@@ -1,5 +1,7 @@
 module OmniApi
   class BaseClientModel < BaseModel
-    headers['Authorization'] = Configuration.client_access_token
+    self.site = OmniApi.config.base_url
+
+    headers['Authorization'] = OmniApi.config.client_access_token
   end
 end

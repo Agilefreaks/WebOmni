@@ -60,10 +60,10 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
   gem 'fabrication'
   gem 'database_cleaner'
+  gem 'cucumber-rails', require: false
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
   gem 'simplecov'
   gem 'simplecov-teamcity-summary', github: 'balauru/simplecov-teamcity-summary'
   gem 'accept_values_for'

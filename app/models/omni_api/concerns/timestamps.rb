@@ -4,7 +4,7 @@ module OmniApi
       extend ActiveSupport::Concern
 
       included do
-        attr_accesible :updated_at, :created_at
+        attr_accessible :updated_at, :created_at
       end
     end
   end
