@@ -1,4 +1,4 @@
-When /^user with email "([^"]*)" does (not )?exists$/ do |email, does_not|
+When /^user with email "([^"]*)" does (not )?exist$/ do |email, does_not|
   user = {email: email, first_name: 'Calin', last_name: 'Balauru', access_token: 'calin access token'}
   users = [user]
   get_headers = {'Accept' => 'application/json', 'Authorization' => OmniApi.config.client_access_token}

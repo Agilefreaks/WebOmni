@@ -5,12 +5,12 @@ Feature: Authentication
 
 Scenario: Sign-in
   Given I am on the home page
-  And user with email "calin@people.com" does exists
+  And user with email "calin@people.com" does exist
   When I follow "Sign in"
   Then I should see a "Get Omnipaste" and "Get Authorization Code"
 
 Scenario: Sign-up
   Given I am on the home page
-  And user with email "calin@people.com" does not exists
+  And user with email "calin@people.com" does not exist
   When I follow "Sign in"
   Then I should see a "Get Omnipaste" and "Get Authorization Code"
