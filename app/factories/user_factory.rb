@@ -7,12 +7,12 @@ class UserFactory
   end
 
   def create_or_update_from_social(auth, user)
-    match = auth.to_s.match(/image=\"(.*?)\"/)
+    match = auth.to_s.match(/image="(.*?)"/)
 
     api_user = OmniApi::User.where(email: auth.info.email).first ||
-        OmniApi::User.new(:first_name => auth.info.first_name,
-                          :last_name => auth.info.last_name,
-                          :email => auth.info.email)
+        OmniApi::User.new(first_name: auth.info.first_name,
+                          last_name: auth.info.last_name,
+                          email: auth.info.email)
     api_user.save
 
     params = {

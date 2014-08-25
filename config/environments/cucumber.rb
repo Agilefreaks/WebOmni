@@ -39,10 +39,10 @@ WebOmni::Application.configure do
   OmniAuth.config.add_mock(:google_oauth2, {
       :uid => '12345',
       :nickname => 'calin',
-      :user_info => {
+      :info => {
           first_name: 'Calin',
           last_name: 'Balauru',
-          email: 'calin@people'
+          email: 'calin@people.com'
       }
   })
 
@@ -51,6 +51,6 @@ WebOmni::Application.configure do
   GOOGLE_SECRET = 'pZ4j5qWvZYZ3rlo0cXqr8REB'
 
   # API
-  config.active_resource.site = 'https://test.omnipasteapp.com/api/v1'
-  CLIENT_ACCESS_TOKEN = 'random'
+  OmniApi.config.base_url = 'https://test.omnipasteapp.com/api/v1'
+  OmniApi.config.client_access_token = 'random'
 end

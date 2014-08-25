@@ -5,4 +5,6 @@ Feature: Authentication
 
 Scenario: Sign-up
   Given I am on the home page
+  And user with email calin@people.com exists
   When I follow "Sign in"
+  Then I should see a "Get Omnipaste" and "Get Authorization Code"
