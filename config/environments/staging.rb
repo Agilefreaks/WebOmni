@@ -88,6 +88,6 @@ WebOmni::Application.configure do
   WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://download.omnipasteapp.com/staging/OmnipasteSetup.exe'
 
   # API
-  config.active_resource.site = 'https://apistaging.omnipasteapp.com/api/v1'
-  CLIENT_ACCESS_TOKEN = 'yiccuZCgQGrB4OMyglhK2nDr2dKaHFiFOx/hXT3tWpwVstHkZhjcun8h759m5+jQvKJDnEc06z8xIjncfV1d9g=='
+  OmniApi.config.base_url = 'https://apistaging.omnipasteapp.com/api/v1'
+  OmniApi.config.client_access_token = 'yiccuZCgQGrB4OMyglhK2nDr2dKaHFiFOx/hXT3tWpwVstHkZhjcun8h759m5+jQvKJDnEc06z8xIjncfV1d9g=='
 end

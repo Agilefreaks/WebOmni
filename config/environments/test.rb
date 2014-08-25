@@ -40,6 +40,6 @@ WebOmni::Application.configure do
   GOOGLE_SECRET = 'pZ4j5qWvZYZ3rlo0cXqr8REB'
 
   # API
-  config.active_resource.site = 'https://test.omnipasteapp.com/api/v1'
-  CLIENT_ACCESS_TOKEN = 'random'
+  OmniApi.config.base_url = 'https://test.omnipasteapp.com/api/v1'
+  OmniApi.config.client_access_token = 'random'
 end
