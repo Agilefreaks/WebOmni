@@ -28,7 +28,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 }
 
 // Global
-var $htmlAction = $('html body'),
+var $viewport = $('html body'),
 //  Scroll vars
   lastScrollTop = 0,
   poolingDelay = 250,
@@ -36,13 +36,13 @@ var $htmlAction = $('html body'),
   menuDetachedClass = 'header--detached',
   menuVisibleClass = 'header--visible',
   menuHiddenClass = 'header--hidden',
+  $heroContent = $('.js-hero'),
   scrollDelay = 750,
   scrollDelta	= 5,
   scrollEvent = false,
   detachDelay	= 200,
 // Dropdown vars
   $bodyTrigger = $('.js-body-action'),
-  bodyClass = 'omni-video--action',
   $dropdown = $('.js-dropdown'),
   $dropdownAction = $('.js-toggle-dropdown'),
   dropdownClass = 'dropdown--action',
@@ -52,19 +52,14 @@ var $htmlAction = $('html body'),
   $sectionAction = $('.js-goto-section'),
 // Video vars
   $videoPlayer = $('.js-omni-video-player'),
-  $videoPlayerObject = $('.js-omni-video-player').get(0),
+  $videoPlayerObject = $videoPlayer.get(0),
   $videoContainer = $('.js-omni-video'),
   $videoSeek = $('.js-omni-video-seek'),
-  $videoSeekObject = $('.js-omni-video-seek').get(0),
+  $videoSeekObject = $videoSeek.get(0),
   $videoToggle = $('.js-omni-video-toggle'),
   videoActiveClass = 'omni-video--active',
   videoBodyClass = 'omni-video--action',
   videoTimeout = 1000,
-// AuthCode	vars
-  authCode = false,
-  $authCodeAction = $('.js-get-auth-code'),
-  authCodeURL = '#',
-  authCodeInvisibleClass = 'button--invisible',
 // Contact form vars
   $contactForm = $('.js-contact-form'),
   $contactFormNotice = $('.js-contact-notice'),
@@ -93,20 +88,27 @@ var omnipaste = {
     // Video player
     omnipaste.video();
 
-    // Generate authcode
-    omnipaste.authCode();
-
     // Contact form
     omnipaste.contact();
+
+    // Stop auto scroll on manual scroll
+    $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function(e){
+      if ( e.which > 0 || e.type === "mousedown" || e.type === "mousewheel"){
+        $viewport.stop();
+      }
+    });
   },
 
-  externalLink: function(obj) { $('a[rel="external"]').attr('target','_blank'); },
+  externalLink: function() { $('a[rel="external"]').attr('target','_blank'); },
 
-  preventLink: function(obj) { $('a[href="#"]').on('click', function(e) { e.preventDefault(); }); },
+  preventLink: function() { $('a[href="#"]').on('click', function(e) { e.preventDefault(); }); },
 
-  scroll: function(obj) {
+  scroll: function() {
+
     // Check for scroll function
-    $(window).scroll(function(e) { scrollEvent = true; });
+    $(window).scroll(function() {
+      scrollEvent = true;
+    });
 
     // Do scroll polling at 250ms intervals
     setInterval (function() {
@@ -119,12 +121,14 @@ var omnipaste = {
     // If scrolled do things
     function hasScrolled() {
       var navbarHeight = $menuContent.outerHeight(),
-        currentPosition = $(this).scrollTop();
+        currentPosition = $(this).scrollTop(),
+        navbarOffset = $heroContent.offset().top;
+      navbarPosition =  navbarOffset + navbarHeight;
 
       // Make sure the scroll is more than delta
       if (Math.abs(lastScrollTop - currentPosition) <= scrollDelta) { return; }
 
-      if ( currentPosition > navbarHeight ) {
+      if ( currentPosition > navbarPosition) {
         // Needs to fire after menuHidden to prevent hide animation
         setTimeout(function() {
           // Detach menu
@@ -135,7 +139,7 @@ var omnipaste = {
         $menuContent.removeClass(menuDetachedClass);
       }
       // Hide on scroll down
-      if (currentPosition > lastScrollTop && currentPosition > navbarHeight) {
+      if (currentPosition > lastScrollTop && currentPosition > navbarPosition) {
         // Scroll down
         $menuContent.removeClass(menuVisibleClass).addClass(menuHiddenClass);
 
@@ -151,9 +155,9 @@ var omnipaste = {
   // Scroll to top function
   scrollToTop: function ( scrollDelay ) {
     // Set defaults
-    scrollDelay = scrollDelay || 750;
+    scrollDelay = scrollDelay || this.scrollDelay;
 
-    $htmlAction.animate({ scrollTop: 0 }, scrollDelay);
+    $viewport.animate({ scrollTop: 0 }, scrollDelay);
   },
 
   // Scroll to ID function
@@ -164,7 +168,7 @@ var omnipaste = {
 
     var targetOffset = $('#' + id).offset().top - scrollOffset;
 
-    $htmlAction.animate({ scrollTop: targetOffset }, scrollDelay);
+    $viewport.animate({ scrollTop: targetOffset }, scrollDelay);
 
   },
   // Scroll to section
@@ -260,10 +264,8 @@ var omnipaste = {
 
     // Hook the slider with the video
     $videoSeek.on('change', function() {
-      // Calculate the new time
-      var time = $videoPlayerObject.duration * ($videoSeekObject.value / 100);
       // Update the video time
-      $videoPlayerObject.currentTime = time;
+      $videoPlayerObject.currentTime = $videoPlayerObject.duration * ($videoSeekObject.value / 100);
     });
 
     // Update the slider with the video progress
@@ -284,30 +286,6 @@ var omnipaste = {
 
   },
 
-  // Get Auth Code
-  authCode: function() {
-
-    $authCodeAction.on('click', function (e) {
-      var token = $(this).attr('data-token');
-
-      if (authCode === false) {
-        $.ajax({
-          url: authCodeURL,
-          data: token,
-          type: 'get',
-          success: function(msg) {
-            msg = "Gbqw0Vpr86RZ"; // Dev: Fixed message for display purposes - REMOVE THIS LINE!!!
-            $authCodeAction.addClass(authCodeInvisibleClass);
-            timer1 = setTimeout( function() {
-              $authCodeAction.html(msg);
-              $authCodeAction.removeClass(authCodeInvisibleClass);
-            },1000);
-          }
-        });
-        authCode = true;
-      }
-    });
-  },
   // Contact form
   contact: function() {
     // Validate Contact Form
@@ -345,7 +323,7 @@ var omnipaste = {
 
         timer1 = setTimeout(function() {
           $contactFormNotice.fadeIn(1000);
-          fields.val('');
+          $contactFormFields.val('');
         },1000);
 
         // Fade out & reset form
@@ -367,21 +345,7 @@ var omnipaste = {
 
 // !Document ready (loaded)
 // --------------------------------------------------------------
-jQuery(document).ready(function($) {
-
-  // Detect Safari / Chrome
-  /*
-   function isChrome() {
-   if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) ) { return true; }
-   return false;
-   }
-   function isSafari() {
-   if (/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor) ) { return true; }
-   return false;
-   }
-   if (isSafari()) { $('html').addClass(' safari'); }
-   if (isChrome()) { $('html').addClass(' chrome'); }
-   */
+jQuery(document).ready(function() {
 
   // Init scripts
   omnipaste.init();
