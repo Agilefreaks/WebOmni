@@ -216,6 +216,7 @@ var omnipaste = {
 
       if (videoAction == 'play') {
         $videoPlayerObject.play();
+        _gaq.push('_trackEvent', 'Presentation', 'video play');
       } else {
         $videoPlayerObject.pause();
         $videoPlayerObject.currentTime = 0;

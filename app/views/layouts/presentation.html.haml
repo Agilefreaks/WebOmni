@@ -141,14 +141,13 @@
         var destination = "#{windows_client_downloads_path}";
         setTimeout("window.location='" + destination + "'", 3000);
 
-        var bodyTrigger = $('.js-body-action');
-        var bodyClass = "dropdown--action";
-        var dropdownActive = "dropdown--open";
-        var dropdownID = "sign-up";
+        var dropdownActiveClass	= 'dropdown--open';
+        var dropdownBodyClass = 'dropdown--action';
 
-        $('#' + dropdownID).toggleClass(dropdownActive);
-        $(bodyTrigger).toggleClass(bodyClass);
+        $('#sign-up').toggleClass(dropdownActiveClass);
+        $('.js-body-action').toggleClass(dropdownBodyClass);
 
-        scrollToTop(750);
+        // Scroll to top
+        omnipaste.scrollToTop();
       }
     } );
