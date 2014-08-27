@@ -15,7 +15,7 @@ class NotificationsMailer < BaseMailer
   def invite(email)
     mail(
         {
-            subject: '',
+            subject: 'Stop wasting time by checking your phone every minute',
             from: 'Calin <calin@omnipasteapp.com>',
             to: email
         }
