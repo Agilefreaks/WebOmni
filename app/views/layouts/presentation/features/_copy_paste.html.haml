@@ -1,4 +1,4 @@
-%article#feature-copy-paste.section.section--bright.section--center-content.section--fit-viewport.feature
+%article#feature-copy-paste.section.section--bright.section--center-content.section--fit-viewport.feature.feature-one
   .section__container
     .container
       .row
@@ -7,8 +7,8 @@
           %p Read a good passage on the Internet and want to share it with a friend? With Omnipaste, your PC and your phone now share a clipboard. Just copy on one and paste on another.
           = render partial: 'layouts/presentation/features/buttons', locals: { what_else_link: 'feature-smart-action' }
         .section__column.col-xs-12.col-sm-6
-          .feature-one
-            .feature-one__container
+          .feature__content
+            .feature__container
               = image_tag 'svg/feature-one-bubble-copy.svg', { class: 'feature-one__bubble-copy js-animation-trigger', alt: 'Copy speech bubble', data: { animation: 'fadeIn', timeout: 1 } }
               = image_tag 'svg/feature-one-main.svg', { class: 'feature-one__main', alt: 'Webpage with phone overlayed on the right' }
               = image_tag 'svg/feature-one-bubble-paste.svg', { class: 'feature-one__bubble-paste js-animation-trigger', alt: 'Paste speech bubble', data: { animation: 'fadeIn', timeout: 500 } }

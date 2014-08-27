@@ -108,6 +108,9 @@
     &--page {
       margin: 40 * @rem 0 10 * @rem 0;
     }
+    &--feature {
+      margin: 0;
+    }
   }
   &__play {
     margin-bottom: 60 * @rem;
@@ -355,74 +358,111 @@
     position: relative;
   }
   &-one {
-    &__main { padding-left: 60 * @rem; }
+    &__main {
+      padding-left: 60 * @em;
+
+      width: 505 * @em;
+      height: auto;
+    }
     &__bubble-copy {
       position: absolute;
-      top: 55 * @rem;
+      top: 55 * @em;
       left: 0;
       opacity: 0;
+
+      width: 100 * @em;
+      height: auto;
     }
     &__bubble-paste {
       position: absolute;
-      left: 410 * @rem;
-      top: 52 * @rem;
+      left: 410 * @em;
+      top: 52 * @em;
       opacity: 0;
+
+      width: 135 * @em;
+      height: auto;
     }
     &__arrow {
       position: absolute;
-      left: 285 * @rem;
-      top: 180 * @rem;
+      left: 285 * @em;
+      top: 180 * @em;
       opacity: 0;
+
+      width: 60 * @em;
+      height: auto;
     }
     &__text-paste {
       position: absolute;
-      top: 185 * @rem;
-      left: 360 * @rem;
+      top: 185 * @em;
+      left: 364 * @em;
       opacity: 0;
+
+      width: 95 * @em;
+      height: auto;
+
     }
   }
   &-two {
     text-align: right;
     &__main {
-      padding: 42 * @rem 0 0 0 * @rem;
+      padding: 42 * @em 0 0 0;
+      width: 380 * @em;
+      height: auto;
     }
 
     &__bubble-copy-address {
       position: absolute;
-      top: 0 * @rem;
-      right: 365 * @rem;
-      max-width: 85 * @rem;
-      height: auto;
+      top: 0 * @em;
+      right: 350 * @em;
       opacity: 0;
+
+      width: 85 * @em;
+      height: auto;
     }
     &__bubble-copy-phone {
       position: absolute;
-      right: 315 * @rem;
-      top: 145 * @rem;
-      max-width: 85 * @rem;
+      right: 300 * @em;
+      top: 145 * @em;
+      max-width: 85 * @em;
       height: auto;
       opacity: 0;
+
+      width: 80 * @em;
+      height: auto;
+
     }
     &__notification {
       position: absolute;
-      right: 32 * @rem;
-      top: 70 * @rem;
+      right: 17 * @em;
+      top: 70 * @em;
       opacity: 0;
+
+      width: 125 * @em;
+      height: auto;
     }
   }
   &-three {
-    &__main { padding-left: 10 * @rem; }
-
+    &__main {
+      padding-left: 10 * @em;
+      width: 345 * @em;
+      height: auto;
+    }
     &__bubble-notification {
       position: absolute;
-      top: 20 * @rem;
+      top: 20 * @em;
+      left: 0 * @em;
       opacity: 0;
+      width: 140 * @em;
+      height: auto;
+
     }
     &__notification {
       position: absolute;
-      top: 20 * @rem;
-      left: 185 * @rem;
+      top: 20 * @em;
+      left: 170 * @em;
       opacity: 0;
+      width: 155 * @em;
+      height: auto;
     }
   }
 

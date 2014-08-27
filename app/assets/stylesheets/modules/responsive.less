@@ -19,14 +19,20 @@
                padding: 20 * @rem 0;
              }
            }
+
+@media @1100w {
+              .feature {
+                font-size: 80%;
+              }
+            }
+
 @media @990w {
 
-             .form {
-               min-height: 350 * @rem;
-               &__footer { text-align: center; }
+             .feature {
+               &__content {
+                 font-size: 88%;
+               }
              }
-             .contact { padding: 20 * @rem 0 210 * @rem 0; }
-
            }
 
 @media @767w {
@@ -41,6 +47,7 @@
                  .transition( 0.5s cubic-bezier(.27,1.64,.32,.95) ) !important;
 
                }
+
                &__content {
                  position: absolute;
                  left: 0;
@@ -106,6 +113,19 @@
                float: none;
              }
 
+             .feature {
+               text-align: center;
+               &__content { display: inline-block; }
+
+               &.feature-one,
+               &.feature-three {
+                 .section__button { margin-bottom: 20 * @rem; }
+               }
+               &.feature-two {
+                 .section__title { margin-top: 20 * @rem; }
+               }
+             }
+
              .faq {
                min-height: 850 * @rem;
              }
@@ -116,10 +136,26 @@
                }
              }
            }
+@media @567w {
+             .feature {
+               &.feature-one { }
+               &.feature-two { }
 
+               &__content {
+                 font-size: 100%;
+               }
+             }
+           }
 @media @460w {
              html { font-size: 85%; }
 
+             .feature {
+               font-size: 85%;
+
+               &__content {
+                 font-size: 8px;
+               }
+             }
              .contact { padding: 20 * @rem 0 320 * @rem 0; }
 
              .founders {
