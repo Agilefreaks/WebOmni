@@ -7,7 +7,7 @@ class AuthorizationCodesController < ApplicationController
 
   def new
     @authorization_code = create_authorization_code(current_user)
-    render template: 'pages/welcome_signed_in', layout: 'presentation'
+    render :new, layout: 'presentation'
   end
 
   def create
