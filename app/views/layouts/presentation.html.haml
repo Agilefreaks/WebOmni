@@ -124,7 +124,7 @@
           %li.footer__nav__item
             %a.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "FAQ"} FAQ
           %li.footer__nav__item
-            %a.js-toggle-dropdown{"data-id" => "policy", :href => "#privacy", :title => "Privacy Policy"} Privacy Policy
+            = link_to 'Privacy Policy', tos_path, title: 'Privacy Policy'
         %p.footer__copyright
           \© 2014 Omnipaste.
           %br/
