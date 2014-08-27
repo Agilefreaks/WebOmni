@@ -8,14 +8,15 @@
 /* !Animate */
 /* ==|========================================================================= */
 .animate {
-  .transition(0.5s cubic-bezier(.27, 1.64, .32, .95));
+  .transition( 0.5s cubic-bezier(.27,1.64,.32,.95) );
   line-height: 1px;
-  &--swirll {
+  &--swirll{
     &:hover {
       .transform(rotate(90deg));
     }
   }
 }
+
 
 /* !Icons */
 /* ==|========================================================================= */
@@ -101,7 +102,11 @@
   &__step-install {
     width: 75px;
     height: 90px;
-
     .svg-step-install
+  }
+  &__hamburger {
+    width: 28px;
+    height: 28px;
+    .svg-icon-hamburger;
   }
 }

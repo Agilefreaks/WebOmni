@@ -82,7 +82,11 @@ p {
     .user-select(none);
   }
 
-  &__logo { margin-top: 15 * @rem;}
+  &__logo {
+    position: relative;
+    z-index: 10;
+    margin-top: 15 * @rem;
+  }
   &__meta {
     position: absolute;
     z-index: 20;
@@ -97,7 +101,13 @@ p {
     color: @color-bright;
     font-weight: 300;
 
+    &__content {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
     &__item {
+      display: inline-block;
       padding-right: 30 * @rem;
 
       &:last-child {  padding-right: 0;  }

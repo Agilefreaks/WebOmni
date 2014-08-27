@@ -30,6 +30,74 @@
            }
 
 @media @767w {
+             // Mobile nav
+             .header__nav {
+               &__button {
+                 position: relative;
+                 z-index: 10;
+                 line-height: 1;
+                 .opacity(.4);
+                 .transition(none) !important;
+                 .transition( 0.5s cubic-bezier(.27,1.64,.32,.95) ) !important;
+
+               }
+               &__content {
+                 position: absolute;
+                 left: 0;
+                 right: 0;
+                 top: -2000 * @rem;
+                 padding: 115 * @rem 0 20 * @rem 0;
+                 background: rgba(0,0,0, .4);
+
+                 .transition( all 0.3s ease-in-out );
+               }
+               &__item {
+                 display: block;
+                 padding: 10 * @rem 0;
+
+                 &--separator:before { content: none; }
+
+                 a {
+                   display: inline-block;
+                   padding: 10 * @rem 25 * @rem;
+                   border: 2 * @rem solid transparent;
+
+                   color: @color-bright;
+                   font-size: 24 * @rem;
+                   font-weight: 300;
+
+                   .border-radius(35 * @rem);
+
+                   .transition( all 0.3s ease-in-out );
+                 }
+                 &:hover a {
+                   border: 2 * @rem solid rgba(255, 255, 255, .2);
+                   color: @color-bright;
+                 }
+
+               }
+
+             }
+             // Mobile nav behaviour
+             .header--mobile {
+               .header__nav__content { top: 0; }
+
+               .header__nav__button {
+                 .transition( 0.5s cubic-bezier(.27,1.64,.32,.95) );
+                 .transform(rotate(90deg));
+                 .opacity(.6);
+               }
+             }
+
+             .header--hidden.header--mobile	{
+               .header__nav__content { top: -500 * @rem; }
+             }
+             .header--visible.header--detached.header--mobile {
+               .box-shadow(none);
+               background: none;
+             }
+
+             // Liniarize buttons
              .button--left {
                float: none;
                margin-top: 20 * @rem;

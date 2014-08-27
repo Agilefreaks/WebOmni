@@ -50,6 +50,9 @@ var $viewport = $('html body'),
   dropdownBodyClass = 'dropdown--action',
 // Toggle vars
   $sectionAction = $('.js-goto-section'),
+// Mobile menu vars
+  $mobileMenuToggle = $('.js-mobile-menu-toggle'),
+  mobileMenuActiveClass = 'header--mobile',
 // Video vars
   $videoPlayer = $('.js-omni-video-player'),
   $videoPlayerObject = $videoPlayer.get(0),
@@ -84,6 +87,9 @@ var omnipaste = {
 
     // Toggle dropdown
     omnipaste.sectionToggle();
+
+    // Mobile menu
+    omnipaste.mobileMenuToggle();
 
     // Video player
     omnipaste.video();
@@ -157,6 +163,8 @@ var omnipaste = {
     // Set defaults
     scrollDelay = scrollDelay || this.scrollDelay;
 
+    $menuContent.removeClass(mobileMenuActiveClass);
+
     $viewport.animate({ scrollTop: 0 }, scrollDelay);
   },
 
@@ -167,6 +175,8 @@ var omnipaste = {
     scrollOffset = scrollOffset || 0;
 
     var targetOffset = $('#' + id).offset().top - scrollOffset;
+
+    $menuContent.removeClass(mobileMenuActiveClass);
 
     $viewport.animate({ scrollTop: targetOffset }, scrollDelay);
 
@@ -192,9 +202,19 @@ var omnipaste = {
 
       $dropdownID.toggleClass(dropdownActiveClass);
       $bodyTrigger.toggleClass(dropdownBodyClass);
+      $menuContent.removeClass(mobileMenuActiveClass);
 
       // Scroll to top
       omnipaste.scrollToTop();
+      // Prevent default action
+      e.preventDefault();
+    });
+  },
+
+  // Toggle mobile menu
+  mobileMenuToggle: function() {
+    $mobileMenuToggle.on('click', function (e) {
+      $menuContent.toggleClass(mobileMenuActiveClass);
       // Prevent default action
       e.preventDefault();
     });
