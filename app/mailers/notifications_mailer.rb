@@ -11,4 +11,14 @@ class NotificationsMailer < BaseMailer
              to: @user.email
          })
   end
+
+  def invite(email)
+    mail(
+        {
+            subject: '',
+            from: 'Calin <calin@omnipasteapp.com>',
+            to: email
+        }
+    )
+  end
 end
