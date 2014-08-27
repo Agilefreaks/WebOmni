@@ -9,8 +9,8 @@
         .section__column.col-xs-12.col-sm-6
           .feature-one
             .feature-one__container
-              = image_tag 'svg/feature-one-bubble-copy.svg', { class: 'feature-one__bubble-copy', alt: 'Copy speech bubble' }
+              = image_tag 'svg/feature-one-bubble-copy.svg', { class: 'feature-one__bubble-copy js-animation-trigger', alt: 'Copy speech bubble', data: { animation: 'fadeIn', timeout: 1 } }
               = image_tag 'svg/feature-one-main.svg', { class: 'feature-one__main', alt: 'Webpage with phone overlayed on the right' }
-              = image_tag 'svg/feature-one-bubble-paste.svg', { class: 'feature-one__bubble-paste', alt: 'Paste speech bubble' }
-              = image_tag 'svg/feature-one-arrow.svg', { class: 'feature-one__arrow', alt: 'Arrow' }
-              = image_tag 'svg/feature-one-paste-text.svg', { class: 'feature-one__text-paste', alt: 'Copy  pasted text' }
+              = image_tag 'svg/feature-one-bubble-paste.svg', { class: 'feature-one__bubble-paste js-animation-trigger', alt: 'Paste speech bubble', data: { animation: 'fadeIn', timeout: 500 } }
+              = image_tag 'svg/feature-one-arrow.svg', { class: 'feature-one__arrow js-animation-trigger', alt: 'Arrow', data: { animation: 'fadeIn', timeout: 500 } }
+              = image_tag 'svg/feature-one-paste-text.svg', { class: 'feature-one__text-paste js-animation-trigger', alt: 'Copy  pasted text', data: { animation: 'fadeIn', timeout: 500 } }

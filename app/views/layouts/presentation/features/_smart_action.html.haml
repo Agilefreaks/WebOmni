@@ -5,10 +5,10 @@
         .section__column.col-xs-12.col-sm-6
           .feature-two
             .feature-two__container
-              = image_tag 'svg/feature-two-bubble-copy-address.svg', { class: 'feature-two__bubble-copy-address', alt: 'Copy address speech bubble' }
+              = image_tag 'svg/feature-two-bubble-copy-address.svg', { class: 'feature-two__bubble-copy-address js-animation-trigger', alt: 'Copy address speech bubble', data: { animation: 'hatch', timeout: 1 } }
               = image_tag 'svg/feature-two-main.svg', { class: 'feature-two__main', alt: 'Map with phone overlayed on the right' }
-              = image_tag 'svg/feature-two-bubble-copy-phone.svg', { class: 'feature-two__bubble-copy-phone', alt: 'Copy phone speech bubble' }
-              = image_tag 'svg/feature-two-notification.svg', { class: 'feature-two__notification', alt: 'Smartphone notification' }
+              = image_tag 'svg/feature-two-bubble-copy-phone.svg', { class: 'feature-two__bubble-copy-phone js-animation-trigger', alt: 'Copy phone speech bubble', data: { animation: 'hatch', timeout: 500 } }
+              = image_tag 'svg/feature-two-notification.svg', { class: 'feature-two__notification js-animation-trigger', alt: 'Smartphone notification', data: { animation: 'slideDown', timeout: 1200 } }
         .section__column.col-xs-12.col-sm-6
           %h1.section__title.feature__title Smart Clippings
           %p

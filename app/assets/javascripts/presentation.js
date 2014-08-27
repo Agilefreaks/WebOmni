@@ -19,16 +19,11 @@
 //= require jquery.h5validate
 //= require humane-rails
 
-// !IE10 Viewport Fix
-// --------------------------------------------------------------
-if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement('style');
-  msViewportStyle.appendChild(document.createTextNode('@-ms-viewport{ width:auto !important }'));
-  document.getElementsByTagName('head')[0].appendChild(msViewportStyle);
-}
-
 // Global
 var $viewport = $('html body'),
+  $window = $(window),
+  windowHeight = $window.height(),
+  windowHeightPadded = windowHeight / 1.2,
 //  Scroll vars
   lastScrollTop = 0,
   poolingDelay = 250,
@@ -67,7 +62,10 @@ var $viewport = $('html body'),
   $contactForm = $('.js-contact-form'),
   $contactFormNotice = $('.js-contact-notice'),
   $contactFormFields = $('.js-contact-form input, .js-contact-form textarea'),
-  $contactFormContainer = $('.js-contact-form-content');
+  $contactFormContainer = $('.js-contact-form-content'),
+//	Animations cars
+  animationTriggerClass = 'js-animation-trigger',
+  animationDoneClass = 'animated';
 
 var omnipaste = {
 
@@ -120,6 +118,7 @@ var omnipaste = {
     setInterval (function() {
       if (scrollEvent) {
         hasScrolled();
+        omnipaste.animations();
         scrollEvent = false;
       }
     }, poolingDelay);
@@ -185,7 +184,7 @@ var omnipaste = {
   scrollToSection: function () {
 
     $sectionAction.on('click', function(e) {
-      var sectionID = $(this).attr('data-id');
+      var sectionID = $(this).data('id');
 
       // Scroll
       omnipaste.scrollToID(sectionID);
@@ -198,7 +197,7 @@ var omnipaste = {
   sectionToggle: function () {
     // Section Toggle
     $dropdownAction.on('click', function (e) {
-      var $dropdownID = $('#' + $(this).attr('data-id'));
+      var $dropdownID = $('#' + $(this).data('id'));
 
       $dropdownID.toggleClass(dropdownActiveClass);
       $bodyTrigger.toggleClass(dropdownBodyClass);
@@ -224,7 +223,7 @@ var omnipaste = {
   video: function () {
     // Video Play
     $videoToggle.on('click', function (e) {
-      var videoAction	= $(this).attr("data-action");
+      var videoAction	= $(this).data("action");
 
       // Make sure dropdown is closed
       $dropdown.removeClass(dropdownActiveClass);
@@ -236,7 +235,6 @@ var omnipaste = {
 
       if (videoAction == 'play') {
         $videoPlayerObject.play();
-        _gaq.push('_trackEvent', 'Presentation', 'video play');
       } else {
         $videoPlayerObject.pause();
         $videoPlayerObject.currentTime = 0;
@@ -359,6 +357,27 @@ var omnipaste = {
       }
       // Prevent actual form submit
       e.preventDefault();
+    });
+  },
+  animations: function() {
+    var hasScrolled = $window.scrollTop(),
+      $notAnimated = $('.' + animationTriggerClass + ":not('."+ animationDoneClass +"')");
+
+    $notAnimated.each(function () {
+      var $this = $(this),
+        animationOffset = $this.offset().top,
+        animationTimeout = parseInt($this.data('timeout'),10),
+        animationName = $this.data('animation');
+
+      if ( hasScrolled + windowHeightPadded > animationOffset) {
+        if (animationTimeout) {
+          setTimeout(function(){
+            $this.addClass(animationDoneClass + ' ' + animationName);
+          }, animationTimeout);
+        } else {
+          $this.addClass(animationDoneClass + ' ' + animationName);
+        }
+      }
     });
   }
 };

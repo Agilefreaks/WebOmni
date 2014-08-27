@@ -9,6 +9,6 @@
         .section__column.col-xs-12.col-sm-6
           .feature-three
             .feature-three__container
-              = image_tag 'svg/feature-three-bubble-notification.svg', { class: 'feature-three__bubble-notification', alt: 'Notification speech bubble' }
+              = image_tag 'svg/feature-three-bubble-notification.svg', { class: 'feature-three__bubble-notification js-animation-trigger', alt: 'Notification speech bubble', data: { animation: 'fadeIn', timeout: 1 } }
               = image_tag 'svg/feature-three-main.svg', { class: 'feature-three__main', alt: 'PC screen' }
-              = image_tag 'svg/feature-three-notification.svg', { class: 'feature-three__notification', alt: 'PC notification' }
+              = image_tag 'svg/feature-three-notification.svg', { class: 'feature-three__notification js-animation-trigger', alt: 'PC notification', data: { animation: 'shake', timeout: 800 } }
