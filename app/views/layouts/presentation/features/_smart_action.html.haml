@@ -1,0 +1,22 @@
+%article#feature-smart-action.section.section--bright.section--bright-grey.section--center-content.feature
+  .section__container
+    .container
+      .row
+        .section__column.col-xs-12.col-sm-6
+          .feature-two
+            .feature-two__container
+              = image_tag 'svg/feature-two-bubble-copy-address.svg', { class: 'feature-two__bubble-copy-address', alt: 'Copy address speech bubble' }
+              = image_tag 'svg/feature-two-main.svg', { class: 'feature-two__main', alt: 'Map with phone overlayed on the right' }
+              = image_tag 'svg/feature-two-bubble-copy-phone.svg', { class: 'feature-two__bubble-copy-phone', alt: 'Copy phone speech bubble' }
+              = image_tag 'svg/feature-two-notification.svg', { class: 'feature-two__notification', alt: 'Smartphone notification' }
+        .section__column.col-xs-12.col-sm-6
+          %h1.section__title.feature__title Smart Clippings
+          %p
+            Want to make a reservation and then meet a friend? Comfortably search for venue details on your large device (PC or tablet).
+          %p
+            %i.icon.icon__arrowhead--double-left
+            Copy a phone number, go to your phone and tap call to begin dialing.
+          %p
+            %i.icon.icon__arrowhead--double-left
+            Copy a street address, go to your phone and tap navigate to open your navigation and reach a place.
+          = render partial: 'layouts/presentation/features/buttons', locals: { what_else_link: 'feature-notifications' }

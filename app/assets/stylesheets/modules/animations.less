@@ -1,0 +1,50 @@
+// 
+// Name: CSS Animations
+// Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
+//
+
+// CSS Animations
+
+/* ! Animations */
+/* ==|========================================================================= */
+
+// FadeIn
+.fadeIn(@delay: 0) {
+	.animation-delay(@delay);
+	.animation-name(fadeIn);
+	.animation-duration(1.5s);
+	.animation-fill-mode(forwards);
+	.transition-timing-function(ease-in-out);
+}
+//.keyframes(~'fadeIn, 0% { transform: scale(0); opacity: 0.0; } 60% { transform: scale(1.1); } 80% { transform: scale(0.9); opacity: 1; } 100% { transform: scale(1); opacity: 1; }');
+
+// Hatch
+.hatch(@delay: 0) {
+	.animation-delay(@delay);
+	.animation-name(hatch);
+	.animation-duration(1.5s);
+	.animation-fill-mode(forwards);
+	.transition-timing-function(ease-in-out);
+}
+//.keyframes(~'hatch, 0% { transform: rotate(0deg) scaleY(0.6); } 20% { transform: rotate(-2deg) scaleY(1.05); opacity: 1;} 35% { transform: rotate(2deg) scaleY(1); opacity: 1;} 50% { transform: rotate(-2deg); opacity: 1;} 65% { transform: rotate(1deg); opacity: 1;} 80% { transform: rotate(-1deg); opacity: 1;} 100% { transform: rotate(0deg); opacity: 1;}');
+
+// SlideDown
+.slideDown(@delay: 0) {
+	.animation-delay(@delay);
+	.animation-name(slideDown);
+	.animation-duration(1s);
+	.animation-fill-mode(forwards);
+	.transition-timing-function(ease-in-out);
+}
+//.keyframes(~'slideDown, 0% { transform: translate(0,0); opacity: 0; } 100% { transform: translate(0, 65px); opacity: 1;}');
+
+//  Shake
+.shake(@delay: 0) {
+	.animation-delay(@delay);
+	.animation-name(shake);
+	.animation-duration(1s);
+	.animation-fill-mode(forwards);
+	.transition-timing-function(linear 1s 1 alternate);
+}
+//.keyframes(~'shake, 0% { transform: translate(0, 0); opacity: 0; } 10% { transform: translate(-1px, 0px); opacity: 1;} 20% { transform: translate(-1px, 0px); opacity: 1;} 30% { transform: translate(3px, 0px); opacity: 1;} 40% { transform: translate(-2px, 0px); opacity: 1;} 50% { transform: translate(3px, 0px); opacity: 1;} 60% { transform: translate(-3px, 0px); opacity: 1;} 70% { transform: translate(2px, 0px); opacity: 1;} 80% { transform: translate(-2px, 0px); opacity: 1;} 90% { transform: translate(3px, 0px); opacity: 1;} 100% { transform: translate(0px, 0px); opacity: 1;}');
+

@@ -1,0 +1,7 @@
+.section__button.section__button--page.align-center
+  - if user_signed_in?
+    = link_to "Okay, let's install it", download_path(user_signed_in?), { class: 'button button--orange button--orange-feature', title: 'Install Omnipaste' }
+  - else
+    = link_to "Okay, let's install it", '#sign-up', { class: 'button button--orange button--orange-feature js-toggle-dropdown', title: 'Install Omnipaste', data: { id: 'sign-up' } }
+
+  = link_to 'What else is there?', "##{what_else_link}", { class: 'button button--transparent button--transparent-feature js-goto-section', title: 'Go to next feature', data: { id: what_else_link } }

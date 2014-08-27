@@ -1,4 +1,4 @@
-%header
+%header.section__header
   %h1.section__title Get in touch with us
   %h2.section__subtitle We’ll be happy to hear your thoughts on our app.
 = form_for Contact.new, remote: true, method: :post, html: { class: 'form js-contact-form', novalidate: '', spellcheck: 'false' } do |f|

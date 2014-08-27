@@ -1,6 +1,6 @@
 .col-xs-12.col-sm-5.col-sm-offset-1.col-md-4.col-md-offset-2
   .section__button
-    = link_to 'Get Omnipaste', download_path(user_signed_in?), { class: 'button button--orange button--right', title: 'Get omnipaste' }
+    = link_to 'Get Omnipaste for free', download_path(user_signed_in?), { class: 'button button--orange button--right', title: 'Get omnipaste' }
 .col-xs-12.col-sm-5.col-md-4
   = link_to 'Get Authorization Code', authorization_codes_path, { class: 'button button--transparent button--transparent-hero button--left js-get-auth-code', title: 'Get Authorization Code', remote: true, method: :post }
 

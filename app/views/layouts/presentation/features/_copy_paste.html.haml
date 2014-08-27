@@ -1,0 +1,15 @@
+%article#feature-copy-paste.section.section--bright.section--center-content.feature
+  .section__container
+    .container
+      .row
+        .section__column.col-xs-12.col-sm-6
+          %h1.section__title.feature__title Copy/Pasting Text
+          %p Read a good passage on the Internet and want to share it with a friend? With Omnipaste, your PC and your phone now share a clipboard. Just copy on one and paste on another.
+          = render partial: 'layouts/presentation/features/buttons', locals: { what_else_link: 'feature-smart-action' }
+        .section__column.col-xs-12.col-sm-6
+          .feature-one
+            .feature-one__container
+              = image_tag 'svg/feature-one-bubble-copy.svg', { class: 'feature-one__bubble-copy', alt: 'Copy speech bubble' }
+              = image_tag 'svg/feature-one-main.svg', { class: 'feature-one__main', alt: 'Webpage with phone overlayed on the right' }
+              = image_tag 'svg/feature-one-bubble-paste.svg', { class: 'feature-one__bubble-paste', alt: 'Paste speech bubble' }
+              = image_tag 'svg/feature-one-paste-text.svg', { class: 'feature-one__text-paste', alt: 'Copy  pasted text' }

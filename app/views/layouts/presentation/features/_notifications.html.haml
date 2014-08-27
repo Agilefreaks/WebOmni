@@ -1,0 +1,14 @@
+%article#feature-notifications.section.section--bright.section--center-content.feature
+  .section__container
+    .container
+      .row
+        .section__column.col-xs-12.col-sm-6
+          %h1.section__title.feature__title Notifications
+          %p You got your phone in your bag and it’s on mute? Don’t worry, Omnipaste will let you know somebody is calling. It will also display incoming messages.
+          = render partial: 'layouts/presentation/features/buttons', locals: { what_else_link: 'faq' }
+        .section__column.col-xs-12.col-sm-6
+          .feature-three
+            .feature-three__container
+              = image_tag 'svg/feature-three-bubble-notification.svg', { class: 'feature-three__bubble-notification', alt: 'Notification speech bubble' }
+              = image_tag 'svg/feature-three-main.svg', { class: 'feature-three__main', alt: 'PC screen' }
+              = image_tag 'svg/feature-three-notification.svg', { class: 'feature-three__notification', alt: 'PC notification' }

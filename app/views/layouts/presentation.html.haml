@@ -63,19 +63,25 @@
             .row
               .col-xs-12
                 .section__button.section__button--hero
-                  %a.button.button--text.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
+                  = link_to '#feature-copy-paste', { class: 'button button--text js-goto-section', title: 'Learn more', data: { id: 'feature-copy-paste' } } do
                     Learn more
                     %i.icon.icon__arrowhead--double-down
 
     %main#main.main
+      = render partial: 'layouts/presentation/features/copy_paste'
+
+      = render partial: 'layouts/presentation/features/smart_action'
+
+      = render partial: 'layouts/presentation/features/notifications'
+
       = render partial: 'layouts/presentation/faq'
 
-      %article#partners.section.partners
+      %article#partners.section.partners.section--center
         .section__container
           .container
             .row
-              .col-xs-12
-                %p.align-center Companies we partner with
+              .section__header.col-xs-12
+                %p Companies we partner with
             .row
               .partners__logos.col-xs-12.col-sm-6.col-md-3
                 %img{:alt => 'Softlayer Logo', :height => '70', :src => image_path('logos/logo-softlayer.png'), :width => '170'}
