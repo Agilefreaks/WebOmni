@@ -20,7 +20,7 @@
 //= require humane-rails
 
 // Global
-var $viewport = $('html body'),
+var $viewport = $('html, body'),
   $window = $(window),
   windowHeight = $window.height(),
   windowHeightPadded = windowHeight / 1.2,
@@ -177,7 +177,9 @@ var omnipaste = {
 
     $menuContent.removeClass(mobileMenuActiveClass);
 
-    $viewport.animate({ scrollTop: targetOffset }, scrollDelay);
+    $viewport.stop().animate({ scrollTop: targetOffset }, scrollDelay).delay('1500', function() {
+      window.location.hash = '#'+ id;
+    });
 
   },
   // Scroll to section

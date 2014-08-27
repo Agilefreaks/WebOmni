@@ -144,6 +144,7 @@ p {
     }
   }
   &--hidden {
+    top: -100 * @rem;
     .transform(translate(0, -100 * @rem));
     .transition(transform 0.3s, background 0.3s);
   }
