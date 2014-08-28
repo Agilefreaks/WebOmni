@@ -63,7 +63,7 @@ WebOmni::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {:host => 'https://www1.omnipasteapp.com'}
+  config.action_mailer.default_url_options = {:host => 'https://www.omnipasteapp.com'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
 
@@ -85,7 +85,7 @@ WebOmni::Application.configure do
   GOOGLE_SECRET = 'v9pqN_LsLoe8f0dY2i2a06lk'
 
   # Omniauth
-  OmniAuth.config.full_host = 'https://www1.omnipasteapp.com'
+  OmniAuth.config.full_host = 'https://www.omnipasteapp.com'
 
   # download links
   WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://download.omnipasteapp.com/release/OmnipasteSetup.exe'
