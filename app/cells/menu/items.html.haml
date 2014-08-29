@@ -1,8 +1,8 @@
 %li.header__nav__item
   - if user_signed_in?
-    = link_to 'Get Omnipaste', download_path(user_signed_in?), { title: 'Get omnipaste' }
+    = link_to 'Get Omnipaste', download_path(user_signed_in?), { title: 'Get omnipaste', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::DOWNLOAD}" }
   - else
-    = link_to 'Get Omnipaste', '#sign-up', { class: 'js-toggle-dropdown', title: 'Get Omnipaste', data: { id: 'sign-up' } }
+    = link_to 'Get Omnipaste', '#sign-up', { class: 'js-toggle-dropdown', title: 'Get Omnipaste', data: { id: 'sign-up', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::SIGN_UP}" } }
 %li.header__nav__item
   %a.js-goto-section{"data-id" => "faq", :href => "#faq"} FAQ
 %li.header__nav__item

@@ -62,7 +62,7 @@
             .row
               .col-xs-12
                 .section__button.section__button--hero
-                  = link_to '#feature-copy-paste', { class: 'button button--text js-goto-section', title: 'Learn more', data: { id: 'feature-copy-paste' } } do
+                  = link_to '#feature-copy-paste', { class: 'button button--text js-goto-section', title: 'Learn more', data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'LearnMore' } } do
                     Learn more
                     %i.icon.icon__arrowhead--double-down
 

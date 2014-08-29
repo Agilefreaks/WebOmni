@@ -1,7 +1,19 @@
 .section__button.section__button--feature
   - if user_signed_in?
-    = link_to "Okay, let's install it", download_path(user_signed_in?), { class: 'button button--orange button--orange-feature', title: 'Install Omnipaste' }
+    = link_to "Okay, let's install it",
+              download_path(user_signed_in?),
+              { class: 'button button--orange button--orange-feature',
+                title: 'Install Omnipaste',
+                data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD}" } }
   - else
-    = link_to "Okay, let's install it", '#sign-up', { class: 'button button--orange button--orange-feature js-toggle-dropdown', title: 'Install Omnipaste', data: { id: 'sign-up' } }
+    = link_to "Okay, let's install it",
+              '#sign-up',
+              { class: 'button button--orange button--orange-feature js-toggle-dropdown',
+                title: 'Install Omnipaste',
+                data: { id: 'sign-up', trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::SIGN_UP}" } }
 
-  = link_to 'What else is there?', "##{what_else_link}", { class: 'button button--transparent button--transparent-feature js-goto-section', title: 'Go to next feature', data: { id: what_else_link } }
+  = link_to 'What else is there?',
+            "##{what_else_link}",
+            { class: 'button button--transparent button--transparent-feature js-goto-section',
+              title: 'Go to next feature',
+              data: { id: what_else_link, trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::WHAT_ELSE_IS_THERE}" } }
