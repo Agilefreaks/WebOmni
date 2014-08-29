@@ -146,8 +146,6 @@
       };
 
       if (urlParam('download')) {
-        _gaq.push(['_trackEvent', 'Presentation', 'download'])
-
         var destination = "#{windows_client_downloads_path}";
         setTimeout("window.location='" + destination + "'", 3000);
 
