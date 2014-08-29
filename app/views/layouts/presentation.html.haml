@@ -13,7 +13,6 @@
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
     = render partial: 'layouts/google'
-    = render partial: 'layouts/google_tracking'
 
   %body#home.body.js-body-action.omni-video__overlay
     %header.header
@@ -147,7 +146,7 @@
       };
 
       if (urlParam('download')) {
-        _gaq.push('_trackEvent', 'Presentation', 'download')
+        _gaq.push(['_trackEvent', 'Presentation', 'download'])
 
         var destination = "#{windows_client_downloads_path}";
         setTimeout("window.location='" + destination + "'", 3000);
