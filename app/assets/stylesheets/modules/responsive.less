@@ -12,13 +12,49 @@
 @media @650h {
   html { font-size: 85% }
 }
+@media @520h {
+             .section--fit-viewport { height: auto; }
+           }
 
 @media @320h {
+             html { font-size: 85% }
              .founders {
-               margin-top: -240 * @rem;
+               margin-top: -220 * @rem;
                padding: 20 * @rem 0;
              }
            }
+
+@media @2600w {
+              html { font-size: 150% };
+              .container { width: 1700px; }
+            }
+
+@media @1800w {
+              html { font-size: 130% };
+              .container { width: 1600px; }
+            }
+
+@media @1600w {
+              html { font-size: 120%;}
+              .container { width: 1400px; }
+            }
+
+@media @1500w {
+              html { font-size: 115%; }
+              .container { width: 1200px; }
+            }
+
+
+@media @1360w {
+              html { font-size: 100%; }
+            }
+
+@media @1140w {
+
+              .feature {
+                font-size: 90%;
+              }
+            }
 
 @media @1100w {
               .feature {
@@ -30,7 +66,7 @@
 
              .feature {
                &__content {
-                 font-size: 88%;
+                 font-size: 83%;
                }
              }
            }
@@ -129,10 +165,17 @@
              .faq {
                min-height: 850 * @rem;
              }
+             .contact {
+               min-height: 850 * @rem;
+
+             }
              .founders {
+               margin-top: -240 * @rem;
+               padding: 20 * @rem 0;
+
                &__left, &__right {
-                 width: 320 * @rem;
-                 margin: 0 auto;
+                 text-align: center;
+                 .founders__contact { text-align: left; }
                }
              }
            }
@@ -162,11 +205,6 @@
                margin-top: -240 * @rem;
                padding: 20 * @rem 0;
 
-               &__left, &__right {
-                 width: 320 * @rem;
-                 margin: 0 auto;
-               }
-
              }
 
            }
@@ -177,7 +215,7 @@
 
   .founders {
     padding: 20 * @rem 0;
-    margin-top: -275 * @rem;
+    margin-top: -220 * @rem;
   }
 }
 
@@ -190,13 +228,8 @@
              .contact { padding: 20 * @rem 0 320 * @rem 0; }
 
              .founders {
-               margin-top: -285 * @rem;
+               margin-top: -220 * @rem;
                padding: 20 * @rem 0;
-
-               &__left, &__right {
-                 width: 320 * @rem;
-                 margin: 0 auto;
-               }
 
              }
            }
