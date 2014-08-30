@@ -29,11 +29,12 @@ gem 'therubyracer'
 
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
-gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'modernizr-rails'
 
 gem 'gravtastic'
+
+gem 'sitemap_generator'
 
 group :development do
   gem 'quiet_assets'
