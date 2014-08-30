@@ -50,6 +50,9 @@ var omnipaste = {
 
   init: function() {
 
+    // Fix for viewport units for mobile safari
+    viewportUnitsBuggyfill.init();
+
     // Open in new window links with rel=external code
     omnipaste.externalLink();
 

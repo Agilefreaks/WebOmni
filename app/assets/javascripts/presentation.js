@@ -17,6 +17,7 @@
 //= require jquery.cookie
 //= require jquery.placeholder
 //= require jquery.h5validate
+//= require viewport-units-buggyfill
 //= require humane-rails
 //= require pages
 //= require track_event
