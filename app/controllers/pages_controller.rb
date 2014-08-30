@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :authenticate!, only: :call
 
   def welcome
     render (user_signed_in? ? :welcome_signed_in : :welcome), layout: 'presentation'

@@ -18,6 +18,7 @@ WebOmni::Application.routes.draw do
   end
 
   post 'call', as: :call, to: 'pages#call'
+  get 'call', to: 'pages#call'
 
   get 'tos', to: 'pages#tos', as: :tos
 end
