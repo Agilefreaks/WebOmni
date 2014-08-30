@@ -24,9 +24,9 @@
             %a.animate.animate--swirll.omni-video__close.js-omni-video-toggle{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "Close video"}
               %i.icon.icon__close
             %video.omni-video__player.js-omni-video-player
-              %source{:src => asset_path('omnipaste.mp4', type: :media), :type => "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\""}
-                %source{:src => asset_path('omnipaste.webm', type: :media), :type => "video/webm; codecs=\"vp8, vorbis\""}
-                  %source{:src => asset_path('assets/media/omnipaste.ogv', type: :media), :type => "video/ogg; codecs=\"theora, vorbis\""}
+              %source{:src => 'http://download.omnipasteapp.com/assets/omnipaste.mp4', :type => "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\""}
+              %source{:src => 'http://download.omnipasteapp.com/assets/omnipaste.webm', :type => "video/webm; codecs=\"vp8, vorbis\""}
+              %source{:src => 'http://download.omnipasteapp.com/assets/omnipaste.ogv', :type => "video/ogg; codecs=\"theora, vorbis\""}
             %input.omni-video__seek.js-omni-video-seek{:type => 'range', :value => '0'}
 
         .header__meta.section__container.js-header-nav-content
