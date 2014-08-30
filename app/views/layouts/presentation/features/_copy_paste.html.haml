@@ -2,11 +2,7 @@
   .section__container
     .container
       .row
-        .section__column.col-xs-12.col-sm-6
-          %h1.section__title.feature__title Copy/Pasting Text
-          %p Read a good passage on the Internet and want to share it with a friend? With Omnipaste, your PC and your phone now share a clipboard. Just copy on one and paste on another.
-          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-copy-paste', what_else_link: 'feature-smart-action' }
-        .section__column.col-xs-12.col-sm-6
+        .section__column.col-xs-12.col-sm-6.col-sm-push-6
           .feature__content
             .feature__container
               = image_tag 'svg/feature-one-bubble-copy.svg', { class: 'feature-one__bubble-copy js-animation-trigger', alt: 'Copy speech bubble', data: { animation: 'fadeIn', timeout: 500 } }
@@ -14,3 +10,7 @@
               = image_tag 'svg/feature-one-bubble-paste.svg', { class: 'feature-one__bubble-paste js-animation-trigger', alt: 'Paste speech bubble', data: { animation: 'fadeIn', timeout: 1000 } }
               = image_tag 'svg/feature-one-arrow.svg', { class: 'feature-one__arrow js-animation-trigger', alt: 'Arrow', data: { animation: 'fadeIn', timeout: 1000 } }
               = image_tag 'svg/feature-one-paste-text.svg', { class: 'feature-one__text-paste js-animation-trigger', alt: 'Copy  pasted text', data: { animation: 'fadeIn', timeout: 1000 } }
+        .section__column.col-xs-12.col-sm-6.col-sm-pull-6
+          %h1.section__title.feature__title Copy/Pasting Text
+          %p Read a good passage on the Internet and want to share it with a friend? With Omnipaste, your PC and your phone now share a clipboard. Just copy on one and paste on another.
+          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-copy-paste', what_else_link: 'feature-smart-action' }
