@@ -1,17 +1,13 @@
 class AuthorizationCodesController < ApplicationController
   include Devise::Controllers::Helpers
 
-  before_action :authenticate!
-
-  respond_to :js, only: [:create]
-
   def new
-    @authorization_code = create_authorization_code(current_user)
-    render :new, layout: 'presentation'
-  end
-
-  def create
-    @authorization_code = create_authorization_code(current_user)
+    if user_signed_in?
+      @authorization_code = create_authorization_code(current_user)
+      render :new, layout: 'presentation'
+    else
+      redirect_to user_omniauth_authorize_path(:google_oauth2, origin: new_authorization_codes_path)
+    end
   end
 
   private
