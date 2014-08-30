@@ -35,7 +35,7 @@ module WebOmni
     end
 
     config.assets.initialize_on_precompile = false
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts') << Rails.root.join('app', 'assets', 'media')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += %w( .svg .eot .woff .ttf
                                     presentation.js presentation.css
                                     browser.update.js)
