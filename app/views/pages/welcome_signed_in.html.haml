@@ -9,7 +9,8 @@
   = link_to 'Get Authorization Code',
             new_authorization_codes_path,
             { class: 'button button--transparent button--transparent-hero button--left js-get-auth-code',
-              title: 'Get Authorization Code' }
+              title: 'Get Authorization Code',
+              data: { disable_with: 'Generating' } }
 
 = content_for :header do
   .row
