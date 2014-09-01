@@ -3,8 +3,7 @@ class AuthorizationCodesController < ApplicationController
 
   def new
     if user_signed_in?
-      @authorization_code = create_authorization_code(current_user)
-      render :new, layout: 'presentation'
+      create_authorization_code(current_user)
     else
       redirect_to user_omniauth_authorize_path(:google_oauth2, origin: new_authorization_codes_path)
     end
@@ -13,7 +12,10 @@ class AuthorizationCodesController < ApplicationController
   private
 
   def create_authorization_code(current_user)
-    CreateAuthorizationCode.for(current_user.id)
+    @authorization_code = CreateAuthorizationCode.for(current_user.id)
+    respond_to do |format|
+      format.html { render layout: 'presentation' }
+    end
   rescue ActiveResource::ServerError => _
     sign_out(User)
 
@@ -22,7 +24,6 @@ class AuthorizationCodesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { js_redirect_to(root_path) }
     end
   end
 end
