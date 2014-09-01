@@ -300,26 +300,6 @@ var omnipaste = {
         url;
 
       if ( result === true ) {
-        // Serialize contact data
-        data = $(this).serialize();
-        // Get URL from action
-        url = $(this).attr('action');
-
-        // Send request
-        $.ajax({
-          url: url,
-          data: data,
-          type: 'post',
-          success: function(msg) {
-
-            // Place error message in notice
-            //$contactFormNotice.html(msg);
-
-            // Push Google Analytics event
-            //_gaq.push(['_trackEvent', 'Contact', 'Contact request', 'Contact sent!']);
-          }
-        });
-
         // Fade out & display message
         $contactFormContainer.fadeOut(800);
 
@@ -342,6 +322,7 @@ var omnipaste = {
       e.preventDefault();
     });
   },
+
   animations: function() {
     var hasScrolled = $window.scrollTop(),
       $notAnimated = $('.' + animationTriggerClass + ":not('."+ animationDoneClass +"')");

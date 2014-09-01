@@ -5,7 +5,7 @@ class ContactMailer < BaseMailer
     @message = contact.message
 
     mail({
-             subject: "#{contact.name} has something to tell you",
+             subject: "#{contact.name} with #{contact.email} has something to tell you",
              from: 'Calin <calin@omnipasteapp.com>',
              to: 'team@omnipasteapp.com'
          })
