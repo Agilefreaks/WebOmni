@@ -27,6 +27,8 @@ html {
 body {
   .default-text();
   height: 100%;
+  // Fix for Crome bug https://code.google.com/p/chromium/issues/detail?id=319623
+  font-size: 1em;
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: @default-font-family; }
