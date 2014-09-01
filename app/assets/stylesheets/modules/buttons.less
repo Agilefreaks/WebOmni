@@ -30,9 +30,11 @@
       color: rgba(0,0,0, .4);
     }
     &-feature {
+      padding: 15 * @em 30 * @em;
       vertical-align: middle;
       margin-top: 10 * @rem;
       font-size: 16 * @rem;
+      .border-radius(30 * @em);
     }
   }
   &--transparent {
@@ -66,10 +68,11 @@
     &-feature {
       vertical-align: middle;
       margin-top: 10 * @rem;
-      padding: 15 * @rem 30 * @rem 11 * @rem;
+      padding: 13 * @em 30 * @em 13 * @em;
       border-color: @color-lighter-grey;
       color: @color-dark-grey;
       font-weight: 500;
+      .border-radius(30 * @em);
 
       &:hover {
         background-color: @color-grey;
@@ -102,7 +105,7 @@
   &--play {
     .border-radius(50%);
     border: 4px solid  @color-bright;
-    padding: 0 0 0 3 * @rem;
+    padding: 0 0 0 2 * @rem;
     text-align: center;
     line-height: 1 * @rem;
     .background-clip(border-box);
