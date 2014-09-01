@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe AuthorizationCodesController do
-  describe "POST 'create'" do
+  describe "GET 'new'" do
     include_context :logged_in_as_user
 
-    subject { xhr :post, :create }
+    subject { get :new }
 
     it 'will call create on AuthorizationCode' do
       expect(CreateAuthorizationCode).to receive(:for).with(current_user.id)
