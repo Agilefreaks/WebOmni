@@ -206,15 +206,22 @@
              }
 
            }
-@media @iPhone-portrait {
-  html { font-size: 75%; }
-
-  .contact { padding: 20 * @rem 0 320 * @rem 0; }
-
-  .founders {
-    padding: 20 * @rem 0;
-    margin-top: -220 * @rem;
+@media @iPad-portrait {
+  .header {
+    height: auto;
+    min-height: 500 * @rem;
   }
+  .section--fit-viewport { height: 100%; }
+  .omni-video--active { height: 100%; }
+}
+
+@media @iPad-landscape {
+  .header {
+    height: auto;
+    min-height: 500 * @rem;
+  }
+  .section--fit-viewport { height: 100%; }
+  .omni-video--active { height: 100%; }
 }
 
 @media @320w {
@@ -231,3 +238,50 @@
 
              }
            }
+
+@media @iPhone4-portrait {
+  html { font-size: 70%; }
+  .section__play { margin-bottom: 20 * @rem; }
+  .section__button--hero { margin-top: 0; }
+  .contact { padding: 20 * @rem 0 320 * @rem 0; }
+  .section--fit-viewport { height: 100%; }
+  .header {
+    height: auto;
+  }
+  .omni-video--active { height: 100%; }
+
+  .founders {
+    padding: 20 * @rem 0;
+    margin-top: -230 * @rem;
+  }
+}
+@media @iPhone-portrait {
+  html { font-size: 70%; }
+  .section__play { margin-bottom: 10 * @rem; }
+  .section__button--hero { margin-top: 0; }
+  .contact { padding: 20 * @rem 0 320 * @rem 0; }
+  .section--fit-viewport { height: 100%; }
+  .header {
+    height: auto;
+    min-height: 568 * @rem;
+  }
+  .omni-video--active { height: 100%; }
+
+  .founders {
+    padding: 20 * @rem 0;
+    margin-top: -230 * @rem;
+  }
+}
+
+@media @iPhone-landscape {
+  .section--fit-viewport { height: 100%; }
+  .header {
+    height: 100%;
+    min-height: 610 * @rem;
+  }
+  .omni-video--active { height: 100%; }
+
+  .founders {
+    margin-top: -230 * @rem;
+  }
+}
