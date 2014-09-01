@@ -5,7 +5,7 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %meta{content: "", name: "description"}/
     %meta{content: "", name: "author"}/
-    %link{href: "../../assets/favicon.ico", rel: "shortcut icon"}/
+    = favicon_link_tag 'favicon.ico'
     %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
     = favicon_link_tag
     = stylesheet_link_tag 'application', :media => 'all'
