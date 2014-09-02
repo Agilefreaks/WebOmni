@@ -1,10 +1,11 @@
 require 'open-uri'
 
 class DownloadsController < ApplicationController
-  before_action :authenticate!, except: :android_client
-
   def new
-    NotificationsMailer.welcome(current_user.id).deliver
+    if user_signed_in?
+      NotificationsMailer.welcome(current_user.id).deliver
+    end
+
     redirect_to root_url(download: true)
   end
 
