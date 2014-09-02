@@ -152,8 +152,10 @@
       };
 
       if (urlParam('download')) {
-        var destination = "#{windows_client_downloads_path}";
-        setTimeout("window.location='" + destination + "'", 3000);
+        if (#{user_signed_in? ? 'true' : 0}) {
+          var destination = "#{windows_client_downloads_path}";
+          setTimeout("window.location='" + destination + "'", 3000);
+        }
 
         var dropdownActiveClass	= 'dropdown--open';
         var dropdownBodyClass = 'dropdown--action';

@@ -8,8 +8,8 @@
     = favicon_link_tag 'favicon.ico'
     %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
     = favicon_link_tag
-    = stylesheet_link_tag 'application', :media => 'all'
-    = javascript_include_tag :modernizr
+    -#= stylesheet_link_tag 'application', :media => 'all'
+    -#= javascript_include_tag :modernizr
     = csrf_meta_tag
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
@@ -21,4 +21,4 @@
           = yield
 
     -# load the manifest file
-    = javascript_include_tag 'application'
+    -#= javascript_include_tag 'application'
