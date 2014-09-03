@@ -10,6 +10,8 @@ class DownloadsController < ApplicationController
   end
 
   def windows_client
+    redirect_to root_url(download: true) and return unless user_signed_in?
+
     @authorization_code = CreateAuthorizationCode.for(current_user)
     data = open(WINDOWS_CLIENT_DOWNLOAD_LINK)
     filename = File.basename(WINDOWS_CLIENT_DOWNLOAD_LINK, ".*")

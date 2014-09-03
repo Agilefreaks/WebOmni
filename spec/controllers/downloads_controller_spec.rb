@@ -26,4 +26,15 @@ describe DownloadsController do
     end
 
   end
+
+  describe "GET 'windows_client'" do
+    subject { get :windows_client }
+
+    context 'when there is no user logged in' do
+      it 'will redirect to the root page' do
+        subject
+        expect(response).to redirect_to(root_url(download: true))
+      end
+    end
+  end
 end
