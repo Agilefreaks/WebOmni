@@ -54,7 +54,9 @@
                   %br/
                   devices. Get Omnipaste and redefine your multidevice experience.
                 .section__play
-                  = link_to '#omni-video', { class: 'button button--play js-omni-video-toggle', title: 'Play video', data: { id: 'omni-video', action: 'play' } } do
+                  = link_to '#omni-video', { class: 'button button--play js-omni-video-toggle',
+                                             title: 'Play video',
+                                             data: { id: 'omni-video', action: 'play', trackEvent: true } } do
                     %i.icon.icon__play
                   %span See the video
             .row
