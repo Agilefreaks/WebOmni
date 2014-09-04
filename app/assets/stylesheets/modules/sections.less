@@ -1,12 +1,12 @@
 // 
-// Name: Less Section Styles
+// Name: Sections
 // Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
 //
 
-// Section
+// Sections
 
 
-/* !Section */
+/* !Sections */
 /* ==|========================================================================= */
 .section {
   position: relative;
@@ -496,11 +496,32 @@
       position: relative;
       z-index: 2;
       display: inline-block;
+      margin: 10 * @rem 60 * @rem 0 0;
+
+      &:last-child { margin-right: 0; }
     }
-    img {
-      //			height: auto;
-      //			width: 100%;
-    }
+  }
+  &__softlayer {
+    width: 164 * @rem;
+    height: 27 * @rem;
+  }
+  &__lisbon-challenge {
+    width: 92 * @rem;
+    height: 51 * @rem;
+  }
+  &__agile-freaks {
+    width: 179 * @rem;
+    height: 49 * @rem;
+
+  }
+  &__hub-raum {
+    width: 164 * @rem;
+    height: 27 * @rem;
+
+  }
+  &__soap {
+    width: 80 * @rem;
+    height: 60 * @rem;
   }
 }
 
