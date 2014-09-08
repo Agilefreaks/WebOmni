@@ -1,18 +1,44 @@
-Howdy,
-%p
-  We are glad to send this email to you. Use it to install Omnipaste on each of your devices.
-%p
-  For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
-%p
-  = link_to 'Windows installer', url_for(controller: :downloads, action: 'windows_client', only_path: false)
-%p
-  = link_to 'Android Installer', @android_download_url
-#div
-  %p
-    = link_to 'Authorization code', url_for(controller: :authorization_codes, action: 'new', only_path: false)
-%p
-  Take care,
-  Omni Team
-%p
-%p
-  PS: You can contact me by replying to this email
+%tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+  %td{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0;", :valign => "top"}
+    %table.row{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 100%; position: relative; display: block; padding: 0px;"}
+      %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+        %td.wrapper.last{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; position: relative; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 10px 0px 0px;", :valign => "top"}
+          %table.twelve.columns{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 580px; margin: 0 auto; padding: 0;"}
+            %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+              %td.text-pad{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0px 10px 10px;", :valign => "top"}
+                %h1.text-title{:align => "left", :style => "color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 500; text-align: left; line-height: 23px; word-break: normal; font-size: 14px; margin: 0; padding: 60px 0 40px;"}
+                  Howdy #{@user.name},
+                %p.text-content{:align => "left", :style => "color: #cac3e5; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; text-align: left; line-height: 23px; font-size: 14px; margin: 0 0 10px; padding: 0;"}
+                  We are glad to send this email to
+                  you. Use it to install Omnipaste on each of your
+                  devices.
+                  %br/
+                  For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
+              %td.expander{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0;", :valign => "top"}
+    %table.row.buttons{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 100%; position: relative; display: block; padding: 0px;"}
+      %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+        %td.wrapper{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; position: relative; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 10px 20px 0px 0px;", :valign => "top"}
+          %table.six.columns{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 280px; margin: 0 auto; padding: 0;"}
+            %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+              %td.text-pad{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0px 10px 10px;", :valign => "top"}
+                %a.button-image{:href => "#{url_for(controller: :downloads, action: 'windows_client', only_path: false)}", :style => "color: #2ba6cb; text-decoration: none; display: block; width: 185px; height: 40px; text-align: center; margin: 0 auto;", :title => "Download Windows Client"}
+                  %img.button-image{:align => "left", :alt => "button-windows", :height => "40", :src => image_url('mailers/button-windows.png'), :style => "outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: 185px; max-width: 100%; float: left; clear: both; display: block; height: 40px; text-align: center; margin: 0 auto; border: none;", :width => "185"}/
+                %span.button-text{:style => "display: block; color: #cac3e5; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 12px; line-height: 23px; text-align: center;"} Vista, 7, 8, 8.1 and .net 4.5
+              %td.expander{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0;", :valign => "top"}
+        %td.wrapper.last{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; position: relative; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 10px 0px 0px;", :valign => "top"}
+          %table.six.columns{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 280px; margin: 0 auto; padding: 0;"}
+            %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+              %td.text-pad-left{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0px 0px 10px 10px;", :valign => "top"}
+                %a.button-image{:href => "#{@android_download_url}", :style => "color: #2ba6cb; text-decoration: none; display: block; width: 185px; height: 40px; text-align: center; margin: 0 auto;", :title => "Download Android Client"}
+                  %img{:align => "left", :alt => "button-android", :height => "40", :src => image_url('mailers/button-android.png'), :style => "outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block; border: none;", :width => "185"}/
+                %span.button-text{:style => "display: block; color: #cac3e5; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 12px; line-height: 23px; text-align: center;"} min version 4.1
+              %td.expander{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0;", :valign => "top"}
+    %table.row.buttons.body-last{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 100%; position: relative; display: block; margin-bottom: 20px; padding: 0px;"}
+      %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+        %td.wrapper{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; position: relative; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 10px 20px 0px 0px;", :valign => "top"}
+          %table.six.columns{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 280px; margin: 0 auto; padding: 0;"}
+            %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
+              %td.text-pad{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0px 10px 10px;", :valign => "top"}
+                %a.button-image{:href => "#{url_for(controller: :authorization_codes, action: 'new', only_path: false)}", :style => "color: #2ba6cb; text-decoration: none; display: block; width: 185px; height: 40px; text-align: center; margin: 0 auto;", :title => "Get Authorization Code"}
+                  %img{:align => "left", :alt => "button-authorization-code", :height => "40", :src => image_url('mailers/button-authorization-code.png'), :style => "outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block; border: none;", :width => "185"}/
+              %td.expander{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0;", :valign => "top"}

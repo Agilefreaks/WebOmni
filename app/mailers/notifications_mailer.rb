@@ -9,16 +9,9 @@ class NotificationsMailer < BaseMailer
              subject: 'Welcome to Omnipaste',
              from: 'Calin <calin@omnipasteapp.com>',
              to: @user.email
-         })
-  end
-
-  def invite(email)
-    mail(
-        {
-            subject: 'Stop wasting time by checking your phone every minute',
-            from: 'Calin <calin@omnipasteapp.com>',
-            to: email
-        }
-    )
+         }) do |format|
+      format.html { render template: 'mailers/notifications_mailer/welcome', layout: 'notifications_mailer' }
+      format.text { render template: 'mailers/notifications_mailer/welcome' }
+    end
   end
 end
