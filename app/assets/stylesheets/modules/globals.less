@@ -1,11 +1,11 @@
 // 
-// Name: Less Global Styles
+// Name: Globals
 // Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
 //
 
-// Global
+// Globals
 
-/* !Global Classes */
+/* !Globals */
 /* ==|========================================================================= */
 
 /* Selection Color */
@@ -131,7 +131,10 @@ p {
       }
     }
 
-    a {
+    a, a:focus, a:visited {
+      color: @color-bright;
+      text-decoration: none;
+
       .transition( color 0.2s ease-in-out);
     }
     a:hover, a.current {

@@ -1,209 +1,434 @@
+// 
+// Name: SVG Sprites
+// Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
+// 
+
+
+// !Mustache Template
+// ==|=========================================================================
+
 .svg() {
   background-repeat: no-repeat;
-  background-image: image-url("sprite.svg");
+  background-image: image-url('sprite.svg');
+  background-size: 440 * @rem 5868 * @rem;
 }
 
 .svg-background-download {
-  background-position: 0 0;
+  background-position: 0 * @rem 0 * @rem;
   .svg();
+}
+
+.svg-background-download-dims {
+  width: 385 * @rem;
+  height: 585 * @rem;
 }
 
 .svg-background-omni {
-  background-position: 0 -585px;
+  background-position: 0 * @rem -585 * @rem;
   .svg();
+}
+
+.svg-background-omni-dims {
+  width: 385 * @rem;
+  height: 585 * @rem;
 }
 
 .svg-background-questions {
-  background-position: 0 -1170px;
+  background-position: 0 * @rem -1170 * @rem;
   .svg();
+}
+
+.svg-background-questions-dims {
+  width: 245 * @rem;
+  height: 605 * @rem;
 }
 
 .svg-button-close {
-  background-position: 0 -1775px;
+  background-position: 0 * @rem -1775 * @rem;
   .svg();
+}
+
+.svg-button-close-dims {
+  width: 35 * @rem;
+  height: 35 * @rem;
 }
 
 .svg-button-play {
-  background-position: 0 -1807px;
+  background-position: 0 * @rem -1810 * @rem;
   .svg();
+}
+
+.svg-button-play-dims {
+  width: 50 * @rem;
+  height: 50 * @rem;
 }
 
 .svg-feature-call-copy-address {
-  background-position: 0 -1857px;
+  background-position: 0 * @rem -1860 * @rem;
   .svg();
+}
+
+.svg-feature-call-copy-address-dims {
+  width: 85 * @rem;
+  height: 85 * @rem;
 }
 
 .svg-feature-call-copy-phone {
-  background-position: 0 -1942px;
+  background-position: 0 * @rem -1945 * @rem;
   .svg();
+}
+
+.svg-feature-call-copy-phone-dims {
+  width: 80 * @rem;
+  height: 80 * @rem;
 }
 
 .svg-feature-call-hand {
-  background-position: 0 -2022px;
+  background-position: 0 * @rem -2025 * @rem;
   .svg();
+}
+
+.svg-feature-call-hand-dims {
+  width: 125 * @rem;
+  height: 130 * @rem;
 }
 
 .svg-feature-call-main {
-  background-position: 0 -2152px;
+  background-position: 0 * @rem -2155 * @rem;
   .svg();
+}
+
+.svg-feature-call-main-dims {
+  width: 380 * @rem;
+  height: 280 * @rem;
 }
 
 .svg-feature-copy-paste-arrow {
-  background-position: 0 -2432px;
+  background-position: 0 * @rem -2435 * @rem;
   .svg();
+}
+
+.svg-feature-copy-paste-arrow-dims {
+  width: 60 * @rem;
+  height: 50 * @rem;
 }
 
 .svg-feature-copy-paste-copy {
-  background-position: 0 -2482px;
+  background-position: 0 * @rem -2485 * @rem;
   .svg();
+}
+
+.svg-feature-copy-paste-copy-dims {
+  width: 100 * @rem;
+  height: 100 * @rem;
 }
 
 .svg-feature-copy-paste-main {
-  background-position: 0 -2582px;
+  background-position: 0 * @rem -2585 * @rem;
   .svg();
+}
+
+.svg-feature-copy-paste-main-dims {
+  width: 440 * @rem;
+  height: 325 * @rem;
 }
 
 .svg-feature-copy-paste-paste {
-  background-position: 0 -2907px;
+  background-position: 0 * @rem -2910 * @rem;
   .svg();
+}
+
+.svg-feature-copy-paste-paste-dims {
+  width: 135 * @rem;
+  height: 135 * @rem;
 }
 
 .svg-feature-copy-paste-text {
-  background-position: 0 -3042px;
+  background-position: 0 * @rem -3045 * @rem;
   .svg();
+}
+
+.svg-feature-copy-paste-text-dims {
+  width: 95 * @rem;
+  height: 60 * @rem;
 }
 
 .svg-feature-notifications-incoming {
-  background-position: 0 -3102px;
+  background-position: 0 * @rem -3105 * @rem;
   .svg();
+}
+
+.svg-feature-notifications-incoming-dims {
+  width: 155 * @rem;
+  height: 50 * @rem;
 }
 
 .svg-feature-notifications-main {
-  background-position: 0 -3152px;
+  background-position: 0 * @rem -3155 * @rem;
   .svg();
+}
+
+.svg-feature-notifications-main-dims {
+  width: 335 * @rem;
+  height: 300 * @rem;
 }
 
 .svg-feature-notifications-notify {
-  background-position: 0 -3452px;
+  background-position: 0 * @rem -3455 * @rem;
   .svg();
+}
+
+.svg-feature-notifications-notify-dims {
+  width: 140 * @rem;
+  height: 140 * @rem;
 }
 
 .svg-feature-one-arrow {
-  background-position: 0 -3592px;
+  background-position: 0 * @rem -3595 * @rem;
   .svg();
+}
+
+.svg-feature-one-arrow-dims {
+  width: 60 * @rem;
+  height: 50 * @rem;
 }
 
 .svg-feature-one-bubble-copy {
-  background-position: 0 -3642px;
+  background-position: 0 * @rem -3645 * @rem;
   .svg();
+}
+
+.svg-feature-one-bubble-copy-dims {
+  width: 100 * @rem;
+  height: 100 * @rem;
 }
 
 .svg-feature-one-bubble-paste {
-  background-position: 0 -3742px;
+  background-position: 0 * @rem -3745 * @rem;
   .svg();
+}
+
+.svg-feature-one-bubble-paste-dims {
+  width: 135 * @rem;
+  height: 135 * @rem;
 }
 
 .svg-feature-one-main {
-  background-position: 0 -3877px;
+  background-position: 0 * @rem -3880 * @rem;
   .svg();
+}
+
+.svg-feature-one-main-dims {
+  width: 440 * @rem;
+  height: 325 * @rem;
 }
 
 .svg-feature-one-paste-text {
-  background-position: 0 -4202px;
+  background-position: 0 * @rem -4205 * @rem;
   .svg();
+}
+
+.svg-feature-one-paste-text-dims {
+  width: 95 * @rem;
+  height: 60 * @rem;
 }
 
 .svg-feature-three-bubble-notification {
-  background-position: 0 -4262px;
+  background-position: 0 * @rem -4265 * @rem;
   .svg();
+}
+
+.svg-feature-three-bubble-notification-dims {
+  width: 140 * @rem;
+  height: 140 * @rem;
 }
 
 .svg-feature-three-main {
-  background-position: 0 -4402px;
+  background-position: 0 * @rem -4405 * @rem;
   .svg();
+}
+
+.svg-feature-three-main-dims {
+  width: 335 * @rem;
+  height: 300 * @rem;
 }
 
 .svg-feature-three-notification {
-  background-position: 0 -4702px;
+  background-position: 0 * @rem -4705 * @rem;
   .svg();
+}
+
+.svg-feature-three-notification-dims {
+  width: 155 * @rem;
+  height: 50 * @rem;
 }
 
 .svg-feature-two-bubble-copy-address {
-  background-position: 0 -4752px;
+  background-position: 0 * @rem -4755 * @rem;
   .svg();
+}
+
+.svg-feature-two-bubble-copy-address-dims {
+  width: 85 * @rem;
+  height: 85 * @rem;
 }
 
 .svg-feature-two-bubble-copy-phone {
-  background-position: 0 -4837px;
+  background-position: 0 * @rem -4840 * @rem;
   .svg();
+}
+
+.svg-feature-two-bubble-copy-phone-dims {
+  width: 80 * @rem;
+  height: 80 * @rem;
 }
 
 .svg-feature-two-main {
-  background-position: 0 -4917px;
+  background-position: 0 * @rem -4920 * @rem;
   .svg();
+}
+
+.svg-feature-two-main-dims {
+  width: 380 * @rem;
+  height: 280 * @rem;
 }
 
 .svg-feature-two-notification {
-  background-position: 0 -5197px;
+  background-position: 0 * @rem -5200 * @rem;
   .svg();
+}
+
+.svg-feature-two-notification-dims {
+  width: 125 * @rem;
+  height: 130 * @rem;
 }
 
 .svg-icon-arrowhead-down {
-  background-position: 0 -5327px;
+  background-position: 0 * @rem -5330 * @rem;
   .svg();
+}
+
+.svg-icon-arrowhead-down-dims {
+  width: 12 * @rem;
+  height: 12 * @rem;
 }
 
 .svg-icon-double-arrowhead-down {
-  background-position: 0 -5339px;
+  background-position: 0 * @rem -5342 * @rem;
   .svg();
+}
+
+.svg-icon-double-arrowhead-down-dims {
+  width: 12 * @rem;
+  height: 15 * @rem;
 }
 
 .svg-icon-double-arrowhead-left {
-  background-position: 0 -5354px;
+  background-position: 0 * @rem -5357 * @rem;
   .svg();
+}
+
+.svg-icon-double-arrowhead-left-dims {
+  width: 15 * @rem;
+  height: 15 * @rem;
 }
 
 .svg-icon-facebook {
-  background-position: 0 -5362px;
+  background-position: 0 * @rem -5372 * @rem;
   .svg();
+}
+
+.svg-icon-facebook-dims {
+  width: 30 * @rem;
+  height: 30 * @rem;
 }
 
 .svg-icon-googleplus {
-  background-position: 0 -5388px;
+  background-position: 0 * @rem -5402 * @rem;
   .svg();
+}
+
+.svg-icon-googleplus-dims {
+  width: 30 * @rem;
+  height: 30 * @rem;
 }
 
 .svg-icon-hamburger {
-  background-position: 0 -5414px;
+  background-position: 0 * @rem -5432 * @rem;
   .svg();
+}
+
+.svg-icon-hamburger-dims {
+  width: 28 * @rem;
+  height: 28 * @rem;
+}
+
+.svg-icon-hamburger-close {
+  background-position: 0 * @rem -5460 * @rem;
+  .svg();
+}
+
+.svg-icon-hamburger-close-dims {
+  width: 28 * @rem;
+  height: 28 * @rem;
 }
 
 .svg-icon-linkedin {
-  background-position: 0 -5442px;
+  background-position: 0 * @rem -5488 * @rem;
   .svg();
+}
+
+.svg-icon-linkedin-dims {
+  width: 30 * @rem;
+  height: 30 * @rem;
 }
 
 .svg-icon-twitter {
-  background-position: 0 -5468px;
+  background-position: 0 * @rem -5518 * @rem;
   .svg();
+}
+
+.svg-icon-twitter-dims {
+  width: 30 * @rem;
+  height: 30 * @rem;
 }
 
 .svg-logo {
-  background-position: 0 -5494px;
+  background-position: 0 * @rem -5548 * @rem;
   .svg();
+}
+
+.svg-logo-dims {
+  width: 175 * @rem;
+  height: 50 * @rem;
 }
 
 .svg-step-action {
-  background-position: 0 -5534px;
+  background-position: 0 * @rem -5598 * @rem;
   .svg();
+}
+
+.svg-step-action-dims {
+  width: 115 * @rem;
+  height: 90 * @rem;
 }
 
 .svg-step-download {
-  background-position: 0 -5624px;
+  background-position: 0 * @rem -5688 * @rem;
   .svg();
 }
 
+.svg-step-download-dims {
+  width: 90 * @rem;
+  height: 90 * @rem;
+}
+
 .svg-step-install {
-  background-position: 0 -5714px;
+  background-position: 0 * @rem -5778 * @rem;
   .svg();
+}
+
+.svg-step-install-dims {
+  width: 75 * @rem;
+  height: 90 * @rem;
 }

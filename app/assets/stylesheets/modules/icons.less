@@ -1,5 +1,5 @@
 // 
-// Name: Less Icon Styles
+// Name: Icons
 // Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
 //
 
@@ -9,7 +9,7 @@
 /* ==|========================================================================= */
 .animate {
   .transition( 0.5s cubic-bezier(.27,1.64,.32,.95) );
-  line-height: 1px;
+  line-height: 1 * @rem !important;
   &--swirll{
     &:hover {
       .transform(rotate(90deg));
@@ -25,88 +25,76 @@
   display: inline-block;
 
   &__close {
-    width: 32px;
-    height: 32px;
     .svg-button-close;
+    .svg-button-close-dims;
   }
   &__play {
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 50 * @rem;
+    height: 50 * @rem;
 
     &:after {
       content: "";
       position: absolute;
       width: 0;
       height: 0;
-      top: 13px;
-      left: 16px;
+      top: 13 * @rem;
+      left: 16 * @rem;
       border-style: solid;
-      border-width: 12.5px 0 12.5px 21.7px;
+      border-width: 12.5 * @rem 0 12.5 * @rem 21.7 * @rem;
       border-color: transparent transparent transparent @color-bright;
     }
   }
   &__arrowhead {
 
     &--down {
-      width: 12px;
-      height: 12px;
       .svg-icon-arrowhead-down;
+      .svg-icon-arrowhead-down-dims;
+
     }
     &--double-down {
       display: block;
       margin: 0 auto;
-      width: 12px;
-      height: 15px;
       .svg-icon-double-arrowhead-down;
-
+      .svg-icon-double-arrowhead-down-dims;
     }
     &--double-left {
-      width: 15px;
-      height: 8px;
       .svg-icon-double-arrowhead-left;
+      .svg-icon-double-arrowhead-left-dims;
     }
 
   }
   &__linkedin {
-    width: 26px;
-    height: 26px;
     .svg-icon-linkedin;
+    .svg-icon-linkedin-dims;
   }
   &__googleplus {
-    width: 26px;
-    height: 26px;
     .svg-icon-googleplus;
+    .svg-icon-googleplus-dims;
   }
   &__twitter {
-    width: 26px;
-    height: 26px;
     .svg-icon-twitter;
+    .svg-icon-twitter-dims;
   }
   &__facebook {
-    width: 26px;
-    height: 26px;
     .svg-icon-facebook;
+    .svg-icon-facebook-dims;
   }
 
   &__step-action {
-    width: 115px;
-    height: 90px;
     .svg-step-action;
+    .svg-step-action-dims;
   }
   &__step-download {
-    width: 90px;
-    height: 90px;
     .svg-step-download;
+    .svg-step-download-dims;
   }
   &__step-install {
-    width: 75px;
-    height: 90px;
-    .svg-step-install
+    .svg-step-install;
+    .svg-step-install-dims;
   }
   &__hamburger {
-    width: 28px;
-    height: 28px;
     .svg-icon-hamburger;
+    .svg-icon-hamburger-dims;
   }
 }

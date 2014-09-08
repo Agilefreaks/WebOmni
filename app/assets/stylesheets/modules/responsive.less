@@ -125,17 +125,24 @@
                    border: 2 * @rem solid rgba(255, 255, 255, .2);
                    color: @color-bright;
                  }
+               }
+               &__button {
+                 .icon {
+                   .fadeOut;
+                 }
 
                }
-
              }
              // Mobile nav behaviour
              .header--mobile {
                .header__nav__content { top: 0; }
 
                .header__nav__button {
-                 .transition( 0.5s cubic-bezier(.27,1.64,.32,.95) );
-                 .transform(rotate(90deg));
+                 .icon {
+                   .fadeIn;
+                   .svg-icon-hamburger-close;
+                   .svg-icon-hamburger-close-dims;
+                 }
                  .opacity(.6);
                }
              }
