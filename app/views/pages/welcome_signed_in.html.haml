@@ -43,6 +43,7 @@
   .row
     .col-xs-12
       .section__button.section__button--hero
-        %a.button.button--transparent.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "Learn more"}
+        = link_to '#feature-copy-paste', { class: 'button button--transparent js-goto-section', title: 'See what you get',
+                                           data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'See what you get', trackCategory: "#{EventTracking::DOWNLOAD}" } } do
           See what you get
           %i.icon.icon__arrowhead-down
