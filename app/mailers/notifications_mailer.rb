@@ -5,6 +5,10 @@ class NotificationsMailer < BaseMailer
     @user = User.find(user_id)
     @android_download_url = url_for(controller: :downloads, action: :android_client, email: @user.email)
 
+    attachments.inline['button_windows.png'] = File.read(WebOmni::Application.assets.find_asset('mailers/button-windows.png').pathname)
+    attachments.inline['button_android.png'] = File.read(WebOmni::Application.assets.find_asset('mailers/button-android.png').pathname)
+    attachments.inline['button_authorization_code.png'] = File.read(WebOmni::Application.assets.find_asset('mailers/button-authorization-code.png').pathname)
+
     mail({
              subject: 'Welcome to Omnipaste',
              from: 'Calin <calin@omnipasteapp.com>',
