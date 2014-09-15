@@ -1,4 +1,4 @@
-class ContactMailer < BaseMailer
+class ContactMailer < ActionMailer::Base
   default template_path: "mailers/#{self.name.underscore}"
 
   def email(contact)
