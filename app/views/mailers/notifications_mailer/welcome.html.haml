@@ -7,13 +7,11 @@
             %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}
               %td.text-pad{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0px 10px 10px;", :valign => "top"}
                 %h1.text-title{:align => "left", :style => "color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 500; text-align: left; line-height: 23px; word-break: normal; font-size: 14px; margin: 0; padding: 60px 0 40px;"}
-                  Howdy #{@user.first_name || @user.last_name},
+                  #{t('notification_mailer.welcome.gretting')} #{@user.first_name || @user.last_name},
                 %p.text-content{:align => "left", :style => "color: #cac3e5; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; text-align: left; line-height: 23px; font-size: 14px; margin: 0 0 10px; padding: 0;"}
-                  We
-                  are glad to send this email to you. Use it to install Omnipaste on each of your
-                  devices.
+                  #{t('notification_mailer.welcome.content_1')}
                   %br
-                  For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
+                  #{t('notification_mailer.welcome.content_2')}
               %td.expander{:align => "left", :style => "word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; visibility: hidden; width: 0px; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 14px; margin: 0; padding: 0;", :valign => "top"}
     %table.row.buttons{:style => "border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 100%; position: relative; display: block; padding: 0px;"}
       %tr{:align => "left", :style => "vertical-align: top; text-align: left; padding: 0;"}

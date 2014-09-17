@@ -1,0 +1,5 @@
+pt:
+  layout:
+    logo_alt: 'Omnipaste Logo'
+  authorization_codes:
+    title: "Seu código de autorização é: %{code}"

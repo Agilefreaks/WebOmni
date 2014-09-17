@@ -1,15 +1,15 @@
 .col-xs-12.col-sm-5.col-sm-offset-1.col-md-4.col-md-offset-2
   .section__button
-    = link_to 'Get Omnipaste for free',
+    = link_to "#{t('layout.button.download')}",
               download_path(user_signed_in?),
               { class: 'button button--orange button--right',
-                title: 'Get omnipaste',
+                title: "#{t('layout.button.download')}",
                 data: { trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::DOWNLOAD}" } }
 .col-xs-12.col-sm-5.col-md-4
-  = link_to 'Get Authorization Code',
+  = link_to "#{t('layout.button.authorization_code')}",
             new_authorization_codes_path,
             { class: 'button button--transparent button--transparent-hero button--left js-get-auth-code',
-              title: 'Get Authorization Code',
+              title: "#{t('layout.button.authorization_code')}",
               data: { disable_with: 'Generating' } }
 
 = content_for :header do
@@ -17,33 +17,32 @@
     .col-xs-12
       %a.animate.animate--swirll.section__close.js-toggle-dropdown{"data-id" => "sign-up", :href => "#close", :title => "Close dropdown"}
         %i.icon.icon__close
-      %h1.section__title.section__title--hero Download in progress...
+      %h1.section__title.section__title--hero #{t('layout.header.download.title')}
       %h2.section__subtitle.section__subtitle--hero
-        The installer package is being downloaded. If download does not
+        #{t('layout.header.download.subtitle_1')}
         %br/
-        start automatically in a few seconds,
-        = link_to 'click here.', download_path(user_signed_in?), { title: 'Download Omnipaste' }
+        #{t('layout.header.download.subtitle_2')}
+        = link_to "#{t('layout.header.download.link')}", download_path(user_signed_in?), { title: "#{t('layout.button.download')}" }
   .row.hidden-xs.hidden-sm
     .col-xs-12.col-md-4
       .download__step
         %i.download__icon.icon.icon__step-download
         %span.download__text
-          Go to your Downloads folder
-          = succeed '' do
-            %br
-            and run the app
+          #{t('layout.header.download.instructions_1')}
+          %br
+          #{t('layout.header.download.instructions_2')}
     .col-xs-12.col-md-4
       .download__step
         %i.download__icon.icon.icon__step-install
-        %span.download__text Follow the Installer instructions.
+        %span.download__text #{t('layout.header.download.instructions_3')}
     .col-xs-12.col-md-4
       .download__step
         %i.download__icon.icon.icon__step-action
-        %span.download__text Ready for action.
+        %span.download__text #{t('layout.header.download.instructions_4')}
   .row
     .col-xs-12
       .section__button.section__button--hero
-        = link_to '#feature-copy-paste', { class: 'button button--transparent js-goto-section', title: 'See what you get',
+        = link_to '#feature-copy-paste', { class: 'button button--transparent js-goto-section', title: "#{t('layout.header.download.link')}",
                                            data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'See what you get', trackCategory: "#{EventTracking::DOWNLOAD}" } } do
-          See what you get
+          #{t('layout.header.download.link')}
           %i.icon.icon__arrowhead-down

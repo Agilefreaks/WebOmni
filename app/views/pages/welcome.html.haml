@@ -1,9 +1,9 @@
 .col-xs-12
   .section__button
-    = link_to 'Get Omnipaste for free',
+    = link_to "#{t('layout.button.download')}",
               '#sign-up',
               { class: 'button button--orange js-toggle-dropdown',
-                title: 'Get Omnipaste for free',
+                title: "#{t('layout.button.download')}",
                 data: { id: 'sign-up', trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::SIGN_UP}" } }
 
 = content_for :header do
@@ -11,14 +11,14 @@
     .col-xs-12
       = link_to '#close', { class: 'animate animate--swirll section__close js-toggle-dropdown', title: 'Close dropdown', data: { id: 'sign-up' } } do
         %i.icon.icon__close
-      %h1.section__title.section__title--hero Sign up
+      %h1.section__title.section__title--hero #{t('layout.header.sign_up.title')}
       %h2.section__subtitle.section__subtitle--hero
-        Create a single identity to link your devices.
-        = link_to 'Read our security policy.', '#', { title: 'Security Policy' }
+        #{t('layout.header.sign_up.subtitle')}
+        = link_to "#{t('layout.header.sign_up.security_policy')}", '#', { title: "#{t('layout.header.sign_up.security_policy')}" }
       .section__button.section__button--hero
-        = link_to 'Sign up with Google', download_path(user_signed_in?), { class: 'section__button button button--orange', title: 'Sign up for Omnipaste with your Google Account' }
+        = link_to "#{t('layout.header.sign_up.google')}", download_path(user_signed_in?), { class: 'section__button button button--orange', title: "#{t('layout.header.sign_up.google')}" }
       .section__text
-        %p This option makes installing on your device much easier because it links with your Play Store account
+        %p #{t('layout.header.sign_up.explain')}
         %p
-          \...or sign up with
-          = link_to 'e-mail', '#', { title: 'Sign up with your e-mail address' }
+          #{t('layout.header.sign_up.alternative')}
+          = link_to 'e-mail', '#', { title: "#{t('layout.header.sign_up.email')}" }

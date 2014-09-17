@@ -1,15 +1,9 @@
-Howdy,
+Howdy #{@user.first_name || @user.last_name},
 \
-We are glad to send this email to you. Use it to install Omnipaste on each of your devices.
+#{t('notification_mailer.welcome.content_1')}
 \
-For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
+#{t('notification_mailer.welcome.content_2')}
 \
 = url_for(controller: :downloads, action: 'windows_client', only_path: false)
 \
 = @android_download_url
-\
-Take care,
-Omni Team
-\
-\
-PS: You can contact me by replying to this email

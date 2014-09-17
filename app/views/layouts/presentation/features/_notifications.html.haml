@@ -9,6 +9,6 @@
               = image_tag 'svg/feature-three-main.svg', { class: 'feature-three__main', alt: 'PC screen' }
               = image_tag 'svg/feature-three-notification.svg', { class: 'feature-three__notification js-animation-trigger', alt: 'PC notification', data: { animation: 'shake', timeout: 1300 } }
         .section__column.col-xs-12.col-sm-6.col-sm-pull-6
-          %h1.section__title.feature__title Notifications
-          %p You got your phone in your bag and it’s on mute? Don’t worry, Omnipaste will let you know somebody is calling. It will also display incoming messages.
+          %h1.section__title.feature__title #{t('layout.feature.notifications.title')}
+          %p #{t('layout.feature.notifications.description')}
           = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-notifications', what_else_link: 'faq' }

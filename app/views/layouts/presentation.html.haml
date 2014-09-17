@@ -21,7 +21,7 @@
       .section.hero.section--center
         #omni-video.omni-video.js-omni-video
           .omni-video__content
-            %a.animate.animate--swirll.omni-video__close.js-omni-video-toggle{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "Close video"}
+            %a.animate.animate--swirll.omni-video__close.js-omni-video-toggle{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "#{t('layout.video.close')}"}
               %i.icon.icon__close
             %video.omni-video__player.js-omni-video-player
               %source{:src => 'https://omnipaste.blob.core.windows.net/assets/omnipaste.mp4', :type => "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\""}
@@ -36,11 +36,10 @@
                 .col-xs-3.col-md-3
                   .header__logo
                     = link_to root_path, { title: 'Omnipaste', data: { id: 'home' } } do
-
-                      = image_tag 'logo.svg', { alt: 'Omnipaste Logo', height: '40', width: '175' }
+                      = image_tag 'logo.svg', { alt: "#{t('layout.logo_alt')}", height: '40', width: '175' }
                 .col-md-7.col-md-offset-2.col-lg-7.col-lg-offset-2
                   %nav#header-nav.header__nav
-                    = link_to '#mobile-menu', { class: 'header__nav__button visible-xs-block js-mobile-menu-toggle', data: { id: 'header-nav', title: 'Menu' } } do
+                    = link_to '#mobile-menu', { class: 'header__nav__button visible-xs-block js-mobile-menu-toggle', data: { id: 'header-nav', title: "#{t('layout.menu.mobile_title')}" } } do
                       %i.icon.icon__hamburger
                     = render_cell :menu, :show
 
@@ -48,30 +47,28 @@
           .container
             .row
               .col-xs-12
-                %h1.section__title.section__title--hero Link your devices
+                %h1.section__title.section__title--hero #{t('layout.hero.title')}
                 %h2.section__subtitle.section__subtitle--hero
-                  Make it simple & quick to switch between your computer and your mobile
-                  %br/
-                  devices. Get Omnipaste and redefine your multidevice experience.
+                  = simple_format(t('layout.hero.subtitle'), {}, { wrapper_tag: 'div' })
                 .section__play
                   = link_to '#omni-video', { class: 'button button--play js-omni-video-toggle',
-                                             title: 'Play video',
+                                             title: "#{t('layout.video.play')}",
                                              data: { id: 'omni-video', action: 'play', trackEvent: true } } do
                     %i.icon.icon__play
-                  %span See the video
+                  %span #{t('layout.video.span')}
             .row
               = yield
             .row
               .col-xs-12
                 .section__small-text
                   %p
-                    Works on Windows™ and Android™ mobile devices
-                    = link_to 'for now.', '#faq', class: 'js-goto-section'
+                    #{t('layout.hero.subtitle_requierments')}
+                    = link_to "#{t('layout.hero.subtitle_requierments_link')}", '#faq', class: 'js-goto-section'
             .row
               .col-xs-12
                 .section__button.section__button--hero
-                  = link_to '#feature-copy-paste', { class: 'button button--text js-goto-section', title: 'Learn more', data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'LearnMore' } } do
-                    Learn more
+                  = link_to '#feature-copy-paste', { class: 'button button--text js-goto-section', title: "#{t('layout.button.learn_more')}", data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'LearnMore' } } do
+                    #{t('layout.button.learn_more')}
                     %i.icon.icon__arrowhead--double-down
 
     %main#main.main
@@ -88,7 +85,7 @@
           .container
             .row
               .section__header.col-xs-12
-                %p Companies we partner with
+                %p #{t('layout.partners.title')}
             .row
               .partners__logos.col-xs-12
                 = link_to 'http://www.softlayer.com/catalyst', rel: 'external', title: 'Softlayer' do
@@ -130,17 +127,17 @@
       .container
         %ul.footer__nav.list-to-nav.list-to-nav--horizontal
           %li.footer__nav__item
-            %a.js-goto-section{"data-id" => "faq", :href => "#learn-more", :title => "How it works"} Learn More
+            = link_to t('layout.button.learn_more'), '#learn-more', { class: 'js-goto-section', title: "#{t('layout.button.learn_more')}", data: { id: 'feature-copy-paste' } }
           %li.footer__nav__item
-            %a.js-goto-section{"data-id" => "faq", :href => "#faq", :title => "FAQ"} FAQ
+            = link_to t('layout.menu.faq'), '#faq', { class: 'js-goto-section', title: "#{t('layout.menu.faq')}", data: { id: 'faq' } }
           %li.footer__nav__item
-            = link_to 'Privacy Policy', tos_path, title: 'Privacy Policy'
+            = link_to "#{t('layout.footer.tos')}", tos_path, title: "#{t('layout.footer.tos')}"
         %p.footer__copyright
           \© 2014 Omnipaste.
           %br/
-          Android™ is a trademark of Google Inc.
+          #{t('layout.footer.android_tm')}
           %br/
-          Windows™ is a trademark of Microsoft Corporation in the United States and other countries.
+          #{t('layout.footer.windows_tm')}
 
   = javascript_include_tag 'browser.update'
   = javascript_include_tag 'presentation'

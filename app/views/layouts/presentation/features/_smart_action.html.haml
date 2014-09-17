@@ -10,13 +10,13 @@
               = image_tag 'svg/feature-two-bubble-copy-phone.svg', { class: 'feature-two__bubble-copy-phone js-animation-trigger', alt: 'Copy phone speech bubble', data: { animation: 'hatch', timeout: 1000 } }
               = image_tag 'svg/feature-two-notification.svg', { class: 'feature-two__notification js-animation-trigger', alt: 'Smartphone notification', data: { animation: 'slideDown', timeout: 1600 } }
         .section__column.col-xs-12.col-sm-6
-          %h1.section__title.feature__title Smart Clippings
+          %h1.section__title.feature__title #{t('layout.feature.smart_action.title')}
           %p
-            Want to make a reservation and then meet a friend? Comfortably search for venue details on your large device (PC or tablet).
-          %p
-            %i.icon.icon__arrowhead--double-left
-            Copy a phone number, go to your phone and tap call to begin dialing.
+            #{t('layout.feature.smart_action.description_p1')}
           %p
             %i.icon.icon__arrowhead--double-left
-            Copy a street address, go to your phone and tap navigate to open your navigation and reach a place.
+            #{t('layout.feature.smart_action.description_p2')}
+          %p
+            %i.icon.icon__arrowhead--double-left
+            #{t('layout.feature.smart_action.description_p3')}
           = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-smart-action', what_else_link: 'feature-notifications' }
