@@ -1,5 +1,101 @@
 pt:
   layout:
-    logo_alt: 'Omnipaste Logo'
+    logo_alt: Omnipaste Logo
+    header:
+      sign_up:
+        title: Sign up
+        subtitle: Create a single identity to link your devices.
+        security_policy: Read our security policy.
+        google: Sign up with Google
+        explain: This option makes installing on your device much easier because it links with your Play Store account
+        alternative: ...or sign up with
+        email: Sign up with your e-mail address
+      download:
+        title: Download in progress...
+        subtitle_1: The installer package is being downloaded. If download does not
+        subtitle_2: start automatically in a few seconds,
+        link: click here.
+        instructions_1: Go to your Downloads folder
+        instructions_2: and run the app
+        instructions_3: Follow the Installer instructions.
+        instructions_4: Ready for action.
+        link: See what you get
+    menu:
+      faq: FAQ
+      greeting: Hi
+      sign_out: Sign out
+      download: Get Omnipaste
+      sign_in: Sign in
+      contact: Contact
+      mobile_title: Menu
+    hero:
+      title: Link your devices
+      subtitle: >
+                Make it simple & quick to switch between your computer and your mobile
+
+                devices. Get Omnipaste and redefine your multi-device experience.
+      subtitle_requierments: Works on Windows™ and Android™ mobile devices
+      subtitle_requierments_link: for now.
+    video:
+      play: Play video
+      span: See the video
+      close: Close video
+    button:
+      download: Get Omnipaste for free
+      authorization_code: Get Authorization Code
+      learn_more: Learn more
+      contact: E-mail us your question
+      install: "Okay, let's install it"
+      what_else: What else is there?
+    feature:
+      copy_and_paste:
+        title: Copy/Pasting Text
+        description: Read a good passage on the Internet and want to share it with a friend? With Omnipaste, your PC and your phone now share a clipboard. Just copy on one and paste on another.
+      notifications:
+        title: Notifications
+        description: You got your phone in your bag and it’s on mute? Don’t worry, Omnipaste will let you know somebody is calling. It will also display incoming messages.
+      smart_action:
+        title: Smart Clippings
+        description_p1: Want to make a reservation and then meet a friend? Comfortably search for venue details on your large device (PC or tablet).
+        description_p2: Copy a phone number, go to your phone and tap call to begin dialing.
+        description_p3: Copy a street address, go to your phone and tap navigate to open your navigation and reach a place.
+    partners:
+      title: Companies we partner with
+    founders:
+      title: Co-founder
+    faq:
+      subtitle: Stuff that you might need to know about Omnipaste app.
+      title_what: What can I do with Omni?
+      title_what_content: Easily and seamlessly transfer data between devices and cut down on that phone checking because you will get all your SMSs and calls right on your laptop or tablet.
+      title_will: Will I be able to link my TV too?
+      title_will_content: Not yet, Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from you phone or laptop. Not to mention the useful notification will also show on the big screen.
+      title_why: Why can I get Omni only for Android and Windows?
+      title_why_content: "For now these are our only supported devices. More are to come. Follow us on %{twitter} or %{facebook} for updates. Checkout the %{support_forum} and share some of your ideas with us."
+      title_is: Is Omnipaste secure?
+      title_is_content: Yes, we take security very seriously. We use top of the class encryption algorithms and authentication methods used by industry giants like google and facebook.
+    footer:
+      tos: Privacy Policy
+      android_tm: Android™ is a trademark of Google Inc.
+      windows_tm: Windows™ is a trademark of Microsoft Corporation in the United States and other countries.
+  notification_mailer:
+    footer:
+      end: Take care, Omni Team
+      ps: "PS: Follow us on your favorite social network to get updates"
+    welcome:
+      gretting: Howdy
+      content_1: We are glad to send this email to you. Use it to install Omnipaste on each of your devices.
+      content_2: For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
+
   authorization_codes:
-    title: "Seu código de autorização é: %{code}"
+    title: "Your authorization code is: %{code}"
+  contacts:
+    title: Get in touch with us
+    subtitle: We’ll be happy to hear your thoughts on our app.
+    label_name: Your name
+    label_name_validation: Please enter your name
+    label_email: Your e-mail
+    label_email_validation: The email you've entered is not valid
+    label_message: Your message
+    label_message_validation: Please enter a message
+    button: Send message
+    flash: Your message was sent :)
