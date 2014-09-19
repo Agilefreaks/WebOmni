@@ -23,7 +23,7 @@
           .omni-video__content
             %a.animate.animate--swirll.omni-video__close.js-omni-video-toggle{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "#{t('layout.video.close')}"}
               %i.icon.icon__close
-            %video.omni-video__player.js-omni-video-player
+            %video.omni-video__player.js-omni-video-player{:preload => ''}
               %source{:src => 'https://omnipaste.blob.core.windows.net/assets/omnipaste.mp4', :type => "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\""}
               %source{:src => 'https://omnipaste.blob.core.windows.net/assets/omnipaste.webm', :type => "video/webm; codecs=\"vp8, vorbis\""}
               %source{:src => 'https://omnipaste.blob.core.windows.net/assets/omnipaste.ogv', :type => "video/ogg; codecs=\"theora, vorbis\""}
