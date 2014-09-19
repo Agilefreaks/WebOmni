@@ -80,7 +80,7 @@
 
       = render partial: 'layouts/presentation/faq'
 
-      %article#partners.section.partners.section--center.section--center-content
+      %article#partners.section.partners.section--center.section--center-content.js-nav-hash
         .section__container
           .container
             .row
@@ -99,7 +99,7 @@
                 %a{:href => 'http://soapconf.com/', :rel => 'external', :title => 'Soap'}
                   %img.partners__soap{:alt => 'Soap Logo', :height => '60', :src => image_path('logos/logo-soap.png'), :srcset => image_path('logos/logo-soap@2x.png 2x'), :width => '80' }
 
-      %article#contact.section.section--center.contact
+      %article#contact.section.section--center.contact.js-nav-hash
         .section__container
           .container
             .row

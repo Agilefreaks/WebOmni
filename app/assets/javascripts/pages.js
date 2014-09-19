@@ -85,6 +85,46 @@ var omnipaste = {
 
   preventLink: function() { $('a[href="#"]').on('click', function(e) { e.preventDefault(); }); },
 
+  setLocationHash: function(id) {
+    var hash;
+    var scrollPosition;
+    if (id == '') {
+      // Check if the browser supports the pushState
+      if (history.replaceState) {
+        history.replaceState('', document.title, window.location.pathname);
+      } else {
+        window.location.hash = '';
+      }
+    } else {
+      hash = '#' + id;
+
+      $menuContent.find('a').removeClass('current');
+      $menuContent.find('a[data-id="' + id + '"]').addClass('current');
+
+      // Check if the browser supports the pushState
+      if (history.replaceState) {
+        history.replaceState({}, '', hash);
+
+        // Else provide a fallback
+      } else {
+        scrollPosition = document.body.scrollTop;
+        window.location.hash = id;
+        document.body.scrollTop = scrollPosition;
+      }
+    }
+  },
+
+  setLocationScroll: function() {
+    $('.js-nav-hash').each(function(){
+      if (
+        $(this).offset().top < window.pageYOffset + 10 &&
+        $(this).offset().top + $(this).height() > window.pageYOffset + 10) {
+
+        omnipaste.setLocationHash($(this).attr('id'));
+      }
+    });
+  },
+
   scroll: function() {
 
     // Check for scroll function
@@ -99,6 +139,8 @@ var omnipaste = {
         menuVisibilty();
         // Manage animations
         omnipaste.animations();
+        // Manage location hash
+        omnipaste.setLocationScroll();
         // Reset scroll count
         scrollEvent = false;
       }
@@ -159,7 +201,8 @@ var omnipaste = {
     $menuContent.removeClass(mobileMenuActiveClass);
 
     $viewport.stop().animate({ scrollTop: targetOffset }, scrollDelay).delay('1500', function() {
-      window.location.hash = '#'+ id;
+      // Set location Hash
+      omnipaste.setLocationHash(id);
     });
 
   },
