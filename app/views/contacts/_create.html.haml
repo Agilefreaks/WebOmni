@@ -7,16 +7,16 @@
       .col-xs-12.col-md-4.col-md-offset-2
         .form__item
           %label.form__label #{t('contacts.label_name')}
-          = f.text_field :name, placeholder: 'Your name', class: 'form__input', pattern: '.{3,}[A-z]', required: ''
+          = f.text_field :name, placeholder: "#{t("contacts.label_name")}", class: 'form__input', pattern: '.{3,}[A-z]', required: ''
           %span.form__message.form__valid #{t('contacts.label_name_validation')}
         .form__item
           %label.form__label #{t('contacts.label_email')}
-          = f.email_field :email, placeholder: 'Your e-mail', class: 'form__input', pattern: "[^@]+@[^@]+\\.[a-zA-Z]{2,6}", required: ''
+          = f.email_field :email, placeholder: "#{t("contacts.label_email")}", class: 'form__input', pattern: "[^@]+@[^@]+\\.[a-zA-Z]{2,6}", required: ''
           %span.form__message.form__valid #{t('contacts.label_email_validation')}
       .col-xs-12.col-md-4.align-left
         .form__item
           %label.form__label #{t('contacts.label_message')}
-          = f.text_area :message, placeholder: 'Your message', class: 'form__textarea', pattern: '(.|\n){10,}', required: ''
+          = f.text_area :message, placeholder: "#{t("contacts.label_message")}", class: 'form__textarea', pattern: '(.|\n){10,}', required: ''
           %span.form__message.form__valid #{t('contacts.label_message_validation')}
     .row
       .col-xs-12

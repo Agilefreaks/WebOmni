@@ -1,101 +1,101 @@
 pt:
   layout:
-    logo_alt: Omnipaste Logo
+    logo_alt: Logótipo Omnipaste
     header:
       sign_up:
-        title: Sign up
-        subtitle: Create a single identity to link your devices.
-        security_policy: Read our security policy.
-        google: Sign up with Google
-        explain: This option makes installing on your device much easier because it links with your Play Store account
-        alternative: ...or sign up with
-        email: Sign up with your e-mail address
+        title: Registe-se
+        subtitle: Crie uma identidade que ligue os seus dispositivos.
+        security_policy: Leia a nossa política de segurança.
+        google: Registe-se com a Google
+        explain: Esta opção facilita a instalação no seu dispositivo porque se interliga com a sua conta na Play Store
+        alternative: ...ou registe-se com
+        email: Registe-se com o seu endereço de e-mail
       download:
-        title: Download in progress...
-        subtitle_1: The installer package is being downloaded. If download does not
-        subtitle_2: start automatically in a few seconds,
-        link: click here.
-        instructions_1: Go to your Downloads folder
-        instructions_2: and run the app
-        instructions_3: Follow the Installer instructions.
-        instructions_4: Ready for action.
-        link: See what you get
+        title: A descarregar...
+        subtitle_1: O instalador está a ser descarregado. Se o download não
+        subtitle_2: começar automaticamente em poucos segundos,
+        link: clique aqui.
+        instructions_1: Vá à sua pasta de Transferências
+        instructions_2: corra a aplicação
+        instructions_3: Siga as instruções de instalação.
+        instructions_4: Está pronto.
+        link: Veja o que leva
     menu:
       faq: FAQ
-      greeting: Hi
-      sign_out: Sign out
-      download: Get Omnipaste
-      sign_in: Sign in
-      contact: Contact
+      greeting: Olá
+      sign_out: Terminar sessão
+      download: Descarregue
+      sign_in: Iniciar sessão
+      contact: Contacto
       mobile_title: Menu
     hero:
-      title: Link your devices
+      title: Ligue os seus dispositivos
       subtitle: >
-                Make it simple & quick to switch between your computer and your mobile
+                Troque facilmente entre o seu computador e os seus dispositivos.
 
-                devices. Get Omnipaste and redefine your multi-device experience.
-      subtitle_requierments: Works on Windows™ and Android™ mobile devices
-      subtitle_requierments_link: for now.
+                Descarregue o Omnipaste e redefina a sua experiência em múltiplos dispositivos.
+      subtitle_requierments: Funciona em  dispositivos móveis Windows™ e Android™
+      subtitle_requierments_link: por agora.
     video:
-      play: Play video
-      span: See the video
-      close: Close video
+      play: Ver vídeo
+      span: Veja o vídeo
+      close: Fechar vídeo
     button:
-      download: Get Omnipaste for free
-      authorization_code: Get Authorization Code
-      learn_more: Learn more
-      contact: E-mail us your question
-      install: "Okay, let's install it"
-      what_else: What else is there?
+      download: Descarregue gratuitamente
+      authorization_code: Obter Código de Autorização
+      learn_more: Saiba mais
+      contact: Envie-nos um e-mail com a sua questão
+      install: "Ok, vamos instalá-la"
+      what_else: Que mais anda por aí?
     feature:
       copy_and_paste:
-        title: Copy/Pasting Text
-        description: Read a good passage on the Internet and want to share it with a friend? With Omnipaste, your PC and your phone now share a clipboard. Just copy on one and paste on another.
+        title: Copiar/Colar Texto
+        description: Leu uma boa passagem na Internet e pretende partilhá-la com um amigo? Com o Omnipaste, o seu PC e o seu telemóvel agora partilham uma área de transferência. Apenas copie num e cole noutro.
       notifications:
-        title: Notifications
-        description: You got your phone in your bag and it’s on mute? Don’t worry, Omnipaste will let you know somebody is calling. It will also display incoming messages.
+        title: Notificações
+        description: Tem o telemóvel na mala e está no silêncio? Não se preocupe, o Omnipaste dir-lhe-á que alguém lhe está a ligar. Também lhe irá mostrar mensagens não-lidas.
       smart_action:
-        title: Smart Clippings
-        description_p1: Want to make a reservation and then meet a friend? Comfortably search for venue details on your large device (PC or tablet).
-        description_p2: Copy a phone number, go to your phone and tap call to begin dialing.
-        description_p3: Copy a street address, go to your phone and tap navigate to open your navigation and reach a place.
+        title: Cortes Inteligentes
+        description_p1: Pretende fazer uma reserva e depois encontrar-se com um amigo? Procure confortavelmente detalhes do evento no seu PC ou tablet.
+        description_p2: Copie um número de telefone, vá ao seu telemóvel e clique para chamar.
+        description_p3: Copie uma morada, vá ao seu telemóvel e clique para navegar para chegar ao destino.
     partners:
-      title: Companies we partner with
+      title: Os nossos parceiros
     founders:
-      title: Co-founder
+      title: Co-fundador
     faq:
-      subtitle: Stuff that you might need to know about Omnipaste app.
-      title_what: What can I do with Omni?
-      title_what_content: Easily and seamlessly transfer data between devices and cut down on that phone checking because you will get all your SMSs and calls right on your laptop or tablet.
-      title_will: Will I be able to link my TV too?
-      title_will_content: Not yet, Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from you phone or laptop. Not to mention the useful notification will also show on the big screen.
-      title_why: Why can I get Omni only for Android and Windows?
-      title_why_content: "For now these are our only supported devices. More are to come. Follow us on %{twitter} or %{facebook} for updates. Checkout the %{support_forum} and share some of your ideas with us."
-      title_is: Is Omnipaste secure?
-      title_is_content: Yes, we take security very seriously. We use top of the class encryption algorithms and authentication methods used by industry giants like google and facebook.
+      subtitle: Coisas que pretenda saber sobre a aplicação Omnipaste.
+      title_what: O que posso fazer com a Omni?
+      title_what_content: Facilmente e simultaneamente transfira dados entre dispositivos e não olhe tantas vezes para o telemóvel porque irá ter todas as suas mensagens e chamadas directamente no seu portátil ou tablet.
+      title_will: Poderei partilhar também a minha TV?
+      title_will_content: Ainda não, as Smart TV's serão suportadas brevemente. Irá ser capaz de copiar e colar os seus programas favoritos ou ver aquele vídeo do youtube na sua smart TV simplesmente ao copiar o endereço a partir do seu telemóvel ou portátil. Já para não falar que as suas notificações úteis também serão vistas no grande ecrã.
+      title_why: Porque só posso obter a Omni somente para Android e Windows?
+      title_why_content: "Por agora estes são os únicos dispositivos suportados. Mais estão para vir. Siga-nos no %{twitter} ou no %{facebook} para actualizações. Veja também o %{support_forum} e partilhe algumas das suas ideias connosco."
+      title_is: O Omnipaste é seguro?
+      title_is_content: Sim, nós levamos a segurança muito a sério. Nós usamos algoritmos de encriptação topo-de-gama e métodos de autenticação usados pelos gigantes da indústria como a google e o facebook.
     footer:
-      tos: Privacy Policy
-      android_tm: Android™ is a trademark of Google Inc.
-      windows_tm: Windows™ is a trademark of Microsoft Corporation in the United States and other countries.
+      tos: Política de Privacidade
+      android_tm: Android™ é uma marca registada da Google Inc.
+      windows_tm: Windows™ é uma marca registada da Microsoft Corporation nos Estados Unidos da América e noutros países.
   notification_mailer:
     footer:
-      end: Take care, Omni Team
-      ps: "PS: Follow us on your favorite social network to get updates"
+      end: Cuide-se, a Equipa da Omni
+      ps: "PS: Siga-nos nas suas redes sociais favoritas para estar a par de todas as novidades"
     welcome:
-      gretting: Howdy
-      content_1: We are glad to send this email to you. Use it to install Omnipaste on each of your devices.
-      content_2: For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
+      gretting: Olá
+      content_1: Nós estamos gratos por lhe enviar este e-mail. Use-o para instalar a Omnipaste em cada um dos seus dispositivos.
+      content_2: Por exemplo, para instalar a Omnipaste no seu smartphone, abra este email no seu smartphone e clique em Instalar. Se tem um tablet, vá ao seu tablet e faça o mesmo. É tão fácil!
 
   authorization_codes:
-    title: "Your authorization code is: %{code}"
+    title: "O seu código de autorização é: %{code}"
   contacts:
-    title: Get in touch with us
-    subtitle: We’ll be happy to hear your thoughts on our app.
-    label_name: Your name
-    label_name_validation: Please enter your name
-    label_email: Your e-mail
-    label_email_validation: The email you've entered is not valid
-    label_message: Your message
-    label_message_validation: Please enter a message
-    button: Send message
-    flash: Your message was sent :)
+    title: Fale connosco
+    subtitle: Gostaríamos imenso de saber o que acha da nossa aplicação.
+    label_name: O seu nome
+    label_name_validation: Por favor introduza o seu nome
+    label_email: O seu e-mail
+    label_email_validation: O e-mail que inseriu não é válido
+    label_message: A sua mensagem
+    label_message_validation: Por favor insira uma mensagem
+    button: Enviar mensagem
+    flash: A sua mensagem foi enviada :)
