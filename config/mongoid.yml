@@ -73,7 +73,7 @@ cucumber:
 
 staging:
   sessions:
-    replica_set:
+    default:
       database: web_omni_staging
       hosts:
         - 10.70.174.71:27017
