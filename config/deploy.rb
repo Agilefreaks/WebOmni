@@ -4,12 +4,9 @@ lock '3.2.1'
 set :application, 'omnipaste'
 set :repo_url, 'git@github.com:Agilefreaks/WebOmni.git'
 
-set :rvm_ruby_version, 'ruby-2.1.2@webomni'
+set :rvm_ruby_version, 'ruby-2.1.3@webomni'
 
 set :assets_roles, [:web, :app]
-
-set :puma_workers, 4
-set :puma_preload_app, true
 
 namespace :deploy do
 
