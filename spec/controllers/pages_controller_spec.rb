@@ -26,5 +26,28 @@ describe PagesController do
       end
     end
 
+    context 'HTTP_ACCEPT_LANGUAGE is set' do
+      context 'to one of the valid languages' do
+        before :each do
+          request.env['HTTP_ACCEPT_LANGUAGE'] = 'pt'
+        end
+
+        it 'will set it to I18n.locale' do
+          subject
+          expect(I18n.locale).to eq :pt
+        end
+      end
+
+      context 'to a language not valid' do
+        before :each do
+          request.env['HTTP_ACCEPT_LANGUAGE'] = 'an'
+        end
+
+        it 'will default to :en' do
+          subject
+          expect(I18n.locale).to eq :en
+        end
+      end
+    end
   end
 end
