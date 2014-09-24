@@ -21,12 +21,12 @@ development:
         # read: secondary_preferred
 
         # How many times Moped should attempt to retry an operation after
-        # failure. (default: 30)
-        # max_retries: 30
+        # failure. (default: The number of nodes in the cluster)
+        # max_retries: 20
 
         # The time in seconds that Moped should wait before retrying an
-        # operation on failure. (default: 1)
-        # retry_interval: 1
+        # operation on failure. (default: 0.25)
+        # retry_interval: 0.25
   # Configure Mongoid specific options. (optional)
   options:
     # Includes the root model name in json serialization. (default: false)
@@ -55,7 +55,7 @@ development:
 
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
-test: &test
+test:
   sessions:
     default:
       database: web_omni_test
@@ -80,9 +80,7 @@ staging:
         - 10.70.174.72:27017
         - 10.70.174.73:27017
       options:
-        read: :secondary
-        write:
-          w: :majority
+        read: secondary_preferred
   options:
     raise_not_found_error: true
     use_utc: true
@@ -97,9 +95,7 @@ production:
         - 10.70.174.72:27017
         - 10.70.174.73:27017
       options:
-        read: :secondary
-        write:
-          w: :majority
+        read: secondary_preferred
   options:
     raise_not_found_error: true
     use_utc: true
