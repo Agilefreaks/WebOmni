@@ -126,7 +126,7 @@ var omnipaste = {
   },
 
   setLocationScroll: function() {
-    $('.js-nav-hash').each(function(){
+    $('.js-nav-hash').each(function() {
       if (
         $(this).offset().top < window.pageYOffset + 10 &&
         $(this).offset().top + $(this).height() > window.pageYOffset + 10) {
@@ -193,6 +193,7 @@ var omnipaste = {
       lastScrollTop = currentPosition;
     }
   },
+
   // Scroll to top function
   scrollToTop: function ( scrollDelay ) {
     // Set defaults
@@ -217,8 +218,8 @@ var omnipaste = {
       // Set location Hash
       omnipaste.setLocationHash(id);
     });
-
   },
+
   // Scroll to section
   scrollToSection: function () {
 
@@ -273,9 +274,7 @@ var omnipaste = {
         // Show video container
         $bodyTrigger.toggleClass(videoBodyClass);
 
-
         setTimeout( function() {
-
           // Show video
           $videoContainer.toggleClass(videoActiveClass);
 
@@ -381,7 +380,6 @@ var omnipaste = {
 
     // Play the video when the slider handle is dropped
     $videoSeek.on("mouseup", function() { $videoPlayerObject.play(); });
-
   },
 
   // Manage Video Visibility on Scroll
@@ -401,7 +399,6 @@ var omnipaste = {
         // Hide video overlay
         $bodyTrigger.removeClass(videoOverlayClass);
       }, 200);
-
     }
   },
 
@@ -429,6 +426,7 @@ var omnipaste = {
       }
     });
   },
+
   // Contact form
   contact: function() {
     // Validate Contact Form
@@ -483,11 +481,12 @@ var omnipaste = {
       e.preventDefault();
     });
   },
+
+  // Animations
   animations: function() {
     var hasScrolled = $window.scrollTop(),
       $notAnimated = $('.' + animationTriggerClass + ":not('."+ animationDoneClass +"')");
     $animated = $('.' + animationTriggerClass + "."+ animationDoneClass);
-
 
     $notAnimated.each(function () {
       var $this = $(this),
@@ -495,7 +494,7 @@ var omnipaste = {
         animationTimeout = parseInt($this.data('timeout'),10),
         animationName = $this.data('animation');
 
-      if ( hasScrolled + windowHeightPadded > animationOffset ) {
+      if (hasScrolled + windowHeightPadded > animationOffset) {
         if (animationTimeout) {
           setTimeout(function(){
             $this.addClass(animationDoneClass + ' ' + animationName);
@@ -508,21 +507,20 @@ var omnipaste = {
         $this.removeClass(animationName);
       }
     });
+
     $animated.each(function () {
       var $this = $(this),
         animationOffset = $this.offset().top,
         animationTimeout = parseInt($this.data('timeout'),10),
         animationName = $this.data('animation');
 
-      if ( hasScrolled + windowHeightPadded < animationOffset || hasScrolled + windowHeightPadded > animationOffset + windowHeight ) {
+      if (hasScrolled + windowHeightPadded < animationOffset || hasScrolled + windowHeightPadded > animationOffset + windowHeight) {
         $this.removeClass(animationDoneClass);
         $this.removeClass(animationName);
       }
     });
-
   }
 };
-
 
 // !Document ready (loaded)
 // --------------------------------------------------------------
@@ -533,7 +531,6 @@ jQuery(document).ready(function() {
 
 // !---- End Document Ready Function ----
 });
-
 
 // !Document load (in process of loading) function
 // --------------------------------------------------------------

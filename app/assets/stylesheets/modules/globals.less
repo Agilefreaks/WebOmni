@@ -105,9 +105,12 @@ p {
     top: 0;
     left: 0;
     width: 100%;
+
+    visibility: visible;
+
     .transform(translate(0, 0));
     .opacity(1);
-    .transition( visibility 0 linear, opacity 0.3 linear);
+    .transition(visibility 0s linear 0s, opacity 0.3s linear);
   }
   &__nav {
     float: right;

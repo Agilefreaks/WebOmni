@@ -14,8 +14,8 @@
     /[if lt IE 9]
     = render partial: 'layouts/google' if Rails.env.production?
 
-  %body#home.body.js-body-action.omni-video__overlay
-    %header.header
+  %body#home.body.js-body-action
+    %header.header.omni-video__overlay
       = render partial: 'layouts/presentation/header'
 
       .section.hero.section--center
