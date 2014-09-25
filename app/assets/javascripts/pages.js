@@ -405,7 +405,7 @@ var omnipaste = {
   // Get Auth Code
   authCode: function() {
 
-    $authCodeAction.on('click', function (e) {
+    $authCodeAction.on('click', function () {
       var token = $(this).data('token');
 
       if (authCode === false) {
@@ -511,7 +511,6 @@ var omnipaste = {
     $animated.each(function () {
       var $this = $(this),
         animationOffset = $this.offset().top,
-        animationTimeout = parseInt($this.data('timeout'),10),
         animationName = $this.data('animation');
 
       if (hasScrolled + windowHeightPadded < animationOffset || hasScrolled + windowHeightPadded > animationOffset + windowHeight) {
