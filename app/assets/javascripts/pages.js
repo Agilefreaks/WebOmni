@@ -11,16 +11,17 @@ var $viewport = $('html, body'),
   menuVisibleClass = 'header--visible',
   menuHiddenClass = 'header--hidden',
   $heroContent = $('.js-hero'),
+  heroHeight = $heroContent.outerHeight(),
   scrollDelay = 750,
-  scrollDelta = 5,
+  scrollDelta	= 5,
   scrollEvent = false,
-  detachDelay = 200,
+  detachDelay	= 200,
 // Dropdown vars
   $bodyTrigger = $('.js-body-action'),
   $dropdown = $('.js-dropdown'),
   $dropdownAction = $('.js-toggle-dropdown'),
   dropdownClass = 'dropdown--action',
-  dropdownActiveClass = 'dropdown--open',
+  dropdownActiveClass	= 'dropdown--open',
   dropdownBodyClass = 'dropdown--action',
 // Toggle vars
   $sectionAction = $('.js-goto-section'),
@@ -54,7 +55,7 @@ var $viewport = $('html, body'),
 
 var omnipaste = {
 
-  init: function () {
+  init: function() {
 
     // Open in new window links with rel=external code
     omnipaste.externalLink();
@@ -84,26 +85,20 @@ var omnipaste = {
     omnipaste.contact();
 
     // Stop auto scroll on manual scroll
-    $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function (e) {
-      if (e.which > 0 || e.type === "mousedown" || e.type === "mousewheel") {
+    $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function(e){
+      if ( e.which > 0 || e.type === "mousedown" || e.type === "mousewheel"){
         $viewport.stop();
       }
     });
   },
 
-  externalLink: function () {
-    $('a[rel="external"]').attr('target', '_blank');
-  },
+  externalLink: function() { $('a[rel="external"]').attr('target','_blank'); },
 
-  preventLink: function () {
-    $('a[href="#"]').on('click', function (e) {
-      e.preventDefault();
-    });
-  },
+  preventLink: function() { $('a[href="#"]').on('click', function(e) { e.preventDefault(); }); },
 
-  setLocationHash: function (id) {
+  setLocationHash: function(id) {
     var hash;
-    var scrollPosition;
+
     if (id === '') {
       // Check if the browser supports the pushState
       if (history.replaceState) {
@@ -115,11 +110,11 @@ var omnipaste = {
       hash = '#' + id;
 
       $menuContent.find('a').removeClass('current');
-      $menuContent.find('a[data-id="' + id + '"]').addClass('current');
+      $menuContent.find('a[data-id="'+ id +'"]').addClass('current');
 
       // Check if the browser supports the pushState
       if (history.replaceState) {
-        history.replaceState({}, '', hash);
+        history.replaceState({},'', hash);
 
         // Else provide a fallback
       } else {
@@ -130,8 +125,8 @@ var omnipaste = {
     }
   },
 
-  setLocationScroll: function () {
-    $('.js-nav-hash').each(function () {
+  setLocationScroll: function() {
+    $('.js-nav-hash').each(function(){
       if (
         $(this).offset().top < window.pageYOffset + 10 &&
         $(this).offset().top + $(this).height() > window.pageYOffset + 10) {
@@ -141,18 +136,20 @@ var omnipaste = {
     });
   },
 
-  scroll: function () {
+  scroll: function() {
 
     // Check for scroll function
-    $(window).scroll(function () {
+    $(window).scroll(function() {
       scrollEvent = true;
     });
 
     // Do scroll polling at 250ms intervals
-    setInterval(function () {
+    setInterval (function() {
       if (scrollEvent) {
         // Manage menu visibility
         menuVisibilty();
+        // Manage video visibility
+        omnipaste.videoVisibility();
         // Manage animations
         omnipaste.animations();
         // Manage location hash
@@ -167,16 +164,14 @@ var omnipaste = {
       var navbarHeight = $menuContent.outerHeight(),
         currentPosition = $(this).scrollTop(),
         navbarOffset = $heroContent.offset().top;
-      var navBarPosition = navbarOffset + navbarHeight;
+      navbarPosition =  navbarOffset + navbarHeight;
 
       // Make sure the scroll is more than delta
-      if (Math.abs(lastScrollTop - currentPosition) <= scrollDelta) {
-        return;
-      }
+      if (Math.abs(lastScrollTop - currentPosition) <= scrollDelta) { return; }
 
-      if (currentPosition > navBarPosition) {
+      if ( currentPosition > navbarPosition) {
         // Needs to fire after menuHidden to prevent hide animation
-        setTimeout(function () {
+        setTimeout(function() {
           // Detach menu
           $menuContent.addClass(menuDetachedClass);
         }, detachDelay);
@@ -185,7 +180,7 @@ var omnipaste = {
         $menuContent.removeClass(menuDetachedClass);
       }
       // Hide on scroll down
-      if (currentPosition > lastScrollTop && currentPosition > navBarPosition) {
+      if (currentPosition > lastScrollTop && currentPosition > navbarPosition) {
         // Scroll down
         $menuContent.removeClass(menuVisibleClass).addClass(menuHiddenClass);
 
@@ -199,7 +194,7 @@ var omnipaste = {
     }
   },
   // Scroll to top function
-  scrollToTop: function (scrollDelay) {
+  scrollToTop: function ( scrollDelay ) {
     // Set defaults
     scrollDelay = scrollDelay || this.scrollDelay;
 
@@ -218,7 +213,7 @@ var omnipaste = {
 
     $menuContent.removeClass(mobileMenuActiveClass);
 
-    $viewport.stop().animate({ scrollTop: targetOffset }, scrollDelay).delay('1500', function () {
+    $viewport.stop().animate({ scrollTop: targetOffset }, scrollDelay).delay('1500', function() {
       // Set location Hash
       omnipaste.setLocationHash(id);
     });
@@ -227,7 +222,7 @@ var omnipaste = {
   // Scroll to section
   scrollToSection: function () {
 
-    $sectionAction.on('click', function (e) {
+    $sectionAction.on('click', function(e) {
       var sectionID = $(this).data('id');
 
       // Scroll
@@ -255,7 +250,7 @@ var omnipaste = {
   },
 
   // Toggle mobile menu
-  mobileMenuToggle: function () {
+  mobileMenuToggle: function() {
     $mobileMenuToggle.on('click', function (e) {
       $menuContent.toggleClass(mobileMenuActiveClass);
       // Prevent default action
@@ -267,29 +262,29 @@ var omnipaste = {
   video: function () {
     // Video Play
     $videoToggle.on('click', function (e) {
-      var videoAction = $(this).data("action");
+      var videoAction	= $(this).data("action");
 
       // Make sure dropdown is closed
       $dropdown.removeClass(dropdownActiveClass);
       $bodyTrigger.removeClass(dropdownClass);
 
-      if (videoAction == 'play') {
+      if ( videoAction == 'play') {
 
         // Show video container
         $bodyTrigger.toggleClass(videoBodyClass);
 
 
-        timer = setTimeout(function () {
+        setTimeout( function() {
 
           // Show video
           $videoContainer.toggleClass(videoActiveClass);
 
-          timer = setTimeout(function () {
+          setTimeout(function() {
             // Show video overlay
             $bodyTrigger.toggleClass(videoOverlayClass);
           }, 200);
 
-          timer = setTimeout(function () {
+          setTimeout(function() {
             // Play video
             $videoPlayerObject.play();
           }, 800);
@@ -298,23 +293,20 @@ var omnipaste = {
 
       } else {
 
-        timer = setTimeout(function () {
+        setTimeout( function() {
 
           // Reset video
           $videoPlayerObject.pause();
-          $videoPlayerObject.currentTime = 0;
           $videoPlayerObject.load();
 
           // Hide video content
           $videoContainer.toggleClass(videoActiveClass);
-          // Hide video overlay
-          $bodyTrigger.toggleClass(videoOverlayClass);
+          // Hide video
+          $bodyTrigger.toggleClass(videoBodyClass);
 
-
-          timer = setTimeout(function () {
-            // Hide video
-            $bodyTrigger.toggleClass(videoBodyClass);
-
+          setTimeout(function() {
+            // Hide video overlay
+            $bodyTrigger.toggleClass(videoOverlayClass);
           }, 200);
 
         }, 200);
@@ -336,20 +328,27 @@ var omnipaste = {
     });
 
     // Close video on end
-    $videoPlayer.on('ended', function () {
+    $videoPlayer.on('ended', function() {
 
-      timer = setTimeout(function () {
-
-        $videoPlayerObject.currentTime = 0;
+      setTimeout( function() {
+        // Reset video
+        $videoPlayerObject.pause();
         $videoPlayerObject.load();
-        $videoContainer.toggleClass(videoActiveClass);
-        $bodyTrigger.toggleClass(videoBodyClass);
 
+        // Hide video content
+        $videoContainer.removeClass(videoActiveClass);
+        // Hide video
+        $bodyTrigger.removeClass(videoBodyClass);
+
+        setTimeout(function() {
+          // Hide video overlay
+          $bodyTrigger.removeClass(videoOverlayClass);
+        }, 200);
       }, videoTimeout);
     });
 
     // Full screen on double click
-    $videoPlayer.on('dblclick', function () {
+    $videoPlayer.on('dblclick', function() {
       if ($videoPlayerObject.requestFullscreen) {
         $videoPlayerObject.requestFullscreen();
 
@@ -362,13 +361,13 @@ var omnipaste = {
     });
 
     // Hook the slider with the video
-    $videoSeek.on('change', function () {
+    $videoSeek.on('change', function() {
       // Update the video time
       $videoPlayerObject.currentTime = $videoPlayerObject.duration * ($videoSeekObject.value / 100);
     });
 
     // Update the slider with the video progress
-    $videoPlayer.on('timeupdate', function () {
+    $videoPlayer.on('timeupdate', function() {
       var value;
 
       // Calculate the slider value
@@ -378,21 +377,38 @@ var omnipaste = {
     });
 
     // Pause the video when the slider handle is being dragged
-    $videoSeek.on("mousedown", function () {
-      $videoPlayerObject.pause();
-    });
+    $videoSeek.on("mousedown", function() { $videoPlayerObject.pause(); });
 
     // Play the video when the slider handle is dropped
-    $videoSeek.on("mouseup", function () {
-      $videoPlayerObject.play();
-    });
+    $videoSeek.on("mouseup", function() { $videoPlayerObject.play(); });
 
   },
 
-  // Get Auth Code
-  authCode: function () {
+  // Manage Video Visibility on Scroll
+  videoVisibility: function() {
 
-    $authCodeAction.on('click', function () {
+    if ( window.pageYOffset > heroHeight ) {
+      // Reset video
+      $videoPlayerObject.pause();
+      $videoPlayerObject.load();
+
+      // Hide video content
+      $videoContainer.removeClass(videoActiveClass);
+      // Hide video
+      $bodyTrigger.removeClass(videoBodyClass);
+
+      setTimeout(function() {
+        // Hide video overlay
+        $bodyTrigger.removeClass(videoOverlayClass);
+      }, 200);
+
+    }
+  },
+
+  // Get Auth Code
+  authCode: function() {
+
+    $authCodeAction.on('click', function (e) {
       var token = $(this).data('token');
 
       if (authCode === false) {
@@ -400,13 +416,13 @@ var omnipaste = {
           url: authCodeURL,
           data: token,
           type: 'get',
-          success: function (msg) {
+          success: function(msg) {
             msg = "Gbqw0Vpr86RZ"; // Dev: Fixed message for display purposes - REMOVE THIS LINE!!!
             $authCodeAction.addClass(authCodeInvisibleClass);
-            timer1 = setTimeout(function () {
+            setTimeout( function() {
               $authCodeAction.html(msg);
               $authCodeAction.removeClass(authCodeInvisibleClass);
-            }, 1000);
+            },1000);
           }
         });
         authCode = true;
@@ -414,17 +430,17 @@ var omnipaste = {
     });
   },
   // Contact form
-  contact: function () {
+  contact: function() {
     // Validate Contact Form
     $contactForm.h5Validate();
 
     // Process Contact Form
-    $contactForm.submit(function (e) {
+    $contactForm.submit(function(e) {
       var result = $contactForm.h5Validate('allValid'),
         data,
         url;
 
-      if (result === true) {
+      if ( result === true ) {
         // Serialize contact data
         data = $(this).serialize();
         // Get URL from action
@@ -435,7 +451,7 @@ var omnipaste = {
           url: url,
           data: data,
           type: 'post',
-          success: function (msg) {
+          success: function(msg) {
 
             // Place error message in notice
             //$contactFormNotice.html(msg);
@@ -448,40 +464,40 @@ var omnipaste = {
         // Fade out & display message
         $contactFormContainer.fadeOut(800);
 
-        timer1 = setTimeout(function () {
+        setTimeout(function() {
           $contactFormNotice.fadeIn(1000);
           $contactFormFields.val('');
-        }, 1000);
+        },1000);
 
         // Fade out & reset form
-        timer2 = setTimeout(function () {
+        setTimeout(function() {
           $contactFormNotice.fadeOut(800);
-        }, 4500);
+        },4500);
 
         // Fade in form
-        timer3 = setTimeout(function () {
+        setTimeout( function() {
           $contactFormContainer.fadeIn(1000);
-        }, 5500);
+        },5500);
       }
       // Prevent actual form submit
       e.preventDefault();
     });
   },
-  animations: function () {
+  animations: function() {
     var hasScrolled = $window.scrollTop(),
-      $notAnimated = $('.' + animationTriggerClass + ":not('." + animationDoneClass + "')");
-    var $animated = $('.' + animationTriggerClass + "." + animationDoneClass);
+      $notAnimated = $('.' + animationTriggerClass + ":not('."+ animationDoneClass +"')");
+    $animated = $('.' + animationTriggerClass + "."+ animationDoneClass);
 
 
     $notAnimated.each(function () {
       var $this = $(this),
         animationOffset = $this.offset().top,
-        animationTimeout = parseInt($this.data('timeout'), 10),
+        animationTimeout = parseInt($this.data('timeout'),10),
         animationName = $this.data('animation');
 
-      if (hasScrolled + windowHeightPadded > animationOffset) {
+      if ( hasScrolled + windowHeightPadded > animationOffset ) {
         if (animationTimeout) {
-          setTimeout(function () {
+          setTimeout(function(){
             $this.addClass(animationDoneClass + ' ' + animationName);
           }, animationTimeout);
         } else {
@@ -495,9 +511,10 @@ var omnipaste = {
     $animated.each(function () {
       var $this = $(this),
         animationOffset = $this.offset().top,
+        animationTimeout = parseInt($this.data('timeout'),10),
         animationName = $this.data('animation');
 
-      if (hasScrolled + windowHeightPadded < animationOffset || hasScrolled + windowHeightPadded > animationOffset + windowHeight) {
+      if ( hasScrolled + windowHeightPadded < animationOffset || hasScrolled + windowHeightPadded > animationOffset + windowHeight ) {
         $this.removeClass(animationDoneClass);
         $this.removeClass(animationName);
       }
@@ -509,7 +526,7 @@ var omnipaste = {
 
 // !Document ready (loaded)
 // --------------------------------------------------------------
-jQuery(document).ready(function () {
+jQuery(document).ready(function() {
 
   // Init scripts
   omnipaste.init();
@@ -521,7 +538,7 @@ jQuery(document).ready(function () {
 // !Document load (in process of loading) function
 // --------------------------------------------------------------
 
-jQuery(window).load(function ($) {
+jQuery(window).load(function($) {
 
 
 // !---- End Document Load Function ----
