@@ -63,8 +63,8 @@ WebOmni::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'https://webstaging.omnipasteapp.com' }
-  config.action_mailer.asset_host = 'https://webstaging.omnipasteapp.com'
+  config.action_mailer.default_url_options = { :host => 'http://webstaging.omnipasteapp.com' }
+  config.action_mailer.asset_host = 'http://webstaging.omnipasteapp.com'
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
 
@@ -89,6 +89,6 @@ WebOmni::Application.configure do
   WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://download.omnipasteapp.com/staging/OmnipasteSetup.exe'
 
   # API
-  OmniApi.config.base_url = 'https://apistaging.omnipasteapp.com/api/v1'
+  OmniApi.config.base_url = 'http://apistaging.omnipasteapp.com/api/v1'
   OmniApi.config.client_access_token = 'yiccuZCgQGrB4OMyglhK2nDr2dKaHFiFOx/hXT3tWpwVstHkZhjcun8h759m5+jQvKJDnEc06z8xIjncfV1d9g=='
 end
