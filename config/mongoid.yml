@@ -76,7 +76,6 @@ staging:
     default:
       database: web_omni_staging
       hosts:
-        - 46.16.191.67:27017
         - 46.16.191.68:27017
         - 178.62.225.50:27017
         - 178.62.225.46:27017
@@ -93,7 +92,6 @@ production:
     default:
       database: web_omni_production
       hosts:
-        - 46.16.191.67:27017
         - 46.16.191.68:27017
         - 178.62.225.50:27017
         - 178.62.225.46:27017
