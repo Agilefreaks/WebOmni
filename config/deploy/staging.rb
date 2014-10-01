@@ -3,5 +3,5 @@ set :branch, 'staging'
 
 set :rails_env, 'staging'
 
-role :app, %w(deploy@webstaging01.omnipasteapp.com)
-role :web, %w(deploy@webstaging01.omnipasteapp.com)
+role :app, %w(deploy@178.62.224.228)
+role :web, %w(deploy@178.62.224.228)
