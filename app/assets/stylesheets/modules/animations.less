@@ -9,11 +9,46 @@
 /* ==|========================================================================= */
 
 .animate {
-  .swirllBackward;
+  &--swirll {
+    .swirllBackward;
+  }
+
   &--swirll:hover {
     .swirllForward;
   }
+
+  &--arrow {
+    @speed: 2s;
+    @delay1: .1s;
+    @delay2: .2s;
+    @delay3: .3s;
+
+    transition: all  @speed ease-in-out;
+
+    &-one {
+      .arrowJump(@speed, @delay1);
+    }
+
+    &-two {
+      .arrowJump(@speed, @delay2);
+      opacity:.7;
+    }
+
+    &-three {
+      .arrowJump(@speed, @delay3);
+      opacity:.3;
+    }
+  }
 }
+
+// Arrow jump
+.arrowJump(@timing, @delay) {
+  .animation-name(arrowJump);
+  .animation-duration(@timing+@delay);
+  .transition-timing-function(blink);
+  .animation-iteration-count(4);
+}
+.keyframes(~'arrowJump, 80% { opacity: .3; } 90% { opacity: .1} 100% { transform: opacity: .3; }');
 
 // Rotate Forward
 .swirllForward {

@@ -69,7 +69,9 @@
                 .section__button.section__button--hero
                   = link_to '#feature-copy-paste', { class: 'button button--text js-goto-section', title: "#{t('layout.button.learn_more')}", data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'LearnMore' } } do
                     #{t('layout.button.learn_more')}
-                    %i.icon.icon__arrowhead--double-down
+                    %i.icon.icon__arrowhead--down.animate.animate--arrow-one
+                    %i.icon.icon__arrowhead--down.animate.animate--arrow-two
+                    %i.icon.icon__arrowhead--down.animate.animate--arrow-three
 
     %main#main.main
       = render partial: 'layouts/presentation/features/copy_paste'
