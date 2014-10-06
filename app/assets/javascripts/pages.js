@@ -63,8 +63,23 @@ var omnipaste = {
     // Prevent default action on # (hash) links
     omnipaste.preventLink();
 
-    // Watch scroll and activate menu / animations
+    // Watch for location hash - Do not call directly from here (window.load)
+    // omnipaste.detectLocationHash();
+
+    // Set location hash function - Do not call directly from here (helper function)
+    //omnipaste.setLocationHash(id);
+
+    // Set hash according to location - Do not call directly from here (omnipaste.scroll)
+    //omnipaste.setLocationScroll();
+
+    // Watch for scroll events
     omnipaste.scroll();
+
+    // Scroll to top function - Do not call directly from here (helper function)
+    //omnipaste.scrollToTop(scrollDelay);
+
+    // Scroll to ID function - Do not call directly from here (helper function)
+    //omnipaste.scrollToID(id);
 
     // Scroll to section
     omnipaste.scrollToSection();
@@ -78,24 +93,55 @@ var omnipaste = {
     // Video player
     omnipaste.video();
 
+    // Close video function - Do not call directly from here (helper function)
+    //omnipaste.videoClose();
+
+    // Play video function - Do not call directly from here (helper function)
+    //omnipaste.videoPlay();
+
+    // Manage video visibility on scroll - Do not call directly from here (omnipaste.scroll)
+    //omnipaste.videoVisibility();
+
     // Generate authcode
     omnipaste.authCode();
 
     // Contact form
     omnipaste.contact();
 
-    // Stop auto scroll on manual scroll
-    $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function(e){
-      if ( e.which > 0 || e.type === "mousedown" || e.type === "mousewheel"){
-        $viewport.stop();
-      }
-    });
+    // Manage animations on scroll - Do not call directly from here (omnipaste.scroll)
+    //omnipaste.animations();
+
+    // Stop all animations, fades, transitions on manual scroll
+    omnipaste.stop();
   },
 
+  // Open in new window links with rel=external code
   externalLink: function() { $('a[rel="external"]').attr('target','_blank'); },
 
+  // Prevent default action on # (hash) links
   preventLink: function() { $('a[href="#"]').on('click', function(e) { e.preventDefault(); }); },
 
+  // Watch for location hash
+  detectLocationHash: function() {
+    //Get current hash
+    var hash = window.location.hash.substr(1);
+
+    //Check if hash is empty
+    if (hash !== '' && typeof hash !== 'undefined') {
+      //Scroll to element
+
+      omnipaste.scrollToTop(100);
+
+      setTimeout( function () {
+        omnipaste.scrollToID(hash);
+      }, 300);
+
+    } else {
+      omnipaste.scrollToTop();
+    }
+  },
+
+  // Set location hash
   setLocationHash: function(id) {
     var hash;
 
@@ -118,13 +164,14 @@ var omnipaste = {
 
         // Else provide a fallback
       } else {
-        scrollPosition = document.body.scrollTop;
+        var scrollPosition = document.body.scrollTop;
         window.location.hash = id;
         document.body.scrollTop = scrollPosition;
       }
     }
   },
 
+  // Set hash according to location
   setLocationScroll: function() {
     $('.js-nav-hash').each(function() {
       if (
@@ -136,6 +183,7 @@ var omnipaste = {
     });
   },
 
+  // Watch for scroll events
   scroll: function() {
 
     // Check for scroll function
@@ -163,13 +211,13 @@ var omnipaste = {
     function menuVisibilty() {
       var navbarHeight = $menuContent.outerHeight(),
         currentPosition = $(this).scrollTop(),
-        navbarOffset = $heroContent.offset().top;
-      navbarPosition =  navbarOffset + navbarHeight;
+        navbarOffset = $heroContent.offset().top,
+        navbarPosition =  navbarOffset + navbarHeight;
 
       // Make sure the scroll is more than delta
       if (Math.abs(lastScrollTop - currentPosition) <= scrollDelta) { return; }
 
-      if ( currentPosition > navbarPosition) {
+      if (currentPosition > navbarPosition) {
         // Needs to fire after menuHidden to prevent hide animation
         setTimeout(function() {
           // Detach menu
@@ -195,7 +243,7 @@ var omnipaste = {
   },
 
   // Scroll to top function
-  scrollToTop: function ( scrollDelay ) {
+  scrollToTop: function (scrollDelay) {
     // Set defaults
     scrollDelay = scrollDelay || this.scrollDelay;
 
@@ -270,44 +318,13 @@ var omnipaste = {
       $bodyTrigger.removeClass(dropdownClass);
 
       if ( videoAction == 'play') {
-
-        // Show video container
-        $bodyTrigger.toggleClass(videoBodyClass);
-
-        setTimeout( function() {
-          // Show video
-          $videoContainer.toggleClass(videoActiveClass);
-
-          setTimeout(function() {
-            // Show video overlay
-            $bodyTrigger.toggleClass(videoOverlayClass);
-          }, 200);
-
-          setTimeout(function() {
-            // Play video
-            $videoPlayerObject.play();
-          }, 800);
-
-        }, 200);
-
+        // Play
+        omnipaste.videoPlay();
       } else {
-
+        // Wait a bit
         setTimeout( function() {
-
-          // Reset video
-          $videoPlayerObject.pause();
-          $videoPlayerObject.load();
-
-          // Hide video content
-          $videoContainer.toggleClass(videoActiveClass);
-          // Hide video
-          $bodyTrigger.toggleClass(videoBodyClass);
-
-          setTimeout(function() {
-            // Hide video overlay
-            $bodyTrigger.toggleClass(videoOverlayClass);
-          }, 200);
-
+          // Close
+          omnipaste.videoClose();
         }, 200);
       }
 
@@ -326,23 +343,19 @@ var omnipaste = {
       }
     });
 
+    // Close video on ESC
+    $(document).on('keydown', function (e) {
+      if (e.keyCode === 27) { // ESC
+        omnipaste.videoClose();
+      }
+    });
+
     // Close video on end
     $videoPlayer.on('ended', function() {
-
+      // Wait a bit before closing
       setTimeout( function() {
-        // Reset video
-        $videoPlayerObject.pause();
-        $videoPlayerObject.load();
-
-        // Hide video content
-        $videoContainer.removeClass(videoActiveClass);
-        // Hide video
-        $bodyTrigger.removeClass(videoBodyClass);
-
-        setTimeout(function() {
-          // Hide video overlay
-          $bodyTrigger.removeClass(videoOverlayClass);
-        }, 200);
+        // Close
+        omnipaste.videoClose();
       }, videoTimeout);
     });
 
@@ -382,24 +395,49 @@ var omnipaste = {
     $videoSeek.on("mouseup", function() { $videoPlayerObject.play(); });
   },
 
-  // Manage Video Visibility on Scroll
-  videoVisibility: function() {
+  // Play video function
+  videoPlay: function () {
+    // Show video container
+    $bodyTrigger.addClass(videoBodyClass);
 
-    if ( window.pageYOffset > heroHeight ) {
+    setTimeout( function() {
+      // Show video
+      $videoContainer.addClass(videoActiveClass);
+
+      setTimeout(function() {
+        // Show video overlay
+        $bodyTrigger.addClass(videoOverlayClass);
+      }, 200);
+
+      setTimeout(function() {
+        // Play video
+        $videoPlayerObject.play();
+      }, 800);
+
+    }, 200);
+  },
+
+  // Close video function
+  videoClose: function () {
+    // Hide video content
+    $videoContainer.removeClass(videoActiveClass);
+    // Hide video
+    $bodyTrigger.removeClass(videoBodyClass);
+
+    setTimeout(function() {
       // Reset video
       $videoPlayerObject.pause();
       $videoPlayerObject.load();
 
-      // Hide video content
-      $videoContainer.removeClass(videoActiveClass);
-      // Hide video
-      $bodyTrigger.removeClass(videoBodyClass);
+      // Hide video overlay
+      $bodyTrigger.removeClass(videoOverlayClass);
+    }, 200);
+  },
 
-      setTimeout(function() {
-        // Hide video overlay
-        $bodyTrigger.removeClass(videoOverlayClass);
-      }, 200);
-    }
+  // Manage Video Visibility on Scroll
+  videoVisibility: function() {
+
+    if (window.pageYOffset > heroHeight) { omnipaste.videoClose(); }
   },
 
   // Get Auth Code
@@ -429,10 +467,10 @@ var omnipaste = {
 
   // Contact form
   contact: function() {
-    // Validate Contact Form
+    // Validate contact form
     $contactForm.h5Validate();
 
-    // Process Contact Form
+    // Process contact form
     $contactForm.submit(function(e) {
       var result = $contactForm.h5Validate('allValid'),
         data,
@@ -473,7 +511,7 @@ var omnipaste = {
         },4500);
 
         // Fade in form
-        setTimeout( function() {
+        setTimeout(function() {
           $contactFormContainer.fadeIn(1000);
         },5500);
       }
@@ -485,9 +523,10 @@ var omnipaste = {
   // Animations
   animations: function() {
     var hasScrolled = $window.scrollTop(),
-      $notAnimated = $('.' + animationTriggerClass + ":not('."+ animationDoneClass +"')");
-    $animated = $('.' + animationTriggerClass + "."+ animationDoneClass);
+      $notAnimated = $('.' + animationTriggerClass + ":not('."+ animationDoneClass +"')"),
+      $animated = $('.' + animationTriggerClass + "."+ animationDoneClass);
 
+    // If items not animated
     $notAnimated.each(function () {
       var $this = $(this),
         animationOffset = $this.offset().top,
@@ -508,6 +547,7 @@ var omnipaste = {
       }
     });
 
+    // If items are animated and scrolled out of view
     $animated.each(function () {
       var $this = $(this),
         animationOffset = $this.offset().top,
@@ -516,6 +556,15 @@ var omnipaste = {
       if (hasScrolled + windowHeightPadded < animationOffset || hasScrolled + windowHeightPadded > animationOffset + windowHeight) {
         $this.removeClass(animationDoneClass);
         $this.removeClass(animationName);
+      }
+    });
+  },
+
+  // Stop all animations, fades, transitions on manual scroll
+  stop: function() {
+    $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function(e){
+      if ( e.which > 0 || e.type === "mousedown" || e.type === "mousewheel"){
+        $viewport.stop();
       }
     });
   }
@@ -534,8 +583,10 @@ jQuery(document).ready(function() {
 // !Document load (in process of loading) function
 // --------------------------------------------------------------
 
-jQuery(window).load(function($) {
+jQuery(window).load(function() {
 
+  // Init watch for location hash
+  omnipaste.detectLocationHash();
 
 // !---- End Document Load Function ----
 });
