@@ -1,0 +1,20 @@
+%article#social.section.social.section--center
+  .section__container
+    .container
+      .row
+        .col-md-6
+          %h1.section__title.social__title Let’s connect our thougts, stories, plans...
+        .col-md-6
+          %ul.social.list-to-nav.list-to-nav--horizontal
+            %li.social__item
+              = link_to 'https://www.linkedin.com/company/omnipaste', { title: 'LinkedIn', target: '_blank' } do
+                %i.icon.icon__linkedin
+            %li.social__item
+              = link_to 'https://www.facebook.com/Omnipaste', { title: 'Facebook', target: '_blank' } do
+                %i.icon.icon__facebook
+            %li.social__item
+              = link_to 'https://google.com/+Omnipasteapp', { title: 'Google+', rel: 'publisher', target: '_blank' } do
+                %i.icon.icon__googleplus
+            %li.social__item
+              = link_to 'https://twitter.com/omnipaste', { title: 'Twitter', target: '_blank' } do
+                %i.icon.icon__twitter

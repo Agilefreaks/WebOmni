@@ -79,6 +79,8 @@
 
       = render partial: 'layouts/presentation/features/notifications'
 
+      = render partial: 'layouts/presentation/social'
+
       = render partial: 'layouts/presentation/faq'
 
       %article#partners.section.partners.section--center.section--center-content.js-nav-hash
@@ -106,21 +108,6 @@
             .row
               .col-xs-12
                 = render partial: 'contacts/create'
-            .row
-              .col-xs-12
-                %ul.social.list-to-nav.list-to-nav--horizontal
-                  %li.social__item
-                    = link_to 'https://www.linkedin.com/company/omnipaste', { title: 'LinkedIn', target: '_blank' } do
-                      %i.icon.icon__linkedin
-                  %li.social__item
-                    = link_to 'https://www.facebook.com/Omnipaste', { title: 'Facebook', target: '_blank' } do
-                      %i.icon.icon__facebook
-                  %li.social__item
-                    = link_to 'https://google.com/+Omnipasteapp', { title: 'Google+', rel: 'publisher', target: '_blank' } do
-                      %i.icon.icon__googleplus
-                  %li.social__item
-                    = link_to 'https://twitter.com/omnipaste', { title: 'Twitter', target: '_blank' } do
-                      %i.icon.icon__twitter
 
       = render partial: 'layouts/presentation/founders'
 

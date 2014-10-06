@@ -512,6 +512,77 @@
 
 }
 
+
+// Social
+
+/* !Social */
+/* ==|========================================================================= */
+
+.social {
+  position: relative;
+  z-index: 2;
+  padding: 20 * @rem;
+  background-color: #5B57AB;
+
+  .background-image(linear-gradient(rgba(0, 155, 241, 0.044) 0%, rgba(121, 71, 165, 0.04) 100%));
+
+
+  &__title {
+    margin-top: 30 * @rem;
+    font-size: 24 * @rem;
+    font-weight: 300;
+    line-height: 30 * @rem;
+  }
+
+  &__item {
+    margin-right: 30 * @rem;
+    vertical-align: middle;
+    &:last-child { margin-right: 0; }
+
+    a {
+      display: inline-block;
+      width: 55 * @rem;
+      height: 55 * @rem;
+      background-color: rgba(255,255,255,.1);
+      text-decoration: none;
+
+      .border-radius(50 * @rem);
+      .transition( opacity 0.3s ease-in-out );
+
+
+      i {
+        position: relative;
+        z-index: 3;
+        margin-top: 12 * @rem;
+        .opacity(.7);
+      }
+
+      &:hover {
+        .smoothShake;
+        i { .opacity(1); }
+      }
+    }
+  }
+}
+
+
+// FAQ
+
+/* !FAQ */
+/* ==|========================================================================= */
+
+.faq {
+  width: 100%;
+  min-height: 600 * @rem;
+  background-color: @color-bright-grey;
+
+  &__title {
+    margin-bottom: 20 * @rem;
+    font-weight: 700;
+  }
+}
+
+
 // Partners
 
 /* !Partners */
@@ -558,23 +629,6 @@
 }
 
 
-// FAQ
-
-/* !FAQ */
-/* ==|========================================================================= */
-
-.faq {
-  width: 100%;
-  min-height: 600 * @rem;
-  background-color: @color-bright-grey;
-
-  &__title {
-    margin-bottom: 20 * @rem;
-    font-weight: 700;
-  }
-}
-
-
 // Contact
 
 /* !Contact */
@@ -600,30 +654,6 @@
   }
 }
 
-// Social
-
-/* !Social */
-/* ==|========================================================================= */
-
-
-.social {
-  padding-top: 35 * @rem;
-
-  &__item {
-    margin-right: 30 * @rem;
-
-    &:last-child { margin-right: 0; }
-
-    a {
-      .opacity(.2);
-      text-decoration: none;
-
-      .transition( opacity 0.3s ease-in-out );
-
-      &:hover { .opacity(1); }
-    }
-  }
-}
 
 // Founders
 
