@@ -1,7 +1,7 @@
 .col-xs-12.col-sm-5.col-sm-offset-1.col-md-4.col-md-offset-2
   .section__button
     = link_to "#{t('layout.button.download')}",
-              download_path(user_signed_in?),
+              download_path,
               { class: 'button button--orange button--right',
                 title: "#{t('layout.button.download')}",
                 data: { trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::DOWNLOAD}" } }
@@ -22,7 +22,7 @@
         #{t('layout.header.download.subtitle_1')}
         %br/
         #{t('layout.header.download.subtitle_2')}
-        = link_to "#{t('layout.header.download.link')}", download_path(user_signed_in?), { title: "#{t('layout.button.download')}" }
+        = link_to "#{t('layout.header.download.link')}", download_path, { title: "#{t('layout.button.download')}" }
   .row.hidden-xs.hidden-sm
     .col-xs-12.col-md-4
       .download__step

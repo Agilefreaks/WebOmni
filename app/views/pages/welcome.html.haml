@@ -16,7 +16,7 @@
         #{t('layout.header.sign_up.subtitle')}
         = link_to "#{t('layout.header.sign_up.security_policy')}", '#', { title: "#{t('layout.header.sign_up.security_policy')}" }
       .section__button.section__button--hero
-        = link_to "#{t('layout.header.sign_up.google')}", download_path(user_signed_in?), { class: 'section__button button button--orange', title: "#{t('layout.header.sign_up.google')}" }
+        = link_to "#{t('layout.header.sign_up.google')}", download_path, { class: 'section__button button button--orange', title: "#{t('layout.header.sign_up.google')}" }
       .section__text
         %p #{t('layout.header.sign_up.explain')}
         %p
