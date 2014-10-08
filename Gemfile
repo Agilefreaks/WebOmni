@@ -36,6 +36,8 @@ gem 'gravtastic'
 
 gem 'sitemap_generator'
 
+gem 'mobile-fu'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

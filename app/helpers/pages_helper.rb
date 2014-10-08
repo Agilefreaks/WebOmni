@@ -1,6 +1,12 @@
 module PagesHelper
-  def download_path(user_signed_in)
-    user_signed_in ? new_download_path(download: true) : user_omniauth_authorize_path(:google_oauth2, origin: new_download_path(download: true))
+  def download_path
+    download_path = if is_mobile_device?
+                      user_signed_in? ? android_client_downloads_path(email:  @current_user.email) : android_client_downloads_path
+                    else
+                      new_download_path(download: true)
+                    end
+
+    user_signed_in? ? download_path : user_omniauth_authorize_path(:google_oauth2, origin: download_path)
   end
 
   def authorization_code

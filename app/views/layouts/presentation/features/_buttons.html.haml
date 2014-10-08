@@ -1,7 +1,7 @@
 .section__button.section__button--feature
   - if user_signed_in?
     = link_to "#{t('layout.button.install')}",
-              download_path(user_signed_in?),
+              download_path,
               { class: 'button button--orange button--orange-feature',
                 title: 'Install Omnipaste',
                 data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD}" } }
