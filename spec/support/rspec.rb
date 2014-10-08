@@ -8,8 +8,6 @@ RSpec.configure do |config|
   # Run all the tests when all the tests are filtered
   config.run_all_when_everything_filtered = true
 
-  config.treat_symbols_as_metadata_keys_with_true_values = true
-
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
