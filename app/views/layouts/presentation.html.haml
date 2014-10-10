@@ -127,12 +127,22 @@
           %br/
           #{t('layout.footer.windows_tm')}
 
-  = javascript_include_tag 'browser.update'
   = javascript_include_tag 'presentation'
 
   = humane_flash_messages.html_safe
 
   = render partial: 'layouts/user_voice'
+
+  :javascript
+    var $buoop = {};
+    $buoop.ol = window.onload;
+    window.onload=function () {
+      try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+      var e = document.createElement("script");
+      e.setAttribute("type", "text/javascript");
+      e.setAttribute("src", "//browser-update.org/update.js");
+      document.body.appendChild(e);
+    }
 
   :javascript
     $(document).ready( function() {
