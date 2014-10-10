@@ -4,6 +4,6 @@
   - else
     = link_to "#{t('layout.menu.download')}", '#sign-up', { class: 'js-toggle-dropdown', title: "#{t('layout.menu.download')}", data: { id: 'sign-up', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::SIGN_UP}" } }
 %li.header__nav__item
-  %a.js-goto-section{'data-id' => 'faq', :href => '#faq'} #{t('layout.menu.faq')}
+  = link_to t('layout.menu.blog'), 'http://blog.omnipasteapp.com', target: '_blank'
 %li.header__nav__item
   %a.js-goto-section{'data-id' => 'contact', :href => '#contact'} #{t('layout.menu.contact')}
