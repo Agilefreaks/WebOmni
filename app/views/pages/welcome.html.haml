@@ -5,6 +5,7 @@
               { class: 'button button--orange js-toggle-dropdown',
                 title: "#{t('layout.button.download')}",
                 data: { id: 'sign-up', trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::SIGN_UP}" } }
+  = link_to "#{t('layout.button.authorization_code')}", new_authorization_codes_path, { title: "#{t('layout.button.authorization_code')}", data: { disable_with: 'Generating' } }
 
 = content_for :header do
   .row
