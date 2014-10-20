@@ -100,13 +100,17 @@ en:
       android_tm: Android™ is a trademark of Google Inc.
       windows_tm: Windows™ is a trademark of Microsoft Corporation in the United States and other countries.
   notification_mailer:
+    gretting: Howdy
     footer:
       end: Take care, Omni Team
       ps: "PS: Follow us on your favorite social network to get updates"
     welcome:
-      gretting: Howdy
       content_1: We are glad to send this email to you. Use it to install Omnipaste on each of your devices.
-      content_2: For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy!
+      content_2: For example, to install Omnipaste on your smartphone, open this email on your smartphone and click Install. If you have a tablet, go to your tablet and do the same thing. That's easy
+    survey:
+      content_1: Thank you for using Omnipaste! Because we want you to have the best experience possible with our product, your feedback is very important to us.
+      content_2: Omnipaste is helping you save time everyday, so we continued to do that by putting together a few questions for you. We’d love to know your answers!
+      content_3: Click here to let us know what you think!
 
   authorization_codes:
     title: "Your authorization code is: %{code}"

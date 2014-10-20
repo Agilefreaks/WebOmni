@@ -18,4 +18,18 @@ class NotificationsMailer < BaseMailer
       format.text { render template: 'mailers/notifications_mailer/welcome' }
     end
   end
+
+  def survey(email)
+    @user = User.where(email: email).first
+    return if @user.nil?
+
+    mail({
+             subject: 'You can help us make Omnipaste better',
+             from: 'Calin <calin@omnipasteapp.com>',
+             to: @user.email
+         }) do |format|
+      format.html { render template: 'mailers/notifications_mailer/survey', layout: 'notifications_mailer' }
+      format.text { render template: 'mailers/notifications_mailer/survey' }
+    end
+  end
 end

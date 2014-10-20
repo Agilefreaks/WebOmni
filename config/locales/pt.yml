@@ -79,13 +79,17 @@ pt:
       android_tm: Android™ é uma marca registada da Google Inc.
       windows_tm: Windows™ é uma marca registada da Microsoft Corporation nos Estados Unidos da América e noutros países.
   notification_mailer:
+    gretting: Olá
     footer:
       end: Cuide-se, a Equipa da Omni
       ps: "PS: Siga-nos nas suas redes sociais favoritas para estar a par de todas as novidades"
     welcome:
-      gretting: Olá
       content_1: Nós estamos gratos por lhe enviar este e-mail. Use-o para instalar a Omnipaste em cada um dos seus dispositivos.
       content_2: Por exemplo, para instalar a Omnipaste no seu smartphone, abra este email no seu smartphone e clique em Instalar. Se tem um tablet, vá ao seu tablet e faça o mesmo. É tão fácil!
+    survey:
+      content_1: Thank you for using Omnipaste! Because we want you to have the best experience possible with our product, your feedback is very important to us.
+      content_2: Omnipaste is helping you save time everyday, so we continued to do that by putting together a few questions for you. We’d love to know your answers!
+      content_3: Click here to let us know what you think!
 
   authorization_codes:
     title: "O seu código de autorização é: %{code}"
