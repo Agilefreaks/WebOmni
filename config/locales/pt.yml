@@ -87,9 +87,9 @@ pt:
       content_1: Nós estamos gratos por lhe enviar este e-mail. Use-o para instalar a Omnipaste em cada um dos seus dispositivos.
       content_2: Por exemplo, para instalar a Omnipaste no seu smartphone, abra este email no seu smartphone e clique em Instalar. Se tem um tablet, vá ao seu tablet e faça o mesmo. É tão fácil!
     survey:
-      content_1: Thank you for using Omnipaste! Because we want you to have the best experience possible with our product, your feedback is very important to us.
-      content_2: Omnipaste is helping you save time everyday, so we continued to do that by putting together a few questions for you. We’d love to know your answers!
-      content_3: Click here to let us know what you think!
+      content_1: Obrigado por usar Omnipaste ! Porque nós queremos que você tenha a melhor experiência com nosso produto possível , a sua opinião é muito importante para nós .
+      content_2: Ajudando você a economizar tempo Omnipaste é todos os dias , por isso continuamos a fazer isso reunindo uma série de perguntas POUCOS para você. Nós adoraríamos saber as respostas !
+      content_3: Clique aqui e diga -nos saber o que você pensa!
 
   authorization_codes:
     title: "O seu código de autorização é: %{code}"
