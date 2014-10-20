@@ -1,7 +1,7 @@
 namespace :campaigns do
   desc 'Send survey email'
   task :survey, [:emails] => :environment do |_t, args|
-    emails = args[:emails].split(',')
+    emails = args[:emails].split
 
     emails.each do |email|
       NotificationsMailer.survey(email).deliver
