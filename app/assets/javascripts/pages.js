@@ -129,13 +129,15 @@ var omnipaste = {
     //Check if hash is empty
     if (hash !== '' && typeof hash !== 'undefined') {
       //Scroll to element
-
       omnipaste.scrollToTop(100);
 
       setTimeout( function () {
         omnipaste.scrollToID(hash);
       }, 300);
 
+      if (hash === 'video' ) {
+        omnipaste.videoPlay();
+      }
     } else {
       omnipaste.scrollToTop();
     }
@@ -415,6 +417,8 @@ var omnipaste = {
       }, 800);
 
     }, 200);
+
+    omnipaste.setLocationHash('video');
   },
 
   // Close video function
