@@ -6,6 +6,7 @@ namespace :campaigns do
     emails.each do |email|
       NotificationsMailer.survey(email).deliver
       p "Delivered to #{email}"
+      sleep 1
     end
   end
 end
