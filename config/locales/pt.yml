@@ -79,7 +79,7 @@ pt:
       android_tm: Android™ é uma marca registada da Google Inc.
       windows_tm: Windows™ é uma marca registada da Microsoft Corporation nos Estados Unidos da América e noutros países.
   notification_mailer:
-    gretting: Olá
+    greeting: Olá
     footer:
       end: Cuide-se, a Equipa da Omni
       ps: "PS: Siga-nos nas suas redes sociais favoritas para estar a par de todas as novidades"

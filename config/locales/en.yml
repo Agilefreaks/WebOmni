@@ -100,7 +100,7 @@ en:
       android_tm: Android™ is a trademark of Google Inc.
       windows_tm: Windows™ is a trademark of Microsoft Corporation in the United States and other countries.
   notification_mailer:
-    gretting: Howdy
+    greeting: Howdy
     footer:
       end: Take care, Omni Team
       ps: "PS: Follow us on your favorite social network to get updates"
