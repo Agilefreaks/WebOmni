@@ -436,6 +436,8 @@ var omnipaste = {
       // Hide video overlay
       $bodyTrigger.removeClass(videoOverlayClass);
     }, 200);
+
+    omnipaste.setLocationHash('');
   },
 
   // Manage Video Visibility on Scroll
