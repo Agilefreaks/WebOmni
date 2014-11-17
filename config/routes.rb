@@ -4,7 +4,7 @@ WebOmni::Application.routes.draw do
 
   devise_for :users, skip: [:session, :password, :registration], controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
-  scope '(:locale)', locale: /en|pt/ do
+  scope '(:locale)', locale: /en|pt|ro/ do
     devise_for :users, skip: [:omniauth_callbacks]
 
     resource :authorization_codes, only: [:new]

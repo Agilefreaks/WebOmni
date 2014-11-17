@@ -1,0 +1,101 @@
+ro:
+  layout:
+    logo_alt: Logo Omnipaste
+    header:
+      sign_up:
+        title: Înregistrare
+        subtitle: Crează un cont pentru a-ți conecta dispozitivele.
+        security_policy: Citește polița noastră de securitate.
+        google: Înregistrare cu Google
+        explain: Această variantă ușurează procesul de instalare dacă folosești contul cu care ești logat pe Play Store.
+        alternative: ...sau înregistrează-te cu
+        email: Înregistrează-te cu adresa ta de email
+      download:
+        title: Descărcare în desfășurare...
+        subtitle_1: Pachetul de instalare va fi descărcat. Dacă descărcarea 
+        subtitle_2: nu pornește automat în câteva  secunde,
+        link: apasă aici.
+        instructions_1: Deschide dosarul de Descărcări
+        instructions_2: și rulează pachetul de instalare
+        instructions_3: Urmărește instrucțiunile de instalare.
+        instructions_4: Gata de acțiune.
+        link: Vezi ce primești
+    menu:
+      faq: FAQ
+      greeting: Salut
+      sign_out: Deconectare
+      download: Instalează Omnipaste
+      sign_in: Conectare
+      contact: Contact
+      mobile_title: Meniu
+    hero:
+      title: Conectează-ți dispozitivele
+      subtitle: >
+                Make it simple & quick to switch between your computer and your mobile
+
+                devices. Get Omnipaste and redefine your multi-device experience.
+      subtitle_requierments: Funcționează pe dispozitive Windows™ și Android™
+      subtitle_requierments_link: până acum.
+    video: 	
+      play: Rulează videoclipul
+      span: Vezi videoclipul
+      close: Închide videoclipul
+    button:
+      download: Instalează Omnipaste gratuit
+      authorization_code: Obține un cod de autorizare
+      learn_more: Învață mai mult
+      contact: Trimite-ne un email cu intrebările tale
+      install: "În regulă, vreau sa îl instalez"
+      what_else: Ce altceva mai face?
+    feature:
+      copy_and_paste:
+        title: Copiază și Lipește Text
+        description: Ai citit un paragraf interesant pe Internet și vrei să îl distribui cu un prieten? Cu Omnipaste, PC-ul și telefonul tău au un clipboard comun. Tot ce trebuie sa faci e sa copiezi de pe unul si sa lipești pe celălalt.
+      notifications:
+        title: Notificări
+        description: Ești la calculator și ai telefonul în geantă pe mut? Nu-ți face griji, Omnipaste te va anunța când cineva te va suna. De asemenea îți va arăta și mesajele pe care le primești.
+      smart_action:
+        title: Acțiuni rapide
+        description_p1: Vrei să faci o rezervare pentru deseară pentru tine și prietenii tăi? Folosește calculatorul pentru a căuta comfortabil o locație.
+        description_p2: Copiază un număr de telefon de pe calculator, ridică telefonul si apasă pe notificare pentru a suna.
+        description_p3: Copiază o adresă, ridică telefonul și apasă pe notificare pentru a deschide navigatorul către acea locație.
+    partners:
+      title: Companii partenere
+    founders:
+      title: Co-fondator
+    faq:
+      subtitle: Lucruri pe care ar trebui să le știi despre aplicația Omnipaste.
+      title_what: Ce aș putea să fac cu Omni?
+      title_what_content: Transferă informații între dispozitive cu mare ușurință și redu intensitatea cu care îți verifici telefonul pentru că vei primi toate SMS-urile și apelurile direct pe PC sau tabletă.
+      title_will: Voi putea să îmi conectez și televizorul?
+      title_will_content: Nu încă. Totuși Televizoarele Smart vor fi suportate în curând. Vei putea să copiezi și să lipești link-uri de la emisiunile tale preferate. Videoclipuri de pe youtube vor putea rula pe televizorul smart prin simpla copiere a link-ului de pe PC sau telefon. Nu are rost sa mai menționăm că notificările îți vor fi arătate pe ecranul mare. 
+      title_why: De ce e Omnipaste doar pe Android și Windows?
+      title_why_content: Pentru moment acestea sunt singurele dispozitive suportate. Vor urma și altele. Urmărește-ne pe %{twitter} sau %{facebook} pentru noutăți. Vezi și %{support_forum} și lasă-ne idei pe care ai vrea să le vezi implementate."
+      title_is: Cât de sigur este Omnipaste?
+      title_is_content: Luăm securitatea în cel mai serios mod. Folosim algoritmi de primă clasă și metode de autentificare folosită de giganții din industrie precum Google și Facebook.
+    footer:
+      tos: Politică de confidențialitate
+      android_tm: Android™ este o marcă înregistrată de Google Inc.
+      windows_tm: Windows™ este o marcă înregistrată de Microsoft Corporation in Statele Unite ale Americii și alte țări.
+  notification_mailer:
+    footer:
+      end: Cu bine, echipa Omnipaste
+      ps: "PS: Urmărește-ne pe rețeaua ta preferată de socializare pentru a primi noutăți."
+    welcome:
+      gretting: Salutare
+      content_1: Ne bucurăm să îți trimitem acest email. Folosește-l să instalezi Omnipaste pe fiecare dintre dispozitivele tale.
+      content_2: De exemplu, pentru a instala Omnipaste pe smartphone, deschide acest email de pe telefon si apasă Instalează. Dacă ai o tabletă, procesul este identic. Atât de ușor!
+
+  authorization_codes:
+    title: "Codul tău de autorizare este: %{code}"
+  contacts:
+    title: Ia legătura cu noi
+    subtitle: Am fi bucuroși să îți cunoaștem părerea ta despre aplicație.
+    label_name: Nume
+    label_name_validation: Te rog să îți introduci numele
+    label_email: Email
+    label_email_validation: Adresa de email pe care ai introdus-o nu este validă
+    label_message: Mesaj
+    label_message_validation: Te rog introdu un mesaj
+    button: Trimite mesajul
+    flash: Mesajul tău a fost trimis :)
