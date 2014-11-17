@@ -24,7 +24,6 @@ describe DownloadsController do
         subject
       end
     end
-
   end
 
   describe "GET 'windows_client'" do

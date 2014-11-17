@@ -1,8 +1,11 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
-      # You need to implement the method below in your model (e.g. app/models/user.rb)
-      @user = find_or_create(request.env['omniauth.auth'], current_user)
+      distinct_id = retrieve_id_from_cookie(cookies)
+      auth = request.env['omniauth.auth']
+      auth[:distinct_id] = distinct_id unless distinct_id.blank?
+
+      @user = find_or_create(auth, current_user)
 
       if @user.persisted?
         flash[:notice] = I18n.t('devise.omniauth_callbacks.success', :kind => 'Google')
@@ -20,6 +23,13 @@ module Users
           User.where(email: auth.info.email).first
 
       UserFactory.from_social(auth, user)
+    end
+
+    def retrieve_id_from_cookie(cookies)
+      mixpanel_cookie = cookies[:"mp_#{Track.api_key}_mixpanel"] || '{}'
+      mixpanel_cookie = JSON.parse(mixpanel_cookie)
+      puts mixpanel_cookie.inspect
+      mixpanel_cookie['distinct_id'] || ''
     end
   end
 end

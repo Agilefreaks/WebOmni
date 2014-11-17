@@ -15,11 +15,18 @@ class DownloadsController < ApplicationController
     @authorization_code = CreateAuthorizationCode.for(current_user)
     data = open(WINDOWS_CLIENT_DOWNLOAD_LINK)
     filename = File.basename(WINDOWS_CLIENT_DOWNLOAD_LINK, '.*')
+
+    Track.windows_download(current_user.email)
+
     send_data data.read, :filename => "#{filename}#{@authorization_code.code}.msi"
   end
 
   def android_client
-    @authorization_code = CreateAuthorizationCode.for(find_current_user)
+    current_user = find_current_user
+    @authorization_code = CreateAuthorizationCode.for(current_user)
+
+    Track.android_download(current_user.email)
+
     redirect_to ANDROID_CLIENT_DOWNLOAD_LINK
   end
 

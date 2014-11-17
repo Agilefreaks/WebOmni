@@ -21,7 +21,8 @@ class UserFactory
         email: auth.info.email,
         password: Devise.friendly_token[0, 20],
         image_url: match ? match[1] : nil,
-        access_token: api_user.access_token
+        access_token: api_user.access_token,
+        mixpanel_distinct_id: auth.distinct_id
     }
 
     if user

@@ -2,13 +2,13 @@
   - if user_signed_in?
     = link_to "#{t('layout.button.install')}",
               download_path,
-              { class: 'button button--orange button--orange-feature',
+              { class: 'button button--orange button--orange-feature button--download',
                 title: 'Install Omnipaste',
                 data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD}" } }
   - else
     = link_to "#{t('layout.button.install')}",
               '#sign-up',
-              { class: 'button button--orange button--orange-feature js-toggle-dropdown',
+              { class: 'button button--orange button--orange-feature js-toggle-dropdown button--download',
                 title: 'Install Omnipaste',
                 data: { id: 'sign-up', trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::SIGN_UP}" } }
 

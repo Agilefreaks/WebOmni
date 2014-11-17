@@ -38,6 +38,8 @@ gem 'sitemap_generator'
 
 gem 'mobile-fu'
 
+gem 'mixpanel-ruby'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

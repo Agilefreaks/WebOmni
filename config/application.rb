@@ -40,9 +40,9 @@ module WebOmni
                                     presentation.js presentation.css
                                     browser.update.js)
 
-    config.autoload_paths += Dir["#{Rails.root}/app/api/*",
-                                 "#{Rails.root}/app/factories/*",
-                                 "#{Rails.root}/app/interactions/*"]
+    config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('/app/factories')
+    config.autoload_paths << Rails.root.join('/app/interactions')
 
     # active resource
     config.active_resource.format = :json
