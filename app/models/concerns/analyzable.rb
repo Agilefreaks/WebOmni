@@ -9,6 +9,8 @@ module Analyzable
   end
 
   def track_user_registration
+    return if mixpanel_distinct_id.to_s.empty?
+
     user_params = {
         first_name: first_name,
         last_name: last_name,
