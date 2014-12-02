@@ -4,4 +4,12 @@ module ApplicationHelper
     image_path.concat('.').concat(type.to_s) if type
     image_path
   end
+
+  def hero_title(alternative)
+    alternative ? t('layout.hero.title_alternative') : t('layout.hero.title')
+  end
+
+  def hero_subtitle(alternative)
+    alternative ? t('layout.hero.subtitle_alternative') : t('layout.hero.subtitle')
+  end
 end
