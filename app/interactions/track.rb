@@ -13,6 +13,10 @@ module Track
     Service.new(build_tracker).android_download(email)
   end
 
+  def self.sign_up(email)
+    Service.new(build_tracker).sign_up(email)
+  end
+
   private
 
   def self.build_tracker
@@ -43,15 +47,23 @@ module Track
                                    '$first_name' => user_properties[:first_name],
                                    '$last_name' => user_properties[:last_name],
                                    '$email' => user_properties[:email],
-                                   '$created' => Time.now.utc})
+                                   '$created' => Time.now.utc,
+                                   '$downloaded_windows' => false,
+                                   '$downloaded_android' => false}, ip=user_properties[:remote_ip])
     end
 
     def windows_download(email)
-      @tracker.track(email, EventTracking::DOWNLOAD, {client: EventTracking::WINDOWS_CLIENT})
+      @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::WINDOWS_CLIENT, email: email }, ip=0)
+      @tracker.people.set(email, { '$downloaded_windows' => true }, ip=0)
     end
 
     def android_download(email)
-      @tracker.track(email, EventTracking::DOWNLOAD, {client: EventTracking::ANDROID_CLIENT})
+      @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::ANDROID_CLIENT, email: email }, ip=0)
+      @tracker.people.set(email, { '$downloaded_android' => true }, ip=0)
+    end
+
+    def sign_up(email)
+      @tracker.track(email, EventTracking::SIGN_UP, { email: email }, ip=0)
     end
   end
 end

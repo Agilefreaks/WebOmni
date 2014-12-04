@@ -4,6 +4,7 @@ module Users
       distinct_id = retrieve_id_from_cookie(cookies)
       auth = request.env['omniauth.auth']
       auth[:distinct_id] = distinct_id unless distinct_id.blank?
+      auth[:remote_ip] = request.remote_ip
 
       @user = find_or_create(auth, current_user)
 
