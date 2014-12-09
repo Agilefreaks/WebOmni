@@ -35,12 +35,12 @@ en:
         title: Download in progress...
         subtitle_1: The installer package is being downloaded. If download does not
         subtitle_2: start automatically in a few seconds,
-        link: click here.
+        retry_link: click here.
         instructions_1: Go to your Downloads folder
         instructions_2: and run the app
         instructions_3: Follow the Installer instructions.
         instructions_4: Ready for action.
-        link: click here
+        see_what_you_get_link: See what you get
     menu:
       faq: FAQ
       greeting: Hi

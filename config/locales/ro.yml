@@ -14,12 +14,12 @@ ro:
         title: Descărcare în desfășurare...
         subtitle_1: Pachetul de instalare va fi descărcat. Dacă descărcarea 
         subtitle_2: nu pornește automat în câteva  secunde,
-        link: apasă aici.
+        retry_link: apasă aici.
         instructions_1: Deschide dosarul de Descărcări
         instructions_2: și rulează pachetul de instalare
         instructions_3: Urmărește instrucțiunile de instalare.
         instructions_4: Gata de acțiune.
-        link: apasă aici
+        see_what_you_get_link: Vezi ce primești
     menu:
       faq: FAQ
       greeting: Salut

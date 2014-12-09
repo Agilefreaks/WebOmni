@@ -14,12 +14,12 @@ pt:
         title: A descarregar...
         subtitle_1: O instalador está a ser descarregado. Se o download não
         subtitle_2: começar automaticamente em poucos segundos,
-        link: clique aqui.
+        retry_link: clique aqui.
         instructions_1: Vá à sua pasta de Transferências
         instructions_2: corra a aplicação
         instructions_3: Siga as instruções de instalação.
         instructions_4: Está pronto.
-        link: clique aqui
+        see_what_you_get_link: Veja o que leva
     menu:
       faq: FAQ
       greeting: Olá

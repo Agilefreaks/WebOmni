@@ -22,7 +22,7 @@
         #{t('layout.header.download.subtitle_1')}
         %br/
         #{t('layout.header.download.subtitle_2')}
-        = link_to "#{t('layout.header.download.link')}", download_path, { title: "#{t('layout.button.download')}" }
+        = link_to "#{t('layout.header.download.retry_link')}", download_path, { title: "#{t('layout.button.download')}" }
   .row.hidden-xs.hidden-sm
     .col-xs-12.col-md-4
       .download__step
@@ -42,7 +42,7 @@
   .row
     .col-xs-12
       .section__button.section__button--hero
-        = link_to '#feature-copy-paste', { class: 'button button--transparent js-goto-section', title: "#{t('layout.header.download.link')}",
+        = link_to '#feature-copy-paste', { class: 'button button--transparent js-goto-section', title: "#{t('layout.header.download.see_what_you_get_link')}",
                                            data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'See what you get', trackCategory: "#{EventTracking::DOWNLOAD}" } } do
-          #{t('layout.header.download.link')}
+          #{t('layout.header.download.see_what_you_get_link')}
           %i.icon.icon__arrowhead-down
