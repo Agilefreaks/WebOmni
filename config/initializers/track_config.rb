@@ -12,5 +12,5 @@ end
 
 TrackConfig.config do |conf|
   conf.api_key = 'd4a302f695330322fe4c44bc302f3780' if Rails.env.staging? || Rails.env.production?
-  conf.test_mode = Rails.env.test? || Rails.env.cucumber?
+  conf.test_mode = Rails.env.test? || Rails.env.cucumber? || Rails.env.development?
 end
