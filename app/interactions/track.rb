@@ -17,6 +17,10 @@ module Track
     Service.new(build_tracker).sign_up(email)
   end
 
+  def self.create_authorization_code(email)
+    Service.new(build_tracker).create_authorization_code(email)
+  end
+
   private
 
   def self.build_tracker
@@ -64,6 +68,10 @@ module Track
 
     def sign_up(email)
       @tracker.track(email, EventTracking::SIGN_UP, { email: email }, ip=0)
+    end
+
+    def create_authorization_code(email)
+      @tracker.track(email, EventTracking::CREATE_AUTHORIZATION_CODE, { email: email }, ip=0)
     end
   end
 end

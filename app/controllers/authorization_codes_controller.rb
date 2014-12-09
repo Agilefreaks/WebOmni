@@ -12,6 +12,7 @@ class AuthorizationCodesController < ApplicationController
   private
 
   def create_authorization_code(current_user)
+    Track.create_authorization_code(current_user.email)
     @authorization_code = CreateAuthorizationCode.for(current_user.id)
     respond_to do |format|
       format.html { render layout: 'presentation' }
