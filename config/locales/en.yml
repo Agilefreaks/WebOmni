@@ -52,15 +52,15 @@ en:
       blog: Blog
     hero:
       title: Link your devices
-      title_alternative: What if you could link your Windows PC to your Android phone?
+      title_alternative: Link your PC to your Android device
       subtitle: >
                 Make it simple & quick to switch between your computer and your mobile
 
                 devices. Get Omnipaste and redefine your multi-device experience.
       subtitle_alternative: >
-                You could copy and paste both ways across devices, manage your phone calls,
+                You will be able to copy and paste both ways, manage your phone calls,
 
-                SMS messages and  notifications straight from your PC.
+                SMS messages and notifications straight from your PC.
       subtitle_requierments: Works on Windows™ and Android™ mobile devices
       subtitle_requierments_link: for now.
     video:
