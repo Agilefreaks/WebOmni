@@ -13,7 +13,7 @@ class UserFactory
         OmniApi::User.new(first_name: auth.info.first_name,
                           last_name: auth.info.last_name,
                           email: auth.info.email,
-                          image_url: getImageUrl(auth))
+                          image_url: get_image_url(auth))
     api_user.save
 
     params = {
@@ -21,7 +21,7 @@ class UserFactory
         last_name: auth.info.last_name,
         email: auth.info.email,
         password: Devise.friendly_token[0, 20],
-        image_url: getImageUrl(auth),
+        image_url: get_image_url(auth),
         access_token: api_user.access_token,
         mixpanel_distinct_id: auth.distinct_id,
         remote_ip: auth.remote_ip
@@ -36,7 +36,7 @@ class UserFactory
     user
   end
 
-  def getImageUrl(auth)
+  def get_image_url(auth)
     match = auth.to_s.match(/image="(.*?)"/)
     match ? match[1] : nil
   end
