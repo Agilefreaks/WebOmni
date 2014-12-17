@@ -38,6 +38,9 @@ module Track
   end
 
   class Service
+    DOWNLOADED_WINDOWS = 'Downloaded Windows'
+    DOWNLOADED_ANDROID = 'Downloaded Android'
+
     attr_reader :tracker
 
     def initialize(tracker)
@@ -48,22 +51,23 @@ module Track
       @tracker.alias(email, mixpanel_distinct_id)
 
       @tracker.people.set(email, {
-                                   '$first_name' => user_properties[:first_name],
-                                   '$last_name' => user_properties[:last_name],
-                                   '$email' => user_properties[:email],
-                                   '$created' => Time.now.utc,
-                                   '$downloaded_windows' => false,
-                                   '$downloaded_android' => false}, ip=user_properties[:remote_ip])
+                                 '$first_name' => user_properties[:first_name],
+                                 '$last_name' => user_properties[:last_name],
+                                 '$email' => email,
+                                 '$created' => Time.now.utc,
+                                 DOWNLOADED_WINDOWS => false,
+                                 DOWNLOADED_ANDROID => false },
+                          ip = user_properties[:remote_ip])
     end
 
     def windows_download(email)
       @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::WINDOWS_CLIENT, email: email }, ip=0)
-      @tracker.people.set(email, { '$downloaded_windows' => true }, ip=0)
+      @tracker.people.set(email, { DOWNLOADED_WINDOWS => true }, ip=0)
     end
 
     def android_download(email)
       @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::ANDROID_CLIENT, email: email }, ip=0)
-      @tracker.people.set(email, { '$downloaded_android' => true }, ip=0)
+      @tracker.people.set(email, { DOWNLOADED_ANDROID => true }, ip=0)
     end
 
     def sign_up(email)
