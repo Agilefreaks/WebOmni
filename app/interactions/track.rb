@@ -54,20 +54,18 @@ module Track
                                  '$first_name' => user_properties[:first_name],
                                  '$last_name' => user_properties[:last_name],
                                  '$email' => email,
-                                 '$created' => Time.now.utc,
-                                 DOWNLOADED_WINDOWS => false,
-                                 DOWNLOADED_ANDROID => false },
+                                 '$created' => Time.now.utc },
                           ip = user_properties[:remote_ip])
     end
 
     def windows_download(email)
       @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::WINDOWS_CLIENT, email: email }, ip=0)
-      @tracker.people.set(email, { DOWNLOADED_WINDOWS => true }, ip=0)
+      @tracker.people.set_once(email, { DOWNLOADED_WINDOWS => true }, ip=0)
     end
 
     def android_download(email)
       @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::ANDROID_CLIENT, email: email }, ip=0)
-      @tracker.people.set(email, { DOWNLOADED_ANDROID => true }, ip=0)
+      @tracker.people.set_once(email, { DOWNLOADED_ANDROID => true }, ip=0)
     end
 
     def sign_up(email)
