@@ -36,6 +36,7 @@ WebOmni::Application.configure do
 
   # download links 
   WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://download.omnipasteapp.com/staging/OmnipasteInstaller.msi'
+  ANDROID_CLIENT_DOWNLOAD_LINK = 'https://play.google.com/apps/testing/com.omnipaste.droidomni.staging'
 
   # API
   OmniApi.config.base_url = 'http://localhost:9292/api/v1'
