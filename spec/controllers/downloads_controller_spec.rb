@@ -10,7 +10,7 @@ describe DownloadsController do
       let(:email) { '' }
 
       it 'will generate code for logged user' do
-        CreateAuthorizationCode.should_receive(:for).with(current_user)
+        expect(CreateAuthorizationCode).to receive(:for).with(current_user)
         subject
       end
     end
@@ -20,7 +20,7 @@ describe DownloadsController do
       let!(:user) { Fabricate(:user, email: email) }
 
       it 'will generate code for user with email' do
-        CreateAuthorizationCode.should_receive(:for).with(user)
+        expect(CreateAuthorizationCode).to receive(:for).with(user)
         subject
       end
     end

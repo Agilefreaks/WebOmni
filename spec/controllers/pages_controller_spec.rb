@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PagesController do
-  describe :welcome do
+  describe 'welcome' do
     subject { get :welcome }
 
     context 'when user not auth' do
