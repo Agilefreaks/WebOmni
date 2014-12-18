@@ -339,6 +339,8 @@ GEM
       rack-mobile-detect
       rails
     modernizr-rails (2.7.1)
+    mongo_session_store-rails4 (5.1.0)
+      actionpack (>= 3.1)
     mongoid (4.0.0)
       activemodel (~> 4.0)
       moped (~> 2.0.0)
@@ -535,6 +537,7 @@ DEPENDENCIES
   mixpanel-ruby
   mobile-fu
   modernizr-rails
+  mongo_session_store-rails4
   mongoid
   mongoid-rspec
   newrelic_rpm
