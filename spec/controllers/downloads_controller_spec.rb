@@ -4,6 +4,10 @@ describe DownloadsController do
   describe "GET 'android_client'" do
     subject { get :android_client, email: email }
 
+    before do
+      stub_const('ANDROID_CLIENT_DOWNLOAD_LINK', 'http://some.link')
+    end
+
     context 'when user is logged in' do
       include_context :logged_in_as_user
 
