@@ -2,6 +2,8 @@ module Track
   extend TrackConfig
 
   def self.alias(email, mixpanel_distinct_id, user_properties)
+    return if mixpanel_distinct_id.blank?
+
     Service.new(build_tracker).alias(email, mixpanel_distinct_id, user_properties)
   end
 
