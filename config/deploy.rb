@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.2
-lock '3.2.1'
+lock '3.2.5'
 
 set :application, 'omnipaste'
 set :repo_url, 'git@github.com:Agilefreaks/WebOmni.git'
