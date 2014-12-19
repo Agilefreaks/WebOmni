@@ -12,4 +12,8 @@ module ApplicationHelper
   def hero_subtitle(alternative)
     alternative ? t('layout.hero.subtitle_alternative') : t('layout.hero.subtitle')
   end
+
+  def download?
+    params[:download]
+  end
 end

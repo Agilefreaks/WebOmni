@@ -1,0 +1,17 @@
+/ Facebook Conversion Code for Conversie - sign up with google
+:javascript
+  (function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+  var fbds = document.createElement('script');
+  fbds.async = true;
+  fbds.src = '//connect.facebook.net/en_US/fbds.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(fbds, s);
+  _fbq.loaded = true;
+  }
+  })();
+  window._fbq = window._fbq || [];
+  window._fbq.push(['track', '6022628355613', {'value':'0.01','currency':'RON'}]);
+%noscript
+  %img{:alt => '', :height => '1', :src => 'https://www.facebook.com/tr?ev=6022628355613&cd[value]=0.01&cd[currency]=RON&noscript=1', :style => 'display:none', :width => '1'}/
