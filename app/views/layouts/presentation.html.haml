@@ -13,6 +13,7 @@
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
     = render partial: 'layouts/google' if Rails.env.production?
+    = render partial: 'layouts/facebook' if Rails.env.production?
     = render partial: 'layouts/mixpanel'
 
   %body#home.body.js-body-action
