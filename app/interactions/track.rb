@@ -1,10 +1,8 @@
 module Track
   extend TrackConfig
 
-  def self.alias(email, mixpanel_distinct_id, user_properties)
-    return if mixpanel_distinct_id.blank?
-
-    Service.new(build_tracker).alias(email, mixpanel_distinct_id, user_properties)
+  def self.user_created(email, user_properties)
+    Service.new(build_tracker).user_created(email, user_properties)
   end
 
   def self.windows_download(email)
@@ -49,25 +47,23 @@ module Track
       @tracker = tracker
     end
 
-    def alias(email, mixpanel_distinct_id, user_properties)
-      @tracker.alias(email, mixpanel_distinct_id)
-
-      @tracker.people.set(email, {
-                                 '$first_name' => user_properties[:first_name],
-                                 '$last_name' => user_properties[:last_name],
-                                 '$email' => email,
-                                 '$created' => Time.now.utc },
-                          ip = user_properties[:remote_ip])
+    def user_created(email, user_properties)
+      set_people(email,
+                 { '$first_name' => user_properties[:first_name],
+                   '$last_name' => user_properties[:last_name],
+                   '$email' => email,
+                   '$created' => Time.now.utc },
+                 user_properties[:remote_ip])
     end
 
     def windows_download(email)
       @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::WINDOWS_CLIENT, email: email }, ip=0)
-      @tracker.people.set_once(email, { DOWNLOADED_WINDOWS => true }, ip=0)
+      set_people(email, { DOWNLOADED_WINDOWS => true })
     end
 
     def android_download(email)
       @tracker.track(email, EventTracking::DOWNLOAD, { client: EventTracking::ANDROID_CLIENT, email: email }, ip=0)
-      @tracker.people.set_once(email, { DOWNLOADED_ANDROID => true }, ip=0)
+      set_people(email, { DOWNLOADED_ANDROID => true })
     end
 
     def sign_up(email)
@@ -76,6 +72,24 @@ module Track
 
     def create_authorization_code(email)
       @tracker.track(email, EventTracking::CREATE_AUTHORIZATION_CODE, { email: email }, ip=0)
+    end
+
+    private
+
+    def set_people(email, params, remote_ip = 0)
+      user = User.where(email: email).first
+      return unless user
+
+      set_alias(email, user.mixpanel_distinct_id) unless user.aliased?
+      @tracker.people.set(email, params, ip = remote_ip)
+    end
+
+    def set_alias(email, mixpanel_distinct_id)
+      return if mixpanel_distinct_id.blank?
+
+      @tracker.alias(email, mixpanel_distinct_id)
+      user = User.find_by(email: email)
+      user.set(aliased: true)
     end
   end
 end

@@ -31,7 +31,7 @@ class UserFactory
       user.update(params)
     else
       user = User.create(params)
-      Track.alias(params[:email], auth.distinct_id, params)
+      Track.user_created(params[:email], params)
     end
 
     user
