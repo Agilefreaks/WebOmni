@@ -51,9 +51,9 @@
             .row
               .col-xs-12
                 %h1.section__title.section__title--hero
-                  = hero_title(params[:alternative])
+                  = t('layout.hero.title')
                 %h2.section__subtitle.section__subtitle--hero
-                  = simple_format(hero_subtitle(params[:alternative]), {}, { wrapper_tag: 'div' })
+                  = simple_format(t('layout.hero.subtitle'), {}, { wrapper_tag: 'div' })
                 .section__play
                   = link_to '#omni-video', { class: 'button button--play js-omni-video-toggle',
                                              title: "#{t('layout.video.play')}",

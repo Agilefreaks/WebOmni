@@ -29,13 +29,8 @@ ro:
       contact: Contact
       mobile_title: Meniu
     hero:
-      title: Conectează-ți dispozitivele
-      title_alternative: Cum ar fi dacă ți-ai conecta PC-ul cu telefonul Android?
+      title: Cum ar fi dacă ți-ai conecta PC-ul cu telefonul Android?
       subtitle: >
-                Make it simple & quick to switch between your computer and your mobile
-
-                devices. Get Omnipaste and redefine your multi-device experience.
-      subtitle_alternative: >
                 Ai putea să faci copy-paste între ele, să vezi apelurile,
 
                 mesajele și notificările direct de pe PC.
