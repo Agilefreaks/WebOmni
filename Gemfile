@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
+gem 'rails-dom-testing'
 gem 'mongoid'
 gem 'mongo_session_store-rails4'
 gem 'activeresource', :require => 'active_resource'
@@ -47,7 +48,7 @@ group :development do
   gem 'pry-rails'
 
   # deploy
-  gem 'capistrano', '~> 3.2', require: false
+  gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm', require: false
@@ -65,7 +66,7 @@ group :development, :test do
   gem 'mongoid-rspec'
   gem 'rspec-activemodel-mocks'
   gem 'fabrication'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '1.3.0'
   gem 'cucumber-rails', require: false
 end
 

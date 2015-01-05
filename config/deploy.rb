@@ -1,4 +1,4 @@
-# config valid only for Capistrano 3.2
+# config valid only for Capistrano 3.3
 lock '3.3.5'
 
 set :application, 'omnipaste'
