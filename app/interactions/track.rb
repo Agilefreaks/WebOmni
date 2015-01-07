@@ -80,8 +80,12 @@ module Track
       user = User.where(email: email).first
       return unless user
 
-      set_alias(email, user.mixpanel_distinct_id) unless user.aliased?
-      @tracker.people.set(email, params, ip = remote_ip)
+      if user.aliased?
+        @tracker.people.set(email, params, ip = remote_ip)
+      else
+        @tracker.people.set(user.mixpanel_distinct_id, params, ip = remote_ip)
+        set_alias(email, user.mixpanel_distinct_id)
+      end
     end
 
     def set_alias(email, mixpanel_distinct_id)
