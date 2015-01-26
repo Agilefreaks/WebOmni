@@ -1,9 +1,9 @@
 // 
-// Name: Less Browser Styles
+// Name: Browser Specifics
 // Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
 //
 
-// Browser Specific Styles
+// Browser Specifics
 
 
 /* !IE fixes */
@@ -16,32 +16,25 @@
 @-o-viewport        { width: device-width; }
 @viewport           { width: device-width; }
 
-	//.oldie { }
+//.oldie { }
 
-	// Hide Select Arrows in IE
-	//input::-ms-expand { display: none; }
-	
-	// Hide Clear X on input in IE
-	input::-ms-clear { width: 0; height: 0; }
-	// Hide Reveal on password in IE
-	input::-ms-reveal { width: 0; height: 0; }
+// Hide Select Arrows in IE
+//input::-ms-expand { display: none; }
+
+// Hide Clear X on input in IE
+input::-ms-clear { width: 0; height: 0; }
+// Hide Reveal on password in IE
+input::-ms-reveal { width: 0; height: 0; }
 
 /* !Firefox fixes */
 /* ==|========================================================================= */
 
-@-moz-document url-prefix() {
+//@-moz-document url-prefix() {
 
-	// Pseudo Elements position support fix (Why Firefox, why?)
-	// https://bugzilla.mozilla.org/show_bug.cgi?id=251850
+// Pseudo Elements position support fix (Why Firefox, why?)
+// https://bugzilla.mozilla.org/show_bug.cgi?id=251850
 
 
-	// Remove Select Arrows in Mozilla	
-	// input { text-indent: 0.01px; text-overflow: ''; }
-}
-
-/* !Google Maps Fix */
-/* ==|========================================================================= */
-
-.google-map-canvas,
-.google-map-canvas * { .box-sizing(content-box); }
-// img { max-width: none; } 
+// Remove Select Arrows in Mozilla
+// input { text-indent: 0.01px; text-overflow: ''; }
+//}
