@@ -9,12 +9,19 @@
 /* !Responsive */
 /* ==|========================================================================= */
 
-@media @650h {
-  html { font-size: 85% }
+@media @780h {
+  .hero__chat { font-size: 75% }
+  .section--fit-viewport { height: auto; }
+  .omni-video__overlay:after { height: 100%; }
+  .section__hero--spacer-top { padding-top: 0; }
+  .header { height: 100%; }
 }
-@media @585h {
-             .section--fit-viewport { height: auto; }
-             .omni-video__overlay:after { height: 100%; }
+@media @680h {
+             html { font-size: 95%; }
+           }
+
+@media @560h {
+             html { font-size: 85%; }
            }
 
 @media @320h {
@@ -62,6 +69,64 @@
 
 @media @1100w {
               .feature { font-size: 80%; }
+              .hero-animation {
+                font-size: 90%;
+
+                &__connect {
+                  top: 33 * @em;
+                }
+
+                &__notification {
+                  top: 22 * @em;
+
+                  &--small, &--transparent {
+
+                    &.hero-animation__notification--phone-call {
+                      top: 73 * @em;
+                    }
+                    &.hero-animation__notification--phone-sms {
+                      top: 108 * @em;
+                    }
+                    &.hero-animation__notification--phone-clipping {
+                      top: 142 * @em;
+                    }
+                  }
+                }
+
+                &__play {
+                  top: 105 * @em;
+                }
+              }
+            }
+
+@media @1000w {
+              .hero-animation {
+                font-size: 80%;
+
+                &__connect {
+                  top: 44 * @em;
+                }
+
+                &__notification {
+                  top: 34 * @em;
+
+                  &--small, &--transparent {
+
+                    &.hero-animation__notification--phone-call {
+                      top: 88 * @em;
+                    }
+                    &.hero-animation__notification--phone-sms {
+                      top: 123 * @em;
+                    }
+                    &.hero-animation__notification--phone-clipping {
+                      top: 157 * @em;
+                    }
+                  }
+                }
+                &__play {
+                  top: 115 * @em;
+                }
+              }
             }
 
 @media @990w {
@@ -69,9 +134,74 @@
                &__content { font-size: 83%; }
              }
              .contact { min-height: 750 * @rem; }
+             .hero__chat { display: none; }
+
+             .hero-animation {
+               font-size: 70%;
+               padding-left: 10 * @rem;
+
+               &__connect {
+                 top: 58 * @em;
+               }
+
+               &__notification {
+                 top: 51 * @em;
+
+                 &--small, &--transparent {
+
+                   &.hero-animation__notification--phone-call {
+                     top: 105 * @em;
+                   }
+                   &.hero-animation__notification--phone-sms {
+                     top: 140 * @em;
+                   }
+                   &.hero-animation__notification--phone-clipping {
+                     top: 174 * @em;
+                   }
+                 }
+               }
+               &__play {
+                 top: 135 * @em;
+                 left: 175 * @em;
+               }
+             }
+           }
+@media @860w {
+             .hero-animation {
+               font-size: 60%;
+
+               &__connect {
+                 top: 80 * @em;
+               }
+
+               &__notification {
+                 top: 71 * @em;
+
+                 &--small, &--transparent {
+
+                   &.hero-animation__notification--phone-call {
+                     top: 132 * @em;
+                   }
+                   &.hero-animation__notification--phone-sms {
+                     top: 167 * @em;
+                   }
+                   &.hero-animation__notification--phone-clipping {
+                     top: 201 * @em;
+                   }
+                 }
+               }
+               &__play {
+                 top: 160 * @em;
+                 left: 170 * @em;
+               }
+
+             }
            }
 
 @media @767w {
+             .header {
+               min-height: 600px;
+             }
              // Mobile nav
              .header__nav {
                &__button {
@@ -144,6 +274,29 @@
                background: none;
              }
 
+             .hero {
+               &__main-content {
+                 text-align: center;
+                 padding-top: 80 * @rem;
+
+                 .section__title {
+                   margin-top: 0;
+                   padding-bottom: 0;
+                 }
+                 .section__subtitle {
+                   padding-bottom: 0;
+                 }
+               }
+               &-animation {
+                 display: inline-block;
+                 min-height: 0;
+                 padding: 0;
+               }
+
+             }
+
+             .section__button--discover { left: 45%; }
+
              // Liniarize buttons
              .button--left {
                float: none;
@@ -185,9 +338,43 @@
 
                &__content { font-size: 100%; }
              }
+
+             .section__button--discover { left: 43%; }
+
            }
 @media @460w {
              html { font-size: 85%; }
+
+
+             .hero-animation {
+               font-size: 70%;
+
+               &__connect {
+                 top: 58 * @em;
+               }
+
+               &__notification {
+                 top: 51 * @em;
+
+                 &--small, &--transparent {
+
+                   &.hero-animation__notification--phone-call {
+                     top: 105 * @em;
+                   }
+                   &.hero-animation__notification--phone-sms {
+                     top: 140 * @em;
+                   }
+                   &.hero-animation__notification--phone-clipping {
+                     top: 174 * @em;
+                   }
+                 }
+               }
+               &__play {
+                 top: 135 * @em;
+                 left: 175 * @em;
+               }
+             }
+
              .feature {
                font-size: 85%;
                &__content { font-size: 8px; }
@@ -205,14 +392,16 @@
     height: auto;
     min-height: 500 * @rem;
   }
+  .hero__main-content { padding: 50 * @rem 0 50 * @rem 0; }
   .section--fit-viewport { height: 100%; }
   .omni-video--active { height: 100%; }
   .omni-video__overlay:after { height: 100%; }
+
 }
 
 @media @iPad-landscape {
   .header {
-    height: auto;
+    height: 100%;
     min-height: 500 * @rem;
   }
   .section--fit-viewport { height: 100%; }
@@ -234,6 +423,8 @@
 
 @media @iPhone4-portrait {
   html { font-size: 70%; }
+
+
   .header__nav { margin: 20 * @rem 5 * @rem 0 0; }
   .section__play { margin-bottom: 20 * @rem; }
   .section__button--hero { margin-top: 0; }
@@ -249,7 +440,36 @@
   }
 }
 @media @iPhone-portrait {
-  html { font-size: 70%; }
+  html { font-size: 80%; }
+
+  .hero-animation {
+    padding-left: 0;
+
+    &__connect {
+      top: 58 * @em;
+    }
+
+    &__notification {
+      top: 51 * @em;
+
+      &--small, &--transparent {
+
+        &.hero-animation__notification--phone-call {
+          top: 105 * @em;
+        }
+        &.hero-animation__notification--phone-sms {
+          top: 140 * @em;
+        }
+        &.hero-animation__notification--phone-clipping {
+          top: 174 * @em;
+        }
+      }
+    }
+    &__play {
+      top: 135 * @em;
+      left: 175 * @em;
+    }
+  }
   .section__play { margin-bottom: 10 * @rem; }
   .section__button--hero { margin-top: 0; }
   .contact { padding: 20 * @rem 0 200 * @rem 0; }
@@ -268,10 +488,12 @@
 }
 
 @media @iPhone-landscape {
+  html { font-size: 60%; }
+
   .section--fit-viewport { height: 100%; }
   .header {
     height: 100%;
-    min-height: 610 * @rem;
+    min-height: 710 * @rem;
   }
   .omni-video--active { height: 100%; }
   .omni-video__overlay:after { height: 100%; }
@@ -280,3 +502,40 @@
     margin-top: -230 * @rem;
   }
 }
+
+@media @1140-akward-resolution {
+              html { font-size: 85%; }
+            }
+
+@media @860-akward-resolution {
+             .header { min-height: 640px; }
+             .hero-animation {
+               font-size: 70%;
+               padding-left: 10 * @rem;
+
+               &__connect {
+                 top: 58 * @em;
+               }
+
+               &__notification {
+                 top: 51 * @em;
+
+                 &--small, &--transparent {
+
+                   &.hero-animation__notification--phone-call {
+                     top: 105 * @em;
+                   }
+                   &.hero-animation__notification--phone-sms {
+                     top: 140 * @em;
+                   }
+                   &.hero-animation__notification--phone-clipping {
+                     top: 174 * @em;
+                   }
+                 }
+               }
+               &__play {
+                 top: 135 * @em;
+                 left: 175 * @em;
+               }
+             }
+           }

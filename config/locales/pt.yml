@@ -30,12 +30,11 @@ pt:
       mobile_title: Menu
       blog: Blog
     hero:
-      title: E se você pudesse ligar o seu PC Windows para o seu telefone Android?
-      subtitle: >
-                Você pode copiar e colar em ambos os sentidos através de dispositivos , gerenciar seus telefonemas,
-
-                SMSs e notificações diretamente de seu PC.
-      subtitle_requierments: Funciona em  dispositivos móveis Windows™ e Android™
+      title: |
+        E se você pudesse ligar o seu PC Windows para
+        o seu telefone Android?
+      subtitle: Você pode copiar e colar em ambos os sentidos através de dispositivos , gerenciar seus telefonemas, SMSs e notificações diretamente de seu PC.
+      subtitle_requirements: Funciona em  dispositivos móveis Windows™ e Android™
       subtitle_requierments_link: por agora.
     video:
       play: Ver vídeo

@@ -13,15 +13,15 @@ var $viewport = $('html, body'),
     $heroContent = $('.js-hero'),
     heroHeight = $heroContent.outerHeight(),
     scrollDelay = 750,
-    scrollDelta = 5,
+    scrollDelta	= 5,
     scrollEvent = false,
-    detachDelay = 200,
+    detachDelay	= 200,
 // Dropdown vars
     $bodyTrigger = $('.js-body-action'),
     $dropdown = $('.js-dropdown'),
     $dropdownAction = $('.js-toggle-dropdown'),
     dropdownClass = 'dropdown--action',
-    dropdownActiveClass = 'dropdown--open',
+    dropdownActiveClass	= 'dropdown--open',
     dropdownBodyClass = 'dropdown--action',
 // Toggle vars
     $sectionAction = $('.js-goto-section'),
@@ -51,11 +51,12 @@ var $viewport = $('html, body'),
     $contactFormContainer = $('.js-contact-form-content'),
 //	Animations cars
     animationTriggerClass = 'js-animation-trigger',
-    animationDoneClass = 'animated';
+    animationDoneClass = 'animated',
+    animationOnStartTriggerClass = 'js-animation-on-start-trigger';
 
 var omnipaste = {
 
-    init: function () {
+    init: function() {
 
         // Open in new window links with rel=external code
         omnipaste.externalLink();
@@ -111,24 +112,21 @@ var omnipaste = {
         // Manage animations on scroll - Do not call directly from here (omnipaste.scroll)
         //omnipaste.animations();
 
+        // Manage animations on start
+        omnipaste.animationsOnStart();
+
         // Stop all animations, fades, transitions on manual scroll
         omnipaste.stop();
     },
 
     // Open in new window links with rel=external code
-    externalLink: function () {
-        $('a[rel="external"]').attr('target', '_blank');
-    },
+    externalLink: function() { $('a[rel="external"]').attr('target','_blank'); },
 
     // Prevent default action on # (hash) links
-    preventLink: function () {
-        $('a[href="#"]').on('click', function (e) {
-            e.preventDefault();
-        });
-    },
+    preventLink: function() { $('a[href="#"]').on('click', function(e) { e.preventDefault(); }); },
 
     // Watch for location hash
-    detectLocationHash: function () {
+    detectLocationHash: function() {
         //Get current hash
         var hash = window.location.hash.substr(1);
 
@@ -138,13 +136,13 @@ var omnipaste = {
 
             omnipaste.scrollToTop(100);
 
-            setTimeout(function () {
+            setTimeout( function () {
                 omnipaste.scrollToID(hash);
             }, 300);
 
         } else {
             // if hash == video, play video
-            if (hash === 'video') {
+            if (hash === 'video' ) {
                 omnipaste.videoPlay();
             }
             // Scroll to top
@@ -153,28 +151,28 @@ var omnipaste = {
     },
 
     // Replace location hash madness
-    replaceLocationHash: function (hash) {
+    replaceLocationHash: function(hash) {
         if (hash !== 'home' && hash !== '' && hash !== '#') {
 
-            hash = hash.replace(/^#/, '');
+            hash = hash.replace( /^#/, '' );
 
-            var fx, node = $('#' + hash);
+            var fx, node = $( '#' + hash );
 
             // Defuse existing id to prevent scroll
-            if (node.length) {
-                node.attr('id', '');
-                fx = $('<div></div>').css({
-                    position: 'absolute',
-                    visibility: 'hidden',
+            if ( node.length ) {
+                node.attr( 'id', '' );
+                fx = $( '<div></div>' ).css({
+                    position:'absolute',
+                    visibility:'hidden',
                     top: $(document).scrollTop() + 'px'
-                }).attr('id', hash).appendTo(document.body);
+                }).attr( 'id', hash ).appendTo( document.body );
             }
             document.location.hash = hash;
 
             // Shove id to its previous home
-            if (node.length) {
+            if ( node.length ) {
                 fx.remove();
-                node.attr('id', hash);
+                node.attr( 'id', hash );
             }
         } else if (hash === 'home') {
             // Remove location # if no fragment is given
@@ -187,16 +185,14 @@ var omnipaste = {
     },
 
     // Set location hash
-    setLocationHash: function (id) {
+    setLocationHash: function(id) {
 
         if (id === 'home') {
             // Make it so
             omnipaste.replaceLocationHash(id);
         } else {
-            hash = '#' + id;
-
             $menuContent.find('a').removeClass('current');
-            $menuContent.find('a[data-id="' + id + '"]').addClass('current');
+            $menuContent.find('a[data-id="'+ id +'"]').addClass('current');
 
             // Make it so
             omnipaste.replaceLocationHash(id);
@@ -204,8 +200,8 @@ var omnipaste = {
     },
 
     // Set hash according to location
-    setLocationScroll: function () {
-        $('.js-nav-hash').each(function () {
+    setLocationScroll: function() {
+        $('.js-nav-hash').each(function() {
             if (
                 $(this).offset().top < window.pageYOffset + 10 &&
                 $(this).offset().top + $(this).height() > window.pageYOffset + 10) {
@@ -216,15 +212,15 @@ var omnipaste = {
     },
 
     // Watch for scroll events
-    scroll: function () {
+    scroll: function() {
 
         // Check for scroll function
-        $(window).scroll(function () {
+        $(window).scroll(function() {
             scrollEvent = true;
         });
 
         // Do scroll polling at 250ms intervals
-        setInterval(function () {
+        setInterval (function() {
             if (scrollEvent) {
                 // Manage menu visibility
                 menuVisibilty();
@@ -244,16 +240,14 @@ var omnipaste = {
             var navbarHeight = $menuContent.outerHeight(),
                 currentPosition = $(this).scrollTop(),
                 navbarOffset = $heroContent.offset().top;
-            navbarPosition = navbarOffset + navbarHeight;
+            var navbarPosition = navbarOffset + navbarHeight;
 
             // Make sure the scroll is more than delta
-            if (Math.abs(lastScrollTop - currentPosition) <= scrollDelta) {
-                return;
-            }
+            if (Math.abs(lastScrollTop - currentPosition) <= scrollDelta) { return; }
 
             if (currentPosition > navbarPosition) {
                 // Needs to fire after menuHidden to prevent hide animation
-                setTimeout(function () {
+                setTimeout(function() {
                     // Detach menu
                     $menuContent.addClass(menuDetachedClass);
                 }, detachDelay);
@@ -283,7 +277,7 @@ var omnipaste = {
 
         $menuContent.removeClass(mobileMenuActiveClass);
 
-        $viewport.animate({scrollTop: 0}, scrollDelay);
+        $viewport.animate({ scrollTop: 0 }, scrollDelay);
     },
 
     // Scroll to ID function
@@ -296,7 +290,7 @@ var omnipaste = {
 
         $menuContent.removeClass(mobileMenuActiveClass);
 
-        $viewport.stop().animate({scrollTop: targetOffset}, scrollDelay).delay('1500', function () {
+        $viewport.stop().animate({ scrollTop: targetOffset }, scrollDelay).delay('1500', function() {
             // Set location Hash
             omnipaste.setLocationHash(id);
         });
@@ -305,7 +299,7 @@ var omnipaste = {
     // Scroll to section
     scrollToSection: function () {
 
-        $sectionAction.on('click', function (e) {
+        $sectionAction.on('click', function(e) {
             var sectionID = $(this).data('id');
 
             // Scroll
@@ -333,7 +327,7 @@ var omnipaste = {
     },
 
     // Toggle mobile menu
-    mobileMenuToggle: function () {
+    mobileMenuToggle: function() {
         $mobileMenuToggle.on('click', function (e) {
             $menuContent.toggleClass(mobileMenuActiveClass);
             // Prevent default action
@@ -345,18 +339,18 @@ var omnipaste = {
     video: function () {
         // Video Play
         $videoToggle.on('click', function (e) {
-            var videoAction = $(this).data("action");
+            var videoAction	= $(this).data("action");
 
             // Make sure dropdown is closed
             $dropdown.removeClass(dropdownActiveClass);
             $bodyTrigger.removeClass(dropdownClass);
 
-            if (videoAction == 'play') {
+            if ( videoAction == 'play') {
                 // Play
                 omnipaste.videoPlay();
             } else {
                 // Wait a bit
-                setTimeout(function () {
+                setTimeout( function() {
                     // Close
                     omnipaste.setLocationHash('home');
                     omnipaste.videoClose();
@@ -387,9 +381,9 @@ var omnipaste = {
         });
 
         // Close video on end
-        $videoPlayer.on('ended', function () {
+        $videoPlayer.on('ended', function() {
             // Wait a bit before closing
-            setTimeout(function () {
+            setTimeout( function() {
                 // Close
                 omnipaste.setLocationHash('home');
                 omnipaste.videoClose();
@@ -397,7 +391,7 @@ var omnipaste = {
         });
 
         // Full screen on double click
-        $videoPlayer.on('dblclick', function () {
+        $videoPlayer.on('dblclick', function() {
             if ($videoPlayerObject.requestFullscreen) {
                 $videoPlayerObject.requestFullscreen();
 
@@ -410,13 +404,13 @@ var omnipaste = {
         });
 
         // Hook the slider with the video
-        $videoSeek.on('change', function () {
+        $videoSeek.on('change', function() {
             // Update the video time
             $videoPlayerObject.currentTime = $videoPlayerObject.duration * ($videoSeekObject.value / 100);
         });
 
         // Update the slider with the video progress
-        $videoPlayer.on('timeupdate', function () {
+        $videoPlayer.on('timeupdate', function() {
             var value;
 
             // Calculate the slider value
@@ -426,14 +420,10 @@ var omnipaste = {
         });
 
         // Pause the video when the slider handle is being dragged
-        $videoSeek.on("mousedown", function () {
-            $videoPlayerObject.pause();
-        });
+        $videoSeek.on("mousedown", function() { $videoPlayerObject.pause(); });
 
         // Play the video when the slider handle is dropped
-        $videoSeek.on("mouseup", function () {
-            $videoPlayerObject.play();
-        });
+        $videoSeek.on("mouseup", function() { $videoPlayerObject.play(); });
     },
 
     // Play video function
@@ -441,16 +431,16 @@ var omnipaste = {
         // Show video container
         $bodyTrigger.addClass(videoBodyClass);
 
-        setTimeout(function () {
+        setTimeout( function() {
             // Show video
             $videoContainer.addClass(videoActiveClass);
 
-            setTimeout(function () {
+            setTimeout(function() {
                 // Show video overlay
                 $bodyTrigger.addClass(videoOverlayClass);
             }, 200);
 
-            setTimeout(function () {
+            setTimeout(function() {
                 // Play video
                 $videoPlayerObject.play();
             }, 800);
@@ -466,7 +456,7 @@ var omnipaste = {
         // Hide video
         $bodyTrigger.removeClass(videoBodyClass);
 
-        setTimeout(function () {
+        setTimeout(function() {
             // Reset video
             $videoPlayerObject.pause();
             $videoPlayerObject.load();
@@ -477,17 +467,15 @@ var omnipaste = {
     },
 
     // Manage Video Visibility on Scroll
-    videoVisibility: function () {
+    videoVisibility: function() {
 
-        if (window.pageYOffset > heroHeight) {
-            omnipaste.videoClose();
-        }
+        if (window.pageYOffset > heroHeight) { omnipaste.videoClose(); }
     },
 
     // Get Auth Code
-    authCode: function () {
+    authCode: function() {
 
-        $authCodeAction.on('click', function (e) {
+        $authCodeAction.on('click', function () {
             var token = $(this).data('token');
 
             if (authCode === false) {
@@ -495,13 +483,13 @@ var omnipaste = {
                     url: authCodeURL,
                     data: token,
                     type: 'get',
-                    success: function (msg) {
+                    success: function(msg) {
                         msg = "Gbqw0Vpr86RZ"; // Dev: Fixed message for display purposes - REMOVE THIS LINE!!!
                         $authCodeAction.addClass(authCodeInvisibleClass);
-                        setTimeout(function () {
+                        setTimeout( function() {
                             $authCodeAction.html(msg);
                             $authCodeAction.removeClass(authCodeInvisibleClass);
-                        }, 1000);
+                        },1000);
                     }
                 });
                 authCode = true;
@@ -510,17 +498,17 @@ var omnipaste = {
     },
 
     // Contact form
-    contact: function () {
+    contact: function() {
         // Validate contact form
         $contactForm.h5Validate();
 
         // Process contact form
-        $contactForm.submit(function (e) {
+        $contactForm.submit(function(e) {
             var result = $contactForm.h5Validate('allValid'),
                 data,
                 url;
 
-            if (result === true) {
+            if ( result === true ) {
                 // Serialize contact data
                 data = $(this).serialize();
                 // Get URL from action
@@ -531,7 +519,7 @@ var omnipaste = {
                     url: url,
                     data: data,
                     type: 'post',
-                    success: function (msg) {
+                    success: function(msg) {
 
                         // Place error message in notice
                         //$contactFormNotice.html(msg);
@@ -544,20 +532,20 @@ var omnipaste = {
                 // Fade out & display message
                 $contactFormContainer.fadeOut(800);
 
-                setTimeout(function () {
+                setTimeout(function() {
                     $contactFormNotice.fadeIn(1000);
                     $contactFormFields.val('');
-                }, 1000);
+                },1000);
 
                 // Fade out & reset form
-                setTimeout(function () {
+                setTimeout(function() {
                     $contactFormNotice.fadeOut(800);
-                }, 4500);
+                },4500);
 
                 // Fade in form
-                setTimeout(function () {
+                setTimeout(function() {
                     $contactFormContainer.fadeIn(1000);
-                }, 5500);
+                },5500);
             }
             // Prevent actual form submit
             e.preventDefault();
@@ -565,21 +553,21 @@ var omnipaste = {
     },
 
     // Animations
-    animations: function () {
+    animations: function() {
         var hasScrolled = $window.scrollTop(),
-            $notAnimated = $('.' + animationTriggerClass + ":not('." + animationDoneClass + "')");
-        $animated = $('.' + animationTriggerClass + "." + animationDoneClass);
+            $notAnimated = $('.' + animationTriggerClass + ":not('."+ animationDoneClass +"')");
+        $animated = $('.' + animationTriggerClass + "."+ animationDoneClass);
 
         // If items not animated
         $notAnimated.each(function () {
             var $this = $(this),
                 animationOffset = $this.offset().top,
-                animationTimeout = parseInt($this.data('timeout'), 10),
+                animationTimeout = parseInt($this.data('timeout'),10),
                 animationName = $this.data('animation');
 
             if (hasScrolled + windowHeightPadded > animationOffset) {
                 if (animationTimeout) {
-                    setTimeout(function () {
+                    setTimeout(function(){
                         $this.addClass(animationDoneClass + ' ' + animationName);
                     }, animationTimeout);
                 } else {
@@ -603,11 +591,29 @@ var omnipaste = {
             }
         });
     },
+    // Animations on start
+    animationsOnStart: function() {
+        $notAnimated = $('.' + animationOnStartTriggerClass + ":not('."+ animationDoneClass +"')");
+        $animated = $('.' + animationOnStartTriggerClass + "."+ animationDoneClass);
+
+        // If items not animated
+        $notAnimated.each(function () {
+            var $this = $(this),
+                animationTimeout = parseInt($this.data('timeout'),10),
+                animationName = $this.data('animation');
+
+            if (animationTimeout) {
+                setTimeout(function(){
+                    $this.addClass(animationDoneClass + ' ' + animationName);
+                }, animationTimeout);
+            }
+        });
+    },
 
     // Stop all animations, fades, transitions on manual scroll
-    stop: function () {
-        $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function (e) {
-            if (e.which > 0 || e.type === "mousedown" || e.type === "mousewheel") {
+    stop: function() {
+        $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function(e){
+            if ( e.which > 0 || e.type === "mousedown" || e.type === "mousewheel"){
                 $viewport.stop();
             }
         });
@@ -616,7 +622,7 @@ var omnipaste = {
 
 // !Document ready (loaded)
 // --------------------------------------------------------------
-jQuery(document).ready(function () {
+jQuery(document).ready(function() {
 
     // Init scripts
     omnipaste.init();
@@ -627,7 +633,7 @@ jQuery(document).ready(function () {
 // !Document load (in process of loading) function
 // --------------------------------------------------------------
 
-jQuery(window).load(function ($) {
+jQuery(window).load(function() {
 
     // Init watch for location hash
     omnipaste.detectLocationHash();

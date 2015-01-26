@@ -21,7 +21,7 @@
     %header.header.omni-video__overlay
       = render partial: 'layouts/presentation/header'
 
-      .section.hero.section--center
+      .section.hero
         #omni-video.omni-video.js-omni-video
           .omni-video__content
             %a.animate.animate--swirll.omni-video__close.js-omni-video-toggle{"data-action" => "pause", "data-id" => "omni-video", :href => "#omni-video", :title => "#{t('layout.video.close')}"}
@@ -46,37 +46,59 @@
                       %i.icon.icon__hamburger
                     = render_cell :menu, :show, is_mobile_device?: is_mobile_device?
 
-        %article#home.section__container.section--center-content.section--fit-viewport.hero__main-content.js-hero.js-nav-hash
+        %article#home.section__container.section--fit-viewport.hero__main-content.js-hero.js-nav-hash
           .container
             .row
-              .col-xs-12
-                %h1.section__title.section__title--hero
-                  = t('layout.hero.title')
-                %h2.section__subtitle.section__subtitle--hero
+              .col-xs-12.visible-xs
+                %h1.section__title.section__title--hero.section__hero--spacer-top
+                  = simple_format(t('layout.hero.title'), {}, { wrapper_tag: 'div' })
+              .col-xs-12.col-sm-6.col-md-5.hidden-xs
+                %h1.section__title.section__title--hero.section__hero--spacer-top
+                  = simple_format(t('layout.hero.title'), {}, { wrapper_tag: 'div' })
+                %h2.section__subtitle.section__subtitle--hero.section__hero--spacer-bottom
                   = simple_format(t('layout.hero.subtitle'), {}, { wrapper_tag: 'div' })
-                .section__play
-                  = link_to '#omni-video', { class: 'button button--play js-omni-video-toggle',
-                                             title: "#{t('layout.video.play')}",
-                                             data: { id: 'omni-video', action: 'play', trackEvent: true } } do
-                    %i.icon.icon__play
-                  %span #{t('layout.video.span')}
-            .row
-              = yield
-            .row
-              .col-xs-12
-                .section__small-text
-                  %p
-                    #{t('layout.hero.subtitle_requierments')}
-                    = link_to "#{t('layout.hero.subtitle_requierments_link')}", '#faq', class: 'js-goto-section'
-            .row
-              .col-xs-12
-                .section__button.section__button--hero
-                  = link_to '#feature-copy-paste', { class: 'button button--text js-goto-section', title: "#{t('layout.button.learn_more')}", data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'LearnMore' } } do
-                    #{t('layout.button.learn_more')}
-                    %i.icon.icon__arrowhead--down.animate.animate--arrow-one
-                    %i.icon.icon__arrowhead--down.animate.animate--arrow-two
+                = yield
+              .col-xs-12.col-sm-6.col-md-7
+                .hero-animation
+                  .hero-animation__container
+                    .hero-animation__play
+                      = link_to '#omni-video', { class: 'button button--text-hero button--text-hero--center button--reset-weight js-omni-video-toggle hero-', title: "#{t('layout.video.play')}", data: { id: 'omni-video', action: 'play', trackEvent: true } } do
+                        %span.block
+                          %i.icon.icon__play
+                        %span.block.icon--text
+                          #{t('layout.video.span')}
+                    = image_tag 'svg/hero-main-empty.svg', { class: 'hero-animation__main', alt: 'Laptop with phone on the right' }
+                    / Phone Notifications
+                    = image_tag 'svg/hero-call-white.svg', { class: 'hero-animation__notification hero-animation__notification--small hero-animation__notification--phone-call js-animation-on-start-trigger', alt: 'Incoming call notification', data: { animation: 'slideInTopFadeOut', timeout: 500, } }
+                    = image_tag 'svg/hero-sms-white.svg', { class: 'hero-animation__notification hero-animation__notification--small hero-animation__notification--phone-sms js-animation-on-start-trigger', alt: 'Incoming sms notification', data: { animation: 'slideInTopFadeOut', timeout: 2500, } }
+                    = image_tag 'svg/hero-clipping-white.svg', { class: 'hero-animation__notification hero-animation__notification--small hero-animation__notification--phone-clipping js-animation-on-start-trigger', alt: 'New clipping notification', data: { animation: 'slideInTopFadeOut', timeout: 5000, } }
+                    / Desktop Notifications
+                    = image_tag 'svg/hero-call-white.svg', { class: 'hero-animation__notification hero-animation__notification--desktop-call js-animation-on-start-trigger', alt: 'Incoming call notification', data: { animation: 'slideInRightFadeOut', timeout: 1600, } }
+                    = image_tag 'svg/hero-sms-white.svg', { class: 'hero-animation__notification hero-animation__notification--desktop-sms js-animation-on-start-trigger', alt: 'Incoming sms notification', data: { animation: 'slideInRightFadeOut', timeout: 3700, } }
+                    = image_tag 'svg/hero-clipping-white.svg', { class: 'hero-animation__notification hero-animation__notification--desktop-clipping js-animation-on-start-trigger', alt: 'New clipping notification', data: { animation: 'slideInRightFadeOut', timeout: 6000, } }
+                    / Phone Transparent Notifications
+                    = image_tag 'svg/hero-call-transparent.svg', { class: 'hero-animation__notification hero-animation__notification--small hero-animation__notification--transparent hero-animation__notification--phone-call js-animation-on-start-trigger', alt: 'Incoming call notification', data: { animation: 'smoothIn', timeout: 2600, } }
+                    = image_tag 'svg/hero-sms-transparent.svg', { class: 'hero-animation__notification hero-animation__notification--small hero-animation__notification--transparent hero-animation__notification--phone-sms js-animation-on-start-trigger', alt: 'Incoming sms notification', data: { animation: 'smoothIn', timeout: 4700, } }
+                    = image_tag 'svg/hero-clipping-transparent.svg', { class: 'hero-animation__notification hero-animation__notification--small hero-animation__notification--transparent hero-animation__notification--phone-clipping js-animation-on-start-trigger', alt: 'New clipping notification', data: { animation: 'smoothIn', timeout: 7300, } }
+                    / Final Animations
+                    = image_tag 'svg/hero-call-white.svg', { class: 'hero-animation__notification hero-animation__notification--small hero-animation__notification--phone-call js-animation-on-start-trigger', alt: 'Incoming call notification', data: { animation: 'smoothIn', timeout: 8000, } }
+                    = image_tag 'svg/hero-connect.svg', { class: 'hero-animation__connect js-animation-on-start-trigger', alt: 'Connector element', data: { animation: 'connect', timeout: 8200, } }
+                    = image_tag 'svg/hero-call-white.svg', { class: 'hero-animation__notification hero-animation__notification--desktop-call js-animation-on-start-trigger', alt: 'Incoming call notification', data: { animation: 'smoothIn', timeout: 8500, } }
+                    .section__hero-notice.hidden-xs
+                      = t('layout.hero.subtitle_requirements')
+              .col-xs-12.visible-xs
+                %h2.section__subtitle.section__subtitle--hero.section__hero--spacer-bottom
+                  = t('layout.hero.subtitle')
+                = yield
 
     %main#main.main
+      .section__button.section__button--discover.section__button--center
+        %a.button.button--text-hero.button--reset-weight.js-goto-section{'data-id' => 'feature-copy-paste', :href => '#feature-copy-paste', :title => t('layout.button.learn_more')}
+          %span.block #{t('layout.button.learn_more')}
+          %span.block
+            %i.icon.icon__arrowhead--down.animate.animate--arrow-one
+            %i.icon.icon__arrowhead--down.animate.animate--arrow-two
+
       = render partial: 'layouts/presentation/features/copy_paste'
 
       = render partial: 'layouts/presentation/features/smart_action'
