@@ -29,12 +29,11 @@ ro:
       contact: Contact
       mobile_title: Meniu
     hero:
-      title: Cum ar fi dacă ți-ai conecta PC-ul cu telefonul Android?
-      subtitle: >
-                Ai putea să faci copy-paste între ele, să vezi apelurile,
-
-                mesajele și notificările direct de pe PC.
-      subtitle_requierments: Funcționează pe dispozitive Windows™ și Android™
+      title: |
+        Cum ar fi dacă ți-ai conecta PC-ul
+        cu telefonul Android?
+      subtitle: Ai putea să faci copy-paste între ele, să vezi apelurile, mesajele și notificările direct de pe PC.
+      subtitle_requirements: Funcționează pe dispozitive Windows™ și Android™
       subtitle_requierments_link: până acum.
     video: 	
       play: Rulează videoclipul

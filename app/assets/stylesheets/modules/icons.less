@@ -18,21 +18,8 @@
     .svg-button-close-dims;
   }
   &__play {
-    position: relative;
-    width: 50 * @rem;
-    height: 50 * @rem;
-
-    &:after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      top: 13 * @rem;
-      left: 16 * @rem;
-      border-style: solid;
-      border-width: 12.5 * @rem 0 12.5 * @rem 21.7 * @rem;
-      border-color: transparent transparent transparent @color-bright;
-    }
+    .svg-icon-play;
+    .svg-icon-play-dims;
   }
   &__arrowhead {
 
@@ -86,4 +73,6 @@
     .svg-icon-hamburger;
     .svg-icon-hamburger-dims;
   }
+
+  &--text { line-height: 0.5; }
 }

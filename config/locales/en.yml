@@ -51,16 +51,15 @@ en:
       mobile_title: Menu
       blog: Blog
     hero:
-      title: Link your PC to your Android device
-      subtitle: >
-                You will be able to copy and paste both ways, manage your phone calls,
-
-                SMS messages and notifications straight from your PC.
-      subtitle_requierments: Works on Windows™ and Android™ mobile devices
+      title: |
+        Link your PC to your
+        Android device
+      subtitle: You will be able to copy and paste both ways, manage your phone calls, SMS messages and notifications straight from your PC.
+      subtitle_requirements: Works on Windows™ and Android™ mobile devices
       subtitle_requierments_link: for now.
     video:
       play: Play video
-      span: See the video
+      span: Play video
       close: Close video
     button:
       download: Get Omnipaste for free

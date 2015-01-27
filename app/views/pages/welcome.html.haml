@@ -1,10 +1,9 @@
-.col-xs-12
-  .section__button
-    = link_to "#{t('layout.button.download')}",
-              '#sign-up',
-              { class: 'button button--orange js-toggle-dropdown',
-                title: "#{t('layout.button.download')}",
-                data: { id: 'sign-up', trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::SIGN_UP}" } }
+.section__button.section__button--hero
+  = link_to "#{t('layout.button.download')}",
+            '#sign-up',
+            { class: 'button button--orange js-toggle-dropdown',
+              title: "#{t('layout.button.download')}",
+              data: { id: 'sign-up', trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::SIGN_UP}" } }
 
 = content_for :header do
   .row
