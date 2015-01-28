@@ -4,13 +4,13 @@
               download_path,
               { class: 'button button--orange button--orange-feature button--download',
                 title: 'Install Omnipaste',
-                data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD}" } }
+                data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" } }
   - else
     = link_to "#{t('layout.button.install')}",
               '#sign-up',
               { class: 'button button--orange button--orange-feature js-toggle-dropdown button--download',
                 title: 'Install Omnipaste',
-                data: { id: 'sign-up', trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::SIGN_UP}" } }
+                data: { id: 'sign-up', trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::SIGN_UP_CLICKED}" } }
 
   = link_to "#{t('layout.button.what_else')}",
             "##{what_else_link}",
