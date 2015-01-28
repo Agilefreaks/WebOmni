@@ -4,7 +4,7 @@ lock '3.3.5'
 set :application, 'omnipaste'
 set :repo_url, 'git@github.com:Agilefreaks/WebOmni.git'
 
-set :rvm_ruby_version, 'ruby-2.1.5@webomni'
+set :rvm_ruby_version, 'ruby-2.2.0@webomni'
 
 set :assets_roles, [:web, :app]
 
