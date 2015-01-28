@@ -1,6 +1,6 @@
 %li.header__nav__item
   - if user_signed_in?
-    = link_to "#{t('layout.menu.download')}", download_path, { class: 'button--download', title: "#{t('layout.menu.download')}", trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::DOWNLOAD}" }
+    = link_to "#{t('layout.menu.download')}", download_path, { class: 'button--download', title: "#{t('layout.menu.download')}", trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" }
   - else
     = link_to "#{t('layout.menu.download')}", '#sign-up', { class: 'js-toggle-dropdown button--download', title: "#{t('layout.menu.download')}", data: { id: 'sign-up', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::SIGN_UP}" } }
 %li.header__nav__item

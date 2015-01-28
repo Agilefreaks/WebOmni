@@ -4,7 +4,7 @@
               download_path,
               { class: 'button button--orange button--orange-feature button--download',
                 title: 'Install Omnipaste',
-                data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD}" } }
+                data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" } }
   - else
     = link_to "#{t('layout.button.install')}",
               '#sign-up',

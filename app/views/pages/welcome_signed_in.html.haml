@@ -4,7 +4,7 @@
               download_path,
               { class: 'button button--orange button--right',
                 title: "#{t('layout.button.download')}",
-                data: { trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::DOWNLOAD}" } }
+                data: { trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" } }
 .col-xs-12.col-sm-5.col-md-4
   = link_to "#{t('layout.button.authorization_code')}",
             new_authorization_codes_path,
@@ -43,6 +43,6 @@
     .col-xs-12
       .section__button.section__button--hero
         = link_to '#feature-copy-paste', { class: 'button button--transparent js-goto-section', title: "#{t('layout.header.download.see_what_you_get_link')}",
-                                           data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'See what you get', trackCategory: "#{EventTracking::DOWNLOAD}" } } do
+                                           data: { id: 'feature-copy-paste', trackEvent: true, trackLabel: 'See what you get', trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" } } do
           #{t('layout.header.download.see_what_you_get_link')}
           %i.icon.icon__arrowhead-down
