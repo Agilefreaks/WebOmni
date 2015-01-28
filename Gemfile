@@ -41,6 +41,7 @@ gem 'sitemap_generator'
 gem 'mobile-fu'
 
 gem 'mixpanel-ruby'
+gem 'omnikiq'
 
 group :development do
   gem 'quiet_assets'
