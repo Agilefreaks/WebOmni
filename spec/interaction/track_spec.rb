@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Track do
-  let(:tracker) { double(:tracker) }
-  let(:service) { Track::Service.new(tracker) }
+  let(:service) { Track::Service.new }
 
   describe :user_created do
     let(:params) { { '$some_property' => 'some value' } }
@@ -14,8 +13,8 @@ describe Track do
 
       it 'will not call alias or people' do
         subject
-        expect(tracker).not_to receive(:alias)
-        expect(tracker).not_to receive(:people)
+        expect(OmniKiq::Trackers::MixpanelAlias).not_to receive(:perform_async)
+        expect(OmniKiq::Trackers::MixpanelPeople).not_to receive(:perform_async)
       end
     end
 
@@ -30,8 +29,8 @@ describe Track do
         let(:aliased) { true }
 
         it "will call set and don't call alias" do
-          expect(tracker).to receive_message_chain(:people, :set)
-          expect(tracker).not_to receive(:alias)
+          expect(OmniKiq::Trackers::MixpanelPeople).to receive(:perform_async)
+          expect(OmniKiq::Trackers::MixpanelAlias).not_to receive(:perform_async)
           subject
         end
       end
@@ -40,8 +39,8 @@ describe Track do
         let(:aliased) { false }
 
         it 'will call alias and people set' do
-          expect(tracker).to receive_message_chain(:people, :set)
-          expect(tracker).to receive(:alias)
+          expect(OmniKiq::Trackers::MixpanelPeople).to receive(:perform_async)
+          expect(OmniKiq::Trackers::MixpanelAlias).to receive(:perform_async)
           subject
         end
       end
