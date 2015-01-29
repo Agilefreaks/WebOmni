@@ -42,7 +42,7 @@ gem 'mobile-fu'
 
 gem 'mixpanel-ruby'
 gem 'sidekiq'
-gem 'omnikiq', git: 'git@github.com:Agilefreaks/OmniKiq.git'
+gem 'omnikiq'
 
 group :development do
   gem 'quiet_assets'
