@@ -41,7 +41,6 @@ gem 'sitemap_generator'
 gem 'mobile-fu'
 
 gem 'mixpanel-ruby'
-gem 'sidekiq'
 gem 'omnikiq'
 
 group :development do

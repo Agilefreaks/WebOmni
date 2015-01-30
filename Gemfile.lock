@@ -443,7 +443,6 @@ DEPENDENCIES
   rspec-cells
   rspec-mocks
   rspec-rails
-  sidekiq
   simplecov
   simplecov-teamcity-summary!
   sitemap_generator
