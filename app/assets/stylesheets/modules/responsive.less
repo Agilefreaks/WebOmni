@@ -1,11 +1,3 @@
-// 
-// Name: Responsive
-// Author: Zeno Popovici - zeno@graffino.com (http://www.graffino.com)
-//
-
-// Responsive
-
-
 /* !Responsive */
 /* ==|========================================================================= */
 
@@ -13,7 +5,10 @@
   .hero__chat { font-size: 75% }
   .section--fit-viewport { height: auto; }
   .omni-video__overlay:after { height: 100%; }
-  .section__hero--spacer-top { padding-top: 0; }
+  .section__hero--spacer-top {
+    padding-top: 0;
+    margin: 0;
+  }
   .header { height: 100%; }
 }
 @media @680h {
@@ -285,6 +280,7 @@
                  }
                  .section__subtitle {
                    padding-bottom: 0;
+                   margin: 0;
                  }
                }
                &-animation {
@@ -300,7 +296,7 @@
              // Liniarize buttons
              .button--left {
                float: none;
-               margin-top: 20 * @rem;
+               margin-top: 16 * @rem;
              }
              .button--right { float: none; }
 
