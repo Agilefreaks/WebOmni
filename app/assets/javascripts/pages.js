@@ -191,6 +191,8 @@ var omnipaste = {
             // Make it so
             omnipaste.replaceLocationHash(id);
         } else {
+            hash = '#' + id;
+
             $menuContent.find('a').removeClass('current');
             $menuContent.find('a[data-id="'+ id +'"]').addClass('current');
 
@@ -240,7 +242,7 @@ var omnipaste = {
             var navbarHeight = $menuContent.outerHeight(),
                 currentPosition = $(this).scrollTop(),
                 navbarOffset = $heroContent.offset().top;
-            var navbarPosition = navbarOffset + navbarHeight;
+            navbarPosition =  navbarOffset + navbarHeight;
 
             // Make sure the scroll is more than delta
             if (Math.abs(lastScrollTop - currentPosition) <= scrollDelta) { return; }
@@ -475,7 +477,7 @@ var omnipaste = {
     // Get Auth Code
     authCode: function() {
 
-        $authCodeAction.on('click', function () {
+        $authCodeAction.on('click', function (e) {
             var token = $(this).data('token');
 
             if (authCode === false) {
@@ -599,6 +601,7 @@ var omnipaste = {
         // If items not animated
         $notAnimated.each(function () {
             var $this = $(this),
+                animationOffset = $this.offset().top,
                 animationTimeout = parseInt($this.data('timeout'),10),
                 animationName = $this.data('animation');
 
@@ -633,7 +636,7 @@ jQuery(document).ready(function() {
 // !Document load (in process of loading) function
 // --------------------------------------------------------------
 
-jQuery(window).load(function() {
+jQuery(window).load(function($) {
 
     // Init watch for location hash
     omnipaste.detectLocationHash();
