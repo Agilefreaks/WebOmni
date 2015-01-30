@@ -29,7 +29,6 @@ module Users
     def retrieve_id_from_cookie(cookies)
       mixpanel_cookie = cookies[:"mp_#{Track.api_key}_mixpanel"] || '{}'
       mixpanel_cookie = JSON.parse(mixpanel_cookie)
-      puts mixpanel_cookie.inspect
       mixpanel_cookie['distinct_id'] || ''
     end
   end

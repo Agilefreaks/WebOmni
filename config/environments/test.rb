@@ -42,4 +42,8 @@ WebOmni::Application.configure do
   # API
   OmniApi.config.base_url = 'https://test.omnipasteapp.com/api/v1'
   OmniApi.config.client_access_token = 'random'
+
+  OmniKiq.configure do |c|
+    c.test_mode = true
+  end
 end
