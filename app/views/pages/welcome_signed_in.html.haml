@@ -1,9 +1,9 @@
 .section__button.section__button--hero
   = link_to "#{t('layout.button.download')}",
           download_path,
-          { class: 'button button--orange js-toggle-dropdown',
+          { class: 'button button--orange',
             title: "#{t('layout.button.download')}",
-            data: { trackEvent: true, trackLabel: 'Welcome', trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" } }
+            data: { trackEvent: true, trackLabel: 'Download', trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" } }
 .section__button.section__button--hero
   = link_to "#{t('layout.button.authorization_code')}",
             new_authorization_codes_path,
