@@ -95,4 +95,8 @@ WebOmni::Application.configure do
   # API
   OmniApi.config.base_url = 'https://api.omnipasteapp.com/api/v1'
   OmniApi.config.client_access_token = 'JJuOfwneMP6Pf6Qci0/WLhRDqh5MGQSQPo39NyscYbQ+S07bS29i9IaeT8m6ePUbkBOjqnYH1jx233rdqdL8PA=='
+
+  OmniKiq.configure do |config|
+    config.redis_url = 'redis://10.133.201.189:6379'
+  end
 end
