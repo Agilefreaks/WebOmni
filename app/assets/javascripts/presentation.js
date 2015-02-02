@@ -19,5 +19,4 @@
 //= require jquery.h5validate
 //= require humane-rails
 //= require pages
-//= require track_event
 //= require mixpanel
