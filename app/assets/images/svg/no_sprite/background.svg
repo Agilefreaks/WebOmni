@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="2560px" height="1440px" viewBox="0 0 2560 1440" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Omni-bg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="60.2209473%" cy="46.8641493%" fx="60.2209473%" fy="46.8641493%" r="82.4049937%" id="radialGradient-1">
+            <stop stop-color="#6F71C3" offset="0%"></stop>
+            <stop stop-color="#6347A8" offset="100%"></stop>
+        </radialGradient>
+        <rect id="path-2" x="0" y="0" width="2560" height="1440"></rect>
+        <circle id="path-3" cx="944" cy="1136" r="47"></circle>
+        <path id="path-4" d="M679,500 C718.212217,500 750,468.212217 750,429 C750,389.787783 718.212217,358 679,358 C639.787783,358 608,389.787783 608,429 C608,468.212217 639.787783,500 679,500 Z"></path>
+        <circle id="path-5" cx="1083.00423" cy="766.995767" r="63.9957673"></circle>
+        <ellipse id="path-6" cx="2038.00423" cy="1061.5" rx="52.9957673" ry="52.9957673"></ellipse>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Omni-bg" sketch:type="MSArtboardGroup">
+            <g id="Rectangle-1">
+                <use fill="url(#radialGradient-1)" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-2"></use>
+                <use fill="none" xlink:href="#path-2"></use>
+            </g>
+            <g id="Oval-1" opacity="0.0299999993">
+                <use stroke="#000000" stroke-width="25" sketch:type="MSShapeGroup" xlink:href="#path-3"></use>
+                <use stroke="none" xlink:href="#path-3"></use>
+            </g>
+            <g id="Oval-2" opacity="0.0399999991">
+                <use stroke="#FFFFFF" stroke-width="36" sketch:type="MSShapeGroup" xlink:href="#path-4"></use>
+                <use stroke="none" xlink:href="#path-4"></use>
+            </g>
+            <g id="Oval-3" opacity="0.0399999991">
+                <use stroke="#000000" stroke-width="34" sketch:type="MSShapeGroup" xlink:href="#path-5"></use>
+                <use stroke="none" xlink:href="#path-5"></use>
+            </g>
+            <g id="Oval-4" opacity="0.0399999991">
+                <use stroke="#FFFFFF" stroke-width="29" sketch:type="MSShapeGroup" xlink:href="#path-6"></use>
+                <use stroke="none" xlink:href="#path-6"></use>
+            </g>
+        </g>
+    </g>
+</svg>

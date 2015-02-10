@@ -2,7 +2,6 @@
 /* ==|========================================================================= */
 .section {
   position: relative;
-
   &:after {
     content: "";
     position: absolute;
@@ -38,10 +37,10 @@
   }
 
   &--questions:after {
-    background: image-url("svg/no_sprite/background-questions.svg") no-repeat;
+    background: image-url('svg/no_sprite/background-questions.svg') no-repeat;
   }
   &--omni:after {
-    background: image-url("svg/no_sprite/background-omni.svg") no-repeat;
+    background: image-url('svg/no_sprite/background-omni.svg') no-repeat;
     .opacity(.2);
   }
 
@@ -220,8 +219,7 @@
 /* ==|========================================================================= */
 
 .hero {
-  background: image-url("svg/no_sprite/background-circles.svg") center bottom no-repeat,
-  image-url("common/background.jpg") center bottom no-repeat;
+  background: image-url('svg/no_sprite/background.svg') center bottom no-repeat;
   background-size: cover;
   background-position: center bottom;
   height: 100%;
@@ -735,7 +733,7 @@
 
   padding: 20 * @rem 0 190 * @rem 0;
 
-  background: image-url("common/background.jpg") no-repeat 50% 50%;
+  background: #69469E image-url('svg/no_sprite/background.svg') no-repeat 50% 50%;
   background-size: cover;
 
   &__title {
