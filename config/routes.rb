@@ -1,8 +1,11 @@
 WebOmni::Application.routes.draw do
+  get 'sdk/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   devise_for :users, skip: [:session, :password, :registration], controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+  resources :sdk, only: [:show]
 
   scope '(:locale)', locale: /en|pt|ro/ do
     devise_for :users, skip: [:omniauth_callbacks]
