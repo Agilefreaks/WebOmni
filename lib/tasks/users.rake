@@ -1,6 +1,6 @@
 namespace :users do
   desc 'Sync from web to api'
-  task :sync_web_api => :environment do
+  task sync_web_api: :environment do
     User.all.each do |user|
       api_user = OmniApi::User.where(email: user.email).first
       api_user.update_attributes(first_name: user.first_name,

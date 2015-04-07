@@ -6,7 +6,7 @@ gem 'rails', '4.2.1'
 gem 'rails-dom-testing'
 gem 'mongoid'
 gem 'mongo_session_store-rails4'
-gem 'activeresource', :require => 'active_resource'
+gem 'activeresource', require: 'active_resource'
 gem 'httparty'
 
 gem 'puma'
@@ -69,6 +69,7 @@ group :development, :test do
   gem 'fabrication'
   gem 'database_cleaner', '1.3.0'
   gem 'cucumber-rails', require: false
+  gem 'rubocop', require: false
 end
 
 group :test do

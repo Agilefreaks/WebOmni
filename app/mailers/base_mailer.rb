@@ -4,6 +4,7 @@ class BaseMailer < ActionMailer::Base
   before_action :populate_inline_attachments
 
   private
+
   def populate_inline_attachments
     attachments.inline['background.jpg'] = File.read(WebOmni::Application.assets.find_asset('mailers/background.jpg').pathname)
     attachments.inline['logo.png'] = File.read(WebOmni::Application.assets.find_asset('mailers/logo.png').pathname)

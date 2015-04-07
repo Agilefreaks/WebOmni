@@ -3,7 +3,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
 
   # Only run tests that have this filter, if it exists
-  config.filter_run :debug => true
+  config.filter_run debug: true
 
   # Run all the tests when all the tests are filtered
   config.run_all_when_everything_filtered = true

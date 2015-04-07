@@ -26,7 +26,7 @@ WebOmni::Application.configure do
   config.assets.debug = true
 
   # action mailer configuration
-  config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
   config.action_mailer.asset_host = 'http://localhost:3000'
   config.action_mailer.delivery_method = :letter_opener
 
@@ -34,7 +34,7 @@ WebOmni::Application.configure do
   GOOGLE_KEY = '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com'
   GOOGLE_SECRET = 'pZ4j5qWvZYZ3rlo0cXqr8REB'
 
-  # download links 
+  # download links
   WINDOWS_CLIENT_DOWNLOAD_LINK = 'http://download.omnipasteapp.com/staging/OmnipasteInstaller.msi'
   ANDROID_CLIENT_DOWNLOAD_LINK = 'https://play.google.com/apps/testing/com.omnipaste.droidomni.staging'
 
@@ -43,6 +43,6 @@ WebOmni::Application.configure do
   OmniApi.config.client_access_token = 'ENAh0+Xo8+oqlDzWVQP5wAEqiW4G82ptbJBR2N5ak6DACr4TRFbVslalonwMIA1Aj/tHJvWxawBD5dix+WNsww=='
 
   OmniKiq.configure do |config|
-     config.redis_url = 'redis://localhost:6379'
+    config.redis_url = 'redis://localhost:6379'
   end
 end

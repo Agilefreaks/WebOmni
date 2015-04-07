@@ -14,7 +14,7 @@ WebOmni::Application.configure do
 
   # Configure static asset server for tests with Cache-Control for performance.
   config.serve_static_files = true
-  config.static_cache_control = "public, max-age=3600"
+  config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -29,22 +29,20 @@ WebOmni::Application.configure do
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
-  config.action_mailer.default_url_options = { :host => 'http://test.com' }
+  config.action_mailer.default_url_options = { host: 'http://test.com' }
   config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
   OmniAuth.config.test_mode = true
-  OmniAuth.config.add_mock(:google_oauth2, {
-      :uid => '12345',
-      :nickname => 'calin',
-      :info => {
-          first_name: 'Calin',
-          last_name: 'Balauru',
-          email: 'calin@people.com'
-      }
-  })
+  OmniAuth.config.add_mock(:google_oauth2,       uid: '12345',
+                                                 nickname: 'calin',
+                                                 info: {
+                                                   first_name: 'Calin',
+                                                   last_name: 'Balauru',
+                                                   email: 'calin@people.com'
+                                                 })
 
   # keys
   GOOGLE_KEY = '930634995806-f4k0a811r10uiquompfd2tfoj96f9vfn.apps.googleusercontent.com'

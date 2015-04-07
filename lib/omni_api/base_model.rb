@@ -2,8 +2,8 @@ module OmniApi
   class BaseModel < ActiveResource::Base
     include Concerns::Attributes
 
-    def as_json(options = nil)
-      self.attributes
+    def as_json(_options = nil)
+      attributes
     end
   end
 end

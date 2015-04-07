@@ -9,7 +9,6 @@ set :rvm_ruby_version, 'ruby-2.2.0@webomni'
 set :assets_roles, [:web, :app]
 
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -28,7 +27,6 @@ namespace :deploy do
       # end
     end
   end
-
 end
 
 after 'deploy:updated', 'newrelic:notice_deployment'

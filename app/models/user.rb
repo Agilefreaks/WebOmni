@@ -14,7 +14,7 @@ class User
          :trackable,
          :validatable,
          :omniauthable,
-         :omniauth_providers => [:google_oauth2]
+         omniauth_providers: [:google_oauth2]
 
   ## Database authenticatable
   field :email,              type: String, default: ''

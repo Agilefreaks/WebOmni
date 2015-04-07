@@ -10,21 +10,21 @@ class UserFactory
     Track.sign_up(auth.info.email)
 
     api_user = OmniApi::User.where(email: auth.info.email).first ||
-        OmniApi::User.new(first_name: auth.info.first_name,
-                          last_name: auth.info.last_name,
-                          email: auth.info.email.downcase,
-                          image_url: get_image_url(auth))
+               OmniApi::User.new(first_name: auth.info.first_name,
+                                 last_name: auth.info.last_name,
+                                 email: auth.info.email.downcase,
+                                 image_url: get_image_url(auth))
     api_user.save
 
     params = {
-        first_name: auth.info.first_name,
-        last_name: auth.info.last_name,
-        email: auth.info.email,
-        password: Devise.friendly_token[0, 20],
-        image_url: get_image_url(auth),
-        access_token: api_user.access_token,
-        mixpanel_distinct_id: auth.distinct_id,
-        remote_ip: auth.remote_ip
+      first_name: auth.info.first_name,
+      last_name: auth.info.last_name,
+      email: auth.info.email,
+      password: Devise.friendly_token[0, 20],
+      image_url: get_image_url(auth),
+      access_token: api_user.access_token,
+      mixpanel_distinct_id: auth.distinct_id,
+      remote_ip: auth.remote_ip
     }
 
     if user

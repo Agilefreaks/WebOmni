@@ -9,8 +9,8 @@ module Users
       @user = find_or_create(auth, current_user)
 
       if @user.persisted?
-        flash[:notice] = I18n.t('devise.omniauth_callbacks.success', :kind => 'Google')
-        sign_in_and_redirect @user, :event => :authentication
+        flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: 'Google')
+        sign_in_and_redirect @user, event: :authentication
       else
         session['devise.google_data'] = request.env['omniauth.auth']
         redirect_to root_url
@@ -21,7 +21,7 @@ module Users
 
     def find_or_create(auth, signed_in_resource)
       user = signed_in_resource ||
-          User.where(email: auth.info.email.downcase).first
+             User.where(email: auth.info.email.downcase).first
 
       UserFactory.from_social(auth, user)
     end

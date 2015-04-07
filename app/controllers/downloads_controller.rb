@@ -2,15 +2,13 @@ require 'open-uri'
 
 class DownloadsController < ApplicationController
   def new
-    if user_signed_in?
-      NotificationsMailer.welcome(current_user.id).deliver
-    end
+    NotificationsMailer.welcome(current_user.id).deliver if user_signed_in?
 
     redirect_to root_url(download: true)
   end
 
   def windows_client
-    redirect_to root_url(download: true) and return unless user_signed_in?
+    redirect_to(root_url(download: true)) && return unless user_signed_in?
 
     @authorization_code = CreateAuthorizationCode.for(current_user)
     data = open(WINDOWS_CLIENT_DOWNLOAD_LINK)
@@ -18,7 +16,7 @@ class DownloadsController < ApplicationController
 
     Track.windows_download(current_user.email)
 
-    send_data data.read, :filename => "#{filename}#{@authorization_code.code}.msi"
+    send_data data.read, filename: "#{filename}#{@authorization_code.code}.msi"
   end
 
   def android_client
