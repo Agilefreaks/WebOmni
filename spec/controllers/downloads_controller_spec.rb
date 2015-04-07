@@ -1,6 +1,19 @@
 require 'spec_helper'
 
 describe DownloadsController do
+  describe "GET 'generic'" do
+    subject { get :generic }
+
+    before do
+      stub_const('WINDOWS_CLIENT_DOWNLOAD_LINK', 'http://some.link')
+    end
+
+    it 'will succeed' do
+      subject
+      expect(response).to be_ok
+    end
+  end
+
   describe "GET 'android_client'" do
     subject { get :android_client, email: email }
 

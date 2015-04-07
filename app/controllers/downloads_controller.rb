@@ -7,6 +7,13 @@ class DownloadsController < ApplicationController
     redirect_to root_url(download: true)
   end
 
+  def generic
+    data = open(WINDOWS_CLIENT_DOWNLOAD_LINK)
+    filename = File.basename(WINDOWS_CLIENT_DOWNLOAD_LINK, '.*')
+
+    send_data data.read, filename: "#{filename}.msi"
+  end
+
   def windows_client
     redirect_to(root_url(download: true)) && return unless user_signed_in?
 
