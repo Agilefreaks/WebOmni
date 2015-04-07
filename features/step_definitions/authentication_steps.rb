@@ -1,4 +1,4 @@
-When /^user with email "([^"]*)" does (not )?exist$/ do |email, does_not|
+When(/^user with email "([^"]*)" does (not )?exist$/) do |email, does_not|
   user = { email: email, first_name: 'Calin', last_name: 'Balauru', access_token: 'calin access token' }
   users = [user]
   get_headers = { 'Accept' => 'application/json', 'Authorization' => OmniApi.config.client_access_token }
@@ -11,7 +11,7 @@ When /^user with email "([^"]*)" does (not )?exist$/ do |email, does_not|
   end
 end
 
-Then /^I should see a "([^"]*)" and "([^"]*)"$/ do |download_label, authorization_label|
+Then(/^I should see a "([^"]*)" and "([^"]*)"$/) do |download_label, authorization_label|
   expect(page).to have_content(download_label)
   expect(page).to have_content(authorization_label)
 end

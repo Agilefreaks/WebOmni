@@ -7,4 +7,6 @@ LineLength:
 AllCops:
   RunRailsCops: true
   Exclude:
+    - bin/**
     - script/**
+    - lib/tasks/**

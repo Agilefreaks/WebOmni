@@ -34,26 +34,36 @@ module Track
                  { '$first_name' => user_properties[:first_name],
                    '$last_name' => user_properties[:last_name],
                    '$email' => email,
-                   '$created' => Time.now.utc },
+                   '$created' => Time.zone.now.utc },
                  user_properties[:remote_ip])
     end
 
     def windows_download(email)
-      OmniKiq::Trackers::MixpanelEvents.perform_async(email, EventTracking::DOWNLOAD, client: EventTracking::WINDOWS_CLIENT, email: email)
+      OmniKiq::Trackers::MixpanelEvents.perform_async(email,
+                                                      EventTracking::DOWNLOAD,
+                                                      client: EventTracking::WINDOWS_CLIENT,
+                                                      email: email)
       set_people(email, DOWNLOADED_WINDOWS => true)
     end
 
     def android_download(email)
-      OmniKiq::Trackers::MixpanelEvents.perform_async(email, EventTracking::DOWNLOAD, client: EventTracking::ANDROID_CLIENT, email: email)
+      OmniKiq::Trackers::MixpanelEvents.perform_async(email,
+                                                      EventTracking::DOWNLOAD,
+                                                      client: EventTracking::ANDROID_CLIENT,
+                                                      email: email)
       set_people(email, DOWNLOADED_ANDROID => true)
     end
 
     def sign_up(email)
-      OmniKiq::Trackers::MixpanelEvents.perform_async(email, EventTracking::SIGN_UP, email: email)
+      OmniKiq::Trackers::MixpanelEvents.perform_async(email,
+                                                      EventTracking::SIGN_UP,
+                                                      email: email)
     end
 
     def create_authorization_code(email)
-      OmniKiq::Trackers::MixpanelEvents.perform_async(email, EventTracking::CREATE_AUTHORIZATION_CODE, email: email)
+      OmniKiq::Trackers::MixpanelEvents.perform_async(email,
+                                                      EventTracking::CREATE_AUTHORIZATION_CODE,
+                                                      email: email)
     end
 
     private

@@ -40,7 +40,7 @@ class User
   field :last_name
   field :image_url
 
-  validates_uniqueness_of :email
+  validates :email, uniqueness: true
 
   def name
     "#{first_name} #{last_name}"

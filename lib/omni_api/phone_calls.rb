@@ -13,15 +13,19 @@ module OmniApi
         state: 'starting'
       }
 
-      params = {
-        body: post_body.to_json,
+      self.class.post('/phone_calls', params(post_body, access_token))
+    end
+
+    private
+
+    def params(body, access_token)
+      {
+        body: body.to_json,
         headers: {
           'Authorization' => "bearer #{access_token}",
           'Content-Type' => 'application/json'
         }
       }
-
-      self.class.post('/phone_calls', params)
     end
   end
 end

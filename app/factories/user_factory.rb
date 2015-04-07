@@ -6,6 +6,7 @@ class UserFactory
     factory.create_or_update_from_social(auth, user)
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def create_or_update_from_social(auth, user)
     Track.sign_up(auth.info.email)
 

@@ -11,6 +11,7 @@ class AuthorizationCodesController < ApplicationController
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def create_authorization_code(current_user)
     Track.create_authorization_code(current_user.email)
     @authorization_code = CreateAuthorizationCode.for(current_user.id)
@@ -20,11 +21,15 @@ class AuthorizationCodesController < ApplicationController
   rescue ActiveResource::ServerError => _
     sign_out(User)
 
-    flash[:notice] = 'Please log back in. We closed your current session.'
-    flash.keep(:notice)
+    flash_notice('Please log back in. We closed your current session.')
 
     respond_to do |format|
       format.html { redirect_to root_path }
     end
+  end
+
+  def flash_notice(text)
+    flash[:notice] = text
+    flash.keep(:notice)
   end
 end

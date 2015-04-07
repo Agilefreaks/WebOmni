@@ -1,5 +1,6 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def google_oauth2
       distinct_id = retrieve_id_from_cookie(cookies)
       auth = request.env['omniauth.auth']

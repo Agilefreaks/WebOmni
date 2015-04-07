@@ -16,6 +16,5 @@ workers 2
 preload_app!
 
 on_restart do
-  puts 'Refreshing Gemfile'
   ENV['BUNDLE_GEMFILE'] = '/var/www/webomni/current/Gemfile'
 end

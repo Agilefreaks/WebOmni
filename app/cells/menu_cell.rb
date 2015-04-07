@@ -10,6 +10,7 @@ class MenuCell < Cell::Rails
     render
   end
 
+  # rubocop:disable Style/PredicateName
   def is_mobile_device?
     @is_mobile_device
   end

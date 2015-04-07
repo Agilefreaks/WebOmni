@@ -2,12 +2,12 @@
 SitemapGenerator::Sitemap.default_host = 'https://www.omnipasteapp.com'
 
 SitemapGenerator::Sitemap.create do
-  add root_path, lastmod: Time.now, changefreq: 'daily'
-  add "#{root_path}#feature-copy-paste", lastmod: Time.now, changefreq: 'daily'
-  add "#{root_path}#feature-smart-action", lastmod: Time.now, changefreq: 'daily'
-  add "#{root_path}#feature-notifications", lastmod: Time.now, changefreq: 'daily'
-  add "#{root_path}#faq", lastmod: Time.now, changefreq: 'daily'
-  add "#{root_path}#contact", lastmod: Time.now, changefreq: 'daily'
+  add root_path, lastmod: Time.zone.now, changefreq: 'daily'
+  add "#{root_path}#feature-copy-paste", lastmod: Time.zone.now, changefreq: 'daily'
+  add "#{root_path}#feature-smart-action", lastmod: Time.zone.now, changefreq: 'daily'
+  add "#{root_path}#feature-notifications", lastmod: Time.zone.now, changefreq: 'daily'
+  add "#{root_path}#faq", lastmod: Time.zone.now, changefreq: 'daily'
+  add "#{root_path}#contact", lastmod: Time.zone.now, changefreq: 'daily'
 
   # Put links creation logic here.
   #
@@ -18,7 +18,7 @@ SitemapGenerator::Sitemap.create do
   #        (default options are used if you don't specify)
   #
   # Defaults: :priority => 0.5, :changefreq => 'weekly',
-  #           :lastmod => Time.now, :host => default_host
+  #           :lastmod => Time.zone.now, :host => default_host
   #
   # Examples:
   #
