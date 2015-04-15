@@ -6,6 +6,7 @@ describe DownloadsController do
 
     before do
       stub_const('WINDOWS_CLIENT_DOWNLOAD_LINK', 'http://some.link')
+      expect(controller).to receive(:open).and_return(double(read: 42))
     end
 
     it 'will succeed' do
