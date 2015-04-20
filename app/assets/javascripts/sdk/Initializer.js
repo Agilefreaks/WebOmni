@@ -1,12 +1,18 @@
-define('sdk/Initializer', ['jquery'], function ($) {
-  return {
-    run: function (clientId) {
-      $('[data-omnipaste-call]').click(function (event) {
-        event.preventDefault();
-        console.log('clicked link');
+define('sdk/Initializer', ['jquery', 'sdk/RequestHandler'], function ($, RequestHandler) {
+  var Initializer = function () {
+    this.requestHandler = new RequestHandler();
+  };
 
-        return false;
+  Initializer.prototype.run = function (clientId) {
+    var self = this;
+
+    $(document).on('click', '[data-omnipaste-call]', function () {
+      self.requestHandler.handleCallRequest({
+        clientId: clientId,
+        phoneNumber: $(this).data('omnipasteCall')
       });
-    }
-  }
+    });
+  };
+
+  return Initializer;
 });

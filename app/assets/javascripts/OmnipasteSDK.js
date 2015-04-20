@@ -4,9 +4,13 @@
 //= require_self
 
 define('OmnipasteSDK', ['sdk/Initializer'], function(Initializer) {
-  return {
-    initialize: function(clientId) {
-      Initializer.run(clientId);
-    }
-  }
+  var OmnipasteSDK = function() {
+    this.initializer = new Initializer();
+  };
+
+  OmnipasteSDK.prototype.initialize = function(clientId) {
+    this.initializer.run(clientId);
+  };
+
+  return OmnipasteSDK;
 });

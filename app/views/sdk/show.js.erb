@@ -17,8 +17,9 @@
   //Ask almond to synchronously require the
   //module value for 'Omnipaste' here and return it as the
   //value to use for the public API.
-  var Omnipaste = require('OmnipasteSDK');
-  Omnipaste.initialize('<%= @api_key %>');
+  var OmnipasteSDK = require('OmnipasteSDK');
+  var instance = new OmnipasteSDK();
+  instance.initialize('<%= @api_key %>');
 
-  return Omnipaste;
+  return instance;
 }));
