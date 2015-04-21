@@ -1,0 +1,19 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'Take control of your multiscreen world', name: 'description'}/
+    %meta{content: 'Agile Freaks', name: 'author'}/
+    %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
+    = favicon_link_tag
+    = csrf_meta_tag
+    = javascript_include_tag :OmnipasteAPI
+
+  %body
+    %div
+      Welcome to Omnipaste!
+    = yield
+
+    :javascript
+      var OmnipasteAPI = require('OmnipasteAPI');
+      new OmnipasteAPI().initialize('#{@api_client.url}');

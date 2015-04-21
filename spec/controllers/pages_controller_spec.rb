@@ -4,7 +4,7 @@ describe PagesController do
   describe 'welcome' do
     subject { get :welcome }
 
-    context 'when user not auth' do
+    context 'when user not authenticated' do
       before do
         allow(controller).to receive(:user_signed_in?).and_return(false)
       end
@@ -15,7 +15,7 @@ describe PagesController do
       end
     end
 
-    context 'when user auth' do
+    context 'when user authenticated' do
       before do
         allow(controller).to receive(:user_signed_in?).and_return(true)
       end

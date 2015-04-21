@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate!, only: :call
-
-  layout 'embedable', only: ['get_user_token']
+  before_action :authenticate!, only: [:call, :user_access_token]
 
   def welcome
     page = user_signed_in? ? :welcome_signed_in : :welcome
@@ -15,8 +13,8 @@ class PagesController < ApplicationController
     redirect_to root_path, notice: "Pick up your phone, it's calling #{phone_number}"
   end
 
-  def get_user_token
-    page = user_signed_in? ? :welcome_signed_in : :welcome
-    render page
+  def user_access_token
+    @user_access_token = current_user.access_token
+    render :user_access_token, layout: 'embedable'
   end
 end
