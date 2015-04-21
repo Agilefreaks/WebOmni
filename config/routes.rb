@@ -24,6 +24,7 @@ WebOmni::Application.routes.draw do
 
     post 'call', as: :call, to: 'pages#call'
     get 'call', to: 'pages#call'
+    get 'userAccessToken', to: 'pages#user_access_token'
 
     get 'tos', to: 'pages#tos', as: :tos
   end

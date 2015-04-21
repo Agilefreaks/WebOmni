@@ -13,7 +13,8 @@ require.config({
 
   // example of using shim, to load non AMD libraries (such as underscore and jquery)
   paths: {
-    jquery: '../../../vendor/assets/javascripts/jquery.2.1.1'
+    jquery: '../../../vendor/assets/javascripts/jquery.2.1.1',
+    lodash: '../../../vendor/assets/javascripts/lodash'
   },
 
   // dynamically load all test files
