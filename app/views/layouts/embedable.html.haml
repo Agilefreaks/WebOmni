@@ -7,12 +7,13 @@
     %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
     = favicon_link_tag
     = csrf_meta_tag
+    = javascript_include_tag :OmniApi
 
   %body
     %div
       Welcome to Omnipaste!
     = yield
-    = javascript_include_tag :OmniApi
+
     :javascript
       var OmnipasteAPI = require('OmnipasteAPI');
-      new OmnipasteAPI().initialize();
+      new OmnipasteAPI().initialize('#{@api_client.url}');

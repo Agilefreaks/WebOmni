@@ -18,9 +18,12 @@ define(['OmnipasteAPI', 'api/Initializer'], function (OmnipasteAPI, Initializer)
     });
 
     describe('initialize', function () {
+      var apiClientUrl;
+
       beforeEach(function () {
+        apiClientUrl = 'someValue';
         subject = function () {
-          instance.initialize();
+          instance.initialize(apiClientUrl);
         }
       });
 
@@ -29,7 +32,7 @@ define(['OmnipasteAPI', 'api/Initializer'], function (OmnipasteAPI, Initializer)
 
         subject();
 
-        expect(spy).toHaveBeenCalled()
+        expect(spy).toHaveBeenCalledWith(apiClientUrl)
       });
     });
   });

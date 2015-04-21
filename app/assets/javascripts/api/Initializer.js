@@ -1,4 +1,4 @@
-define('api/Initializer', ['lodash', './RequestHandler'], function (_, RequestHandler) {
+define('api/Initializer', ['lodash', './RequestHandler', './DataStore'], function (_, RequestHandler, DataStore) {
   var Initializer = function () {
     this.requestHandler = new RequestHandler();
   };
@@ -12,7 +12,8 @@ define('api/Initializer', ['lodash', './RequestHandler'], function (_, RequestHa
   }
 
   _.extend(Initializer.prototype, {
-    run: function () {
+    run: function (apiClientUrl) {
+      DataStore.apiClientUrl = apiClientUrl;
       window.addEventListener("message", createMessageHandler(this), false);
     },
 

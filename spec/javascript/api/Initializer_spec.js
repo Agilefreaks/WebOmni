@@ -1,4 +1,4 @@
-define(['api/Initializer', 'api/RequestHandler'], function (Initializer, RequestHandler) {
+define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Initializer, RequestHandler, DataStore) {
   describe('api/Initializer', function () {
     var instance, subject;
 
@@ -15,6 +15,23 @@ define(['api/Initializer', 'api/RequestHandler'], function (Initializer, Request
 
     it('has a request handler', function() {
       expect(subject().requestHandler instanceof RequestHandler).toBe(true);
+    });
+
+    describe('run', function() {
+      var apiClientUrl;
+
+      beforeEach(function() {
+        apiClientUrl = 'someUrl';
+        subject = function() {
+          instance.run(apiClientUrl);
+        }
+      });
+
+      it('sets the apiClientUrl in the DataStore to the same value as the given one', function() {
+        subject();
+
+        expect(DataStore.apiClientUrl).toEqual('someUrl');
+      });
     });
 
     describe('posting a message to the window', function () {
