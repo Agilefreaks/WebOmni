@@ -3,7 +3,9 @@
 //= require_tree ./sdk
 //= require_self
 
-define('OmnipasteSDK', ['sdk/Initializer'], function(Initializer) {
+define('OmnipasteSDK', ['sdk/Initializer', 'jquery'], function(Initializer, jQuery) {
+  jQuery.noConflict(true);
+
   var OmnipasteSDK = function() {
     this.initializer = new Initializer();
   };
