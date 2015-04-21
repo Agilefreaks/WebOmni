@@ -4,7 +4,7 @@ describe PagesController do
   describe 'welcome' do
     subject { get :welcome }
 
-    context 'when user not auth' do
+    context 'when user not authenticated' do
       before do
         allow(controller).to receive(:user_signed_in?).and_return(false)
       end
@@ -15,7 +15,7 @@ describe PagesController do
       end
     end
 
-    context 'when user auth' do
+    context 'when user authenticated' do
       before do
         allow(controller).to receive(:user_signed_in?).and_return(true)
       end
@@ -47,6 +47,26 @@ describe PagesController do
           subject
           expect(I18n.locale).to eq :en
         end
+      end
+    end
+  end
+
+  describe 'user_access_token' do
+    subject { get :user_access_token }
+
+    context 'when user authenticated' do
+      include_context :logged_in_as_user
+
+      it 'will render user_access_token' do
+        subject
+        expect(response).to render_template(:user_access_token)
+      end
+    end
+
+    context 'when user not authenticated' do
+      it 'will redirect the user to the login page' do
+        subject
+        expect(response).to redirect_to(new_user_session_path(locale: ''))
       end
     end
   end
