@@ -50,24 +50,4 @@ describe PagesController do
       end
     end
   end
-
-  describe 'user_access_token' do
-    subject { get :user_access_token }
-
-    context 'when user authenticated' do
-      include_context :logged_in_as_user
-
-      it 'will render user_access_token' do
-        subject
-        expect(response).to render_template(:user_access_token)
-      end
-    end
-
-    context 'when user not authenticated' do
-      it 'will redirect the user to the login page' do
-        subject
-        expect(response).to redirect_to(new_user_session_path(locale: ''))
-      end
-    end
-  end
 end

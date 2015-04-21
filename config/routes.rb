@@ -24,9 +24,12 @@ WebOmni::Application.routes.draw do
 
     post 'call', as: :call, to: 'pages#call'
     get 'call', to: 'pages#call'
-    get 'userAccessToken', to: 'pages#user_access_token'
 
     get 'tos', to: 'pages#tos', as: :tos
+  end
+
+  scope ':api_client_id' do
+    get 'userAccessToken', to: 'embedable_pages#user_access_token'
   end
 
   # You can have the root of your site routed with "root"
