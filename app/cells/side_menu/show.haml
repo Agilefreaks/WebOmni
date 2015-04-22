@@ -1,0 +1,4 @@
+%ul.nav.nav-list
+  %li= link_to 'Devices', '#'
+  %li= link_to 'Calendars', calendars_path if policy(:calendar).access?
+  %li= link_to 'Settings', '#'

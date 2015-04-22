@@ -6,6 +6,11 @@ WebOmni::Application.routes.draw do
 
   devise_for :users, skip: [:session, :password, :registration],
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  devise_scope :user do
+    get '/users/auth/:provider/setup', to: 'users/omniauth_callbacks#google_oauth2_setup', as: :google_oauth2_setup
+  end
+
   resources :sdk, only: [:show]
 
   scope '(:locale)', locale: /en|pt|ro/ do
@@ -24,6 +29,23 @@ WebOmni::Application.routes.draw do
 
     post 'call', as: :call, to: 'pages#call'
     get 'call', to: 'pages#call'
+
+    get 'user', to: 'user_profile#show'
+
+    get 'pricing', to: 'pricing#show', as: :show_pricing
+    post 'pricing', to: 'pricing#change'
+
+    resources :calendars, only: [:index] do
+      member do
+        put 'watch'
+      end
+
+      collection do
+        post 'notifications'
+      end
+    end
+
+    get 'calendars', to: 'calendars#show'
 
     get 'tos', to: 'pages#tos', as: :tos
   end

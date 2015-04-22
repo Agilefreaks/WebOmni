@@ -16,6 +16,10 @@ class User
          :omniauthable,
          omniauth_providers: [:google_oauth2]
 
+  has_one :identity
+
+  has_many :calendars
+
   ## Database authenticatable
   field :email,              type: String, default: ''
   field :encrypted_password, type: String, default: ''
@@ -39,6 +43,8 @@ class User
   field :first_name
   field :last_name
   field :image_url
+
+  field :plan, type: Symbol, default: :free
 
   validates :email, uniqueness: true
 

@@ -13,6 +13,7 @@ gem 'puma'
 
 gem 'devise'
 gem 'omniauth-google-oauth2'
+gem 'pundit'
 
 gem 'useragent'
 
@@ -44,6 +45,9 @@ gem 'mobile-fu'
 gem 'mixpanel-ruby'
 gem 'omnikiq'
 
+gem 'google-api-client'
+gem 'usecasing'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
@@ -64,6 +68,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'rspec-rails'
   gem 'rspec-cells'
+  gem 'rspec-its'
   gem 'guard-rspec'
   gem 'mongoid-rspec'
   gem 'rspec-activemodel-mocks'

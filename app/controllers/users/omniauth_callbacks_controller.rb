@@ -1,36 +1,54 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    include ScopesHelper
+    include MixpanelHelper
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-    def google_oauth2
-      distinct_id = retrieve_id_from_cookie(cookies)
-      auth = request.env['omniauth.auth']
-      auth[:distinct_id] = distinct_id unless distinct_id.blank?
-      auth[:remote_ip] = request.remote_ip
 
-      @user = find_or_create(auth, current_user)
+    before_action :set_mixpanel_distinct_id, only: [:google_oauth2]
+    before_action :get_identity_info, only: [:google_oauth2]
+    after_action :track_user_signup, only: [:google_oauth2]
+
+    def google_oauth2
+      @user = handle_authentication(@provided_identity)
 
       if @user.persisted?
         flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: 'Google')
         sign_in_and_redirect @user, event: :authentication
       else
-        session['devise.google_data'] = request.env['omniauth.auth']
+        session['devise.google_data'] = auth
         redirect_to root_url
       end
     end
 
-    private
+    def google_oauth2_setup
+      existing_scopes = request.env['omniauth.strategy'].options[:scope]
 
-    def find_or_create(auth, signed_in_resource)
-      user = signed_in_resource ||
-             User.where(email: auth.info.email.downcase).first
+      extend_authorization_scope(existing_scopes) unless scope_already_exists?(existing_scopes)
 
-      UserFactory.from_social(auth, user)
+      render :text => 'Scopes changed', :status => 404
     end
 
-    def retrieve_id_from_cookie(cookies)
-      mixpanel_cookie = cookies[:"mp_#{Track.api_key}_mixpanel"] || '{}'
-      mixpanel_cookie = JSON.parse(mixpanel_cookie)
-      mixpanel_cookie['distinct_id'] || ''
+    private
+
+    def handle_authentication(auth_info)
+      @user = @current_user || User.where(email: auth_info.info.email.downcase).first
+
+      OmniApi::UserFactory.from_social(auth_info)
+      UserFactory.from_social(auth_info, @user)
+    end
+
+    def get_identity_info
+      @provided_identity = request.env['omniauth.auth']
+      @provided_identity.scope = request.env['omniauth.strategy'].options[:scope]
+      @provided_identity.provider = 'Google'
+
+      @provided_identity
+    end
+
+    def track_user_signup
+      if @user.persisted?
+        Track.sign_up(@user.email)
+      end
     end
   end
 end
