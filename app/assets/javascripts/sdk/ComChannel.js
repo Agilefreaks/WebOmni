@@ -24,7 +24,8 @@ define('sdk/ComChannel', ['lodash', 'EventEmitter', './DataStore'], function (_,
     window.addEventListener('message', onMessageReceived, false);
 
     this.dispose = function() {
-      window.removeEventListener('message', onMessageReceived, false)
+      //we probably need to also remove references to all pending listeners
+      window.removeEventListener('message', onMessageReceived, false);
     }
   };
 
