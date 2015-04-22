@@ -1,5 +1,5 @@
 %li.header__nav__item.header__nav__item--user
-  = link_to '#' do
+  = link_to user_path do
     = image_tag current_user.gravatar_url, height: '24', width: '24', class: 'header__nav__picture'
     #{t('layout.menu.greeting')} #{current_user.name}
 %li.header__nav__item.header__nav__item--separator
