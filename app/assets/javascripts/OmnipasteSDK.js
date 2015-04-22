@@ -1,6 +1,7 @@
 //= require almond
 //= require jquery.2.1.1
 //= require lodash
+//= require eventEmitter
 //= require_tree ./sdk
 //= require_self
 

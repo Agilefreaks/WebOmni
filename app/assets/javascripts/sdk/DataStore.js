@@ -1,3 +1,5 @@
 define('sdk/DataStore', [], function() {
-  return {};
+  return {
+    omnipasteUrl: 'https://webstaging.omnipasteapp.com/'
+  };
 });
