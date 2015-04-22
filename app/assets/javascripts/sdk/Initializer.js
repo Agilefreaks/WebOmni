@@ -1,4 +1,6 @@
-define('sdk/Initializer', ['jquery', 'lodash', './RequestHandler', './DataStore'], function ($, _, RequestHandler, DataStore) {
+define('sdk/Initializer',
+  ['jquery', 'lodash', './RequestHandler', './DataStore', './DisposableEventHandler'],
+  function ($, _, RequestHandler, DataStore, DisposableEventHandler) {
   var Initializer = function () {
     this.requestHandler = new RequestHandler();
   };
@@ -12,11 +14,12 @@ define('sdk/Initializer', ['jquery', 'lodash', './RequestHandler', './DataStore'
       var self = this;
       if(clientIdIsValid(clientId)) {
         DataStore.clientId = clientId;
-        $(document).on('click', '[data-omnipaste-call]', function () {
+        var handler = function (event) {
           self.requestHandler.handleCallRequest({
-            phoneNumber: $(this).data('omnipasteCall')
+            phoneNumber: $(event.target).data('omnipasteCall')
           });
-        });
+        };
+        return new DisposableEventHandler($(document), 'click', '[data-omnipaste-call]', handler);
       } else {
         throw 'Invalid api key';
       }

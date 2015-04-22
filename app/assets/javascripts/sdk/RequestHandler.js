@@ -1,10 +1,14 @@
-define('sdk/RequestHandler', ['lodash'], function(_) {
-  var RequestHandler = function() {
+define('sdk/RequestHandler', ['lodash', './DataStore', './JSAPIClient'], function (_, DataStore, JSAPIClient) {
+  var RequestHandler = function () {
   };
 
   _.extend(RequestHandler.prototype, {
-    handleCallRequest: function() {
-      console.log('clicked a phone link');
+    handleCallRequest: function () {
+      if (_.isEmpty(DataStore.userAccessToken)) {
+        JSAPIClient.getInstance().getUserAccessToken().then(function(userAccessToken) {
+          DataStore.userAccessToken = userAccessToken;
+        });
+      }
     }
   });
 

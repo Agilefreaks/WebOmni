@@ -18,11 +18,15 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (
     });
 
     describe('run', function () {
-      var clientId;
+      var clientId, listener;
       beforeEach(function() {
         subject = function() {
-          instance.run(clientId);
+          listener = instance.run(clientId);
         }
+      });
+
+      afterEach(function() {
+        listener && listener.dispose();
       });
 
       _.each([null, undefined, false, '', {someProp: 'asa'}, 4], function(value) {
@@ -49,12 +53,17 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (
     });
 
     describe('events', function () {
-      var clientId;
+      var clientId, listener;
+
       describe('after run', function () {
         clientId = 'someId';
 
         beforeEach(function () {
-          instance.run(clientId);
+          listener = instance.run(clientId);
+        });
+
+        afterEach(function() {
+          listener && listener.dispose();
         });
 
         describe('an html element exists in the dom with the data-omnipaste-call attribute', function () {
@@ -75,7 +84,7 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (
             });
 
             it('calls handleCallRequest on the request handler with the client if and the phone number', function () {
-              var spy = spyOn(instance.requestHandler, 'handleCallRequest');
+              var spy = spyOn(instance.requestHandler, 'handleCallRequest').andReturn(void 0);
 
               subject();
 
