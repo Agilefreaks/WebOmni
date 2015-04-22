@@ -21,7 +21,7 @@ define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Ini
       var apiClientUrl;
 
       beforeEach(function() {
-        apiClientUrl = 'someUrl';
+        apiClientUrl = 'http://some.url';
         subject = function() {
           instance.run(apiClientUrl);
         }
@@ -30,7 +30,15 @@ define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Ini
       it('sets the apiClientUrl in the DataStore to the same value as the given one', function() {
         subject();
 
-        expect(DataStore.apiClientUrl).toEqual('someUrl');
+        expect(DataStore.apiClientUrl).toEqual(apiClientUrl);
+      });
+
+      it('sends an apiReady message to the top window with the apiClientUrl as the targetOrigin', function() {
+        var spy = spyOn(window.top, 'postMessage');
+
+        subject();
+
+        expect(spy).toHaveBeenCalledWith(JSON.stringify({action: 'apiReady'}), apiClientUrl);
       });
     });
 
@@ -43,7 +51,7 @@ define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Ini
 
       describe('after calling run', function () {
         beforeEach(function () {
-          instance.run();
+          instance.run('http://some.url');
         });
 
         afterEach(function () {
