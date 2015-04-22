@@ -1,4 +1,4 @@
-define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery'], function (Initializer, RequestHandler, $) {
+define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (Initializer, RequestHandler, $, _) {
   describe('Initializer', function () {
     var subject, instance;
 
@@ -15,6 +15,37 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery'], function (Initialize
 
     it('has a request handler', function () {
       expect(subject().requestHandler instanceof RequestHandler).toBe(true);
+    });
+
+    describe('run', function () {
+      var clientId;
+      beforeEach(function() {
+        subject = function() {
+          instance.run(clientId);
+        }
+      });
+
+      _.each([null, undefined, false, '', {someProp: 'asa'}, 4], function(value) {
+        describe('the given client id is ' + value, function () {
+          beforeEach(function() {
+            clientId = value;
+          });
+
+          it('throws an exception', function() {
+            expect(subject).toThrow('Invalid api key');
+          });
+        });
+      });
+
+      describe('the given client id is a non empty string', function () {
+        beforeEach(function() {
+          clientId = 'testKey';
+        });
+
+        it('throws an exception', function() {
+          expect(subject).not.toThrow('Invalid api key');
+        });
+      });
     });
 
     describe('events', function () {
@@ -48,7 +79,7 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery'], function (Initialize
 
               subject();
 
-              expect(spy).toHaveBeenCalledWith({clientId: clientId, phoneNumber: '0000111222'});
+              expect(spy).toHaveBeenCalledWith({phoneNumber: '0000111222'});
             });
           });
         });
