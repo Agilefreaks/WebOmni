@@ -79,7 +79,8 @@ define(['api/RequestHandler', 'api/DataStore'], function (RequestHandler, DataSt
 
               subject();
 
-              expect(message.source.postMessage).toHaveBeenCalledWith('someToken');
+              var sentMessage = JSON.stringify({action: 'setUserAccessToken', data: 'someToken'});
+              expect(message.source.postMessage).toHaveBeenCalledWith(sentMessage, DataStore.omnipasteUrl);
             });
           });
         });

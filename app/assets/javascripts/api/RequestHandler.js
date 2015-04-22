@@ -23,7 +23,7 @@ define('api/RequestHandler', ['lodash', './DataStore'], function (_, DataStore) 
         if (requestOptions) {
           switch (requestOptions.action) {
             case 'getUserAccessToken':
-              message.source.postMessage(DataStore.userAccessToken);
+              message.source.postMessage(JSON.stringify({action: 'setUserAccessToken', data: DataStore.userAccessToken}), DataStore.omnipasteUrl);
               break;
           }
         }

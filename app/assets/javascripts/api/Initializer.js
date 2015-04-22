@@ -15,6 +15,7 @@ define('api/Initializer', ['lodash', './RequestHandler', './DataStore'], functio
     run: function (apiClientUrl) {
       DataStore.apiClientUrl = apiClientUrl;
       window.addEventListener("message", createMessageHandler(this), false);
+      window.top.postMessage(JSON.stringify({action: 'apiReady'}), apiClientUrl);
     },
 
     dispose: function () {

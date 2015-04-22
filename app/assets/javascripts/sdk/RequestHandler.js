@@ -1,10 +1,16 @@
-define('sdk/RequestHandler', [], function() {
-  var RequestHandler = function() {
+define('sdk/RequestHandler', ['lodash', './DataStore', './JSAPIClient'], function (_, DataStore, JSAPIClient) {
+  var RequestHandler = function () {
   };
 
-  RequestHandler.prototype.handleCallRequest = function() {
-    console.log('clicked a phone link');
-  };
+  _.extend(RequestHandler.prototype, {
+    handleCallRequest: function () {
+      if (_.isEmpty(DataStore.userAccessToken)) {
+        JSAPIClient.getInstance().getUserAccessToken().then(function(userAccessToken) {
+          DataStore.userAccessToken = userAccessToken;
+        });
+      }
+    }
+  });
 
   return RequestHandler;
 });
