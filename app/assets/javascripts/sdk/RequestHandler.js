@@ -1,10 +1,12 @@
-define('sdk/RequestHandler', [], function() {
+define('sdk/RequestHandler', ['lodash'], function(_) {
   var RequestHandler = function() {
   };
 
-  RequestHandler.prototype.handleCallRequest = function() {
-    console.log('clicked a phone link');
-  };
+  _.extend(RequestHandler.prototype, {
+    handleCallRequest: function() {
+      console.log('clicked a phone link');
+    }
+  });
 
   return RequestHandler;
 });
