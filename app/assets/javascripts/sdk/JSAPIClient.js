@@ -1,5 +1,4 @@
-define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChannel'],
-  function (_, $, PromiseHelper, ComChannel) {
+define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChannel'], function (_, $, PromiseHelper, ComChannel) {
   var instance;
 
   var JSAPIClient = function () {
@@ -8,10 +7,8 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
     var initializePending = null;
 
     function initializeCore(endpoint) {
-      var initializeDeferred = $.Deferred();
-      var promise = initializeDeferred.promise();
       self.comChannel = new ComChannel();
-      self.comChannel.once('apiReady', initializeDeferred.resolve);
+      var promise = self.waitForResponse('apiReady');
       self.comChannel.open(endpoint);
       return promise.then(function() {
         initializePending = null;
@@ -38,17 +35,34 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
   };
 
   _.extend(JSAPIClient.prototype, {
+    waitForResponse: function(responseName) {
+      var self = this;
+      var deferred = $.Deferred();
+      self.comChannel.once('channelClosed', deferred.reject);
+      self.comChannel.once(responseName, deferred.resolve);
+
+      return deferred.promise()
+        .fail(_.bind(self.reset, self))
+        .always(function () {
+          self.comChannel.off('channelClosed', deferred.reject);
+          self.comChannel.off(responseName, deferred.resolve);
+        });
+    },
+
+    makeRequest: function (actionName, responseName) {
+      var promise = this.waitForResponse(responseName);
+      if(actionName) {
+        this.comChannel.send({action: actionName});
+      }
+
+      return promise;
+    },
+
     getUserAccessToken: function () {
       var self = this;
       return this.initialize('userAccessToken').then(function() {
-        var deferred = $.Deferred();
-        self.comChannel.once('setUserAccessToken', function(data) {
-          self.reset();
-          deferred.resolve(data);
-        });
-        self.comChannel.send({action: 'getUserAccessToken'});
-        return deferred.promise();
-      });
+        return self.makeRequest('getUserAccessToken', 'setUserAccessToken')
+      }).done(_.bind(self.reset, self));
     }
   });
 
