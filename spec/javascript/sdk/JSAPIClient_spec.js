@@ -138,6 +138,16 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
               return promiseResult === 'someToken';
             }, 'the promise to be resolved', 500);
           });
+
+          it('dispose the ComChannel', function() {
+            var spy = spyOn(instance.comChannel, 'dispose');
+
+            subject();
+
+            waitsFor(function() {
+              return spy.calls.length > 0;
+            }, 'the com channel to be disposed', 500);
+          });
         });
       });
     });
