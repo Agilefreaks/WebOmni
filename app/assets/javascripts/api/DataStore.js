@@ -1,3 +1,5 @@
 define('api/DataStore', function () {
-  return {};
+  return {
+    omnipasteUrl: 'https://webstaging.omnipasteapp.com/'
+  };
 });
