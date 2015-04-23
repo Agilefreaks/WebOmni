@@ -1,7 +1,10 @@
 define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel) {
   describe('JSAPIClient', function () {
-    var instance, subject;
+    var instance, subject, openChannelSpy;
+
     beforeEach(function () {
+      //the following line is required so as to not actually try to open a ComChannel while in a test env
+      openChannelSpy = spyOn(ComChannel.prototype, 'open');
       instance = new JSAPIClient();
       subject = function () {
         return instance;
@@ -27,24 +30,13 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
       });
     });
 
-    describe('getUserAccessToken', function () {
-      beforeEach(function () {
-        subject = function () {
-          instance.getUserAccessToken();
-        }
-      });
-
-      describe('the api client has not yet been initialized', function () {
-        beforeEach(function () {
-          instance.reset();
-        });
-      });
-    });
-
     describe('initialize', function () {
+      var endpoint;
+
       beforeEach(function () {
+        endpoint = 'someEndpoint';
         subject = function () {
-          return instance.initialize();
+          return instance.initialize(endpoint);
         }
       });
 
@@ -57,6 +49,12 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
           subject();
 
           expect(instance.comChannel instanceof ComChannel).toBe(true);
+        });
+
+        it('opens the channel with the given endpoint', function() {
+          subject();
+
+          expect(openChannelSpy).toHaveBeenCalledWith(endpoint);
         });
 
         describe('an apiReady event is triggered on the ComChannel after the initialize call is made', function () {
@@ -98,7 +96,7 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
 
       describe('was previously initialized', function () {
         beforeEach(function () {
-          instance.initialize();
+          instance.initialize('someEndpoint');
           instance.comChannel.trigger('apiReady');
         });
 

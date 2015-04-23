@@ -1,4 +1,4 @@
-define('sdk/JSAPIClient', ['lodash', 'jquery', 'sdk/helpers/Promise', 'sdk/ComChannel'],
+define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChannel'],
   function (_, $, PromiseHelper, ComChannel) {
   var instance;
 
@@ -7,21 +7,22 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', 'sdk/helpers/Promise', 'sdk/ComCh
     var initialized = false;
     var initializePending = null;
 
-    function initializeCore() {
+    function initializeCore(endpoint) {
       var initializeDeferred = $.Deferred();
       var promise = initializeDeferred.promise();
       self.comChannel = new ComChannel();
       self.comChannel.once('apiReady', initializeDeferred.resolve);
+      self.comChannel.open(endpoint);
       return promise.then(function() {
         initializePending = null;
         initialized = true;
       });
     }
 
-    this.initialize = function () {
+    this.initialize = function (endpoint) {
       var result;
       if(!initialized) {
-        result = initializePending || (initializePending = initializeCore());
+        result = initializePending || (initializePending = initializeCore(endpoint));
       } else {
         result = PromiseHelper.resolvedPromise();
       }
@@ -38,7 +39,7 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', 'sdk/helpers/Promise', 'sdk/ComCh
 
   _.extend(JSAPIClient.prototype, {
     getUserAccessToken: function () {
-      return this.initialize();
+      return this.initialize('userAccessToken');
     }
   });
 
