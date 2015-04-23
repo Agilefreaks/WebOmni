@@ -39,7 +39,15 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
 
   _.extend(JSAPIClient.prototype, {
     getUserAccessToken: function () {
-      return this.initialize('userAccessToken');
+      var self = this;
+      return this.initialize('userAccessToken').then(function() {
+        var deferred = $.Deferred();
+        self.comChannel.once('setUserAccessToken', function(data) {
+          deferred.resolve(data);
+        });
+        self.comChannel.send({action: 'getUserAccessToken'});
+        return deferred.promise();
+      });
     }
   });
 

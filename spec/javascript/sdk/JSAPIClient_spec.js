@@ -51,7 +51,7 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
           expect(instance.comChannel instanceof ComChannel).toBe(true);
         });
 
-        it('opens the channel with the given endpoint', function() {
+        it('opens the channel with the given endpoint', function () {
           subject();
 
           expect(openChannelSpy).toHaveBeenCalledWith(endpoint);
@@ -83,6 +83,61 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
           var promise2 = subject();
 
           expect(promise2).toBe(promise1);
+        });
+      });
+    });
+
+    describe('getUserAccessToken', function () {
+      beforeEach(function () {
+        subject = function () {
+          return instance.getUserAccessToken();
+        }
+      });
+
+      describe('the client has been initialized', function () {
+        beforeEach(function () {
+          instance.initialize();
+          instance.comChannel.trigger('apiReady');
+        });
+
+        it('sends a getUserAccessToken request through the ComChannel', function () {
+          var spy = spyOn(ComChannel.prototype, 'send');
+
+          subject();
+
+          waitsFor(function () {
+            return spy.calls.length > 0;
+          }, 'send to be called', 500);
+
+          runs(function () {
+            expect(spy).toHaveBeenCalledWith({action: 'getUserAccessToken'});
+          });
+        });
+
+        describe('it receives a setUserAccessToken message through the ComChannel', function () {
+          beforeEach(function () {
+            var previousSubject = subject;
+            subject = function () {
+              var promise = previousSubject();
+              spyOn(instance.comChannel, 'send').andCallFake(function(message) {
+                if(message.action == 'getUserAccessToken') {
+                  instance.comChannel.trigger('setUserAccessToken', ['someToken']);
+                }
+              });
+              return promise;
+            }
+          });
+
+          it('resolves the returned promise with the obtained token', function () {
+            var promiseResult = '';
+            subject().done(function(result) {
+              promiseResult = result;
+            });
+
+            waitsFor(function() {
+              return promiseResult === 'someToken';
+            }, 'the promise to be resolved', 500);
+          });
         });
       });
     });
