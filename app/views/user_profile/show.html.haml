@@ -1,1 +1,8 @@
-%h3 bla bla bla
+%h1.section__title Profile
+
+%dl.dl-horizontal
+  %dt Current Plan
+  %dd
+    =current_user.plan
+    =link_to 'Change', pricing_path, class: 'btn btn-success'
+

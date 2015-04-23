@@ -24,7 +24,7 @@
             .navbar-header
               = link_to root_path, { title: 'Omnipaste', data: { id: 'home' } } do
                 = image_tag 'logo.svg', { alt: "#{t('layout.logo_alt')}", height: '40', width: '175' }
-          .col-md-7.col-md-offset-2.col-lg-7.col-lg-offset-2
+          .col-md-9.col-lg-9
             #navbar.navbar-collapse.collapse.navbar-responsive-collapse
               %nav#header-nav.header__nav
                 = link_to '#mobile-menu', { class: 'header__nav__button visible-xs-block js-mobile-menu-toggle', data: { id: 'header-nav', title: "#{t('layout.menu.mobile_title')}" } } do
@@ -35,7 +35,7 @@
         .col-sm-3.col-md-2.sidebar.well
           .sidebar-nav
             = render_cell :side_menu, :show
-        .col-sm-9.col-sm-offset3.col-md-10.col-md-offset-2.main
+        .col-sm-9.col-md-10
           = bootstrap_flash
           = yield
       %footer

@@ -27,6 +27,9 @@ WebOmni::Application.routes.draw do
 
     get 'user', to: 'user_profile#show'
 
+    get 'pricing', to: 'pricing#show', as: :show_pricing
+    post 'pricing', to: 'pricing#change'
+
     get 'tos', to: 'pages#tos', as: :tos
   end
 

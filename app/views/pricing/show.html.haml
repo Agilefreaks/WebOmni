@@ -1,0 +1,18 @@
+%h1.section__title Profile
+
+%p Choose the plan that suits your needs
+
+.row
+  .col-md-3.col-md-offset-2
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Basic
+      .panel-body
+        =button_to 'Basic', { action: 'change', plan: :free }, method: :post, class: 'btn btn-primary'
+
+  .col-md-3.col-md-offset-2
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Premium
+      .panel-body
+        =button_to 'Premium', { plan: :premium, action: 'change' }, method: :post, class: 'btn btn-success'

@@ -40,6 +40,8 @@ class User
   field :last_name
   field :image_url
 
+  field :plan, type: Symbol, default: :free
+
   validates :email, uniqueness: true
 
   def name
