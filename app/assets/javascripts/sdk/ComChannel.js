@@ -31,7 +31,7 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', 'SimpleModal', './
         this._messageHandler = _.partial(handleMessage, this);
         window.addEventListener('message', this._messageHandler, false);
 
-        var url = DataStore.omnipasteUrl + '/' + DataStore.clientId + '/' + endpoint;
+        var url = DataStore.omnipasteUrl + '/api/' + DataStore.clientId + '/' + endpoint;
         var modal = $.modal('<iframe src="' + url + '" height="450" width="450" style="border:0">', {
           closeHTML: "<span>X</span>",
           containerCss: {
