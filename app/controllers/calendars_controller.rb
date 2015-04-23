@@ -1,6 +1,4 @@
-class CalendarsController < ApplicationController
-  layout 'dashboard'
-
+class CalendarsController < DashboardController
   def show
     render
   end
