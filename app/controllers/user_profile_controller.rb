@@ -1,6 +1,4 @@
-class UserProfileController < ApplicationController
-  layout 'dashboard'
-
+class UserProfileController < DashboardController
   def show
     render
   end
