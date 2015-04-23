@@ -1,13 +1,11 @@
-class PricingController < ApplicationController
-  layout 'dashboard'
-
+class PricingController < DashboardController
   def show
     render
   end
 
   def change
-    current_user.plan = params[:plan] || current_user.plan
-    current_user.save!
+    ModifyPricingPlan.for(current_user.email).to(params[:plan])
+
     redirect_to user_path
   end
 end
