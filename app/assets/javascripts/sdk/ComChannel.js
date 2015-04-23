@@ -27,6 +27,7 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', 'SimpleModal', './
 
     _.extend(ComChannel.prototype, {
       open: function (endpoint) {
+        var self = this;
         this._messageHandler = _.partial(handleMessage, this);
         window.addEventListener('message', this._messageHandler, false);
 
@@ -41,7 +42,11 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', 'SimpleModal', './
             width: 450
           },
           overlayClose: true,
-          focus: false
+          focus: false,
+          onClose: function() {
+            $.modal.close(); // this is required by SimplePopover when using the onClose callback
+            self.trigger('channelClosed');
+          }
         });
 
         if (modal) {
