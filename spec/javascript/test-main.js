@@ -15,7 +15,8 @@ require.config({
   paths: {
     jquery: '../../../vendor/assets/javascripts/jquery.2.1.1',
     lodash: '../../../vendor/assets/javascripts/lodash',
-    EventEmitter: '../../../vendor/assets/javascripts/eventEmitter'
+    EventEmitter: '../../../vendor/assets/javascripts/eventEmitter',
+    SimpleModal: '../../../vendor/assets/javascripts/simpleModal'
   },
 
   // dynamically load all test files
