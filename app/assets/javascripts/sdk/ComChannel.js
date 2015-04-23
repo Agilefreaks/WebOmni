@@ -15,7 +15,7 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', 'SimpleModal', './
       if (message.origin === DataStore.omnipasteUrl) {
         var options = parseRequestOptions(message.data);
         if (options) {
-          instance.trigger(options.action, options.data);
+          instance.trigger(options.action, [options.data]);
         }
       }
     }

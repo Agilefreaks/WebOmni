@@ -1,4 +1,4 @@
-define(['sdk/ComChannel', 'sdk/DataStore', 'jquery'], function (ComChannel, DataStore, $) {
+define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComChannel, DataStore, $, _) {
   describe('ComChannel', function () {
     var instance, subject;
 
@@ -15,18 +15,18 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery'], function (ComChannel, Data
 
     describe('open', function () {
       var endpoint;
-      beforeEach(function() {
+      beforeEach(function () {
         endpoint = 'someEndpoint';
         DataStore.omnipasteUrl = 'http://some.url';
         DataStore.clientId = 'someId';
-        subject = function() {
+        subject = function () {
           instance.open(endpoint);
         }
       });
 
-      it('opens an iframe in a modal pointing to the correct omnipaste url', function() {
+      it('opens an iframe in a modal pointing to the correct omnipaste url', function () {
         var $modalHtml = null;
-        var spy = spyOn($, 'modal').andCallFake(function(html) {
+        var spy = spyOn($, 'modal').andCallFake(function (html) {
           $modalHtml = $(html);
         });
         //the following is required as we call dispose in after each but in this case the entire modal is a spy
@@ -45,14 +45,14 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery'], function (ComChannel, Data
       });
     });
 
-    describe('dispose', function() {
-      beforeEach(function() {
-        subject = function() {
+    describe('dispose', function () {
+      beforeEach(function () {
+        subject = function () {
           instance.dispose();
         }
       });
 
-      it('closes any modal opened by the SDK', function() {
+      it('closes any modal opened by the SDK', function () {
         var spy = spyOn($.modal, 'close');
 
         subject();
@@ -131,6 +131,25 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery'], function (ComChannel, Data
             waitsFor(function () {
               return wasTriggered;
             }, 'the event to be triggered', 500);
+          });
+
+          describe('the message has a data property', function () {
+            beforeEach(function () {
+              message.data = {someProp: 'someValue'};
+            });
+
+            it('triggers the event with the message data as a parameter', function() {
+              var eventData = null;
+              instance.on('apiReady', function (data) {
+                eventData = data;
+              });
+
+              subject();
+
+              waitsFor(function () {
+                return _.isEqual(eventData, {someProp: 'someValue'});
+              }, 'the event to be triggered', 500);
+            });
           });
         });
 
