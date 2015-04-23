@@ -1,5 +1,5 @@
 %ul.nav.nav-list
   %h3.nav-header Sidebar
   %li= link_to 'Devices', '#'
-  %li= link_to 'Calendars', '#' if current_user.plan == :premium
+  %li= link_to 'Calendars', calendars_path if current_user.plan == :premium
   %li= link_to 'Settings', '#'

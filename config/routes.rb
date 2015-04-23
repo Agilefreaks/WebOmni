@@ -30,6 +30,8 @@ WebOmni::Application.routes.draw do
     get 'pricing', to: 'pricing#show', as: :show_pricing
     post 'pricing', to: 'pricing#change'
 
+    get 'calendars', to: 'calendars#show'
+
     get 'tos', to: 'pages#tos', as: :tos
   end
 
