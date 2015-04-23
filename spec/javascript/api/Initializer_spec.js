@@ -18,12 +18,13 @@ define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Ini
     });
 
     describe('run', function() {
-      var apiClientUrl;
+      var apiClientUrl, omnipasteUrl;
 
       beforeEach(function() {
         apiClientUrl = 'http://some.url';
+        omnipasteUrl = 'http://omnipasteapp.com';
         subject = function() {
-          instance.run(apiClientUrl);
+          instance.run({apiClientUrl: apiClientUrl, omnipasteUrl: omnipasteUrl});
         }
       });
 
@@ -33,12 +34,42 @@ define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Ini
         expect(DataStore.apiClientUrl).toEqual(apiClientUrl);
       });
 
-      it('sends an apiReady message to the top window with the apiClientUrl as the targetOrigin', function() {
-        var spy = spyOn(window.top, 'postMessage');
-
+      it('sets the omnipasteUrl in the DataStore to the same value as the given one', function() {
         subject();
 
-        expect(spy).toHaveBeenCalledWith(JSON.stringify({action: 'apiReady'}), apiClientUrl);
+        expect(DataStore.omnipasteUrl).toEqual(omnipasteUrl);
+      });
+
+      describe('the current window has an opener window', function() {
+        var opener;
+        beforeEach(function() {
+          opener = jasmine.createSpyObj('window', ['postMessage']);
+          window.opener = opener;
+        });
+
+        afterEach(function() {
+          delete window.opener;
+        });
+
+        it('sends an apiReady message to the opener window with the apiClientUrl as the targetOrigin', function() {
+          subject();
+
+          expect(opener.postMessage).toHaveBeenCalledWith(JSON.stringify({action: 'apiReady'}), apiClientUrl);
+        });
+      });
+
+      describe('the current window does not have an opener window', function() {
+        beforeEach(function() {
+          delete window.opener;
+        });
+
+        it('sends an apiReady message to the top window with the apiClientUrl as the targetOrigin', function() {
+          var spy = spyOn(window.top, 'postMessage');
+
+          subject();
+
+          expect(spy).toHaveBeenCalledWith(JSON.stringify({action: 'apiReady'}), apiClientUrl);
+        });
       });
     });
 

@@ -10,10 +10,11 @@ define('sdk/Initializer',
   }
 
   _.extend(Initializer.prototype, {
-    run: function (clientId) {
+    run: function (options) {
       var self = this;
-      if(clientIdIsValid(clientId)) {
-        DataStore.clientId = clientId;
+      options = _.defaults({}, options);
+      if(clientIdIsValid(options.clientId)) {
+        _.extend(DataStore, _.pick(options, ['clientId', 'omnipasteUrl']));
         var handler = function (event) {
           self.requestHandler.handleCallRequest({
             phoneNumber: $(event.target).data('omnipasteCall')

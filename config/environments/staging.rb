@@ -97,4 +97,6 @@ WebOmni::Application.configure do
   OmniKiq.configure do |config|
     config.redis_url = 'redis://10.133.201.189:6379'
   end
+
+  config.web_omni_url ='https://webstaging.omnipasteapp.com'
 end
