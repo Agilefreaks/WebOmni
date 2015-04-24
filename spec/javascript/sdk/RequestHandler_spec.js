@@ -1,6 +1,6 @@
 define(
-  ['sdk/RequestHandler', 'sdk/DataStore', 'sdk/JSAPIClient', 'sdk/helpers/Promise'],
-  function (RequestHandler, DataStore, JSAPIClient, PromiseHelper) {
+  ['sdk/RequestHandler', 'sdk/DataStore', 'sdk/JSAPIClient', 'sdk/helpers/Promise', 'sdk/RESTAPIClient'],
+  function (RequestHandler, DataStore, JSAPIClient, PromiseHelper, RESTAPIClient) {
     var instance, subject;
 
     beforeEach(function () {
@@ -15,7 +15,7 @@ define(
       beforeEach(function () {
         request = {};
         subject = function () {
-          instance.handleCallRequest(request);
+          return instance.handleCallRequest(request);
         }
       });
 
@@ -48,9 +48,42 @@ define(
           it('stores the obtained token', function () {
             subject();
 
-            waitsFor(function() {
+            waitsFor(function () {
               return DataStore.userAccessToken === 'someToken';
             }, 'the token to be stored', 500);
+          });
+        });
+      });
+
+      describe('the DataStore has a stored userAccessToken', function () {
+        beforeEach(function () {
+          DataStore.userAccessToken = 'someToken';
+        });
+
+        it('creates a new phone call using the REST API', function () {
+          var spy = spyOn(RESTAPIClient.getInstance(), 'createPhoneCall');
+
+          subject();
+
+          waitsFor(function() {
+            return spy.calls.length > 0;
+          }, 'createPhoneCall to be called', 500);
+        });
+
+        describe('the promise obtained from the REST client is resolved', function() {
+          beforeEach(function() {
+            spyOn(RESTAPIClient.getInstance(), 'createPhoneCall').andReturn(PromiseHelper.resolvedPromise('someCallId'));
+          });
+
+          it('resolves the returned promise with the call id', function () {
+            var callId;
+            subject().done(function(obtainedCallId) {
+              callId = obtainedCallId;
+            });
+
+            waitsFor(function() {
+              return callId == 'someCallId';
+            }, 'the promise to be resolved', 500);
           });
         });
       });
