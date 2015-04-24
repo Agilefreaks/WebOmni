@@ -139,7 +139,32 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
             }, 'the promise to be resolved', 500);
           });
 
-          it('dispose the ComChannel', function() {
+          it('disposes the ComChannel', function() {
+            var spy = spyOn(instance.comChannel, 'dispose');
+
+            subject();
+
+            waitsFor(function() {
+              return spy.calls.length > 0;
+            }, 'the com channel to be disposed', 500);
+          });
+        });
+
+        describe('it receives a channelClosed message through the ComChannel', function () {
+          beforeEach(function () {
+            var previousSubject = subject;
+            subject = function () {
+              var promise = previousSubject();
+              spyOn(instance.comChannel, 'send').andCallFake(function(message) {
+                if(message.action == 'getUserAccessToken') {
+                  instance.comChannel.trigger('channelClosed');
+                }
+              });
+              return promise;
+            }
+          });
+
+          it('disposes the ComChannel', function() {
             var spy = spyOn(instance.comChannel, 'dispose');
 
             subject();

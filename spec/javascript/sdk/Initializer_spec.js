@@ -1,4 +1,5 @@
-define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (Initializer, RequestHandler, $, _) {
+define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash', 'sdk/DataStore'],
+  function (Initializer, RequestHandler, $, _, DataStore) {
   describe('Initializer', function () {
     var subject, instance;
 
@@ -18,10 +19,11 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (
     });
 
     describe('run', function () {
-      var clientId, listener;
+      var clientId, omnipasteUrl, listener;
       beforeEach(function() {
+        omnipasteUrl = 'http://some.url';
         subject = function() {
-          listener = instance.run(clientId);
+          listener = instance.run({clientId: clientId, omnipasteUrl: omnipasteUrl});
         }
       });
 
@@ -46,8 +48,16 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (
           clientId = 'testKey';
         });
 
-        it('throws an exception', function() {
+        it('does not throw an exception', function() {
           expect(subject).not.toThrow('Invalid api key');
+        });
+
+        it('stores the given client id', function() {
+          expect(DataStore.clientId).toEqual(clientId);
+        });
+
+        it('stores the give omnipasteUrl', function() {
+          expect(DataStore.omnipasteUrl).toEqual(omnipasteUrl);
         });
       });
     });
@@ -59,7 +69,7 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash'], function (
         clientId = 'someId';
 
         beforeEach(function () {
-          listener = instance.run(clientId);
+          listener = instance.run({clientId: clientId});
         });
 
         afterEach(function() {

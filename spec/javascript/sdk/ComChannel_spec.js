@@ -3,45 +3,40 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
     var instance, subject;
 
     beforeEach(function () {
+      //the following is required to prevent cross-origin issues during tests
+      DataStore.omnipasteUrl = 'http://localhost:9876';
       instance = new ComChannel();
       subject = function () {
         return instance;
       }
     });
 
-    afterEach(function () {
-      instance.dispose();
-    });
-
     describe('open', function () {
       var endpoint;
       beforeEach(function () {
         endpoint = 'someEndpoint';
-        DataStore.omnipasteUrl = 'http://some.url';
         DataStore.clientId = 'someId';
         subject = function () {
           instance.open(endpoint);
         }
       });
 
-      it('opens an iframe in a modal pointing to the correct omnipaste url', function () {
-        var $modalHtml = null;
-        var spy = spyOn($, 'modal').andCallFake(function (html) {
-          $modalHtml = $(html);
-        });
-        //the following is required as we call dispose in after each but in this case the entire modal is a spy
-        spy.close = $.noop;
-
-        subject();
-
-        var iFrames = $modalHtml.find('iframe').add($modalHtml.filter('iframe'));
-        expect(iFrames[0].src).toEqual('http://some.url/someId/someEndpoint');
+      afterEach(function () {
+        instance.dispose();
       });
 
-      it('sets the iframe in the modal on itself', function () {
+      it('sets the opened window on the ComChannel', function () {
         subject();
 
-        expect(instance.iframe.tagName).toEqual('IFRAME');
+        expect(instance.targetWindow).toBeDefined();
+      });
+
+      it('opens a window pointing to the correct omnipaste url', function () {
+        subject();
+
+        waitsFor(function() {
+          return instance.targetWindow.location.href == 'http://localhost:9876/api/someId/someEndpoint';
+        }, 'the new window to navigate to the omnipaste url', 1000);
       });
     });
 
@@ -52,12 +47,16 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
         }
       });
 
-      it('closes any modal opened by the SDK', function () {
-        var spy = spyOn($.modal, 'close');
+      describe('a window was object was previously created', function() {
+        beforeEach(function() {
+          instance.targetWindow = jasmine.createSpyObj('window', ['close']);
+        });
 
-        subject();
+        it('closes the window opened by the SDK', function () {
+          subject();
 
-        expect(spy).toHaveBeenCalled();
+          expect(instance.targetWindow.close).toHaveBeenCalled();
+        });
       });
 
       describe('receiving a valid window message event after the call', function () {
@@ -101,18 +100,22 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
       });
     });
 
-    describe('receiving a window message event', function () {
-      var message;
+    describe('the channel is open', function () {
       beforeEach(function () {
-        message = {action: 'apiReady'};
-        subject = function () {
-          window.postMessage(JSON.stringify(message), '*');
-        }
+        instance.open('someEndpoint');
       });
 
-      describe('the com channel has been opened', function () {
+      afterEach(function () {
+        instance.dispose();
+      });
+
+      describe('receiving a window message event', function () {
+        var message;
         beforeEach(function () {
-          instance.open('someEndpoint');
+          message = {action: 'apiReady'};
+          subject = function () {
+            window.postMessage(JSON.stringify(message), '*');
+          }
         });
 
         describe('the message origin matches the omnipaste url', function () {
@@ -138,7 +141,7 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
               message.data = {someProp: 'someValue'};
             });
 
-            it('triggers the event with the message data as a parameter', function() {
+            it('triggers the event with the message data as a parameter', function () {
               var eventData = null;
               instance.on('apiReady', function (data) {
                 eventData = data;
@@ -160,6 +163,7 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
 
           it('does not trigger an event with the action name contained in the message', function () {
             var wasTriggered = false;
+            instance._uid = '1';
             instance.on('apiReady', function () {
               wasTriggered = true;
             });
@@ -179,6 +183,27 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
               expect(wasTriggered).toBe(false);
             });
           });
+        });
+      });
+
+      describe('closing the window', function () {
+        beforeEach(function () {
+          subject = function () {
+            instance.targetWindow.close();
+          }
+        });
+
+        it('triggers a channelClosed event', function () {
+          var wasTriggered = false;
+          instance.on('channelClosed', function() {
+            wasTriggered = true;
+          });
+
+          subject();
+
+          waitsFor(function() {
+            return wasTriggered;
+          }, 'the channelClosed event to be raised', 500);
         });
       });
     });

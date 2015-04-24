@@ -2,7 +2,6 @@
 //= require jquery.2.1.1
 //= require lodash
 //= require eventEmitter
-//= require simpleModal
 //= require_tree ./sdk
 //= require_self
 
@@ -14,8 +13,8 @@ define('OmnipasteSDK', ['sdk/Initializer', 'jquery', 'lodash'], function (Initia
   };
 
   _.extend(OmnipasteSDK.prototype, {
-    initialize: function (clientId) {
-      this.initializer.run(clientId);
+    initialize: function (options) {
+      this.initializer.run(options);
     }
   });
 
