@@ -11,11 +11,15 @@ define('api/Initializer', ['lodash', './RequestHandler', './DataStore'], functio
     return instance._messageHandler;
   }
 
+  function getClientWindow() {
+    return window.opener || window.top;
+  }
+
   _.extend(Initializer.prototype, {
     run: function (apiClientUrl) {
       DataStore.apiClientUrl = apiClientUrl;
       window.addEventListener("message", createMessageHandler(this), false);
-      window.top.postMessage(JSON.stringify({action: 'apiReady'}), apiClientUrl);
+      getClientWindow().postMessage(JSON.stringify({action: 'apiReady'}), apiClientUrl);
     },
 
     dispose: function () {

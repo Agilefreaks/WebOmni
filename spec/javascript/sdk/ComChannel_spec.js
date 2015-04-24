@@ -193,7 +193,7 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
           }
         });
 
-        iit('triggers a channelClosed event', function () {
+        it('triggers a channelClosed event', function () {
           var wasTriggered = false;
           instance.on('channelClosed', function() {
             wasTriggered = true;
