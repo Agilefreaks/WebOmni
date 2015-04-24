@@ -1,6 +1,6 @@
 define(
-  ['sdk/RequestHandler', 'sdk/DataStore', 'sdk/JSAPIClient', 'sdk/helpers/Promise', 'sdk/RESTAPIClient'],
-  function (RequestHandler, DataStore, JSAPIClient, PromiseHelper, RESTAPIClient) {
+  ['sdk/RequestHandler', 'sdk/DataStore', 'sdk/JSAPIClient', 'sdk/helpers/Promise', 'sdk/RESTAPIClient', 'lodash'],
+  function (RequestHandler, DataStore, JSAPIClient, PromiseHelper, RESTAPIClient, _) {
     var instance, subject;
 
     beforeEach(function () {
@@ -13,11 +13,44 @@ define(
     describe('handleCallRequest', function () {
       var request;
       beforeEach(function () {
-        request = {};
+        request = {phoneNumber: '12345'};
         subject = function () {
           return instance.handleCallRequest(request);
         }
       });
+
+      function checkCreationOfCall() {
+        it('creates a new phone call using the REST API', function () {
+          var spy = spyOn(RESTAPIClient.getInstance(), 'createPhoneCall');
+
+          subject();
+
+          waitsFor(function() {
+            return spy.calls.length > 0;
+          }, 'createPhoneCall to be called', 500);
+
+          runs(function() {
+            expect(spy).toHaveBeenCalledWith({number: '12345', type: 'outgoing', state: 'starting'});
+          });
+        });
+
+        describe('the promise obtained from the REST client is resolved', function() {
+          beforeEach(function() {
+            spyOn(RESTAPIClient.getInstance(), 'createPhoneCall').andReturn(PromiseHelper.resolvedPromise({id: 'someCallId'}));
+          });
+
+          it('resolves the returned promise with the call id', function () {
+            var call;
+            subject().done(function(obtainedCall) {
+              call = obtainedCall;
+            });
+
+            waitsFor(function() {
+              return _.isEqual(call, {id: 'someCallId'});
+            }, 'the promise to be resolved', 500);
+          });
+        });
+      }
 
       describe('the DataStore does not have a userAccessToken', function () {
         beforeEach(function () {
@@ -52,6 +85,8 @@ define(
               return DataStore.userAccessToken === 'someToken';
             }, 'the token to be stored', 500);
           });
+
+          checkCreationOfCall();
         });
       });
 
@@ -60,32 +95,7 @@ define(
           DataStore.userAccessToken = 'someToken';
         });
 
-        it('creates a new phone call using the REST API', function () {
-          var spy = spyOn(RESTAPIClient.getInstance(), 'createPhoneCall');
-
-          subject();
-
-          waitsFor(function() {
-            return spy.calls.length > 0;
-          }, 'createPhoneCall to be called', 500);
-        });
-
-        describe('the promise obtained from the REST client is resolved', function() {
-          beforeEach(function() {
-            spyOn(RESTAPIClient.getInstance(), 'createPhoneCall').andReturn(PromiseHelper.resolvedPromise('someCallId'));
-          });
-
-          it('resolves the returned promise with the call id', function () {
-            var callId;
-            subject().done(function(obtainedCallId) {
-              callId = obtainedCallId;
-            });
-
-            waitsFor(function() {
-              return callId == 'someCallId';
-            }, 'the promise to be resolved', 500);
-          });
-        });
+        checkCreationOfCall();
       });
     });
   });

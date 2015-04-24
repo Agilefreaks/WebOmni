@@ -20,7 +20,11 @@ define('sdk/RequestHandler', ['lodash', './DataStore', './helpers/Promise', './J
   _.extend(RequestHandler.prototype, {
     handleCallRequest: function (requestData) {
       return getUserAccessToken().then(function() {
-        return RESTAPIClient.getInstance().createPhoneCall(requestData);
+        return RESTAPIClient.getInstance().createPhoneCall({
+          number: requestData.phoneNumber,
+          type: 'outgoing',
+          state: 'starting'
+        });
       });
     }
   });
