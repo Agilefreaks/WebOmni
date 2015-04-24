@@ -9,8 +9,8 @@ define('OmnipasteAPI', ['lodash', 'api/Initializer'], function(_, Initializer) {
   };
 
   _.extend(OmnipasteAPI.prototype, {
-    initialize: function (apiClientUrl) {
-      this.initializer.run(apiClientUrl);
+    initialize: function (options) {
+      this.initializer.run(options);
     }
   });
 

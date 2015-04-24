@@ -18,12 +18,13 @@ define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Ini
     });
 
     describe('run', function() {
-      var apiClientUrl;
+      var apiClientUrl, omnipasteUrl;
 
       beforeEach(function() {
         apiClientUrl = 'http://some.url';
+        omnipasteUrl = 'http://omnipasteapp.com';
         subject = function() {
-          instance.run(apiClientUrl);
+          instance.run({apiClientUrl: apiClientUrl, omnipasteUrl: omnipasteUrl});
         }
       });
 
@@ -31,6 +32,12 @@ define(['api/Initializer', 'api/RequestHandler', 'api/DataStore'], function (Ini
         subject();
 
         expect(DataStore.apiClientUrl).toEqual(apiClientUrl);
+      });
+
+      it('sets the omnipasteUrl in the DataStore to the same value as the given one', function() {
+        subject();
+
+        expect(DataStore.omnipasteUrl).toEqual(omnipasteUrl);
       });
 
       describe('the current window has an opener window', function() {
