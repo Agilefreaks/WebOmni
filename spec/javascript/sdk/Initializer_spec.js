@@ -19,11 +19,12 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash', 'sdk/DataSt
     });
 
     describe('run', function () {
-      var clientId, omnipasteUrl, listener;
+      var clientId, omnipasteUrl, omnipasteAPIUrl, listener;
       beforeEach(function() {
         omnipasteUrl = 'http://some.url';
+        omnipasteAPIUrl = 'http://someOther.url';
         subject = function() {
-          listener = instance.run({clientId: clientId, omnipasteUrl: omnipasteUrl});
+          listener = instance.run({clientId: clientId, omnipasteUrl: omnipasteUrl, omnipasteAPIUrl: omnipasteAPIUrl});
         }
       });
 
@@ -58,6 +59,10 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash', 'sdk/DataSt
 
         it('stores the give omnipasteUrl', function() {
           expect(DataStore.omnipasteUrl).toEqual(omnipasteUrl);
+        });
+
+        it('stores the give omnipasteAPIUrl', function() {
+          expect(DataStore.omnipasteAPIUrl).toEqual(omnipasteAPIUrl);
         });
       });
     });
