@@ -1,14 +1,31 @@
-define('sdk/RequestHandler', ['lodash', './DataStore', './JSAPIClient'], function (_, DataStore, JSAPIClient) {
-  var RequestHandler = function () {
+define('sdk/RequestHandler', ['lodash', './DataStore', './helpers/Promise', './JSAPIClient', './RESTAPIClient'],
+  function (_, DataStore, PromiseHelper, JSAPIClient, RESTAPIClient) {
+
+    function getUserAccessToken() {
+      var promise;
+      if (_.isEmpty(DataStore.userAccessToken)) {
+        promise = JSAPIClient.getInstance().getUserAccessToken().then(function(userAccessToken) {
+          DataStore.userAccessToken = userAccessToken;
+        });
+      } else {
+        promise = PromiseHelper.resolvedPromise(DataStore.userAccessToken);
+      }
+
+      return promise;
+    }
+
+    var RequestHandler = function () {
   };
 
   _.extend(RequestHandler.prototype, {
-    handleCallRequest: function () {
-      if (_.isEmpty(DataStore.userAccessToken)) {
-        JSAPIClient.getInstance().getUserAccessToken().then(function(userAccessToken) {
-          DataStore.userAccessToken = userAccessToken;
+    handleCallRequest: function (requestData) {
+      return getUserAccessToken().then(function() {
+        return RESTAPIClient.getInstance().createPhoneCall({
+          number: requestData.phoneNumber,
+          type: 'outgoing',
+          state: 'starting'
         });
-      }
+      });
     }
   });
 

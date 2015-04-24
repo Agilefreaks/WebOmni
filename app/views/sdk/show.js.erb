@@ -19,7 +19,11 @@
   //value to use for the public API.
   var OmnipasteSDK = require('OmnipasteSDK');
   var instance = new OmnipasteSDK();
-  instance.initialize({clientId: '<%= @api_key %>', omnipasteUrl: '<%= WebOmni::Application.config.web_omni_url %>'});
+  instance.initialize({
+    clientId: '<%= @api_key %>',
+    omnipasteUrl: '<%= WebOmni::Application.config.web_omni_url %>',
+    omnipasteAPIUrl: '<%= OmniApi.config.base_url %>'
+  });
 
   return instance;
 }));

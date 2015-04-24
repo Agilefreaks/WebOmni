@@ -6,4 +6,4 @@
   var apiDataStore = require('api/DataStore');
   apiDataStore.userAccessToken = '#{@user_access_token}';
   var OmnipasteAPI = require('OmnipasteAPI');
-  new OmnipasteAPI().initialize({apiClientUrl: '#{@api_client.url}', omnipasteUrl: '<%= WebOmni::Application.config.web_omni_url %>'});
+  new OmnipasteAPI().initialize({apiClientUrl: '#{@api_client.url}', omnipasteUrl: '#{WebOmni::Application.config.web_omni_url}'});
