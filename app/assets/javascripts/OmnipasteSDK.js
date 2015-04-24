@@ -2,7 +2,6 @@
 //= require jquery.2.1.1
 //= require lodash
 //= require eventEmitter
-//= require simpleModal
 //= require_tree ./sdk
 //= require_self
 
