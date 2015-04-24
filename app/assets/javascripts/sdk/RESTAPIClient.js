@@ -1,11 +1,18 @@
-define('sdk/RESTAPIClient', ['lodash'], function (_) {
+define('sdk/RESTAPIClient', ['lodash', 'jquery', './DataStore'], function (_, $, DataStore) {
   var instance;
 
   var RESTAPIClient = function () {
   };
 
   _.extend(RESTAPIClient.prototype, {
-    createPhoneCall: function () {
+    createPhoneCall: function (phoneCall) {
+      return $.ajax({
+        url: DataStore.omnipasteAPIUrl + '/phone_calls',
+        method: 'POST',
+        headers: {'Authorization': 'Bearer ' + DataStore.userAccessToken},
+        dataType: 'JSON',
+        data: phoneCall
+      });
     }
   });
 
