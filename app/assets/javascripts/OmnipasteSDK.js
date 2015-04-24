@@ -13,8 +13,8 @@ define('OmnipasteSDK', ['sdk/Initializer', 'jquery', 'lodash'], function (Initia
   };
 
   _.extend(OmnipasteSDK.prototype, {
-    initialize: function (clientId) {
-      this.initializer.run(clientId);
+    initialize: function (options) {
+      this.initializer.run(options);
     }
   });
 

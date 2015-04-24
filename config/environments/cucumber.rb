@@ -56,4 +56,6 @@ WebOmni::Application.configure do
   OmniKiq.configure do |c|
     c.test_mode = true
   end
+
+  config.web_omni_url ='http://localhost:3000'
 end

@@ -46,4 +46,6 @@ WebOmni::Application.configure do
   OmniKiq.configure do |config|
     config.redis_url = 'redis://localhost:6379'
   end
+
+  config.web_omni_url ='http://localhost:3000'
 end
