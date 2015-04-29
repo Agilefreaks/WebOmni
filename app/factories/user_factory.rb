@@ -2,14 +2,13 @@ class UserFactory
   include Singleton
 
   def self.from_social(auth, user)
-    factory = UserFactory.instance
-    factory.create_or_update_from_social(auth, user)
+    Track.sign_up(auth.info.email)
+
+    UserFactory.instance.create_or_update_from_social(auth, user)
   end
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def create_or_update_from_social(auth, user)
-    Track.sign_up(auth.info.email)
-
     api_user = OmniApi::User.where(email: auth.info.email).first ||
                OmniApi::User.new(first_name: auth.info.first_name,
                                  last_name: auth.info.last_name,
