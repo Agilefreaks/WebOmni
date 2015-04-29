@@ -1,11 +1,10 @@
 class SideMenuCell < Cell::Rails
   include Devise::Controllers::Helpers
+  include DashboardHelper
 
-  helper_method :user_signed_in?, :current_user
+  helper_method :user_signed_in?, :current_user, :current_api_user
 
   def show
-    @current_api_user = OmniApi::User.where(email: current_user.email).first
-
     render
   end
 
