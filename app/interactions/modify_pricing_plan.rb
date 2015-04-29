@@ -3,14 +3,11 @@ class ModifyPricingPlan
     ModifyPricingPlan.new(email)
   end
 
-  def to(new_plan)
-    api_user = OmniApi::User.where(email: @email).first
-    api_user.plan = new_plan || api_user.plan
-
-    api_user.save!
-  end
-
   def initialize(email)
     @email = email
+  end
+
+  def to(new_plan)
+    OmniApi::User.change_plan!(@email, new_plan)
   end
 end
