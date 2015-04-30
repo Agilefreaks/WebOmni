@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   include Gravtastic
   include Analyzable
+  include Identity
 
   is_gravtastic
 

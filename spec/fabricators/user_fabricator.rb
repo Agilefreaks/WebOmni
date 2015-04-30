@@ -3,6 +3,12 @@ Fabricator(:user) do
   password_confirmation 'the art of war'
 end
 
+Fabricator(:user_without_calendar_access, from: :user) do
+  email 'email@domain.com'
+  expires true
+  expires_at DateTime.now - 1.days
+end
+
 Fabricator(:user_with_calendar_access, from: :user) do
   email 'email@domain.com'
   expires true

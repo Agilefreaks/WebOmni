@@ -10,8 +10,6 @@ describe UserFactory do
     let(:auth) { Hashie::Mash.new(info: auth_info) }
     let(:user) { Fabricate(:user, email: email)  }
 
-
-
     subject { UserFactory.from_social(auth, user) }
 
     context 'user with the same email exists' do

@@ -1,7 +1,7 @@
 module OmniApi
   class User < BaseClientModel
     include Concerns::Timestamps
-    include CalendarAuthorizable
+    include Identity
 
     attr_accessible :first_name, :last_name, :access_token, :plan
 
