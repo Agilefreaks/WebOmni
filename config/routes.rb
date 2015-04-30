@@ -6,6 +6,11 @@ WebOmni::Application.routes.draw do
 
   devise_for :users, skip: [:session, :password, :registration],
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  devise_scope :user do
+    get '/users/auth/:provider/setup', to: 'users/omniauth_callbacks#google_oauth2_setup'
+  end
+
   resources :sdk, only: [:show]
 
   scope '(:locale)', locale: /en|pt|ro/ do
