@@ -322,6 +322,9 @@ GEM
     rspec-expectations (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
@@ -449,6 +452,7 @@ DEPENDENCIES
   rb-inotify (~> 0.9)
   rspec-activemodel-mocks
   rspec-cells
+  rspec-its
   rspec-mocks
   rspec-rails
   rubocop

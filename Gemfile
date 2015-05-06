@@ -63,6 +63,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'rspec-rails'
   gem 'rspec-cells'
+  gem 'rspec-its'
   gem 'guard-rspec'
   gem 'mongoid-rspec'
   gem 'rspec-activemodel-mocks'

@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     authenticate_user!
+    OmniApi.config.user_access_token = current_user.access_token
   end
 
   def js_redirect_to(path)

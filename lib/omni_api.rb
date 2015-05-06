@@ -12,6 +12,14 @@ module OmniApi
     @@client_access_token = "bearer #{token}"
   end
 
+  mattr_accessor :user_access_token
+  self.user_access_token = ''
+
+  # rubocop:disable Style/ClassVars
+  def self.user_access_token=(token)
+    @@user_access_token = "bearer #{token}"
+  end
+
   mattr_accessor :base_url
   self.client_access_token = ''
 
