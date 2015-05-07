@@ -58,8 +58,8 @@ define(
         });
 
         function setupJSAPIClient() {
-          var mockClient = jasmine.createSpyObj('apiClient', ['getUserAccessToken']);
-          mockClient.getUserAccessToken.andReturn(PromiseHelper.resolvedPromise('someToken'));
+          var mockClient = jasmine.createSpyObj('apiClient', ['prepareForPhoneUsage']);
+          mockClient.prepareForPhoneUsage.andReturn(PromiseHelper.resolvedPromise('someToken'));
           spyOn(JSAPIClient, 'getInstance').andReturn(mockClient);
 
           return mockClient;
@@ -70,7 +70,7 @@ define(
 
           subject();
 
-          expect(mockClient.getUserAccessToken).toHaveBeenCalled();
+          expect(mockClient.prepareForPhoneUsage).toHaveBeenCalled();
         });
 
         describe('the getUserAccessToken call returns a promise which is resolved', function () {

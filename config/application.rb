@@ -44,7 +44,8 @@ module WebOmni
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('/app/factories')
     config.autoload_paths << Rails.root.join('/app/interactions')
-    config.autoload_paths << Rails.root.join('/app/usecases/calendars/notifications')
+    Dir["#{Rails.root.to_s}/app/usecases/**/*.rb"].each { |file| config.autoload_paths += [file] }
+    Dir["#{Rails.root.to_s}/lib/omni_api/**/*.rb"].each { |file| config.autoload_paths += [file] }
 
     # active resource
     config.active_resource.format = :json

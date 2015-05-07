@@ -1,0 +1,15 @@
+%p
+  It looks like you have no linked PC's or phones.
+%p
+  You can link one now.
+  %ul
+    %li
+      For Android click
+      = link_to 'here', android_client_downloads_path({email: current_user.email}), target: '_blank'
+    %li
+      For PC click
+      = link_to 'here', windows_client_downloads_path({email: current_user.email}), target: '_blank'
+%p
+  Click
+  = link_to 'here', session[:callback_url]
+  after you've linked your device to continue.

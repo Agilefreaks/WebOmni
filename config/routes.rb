@@ -29,6 +29,7 @@ WebOmni::Application.routes.draw do
 
     namespace :users do
       resources :clients, only: [:new, :create]
+      resources :devices, only: [:new]
     end
 
     post 'call', as: :call, to: 'pages#call'
@@ -58,7 +59,7 @@ WebOmni::Application.routes.draw do
     get 'association_failed', to: 'embedable_pages#association_failed'
 
     scope '/:api_client_id' do
-      get 'userAccessToken', to: 'embedable_pages#user_access_token'
+      get 'prepare_for_phone_usage', to: 'embedable_pages#prepare_for_phone_usage'
     end
   end
 
