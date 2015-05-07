@@ -1,5 +1,6 @@
 define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChannel'], function (_, $, PromiseHelper, ComChannel) {
   var instance;
+  var initializeEndpoint = 'prepare_for_phone_usage';
 
   var JSAPIClient = function () {
     var self = this;
@@ -58,9 +59,9 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
       return promise;
     },
 
-    getUserAccessToken: function () {
+    prepareForPhoneUsage: function () {
       var self = this;
-      return this.initialize('userAccessToken').then(function() {
+      return this.initialize(initializeEndpoint).then(function() {
         return self.makeRequest('getUserAccessToken', 'setUserAccessToken')
       }).done(_.bind(self.reset, self));
     }

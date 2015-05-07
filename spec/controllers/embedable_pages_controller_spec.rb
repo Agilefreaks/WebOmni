@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe EmbedablePagesController do
   describe 'user_access_token' do
-    subject { get :user_access_token, api_client_id: 1 }
+    subject { get :prepare_for_phone_usage, api_client_id: 1 }
 
     context 'when user authenticated' do
       include_context :logged_in_as_user
@@ -15,7 +15,7 @@ describe EmbedablePagesController do
         it 'sets the user access token path as the callback_url' do
           subject
 
-          expect(session[:callback_url]).to eq(userAccessToken_path(1))
+          expect(session[:callback_url]).to eq(prepare_for_phone_usage_path(1))
         end
       end
 
@@ -24,7 +24,7 @@ describe EmbedablePagesController do
 
         it 'will render user_access_token' do
           subject
-          expect(response).to render_template(:user_access_token)
+          expect(response).to render_template(:prepare_for_phone_usage)
         end
       end
     end

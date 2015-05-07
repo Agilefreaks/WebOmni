@@ -90,7 +90,7 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel)
     describe('getUserAccessToken', function () {
       beforeEach(function () {
         subject = function () {
-          return instance.getUserAccessToken();
+          return instance.prepareForPhoneUsage();
         }
       });
 
