@@ -21,7 +21,7 @@ module OmniApi
   end
 
   mattr_accessor :base_url
-  self.client_access_token = ''
+  self.base_url = ''
 
   def self.config
     self

@@ -1,0 +1,16 @@
+%p
+  %span
+    = @client_description.name
+%p
+  %span
+    This app would like to:
+- @client_description.scopes.each do |scope|
+  %p
+    %span
+      = scope[:description]
+%p
+  %span
+    Do you wish to allow this?
+= form_for @client, url: users_clients_path do |form_builder|
+  = link_to 'Cancel', association_failed_path
+  = form_builder.submit 'Accept'
