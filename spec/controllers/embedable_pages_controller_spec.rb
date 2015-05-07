@@ -11,6 +11,12 @@ describe EmbedablePagesController do
         before { allow(OmniApi::User::Client).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test')) }
 
         it { is_expected.to redirect_to(new_users_client_path(api_client_id: '1')) }
+
+        it 'sets the user access token path as the callback_url' do
+          subject
+
+          expect(session[:callback_url]).to eq(userAccessToken_path(1))
+        end
       end
 
       context 'when given api client exists' do

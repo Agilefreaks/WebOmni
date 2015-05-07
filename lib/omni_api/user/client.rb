@@ -5,7 +5,7 @@ module OmniApi
 
       self.site = "#{OmniApi.config.base_url}/user"
 
-      attr_accessible :id, :client_url, :client_name, :token
+      attr_accessible :id, :client_url, :client_name, :token, :client_id
     end
   end
 end
