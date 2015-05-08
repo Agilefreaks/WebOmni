@@ -1,4 +1,4 @@
 %ul.nav.nav-list
   %li= link_to 'Devices', '#'
-  %li= link_to 'Calendars', show_calendars_path if current_api_user.plan == 'premium'
+  %li= link_to 'Calendars', calendars_path if current_api_user.plan == 'premium'
   %li= link_to 'Settings', '#'
