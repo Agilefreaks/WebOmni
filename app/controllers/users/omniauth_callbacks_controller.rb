@@ -21,10 +21,12 @@ module Users
     def google_oauth2_setup
       existing_scopes = request.env['omniauth.strategy'].options[:scope]
 
-      if existing_scopes.blank?
-        request.env['omniauth.strategy'].options[:scope] = session[:google_permissions]
-      else
-        request.env['omniauth.strategy'].options[:scope] = [existing_scopes, session[:google_permissions]].join(',').chomp(',')
+      unless existing_scopes.include?(session[:google_permissions])
+        if existing_scopes.blank?
+          request.env['omniauth.strategy'].options[:scope] = session[:google_permissions]
+        else
+          request.env['omniauth.strategy'].options[:scope] = existing_scopes + ',' + session[:google_permissions]
+        end
       end
 
       render :text => 'Scopes changed', :status => 404
