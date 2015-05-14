@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   include Gravtastic
   include Analyzable
+  include CalendarIdentity
 
   is_gravtastic
 
@@ -39,6 +40,8 @@ class User
   field :first_name
   field :last_name
   field :image_url
+
+  field :plan, type: Symbol, default: :free
 
   validates :email, uniqueness: true
 

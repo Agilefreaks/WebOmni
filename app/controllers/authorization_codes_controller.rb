@@ -16,7 +16,7 @@ class AuthorizationCodesController < ApplicationController
     Track.create_authorization_code(current_user.email)
     @authorization_code = CreateAuthorizationCode.for(current_user.id)
     respond_to do |format|
-      format.html { render layout: 'presentation' }
+      format.html { render layout: 'dashboard' }
     end
   rescue ActiveResource::ServerError => _
     sign_out(User)

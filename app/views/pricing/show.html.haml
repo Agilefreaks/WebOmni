@@ -1,0 +1,32 @@
+%h1.section__title Profile
+
+%p Choose the plan that suits your needs
+
+.row
+  .col-md-3.col-md-offset-2
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title.text-center Basic
+      .panel-body.text-center
+        %p
+          SMS Tool
+        %p
+          Clipboard Manager
+        %p
+          PC Notifications
+        =button_to 'Basic', { action: 'change', plan: :basic }, method: :post, class: 'btn'
+
+  .col-md-3.col-md-offset-2
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title.text-center Premium
+      .panel-body.text-center
+        %p
+          Basic plan
+        %p
+          %strong
+            +
+        %p
+          Calendar integration
+
+        =button_to 'Go Premium', { plan: :premium, action: 'change' }, method: :post, class: 'btn btn-primary'
