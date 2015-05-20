@@ -1,10 +1,50 @@
 require 'spec_helper'
 
 describe Users::OmniauthCallbacksController do
+  before do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+  end
+
+  describe 'google_oauth2' do
+    subject { post :google_oauth2 }
+
+    let!(:user) { Fabricate(:user, email: 'email@domain.com')}
+    let(:auth) { Hashie::Mash.new }
+    let(:auth_info) { Hashie::Mash.new }
+    let(:credentials) { Hashie::Mash.new({
+                                           expires: true,
+                                           expires_at: DateTime.now + 1.month,
+                                           token: 'token',
+                                           refresh_token: 'refresh_token'
+                                         })}
+
+    before do
+      auth_info.email = 'email@domain.com'
+      auth.info = auth_info
+      @request.env['omniauth.auth'] = auth
+      auth.credentials = credentials
+      @request.env['omniauth.strategy'] = Hashie::Mash.new
+      @request.env['omniauth.strategy'].options = { scope: 'authorization_scope' }
+    end
+
+    it 'saves the identity on the user' do
+      expect { subject }.to change { User.where(email: 'email@domain.com').first.identity }
+    end
+
+    it 'sets correct values on identity' do
+      subject
+
+      identity = User.where(email: 'email@domain.com').first.identity
+      expect(identity.token).to eq 'token'
+      expect(identity.refresh_token).to eq 'refresh_token'
+      expect(identity.expires).to be true
+      expect(identity.expires_at.to_i).to eq credentials.expires_at.to_i
+    end
+  end
+
   describe 'setup' do
     subject { get  :google_oauth2_setup, provider: :google_oauth2 }
     before do
-      @request.env['devise.mapping'] = Devise.mappings[:user]
       @request.env['omniauth.strategy'] = Hashie::Mash.new
       @request.env['omniauth.strategy'].options = { scope: '' }
       session[:google_permissions] = ''
