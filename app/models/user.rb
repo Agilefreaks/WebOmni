@@ -3,7 +3,6 @@ class User
   include Mongoid::Timestamps
   include Gravtastic
   include Analyzable
-  include CalendarIdentity
 
   is_gravtastic
 
@@ -16,6 +15,8 @@ class User
          :validatable,
          :omniauthable,
          omniauth_providers: [:google_oauth2]
+
+  has_one :identity
 
   ## Database authenticatable
   field :email,              type: String, default: ''

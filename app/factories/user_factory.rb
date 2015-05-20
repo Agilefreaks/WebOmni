@@ -9,12 +9,24 @@ class UserFactory
   def create_or_update_from_social(auth, user)
     params = sanitize_params(auth)
 
+    identity = Identity.new({
+      provider: auth.provider,
+      scope: auth.scope,
+      expires: auth.credentials.expires,
+      expires_at: auth.credentials.expires_at,
+      refresh_token: auth.credentials.refresh_token,
+      token: auth.credentials.token
+    })
+
     if user
       user.update(params)
     else
       user = User.create(params)
       Track.user_created(params[:email], params)
     end
+
+    user.identity = identity
+    user.save
 
     user
   end
