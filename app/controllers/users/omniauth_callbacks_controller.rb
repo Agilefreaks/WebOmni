@@ -9,7 +9,7 @@ module Users
     after_action :track_user_signup, only: [:google_oauth2]
 
     def google_oauth2
-      @user = HandleAuthentication.for(@current_user).with(@provided_identity)
+      @user = handle_authentication(@provided_identity)
 
       if @user.persisted?
         flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: 'Google')
@@ -29,6 +29,13 @@ module Users
     end
 
     private
+
+    def handle_authentication(auth_info)
+      @user = @current_user || User.where(email: auth_info.info.email.downcase).first
+
+      OmniApi::UserFactory.from_social(auth_info)
+      UserFactory.from_social(auth_info, @user)
+    end
 
     def get_identity_info
       @provided_identity = request.env['omniauth.auth']
