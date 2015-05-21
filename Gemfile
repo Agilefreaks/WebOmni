@@ -45,6 +45,8 @@ gem 'mobile-fu'
 gem 'mixpanel-ruby'
 gem 'omnikiq'
 
+gem 'google-api-client'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
