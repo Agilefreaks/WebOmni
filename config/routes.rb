@@ -35,6 +35,16 @@ WebOmni::Application.routes.draw do
     get 'pricing', to: 'pricing#show', as: :show_pricing
     post 'pricing', to: 'pricing#change'
 
+    resources :calendars, only: [:index] do
+      member do
+        put 'watch'
+      end
+
+      collection do
+        post 'notifications'
+      end
+    end
+
     get 'calendars', to: 'calendars#show'
 
     get 'tos', to: 'pages#tos', as: :tos

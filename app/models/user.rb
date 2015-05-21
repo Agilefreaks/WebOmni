@@ -18,6 +18,8 @@ class User
 
   has_one :identity
 
+  has_many :calendars
+
   ## Database authenticatable
   field :email,              type: String, default: ''
   field :encrypted_password, type: String, default: ''
