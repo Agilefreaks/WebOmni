@@ -5,13 +5,13 @@ module Google
     end
 
     def list(user)
-      result = @google_api_client.execute(api_method: calendar_api.calendar_list.list, parameters: {}, authorization: credentials(user))
+      result = @api_client.execute(api_method: calendar_api.calendar_list.list, parameters: {}, authorization: credentials(user))
 
       result.data['items']
     end
 
     def watch(calendar)
-      result = @google_api_client.execute(
+      result = @api_client.execute(
         api_method: calendar_api.events.watch,
         parameters: calendar.notification_channel.to_params,
         authorization: credentials(calendar.user))
@@ -29,7 +29,7 @@ module Google
       }
 
       @authorization ||= (
-      auth = @google_api_client.authorization.dup
+      auth = @api_client.authorization.dup
       auth.update_token!(authorization)
       auth
       )

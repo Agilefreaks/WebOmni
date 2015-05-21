@@ -9,6 +9,8 @@ class CalendarsController < DashboardController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
+    @calendars = current_user.calendars
+
     render
   end
 
