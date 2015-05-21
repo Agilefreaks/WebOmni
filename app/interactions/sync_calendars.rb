@@ -5,20 +5,22 @@ class SyncCalendars
 
   def initialize(user)
     @user = user
-    @calendars_api = Google::Api.calendars
+    @calendars_api = GoogleApi.calendars
   end
 
   def sync
     remote_calendars = @calendars_api.list(@user)
-    remove_old(remote_calendars)
-    insert_or_update_existing(remote_calendars)
+    unless remote_calendars.nil?
+      remove_old(remote_calendars)
+      insert_or_update_existing(remote_calendars)
+    end
   end
 
   private
 
   def remove_old(remote_calendars)
     local_calendar_ids = @user.calendars.pluck(:google_id)
-    remote_calendar_ids = remote_calendars.map(&:id)
+    remote_calendar_ids = remote_calendars.map { |cal| cal['id'] }
     calendars_to_remove = local_calendar_ids - remote_calendar_ids
     calendars_to_remove.each do |id|
       @user.calendars.where(google_id: id).destroy

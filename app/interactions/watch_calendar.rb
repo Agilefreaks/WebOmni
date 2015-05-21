@@ -6,7 +6,7 @@ class Watch
   def initialize(calendar, callback_url)
     @calendar = calendar
     @callback_url = callback_url
-    @calendars_api = Google::Api.new.calendars
+    @calendars_api = GoogleApi.new.calendars
   end
 
   def start
