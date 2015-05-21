@@ -1,5 +1,9 @@
 module Google
   class Api
+    def self.calendars
+      Google::Api.new.calendars
+    end
+
     def initialize
       @google_api_client = ::Google::APIClient.new(
         :application_name => 'Omnipaste',

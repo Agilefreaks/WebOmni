@@ -5,11 +5,11 @@ class SyncCalendars
 
   def initialize(user)
     @user = user
-    @google_api = GoogleApi.new
+    @calendars_api = Google::Api.calendars
   end
 
   def sync
-    remote_calendars = @google_api.calendars_for(@user)
+    remote_calendars = @calendars_api.list(@user)
     remove_old(remote_calendars)
     insert_or_update_existing(remote_calendars)
   end

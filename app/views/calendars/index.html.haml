@@ -2,7 +2,7 @@
 
 %h3 Watched
 %ul
-  - current_user.calendars.watched.each do |calendar|
+  - @calendars.watched.each do |calendar|
     %li
       = form_for calendar, as: :calendar, url: watch_calendar_url(calendar), method: :put, remote: true do |f|
         = calendar[:summary]
@@ -10,7 +10,7 @@
 
 %h3 Not watched
 %ul
-  - current_user.calendars.not_watched.each do |calendar|
+  - @calendars.not_watched.each do |calendar|
     %li
       = form_for calendar, as: :calendar, url: watch_calendar_url(calendar), method: :put, remote: true do |f|
         = calendar[:summary]
