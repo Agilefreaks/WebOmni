@@ -12,9 +12,9 @@ class Calendar
   field :summary, type: String
   field :watched, type: Boolean, default: false
 
-  def renew_notification_channel
-    notification_channel.destroy
+  def renew_notification_channel(callback_url)
+    notification_channel.destroy unless notification_channel.nil?
 
-    NotificationChannel.create(address: @callback_url, calendar: @calendar)
+    NotificationChannel.create(address: callback_url, calendar: self)
   end
 end

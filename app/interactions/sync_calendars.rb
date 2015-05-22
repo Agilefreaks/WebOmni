@@ -5,7 +5,7 @@ class SyncCalendars
 
   def initialize(user)
     @user = user
-    @calendars_api = GoogleApi.calendars
+    @calendars_api = CalendarList.new
   end
 
   def perform

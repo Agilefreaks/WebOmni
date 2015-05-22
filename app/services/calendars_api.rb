@@ -1,12 +1,8 @@
-class CalendarsApi
-  def initialize
-    @api_client = GoogleApi.new
-  end
-
+class CalendarsApi < GoogleApi
   private
 
   def api
-    @api_client.discovered_api('calendar', 'v3')
+    @google_api_client.discovered_api('calendar', 'v3')
   end
 
   def credentials_for(user)
@@ -17,7 +13,7 @@ class CalendarsApi
     }
 
     @authorization ||= (
-    auth = @api_client.authorization.dup
+    auth = @google_api_client.authorization.dup
     auth.update_token!(authorization)
     auth
     )

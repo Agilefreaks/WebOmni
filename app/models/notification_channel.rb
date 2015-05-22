@@ -9,6 +9,7 @@ class NotificationChannel
   field :uuid, type: String, default: SecureRandom.uuid
   field :type, type: String, default: 'web_hook'
   field :address, type: String
+  field :expiration, type: DateTime
 
   def to_params
     {

@@ -1,4 +1,4 @@
-class SideMenuCell < Cell::Rails
+class SideMenuCell < Cell::ViewModel
   include Devise::Controllers::Helpers
   include DashboardHelper
   include Pundit
