@@ -6,7 +6,7 @@ class CalendarsController < DashboardController
 
   before_action :sync_calendars, only: :index
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :request_calendar_access
 
   def index
     @calendars = current_user.calendars
@@ -17,6 +17,8 @@ class CalendarsController < DashboardController
   def watch
     calendar = Calendar.find(params[:id])
     Watch.calendar(calendar, notifications_calendars_url)
+
+    redirect_to calendars_path
   end
 
   private
@@ -25,7 +27,7 @@ class CalendarsController < DashboardController
     authorize :calendar, :show?
   end
 
-  def user_not_authorized
+  def request_calendar_access
     session[:google_permissions] = 'calendar.readonly'
 
     redirect_to user_omniauth_authorize_path(:google_oauth2, origin: calendars_path)

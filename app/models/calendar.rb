@@ -11,4 +11,10 @@ class Calendar
   field :google_id, type: String
   field :summary, type: String
   field :watched, type: Boolean, default: false
+
+  def renew_notification_channel
+    notification_channel.destroy
+
+    NotificationChannel.create(address: @callback_url, calendar: @calendar)
+  end
 end
