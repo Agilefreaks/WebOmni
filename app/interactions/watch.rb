@@ -1,6 +1,6 @@
 class Watch
   def self.calendar(calendar, callback_url)
-    Watch.new(calendar, callback_url).start
+    Watch.new(calendar, callback_url).perform
   end
 
   def initialize(calendar, callback_url)
@@ -9,7 +9,7 @@ class Watch
     @calendars_api = GoogleApi.new.calendars
   end
 
-  def start
+  def perform
     notification_channel = @calendar.renew_notification_channel
     response = @calendars_api.watch(@calendar)
 

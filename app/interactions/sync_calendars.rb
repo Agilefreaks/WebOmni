@@ -1,6 +1,6 @@
 class SyncCalendars
   def self.for(user)
-    SyncCalendars.new(user).sync
+    SyncCalendars.new(user).perform
   end
 
   def initialize(user)
@@ -8,7 +8,7 @@ class SyncCalendars
     @calendars_api = GoogleApi.calendars
   end
 
-  def sync
+  def perform
     remote_calendars = @calendars_api.list(@user)
     unless remote_calendars.nil?
       remove_old(remote_calendars)
