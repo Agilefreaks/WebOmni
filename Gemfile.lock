@@ -353,6 +353,9 @@ GEM
     rspec-expectations (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
@@ -433,6 +436,7 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    usecasing (0.1.10)
     useragent (0.13.3)
     warden (1.2.3)
       rack (>= 1.0)
@@ -488,6 +492,7 @@ DEPENDENCIES
   rb-inotify (~> 0.9)
   rspec-activemodel-mocks
   rspec-cells
+  rspec-its
   rspec-mocks
   rspec-rails
   rubocop
@@ -498,4 +503,5 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails (~> 3.2.0)
   uglifier
+  usecasing
   useragent

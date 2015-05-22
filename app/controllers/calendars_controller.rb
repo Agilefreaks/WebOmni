@@ -21,6 +21,13 @@ class CalendarsController < DashboardController
     redirect_to calendars_path
   end
 
+  def notifications
+    context = ScheduleSMSFromEventNotificationUseCase.perform(headers)
+    status = context.success? ? :ok : :internal_server_error
+
+    render nothing: true, status: status
+  end
+
   private
 
   def authorize_calendar_access

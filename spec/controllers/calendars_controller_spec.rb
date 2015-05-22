@@ -22,13 +22,13 @@ describe CalendarsController do
 
     context 'user signed in and has access to calendars api' do
       let(:user) { Fabricate(:user_with_calendar_access, identity: Fabricate(:valid_identity)) }
-      let(:calendars_api) { double(Calendars) }
+      let(:calendars_api) { double(CalendarList) }
 
       before do
         allow(controller).to receive(:user_signed_in?).and_return(true)
         allow(controller).to receive(:current_user).and_return(user)
         allow(calendars_api).to receive(:list)
-        allow(Calendars).to receive(:new).and_return(calendars_api)
+        allow(CalendarList).to receive(:new).and_return(calendars_api)
       end
 
       it 'returns the path to show the calendars' do
