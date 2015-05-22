@@ -10,12 +10,16 @@ class Calendars
   end
 
   def watch(calendar)
-    result = @api_client.execute(
+    request = @api_client.execute(
       api_method: calendar_api.events.watch,
-      parameters: calendar.notification_channel.to_params,
+      parameters: { calendarId: calendar.google_id },
+      body_object: calendar.notification_channel.to_params,
       authorization: credentials(calendar.user))
 
-    return result.status == 200
+    calendar.notification_channel.expiration = DateTime.strptime(request.data['expiration'].to_s, '%Q')
+    calendar.notification_channel.save
+
+    request.status == 200
   end
 
   private

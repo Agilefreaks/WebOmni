@@ -4,7 +4,7 @@
 %ul
   - @calendars.watched.each do |calendar|
     %li
-      = form_for calendar, as: :calendar, url: watch_calendar_url(calendar), method: :put, remote: true do |f|
+      = form_for calendar, as: :calendar, url: watch_calendar_url(calendar), method: :put do |f|
         = calendar[:summary]
         = button_tag 'Unwatch', data: { disable_with: 'Please wait...' }
 
@@ -12,6 +12,6 @@
 %ul
   - @calendars.not_watched.each do |calendar|
     %li
-      = form_for calendar, as: :calendar, url: watch_calendar_url(calendar), method: :put, remote: true do |f|
+      = form_for calendar, as: :calendar, url: watch_calendar_url(calendar), method: :put do |f|
         = calendar[:summary]
         = button_tag 'Watch', data: { disable_with: 'Please wait...' }

@@ -10,15 +10,12 @@ class NotificationChannel
   field :type, type: String, default: 'web_hook'
   field :address, type: String
 
-  def initialize(address)
-    @address = address
-  end
-
   def to_params
     {
-      id: uuid,
-      type: type,
-      address: address
+      'calendarId' => calendar.google_id,
+      'id' => uuid,
+      'type' => type,
+      'address' => 'https://www.omnipasteapp.com/calendars/notifications'#@address
     }
   end
 end

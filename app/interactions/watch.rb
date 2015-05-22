@@ -10,7 +10,7 @@ class Watch
   end
 
   def start
-    @calendar.notification_channel = NotificationChannel.new(@callback_url)
+    @calendar.renew_notification_channel
     @calendar.watched = @calendars_api.watch(@calendar)
     @calendar.save
   end
