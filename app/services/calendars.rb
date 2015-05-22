@@ -16,10 +16,9 @@ class Calendars
       body_object: calendar.notification_channel.to_params,
       authorization: credentials(calendar.user))
 
-    calendar.notification_channel.expiration = DateTime.strptime(request.data['expiration'].to_s, '%Q')
-    calendar.notification_channel.save
 
-    request.status == 200
+
+    request.data
   end
 
   private

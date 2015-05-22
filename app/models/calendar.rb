@@ -6,7 +6,7 @@ class Calendar
   scope :not_watched, -> { where(watched: false) }
 
   belongs_to :user
-  has_one :notification_channel
+  has_one :notification_channel, autosave: true
 
   field :google_id, type: String
   field :summary, type: String
