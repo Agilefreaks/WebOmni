@@ -1,9 +1,12 @@
-%li.header__nav__item
-  - if user_signed_in?
+%ul.header__nav__content.js-mobile-menu-content
+  %li.header__nav__item
     = link_to "#{t('layout.menu.download')}", download_path, { class: 'button--download', title: "#{t('layout.menu.download')}", trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" }
-  - else
+  %li.header__nav__item
     = link_to "#{t('layout.menu.download')}", '#sign-up', { class: 'js-toggle-dropdown button--download', title: "#{t('layout.menu.download')}", data: { id: 'sign-up', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::SIGN_UP_CLICKED}" } }
-%li.header__nav__item
-  = link_to t('layout.menu.blog'), 'http://blog.omnipasteapp.com', target: '_blank'
-%li.header__nav__item
-  %a.js-goto-section{'data-id' => 'contact', :href => '#contact'} #{t('layout.menu.contact')}
+  = render :items
+  %li.header__nav__item.header__nav__item--user
+    = link_to '#' do
+      = image_tag model.gravatar_url, height: '24', width: '24', class: 'header__nav__picture'
+      #{t('layout.menu.greeting')} #{model.name}
+  %li.header__nav__item.header__nav__item--separator
+    = link_to "#{t('layout.menu.sign_out')}", destroy_user_session_path, method: :delete

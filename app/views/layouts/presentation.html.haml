@@ -44,7 +44,7 @@
                   %nav#header-nav.header__nav
                     = link_to '#mobile-menu', { class: 'header__nav__button visible-xs-block js-mobile-menu-toggle', data: { id: 'header-nav', title: "#{t('layout.menu.mobile_title')}" } } do
                       %i.icon.icon__hamburger
-                    = render_cell :menu, :show, is_mobile_device?: is_mobile_device?
+                    = cell(:menu, current_user, mobile_device: is_mobile_device?).call(:show)
 
         %article#home.section__container.section--fit-viewport.hero__main-content.js-hero.js-nav-hash
           .container
