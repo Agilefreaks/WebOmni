@@ -1,76 +1,23 @@
 // !Text Transform
 // ==|=========================================================================
 
-.uppercase(@letter-spacing: 0) {
-    text-transform: uppercase;
-    letter-spacing: @letter-spacing;
-}
-.lowercase(@letter-spacing: 0) {
-    text-transform: lowercase;
-    letter-spacing: @letter-spacing;
-}
-.resetcase() {
-    text-transform: none;
-    letter-spacing: 0;
-}
-
-.remove-list-styles() {
-    list-style: none;
-    margin: 0;
-    
-    li { margin: 0; }
-}
-
-.hide-text() {
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 .default-text() {
-	color: @default-color;
-	font-family: @default-font-family;
-	font-size: @default-font-size;
-	font-weight: @default-font-weight;
-	line-height: @default-line-height;
+  color: @default-color;
+  font-family: @default-font-family;
+  font-size: @default-font-size;
+  font-weight: @default-font-weight;
+  line-height: @default-line-height;
 }
 
 // !Clearfix
 // ==|=========================================================================
 
 .clearfix() {
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-}
-
-// !Truncate Text
-// ==|=========================================================================
-
-.truncate-text() {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-// !Resizable Elements
-// ==|=========================================================================
-
-.resizable(@direction: both) {
-	// Options: horizontal, vertical, both
-	resize: @direction;
-	// Safari fix
-	overflow: auto;
-}
-
-// !Center Block
-// ==|=========================================================================
-.center-block() {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 // !Retina Support
@@ -78,11 +25,11 @@
 @retina: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
 
 .retina(@path, @w: auto, @h: auto) {
-	background-image: url(@path);
-	@retina_path: ~`@{path}.replace(/\.\w+$/, function(match) { return "@2x" + match; })`;
+  background-image: url(@path);
+  @retina_path: ~`@{path}.replace(/\.\w+$/, function(match) { return "@2x" + match; })`;
 
-	@media @retina {
-		background-image: url("@{retina_path}");
-		background-size: @w @h;
-	}
+  @media @retina {
+    background-image: url("@{retina_path}");
+    background-size: @w @h;
+  }
 }

@@ -1,0 +1,6 @@
+%ul.header__nav__content.js-mobile-menu-content
+  %li.header__nav__item
+    = link_to "#{t('layout.menu.download')}", '#sign-up', { class: 'js-toggle-dropdown button--download', title: "#{t('layout.menu.download')}", data: { id: 'sign-up', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::SIGN_UP_CLICKED}" } }
+  = render :items
+  %li.header__nav__item
+    = link_to "#{t('layout.menu.sign_in')}", user_omniauth_authorize_path(:google_oauth2), { title: "#{t('layout.menu.sign_in')}" }

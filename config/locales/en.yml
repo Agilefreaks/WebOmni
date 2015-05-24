@@ -69,17 +69,23 @@ en:
       install: "Okay, let's install it"
       what_else: What else is there?
     feature:
-      copy_and_paste:
-        title: Copy/Pasting Text
-        description: Read a good passage on the Internet and want to share it with a friend? With Omnipaste, your PC and your phone now share a clipboard. Just copy on one and paste on another.
+      sms_tool:
+        title: SMS Tool
+        contacts: Access to all your phone's contacts
+        composer: Composer
+        conversation: Conversation
+        group: Group messages
       notifications:
-        title: Notifications
-        description: You got your phone in your bag and it’s on mute? Don’t worry, Omnipaste will let you know somebody is calling. It will also display incoming messages.
-      smart_action:
-        title: Smart Clippings
-        description_p1: Want to make a reservation and then meet a friend? Comfortably search for venue details on your large device (PC or tablet).
-        description_p2: Copy a phone number, go to your phone and tap call to begin dialing.
-        description_p3: Copy a street address, go to your phone and tap navigate to open your navigation and reach a place.
+        title: PC Notifications
+        call: Incoming Call
+        sms: Incoming SMS
+        clipping: New Clipping
+      clipboard:
+        title: Clipboard Manager across devices
+        copy: Copy & paste between devices
+        smart: Smart clippings
+        history: History
+        manage: Manager delete/favorite/filter
     partners:
       title: Companies we partner with
     founders:

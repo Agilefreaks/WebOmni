@@ -1,542 +1,547 @@
+// Responsive
+
+
 /* !Responsive */
 /* ==|========================================================================= */
 
 @media @780h {
-  .hero__chat { font-size: 75% }
-  .section--fit-viewport { height: auto; }
-  .omni-video__overlay:after { height: 100%; }
+	.hero__chat { font-size: 75% }
+	.section--fit-viewport { height: auto; }
+	.omni-video__overlay::after { height: 100%; }
 
-  .header { height: 100%; }
+	.header { height: 100%; }
 }
 @media @680h {
-             html { font-size: 95%; }
-             .section__hero--spacer-top {
-               padding-top: 0;
-               margin: 0;
-             }
-             .hero-animation { padding-top: 0; }
-           }
+	html { font-size: 95%; }
+	.section__hero--spacer-top { 
+		padding-top: 0; 
+		margin: 0;
+	}
+	.hero-animation { padding-top: 0; }
+}
 
 @media @560h {
-             html { font-size: 85%; }
-           }
+	html { font-size: 85%; }
+}
 
 @media @320h {
-             html { font-size: 85% }
-             .founders {
-               margin-top: -220 * @rem;
-               padding: 20 * @rem 0;
-             }
-           }
+	html { font-size: 85% }
+	.founders {
+		margin-top: -220 * @rem;
+		padding: 20 * @rem 0;
+	}
+}
 
-@media @2600w {
-              html { font-size: 150% };
-              .container { width: 1700px; }
-              .partners__logos a { margin: 10 * @rem 100 * @rem 0 0} ;
-            }
+@media @2600w { 
+	html { font-size: 150% };
+	.container { width: 1700px; }
+	.partners__logos a { margin: 10 * @rem 100 * @rem 0 0} ;
+}
 
-@media @1800w {
-              html { font-size: 130% };
-              .container { width: 1600px; }
-            }
+@media @1800w { 
+	html { font-size: 125% };
+	.container { width: 1600px; }
+}
 
-@media @1600w {
-              html { font-size: 120%;}
-              .container { width: 1400px; }
-              .partners__logos a { margin: 10 * @rem 70 * @rem 0 0} ;
-            }
+@media @1600w { 
+	html { font-size: 120%;}
+	.container { width: 1400px; }
+	.partners__logos a { margin: 10 * @rem 70 * @rem 0 0} ;
+}
 
-@media @1500w {
-              html { font-size: 115%; }
-              .container { width: 1200px; }
+@media @1500w { 
+	html { font-size: 115%; }
+	.container { width: 1200px; }
 
-              .partners__logos a { margin: 10 * @rem 60 * @rem 0 0} ;
-            }
+	.partners__logos a { margin: 10 * @rem 60 * @rem 0 0} ;
+}
 
+@media @1360w { 
+	html { font-size: 100%; }
+	.partners__logos a { margin: 10 * @rem 50 * @rem 0 0} ;
+}
 
-@media @1360w {
-              html { font-size: 100%; }
-              .partners__logos a { margin: 10 * @rem 50 * @rem 0 0} ;
-            }
+@media @1190w { 
+	.feature { font-size: 95%; }
+}
+@media @1140w { 
+	.feature { font-size: 90%; }
+	.partners__logos a { margin: 10 * @rem 40 * @rem 0 0} ;
+}
 
-@media @1140w {
-              .feature { font-size: 90%; }
-              .partners__logos a { margin: 10 * @rem 40 * @rem 0 0} ;
-            }
+@media @1100w { 
+	.feature { font-size: 80%; }
+	.hero-animation { 
+		font-size: 90%; 
+		
+		&__connect {
+			top: 33 * @em;
+		}
+		
+		&__notification {
+			top: 22 * @em;
 
-@media @1100w {
-              .feature { font-size: 80%; }
-              .hero-animation {
-                font-size: 90%;
+			&--small, &--transparent {
+	
+				&.hero-animation__notification--phone-call {
+					top: 73 * @em;
+				}
+				&.hero-animation__notification--phone-sms {
+					top: 108 * @em;
+				}
+				&.hero-animation__notification--phone-clipping {
+					top: 142 * @em;
+				}
+			}
+		}
+		
+		&__play {
+			top: 105 * @em;
+		}
+	}
+}
 
-                &__connect {
-                  top: 33 * @em;
-                }
+@media @1000w { 
+	.hero-animation { 
+		font-size: 80%; 
+		
+		&__connect {
+			top: 44 * @em;
+		}
+		
+		&__notification {
+			top: 34 * @em;
 
-                &__notification {
-                  top: 22 * @em;
+			&--small, &--transparent {
+	
+				&.hero-animation__notification--phone-call {
+					top: 88 * @em;
+				}
+				&.hero-animation__notification--phone-sms {
+					top: 123 * @em;
+				}
+				&.hero-animation__notification--phone-clipping {
+					top: 157 * @em;
+				}
+			}
+		}
+		&__play {
+			top: 115 * @em;
+		}
+	}
+}
 
-                  &--small, &--transparent {
+@media @990w { 
+	.feature {
+		&__content { font-size: 83%; }
+	}
+	.contact { min-height: 750 * @rem; }
+	.hero__chat { display: none; }
 
-                    &.hero-animation__notification--phone-call {
-                      top: 73 * @em;
-                    }
-                    &.hero-animation__notification--phone-sms {
-                      top: 108 * @em;
-                    }
-                    &.hero-animation__notification--phone-clipping {
-                      top: 142 * @em;
-                    }
-                  }
-                }
+	.hero-animation { 
+		font-size: 70%; 
+		padding-left: 10 * @rem;
+		
+		&__connect {
+			top: 58 * @em;
+		}
+		
+		&__notification {
+			top: 51 * @em;
 
-                &__play {
-                  top: 105 * @em;
-                }
-              }
-            }
+			&--small, &--transparent {
+	
+				&.hero-animation__notification--phone-call {
+					top: 105 * @em;
+				}
+				&.hero-animation__notification--phone-sms {
+					top: 140 * @em;
+				}
+				&.hero-animation__notification--phone-clipping {
+					top: 174 * @em;
+				}
+			}
+		}
+		&__play {
+			top: 135 * @em;
+			left: 175 * @em; 
+		}
+	}
+}
+@media @860w { 
+	.hero-animation { 
+		font-size: 60%; 
 
-@media @1000w {
-              .hero-animation {
-                font-size: 80%;
+		&__connect {
+			top: 80 * @em;
+		}
+		
+		&__notification {
+			top: 71 * @em;
 
-                &__connect {
-                  top: 44 * @em;
-                }
+			&--small, &--transparent {
+	
+				&.hero-animation__notification--phone-call {
+					top: 132 * @em;
+				}
+				&.hero-animation__notification--phone-sms {
+					top: 167 * @em;
+				}
+				&.hero-animation__notification--phone-clipping {
+					top: 201 * @em;
+				}
+			}
+		}
+		&__play {
+			top: 160 * @em;
+			left: 170 * @em; 
+		}
 
-                &__notification {
-                  top: 34 * @em;
+	}
+}
 
-                  &--small, &--transparent {
+@media @767w { 
+	.header {
+		min-height: 600px;
+	}
+	// Mobile nav
+	.header__nav {
+		&__button { 
+			position: relative;
+			z-index: 10;
+			line-height: 1;
+			opacity: 0.4;
+			transition: none !important;
+			transition: 0.5s cubic-bezier(.27,1.64,.32,.95) !important;	
 
-                    &.hero-animation__notification--phone-call {
-                      top: 88 * @em;
-                    }
-                    &.hero-animation__notification--phone-sms {
-                      top: 123 * @em;
-                    }
-                    &.hero-animation__notification--phone-clipping {
-                      top: 157 * @em;
-                    }
-                  }
-                }
-                &__play {
-                  top: 115 * @em;
-                }
-              }
-            }
+		}
 
-@media @990w {
-             .feature {
-               &__content { font-size: 83%; }
-             }
-             .contact { min-height: 750 * @rem; }
-             .hero__chat { display: none; }
+		&__content {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: -2000 * @rem;
+			padding: 115 * @rem 0 20 * @rem 0;
+			background: rgba(21,45,73,.9);
 
-             .hero-animation {
-               font-size: 70%;
-               padding-left: 10 * @rem;
+			transition: all 0.3s ease-in-out;	
+		}
+		&__item {
+			display: block;
+			padding: 10 * @rem 0;
+			
+			&--separator::before { content: none; }
 
-               &__connect {
-                 top: 58 * @em;
-               }
+			a {
+				display: inline-block;
+				padding: 10 * @rem 25 * @rem;
+				border: 2 * @rem solid transparent;
+				
+				color: @color-bright;
+				font-size: 24 * @rem;
+				font-weight: 300;
 
-               &__notification {
-                 top: 51 * @em;
+				border-radius: 35 * @rem;
 
-                 &--small, &--transparent {
+				transition: all 0.3s ease-in-out;
+			}
+			&:hover a {
+				border: 2 * @rem solid rgba(255, 255, 255, .2);
+				color: @color-bright;
+			}
+		}
+		&__button {
+			.icon { .fadeOut; }
+		}
+	}
+	// Mobile nav behaviour
+	.header--mobile {
+		.header__nav__content { top: 0; } 
 
-                   &.hero-animation__notification--phone-call {
-                     top: 105 * @em;
-                   }
-                   &.hero-animation__notification--phone-sms {
-                     top: 140 * @em;
-                   }
-                   &.hero-animation__notification--phone-clipping {
-                     top: 174 * @em;
-                   }
-                 }
-               }
-               &__play {
-                 top: 135 * @em;
-                 left: 175 * @em;
-               }
-             }
-           }
-@media @860w {
-             .hero-animation {
-               font-size: 60%;
+		.header__nav__button {
+			.icon {
+				.fadeIn;
+				.svg-icon-hamburger-close;		
+				.svg-icon-hamburger-close-dims;
+			}
+			opacity: 0.6;
+		}
+	}
 
-               &__connect {
-                 top: 80 * @em;
-               }
+	.header--hidden.header--mobile	{
+		.header__nav__content { top: -500 * @rem; }
+	}
+	.header--visible.header--detached.header--mobile {
+		box-shadow: none;
+		background: none;
+	}
+	
+	.hero {
+		&__main-content {
+			text-align: center;
+			padding-top: 80 * @rem;
 
-               &__notification {
-                 top: 71 * @em;
+			.section__title {
+				margin-top: 0;
+				padding-bottom: 0;
+			}
+			.section__subtitle {
+				padding-bottom: 0;
+				margin: 0;
+			}
+		}
+		&-animation {
+			display: inline-block;
+			min-height: 0;
+			padding: 0;
+		}
 
-                 &--small, &--transparent {
+	}
+	
+	.section__button--discover { left: 45%; }
+	
+	// Liniarize buttons
+	.button--left {
+		float: none;
+		margin-top: 16 * @rem;
+	}
+	.button--right { float: none; }
+	
+	.feature {
+		text-align: center;
+		&__content { display: inline-block; }
+		
+		&.feature-one,
+		&.feature-three,
+		&.feature-two { 
+			.section__title { margin-top: 20 * @rem; }
+		}
+	}
+	
+	.faq { min-height: 850 * @rem; }
 
-                   &.hero-animation__notification--phone-call {
-                     top: 132 * @em;
-                   }
-                   &.hero-animation__notification--phone-sms {
-                     top: 167 * @em;
-                   }
-                   &.hero-animation__notification--phone-clipping {
-                     top: 201 * @em;
-                   }
-                 }
-               }
-               &__play {
-                 top: 160 * @em;
-                 left: 170 * @em;
-               }
+	.partners__logos a { margin: 20 * @rem 20 * @rem 0 0} ;
+	
+	.contact { min-height: 800 * @rem; }
+	
+	.founders {
+		margin-top: -235 * @rem;
+		padding: 20 * @rem 0;
 
-             }
-           }
-
-@media @767w {
-             .header {
-               min-height: 600px;
-             }
-             // Mobile nav
-             .header__nav {
-               &__button {
-                 position: relative;
-                 z-index: 10;
-                 line-height: 1;
-                 .opacity(.4);
-                 .transition(none) !important;
-                 .transition( 0.5s cubic-bezier(.27,1.64,.32,.95) ) !important;
-
-               }
-
-               &__content {
-                 position: absolute;
-                 left: 0;
-                 right: 0;
-                 top: -2000 * @rem;
-                 padding: 115 * @rem 0 20 * @rem 0;
-                 background: rgba(21,45,73,.9);
-
-                 .transition( all 0.3s ease-in-out );
-               }
-               &__item {
-                 display: block;
-                 padding: 10 * @rem 0;
-
-                 &--separator:before { content: none; }
-
-                 a {
-                   display: inline-block;
-                   padding: 10 * @rem 25 * @rem;
-                   border: 2 * @rem solid transparent;
-
-                   color: @color-bright;
-                   font-size: 24 * @rem;
-                   font-weight: 300;
-
-                   .border-radius(35 * @rem);
-
-                   .transition( all 0.3s ease-in-out );
-                 }
-                 &:hover a {
-                   border: 2 * @rem solid rgba(255, 255, 255, .2);
-                   color: @color-bright;
-                 }
-               }
-               &__button {
-                 .icon { .fadeOut; }
-               }
-             }
-             // Mobile nav behaviour
-             .header--mobile {
-               .header__nav__content { top: 0; }
-
-               .header__nav__button {
-                 .icon {
-                   .fadeIn;
-                   .svg-icon-hamburger-close;
-                   .svg-icon-hamburger-close-dims;
-                 }
-                 .opacity(.6);
-               }
-             }
-
-             .header--hidden.header--mobile	{
-               .header__nav__content { top: -500 * @rem; }
-             }
-             .header--visible.header--detached.header--mobile {
-               .box-shadow(none);
-               background: none;
-             }
-
-             .hero {
-               &__main-content {
-                 text-align: center;
-                 padding-top: 80 * @rem;
-
-                 .section__title {
-                   margin-top: 0;
-                   padding-bottom: 0;
-                 }
-                 .section__subtitle {
-                   padding-bottom: 0;
-                   margin: 0;
-                 }
-               }
-               &-animation {
-                 display: inline-block;
-                 min-height: 0;
-                 padding: 0;
-               }
-
-             }
-
-             .section__button--discover { left: 45%; }
-
-             // Liniarize buttons
-             .button--left {
-               float: none;
-               margin-top: 16 * @rem;
-             }
-             .button--right { float: none; }
-
-             .feature {
-               text-align: center;
-               &__content { display: inline-block; }
-
-               &.feature-one,
-               &.feature-three,
-               &.feature-two {
-                 .section__title { margin-top: 20 * @rem; }
-               }
-             }
-
-             .faq { min-height: 850 * @rem; }
-
-             .partners__logos a { margin: 20 * @rem 20 * @rem 0 0} ;
-
-             .contact { min-height: 800 * @rem; }
-
-             .founders {
-               margin-top: -235 * @rem;
-               padding: 20 * @rem 0;
-
-               &__left, &__right {
-                 text-align: center;
-                 .founders__contact { text-align: left; }
-               }
-             }
-           }
+		&__left, &__right {
+			text-align: center;
+			.founders__contact { text-align: left; }
+		}
+	}
+}
 @media @567w {
-             .feature {
-               &.feature-one { }
-               &.feature-two { }
+	.feature {
+		&.feature-one { }
+		&.feature-two { }
 
-               &__content { font-size: 100%; }
-             }
+		&__content { font-size: 100%; }
+	}
+	
+	.section__button--discover { left: 43%; }
 
-             .section__button--discover { left: 43%; }
-
-           }
+}
 @media @460w {
-             html { font-size: 85%; }
+	html { font-size: 85%; }
+	
+	
+	.hero-animation { 
+		font-size: 70%; 
 
+		&__connect {
+			top: 58 * @em;
+		}
+		
+		&__notification {
+			top: 51 * @em;
 
-             .hero-animation {
-               font-size: 70%;
+			&--small, &--transparent {
+	
+				&.hero-animation__notification--phone-call {
+					top: 105 * @em;
+				}
+				&.hero-animation__notification--phone-sms {
+					top: 140 * @em;
+				}
+				&.hero-animation__notification--phone-clipping {
+					top: 174 * @em;
+				}
+			}
+		}
+		&__play {
+			top: 135 * @em;
+			left: 175 * @em; 
+		}
+	}
+	
+	.feature {
+		font-size: 85%;
+		&__content { font-size: 8px; }
+ 	}
+	.contact { padding: 20 * @rem 0 200 * @rem 0; }
 
-               &__connect {
-                 top: 58 * @em;
-               }
+	.founders {
+		margin-top: -230 * @rem;
+		padding: 20 * @rem 0;
 
-               &__notification {
-                 top: 51 * @em;
-
-                 &--small, &--transparent {
-
-                   &.hero-animation__notification--phone-call {
-                     top: 105 * @em;
-                   }
-                   &.hero-animation__notification--phone-sms {
-                     top: 140 * @em;
-                   }
-                   &.hero-animation__notification--phone-clipping {
-                     top: 174 * @em;
-                   }
-                 }
-               }
-               &__play {
-                 top: 135 * @em;
-                 left: 175 * @em;
-               }
-             }
-
-             .feature {
-               font-size: 85%;
-               &__content { font-size: 8px; }
-             }
-             .contact { padding: 20 * @rem 0 200 * @rem 0; }
-
-             .founders {
-               margin-top: -230 * @rem;
-               padding: 20 * @rem 0;
-
-             }
-             .social__item { margin-right: 20 * @rem}
-           }
+	}
+	.social__item { margin-right: 20 * @rem}
+}
 @media @iPad-portrait {
-  .header {
-    height: auto;
-    min-height: 500 * @rem;
-  }
-  .hero__main-content { padding: 50 * @rem 0 50 * @rem 0; }
-  .section--fit-viewport { height: 100%; }
-  .omni-video--active { height: 100%; }
-  .omni-video__overlay:after { height: 100%; }
+	.header { 
+		height: auto; 
+		min-height: 500 * @rem;
+	}
+	.hero__main-content { padding: 50 * @rem 0 50 * @rem 0; }
+	.section--fit-viewport { height: 100%; }
+	.omni-video--active { height: 100%; }	
+	.omni-video__overlay::after { height: 100%; }
 
 }
 
 @media @iPad-landscape {
-  .header {
-    height: 100%;
-    min-height: 500 * @rem;
-  }
-  .section--fit-viewport { height: 100%; }
-  .omni-video--active { height: 100%; }
-  .omni-video__overlay:after { height: 100%; }
+	.header { 
+		height: 100%; 
+		min-height: 500 * @rem;
+	}
+	.section--fit-viewport { height: 100%; }
+	.omni-video--active { height: 100%; }	
+	.omni-video__overlay::after { height: 100%; }
 }
 
 @media @320w {
-             html { font-size: 70%; }
+	html { font-size: 70%; }
 
-             .faq { min-height: 950 * @rem; }
-             .contact { padding: 20 * @rem 0 320 * @rem 0; }
+	.faq { min-height: 950 * @rem; }
+	.contact { padding: 20 * @rem 0 320 * @rem 0; }
 
-             .founders {
-               margin-top: -220 * @rem;
-               padding: 20 * @rem 0;
-             }
-           }
+	.founders {
+		margin-top: -220 * @rem;
+		padding: 20 * @rem 0;
+	}
+}
 
 @media @iPhone4-portrait {
-  html { font-size: 70%; }
+	html { font-size: 70%; }
 
+	
+	.header__nav { margin: 20 * @rem 5 * @rem 0 0; }
+	.section__play { margin-bottom: 20 * @rem; }
+	.section__button--hero { margin-top: 0; }
+	.contact { padding: 20 * @rem 0 320 * @rem 0; }
+	.section--fit-viewport { height: 100%; }
+	.header {  height: auto; }
+	.omni-video--active { height: 100%; }
+	.omni-video__overlay::after { height: 100%; }
+		
+	.founders {
+		padding: 20 * @rem 0;
+		margin-top: -230 * @rem;
+	}
 
-  .header__nav { margin: 20 * @rem 5 * @rem 0 0; }
-  .section__play { margin-bottom: 20 * @rem; }
-  .section__button--hero { margin-top: 0; }
-  .contact { padding: 20 * @rem 0 320 * @rem 0; }
-  .section--fit-viewport { height: 100%; }
-  .header {  height: auto; }
-  .omni-video--active { height: 100%; }
-  .omni-video__overlay:after { height: 100%; }
-
-  .founders {
-    padding: 20 * @rem 0;
-    margin-top: -230 * @rem;
-  }
-
-  .social__item { margin-right: 15 * @rem}
+	.social__item { margin-right: 15 * @rem}
 
 }
 @media @iPhone-portrait {
-  html { font-size: 80%; }
+	html { font-size: 80%; }
+	
+	.hero-animation { 
+		padding-left: 0;
+		
+		&__connect {
+			top: 58 * @em;
+		}
+		
+		&__notification {
+			top: 51 * @em;
 
-  .hero-animation {
-    padding-left: 0;
-
-    &__connect {
-      top: 58 * @em;
-    }
-
-    &__notification {
-      top: 51 * @em;
-
-      &--small, &--transparent {
-
-        &.hero-animation__notification--phone-call {
-          top: 105 * @em;
-        }
-        &.hero-animation__notification--phone-sms {
-          top: 140 * @em;
-        }
-        &.hero-animation__notification--phone-clipping {
-          top: 174 * @em;
-        }
-      }
-    }
-    &__play {
-      top: 135 * @em;
-      left: 175 * @em;
-    }
-  }
-  .section__play { margin-bottom: 10 * @rem; }
-  .section__button--hero { margin-top: 0; }
-  .section--fit-viewport { height: 100%; }
-  .header {
-    height: auto;
-    min-height: 568 * @rem;
-  }
-  .omni-video--active { height: 100%; }
-  .omni-video__overlay:after { height: 100%; }
-
-  .founders {
-    padding: 20 * @rem 0;
-    margin-top: -235 * @rem;
-  }
+			&--small, &--transparent {
+	
+				&.hero-animation__notification--phone-call {
+					top: 105 * @em;
+				}
+				&.hero-animation__notification--phone-sms {
+					top: 140 * @em;
+				}
+				&.hero-animation__notification--phone-clipping {
+					top: 174 * @em;
+				}
+			}
+		}
+		&__play {
+			top: 135 * @em;
+			left: 175 * @em; 
+		}
+	}
+	.section__play { margin-bottom: 10 * @rem; }
+	.section__button--hero { margin-top: 0; }
+	.section--fit-viewport { height: 100%; }
+	.header { 
+		height: auto; 
+		min-height: 568 * @rem;	
+	}
+	.omni-video--active { height: 100%; }
+	.omni-video__overlay::after { height: 100%; }
+		
+	.founders {
+		padding: 20 * @rem 0;
+		margin-top: -235 * @rem;
+	}
 }
 
 @media @iPhone-landscape {
-  html { font-size: 60%; }
-
-  .section--fit-viewport { height: 100%; }
-  .header {
-    height: 100%;
-    min-height: 710 * @rem;
-  }
-  .omni-video--active { height: 100%; }
-  .omni-video__overlay:after { height: 100%; }
-
-  .founders {
-    margin-top: -235 * @rem;
-  }
+	html { font-size: 60%; }	
+	
+	.section--fit-viewport { height: 100%; }
+	.header { 
+		height: 100%; 
+		min-height: 710 * @rem;	
+	}
+	.omni-video--active { height: 100%; }	
+	.omni-video__overlay::after { height: 100%; }
+	
+	.founders {
+		margin-top: -235 * @rem;
+	}
 }
 
 @media @1140-akward-resolution {
-              html { font-size: 85%; }
-            }
+	html { font-size: 85%; }
+}
 
 @media @860-akward-resolution {
-             .header { min-height: 640px; }
-             .hero-animation {
-               font-size: 70%;
-               padding-left: 10 * @rem;
+	.header { min-height: 640px; }
+	.hero-animation { 
+		font-size: 70%; 
+		padding-left: 10 * @rem;
+		
+		&__connect {
+			top: 58 * @em;
+		}
+		
+		&__notification {
+			top: 51 * @em;
 
-               &__connect {
-                 top: 58 * @em;
-               }
-
-               &__notification {
-                 top: 51 * @em;
-
-                 &--small, &--transparent {
-
-                   &.hero-animation__notification--phone-call {
-                     top: 105 * @em;
-                   }
-                   &.hero-animation__notification--phone-sms {
-                     top: 140 * @em;
-                   }
-                   &.hero-animation__notification--phone-clipping {
-                     top: 174 * @em;
-                   }
-                 }
-               }
-               &__play {
-                 top: 135 * @em;
-                 left: 175 * @em;
-               }
-             }
-           }
+			&--small, &--transparent {
+	
+				&.hero-animation__notification--phone-call {
+					top: 105 * @em;
+				}
+				&.hero-animation__notification--phone-sms {
+					top: 140 * @em;
+				}
+				&.hero-animation__notification--phone-clipping {
+					top: 174 * @em;
+				}
+			}
+		}
+		&__play {
+			top: 135 * @em;
+			left: 175 * @em; 
+		}
+	}
+}

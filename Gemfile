@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -22,6 +22,7 @@ gem 'haml'
 gem 'haml-rails'
 
 gem 'cells'
+gem 'cells-haml'
 gem 'humane-rails', '~> 5.0.2'
 
 gem 'coffee-script'
@@ -76,6 +77,6 @@ group :test do
   gem 'simplecov'
   gem 'simplecov-teamcity-summary'
   gem 'accept_values_for'
-  gem 'capybara'
+  # gem 'capybara'
   gem 'email_spec'
 end

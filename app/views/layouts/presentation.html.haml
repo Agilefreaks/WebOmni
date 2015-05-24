@@ -1,5 +1,5 @@
 !!!
-%html{lang: "en"}
+%html{lang: 'en'}
   %head
     %meta{charset: 'utf-8'}/
     %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}/
@@ -38,13 +38,13 @@
               .row
                 .col-xs-3.col-md-3
                   .header__logo
-                    = link_to root_path, { title: 'Omnipaste', data: { id: 'home' } } do
+                    = link_to root_path, { title: 'Omnipaste', class: 'js-goto-section', data: { id: 'home' } } do
                       = image_tag 'logo.svg', { alt: "#{t('layout.logo_alt')}", height: '40', width: '175' }
                 .col-md-7.col-md-offset-2.col-lg-7.col-lg-offset-2
                   %nav#header-nav.header__nav
                     = link_to '#mobile-menu', { class: 'header__nav__button visible-xs-block js-mobile-menu-toggle', data: { id: 'header-nav', title: "#{t('layout.menu.mobile_title')}" } } do
                       %i.icon.icon__hamburger
-                    = render_cell :menu, :show, is_mobile_device?: is_mobile_device?
+                    = cell(:menu, current_user, mobile_device: is_mobile_device?).call(:show)
 
         %article#home.section__container.section--fit-viewport.hero__main-content.js-hero.js-nav-hash
           .container
@@ -93,17 +93,17 @@
 
     %main#main.main
       .section__button.section__button--discover.section__button--center
-        %a.button.button--text-hero.button--reset-weight.js-goto-section{'data-id' => 'feature-copy-paste', :href => '#feature-copy-paste', :title => t('layout.button.learn_more')}
+        %a.button.button--text-hero.button--reset-weight.js-goto-section{'data-id' => 'feature-sms-tool', :href => '#feature-sms-tool', :title => t('layout.button.learn_more')}
           %span.block #{t('layout.button.learn_more')}
           %span.block
             %i.icon.icon__arrowhead--down.animate.animate--arrow-one
             %i.icon.icon__arrowhead--down.animate.animate--arrow-two
 
-      = render partial: 'layouts/presentation/features/copy_paste'
+      = render partial: 'layouts/presentation/features/sms_tool'
 
-      = render partial: 'layouts/presentation/features/smart_action'
+      = render partial: 'layouts/presentation/features/pc_notifications'
 
-      = render partial: 'layouts/presentation/features/notifications'
+      = render partial: 'layouts/presentation/features/clipboard_manager'
 
       = render partial: 'layouts/presentation/social'
 

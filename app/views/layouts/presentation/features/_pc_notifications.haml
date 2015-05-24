@@ -1,0 +1,30 @@
+%article#feature-pc-notifications.section.section--bright.section--bright-grey.section--center-content.section--fit-viewport.feature.feature-two.js-nav-hash.js-group-animation-trigger
+  .section__container
+    .container
+      .row
+        .section__column.col-xs-12.col-sm-6
+          .feature__content
+            .feature__container
+              = image_tag 'features/feature-two.png', { class: 'feature-two__main', alt: 'Feature two background - PC notifications', height: '320', width: '480', srcset: image_url('assets/images/features/feature-two@2x.png 2x')}
+              %a.feature-two__incoming-call.wobble.js-feature-pointer{'data-feature' => 'feature-two-incoming-call', :href => '#', :title => "#{t('layout.feature.notifications.call')}"}
+                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.notifications.call')}", data: { animation: 'scaleIn', timeout: '100' }, height: '25', width: '25' }
+              %a.feature-two__incoming-sms.wobble.js-feature-pointer{'data-feature' => 'feature-two-incoming-sms', :href => '#', :title => "#{t('layout.feature.notifications.sms')}"}
+                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.notifications.sms')}", data: { animation: 'scaleIn', timeout: '300' }, height: '25', width: '25' }
+              %a.feature-two__new-clipping.wobble.js-feature-pointer{'data-feature' => 'feature-two-new-clipping', :href => '#', :title => "#{t('layout.feature.notifications.clipping')}"}
+                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.notifications.clipping')}", data: { animation: 'scaleIn', timeout: '600' }, height: '25', width: '25' }
+        .section__column.col-xs-12.col-sm-6
+          %h1.section__title.feature__title #{t('layout.feature.notifications.title')}
+          %ul.feature__list
+            %li.feature__list__item
+              %a.js-feature-bullet{'data-feature' => 'feature-two-incoming-call', :href => '#'}
+                = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'Incoming call bullet', data: { animation: 'scaleIn', timeout: '100' } }
+                #{t('layout.feature.notifications.call')}
+            %li.feature__list__item
+              %a.js-feature-bullet{'data-feature' => 'feature-two-incoming-sms', :href => '#'}
+                = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'Incoming sms bullet', data: { animation: 'scaleIn', timeout: '400' } }
+                #{t('layout.feature.notifications.sms')}
+            %li.feature__list__item
+              %a.js-feature-bullet{'data-feature' => 'feature-two-new-clipping', :href => '#'}
+                = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'New clipping bullet', data: { animation: 'scaleIn', timeout: '600' } }
+                #{t('layout.feature.notifications.clipping')}
+          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-pc-notifications', what_else_link: 'feature-clipboard-manager' }

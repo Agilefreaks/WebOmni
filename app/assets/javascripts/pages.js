@@ -12,7 +12,6 @@ var $viewport = $('html, body'),
   menuHiddenClass = 'header--hidden',
   $heroContent = $('.js-hero'),
   heroHeight = $heroContent.outerHeight(),
-  scrollDelay = 750,
   scrollDelta = 5,
   scrollEvent = false,
   detachDelay = 200,
@@ -52,7 +51,12 @@ var $viewport = $('html, body'),
 //	Animations cars
   animationTriggerClass = 'js-animation-trigger',
   animationDoneClass = 'animated',
-  animationOnStartTriggerClass = 'js-animation-on-start-trigger';
+  animationOnStartTriggerClass = 'js-animation-on-start-trigger',
+  animationGroupTriggerClass = 'js-group-animation-trigger',
+  animationGroupPartClass = 'js-animation-part',
+//	Features action
+  $featurePointer = $('.js-feature-pointer'),
+  $featureHover = $('.js-feature-bullet, .js-feature-pointer');
 
 var omnipaste = {
 
@@ -114,6 +118,9 @@ var omnipaste = {
 
     // Manage animations on start
     omnipaste.animationsOnStart();
+
+    // Feature actions
+    omnipaste.featureActions();
 
     // Stop all animations, fades, transitions on manual scroll
     omnipaste.stop();
@@ -220,7 +227,6 @@ var omnipaste = {
   },
 
   // Watch for scroll events
-  // Watch for scroll events
   scroll: function () {
     // Check for scroll function
     $(window).scroll(function () {
@@ -234,6 +240,8 @@ var omnipaste = {
         omnipaste.videoVisibility();
         // Manage animations
         omnipaste.animations();
+        // Manage groupanimations
+        omnipaste.animationsGroup();
         // Manage location hash
         omnipaste.setLocationScroll();
 
@@ -365,7 +373,7 @@ var omnipaste = {
       $dropdown.removeClass(dropdownActiveClass);
       $bodyTrigger.removeClass(dropdownClass);
 
-      if (videoAction == 'play') {
+      if (videoAction === 'play') {
         // Play
         omnipaste.videoPlay();
       } else {
@@ -501,7 +509,7 @@ var omnipaste = {
   // Get Auth Code
   authCode: function () {
 
-    $authCodeAction.on('click', function (e) {
+    $authCodeAction.on('click', function () {
       var token = $(this).data('token');
 
       if (authCode === false) {
@@ -530,30 +538,9 @@ var omnipaste = {
 
     // Process contact form
     $contactForm.submit(function (e) {
-      var result = $contactForm.h5Validate('allValid'),
-        data,
-        url;
+      var result = $contactForm.h5Validate('allValid');
 
       if (result === true) {
-        // Serialize contact data
-        data = $(this).serialize();
-        // Get URL from action
-        url = $(this).attr('action');
-
-        // Send request
-        $.ajax({
-          url: url,
-          data: data,
-          type: 'post',
-          success: function (msg) {
-
-            // Place error message in notice
-            //$contactFormNotice.html(msg);
-
-            // Push Google Analytics event
-            //_gaq.push(['_trackEvent', 'Contact', 'Contact request', 'Contact sent!']);
-          }
-        });
 
         // Fade out & display message
         $contactFormContainer.fadeOut(800);
@@ -617,15 +604,72 @@ var omnipaste = {
       }
     });
   },
+  // Group Animations
+  animationsGroup: function () {
+    var hasScrolled = $window.scrollTop(),
+      $groupNotAnimated = $('.' + animationGroupTriggerClass + ":not('." + animationDoneClass + "')");
+    $groupAnimated = $('.' + animationGroupTriggerClass + "." + animationDoneClass);
+
+
+    // If items not animated
+    $groupNotAnimated.each(function () {
+      var $thisParent = $(this),
+        parentOffset = $thisParent.offset().top,
+        $groupAnimationPart = $thisParent.find('.' + animationGroupPartClass);
+
+      if (hasScrolled + windowHeightPadded > parentOffset) {
+
+        $groupAnimationPart.each(function () {
+          var $thisChild = $(this),
+            animationTimeout = parseInt($thisChild.data('timeout'), 10),
+            animationName = $thisChild.data('animation');
+
+          if (animationTimeout) {
+            setTimeout(function () {
+              $thisChild.addClass(animationName);
+              $thisParent.addClass(animationDoneClass);
+            }, animationTimeout);
+          } else {
+            $thisChild.addClass(animationName);
+            $thisParent.addClass(animationDoneClass);
+          }
+
+        });
+
+      } else {
+        $groupAnimationPart.each(function () {
+          var $thisChild = $(this),
+            animationName = $thisChild.data('animation');
+
+          $thisChild.removeClass(animationName);
+        });
+        $thisParent.removeClass(animationDoneClass);
+      }
+    });
+
+    // If items are animated and scrolled out of view
+    $groupAnimated.each(function () {
+      var $thisParent = $(this),
+        animationOffset = $thisParent.offset().top,
+        $groupAnimationPart = $thisParent.find('.' + animationGroupPartClass);
+
+      if (hasScrolled + windowHeightPadded < animationOffset || hasScrolled + windowHeightPadded > animationOffset + windowHeight) {
+        $thisParent.removeClass(animationDoneClass);
+        $groupAnimationPart.each(function () {
+          var $thisChild = $(this),
+            animationName = $thisChild.data('animation');
+
+          $thisChild.removeClass(animationName);
+        });
+      }
+    });
+  },
   // Animations on start
   animationsOnStart: function () {
-    $notAnimated = $('.' + animationOnStartTriggerClass + ":not('." + animationDoneClass + "')");
-    $animated = $('.' + animationOnStartTriggerClass + "." + animationDoneClass);
-
+    var $notAnimated = $('.' + animationOnStartTriggerClass + ":not('." + animationDoneClass + "')");
     // If items not animated
     $notAnimated.each(function () {
       var $this = $(this),
-        animationOffset = $this.offset().top,
         animationTimeout = parseInt($this.data('timeout'), 10),
         animationName = $this.data('animation');
 
@@ -636,7 +680,23 @@ var omnipaste = {
       }
     });
   },
+  // Feature actions
+  featureActions: function () {
+    $featureHover.hover(function () {
+        $featurePointer.removeClass('wobble');
 
+        $featureHover.addClass('-is-inactive');
+
+        $('*[data-feature="' + $(this).data('feature') + '"]').removeClass('-is-inactive');
+        $('*[data-feature="' + $(this).data('feature') + '"]').addClass('-is-active');
+      },
+      function () {
+        $featureHover.removeClass('-is-inactive');
+        $featureHover.removeClass('-is-active');
+
+        $featurePointer.addClass('wobble');
+      });
+  },
   // Stop all animations, fades, transitions on manual scroll
   stop: function () {
     $viewport.on("scroll mousedown DOMMouseScroll mousewheel keyup", function (e) {
@@ -660,7 +720,7 @@ jQuery(document).ready(function () {
 // !Document load (in process of loading) function
 // --------------------------------------------------------------
 
-jQuery(window).load(function ($) {
+jQuery(window).load(function () {
 
   // Init watch for location hash
   omnipaste.detectLocationHash();

@@ -1,17 +1,18 @@
-class MenuCell < Cell::Rails
-  include Devise::Controllers::Helpers
+class MenuCell < Cell::ViewModel
   include PagesHelper
+  include AbstractController::Translation
 
-  helper_method :download_path, :user_signed_in?, :current_user
+  helper_method :download_path
 
-  def show(params)
-    @is_mobile_device = params[:is_mobile_device?]
-    @menu = user_signed_in? ? 'authorized' : 'unauthorized'
-    render
+  builds do |model, _options|
+    model ? AuthorizedMenuCell : UnauthorizedMenuCell
   end
 
-  # rubocop:disable Style/PredicateName
   def is_mobile_device?
-    @is_mobile_device
+    options[:mobile_device]
+  end
+
+  def user_signed_in?
+    !model.nil?
   end
 end
