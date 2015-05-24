@@ -93,14 +93,14 @@
 
     %main#main.main
       .section__button.section__button--discover.section__button--center
-        %a.button.button--text-hero.button--reset-weight.js-goto-section{'data-id' => 'feature-copy-paste', :href => '#feature-copy-paste', :title => t('layout.button.learn_more')}
+        %a.button.button--text-hero.button--reset-weight.js-goto-section{'data-id' => 'feature-sms-tool', :href => '#feature-sms-tool', :title => t('layout.button.learn_more')}
           %span.block #{t('layout.button.learn_more')}
           %span.block
             %i.icon.icon__arrowhead--down.animate.animate--arrow-one
             %i.icon.icon__arrowhead--down.animate.animate--arrow-two
 
-      -#= render partial: 'layouts/presentation/features/copy_paste'
-      -#
+      = render partial: 'layouts/presentation/features/sms_tool'
+
       -#= render partial: 'layouts/presentation/features/smart_action'
       -#
       -#= render partial: 'layouts/presentation/features/notifications'
