@@ -48,17 +48,23 @@ pt:
       install: "Ok, vamos instalá-la"
       what_else: Que mais anda por aí?
     feature:
-      copy_and_paste:
-        title: Copiar/Colar Texto
-        description: Leu uma boa passagem na Internet e pretende partilhá-la com um amigo? Com o Omnipaste, o seu PC e o seu telemóvel agora partilham uma área de transferência. Apenas copie num e cole noutro.
+      sms_tool:
+        title: SMS Tool
+        contacts: Access to all your phone's contacts
+        composer: Composer
+        conversation: Conversation
+        group: Group messages
       notifications:
-        title: Notificações
-        description: Tem o telemóvel na mala e está no silêncio? Não se preocupe, o Omnipaste dir-lhe-á que alguém lhe está a ligar. Também lhe irá mostrar mensagens não-lidas.
-      smart_action:
-        title: Cortes Inteligentes
-        description_p1: Pretende fazer uma reserva e depois encontrar-se com um amigo? Procure confortavelmente detalhes do evento no seu PC ou tablet.
-        description_p2: Copie um número de telefone, vá ao seu telemóvel e clique para chamar.
-        description_p3: Copie uma morada, vá ao seu telemóvel e clique para navegar para chegar ao destino.
+        title: PC Notifications
+        call: Incoming Call
+        sms: Incoming SMS
+        clipping: New Clipping
+      clipboard:
+        title: Clipboard Manager across devices
+        copy: Copy & paste between devices
+        smart: Smart clippings
+        history: History
+        manage: Manager delete/favorite/filter
     partners:
       title: Os nossos parceiros
     founders:

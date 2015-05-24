@@ -6,31 +6,31 @@
           .feature__content
             .feature__container
               = image_tag 'features/feature-one.png', { class: 'feature-one__main', alt: 'Feature one background - IM conversation windows', height: '500', width: '600', srcset: image_url('features/feature-one@2x.png 2x')}
-              %a.feature-one__contacts.wobble.js-feature-pointer{'data-feature' => 'feature-one-contacts', :href => '#', title: "Access to all your phone's contacts"}
-                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "Access to all your phone's contacts pointer", data: { animation: 'scaleIn', timeout: '100' }, height: '25', width: '25' }
-              %a.feature-one__composer.wobble.js-feature-pointer{'data-feature' => 'feature-one-composer', :href => "#", :title => 'Composer'}
-                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: 'Composer pointer', data: { animation: 'scaleIn', timeout: '300' }, height: '25', width: '25' }
-              %a.feature-one__conversation.wobble.js-feature-pointer{'data-feature' => 'feature-one-conversation', :href => "#", :title => 'Conversation'}
-                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: 'Conversation pointer', data: { animation: 'scaleIn', timeout: '600' }, height: '25', width: '25' }
-              %a.feature-one__group-messages.wobble.js-feature-pointer{'data-feature' => 'feature-one-group-messages', :href => "#", :title => 'Group messages'}
-                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: 'Group messages pointer', data: { animation: 'scaleIn', timeout: '900' }, height: '25', width: '25' }
+              %a.feature-one__contacts.wobble.js-feature-pointer{'data-feature' => 'feature-one-contacts', :href => '#', title: "#{t('layout.feature.sms_tool.contacts')}"}
+                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.sms_tool.contacts')}", data: { animation: 'scaleIn', timeout: '100' }, height: '25', width: '25' }
+              %a.feature-one__composer.wobble.js-feature-pointer{'data-feature' => 'feature-one-composer', :href => '#', :title => "#{t('layout.feature.sms_tool.composer')}"}
+                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.sms_tool.composer')}", data: { animation: 'scaleIn', timeout: '300' }, height: '25', width: '25' }
+              %a.feature-one__conversation.wobble.js-feature-pointer{'data-feature' => 'feature-one-conversation', :href => '#', :title => "#{t('layout.feature.sms_tool.conversation')}"}
+                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.sms_tool.conversation')}", data: { animation: 'scaleIn', timeout: '600' }, height: '25', width: '25' }
+              %a.feature-one__group-messages.wobble.js-feature-pointer{'data-feature' => 'feature-one-group-messages', :href => '#', :title => "#{t('layout.feature.sms_tool.group')}"}
+                = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.sms_tool.group')}", data: { animation: 'scaleIn', timeout: '900' }, height: '25', width: '25' }
         .section__column.col-xs-12.col-sm-6.col-sm-pull-6
-          %h1.section__title.feature__title SMS Tool
+          %h1.section__title.feature__title #{t('layout.feature.sms_tool.title')}
           %ul.feature__list
             %li.feature__list__item
               %a.js-feature-bullet{'data-feature' => 'feature-one-contacts', :href => '#'}
                 = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: "Access to all your phone's contacts bullet", data: { animation: 'scaleIn', timeout: '100' } }
-                Access to all your phone's contacts
+                #{t('layout.feature.sms_tool.contacts')}
             %li.feature__list__item
               %a.js-feature-bullet{'data-feature' => 'feature-one-composer', :href => '#'}
                 = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'Composer bullet', data: { animation: 'scaleIn', timeout: '300' } }
-                Composer
+                #{t('layout.feature.sms_tool.composer')}
             %li.feature__list__item
-              %a.js-feature-bullet{"data-feature" => 'feature-one-conversation', :href => '#'}
+              %a.js-feature-bullet{'data-feature' => 'feature-one-conversation', :href => '#'}
                 = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'Conversation bullet', data: { animation: 'scaleIn', timeout: '600' } }
-                Conversation
+                #{t('layout.feature.sms_tool.conversation')}
             %li.feature__list__item
-              %a.js-feature-bullet{"data-feature" => 'feature-one-group-messages', :href => '#'}
+              %a.js-feature-bullet{'data-feature' => 'feature-one-group-messages', :href => '#'}
                 = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'Group messages bullet', data: { animation: 'scaleIn', timeout: '900' } }
-                Group messages
+                #{t('layout.feature.sms_tool.group')}
           = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-sms-tool', what_else_link: 'feature-pc-notifications' }

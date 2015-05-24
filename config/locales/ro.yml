@@ -47,17 +47,23 @@ ro:
       install: "În regulă, vreau sa îl instalez"
       what_else: Ce altceva mai face?
     feature:
-      copy_and_paste:
-        title: Copiază și Lipește Text
-        description: Ai citit un paragraf interesant pe Internet și vrei să îl distribui cu un prieten? Cu Omnipaste, PC-ul și telefonul tău au un clipboard comun. Tot ce trebuie sa faci e sa copiezi de pe unul si sa lipești pe celălalt.
+      sms_tool:
+        title: SMS Tool
+        contacts: Access to all your phone's contacts
+        composer: Composer
+        conversation: Conversation
+        group: Group messages
       notifications:
-        title: Notificări
-        description: Ești la calculator și ai telefonul în geantă pe mut? Nu-ți face griji, Omnipaste te va anunța când cineva te va suna. De asemenea îți va arăta și mesajele pe care le primești.
-      smart_action:
-        title: Acțiuni rapide
-        description_p1: Vrei să faci o rezervare pentru deseară pentru tine și prietenii tăi? Folosește calculatorul pentru a căuta comfortabil o locație.
-        description_p2: Copiază un număr de telefon de pe calculator, ridică telefonul si apasă pe notificare pentru a suna.
-        description_p3: Copiază o adresă, ridică telefonul și apasă pe notificare pentru a deschide navigatorul către acea locație.
+        title: PC Notifications
+        call: Incoming Call
+        sms: Incoming SMS
+        clipping: New Clipping
+      clipboard:
+        title: Clipboard Manager across devices
+        copy: Copy & paste between devices
+        smart: Smart clippings
+        history: History
+        manage: Manager delete/favorite/filter
     partners:
       title: Companii partenere
     founders:
