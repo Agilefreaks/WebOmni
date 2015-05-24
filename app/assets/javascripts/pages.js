@@ -531,6 +531,61 @@ var omnipaste = {
     });
   },
 
+  // Contact form
+  contact: function () {
+    // Validate contact form
+    $contactForm.h5Validate();
+
+    // Process contact form
+    $contactForm.submit(function (e) {
+      var result = $contactForm.h5Validate('allValid'),
+        data,
+        url;
+
+      if (result === true) {
+        // Serialize contact data
+        data = $(this).serialize();
+        // Get URL from action
+        url = $(this).attr('action');
+
+        // Send request
+        $.ajax({
+          url: url,
+          data: data,
+          type: 'post',
+          success: function (msg) {
+
+            // Place error message in notice
+            //$contactFormNotice.html(msg);
+
+            // Push Google Analytics event
+            //_gaq.push(['_trackEvent', 'Contact', 'Contact request', 'Contact sent!']);
+          }
+        });
+
+        // Fade out & display message
+        $contactFormContainer.fadeOut(800);
+
+        setTimeout(function () {
+          $contactFormNotice.fadeIn(1000);
+          $contactFormFields.val('');
+        }, 1000);
+
+        // Fade out & reset form
+        setTimeout(function () {
+          $contactFormNotice.fadeOut(800);
+        }, 4500);
+
+        // Fade in form
+        setTimeout(function () {
+          $contactFormContainer.fadeIn(1000);
+        }, 5500);
+      }
+      // Prevent actual form submit
+      e.preventDefault();
+    });
+  },
+
   // Animations
   animations: function () {
     var hasScrolled = $window.scrollTop(),
