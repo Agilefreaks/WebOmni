@@ -1,71 +1,82 @@
+// Icons
+
 /* !Icons */
 /* ==|========================================================================= */
 
 .icon {
-  display: inline-block;
+	display: inline-block;
+	
+	&__circle {
+		.svg-feature-circle;	
+		.svg-feature-circle-dims;		
+		padding: 5 * @em;
+	}
+	&__pointer {
+		.svg-feature-pointer;	
+		.svg-feature-pointer-dims;		
+	}	
+	&__close {
+		display: block;
+		overflow: hidden;
+		.svg-button-close;		
+		.svg-button-close-dims;
+	}
+	&__play {
+		.svg-icon-play;
+		.svg-icon-play-dims;
+	}
+	&__arrowhead {
+		
+		&--down {
+			display: block;
+			margin: 0 auto;
+			.svg-icon-arrowhead-down;
+			.svg-icon-arrowhead-down-dims;
 
-  &__close {
-    display: block;
-    overflow: hidden;
-    .svg-button-close;
-    .svg-button-close-dims;
-  }
-  &__play {
-    .svg-icon-play;
-    .svg-icon-play-dims;
-  }
-  &__arrowhead {
+		}
+		&--double-down {
+			.svg-icon-double-arrowhead-down;
+			.svg-icon-double-arrowhead-down-dims;
+		}
+		&--double-left {
+			.svg-icon-double-arrowhead-left;			
+			.svg-icon-double-arrowhead-left-dims;
+		}
+		
+	}
+	&__linkedin {
+		.svg-icon-linkedin;
+		.svg-icon-linkedin-dims;
+	}
+	&__googleplus {
+		.svg-icon-googleplus;
+		.svg-icon-googleplus-dims;
+	}
+	&__twitter {
+		.svg-icon-twitter;
+		.svg-icon-twitter-dims;
+	}
+	&__facebook {
+		.svg-icon-facebook;
+		.svg-icon-facebook-dims;
+	}
 
-    &--down {
-      display: block;
-      margin: 0 auto;
-      .svg-icon-arrowhead-down;
-      .svg-icon-arrowhead-down-dims;
-
-    }
-    &--double-down {
-      .svg-icon-double-arrowhead-down;
-      .svg-icon-double-arrowhead-down-dims;
-    }
-    &--double-left {
-      .svg-icon-double-arrowhead-left;
-      .svg-icon-double-arrowhead-left-dims;
-    }
-
-  }
-  &__linkedin {
-    .svg-icon-linkedin;
-    .svg-icon-linkedin-dims;
-  }
-  &__googleplus {
-    .svg-icon-googleplus;
-    .svg-icon-googleplus-dims;
-  }
-  &__twitter {
-    .svg-icon-twitter;
-    .svg-icon-twitter-dims;
-  }
-  &__facebook {
-    .svg-icon-facebook;
-    .svg-icon-facebook-dims;
-  }
-
-  &__step-action {
-    .svg-step-action;
-    .svg-step-action-dims;
-  }
-  &__step-download {
-    .svg-step-download;
-    .svg-step-download-dims;
-  }
-  &__step-install {
-    .svg-step-install;
-    .svg-step-install-dims;
-  }
-  &__hamburger {
-    .svg-icon-hamburger;
-    .svg-icon-hamburger-dims;
-  }
-
-  &--text { line-height: 0.5; }
+	&__step-action {
+		.svg-step-action;		
+		.svg-step-action-dims;
+	}
+	&__step-download {
+		.svg-step-download;
+		.svg-step-download-dims;
+	}
+	&__step-install {
+		.svg-step-install;
+		.svg-step-install-dims;
+	}
+	&__hamburger {
+		.svg-icon-hamburger;		
+		.svg-icon-hamburger-dims;
+	}
+	
+	&--text { line-height: 0.5; }
 }

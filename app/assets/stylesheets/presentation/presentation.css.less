@@ -1,35 +1,37 @@
+@charset "utf-8";
+
+// IE9 and below get only basic functionality. No optimisation for these browsers is being done.
+//
+
+// !Import Less Files
+// ==|=========================================================================
+
+// ----------- Base ----------- //
 // Less Variables
 @import 'base/variables.less';
 // Web Fonts
 @import 'base/fonts.less';
-// Normalize CSS
-@import 'base/normalize.less';
 // SVG Sprites
 @import 'base/sprite.less';
 
 // --------- Mixins ---------- //
-// LessHat Library Mixins
-@import 'mixins/lesshat.less';
-// Grid Mixins
-@import 'mixins/grid.less';
-
 // Custom Mixins
 @import 'mixins/custom.less';
 
 // --------- Modules --------- //
-// Global Styles
+// Globals
 @import 'modules/globals.less';
 
-// Page Sections
-@import 'modules/sections';
+// Sections
+@import 'modules/sections.less';
 
-// Icon Styles
+// Icons
 @import 'modules/icons.less';
 
-// Button Styles
+// Buttons
 @import 'modules/buttons.less';
 
-// Form Styles
+// Forms
 @import 'modules/forms.less';
 
 // Animations
@@ -38,8 +40,5 @@
 // Responsive
 @import 'modules/responsive.less';
 
-// Specific Browser Fixes
+// Browser Specifics
 @import 'modules/browsers.less';
-
-// Wordpress Specific Editor Styles
-@import 'modules/wordpress.less';
