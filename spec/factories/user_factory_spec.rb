@@ -7,13 +7,24 @@ describe UserFactory do
     let(:last_name) { 'last_name' }
     let(:image) { 'image' }
     let(:auth_info) { {email: email, first_name: first_name, last_name: last_name, image: image } }
+    let(:credentials) { Hashie::Mash.new({
+                                           expires: true,
+                                           expires_at: DateTime.now + 1.month,
+                                           token: 'token',
+                                           refresh_token: 'refresh_token'
+                                         })}
     let(:auth) { Hashie::Mash.new(info: auth_info) }
     let(:user) { Fabricate(:user, email: email)  }
 
     subject { UserFactory.from_social(auth, user) }
 
+    before do
+      auth.info = auth_info
+      auth.credentials = credentials
+    end
+
     context 'user with the same email exists' do
-      let(:existing_api_user) { OmniApi::User.new(email: email)}
+      let(:existing_api_user) { OmniApi::User.new }
 
       before do
         allow(OmniApi::User).to receive_message_chain(:where, :first).and_return(existing_api_user)
@@ -30,11 +41,6 @@ describe UserFactory do
 
       it "updates the existing user's image" do
         expect{ subject }.to change { user.image_url }.to(image)
-      end
-
-      it 'saves the api user' do
-        expect(existing_api_user).to receive(:save)
-        subject
       end
 
       it 'saves the user' do
@@ -61,11 +67,6 @@ describe UserFactory do
 
       it 'saves the user' do
         expect(user).to receive(:save)
-        subject
-      end
-
-      it 'saves the api user' do
-        expect(new_api_user).to receive(:save)
         subject
       end
     end

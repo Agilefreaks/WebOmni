@@ -5,18 +5,18 @@ describe OmniApi::User do
   it { should respond_to :last_name }
 
   describe :element_path do
-    subject { OmniApi::User.element_path(1) }
+    subject { OmniApi::User.element_path('1') }
 
     it { should == '/api/v1/users/1' }
   end
 
-  let(:user) { OmniApi::User.new(id: 1) }
+  let(:user) { OmniApi::User.new(id: '1') }
 
   describe :change_plan! do
     context 'to premium' do
       before do
         ActiveResource::HttpMock.respond_to do |mock|
-          mock.put '/api/v1/users/premium', {'Content-Type' => 'application/json', 'Authorization' => 'bearer random', 'Content-Length' => '0'}, { email: 'email@domain.com'}
+          mock.put '/api/v1/users/premium', {'Content-Type' => 'application/json', 'Authorization' => 'bearer random'}, {'email' => 'email@domain.com'}
         end
       end
 
@@ -28,7 +28,7 @@ describe OmniApi::User do
     context 'to_basic' do
       before do
         ActiveResource::HttpMock.respond_to do |mock|
-          mock.put '/api/v1/users/basic', {'Content-Type' => 'application/json', 'Authorization' => 'bearer random', 'Content-Length' => '0'}, { email: 'email@domain.com'}
+          mock.put '/api/v1/users/basic', { 'Content-Type' => 'application/json', 'Authorization' => 'bearer random' }, { 'email' => 'email@domain.com'}
         end
       end
 

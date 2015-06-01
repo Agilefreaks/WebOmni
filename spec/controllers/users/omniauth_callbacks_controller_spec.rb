@@ -1,8 +1,12 @@
 require 'spec_helper'
 
 describe Users::OmniauthCallbacksController do
+  let(:existing_api_user) { OmniApi::User.new }
+
   before do
     @request.env['devise.mapping'] = Devise.mappings[:user]
+    allow(existing_api_user).to receive(:save!)
+    allow(OmniApi::User).to receive_message_chain(:where, :first).and_return(existing_api_user)
   end
 
   describe 'google_oauth2' do

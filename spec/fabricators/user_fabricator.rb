@@ -5,8 +5,10 @@ end
 
 Fabricator(:user_without_calendar_access, from: :user) do
   email 'email@domain.com'
+  plan :free
 end
 
 Fabricator(:user_with_calendar_access, from: :user) do
   email 'email@domain.com'
+  plan :premium
 end
