@@ -43,6 +43,9 @@ WebOmni::Application.configure do
                                                    first_name: 'Calin',
                                                    last_name: 'Balauru',
                                                    email: 'calin@people.com'
+                                                 },
+                                                 credentials: {
+
                                                  })
 
   # keys
