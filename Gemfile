@@ -77,6 +77,5 @@ group :test do
   gem 'simplecov'
   gem 'simplecov-teamcity-summary'
   gem 'accept_values_for'
-  # gem 'capybara'
   gem 'email_spec'
 end
