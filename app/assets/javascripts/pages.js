@@ -683,17 +683,16 @@ var omnipaste = {
   // Feature actions
   featureActions: function () {
     $featureHover.hover(function () {
-        $featurePointer.removeClass('wobble');
+        // Active feature selector
+        var $activeFeatureSelector = $('*[data-feature="' + $(this).data('feature') + '"]');
 
+        $featurePointer.removeClass('wobble');
         $featureHover.addClass('-is-inactive');
 
-        $('*[data-feature="' + $(this).data('feature') + '"]').removeClass('-is-inactive');
-        $('*[data-feature="' + $(this).data('feature') + '"]').addClass('-is-active');
+        $activeFeatureSelector.removeClass('-is-inactive').addClass('-is-active');
       },
       function () {
-        $featureHover.removeClass('-is-inactive');
-        $featureHover.removeClass('-is-active');
-
+        $featureHover.removeClass('-is-inactive').removeClass('-is-active');
         $featurePointer.addClass('wobble');
       });
   },
