@@ -27,3 +27,6 @@ certs/*
 # Zeus
 zeus.json
 custom_plan.rb
+
+# Env
+.env

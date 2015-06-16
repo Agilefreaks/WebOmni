@@ -62,6 +62,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'awesome_print'
   gem 'rb-inotify', '~> 0.9'
   gem 'spring-commands-rspec'
