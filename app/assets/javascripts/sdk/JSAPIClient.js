@@ -9,12 +9,12 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
 
     function initializeCore(endpoint) {
       self.comChannel = new ComChannel();
-      var promise = self.waitForResponse('apiReady');
-      self.comChannel.open(endpoint);
-      return promise.then(function() {
-        initializePending = null;
-        initialized = true;
-      });
+      return self.comChannel.open(endpoint)
+        .then(_.bind(self.waitForResponse, self, 'apiReady'))
+        .then(function () {
+          initializePending = null;
+          initialized = true;
+        });
     }
 
     this.initialize = function (endpoint) {

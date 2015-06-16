@@ -1,10 +1,10 @@
-define(['sdk/JSAPIClient', 'sdk/ComChannel'], function (JSAPIClient, ComChannel) {
+define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise'], function (JSAPIClient, ComChannel, PromiseHelper) {
   describe('JSAPIClient', function () {
     var instance, subject, openChannelSpy;
 
     beforeEach(function () {
       //the following line is required so as to not actually try to open a ComChannel while in a test env
-      openChannelSpy = spyOn(ComChannel.prototype, 'open');
+      openChannelSpy = spyOn(ComChannel.prototype, 'open').andReturn(PromiseHelper.resolvedPromise());
       instance = new JSAPIClient();
       subject = function () {
         return instance;
