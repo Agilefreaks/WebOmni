@@ -6,7 +6,7 @@ class GoogleApi
       :application_name => 'Omnipaste',
       :application_version => '1.0.0')
 
-    client_secrets = ::Google::APIClient::ClientSecrets.load('./config/client_secret.json')
+    client_secrets = ::Google::APIClient::ClientSecrets.new(MultiJson.load(ENV['GOOGLE_CLIENT_SECRET']))
     @google_api_client.authorization = client_secrets.to_authorization
     @google_api_client.authorization.scope = 'https://www.googleapis.com/auth/calendar'
   end
