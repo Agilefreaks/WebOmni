@@ -17,18 +17,12 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
         endpoint = 'someEndpoint';
         DataStore.clientId = 'someId';
         subject = function () {
-          instance.open(endpoint);
+          return instance.open(endpoint);
         }
       });
 
       afterEach(function () {
         instance.dispose();
-      });
-
-      it('sets the opened window on the ComChannel', function () {
-        subject();
-
-        expect(instance.targetWindow).toBeDefined();
       });
 
       it('opens a window pointing to the correct omnipaste url', function () {
@@ -37,6 +31,40 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
         waitsFor(function() {
           return instance.targetWindow.location.href == 'http://localhost:9876/api/someId/someEndpoint';
         }, 'the new window to navigate to the omnipaste url', 1000);
+      });
+
+      it('sets the opened window on the ComChannel', function () {
+        subject();
+
+        expect(instance.targetWindow).toBeDefined();
+      });
+
+      it('resolves the returned promise', function() {
+        var wasResolved = false;
+        subject().done(function() {
+          wasResolved = true;
+        });
+
+        waitsFor(function() {
+          return wasResolved;
+        }, 'the promise to be rejected', 1000);
+      });
+
+      describe('opening the window fails', function() {
+        beforeEach(function() {
+          spyOn(window, 'open').andReturn(null);
+        });
+
+        it('rejects the returned promise', function() {
+          var wasRejected = false;
+          subject().fail(function() {
+            wasRejected = true;
+          });
+
+          waitsFor(function() {
+            return wasRejected;
+          }, 'the promise to be rejected', 1000);
+        })
       });
     });
 
