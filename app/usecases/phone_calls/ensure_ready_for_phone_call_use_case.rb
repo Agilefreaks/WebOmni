@@ -1,5 +1,5 @@
 module PhoneCalls
   class EnsureReadyForPhoneCallUseCase < UseCase::Base
-    depends FindApiClient
+    depends FindApiClient, EnsureUserHasAtLeastOneDevice
   end
 end

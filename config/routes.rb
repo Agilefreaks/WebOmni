@@ -29,6 +29,7 @@ WebOmni::Application.routes.draw do
 
     namespace :users do
       resources :clients, only: [:new, :create]
+      resources :devices, only: [:new]
     end
 
     post 'call', as: :call, to: 'pages#call'
