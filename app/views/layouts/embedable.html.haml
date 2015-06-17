@@ -12,3 +12,9 @@
     %div
       Welcome to Omnipaste!
     = yield
+    - if flash[:error].present?
+      .error
+        %p Could not complete the request
+        %p The server returned the following message:
+        %p
+          = flash[:error]

@@ -3,15 +3,15 @@
     = @client_description.name
 %p
   %span
-    This app would like to:
+    This app would like access to:
 - @client_description.scopes.each do |scope|
   %p
     %span
-      = scope[:description]
+      = scope.description
 %p
   %span
     Do you wish to allow this?
 = form_for @client, url: users_clients_path do |form_builder|
   = form_builder.hidden_field :client_id
-  = link_to 'Cancel', association_failed_path
+  = link_to 'Cancel', '#', {onclick: 'window.close()'}
   = form_builder.submit 'Accept'

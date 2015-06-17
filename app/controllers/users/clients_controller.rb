@@ -1,5 +1,7 @@
 module Users
   class ClientsController < ApplicationController
+    layout 'embedable'
+
     before_action :authenticate!
 
     def new
@@ -8,8 +10,14 @@ module Users
     end
 
     def create
-      @client = OmniApi::User::Client.new(params[:client])
-      redirect_to @client.save ? session[:callback_url] : association_failed_path
+      @client = OmniApi::User::Client.new(params[:omni_api_user_client])
+      begin
+        @client.save
+        redirect_to session[:callback_url]
+      rescue => exception
+        flash[:error] = exception
+        redirect_to new_users_client_path({api_client_id: @client.client_id})
+      end
     end
   end
 end
