@@ -10,7 +10,7 @@
               %h3.founders__name Alex
               %span.founders__title #{t('layout.founders.title')}
               %br
-              = link_to '+40 745 857 479', custom_call_path(user_signed_in?, '+40745857479'), method: :post, class: 'founders__phone', data: { disable_with: 'Please wait ...', title: 'Call Calin' }
+              = link_to '+40 745 857 479', '#', class: 'founders__phone', data: { title: 'Call Calin', omnipaste_call: true }
         .founders__right.col-xs-12.col-sm-6
           .founders__content
             .founders__picture
@@ -19,4 +19,4 @@
               %h3.founders__name Adi
               %span.founders__title #{t('layout.founders.title')}
               %br
-              = link_to '+40 747 074 372', custom_call_path(user_signed_in?, '+40747074372'), method: :post, data: { class: 'founders__phone', disable_with: 'Please wait ...', title: 'Call Adi' }
+              = link_to '+40 747 074 372', '#', class: 'founders__phone', data: { title: 'Call Adi', omnipaste_call: true }
