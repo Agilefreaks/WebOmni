@@ -1,5 +1,6 @@
-define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore', './helpers/Promise'],
-  function (_, $, EventEmitter, DataStore, PromiseHelper) {
+define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
+  function (_, $, EventEmitter, DataStore) {
+    var API_READY_MESSAGE = 'apiReady';
 
     function parseRequestOptions(messageData) {
       var options;
@@ -48,19 +49,20 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore', './
     _.extend(ComChannel.prototype, {
       open: function (endpoint) {
         var self = this;
+        var deferred = $.Deferred();
         setupIncomingMessageHandler(self);
+        self.once(API_READY_MESSAGE, deferred.resolve);
         var targetWindow = createComWindow(endpoint, 600, 400, "Authenticating");
-        var result;
         if(targetWindow) {
           setupCloseWindowWatchdog(self, targetWindow);
           this.targetWindow = targetWindow;
-          result = PromiseHelper.resolvedPromise(self);
         } else {
+          self.off(API_READY_MESSAGE, deferred.resolve);
           self.dispose();
-          result = PromiseHelper.rejectedPromise('Could not open window to Omnipaste');
+          deferred.reject('Could not open window to Omnipaste');
         }
 
-        return result;
+        return deferred.promise();
       },
 
       dispose: function () {
@@ -75,6 +77,10 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore', './
         this.targetWindow.postMessage(JSON.stringify(message), DataStore.omnipasteUrl);
       }
     });
+
+    ComChannel.create = function() {
+      return new ComChannel();
+    };
 
     return ComChannel;
   });

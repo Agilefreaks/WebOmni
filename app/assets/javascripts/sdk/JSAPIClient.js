@@ -1,26 +1,54 @@
 define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChannel'], function (_, $, PromiseHelper, ComChannel) {
-  var instance;
-  var initializeEndpoint = 'prepare_for_phone_usage';
+  var singletonInstance;
+  var INITIALIZE_ENDPOINT = 'prepare_for_phone_usage';
+  var COM_CHANNEL_CLOSED = 'channelClosed';
 
   var JSAPIClient = function () {
     var self = this;
-    var initialized = false;
-    var initializePending = null;
+    var comChannel = ComChannel.create();
+    var comChannelInitialized = false;
+    var comChannelInitializePending = null;
 
-    function initializeCore(endpoint) {
-      self.comChannel = new ComChannel();
-      return self.comChannel.open(endpoint)
-        .then(_.bind(self.waitForResponse, self, 'apiReady'))
+    function initializeComChannel() {
+      return comChannel.open(INITIALIZE_ENDPOINT)
         .then(function () {
-          initializePending = null;
-          initialized = true;
+          comChannel.once(COM_CHANNEL_CLOSED, self.reset);
+          comChannelInitializePending = null;
+          comChannelInitialized = true;
+          return PromiseHelper.resolvedPromise();
         });
     }
 
-    this.initialize = function (endpoint) {
+    function waitForResponse(responseName) {
+      return self.initialize().then(function () {
+        var deferred = $.Deferred();
+        comChannel.once(COM_CHANNEL_CLOSED, deferred.reject);
+        comChannel.once(responseName, deferred.resolve);
+        return deferred.promise().always(function () {
+          comChannel.off(COM_CHANNEL_CLOSED, deferred.reject);
+          comChannel.off(responseName, deferred.resolve);
+        });
+      });
+    }
+
+    function sendMessage(actionName) {
+      return self.initialize().then(function() {
+        comChannel.send({action: actionName});
+        return PromiseHelper.resolvedPromise();
+      });
+    }
+
+    function makeRequest(actionName, responseName) {
+      var responsePromise = waitForResponse(responseName);
+      return sendMessage(actionName).then(function() {
+        return responsePromise;
+      });
+    }
+
+    this.initialize = function () {
       var result;
-      if(!initialized) {
-        result = initializePending || (initializePending = initializeCore(endpoint));
+      if(!comChannelInitialized) {
+        result = comChannelInitializePending || (comChannelInitializePending = initializeComChannel());
       } else {
         result = PromiseHelper.resolvedPromise();
       }
@@ -29,46 +57,22 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
     };
 
     this.reset = function() {
-      this.comChannel && this.comChannel.dispose();
-      initializePending = null;
-      initialized = false;
+      comChannel.dispose();
+      comChannelInitializePending = null;
+      comChannelInitialized = false;
     };
+
+    this.prepareForPhoneUsage = function () {
+      return makeRequest('getUserAccessToken', 'setUserAccessToken');
+    };
+
+    this.showCallInProgress = function() {
+      return sendMessage('showCallInProgress');
+    }
   };
 
-  _.extend(JSAPIClient.prototype, {
-    waitForResponse: function(responseName) {
-      var self = this;
-      var deferred = $.Deferred();
-      self.comChannel.once('channelClosed', deferred.reject);
-      self.comChannel.once(responseName, deferred.resolve);
-
-      return deferred.promise()
-        .fail(_.bind(self.reset, self))
-        .always(function () {
-          self.comChannel.off('channelClosed', deferred.reject);
-          self.comChannel.off(responseName, deferred.resolve);
-        });
-    },
-
-    makeRequest: function (actionName, responseName) {
-      var promise = this.waitForResponse(responseName);
-      if(actionName) {
-        this.comChannel.send({action: actionName});
-      }
-
-      return promise;
-    },
-
-    prepareForPhoneUsage: function () {
-      var self = this;
-      return this.initialize(initializeEndpoint).then(function() {
-        return self.makeRequest('getUserAccessToken', 'setUserAccessToken')
-      }).done(_.bind(self.reset, self));
-    }
-  });
-
   JSAPIClient.getInstance = function () {
-    return instance || (instance = new JSAPIClient());
+    return singletonInstance || (singletonInstance = new JSAPIClient());
   };
 
   return JSAPIClient;

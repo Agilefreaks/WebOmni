@@ -18,4 +18,7 @@ class EmbedablePagesController < ApplicationController
       end
     end
   end
+
+  def call_in_progress
+  end
 end

@@ -1,4 +1,5 @@
-define(['api/RequestHandler', 'api/DataStore'], function (RequestHandler, DataStore) {
+define(['api/RequestHandler', 'api/DataStore', 'api/Commands/CommandFactory', 'api/Commands/EmptyCommand'],
+  function (RequestHandler, DataStore, CommandFactory, EmptyCommand) {
   describe('api/RequestHandler', function () {
     var instance, subject;
     beforeEach(function () {
@@ -58,31 +59,22 @@ define(['api/RequestHandler', 'api/DataStore'], function (RequestHandler, DataSt
           DataStore.apiClientUrl = 'someUrl1';
         });
 
-        describe('the message has a serialized JSON object as its data', function () {
-          var options;
-          beforeEach(function () {
-            options = {};
-            subject = function () {
-              message.data = JSON.stringify(options);
-              return instance.handle(message);
-            }
-          });
+        it('it creates a command for the given message', function () {
+          var spy = spyOn(CommandFactory.prototype, 'create').andReturn(new EmptyCommand());
 
-          describe('the action property of the options object is getUserAccessToken', function () {
-            beforeEach(function () {
-              options.action = 'getUserAccessToken';
-            });
+          subject();
 
-            it('posts a message to the source of the message with the user access token from the DataStore', function () {
-              DataStore.userAccessToken = 'someToken';
-              message.source = jasmine.createSpyObj('source', ['postMessage']);
+          expect(spy).toHaveBeenCalledWith(message)
+        });
 
-              subject();
+        it('executes the obtained command', function () {
+          var command = new EmptyCommand();
+          var spy = spyOn(command, 'execute');
+          spyOn(CommandFactory.prototype, 'create').andReturn(command);
 
-              var sentMessage = JSON.stringify({action: 'setUserAccessToken', data: 'someToken'});
-              expect(message.source.postMessage).toHaveBeenCalledWith(sentMessage, DataStore.omnipasteUrl);
-            });
-          });
+          subject();
+
+          expect(spy).toHaveBeenCalled()
         });
       });
     });
