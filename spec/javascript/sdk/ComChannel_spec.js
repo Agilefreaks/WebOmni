@@ -39,15 +39,26 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
         expect(instance.targetWindow).toBeDefined();
       });
 
-      it('resolves the returned promise', function() {
-        var wasResolved = false;
-        subject().done(function() {
-          wasResolved = true;
+      describe('after opening the window an apiReady message is received', function() {
+        beforeEach(function() {
+          var original = window.open;
+          spyOn(window, 'open').andCallFake(function() {
+            var result = original.apply(window, arguments);
+            window.postMessage(JSON.stringify({action: 'apiReady'}), DataStore.omnipasteUrl);
+            return result;
+          });
         });
 
-        waitsFor(function() {
-          return wasResolved;
-        }, 'the promise to be rejected', 1000);
+        it('resolves the returned promise', function() {
+          var wasResolved = false;
+          subject().done(function() {
+            wasResolved = true;
+          });
+
+          waitsFor(function() {
+            return wasResolved;
+          }, 'the promise to be rejected', 1000);
+        });
       });
 
       describe('opening the window fails', function() {
