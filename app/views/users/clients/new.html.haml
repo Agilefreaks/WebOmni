@@ -3,11 +3,11 @@
     = @client_description.name
 %p
   %span
-    This app would like to:
+    This app would like access to:
 - @client_description.scopes.each do |scope|
   %p
     %span
-      = scope[:description]
+      = scope.description
 %p
   %span
     Do you wish to allow this?
