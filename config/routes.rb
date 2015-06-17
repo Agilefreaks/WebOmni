@@ -56,8 +56,6 @@ WebOmni::Application.routes.draw do
   end
 
   scope 'api' do
-    get 'association_failed', to: 'embedable_pages#association_failed'
-
     scope '/:api_client_id' do
       get 'prepare_for_phone_usage', to: 'embedable_pages#prepare_for_phone_usage'
     end
