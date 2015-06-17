@@ -15,17 +15,20 @@ define('sdk/RequestHandler', ['lodash', './DataStore', './helpers/Promise', './J
     }
 
     var RequestHandler = function () {
-  };
+    };
 
   _.extend(RequestHandler.prototype, {
     handleCallRequest: function (requestData) {
-      return getUserAccessToken().then(function() {
-        return RESTAPIClient.getInstance().createPhoneCall({
-          number: requestData.phoneNumber,
-          type: 'outgoing',
-          state: 'starting'
-        });
-      });
+      var jsAPIClient = JSAPIClient.getInstance();
+      var restAPIClient = RESTAPIClient.getInstance();
+      var phoneCallData = {
+        number: requestData.phoneNumber,
+        type: 'outgoing',
+        state: 'starting'
+      };
+      return getUserAccessToken()
+        .then(_.bind(jsAPIClient.showCallInProgress, jsAPIClient))
+        .then(_.bind(restAPIClient.createPhoneCall, restAPIClient, phoneCallData));
     }
   });
 

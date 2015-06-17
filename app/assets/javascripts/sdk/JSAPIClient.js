@@ -7,19 +7,19 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
     var initialized = false;
     var initializePending = null;
 
-    function initializeCore(endpoint) {
+    function initializeCore() {
       self.comChannel = new ComChannel();
-      return self.comChannel.open(endpoint)
+      return self.comChannel.open(initializeEndpoint)
         .then(function () {
           initializePending = null;
           initialized = true;
         });
     }
 
-    this.initialize = function (endpoint) {
+    this.initialize = function () {
       var result;
       if(!initialized) {
-        result = initializePending || (initializePending = initializeCore(endpoint));
+        result = initializePending || (initializePending = initializeCore());
       } else {
         result = PromiseHelper.resolvedPromise();
       }
@@ -60,9 +60,13 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
 
     prepareForPhoneUsage: function () {
       var self = this;
-      return this.initialize(initializeEndpoint).then(function() {
+      return self.initialize().then(function () {
         return self.makeRequest('getUserAccessToken', 'setUserAccessToken')
-      }).done(_.bind(self.reset, self));
+      });
+    },
+
+    showCallInProgress: function() {
+      return PromiseHelper.resolvedPromise();
     }
   });
 

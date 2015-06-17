@@ -21,6 +21,16 @@ define(
         });
 
         function checkCreationOfCall() {
+          it('shows the call in progress dialog', function() {
+            var spy = spyOn(JSAPIClient.prototype, 'showCallInProgress').andCallFake(PromiseHelper.resolvedPromise);
+
+            subject();
+
+            waitsFor(function() {
+              return spy.calls.length > 0;
+            }, 'call in progress to be shown', 500);
+          });
+
           it('creates a new phone call using the REST API', function () {
             var spy = spyOn(RESTAPIClient.getInstance(), 'createPhoneCall');
 
@@ -58,25 +68,19 @@ define(
             delete DataStore['userAccessToken'];
           });
 
-          function setupJSAPIClient() {
-            var mockClient = jasmine.createSpyObj('apiClient', ['prepareForPhoneUsage']);
-            mockClient.prepareForPhoneUsage.andReturn(PromiseHelper.resolvedPromise('someToken'));
-            spyOn(JSAPIClient, 'getInstance').andReturn(mockClient);
-
-            return mockClient;
-          }
-
-          it('calls getUserAccessToken on the JSAPIClient instance', function () {
-            var mockClient = setupJSAPIClient();
+          it('calls prepareForPhoneUsage on the JSAPIClient instance', function () {
+            var spy = spyOn(JSAPIClient.prototype, 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise());
 
             subject();
 
-            expect(mockClient.prepareForPhoneUsage).toHaveBeenCalled();
+            waitsFor(function() {
+              return spy.calls.length > 0;
+            }, 'prepareForPhoneUsage to be called', 500);
           });
 
-          describe('the getUserAccessToken call returns a promise which is resolved', function () {
+          describe('the prepareForPhoneUsage call returns a promise which is resolved', function () {
             beforeEach(function () {
-              setupJSAPIClient();
+              spyOn(JSAPIClient.prototype, 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise('someToken'));
             });
 
             it('stores the obtained token', function () {
