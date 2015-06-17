@@ -28,7 +28,9 @@ define('sdk/RequestHandler', ['lodash', './DataStore', './helpers/Promise', './J
       };
       return getUserAccessToken()
         .then(_.bind(jsAPIClient.showCallInProgress, jsAPIClient))
-        .then(_.bind(restAPIClient.createPhoneCall, restAPIClient, phoneCallData));
+        .then(function() {
+          return restAPIClient.createPhoneCall(phoneCallData);
+        });
     }
   });
 

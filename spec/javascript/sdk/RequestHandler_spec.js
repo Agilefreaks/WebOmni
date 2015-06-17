@@ -22,7 +22,7 @@ define(
 
         function checkCreationOfCall() {
           it('shows the call in progress dialog', function() {
-            var spy = spyOn(JSAPIClient.prototype, 'showCallInProgress').andCallFake(PromiseHelper.resolvedPromise);
+            var spy = spyOn(JSAPIClient.getInstance(), 'showCallInProgress').andCallFake(PromiseHelper.resolvedPromise);
 
             subject();
 
@@ -31,34 +31,40 @@ define(
             }, 'call in progress to be shown', 500);
           });
 
-          it('creates a new phone call using the REST API', function () {
-            var spy = spyOn(RESTAPIClient.getInstance(), 'createPhoneCall');
-
-            subject();
-
-            waitsFor(function () {
-              return spy.calls.length > 0;
-            }, 'createPhoneCall to be called', 500);
-
-            runs(function () {
-              expect(spy).toHaveBeenCalledWith({number: '12345', type: 'outgoing', state: 'starting'});
-            });
-          });
-
-          describe('the promise obtained from the REST client is resolved', function () {
-            beforeEach(function () {
-              spyOn(RESTAPIClient.getInstance(), 'createPhoneCall').andReturn(PromiseHelper.resolvedPromise({id: 'someCallId'}));
+          describe('after showing the call in progress dialog', function() {
+            beforeEach(function() {
+              spyOn(JSAPIClient.getInstance(), 'showCallInProgress').andCallFake(PromiseHelper.resolvedPromise);
             });
 
-            it('resolves the returned promise with the call id', function () {
-              var call;
-              subject().done(function (obtainedCall) {
-                call = obtainedCall;
-              });
+            it('creates a new phone call using the REST API', function () {
+              var spy = spyOn(RESTAPIClient.getInstance(), 'createPhoneCall');
+
+              subject();
 
               waitsFor(function () {
-                return _.isEqual(call, {id: 'someCallId'});
-              }, 'the promise to be resolved', 500);
+                return spy.calls.length > 0;
+              }, 'createPhoneCall to be called', 500);
+
+              runs(function () {
+                expect(spy).toHaveBeenCalledWith({number: '12345', type: 'outgoing', state: 'starting'});
+              });
+            });
+
+            describe('the promise obtained from the REST client is resolved', function () {
+              beforeEach(function () {
+                spyOn(RESTAPIClient.getInstance(), 'createPhoneCall').andReturn(PromiseHelper.resolvedPromise({id: 'someCallId'}));
+              });
+
+              it('resolves the returned promise with the call id', function () {
+                var call;
+                subject().done(function (obtainedCall) {
+                  call = obtainedCall;
+                });
+
+                waitsFor(function () {
+                  return _.isEqual(call, {id: 'someCallId'});
+                }, 'the promise to be resolved', 500);
+              });
             });
           });
         }
@@ -69,7 +75,7 @@ define(
           });
 
           it('calls prepareForPhoneUsage on the JSAPIClient instance', function () {
-            var spy = spyOn(JSAPIClient.prototype, 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise());
+            var spy = spyOn(JSAPIClient.getInstance(), 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise());
 
             subject();
 
@@ -80,7 +86,7 @@ define(
 
           describe('the prepareForPhoneUsage call returns a promise which is resolved', function () {
             beforeEach(function () {
-              spyOn(JSAPIClient.prototype, 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise('someToken'));
+              spyOn(JSAPIClient.getInstance(), 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise('someToken'));
             });
 
             it('stores the obtained token', function () {

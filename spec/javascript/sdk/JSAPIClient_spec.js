@@ -5,9 +5,12 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
     beforeEach(function () {
       //the following line is required so as to not actually try to open a ComChannel while in a test env
       openChannelSpy = spyOn(ComChannel.prototype, 'open').andReturn(PromiseHelper.resolvedPromise());
-      instance = new JSAPIClient();
+      var _instance;
+      instance = function() {
+        return _instance || (_instance = new JSAPIClient());
+      };
       subject = function () {
-        return instance;
+        return instance();
       }
     });
 
@@ -33,22 +36,20 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
     describe('initialize', function () {
       beforeEach(function () {
         subject = function () {
-          return instance.initialize();
+          return instance().initialize();
         }
       });
 
       describe('the client has not yet been initialized', function () {
-        beforeEach(function () {
-          instance.reset();
-        });
-
         it('creates a new comChannel', function () {
+          var spy = spyOn(ComChannel, 'create').andReturn(new ComChannel());
+
           subject();
 
-          expect(instance.comChannel instanceof ComChannel).toBe(true);
+          expect(spy).toHaveBeenCalled();
         });
 
-        it('opens the channel with the given endpoint', function () {
+        it('opens a com channel using the given endpoint', function () {
           subject();
 
           expect(openChannelSpy).toHaveBeenCalled();
@@ -92,21 +93,24 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
       });
     });
 
-    describe('getUserAccessToken', function () {
+    describe('prepareForPhoneUsage', function () {
       beforeEach(function () {
         subject = function () {
-          return instance.prepareForPhoneUsage();
+          return instance().prepareForPhoneUsage();
         }
       });
 
       describe('the client has been initialized', function () {
+        var comChannel;
+
         beforeEach(function () {
-          instance.initialize();
-          instance.comChannel.trigger('apiReady');
+          comChannel = new ComChannel();
+          spyOn(ComChannel, 'create').andReturn(comChannel);
+          instance().initialize();
         });
 
         it('sends a getUserAccessToken request through the ComChannel', function () {
-          var spy = spyOn(ComChannel.prototype, 'send');
+          var spy = spyOn(comChannel, 'send');
 
           subject();
 
@@ -124,9 +128,9 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
             var previousSubject = subject;
             subject = function () {
               var promise = previousSubject();
-              spyOn(instance.comChannel, 'send').andCallFake(function(message) {
+              spyOn(comChannel, 'send').andCallFake(function(message) {
                 if(message.action == 'getUserAccessToken') {
-                  instance.comChannel.trigger('setUserAccessToken', ['someToken']);
+                  comChannel.trigger('setUserAccessToken', ['someToken']);
                 }
               });
               return promise;
@@ -150,9 +154,9 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
             var previousSubject = subject;
             subject = function () {
               var promise = previousSubject();
-              spyOn(instance.comChannel, 'send').andCallFake(function(message) {
+              spyOn(comChannel, 'send').andCallFake(function(message) {
                 if(message.action == 'getUserAccessToken') {
-                  instance.comChannel.trigger('channelClosed');
+                  comChannel.trigger('channelClosed');
                 }
               });
               return promise;
@@ -160,7 +164,7 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
           });
 
           it('disposes the ComChannel', function() {
-            var spy = spyOn(instance.comChannel, 'dispose');
+            var spy = spyOn(comChannel, 'dispose');
 
             subject();
 
@@ -175,18 +179,20 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
     describe('reset', function () {
       beforeEach(function () {
         subject = function () {
-          instance.reset();
+          instance().reset();
         }
       });
 
       describe('was previously initialized', function () {
+        var comChannel;
         beforeEach(function () {
-          instance.initialize('someEndpoint');
-          instance.comChannel.trigger('apiReady');
+          comChannel = new ComChannel();
+          spyOn(ComChannel, 'create').andReturn(comChannel);
+          instance().initialize('someEndpoint');
         });
 
         it('disposes the comChannel', function () {
-          var spy = spyOn(instance.comChannel, 'dispose').andCallThrough();
+          var spy = spyOn(comChannel, 'dispose').andCallThrough();
 
           subject();
 

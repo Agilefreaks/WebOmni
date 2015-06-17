@@ -78,5 +78,9 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
       }
     });
 
+    ComChannel.create = function() {
+      return new ComChannel();
+    };
+
     return ComChannel;
   });
