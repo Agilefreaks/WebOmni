@@ -58,6 +58,7 @@ WebOmni::Application.routes.draw do
   scope 'api' do
     scope '/:api_client_id' do
       get 'prepare_for_phone_usage', to: 'embedable_pages#prepare_for_phone_usage'
+      get 'call_in_progress', to: 'embedable_pages#call_in_progress'
     end
   end
 
