@@ -1,5 +1,6 @@
-define('api/Commands/CommandFactory', ['lodash', './EmptyCommand', './GetUserAccessTokenCommand'],
-  function (_, EmptyCommand, GetUserAccessTokenCommand) {
+define('api/Commands/CommandFactory', ['lodash', './EmptyCommand', './GetUserAccessTokenCommand',
+    './ShowCallInProgressCommand', './../helpers/LocationWrapper'],
+  function (_, EmptyCommand, GetUserAccessTokenCommand, ShowCallInProgressCommand, LocationWrapper) {
     var singletonInstance;
 
     function parseOptions(messageData) {
@@ -25,6 +26,7 @@ define('api/Commands/CommandFactory', ['lodash', './EmptyCommand', './GetUserAcc
               result = new GetUserAccessTokenCommand(message.source);
               break;
             case 'showCallInProgress':
+              result = new ShowCallInProgressCommand(LocationWrapper);
               break;
           }
         }

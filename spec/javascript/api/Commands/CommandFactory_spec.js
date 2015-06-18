@@ -1,5 +1,6 @@
-define(['lodash', 'api/Commands/CommandFactory', 'api/Commands/EmptyCommand', 'api/Commands/GetUserAccessTokenCommand'],
-  function (_, CommandFactory, EmptyCommand, GetUserAccessTokenCommand) {
+define(['lodash', 'api/Commands/CommandFactory', 'api/Commands/EmptyCommand', 'api/Commands/GetUserAccessTokenCommand',
+    'api/Commands/ShowCallInProgressCommand'],
+  function (_, CommandFactory, EmptyCommand, GetUserAccessTokenCommand, ShowCallInProgressCommand) {
     describe('api/Commands/GetUserAccessTokenCommand', function () {
       var instance, subject;
 
@@ -49,6 +50,16 @@ define(['lodash', 'api/Commands/CommandFactory', 'api/Commands/EmptyCommand', 'a
 
           it('returns an empty command', function () {
             expect(subject()).toEqual(jasmine.any(EmptyCommand));
+          });
+        });
+
+        describe('a message is given with action name showCallInProgress', function () {
+          beforeEach(function () {
+            message.data = JSON.stringify({action: 'showCallInProgress'});
+          });
+
+          it('returns a ShowCallInProgress command', function () {
+            expect(subject()).toEqual(jasmine.any(ShowCallInProgressCommand));
           });
         });
       });
