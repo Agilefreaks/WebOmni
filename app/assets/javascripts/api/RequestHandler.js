@@ -1,16 +1,6 @@
-define('api/RequestHandler', ['lodash', './DataStore'], function (_, DataStore) {
+define('api/RequestHandler', ['lodash', './DataStore', './Commands/CommandFactory'], function (_, DataStore, CommandFactory) {
   var RequestHandler = function () {
   };
-
-  function parseRequestOptions(messageData) {
-    var options;
-    try {
-      options = JSON.parse(messageData)
-    } catch (exception) {
-    }
-
-    return options;
-  }
 
   _.extend(RequestHandler.prototype, {
     isAuthorized: function (message) {
@@ -19,14 +9,7 @@ define('api/RequestHandler', ['lodash', './DataStore'], function (_, DataStore) 
 
     handle: function (message) {
       if (this.isAuthorized(message)) {
-        var requestOptions = parseRequestOptions(message.data);
-        if (requestOptions) {
-          switch (requestOptions.action) {
-            case 'getUserAccessToken':
-              message.source.postMessage(JSON.stringify({action: 'setUserAccessToken', data: DataStore.userAccessToken}), DataStore.omnipasteUrl);
-              break;
-          }
-        }
+        CommandFactory.getInstance().create(message).execute();
       }
     }
   });
