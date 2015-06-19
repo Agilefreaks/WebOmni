@@ -1,0 +1,8 @@
+%h2.section__title--hero
+  It looks like you have not linked a phone yet
+%h2
+  You can link one now by clicking the following button:
+= link_to android_client_downloads_path({email: current_user.email}), target: '_blank', class: 'button button-transparent' do
+  = image_tag 'mailers/button-android.png', size: '277x60'
+%h3
+  = link_to "Click here after you've linked your device.", session[:callback_url]

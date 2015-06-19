@@ -1,0 +1,14 @@
+%h1.section__title--hero
+  = @client_description.name
+%h2
+  This app would like access to:
+- @client_description.scopes.each do |scope|
+  %h3
+    = scope.description
+%h2
+  Do you wish to allow this?
+= form_for @client, url: user_clients_path do |form_builder|
+  = form_builder.hidden_field :client_id
+  .button.button--transparent.button--reset-weight
+    = link_to 'Cancel', '#', {onclick: 'window.close()'}
+  = form_builder.submit 'Accept', {class: 'button button--orange button--reset-weight'}

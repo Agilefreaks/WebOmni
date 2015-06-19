@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EmbedablePagesController do
+describe JsApi::EmbedablePagesController do
   describe 'user_access_token' do
     subject { get :prepare_for_phone_usage, api_client_id: 1 }
 
@@ -10,7 +10,7 @@ describe EmbedablePagesController do
       context 'when given api client does not exist' do
         before { allow(OmniApi::User::Client).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test')) }
 
-        it { is_expected.to redirect_to(new_users_client_path(api_client_id: '1')) }
+        it { is_expected.to redirect_to(new_user_client_path(api_client_id: '1')) }
 
         it 'sets the current path as the callback_url' do
           subject
@@ -34,7 +34,7 @@ describe EmbedablePagesController do
         context 'when current user has no devices' do
           before { allow(OmniApi::User::Device).to receive(:all).and_return([]) }
 
-          it { is_expected.to redirect_to(new_users_device_path) }
+          it { is_expected.to redirect_to(new_user_device_path) }
         end
       end
     end

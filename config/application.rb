@@ -39,7 +39,7 @@ module WebOmni
     config.assets.precompile += %w( .svg .eot .woff .ttf
                                     presentation.js presentation.css
                                     browser.update.js OmnipasteAPI.js
-                                    OmnipasteSDK.js)
+                                    OmnipasteSDK.js embeddable.css embeddable.js)
 
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('/app/factories')
@@ -50,5 +50,9 @@ module WebOmni
     # active resource
     config.active_resource.format = :json
     config.active_resource.include_format_in_path = false
+
+    config.to_prepare do
+      Devise::SessionsController.layout 'embedable'
+    end
   end
 end

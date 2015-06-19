@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Users::ClientsController do
+describe JsApi::User::ClientsController do
   describe 'get #new' do
     subject { get :new, api_client_id: 1 }
 
@@ -28,7 +28,7 @@ describe Users::ClientsController do
   describe 'post #create' do
     let(:client_params) { {client_id: 1} }
 
-    subject { post :create, omni_api_user_client: client_params }
+    subject { post :create, api_client_id: 1, omni_api_user_client: client_params }
 
     describe 'user is not authenticated' do
       it { is_expected.to redirect_to(new_user_session_path(locale: '')) }
@@ -57,7 +57,7 @@ describe Users::ClientsController do
         let(:exception) { ActiveResource::ResourceNotFound.new(nil, nil)}
         before { allow_any_instance_of(OmniApi::User::Client).to receive(:save).and_raise(exception) }
 
-        it { is_expected.to redirect_to(new_users_client_path({api_client_id: 1})) }
+        it { is_expected.to redirect_to(new_user_client_path({api_client_id: 1})) }
 
         it 'sets the raised exception in the error flash' do
           subject

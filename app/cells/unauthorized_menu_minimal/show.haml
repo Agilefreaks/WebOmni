@@ -1,0 +1,4 @@
+.pull-left
+  .header__logo
+    = link_to root_path, { title: 'Omnipaste', class: 'js-goto-section', data: { id: 'home' } } do
+      = image_tag 'logo.svg', { alt: "#{t('layout.logo_alt')}", height: '40', width: '175' }
