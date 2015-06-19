@@ -16,6 +16,9 @@ define('sdk/JSAPIClient', ['lodash', 'jquery', './helpers/Promise', './ComChanne
           comChannelInitializePending = null;
           comChannelInitialized = true;
           return PromiseHelper.resolvedPromise();
+        }, function() {
+          comChannelInitializePending = null;
+          comChannelInitialized = false;
         });
     }
 
