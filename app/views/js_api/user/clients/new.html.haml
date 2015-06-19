@@ -11,7 +11,7 @@
 %p
   %span
     Do you wish to allow this?
-= form_for @client, url: users_clients_path do |form_builder|
+= form_for @client, url: user_clients_path do |form_builder|
   = form_builder.hidden_field :client_id
   = link_to 'Cancel', '#', {onclick: 'window.close()'}
   = form_builder.submit 'Accept'

@@ -27,11 +27,6 @@ WebOmni::Application.routes.draw do
       end
     end
 
-    namespace :users do
-      resources :clients, only: [:new, :create]
-      resources :devices, only: [:new]
-    end
-
     post 'call', as: :call, to: 'pages#call'
     get 'call', to: 'pages#call'
 
@@ -55,10 +50,14 @@ WebOmni::Application.routes.draw do
     get 'tos', to: 'pages#tos', as: :tos
   end
 
-  scope 'api' do
+  scope 'api', module: 'js_api' do
     scope '/:api_client_id' do
       get 'prepare_for_phone_usage', to: 'embedable_pages#prepare_for_phone_usage'
       get 'call_in_progress', to: 'embedable_pages#call_in_progress'
+      namespace :user do
+        resources :clients, only: [:new, :create]
+        resources :devices, only: [:new]
+      end
     end
   end
 

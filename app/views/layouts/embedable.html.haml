@@ -6,12 +6,12 @@
     %meta{content: 'Agile Freaks', name: 'author'}/
     %title= content_for?(:title) ? yield(:title) : 'Omnipaste - Take control of your multi-screen world'
     = favicon_link_tag
+    = stylesheet_link_tag 'embeddable', :media => 'all'
     = csrf_meta_tag
 
-  %body
-    %div
-      Welcome to Omnipaste!
-    = yield
+  %body.body.body--center-content.body-center
+    .container
+      = yield
     - if flash[:error].present?
       .error
         %p Could not complete the request
