@@ -1,6 +1,7 @@
 define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
   function (_, $, EventEmitter, DataStore) {
     var API_READY_MESSAGE = 'apiReady';
+    var CHANNEL_CLOSED = 'channelClosed';
 
     function parseRequestOptions(messageData) {
       var options;
@@ -52,12 +53,14 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
         var deferred = $.Deferred();
         setupIncomingMessageHandler(self);
         self.once(API_READY_MESSAGE, deferred.resolve);
+        self.once(CHANNEL_CLOSED, deferred.reject);
         var targetWindow = createComWindow(endpoint, 600, 400, "Authenticating");
         if(targetWindow) {
           setupCloseWindowWatchdog(self, targetWindow);
           this.targetWindow = targetWindow;
         } else {
           self.off(API_READY_MESSAGE, deferred.resolve);
+          self.off(CHANNEL_CLOSED, deferred.resolve);
           self.dispose();
           deferred.reject('Could not open window to Omnipaste');
         }
@@ -70,7 +73,7 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
         clearInterval(this._pollTimer);
         window.removeEventListener('message', this._messageHandler, false);
         this.targetWindow && this.targetWindow.close();
-        this.trigger('channelClosed');
+        this.trigger(CHANNEL_CLOSED);
       },
 
       send: function (message) {
