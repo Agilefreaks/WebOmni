@@ -1,0 +1,13 @@
+.pull-left
+  .header__logo
+    = link_to root_path, { title: 'Omnipaste', class: 'js-goto-section', data: { id: 'home' } } do
+      = image_tag 'logo.svg', { alt: "#{t('layout.logo_alt')}", height: '40', width: '175' }
+.pull-right
+  %nav#header-nav.header__nav
+    %ul.header__nav__content.js-mobile-menu-content
+      %li.header__nav__item.header__nav__item--user
+        = link_to '#' do
+          = image_tag model.gravatar_url, height: '24', width: '24', class: 'header__nav__picture'
+          #{t('layout.menu.greeting')} #{model.name}
+      %li.header__nav__item.header__nav__item--separator
+        = link_to "#{t('layout.menu.sign_out')}", destroy_user_session_path, method: :delete

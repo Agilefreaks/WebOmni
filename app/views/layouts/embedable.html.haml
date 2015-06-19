@@ -9,12 +9,18 @@
     = stylesheet_link_tag 'embeddable', :media => 'all'
     = csrf_meta_tag
 
-  %body.body.body--center-content.body-center
-    .container
-      = yield
-    - if flash[:error].present?
-      .error
-        %p Could not complete the request
-        %p The server returned the following message:
-        %p
-          = flash[:error]
+  %body.embeddable
+    %header.header__meta
+      .header-container
+        .container
+          = render partial: 'layouts/embeddable/header'
+    .main.main--center-content
+      .container
+        = yield
+      - if flash[:error].present?
+        .error
+          %p Could not complete the request
+          %p The server returned the following message:
+          %p
+            = flash[:error]
+  = javascript_include_tag :embeddable

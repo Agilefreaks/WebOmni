@@ -1,26 +1,33 @@
-.body {
+body.embeddable {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-
   background-color: @color-green;
 
-  &--center-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    text-align: center;
-  }
-}
+  .main {
+    width: 100%;
+    height: 100%;
 
-.section__title {
-  color: @color-dark-grey;
-  &--hero {
-    font-size: 2.25rem;
-    font-weight: 500;
-    line-height: 2.5rem;
-    text-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.15);
+    &--center-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      text-align: center;
+    }
+  }
+
+  .section__title {
+    color: @color-dark-grey;
+    &--hero {
+      font-size: 2.25rem;
+      font-weight: 500;
+      line-height: 2.5rem;
+      text-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  header {
+    background-size: cover;
+    background: image-url("svg/no-sprite/background.svg") no-repeat center bottom;
   }
 }
