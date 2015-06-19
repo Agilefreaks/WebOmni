@@ -81,6 +81,21 @@ define(['sdk/JSAPIClient', 'sdk/ComChannel', 'sdk/helpers/Promise', 'lodash'], f
               return rejectedPromise;
             }, 'the promise to be rejected', 500);
           });
+
+          it('returns a new promise when calling initialize again', function() {
+            var rejectedPromise;
+            var initialPromise = subject().fail(function () {
+              rejectedPromise = true;
+            });
+
+            waitsFor(function () {
+              return rejectedPromise;
+            }, 'the promise to be rejected', 500);
+
+            runs(function() {
+              expect(subject()).not.toBe(initialPromise);
+            });
+          });
         });
 
         it('returns the same promise on successive calls while channel is/was opened', function () {

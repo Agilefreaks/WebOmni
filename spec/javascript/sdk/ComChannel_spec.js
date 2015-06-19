@@ -57,6 +57,28 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
 
           waitsFor(function() {
             return wasResolved;
+          }, 'the promise to be resolved', 1000);
+        });
+      });
+
+      describe('after opening the window the window is closed before receiving an apiReady message', function() {
+        beforeEach(function() {
+          var original = window.open;
+          spyOn(window, 'open').andCallFake(function() {
+            var newWindow = original.apply(window, arguments);
+            _.defer(_.bind(newWindow.close, newWindow));
+            return newWindow;
+          });
+        });
+
+        it('rejects the returned promise', function() {
+          var wasRejected = false;
+          subject().fail(function() {
+            wasRejected = true;
+          });
+
+          waitsFor(function() {
+            return wasRejected;
           }, 'the promise to be rejected', 1000);
         });
       });
