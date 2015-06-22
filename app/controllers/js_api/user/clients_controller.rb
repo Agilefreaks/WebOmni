@@ -6,7 +6,7 @@ module JsApi
       before_action :authenticate!
 
       def new
-        @client_description = OmniApi::ClientDescription.find(params[:api_client_id])
+        @client_description = OmniApi::Client.find(params[:api_client_id])
         @client = OmniApi::User::Client.new({client_id: params[:api_client_id]})
       end
 

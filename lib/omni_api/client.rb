@@ -1,5 +1,5 @@
 module OmniApi
-  class ClientDescription < BaseClientModel
+  class Client < BaseClientModel
     attr_accessible :id, :name, :scopes
   end
 end

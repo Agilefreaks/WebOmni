@@ -20,7 +20,7 @@ describe JsApi::EmbedablePagesController do
       end
 
       context 'when given api client exists' do
-        before { allow(OmniApi::User::Client).to receive(:find).with('1').and_return(OmniApi::ClientDescription.new) }
+        before { allow(OmniApi::User::Client).to receive(:find).with('1').and_return(OmniApi::Client.new) }
 
         context 'when current user has at least one device' do
           before { allow(OmniApi::User::Device).to receive(:all).and_return([OmniApi::User::Device.new]) }

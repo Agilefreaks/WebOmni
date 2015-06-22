@@ -12,7 +12,7 @@ describe JsApi::User::ClientsController do
       include_context :logged_in_as_user
 
       context 'a client description with the given id exists' do
-        before { allow(OmniApi::ClientDescription).to receive(:find).with('1').and_return(OmniApi::ClientDescription.new) }
+        before { allow(OmniApi::Client).to receive(:find).with('1').and_return(OmniApi::Client.new) }
 
         it { is_expected.to render_template(:new) }
 
