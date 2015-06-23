@@ -8,7 +8,7 @@ describe JsApi::EmbedablePagesController do
       include_context :logged_in_as_user
 
       context 'when given api client does not exist' do
-        before { allow(OmniApi::User::Client).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test')) }
+        before { allow(OmniApi::User::ClientAssociation).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test')) }
 
         it { is_expected.to redirect_to(new_user_client_path(api_client_id: '1')) }
 
@@ -20,7 +20,7 @@ describe JsApi::EmbedablePagesController do
       end
 
       context 'when given api client exists' do
-        before { allow(OmniApi::User::Client).to receive(:find).with('1').and_return(OmniApi::Client.new) }
+        before { allow(OmniApi::User::ClientAssociation).to receive(:find).with('1').and_return(OmniApi::Client.new) }
 
         context 'when current user has at least one device' do
           before { allow(OmniApi::User::Device).to receive(:all).and_return([OmniApi::User::Device.new]) }
