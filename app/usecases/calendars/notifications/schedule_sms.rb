@@ -9,11 +9,9 @@ module Calendars
       end
 
       def perform
-        sms_message = OmniApi::SmsMessage.schedule({
-          phone_number: @phone_number,
-          content: @message,
-          send_at: @send_at
-        })
+        sms_message = OmniApi::SmsMessage.schedule(phone_number: @phone_number,
+                                                   content: @message,
+                                                   send_at: @send_at)
 
         sms_message.save
       end

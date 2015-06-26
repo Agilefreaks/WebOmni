@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe SideMenuCell, type: :cell do
-
   context 'cell rendering' do
     let!(:side_menu_cell) { cell(:side_menu) }
     let(:user) { Fabricate(:user_with_calendar_access) }

@@ -7,7 +7,7 @@ module JsApi
 
       def new
         @client_description = OmniApi::Client.find(params[:api_client_id])
-        @client = OmniApi::User::ClientAssociation.new({client_id: params[:api_client_id]})
+        @client = OmniApi::User::ClientAssociation.new(client_id: params[:api_client_id])
       end
 
       def create
@@ -17,7 +17,7 @@ module JsApi
           redirect_to session[:callback_url]
         rescue => exception
           flash[:error] = exception
-          redirect_to new_user_client_path({api_client_id: @client.client_id})
+          redirect_to new_user_client_path(api_client_id: @client.client_id)
         end
       end
     end

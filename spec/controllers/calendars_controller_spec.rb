@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CalendarsController do
   describe '#index' do
-    subject { get :index, :format => "html" }
+    subject { get :index, format: 'html' }
     context 'user signed in but doesnt have access to calendars api' do
       let(:user) { Fabricate(:user_without_calendar_access, identity: Fabricate(:expired_identity)) }
 
@@ -12,7 +12,7 @@ describe CalendarsController do
       end
 
       it 'sets new calendar permission on session' do
-        expect { subject }.to change{ session[:google_permissions]}.to 'calendar.readonly'
+        expect { subject }.to change { session[:google_permissions] }.to 'calendar.readonly'
       end
 
       it 'returns the path to authorize the user with the new right' do

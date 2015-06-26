@@ -11,7 +11,7 @@ describe Calendars::Notifications::GetEvent do
       allow(Events).to receive(:new).and_return(events_api)
     end
 
-    subject { Calendars::Notifications::GetEvent.perform( { 'X-Goog-Resource-ID' => '42', calendar: calendar, user: user }) }
+    subject { Calendars::Notifications::GetEvent.perform('X-Goog-Resource-ID' => '42', calendar: calendar, user: user) }
 
     context 'when event exists' do
       before do

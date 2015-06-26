@@ -33,13 +33,11 @@ class UserFactory
   end
 
   def create_identity(auth)
-    Identity.new({
-      provider: auth.provider,
-      scope: auth.scope,
-      expires: auth.credentials.expires,
-      expires_at: auth.credentials.expires_at,
-      refresh_token: auth.credentials.refresh_token,
-      token: auth.credentials.token
-    })
+    Identity.new(provider: auth.provider,
+                 scope: auth.scope,
+                 expires: auth.credentials.expires,
+                 expires_at: auth.credentials.expires_at,
+                 refresh_token: auth.credentials.refresh_token,
+                 token: auth.credentials.token)
   end
 end

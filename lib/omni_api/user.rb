@@ -5,9 +5,7 @@ module OmniApi
     attr_accessible :first_name, :last_name, :access_token, :plan
 
     def self.change_plan!(email, plan)
-      put plan.to_s, [], {email: email}.to_json
-
-      return
+      put plan.to_s, [], { email: email }.to_json
     end
   end
 end

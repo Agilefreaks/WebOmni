@@ -1,4 +1,4 @@
-#When a notifications is posted from Google, we should schedule a SMS message to the user that is the owner of the calendar
+# When a notifications is posted from Google, we should schedule a SMS message to the user that is the owner of the calendar
 
 module Calendars
   module Notifications

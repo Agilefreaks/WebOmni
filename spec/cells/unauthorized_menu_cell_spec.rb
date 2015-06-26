@@ -6,5 +6,4 @@ describe UnauthorizedMenuCell, type: :cell do
       subject { cell(:unauthorized_menu).call(:show) }
     end
   end
-
 end

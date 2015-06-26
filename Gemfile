@@ -71,6 +71,7 @@ group :development, :test do
   gem 'rspec-cells'
   gem 'rspec-its'
   gem 'guard-rspec'
+  gem 'guard-rubocop'
   gem 'mongoid-rspec'
   gem 'rspec-activemodel-mocks'
   gem 'fabrication'

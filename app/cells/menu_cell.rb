@@ -8,7 +8,7 @@ class MenuCell < Cell::ViewModel
     model ? AuthorizedMenuCell : UnauthorizedMenuCell
   end
 
-  def is_mobile_device?
+  def mobile_device?
     options[:mobile_device]
   end
 

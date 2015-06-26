@@ -47,5 +47,5 @@ WebOmni::Application.configure do
     config.redis_url = 'redis://localhost:6379'
   end
 
-  config.web_omni_url ='http://localhost:3000'
+  config.web_omni_url = 'http://localhost:3000'
 end

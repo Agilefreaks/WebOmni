@@ -25,7 +25,7 @@ module Users
 
       extend_authorization_scope(existing_scopes) unless scope_already_exists?(existing_scopes)
 
-      render :text => 'Scopes changed', :status => 404
+      render text: 'Scopes changed', status: 404
     end
 
     private
@@ -46,9 +46,7 @@ module Users
     end
 
     def track_user_signup
-      if @user.persisted?
-        Track.sign_up(@user.email)
-      end
+      Track.sign_up(@user.email) if @user.persisted?
     end
   end
 end

@@ -6,13 +6,13 @@ describe UserFactory do
     let(:first_name) { 'first_name' }
     let(:last_name) { 'last_name' }
     let(:image) { 'image' }
-    let(:auth_info) { {email: email, first_name: first_name, last_name: last_name, image: image } }
-    let(:credentials) { Hashie::Mash.new({
-                                           expires: true,
-                                           expires_at: DateTime.now + 1.month,
-                                           token: 'token',
-                                           refresh_token: 'refresh_token'
-                                         })}
+    let(:auth_info) { { email: email, first_name: first_name, last_name: last_name, image: image } }
+    let(:credentials) do
+      Hashie::Mash.new(expires: true,
+                       expires_at: Time.zone.now + 1.month,
+                       token: 'token',
+                       refresh_token: 'refresh_token')
+    end
     let(:auth) { Hashie::Mash.new(info: auth_info) }
     let(:user) { Fabricate(:user, email: email)  }
 
@@ -32,15 +32,15 @@ describe UserFactory do
       end
 
       it "updates the existing user's first_name" do
-        expect{ subject }.to change { user.first_name }.to(first_name)
+        expect { subject }.to change { user.first_name }.to(first_name)
       end
 
       it "updates the existing user's last_name" do
-        expect{ subject }.to change { user.last_name }.to(last_name)
+        expect { subject }.to change { user.last_name }.to(last_name)
       end
 
       it "updates the existing user's image" do
-        expect{ subject }.to change { user.image_url }.to(image)
+        expect { subject }.to change { user.image_url }.to(image)
       end
 
       it 'saves the user' do

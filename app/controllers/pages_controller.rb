@@ -8,11 +8,9 @@ class PagesController < ApplicationController
 
   def call
     phone_number = params[:phone_number]
-    OmniApi::PhoneCall.new({
-                              number: phone_number,
-                              type: 'outgoing',
-                              state: 'starting'
-                            }).save
+    OmniApi::PhoneCall.new(number: phone_number,
+                           type: 'outgoing',
+                           state: 'starting').save
 
     redirect_to root_path, notice: "Pick up your phone, it's calling #{phone_number}"
   end

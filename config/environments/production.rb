@@ -101,5 +101,5 @@ WebOmni::Application.configure do
     config.redis_url = 'redis://10.133.201.189:6379'
   end
 
-  config.web_omni_url ='https://www.omnipasteapp.com/'
+  config.web_omni_url = 'https://www.omnipasteapp.com/'
 end

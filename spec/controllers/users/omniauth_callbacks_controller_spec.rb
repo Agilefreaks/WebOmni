@@ -12,15 +12,15 @@ describe Users::OmniauthCallbacksController do
   describe 'google_oauth2' do
     subject { post :google_oauth2 }
 
-    let!(:user) { Fabricate(:user, email: 'email@domain.com')}
+    let!(:user) { Fabricate(:user, email: 'email@domain.com') }
     let(:auth) { Hashie::Mash.new }
     let(:auth_info) { Hashie::Mash.new }
-    let(:credentials) { Hashie::Mash.new({
-                                           expires: true,
-                                           expires_at: DateTime.now + 1.month,
-                                           token: 'token',
-                                           refresh_token: 'refresh_token'
-                                         })}
+    let(:credentials) do
+      Hashie::Mash.new(expires: true,
+                       expires_at: Time.zone.now + 1.month,
+                       token: 'token',
+                       refresh_token: 'refresh_token')
+    end
 
     before do
       auth_info.email = 'email@domain.com'
@@ -47,7 +47,7 @@ describe Users::OmniauthCallbacksController do
   end
 
   describe 'setup' do
-    subject { get  :google_oauth2_setup, provider: :google_oauth2 }
+    subject { get :google_oauth2_setup, provider: :google_oauth2 }
     before do
       @request.env['omniauth.strategy'] = Hashie::Mash.new
       @request.env['omniauth.strategy'].options = { scope: '' }

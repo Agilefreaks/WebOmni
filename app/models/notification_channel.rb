@@ -16,7 +16,7 @@ class NotificationChannel
       'calendarId' => calendar.google_id,
       'id' => uuid,
       'type' => type,
-      'address' => 'https://www.omnipasteapp.com/calendars/notifications'#@address
+      'address' => 'https://www.omnipasteapp.com/calendars/notifications' # @address
     }
   end
 end

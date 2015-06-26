@@ -5,7 +5,7 @@ module JsApi
     before_action :authenticate!
 
     def prepare_for_phone_usage
-      context = params.slice(:api_client_id).merge({user: current_user})
+      context = params.slice(:api_client_id).merge(user: current_user)
       result = PhoneCalls::EnsureReadyForPhoneCallUseCase.perform(context)
       if result.success?
         @client = result.api_client

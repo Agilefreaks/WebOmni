@@ -60,5 +60,5 @@ WebOmni::Application.configure do
     c.test_mode = true
   end
 
-  config.web_omni_url ='http://localhost:3000'
+  config.web_omni_url = 'http://localhost:3000'
 end

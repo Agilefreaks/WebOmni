@@ -26,7 +26,7 @@ describe JsApi::User::ClientsController do
   end
 
   describe 'post #create' do
-    let(:client_params) { {client_id: 1} }
+    let(:client_params) { { client_id: 1 } }
 
     subject { post :create, api_client_id: 1, omni_api_user_client: client_params }
 
@@ -54,10 +54,10 @@ describe JsApi::User::ClientsController do
       end
 
       context 'saving the new client is not successful' do
-        let(:exception) { ActiveResource::ResourceNotFound.new(nil, nil)}
+        let(:exception) { ActiveResource::ResourceNotFound.new(nil, nil) }
         before { allow_any_instance_of(OmniApi::User::ClientAssociation).to receive(:save).and_raise(exception) }
 
-        it { is_expected.to redirect_to(new_user_client_path({api_client_id: 1})) }
+        it { is_expected.to redirect_to(new_user_client_path(api_client_id: 1)) }
 
         it 'sets the raised exception in the error flash' do
           subject

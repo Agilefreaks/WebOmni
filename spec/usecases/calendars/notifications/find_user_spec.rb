@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Calendars::Notifications::FindUser do
   describe '.perform' do
-    subject { Calendars::Notifications::FindUser.perform({ 'X-Goog-Channel-ID' => '42' }) }
+    subject { Calendars::Notifications::FindUser.perform('X-Goog-Channel-ID' => '42') }
 
     context 'there is a user with that notification channel' do
       let(:user) { Fabricate(:user_with_calendar_access) }
