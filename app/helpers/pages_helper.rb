@@ -1,6 +1,6 @@
 module PagesHelper
   def download_path
-    download_path = if mobile_device?
+    download_path = if is_mobile_device?
                       android_download_path
                     else
                       new_download_path(download: true)

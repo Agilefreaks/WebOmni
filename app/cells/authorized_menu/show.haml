@@ -7,6 +7,6 @@
   %li.header__nav__item.header__nav__item--user
     = link_to '#' do
       = image_tag model.gravatar_url, height: '24', width: '24', class: 'header__nav__picture'
-      #{t('layout.menu.greeting')} #{model.name}
+      #{t('layout.menu.greeting')} #{model.first_name}
   %li.header__nav__item.header__nav__item--separator
     = link_to "#{t('layout.menu.sign_out')}", destroy_user_session_path, method: :delete
