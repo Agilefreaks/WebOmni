@@ -70,22 +70,22 @@ en:
       what_else: What else is there?
     feature:
       sms_tool:
-        title: SMS Tool
-        contacts: Access to all your phone's contacts
-        composer: Composer
-        conversation: Conversation
-        group: Group messages
+        title: SMS messages on your PC
+        contacts: Access to your phone's contact list
+        composer: Write SMS messages from your PC
+        conversation: See threaded conversation history with each contact
+        group: Send a SMS message to a group
       notifications:
-        title: PC Notifications
-        call: Incoming Call
-        sms: Incoming SMS
-        clipping: New Clipping
+        title: Receive notifications on your PC
+        call: When receiving a call
+        sms: When receiving a SMS
+        clipping: When you copy something on your other devices
       clipboard:
-        title: Clipboard Manager across devices
-        copy: Copy & paste between devices
-        smart: Smart clippings
-        history: History
-        manage: Manager delete/favorite/filter
+        title: Clipboard synchronization
+        copy: Copy paste across your devices
+        smart: Quick actions for links, phone numbers and addresses
+        history: History for clippings from all of your other devices
+        manage: Clipboard manager
     partners:
       title: Companies we partner with
     founders:

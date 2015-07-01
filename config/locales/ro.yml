@@ -48,22 +48,22 @@ ro:
       what_else: Ce altceva mai face?
     feature:
       sms_tool:
-        title: SMS Tool
-        contacts: Access to all your phone's contacts
-        composer: Composer
-        conversation: Conversation
-        group: Group messages
+        title: Primește mesajele SMS pe PC
+        contacts: Acceseaza lista de contacte
+        composer: Scrie mesajele SMS direct de pe PC
+        conversation: Vizualizează conversații cu fiecare dintre contactele tale
+        group: Trimite mesaje SMS unui grup de persoane
       notifications:
-        title: PC Notifications
-        call: Incoming Call
-        sms: Incoming SMS
-        clipping: New Clipping
+        title: Primește notificarile telefonului pe PC
+        call: Cand primești un apel
+        sms: Cand primești un mesaj SMS
+        clipping: Cand copiezi un text pe un alt device de-al tau
       clipboard:
-        title: Clipboard Manager across devices
-        copy: Copy & paste between devices
-        smart: Smart clippings
-        history: History
-        manage: Manager delete/favorite/filter
+        title: Clipboard synchronization
+        copy: Copiaza si lipeste informatii intre dispozitivele tale
+        smart: Actiuni rapide pentru link-uri, numere de telefon si adrese
+        history: Istoric a tuturor lucrurilor sincronizate prin copiere si lipire
+        manage: Clipboard Manager
     partners:
       title: Companii partenere
     founders:
