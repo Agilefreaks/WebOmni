@@ -49,22 +49,22 @@ pt:
       what_else: Que mais anda por aí?
     feature:
       sms_tool:
-        title: SMS Tool
-        contacts: Access to all your phone's contacts
-        composer: Composer
-        conversation: Conversation
-        group: Group messages
+        title: Mensagens SMS no seu PC
+        contacts: Acesso à lista de contatos do telefone
+        composer: Escrever mensagens SMS a partir do seu PC
+        conversation: Ver histórico de conversas com rosca com cada contato
+        group: Enviar uma mensagem SMS a um grupo
       notifications:
-        title: PC Notifications
-        call: Incoming Call
-        sms: Incoming SMS
-        clipping: New Clipping
+        title: Receber notificações no seu PC
+        call: Ao receber uma chamada
+        sms: Ao receber um SMS
+        clipping: Quando você copiar algo em seus outros dispositivos
       clipboard:
-        title: Clipboard Manager across devices
-        copy: Copy & paste between devices
-        smart: Smart clippings
-        history: History
-        manage: Manager delete/favorite/filter
+        title: Sincronização Clipboard
+        copy: Copiar pasta através de seus dispositivos
+        smart: Ações rápidas para links, números de telefone e endereços
+        history: Histórico de recortes de todos os seus outros dispositivos
+        manage: Clipboard manager
     partners:
       title: Os nossos parceiros
     founders:
