@@ -1,13 +1,13 @@
 class UserFactory
   include Singleton
 
-  def self.from_social(auth, user)
-    UserFactory.instance.create_or_update_from_social(auth, user)
+  def self.from_social(auth, user, api_user)
+    UserFactory.instance.create_or_update_from_social(auth, user, api_user)
   end
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-  def create_or_update_from_social(auth, user)
-    params = sanitize_params(auth)
+  def create_or_update_from_social(auth, user, api_user)
+    params = sanitize_params(auth, api_user)
 
     if user
       user.update(params)
@@ -19,7 +19,7 @@ class UserFactory
     user
   end
 
-  def sanitize_params(auth)
+  def sanitize_params(auth, api_user)
     {
       first_name: auth.info.first_name,
       last_name: auth.info.last_name,
@@ -28,6 +28,7 @@ class UserFactory
       image_url: auth.info.image,
       mixpanel_distinct_id: auth.distinct_id,
       remote_ip: auth.remote_ip,
+      access_token: api_user.access_token,
       identity: create_identity(auth)
     }
   end

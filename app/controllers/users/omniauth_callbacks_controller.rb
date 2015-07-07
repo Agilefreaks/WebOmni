@@ -33,8 +33,8 @@ module Users
     def handle_authentication(auth_info)
       @user = @current_user || User.where(email: auth_info.info.email.downcase).first
 
-      OmniApi::UserFactory.from_social(auth_info)
-      UserFactory.from_social(auth_info, @user)
+      api_user = OmniApi::UserFactory.from_social(auth_info)
+      UserFactory.from_social(auth_info, @user, api_user)
     end
 
     def get_identity_info
