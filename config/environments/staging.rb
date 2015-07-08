@@ -99,4 +99,5 @@ WebOmni::Application.configure do
   end
 
   config.web_omni_url = 'https://webstaging.omnipasteapp.com'
+  config.web_omni_client_id = '559c3f46617069068c000000'
 end

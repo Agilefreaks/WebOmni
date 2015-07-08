@@ -61,4 +61,5 @@ WebOmni::Application.configure do
   end
 
   config.web_omni_url = 'http://localhost:3000'
+  config.web_omni_client_id = '55140aff63616c46f3000000'
 end
