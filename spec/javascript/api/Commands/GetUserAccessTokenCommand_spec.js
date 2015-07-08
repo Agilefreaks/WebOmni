@@ -19,7 +19,7 @@ define(['api/Commands/GetUserAccessTokenCommand', 'api/DataStore'], function (Ge
 
       it('sends a setUserAccessToken message to the given source with the userAccessToken', function() {
         DataStore.userAccessToken = 'someUserToken';
-        DataStore.omnipasteUrl = 'http://some.url';
+        DataStore.apiClientUrl = 'http://some.url';
 
         subject();
 

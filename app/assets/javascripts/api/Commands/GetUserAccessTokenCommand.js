@@ -9,7 +9,7 @@ define('api/Commands/GetUserAccessTokenCommand', ['lodash', './../DataStore'], f
           action: 'setUserAccessToken',
           data: DataStore.userAccessToken
         }),
-        DataStore.omnipasteUrl);
+        DataStore.apiClientUrl);
     }
   });
 
