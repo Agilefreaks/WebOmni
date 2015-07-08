@@ -69,10 +69,13 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
       },
 
       dispose: function () {
+        if(!this.targetWindow) return;
+
         //we probably need to also remove references to all pending listeners
         clearInterval(this._pollTimer);
         window.removeEventListener('message', this._messageHandler, false);
-        this.targetWindow && this.targetWindow.close();
+        this.targetWindow.close();
+        delete this.targetWindow;
         this.trigger(CHANNEL_CLOSED);
       },
 
