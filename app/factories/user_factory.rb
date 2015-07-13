@@ -12,12 +12,17 @@ class UserFactory
     if user
       user.update(params)
     else
-      user = User.create(params)
+      user = User.new(params)
+      user.save
+
       Track.user_created(params[:email], params)
     end
 
+    user.identity.update(identity_params(auth))
+
     user
   end
+
 
   def sanitize_params(auth, api_user)
     {
@@ -28,17 +33,18 @@ class UserFactory
       image_url: auth.info.image,
       mixpanel_distinct_id: auth.distinct_id,
       remote_ip: auth.remote_ip,
-      access_token: api_user.access_token,
-      identity: create_identity(auth)
+      access_token: api_user.access_token
     }
   end
 
-  def create_identity(auth)
-    Identity.new(provider: auth.provider,
-                 scope: auth.scope,
-                 expires: auth.credentials.expires,
-                 expires_at: auth.credentials.expires_at,
-                 refresh_token: auth.credentials.refresh_token,
-                 token: auth.credentials.token)
+  def identity_params(auth)
+    {
+      provider: auth.provider,
+      scope: auth.scope,
+      expires: auth.credentials.expires,
+      expires_at: auth.credentials.expires_at,
+      refresh_token: auth.credentials.refresh_token,
+      token: auth.credentials.token
+    }
   end
 end

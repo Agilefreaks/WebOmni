@@ -16,7 +16,7 @@ class User
          :omniauthable,
          omniauth_providers: [:google_oauth2]
 
-  has_one :identity
+  has_one :identity, autobuild: true
 
   has_many :calendars
 
@@ -44,7 +44,7 @@ class User
   field :last_name
   field :image_url
 
-  field :plan, type: Symbol, default: :free
+  field :plan, type: String, default: :free
 
   validates :email, uniqueness: true
 

@@ -46,6 +46,18 @@ describe UserFactory do
         expect(user).to receive(:save)
         subject
       end
+
+      it 'saves the user identity' do
+        subject
+
+        expect(user.identity).to_not be nil
+      end
+
+      it 'sets correct token on identity' do
+        subject
+
+        expect(user.identity.token).to eq 'token'
+      end
     end
 
     context 'new user' do
@@ -53,6 +65,12 @@ describe UserFactory do
 
       it 'saves the user' do
         expect { subject }.to change(User, :count).by(1)
+      end
+
+      it 'saves the user identity' do
+        subject
+
+        expect(User.last.identity.token).to eq 'token'
       end
     end
   end
