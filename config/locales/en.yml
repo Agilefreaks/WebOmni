@@ -130,3 +130,7 @@ en:
     label_message_validation: Please enter a message
     button: Send message
     flash: Your message was sent :)
+  embedable_pages:
+    call_starting: Call starting....
+    call_howto: Pick up your phone, it will start calling in a few seconds
+    loading: Loading...

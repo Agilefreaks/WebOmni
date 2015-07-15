@@ -109,3 +109,7 @@ pt:
     label_message_validation: Por favor insira uma mensagem
     button: Enviar mensagem
     flash: A sua mensagem foi enviada :)
+  embedable_pages:
+    call_starting: Call starting....
+    call_howto: Pick up your phone, it will start calling in a few seconds
+    loading: Loading...
