@@ -43,6 +43,8 @@ pt:
     sessions:
       signed_in: "Logado com sucesso."
       signed_out: "Saiu com sucesso."
+      title: "Your android phone can call this number when you click on it."
+      subtitle: "To get started you need to first login with google."
     unlocks:
       send_instructions: "Você receberá um email com instruções sobre como destravar sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um email com instruções sobre como destravá-la em alguns minutos."

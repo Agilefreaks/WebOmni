@@ -43,11 +43,12 @@ ro:
     sessions:
       signed_in: "Autentificat cu succes."
       signed_out: "Ai ieșit din cont cu succes."
+      title: "Doar dand click telefonul tau android poate sa sune numarul direct."
+      subtitle: "Pentru a incepe intai trebuie sa te logezi cu contul de google."
     unlocks:
       send_instructions: "Vei primi un email cu instrucțiuni despre deblocarea contului în câteva minute."
       send_paranoid_instructions: "Dacă acest cont există, vei primi un email cu instrucțiuni despre deblocarea sa în câteva minute."
       unlocked: "Contul tău a fost deblocat cu succes. Ești acum autentificat."
-
   errors:
     messages:
       already_confirmed: "a fost deja confirmat, te rugăm să te autentifici"
