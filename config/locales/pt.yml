@@ -113,3 +113,9 @@ pt:
     call_starting: Call starting....
     call_howto: Pick up your phone, it will start calling in a few seconds
     loading: Loading...
+  user:
+    clients:
+      explain: "This app would like access to:"
+      allow_question: Do you wish to allow this?
+      accept: Accept
+      cancel: Cancel

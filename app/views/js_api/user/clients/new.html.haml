@@ -1,14 +1,14 @@
 %h1.section__title--hero
   = @client_description.name
 %h2
-  This app would like access to:
+  = I18n.t('user.clients.explain')
 - @client_description.scopes.each do |scope|
   %h3
     = scope.description
 %h2
-  Do you wish to allow this?
+  = I18n.t('user.clients.allow_question')
 = form_for @client, url: user_clients_path do |form_builder|
   = form_builder.hidden_field :client_id
   .button.button--transparent.button--reset-weight
-    = link_to 'Cancel', '#', {onclick: 'window.close()'}
-  = form_builder.submit 'Accept', {class: 'button button--orange button--reset-weight'}
+    = link_to I18n.t('user.clients.cancel'), '#', {onclick: 'window.close()'}
+  = form_builder.submit I18n.t('user.clients.accept'), {class: 'button button--orange button--reset-weight'}

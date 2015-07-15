@@ -109,3 +109,9 @@ ro:
     call_starting: Sună...
     call_howto: Telefonul tău va suna în câteva clipe.
     loading: Încărcare...
+  user:
+    clients:
+      explain: "Acceastă applicație vrea access la următoarele funcții:"
+      allow_question: Îi permiteți?
+      accept: Da
+      cancel: Nu
