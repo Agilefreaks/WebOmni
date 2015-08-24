@@ -47,6 +47,7 @@ gem 'omnikiq'
 
 gem 'google-api-client'
 gem 'usecasing'
+gem 'i18n-js'
 
 group :development do
   gem 'quiet_assets'
