@@ -20,9 +20,11 @@
   var OmnipasteSDK = require('OmnipasteSDK');
   var instance = new OmnipasteSDK();
   instance.initialize({
-    clientId: '<%= @api_key %>',
+    clientId: '<%= @api_client.id %>',
     omnipasteUrl: '<%= WebOmni::Application.config.web_omni_url %>',
-    omnipasteAPIUrl: '<%= OmniApi.config.base_url %>'
+    omnipasteAPIUrl: '<%= OmniApi.config.base_url %>',
+    locale: '<%= @api_client.locale; %>',
+    localeTranslations: <%= raw i18n_translations_or_default(@api_client.locale).to_json %>
   });
 
   return instance;
