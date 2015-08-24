@@ -1,5 +1,5 @@
-define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash', 'sdk/DataStore'],
-  function (Initializer, RequestHandler, $, _, DataStore) {
+define(['sdk/Initializer', 'sdk/PhoneClickHandler', 'jquery', 'lodash', 'sdk/DataStore'],
+  function (Initializer, PhoneClickHandler, $, _, DataStore) {
   describe('Initializer', function () {
     var subject, instance;
 
@@ -15,21 +15,22 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash', 'sdk/DataSt
     });
 
     it('has a request handler', function () {
-      expect(subject().requestHandler instanceof RequestHandler).toBe(true);
+      expect(subject().phoneClickHandler instanceof PhoneClickHandler).toBe(true);
     });
 
     describe('run', function () {
-      var clientId, omnipasteUrl, omnipasteAPIUrl, listener;
+      var clientId, omnipasteUrl, omnipasteAPIUrl;
+
       beforeEach(function() {
         omnipasteUrl = 'http://some.url';
         omnipasteAPIUrl = 'http://someOther.url';
         subject = function() {
-          listener = instance.run({clientId: clientId, omnipasteUrl: omnipasteUrl, omnipasteAPIUrl: omnipasteAPIUrl});
+          instance.run({clientId: clientId, omnipasteUrl: omnipasteUrl, omnipasteAPIUrl: omnipasteAPIUrl});
         }
       });
 
       afterEach(function() {
-        listener && listener.dispose();
+        instance.dispose();
       });
 
       _.each([null, undefined, false, '', {someProp: 'asa'}, 4], function(value) {
@@ -63,49 +64,6 @@ define(['sdk/Initializer', 'sdk/RequestHandler', 'jquery', 'lodash', 'sdk/DataSt
 
         it('stores the give omnipasteAPIUrl', function() {
           expect(DataStore.omnipasteAPIUrl).toEqual(omnipasteAPIUrl);
-        });
-      });
-    });
-
-    describe('events', function () {
-      var clientId, listener;
-
-      describe('after run', function () {
-        clientId = 'someId';
-
-        beforeEach(function () {
-          listener = instance.run({clientId: clientId});
-        });
-
-        afterEach(function() {
-          listener && listener.dispose();
-        });
-
-        describe('an html element exists in the dom with the data-omnipaste-call attribute', function () {
-          var htmlElement;
-          beforeEach(function () {
-            htmlElement = $('<div data-omnipaste-call="0000111222"></div>').appendTo($('body'));
-          });
-
-          afterEach(function () {
-            htmlElement.remove();
-          });
-
-          describe('clicking the element', function () {
-            beforeEach(function () {
-              subject = function () {
-                htmlElement.click();
-              }
-            });
-
-            it('calls handleCallRequest on the request handler with the client if and the phone number', function () {
-              var spy = spyOn(instance.requestHandler, 'handleCallRequest').andReturn(void 0);
-
-              subject();
-
-              expect(spy).toHaveBeenCalledWith({phoneNumber: '0000111222'});
-            });
-          });
         });
       });
     });

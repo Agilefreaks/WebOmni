@@ -7,6 +7,6 @@ class SdkController < ApplicationController
 
   def show
     response.headers['Content-type'] = 'text/javascript; charset=utf-8'
-    respond_with @api_key = params[:id]
+    respond_with @api_client = OmniApi::Client.find(params[:id])
   end
 end

@@ -1,14 +1,39 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the SdkHelper. For example:
-#
-# describe SdkHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe SdkHelper, type: :helper do
+  describe 'i18n_translations' do
+    let(:locale) { :en }
+
+    subject { helper.i18n_translations(locale) }
+
+    context 'translations for the given locale exist' do
+      let(:locale) { :ro }
+
+      it { is_expected.to be_present }
+    end
+
+    context 'translations for the given locale do not exist' do
+      let(:locale) { :xx }
+
+      it { is_expected.to be_nil }
+    end
+  end
+
+  describe 'i18n_translations_or_default' do
+    let(:locale) { :en }
+
+    subject { helper.i18n_translations_or_default(locale) }
+
+    context 'translations for the given locale exist' do
+      let(:locale) { :ro }
+
+      it { is_expected.to be_present }
+    end
+
+    context 'translations for the given locale do not exist' do
+      let(:locale) { :xx }
+
+      it { is_expected.to eq(helper.i18n_translations(:en)) }
+    end
+  end
 end

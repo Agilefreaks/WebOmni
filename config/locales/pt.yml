@@ -119,3 +119,6 @@ pt:
       allow_question: Do you wish to allow this?
       accept: Accept
       cancel: Cancel
+  js:
+    sdk:
+      click_tooltip: Clique aqui para ligar para este número

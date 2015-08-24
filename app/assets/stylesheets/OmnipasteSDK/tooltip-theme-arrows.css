@@ -1,0 +1,111 @@
+.omnipaste-tooltip-element, .omnipaste-tooltip-element:after, .omnipaste-tooltip-element:before, .omnipaste-tooltip-element *, .omnipaste-tooltip-element *:after, .omnipaste-tooltip-element *:before {
+  box-sizing: border-box; }
+
+.omnipaste-tooltip-element {
+  position: absolute;
+  display: none; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-open {
+    display: block; }
+
+.omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows {
+  max-width: 100%;
+  max-height: 100%; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows .omnipaste-tooltip-content {
+    border-radius: 5px;
+    position: relative;
+    font-family: inherit;
+    background: #000;
+    color: #eee;
+    padding: 1em;
+    font-size: 1.1em;
+    line-height: 1.5em; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows .omnipaste-tooltip-content:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-width: 8px;
+      border-style: solid; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-center .omnipaste-tooltip-content {
+    margin-bottom: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-center .omnipaste-tooltip-content:before {
+      top: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border-top-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-center .omnipaste-tooltip-content {
+    margin-top: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-center .omnipaste-tooltip-content:before {
+      bottom: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border-bottom-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-element-attached-middle .omnipaste-tooltip-content {
+    margin-right: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-element-attached-middle .omnipaste-tooltip-content:before {
+      left: 100%;
+      top: 50%;
+      margin-top: -8px;
+      border-left-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-element-attached-middle .omnipaste-tooltip-content {
+    margin-left: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-element-attached-middle .omnipaste-tooltip-content:before {
+      right: 100%;
+      top: 50%;
+      margin-top: -8px;
+      border-right-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-bottom .omnipaste-tooltip-content {
+    margin-top: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-bottom .omnipaste-tooltip-content:before {
+      bottom: 100%;
+      left: 8px;
+      border-bottom-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-bottom .omnipaste-tooltip-content {
+    margin-top: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-bottom .omnipaste-tooltip-content:before {
+      bottom: 100%;
+      right: 8px;
+      border-bottom-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-top .omnipaste-tooltip-content {
+    margin-bottom: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-top .omnipaste-tooltip-content:before {
+      top: 100%;
+      left: 8px;
+      border-top-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-top .omnipaste-tooltip-content {
+    margin-bottom: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-top .omnipaste-tooltip-content:before {
+      top: 100%;
+      right: 8px;
+      border-top-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-left .omnipaste-tooltip-content {
+    margin-right: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-left .omnipaste-tooltip-content:before {
+      top: 8px;
+      left: 100%;
+      border-left-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-right .omnipaste-tooltip-content {
+    margin-left: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-top.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-right .omnipaste-tooltip-content:before {
+      top: 8px;
+      right: 100%;
+      border-right-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-left .omnipaste-tooltip-content {
+    margin-right: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-right.omnipaste-tooltip-target-attached-left .omnipaste-tooltip-content:before {
+      bottom: 8px;
+      left: 100%;
+      border-left-color: #000; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-right .omnipaste-tooltip-content {
+    margin-left: 8px; }
+    .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows.omnipaste-tooltip-element-attached-bottom.omnipaste-tooltip-element-attached-left.omnipaste-tooltip-target-attached-right .omnipaste-tooltip-content:before {
+      bottom: 8px;
+      right: 100%;
+      border-right-color: #000; }
+
+.omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows {
+  pointer-events: none; }
+  .omnipaste-tooltip-element.omnipaste-tooltip-theme-arrows .omnipaste-tooltip-content {
+    padding: 0.5em 1em; }

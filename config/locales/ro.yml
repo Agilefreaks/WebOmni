@@ -115,3 +115,7 @@ ro:
       allow_question: Îi permiteți?
       accept: Da
       cancel: Nu
+  js:
+    test: 'this is some test'
+    sdk:
+      click_tooltip: 'Da click aici pentru a suna'

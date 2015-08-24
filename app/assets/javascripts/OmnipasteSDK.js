@@ -2,6 +2,10 @@
 //= require jquery.2.1.1
 //= require lodash
 //= require eventEmitter
+//= require i18n
+//= require tether
+//= require drop
+//= require tooltip
 //= require_tree ./sdk
 //= require_self
 
