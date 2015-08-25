@@ -18,6 +18,8 @@
   I18n.locale = '<%= @api_client.locale; %>';
   <%= raw i18n_translations_or_default(@api_client.locale) %>
 
+  var styles = <%= raw(Rails.application.assets['OmnipasteSDK.css'].to_s.to_json)%>;
+
   //Ask almond to synchronously require the
   //module value for 'Omnipaste' here and return it as the
   //value to use for the public API.
@@ -26,7 +28,8 @@
   instance.initialize({
     clientId: '<%= @api_client.id %>',
     omnipasteUrl: '<%= WebOmni::Application.config.web_omni_url %>',
-    omnipasteAPIUrl: '<%= OmniApi.config.base_url %>'
+    omnipasteAPIUrl: '<%= OmniApi.config.base_url %>',
+    styles: styles
   });
 
   return instance;
