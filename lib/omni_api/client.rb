@@ -3,7 +3,7 @@ module OmniApi
     attr_accessible :id, :name, :scopes
 
     def locale
-      'en'
+      'ro'
     end
   end
 end

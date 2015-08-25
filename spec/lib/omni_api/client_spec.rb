@@ -4,6 +4,6 @@ describe OmniApi::Client do
   describe :locale do
     subject { instance.locale }
 
-    it { is_expected.to eq('en') }
+    it { is_expected.to eq('ro') }
   end
 end
