@@ -108,15 +108,17 @@ define(['sdk/ComChannel', 'sdk/DataStore', 'jquery', 'lodash'], function (ComCha
         }
       });
 
-      describe('a window was object was previously created', function() {
+      describe('a window object was previously created', function() {
+        var createdWindow;
         beforeEach(function() {
-          instance.targetWindow = jasmine.createSpyObj('window', ['close']);
+          createdWindow = jasmine.createSpyObj('window', ['close']);
+          instance.targetWindow = createdWindow;
         });
 
         it('closes the window opened by the SDK', function () {
           subject();
 
-          expect(instance.targetWindow.close).toHaveBeenCalled();
+          expect(createdWindow.close).toHaveBeenCalled();
         });
       });
 

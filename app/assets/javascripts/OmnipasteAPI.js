@@ -10,10 +10,7 @@ define('OmnipasteAPI', ['lodash', 'api/Initializer'], function(_, Initializer) {
 
   _.extend(OmnipasteAPI.prototype, {
     initialize: function (options) {
-      var self = this;
-      window.onload = function() {
-        self.initializer.run(options);
-      };
+      this.initializer.run(options);
     }
   });
 
