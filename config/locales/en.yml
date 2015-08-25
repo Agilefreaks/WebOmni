@@ -140,3 +140,7 @@ en:
       allow_question: Do you wish to allow this?
       accept: Accept
       cancel: Cancel
+  js:
+    test: 'this is some test'
+    sdk:
+      click_tooltip: 'Click here to call this number'
