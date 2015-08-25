@@ -1,12 +1,14 @@
 module SdkHelper
+  TRANSLATIONS_DIR = 'public/javascripts/i18n'
   TRANSLATIONS_FILE_NAME = 'sdk.js'
   DEFAULT_LOCALE = :en
 
   def i18n_translations(locale)
-    locale = locale.to_sym
-    sdk_translations_segments = SimplesIdeias::I18n.translation_segments.select { |key, _| key.ends_with?(TRANSLATIONS_FILE_NAME) }
-    locale_translations_segment = sdk_translations_segments.find { |_, value| value.has_key?(locale) }
-    locale_translations_segment.try(:[], 1)
+    begin
+      File.read(Rails.root.join(TRANSLATIONS_DIR, locale.to_s).join(TRANSLATIONS_FILE_NAME))
+    rescue
+      nil
+    end
   end
 
   def i18n_translations_or_default(locale)
