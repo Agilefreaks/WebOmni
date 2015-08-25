@@ -1,8 +1,9 @@
 define('sdk/Initializer',
-  ['jquery', 'lodash', './DataStore', './PhoneClickHandler'],
-  function ($, _, DataStore, PhoneClickHandler) {
+  ['jquery', 'lodash', './DataStore', './PhoneClickHandler', './TooltipHandler'],
+  function ($, _, DataStore, PhoneClickHandler, TooltipHandler) {
     var Initializer = function () {
       this.phoneClickHandler = new PhoneClickHandler();
+      this.tooltipHandler = new TooltipHandler();
     };
 
     function clientIdIsValid(clientId) {
@@ -15,10 +16,12 @@ define('sdk/Initializer',
         if (!clientIdIsValid(options.clientId)) throw 'Invalid api key';
         _.extend(DataStore, _.pick(options, ['clientId', 'omnipasteUrl', 'omnipasteAPIUrl']));
         this.phoneClickHandler.initialize();
+        this.tooltipHandler.initialize();
       },
 
       dispose: function() {
         this.phoneClickHandler.dispose();
+        this.tooltipHandler.dispose();
       }
     });
 

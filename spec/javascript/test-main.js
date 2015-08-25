@@ -16,7 +16,11 @@ require.config({
     jquery: '../../../vendor/assets/javascripts/jquery.2.1.1',
     lodash: '../../../vendor/assets/javascripts/lodash',
     EventEmitter: '../../../vendor/assets/javascripts/eventEmitter',
-    SimpleModal: '../../../vendor/assets/javascripts/simpleModal'
+    SimpleModal: '../../../vendor/assets/javascripts/simpleModal',
+    i18n: '../../../vendor/assets/javascripts/i18n',
+    tooltip: '../../../vendor/assets/javascripts/tooltip',
+    tether: '../../../vendor/assets/javascripts/tether',
+    'tether-drop': '../../../vendor/assets/javascripts/drop'
   },
 
   // dynamically load all test files
