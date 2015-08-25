@@ -39,7 +39,8 @@ module WebOmni
     config.assets.precompile += %w( .svg .eot .woff .ttf
                                     presentation.js presentation.css
                                     browser.update.js OmnipasteAPI.js
-                                    OmnipasteSDK.js embeddable.css embeddable.js)
+                                    OmnipasteSDK.js OmnipasteSDK.css
+                                    embeddable.css embeddable.js)
 
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('/app/factories')

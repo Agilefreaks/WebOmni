@@ -1,3 +1,5 @@
+//https://github.com/cristi-badila/tooltip
+
 /*! tether-tooltip 1.1.0 */
 
 (function(root, factory) {
@@ -114,6 +116,12 @@ Tooltip.init = function () {
       initialized.push(el);
     }
   }
+};
+
+Tooltip.setClassPrefix = function(preifx) {
+  _Drop = Drop.createContext({
+    classPrefix: preifx
+  });
 };
 
 document.addEventListener('DOMContentLoaded', function () {
