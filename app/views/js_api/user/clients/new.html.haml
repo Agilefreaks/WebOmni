@@ -1,6 +1,7 @@
 %h1.section__title--hero
   = @client_description.name
 %h2
+  = I18n.t('user.clients.selling_point')
   = I18n.t('user.clients.explain')
 - @client_description.scopes.each do |scope|
   %h3

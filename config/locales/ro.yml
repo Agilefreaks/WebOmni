@@ -106,12 +106,18 @@ ro:
     button: Trimite mesajul
     flash: Mesajul tău a fost trimis :)
   embedable_pages:
-    call_starting: Sună...
-    call_howto: Telefonul tău va suna în câteva clipe.
-    loading: Încărcare...
+    call_starting: "Apelare…"
+    call_howto: "In cateva secunde telefonul tau va apela acest numar. Asigura-te asadar ca ai telefonul la indemana!"
+    loading: "Asteapta un pic…"
+    sign_up: "Logheaza-ma"
   user:
     clients:
+      selling_point: "Inca un pas si poti apela direct numerele de telefon dorite"
       explain: "Acceastă applicație vrea access la următoarele funcții:"
-      allow_question: Îi permiteți?
-      accept: Da
-      cancel: Nu
+      allow_question: "Îi permiteți?"
+      accept: "Da"
+      cancel: "Nu"
+    devices:
+      title: "Pfff, nu ai inca un numar de telefon setat."
+      explain: "Activeaza acum aceasta optiune."
+      final_step: "Dupa ce ai salvat numarul de telefon, click aici!"
