@@ -44,7 +44,7 @@ class User
   field :last_name
   field :image_url
 
-  field :plan, type: String, default: :free
+  field :plan, type: String, default: PaymentPlan::FREE
 
   validates :email, uniqueness: true
 
