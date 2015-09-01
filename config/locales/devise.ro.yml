@@ -43,7 +43,7 @@ ro:
     sessions:
       signed_in: "Autentificat cu succes."
       signed_out: "Ai ieșit din cont cu succes."
-      title: "Doar dand click telefonul tau android poate sa sune numarul direct."
+      title: "Apeleaza acest numar folosind Omnipaste"
       subtitle: "Pentru a incepe intai trebuie sa te logezi cu contul de google."
     unlocks:
       send_instructions: "Vei primi un email cu instrucțiuni despre deblocarea contului în câteva minute."

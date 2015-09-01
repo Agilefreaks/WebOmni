@@ -43,8 +43,8 @@ en:
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
-      title: "Your android phone can call this number when you click on it."
-      subtitle: "To get started you need to first login with google."
+      title: "Call this number using Omnipaste"
+      subtitle: "It’s easy, you have to log in with your Google account"
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."

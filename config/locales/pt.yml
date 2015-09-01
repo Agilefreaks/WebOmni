@@ -110,15 +110,18 @@ pt:
     button: Enviar mensagem
     flash: A sua mensagem foi enviada :)
   embedable_pages:
-    call_starting: Call starting....
-    call_howto: Pick up your phone, it will start calling in a few seconds
-    loading: Loading...
+    call_starting: Calling…
+    call_howto: In a few seconds your phone will call this number. Be sure you have your phone near you!
+    loading: Wait a minute...
+    sign_up: Sign in
   user:
     clients:
+      selling_point: "Just another step and that’s it, you’ll have click to call feature installed"
       explain: "This app would like access to:"
       allow_question: Do you wish to allow this?
       accept: Accept
       cancel: Cancel
-  js:
-    sdk:
-      click_tooltip: Clique aqui para ligar para este número
+    devices:
+      title: It seems that you don’t have a phone numer linked.
+      explain: Activate this feature.
+      final_step: After you’ve linked your phone, click here!
