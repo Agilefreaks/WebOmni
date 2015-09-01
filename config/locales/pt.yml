@@ -125,3 +125,6 @@ pt:
       title: It seems that you don’t have a phone numer linked.
       explain: Activate this feature.
       final_step: After you’ve linked your phone, click here!
+  js:
+    sdk:
+      click_tooltip: Clique aqui para ligar para este número

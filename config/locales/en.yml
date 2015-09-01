@@ -146,3 +146,6 @@ en:
       title: It seems that you don’t have a phone number linked.
       explain: Activate this feature.
       final_step: After you’ve linked your phone, click here!
+  js:
+    sdk:
+      click_tooltip: 'Click here to call this number'

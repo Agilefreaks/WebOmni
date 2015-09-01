@@ -121,3 +121,6 @@ ro:
       title: "Pfff, nu ai inca un numar de telefon setat."
       explain: "Activeaza acum aceasta optiune."
       final_step: "Dupa ce ai salvat numarul de telefon, click aici!"
+  js:
+    sdk:
+      click_tooltip: 'Da click aici pentru a suna'
