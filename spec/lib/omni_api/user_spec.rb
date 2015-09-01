@@ -20,7 +20,7 @@ describe OmniApi::User do
         end
       end
 
-      subject { OmniApi::User.change_plan!('email@domain.com', :premium) }
+      subject { OmniApi::User.change_plan!('email@domain.com', PaymentPlan::PREMIUM) }
 
       it('makes the api call to make the user a premium user') { should.nil? }
     end

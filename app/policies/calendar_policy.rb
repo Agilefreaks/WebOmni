@@ -1,8 +1,8 @@
 class CalendarPolicy < ApplicationPolicy
-  attr_reader :user, :calendar
+  attr_reader :user
 
   def access?
-    @user.plan.to_sym == :premium
+    @user.plan == PaymentPlan::PREMIUM
   end
 
   def show?
