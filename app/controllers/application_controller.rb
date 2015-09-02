@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_mobile_device?
 
+  #we overwrite the class method as that is what devise uses per https://github.com/plataformatec/devise/issues/1408
+  def self.default_url_options(_options = {})
+    { locale: I18n.locale }.merge(_options)
+  end
+
   def authenticate!
     authenticate_user!
     OmniApi.config.user_access_token = current_user.access_token
@@ -21,10 +26,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     request.env['omniauth.origin'] || stored_location_for(resource) || root_path
-  end
-
-  def default_url_options(_options = {})
-    { locale: I18n.locale }
   end
 
   def set_locale

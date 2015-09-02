@@ -2,10 +2,11 @@
   = @client_description.name
 %h2
   = I18n.t('user.clients.selling_point')
+  %br
   = I18n.t('user.clients.explain')
 - @client_description.scopes.each do |scope|
   %h3
-    = scope.description
+    = I18n.t("embedable_pages.client_scopes.#{scope.description}", default: scope.description)
 %h2
   = I18n.t('user.clients.allow_question')
 = form_for @client, url: user_clients_path do |form_builder|

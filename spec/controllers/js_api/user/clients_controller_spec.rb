@@ -5,7 +5,7 @@ describe JsApi::User::ClientsController do
     subject { get :new, api_client_id: 1 }
 
     describe 'user is not authenticated' do
-      it { is_expected.to redirect_to(new_user_session_path(locale: '')) }
+      it { is_expected.to redirect_to(new_user_session_path(locale: 'en')) }
     end
 
     describe 'user is authenticated' do
@@ -31,7 +31,7 @@ describe JsApi::User::ClientsController do
     subject { post :create, api_client_id: 1, omni_api_user_client_association: client_params }
 
     describe 'user is not authenticated' do
-      it { is_expected.to redirect_to(new_user_session_path(locale: '')) }
+      it { is_expected.to redirect_to(new_user_session_path(locale: 'en')) }
     end
 
     describe 'user is authenticated' do

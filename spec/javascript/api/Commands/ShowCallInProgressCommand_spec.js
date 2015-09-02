@@ -6,6 +6,7 @@ define(['api/Commands/ShowCallInProgressCommand', 'api/DataStore'], function (Sh
       router = jasmine.createSpyObj('router', ['navigate']);
       instance = new ShowCallInProgressCommand(router);
       DataStore.clientId = 'someClientToken';
+      DataStore.clientLocale = 'en';
       subject = function () {
         return instance;
       }
@@ -21,7 +22,7 @@ define(['api/Commands/ShowCallInProgressCommand', 'api/DataStore'], function (Sh
       it('navigates to the call in progress page', function() {
         subject();
 
-        expect(router.navigate).toHaveBeenCalledWith('/api/someClientToken/call_in_progress');
+        expect(router.navigate).toHaveBeenCalledWith('/api/someClientToken/call_in_progress?locale=en');
       });
     });
   });

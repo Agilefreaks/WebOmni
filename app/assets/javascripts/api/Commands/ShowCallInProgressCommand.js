@@ -9,7 +9,7 @@ define('api/Commands/ShowCallInProgressCommand', ['lodash', './../DataStore'], f
 
   _.extend(ShowCallInProgressCommand.prototype, {
     execute: function () {
-      this.router.navigate('/api/' + DataStore.clientId + '/call_in_progress');
+      this.router.navigate('/api/' + DataStore.clientId + '/call_in_progress' + '?locale=' + DataStore.clientLocale);
     }
   });
 

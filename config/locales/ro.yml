@@ -110,6 +110,8 @@ ro:
     call_howto: "In cateva secunde telefonul tau va apela acest numar. Asigura-te asadar ca ai telefonul la indemana!"
     loading: "Asteapta un pic…"
     sign_up: "Logheaza-ma"
+    client_scopes:
+      "Initiate phone calls": "Initiere apeluri"
   user:
     clients:
       selling_point: "Inca un pas si poti apela direct numerele de telefon dorite"

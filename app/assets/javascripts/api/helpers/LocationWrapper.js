@@ -1,7 +1,7 @@
 define('api/helpers/LocationWrapper', [], function () {
   var LocationWrapper = {
     navigate: function(path) {
-      window.location.pathname = path;
+      window.location.href = path;
     }
   };
 

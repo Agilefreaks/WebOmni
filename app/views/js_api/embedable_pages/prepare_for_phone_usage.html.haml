@@ -4,8 +4,10 @@
 = javascript_include_tag :OmnipasteAPI
 :javascript
   var apiDataStore = require('api/DataStore');
-  apiDataStore.userAccessToken = '#{@client.token}';
+  apiDataStore.userAccessToken = '#{@client_association.token}';
+  apiDataStore.clientId = '#{@client.id}';
+  apiDataStore.clientLocale = '#{@client.locale}';
   window.onload = function() {
     var OmnipasteAPI = require('OmnipasteAPI');
-    new OmnipasteAPI().initialize({apiClientUrl: '#{@client.client_url}', omnipasteUrl: '#{WebOmni::Application.config.web_omni_url}'});
+    new OmnipasteAPI().initialize({apiClientUrl: '#{@client_association.client_url}', omnipasteUrl: '#{WebOmni::Application.config.web_omni_url}'});
   };

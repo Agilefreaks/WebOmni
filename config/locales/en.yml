@@ -135,6 +135,8 @@ en:
     call_howto: In a few seconds your phone will call this number. Be sure you have your phone near you!
     loading: Wait a minute...
     sign_up: Sign in
+    client_scopes:
+      "Initiate phone calls": "Initiate phone calls"
   user:
     clients:
       selling_point: "Just another step and that’s it, you’ll have click to call feature installed"

@@ -1,5 +1,5 @@
-define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
-  function (_, $, EventEmitter, DataStore) {
+define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', 'i18n', './DataStore', './helpers/WindowWrapper'],
+  function (_, $, EventEmitter, I18n, DataStore, WindowWrapper) {
     var API_READY_MESSAGE = 'apiReady';
     var CHANNEL_CLOSED = 'channelClosed';
 
@@ -23,10 +23,10 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
     }
 
     function createComWindow(endpoint, width, height, name) {
-      var url = DataStore.omnipasteUrl + '/api/' + DataStore.clientId + '/' + endpoint;
+      var url = DataStore.omnipasteUrl + '/api/' + DataStore.clientId + '/' + endpoint + '?locale=' + I18n.locale;
       var left = (screen.width/2)-(width/2);
       var top = (screen.height/2)-(height/2);
-      return window.open(url, name, "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top, false);
+      return WindowWrapper.open(url, name, "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top, false);
     }
 
     function setupCloseWindowWatchdog(instance, targetWindow) {
@@ -39,7 +39,7 @@ define('sdk/ComChannel', ['lodash', 'jquery', 'EventEmitter', './DataStore'],
 
     function setupIncomingMessageHandler(instance) {
       instance._messageHandler = _.partial(handleMessage, instance);
-      window.addEventListener('message', instance._messageHandler, false);
+      WindowWrapper.addEventListener('message', instance._messageHandler, false);
     }
 
     var ComChannel = function () {
