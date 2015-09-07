@@ -39,6 +39,7 @@ class User
   field :last_sign_in_ip,    type: String
 
   field :access_token
+  field :refresh_token
 
   field :first_name
   field :last_name
