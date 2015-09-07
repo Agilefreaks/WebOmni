@@ -33,7 +33,8 @@ class UserFactory
       image_url: auth.info.image,
       mixpanel_distinct_id: auth.distinct_id,
       remote_ip: auth.remote_ip,
-      access_token: api_user.access_token
+      access_token: api_user.access_token,
+      refresh_token: api_user.refresh_token
     }
   end
 

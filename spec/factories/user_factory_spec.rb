@@ -14,7 +14,7 @@ describe UserFactory do
                        refresh_token: 'refresh_token')
     end
     let(:auth) { Hashie::Mash.new(info: auth_info) }
-    let(:api_user) { OmniApi::User.new(access_token: '42') }
+    let(:api_user) { OmniApi::User.new(access_token: '42', refresh_token: '43') }
 
     subject { UserFactory.from_social(auth, user, api_user) }
 
@@ -40,6 +40,10 @@ describe UserFactory do
 
       it "updates the existing user's access_token" do
         expect { subject }.to change { user.access_token }.to '42'
+      end
+
+      it "updates the existing user's access_token" do
+        expect { subject }.to change { user.refresh_token }.to '43'
       end
 
       it 'saves the user' do
