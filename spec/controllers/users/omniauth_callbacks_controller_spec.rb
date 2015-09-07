@@ -1,18 +1,14 @@
 require 'spec_helper'
 
 describe Users::OmniauthCallbacksController do
-  let(:existing_api_user) { OmniApi::User.new }
-
+  let(:sample_token) { Hashie::Mash.new(token: 'someToken', refreshToken: 'someOtherToken', expires_in: '1234') }
   before do
     @request.env['devise.mapping'] = Devise.mappings[:user]
-    allow(existing_api_user).to receive(:save!)
-    allow(OmniApi::User).to receive_message_chain(:where, :first).and_return(existing_api_user)
+
+    allow(OmniApi::Oauth2::Token).to receive(:create_for).and_return(sample_token)
   end
 
   describe 'google_oauth2' do
-    subject { post :google_oauth2 }
-
-    let!(:user) { Fabricate(:user, email: 'email@domain.com') }
     let(:auth) { Hashie::Mash.new }
     let(:auth_info) { Hashie::Mash.new }
     let(:credentials) do
@@ -31,18 +27,63 @@ describe Users::OmniauthCallbacksController do
       @request.env['omniauth.strategy'].options = { scope: 'authorization_scope' }
     end
 
-    it 'saves the identity on the user' do
-      expect { subject }.to change { User.where(email: 'email@domain.com').first.identity }
+    subject { post :google_oauth2 }
+
+    it 'ensures an equivalent api user exists' do
+      expect(OmniApi::UserFactory).to receive(:ensure_user_exists).with(auth)
+
+      subject
     end
 
-    it 'sets correct values on identity' do
-      subject
 
-      identity = User.where(email: 'email@domain.com').first.identity
-      expect(identity.token).to eq 'token'
-      expect(identity.refresh_token).to eq 'refresh_token'
-      expect(identity.expires).to be true
-      expect(identity.expires_at.to_i).to eq credentials.expires_at.to_i
+    describe 'an equivalent user exists' do
+      let!(:user) { Fabricate(:user, email: auth_info.email) }
+
+      describe 'can ensure api user exists' do
+        before { allow(OmniApi::UserFactory).to receive(:ensure_user_exists).with(auth) }
+
+        it 'sets correct values on identity' do
+          subject
+
+          identity = User.where(email: 'email@domain.com').first.identity
+          expect(identity.token).to eq 'token'
+          expect(identity.refresh_token).to eq 'refresh_token'
+          expect(identity.expires).to be true
+          expect(identity.expires_at.to_i).to eq credentials.expires_at.to_i
+        end
+
+        describe "the current user's token is expired" do
+          before { user.update_attribute(:access_token_expires_at, 1.day.ago) }
+
+          it "updates the user's token" do
+            expect(UpdateUserAccessToken).to receive(:perform)
+
+            subject
+          end
+        end
+      end
+    end
+
+    describe 'an equivalent user does not exist' do
+      describe 'can create an api user' do
+        before { allow(OmniApi::UserFactory).to receive(:ensure_user_exists).with(auth) }
+
+        it 'sets correct values on identity' do
+          subject
+
+          identity = User.where(email: 'email@domain.com').first.identity
+          expect(identity.token).to eq 'token'
+          expect(identity.refresh_token).to eq 'refresh_token'
+          expect(identity.expires).to be true
+          expect(identity.expires_at.to_i).to eq credentials.expires_at.to_i
+        end
+
+        it "updates the user's token" do
+          expect(UpdateUserAccessToken).to receive(:perform)
+
+          subject
+        end
+      end
     end
   end
 
