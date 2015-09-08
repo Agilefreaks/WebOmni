@@ -40,6 +40,7 @@ class User
 
   field :access_token
   field :refresh_token
+  field :access_token_expires_at, type: Time
 
   field :first_name
   field :last_name
@@ -51,5 +52,9 @@ class User
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def access_token_expired?
+    access_token_expires_at.blank? || access_token_expires_at < DateTime.current
   end
 end

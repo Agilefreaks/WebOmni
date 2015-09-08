@@ -34,7 +34,8 @@ class UserFactory
       mixpanel_distinct_id: auth.distinct_id,
       remote_ip: auth.remote_ip,
       access_token: api_user.access_token,
-      refresh_token: api_user.refresh_token
+      refresh_token: api_user.refresh_token,
+      access_token_expires_at: api_user.access_token_expires_at
     }
   end
 
