@@ -7,7 +7,7 @@ class UserFactory
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def create_or_update_from_social(auth, user, api_user)
-    params = sanitize_params(auth, api_user)
+    params = sanitize_params(auth)
 
     if user
       user.update(params)
@@ -24,7 +24,7 @@ class UserFactory
   end
 
 
-  def sanitize_params(auth, api_user)
+  def sanitize_params(auth)
     {
       first_name: auth.info.first_name,
       last_name: auth.info.last_name,
@@ -32,10 +32,7 @@ class UserFactory
       password: Devise.friendly_token[0, 20],
       image_url: auth.info.image,
       mixpanel_distinct_id: auth.distinct_id,
-      remote_ip: auth.remote_ip,
-      access_token: api_user.access_token,
-      refresh_token: api_user.refresh_token,
-      access_token_expires_at: api_user.access_token_expires_at
+      remote_ip: auth.remote_ip
     }
   end
 

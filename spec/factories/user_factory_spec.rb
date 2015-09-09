@@ -38,18 +38,6 @@ describe UserFactory do
         expect { subject }.to change { user.image_url }.to(image)
       end
 
-      it "updates the existing user's access_token" do
-        expect { subject }.to change { user.access_token }.to '42'
-      end
-
-      it "updates the existing user's refresh_token" do
-        expect { subject }.to change { user.refresh_token }.to '43'
-      end
-
-      it "updates the existing user's access_token_expires_at" do
-        expect { subject }.to change { user.access_token_expires_at }.to '2015-10-08T13:12:31Z'
-      end
-
       it 'saves the user' do
         expect(user).to receive(:save)
         subject
