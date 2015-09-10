@@ -13,51 +13,29 @@ describe UserFactory do
                        token: 'token',
                        refresh_token: 'refresh_token')
     end
-    let(:auth) { Hashie::Mash.new(info: auth_info) }
+    let(:auth) { Hashie::Mash.new(info: auth_info, credentials: credentials, provider: 'provider', scope: 'test') }
 
-    subject { UserFactory.from_social(auth, user) }
+    subject { UserFactory.from_social(auth) }
 
-    before do
-      auth.info = auth_info
-      auth.credentials = credentials
-    end
+    describe 'a user with the given email exists' do
+      let(:user) { Fabricate(:user) }
 
-    context 'with an existing user' do
-      let(:user) { Fabricate(:user, email: email)  }
+      before { auth_info[:email] = user.email }
 
       it "updates the existing user's first_name" do
-        expect { subject }.to change { user.first_name }.to(first_name)
+        expect { subject }.to change { user.reload.first_name }.to(first_name)
       end
 
       it "updates the existing user's last_name" do
-        expect { subject }.to change { user.last_name }.to(last_name)
+        expect { subject }.to change { user.reload.last_name }.to(last_name)
       end
 
       it "updates the existing user's image" do
-        expect { subject }.to change { user.image_url }.to(image)
-      end
-
-      it 'saves the user' do
-        expect(user).to receive(:save)
-        subject
-      end
-
-      it 'saves the user identity' do
-        subject
-
-        expect(user.identity).to_not be nil
-      end
-
-      it 'sets correct token on identity' do
-        subject
-
-        expect(user.identity.token).to eq 'token'
+        expect { subject }.to change { user.reload.image_url }.to(image)
       end
     end
 
-    context 'new user' do
-      let(:user) { nil }
-
+    context 'a user with the given email does not exist' do
       it 'saves the user' do
         expect { subject }.to change(User, :count).by(1)
       end
