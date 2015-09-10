@@ -15,7 +15,7 @@ describe UserFactory do
     end
     let(:auth) { Hashie::Mash.new(info: auth_info, credentials: credentials, provider: 'provider', scope: 'test') }
 
-    subject { UserFactory.from_social(auth) }
+    subject { UserFactory.create_or_update(auth) }
 
     describe 'a user with the given email exists' do
       let(:user) { Fabricate(:user) }

@@ -31,10 +31,10 @@ module Users
     private
 
     def handle_authentication(auth_info)
-      @user = @current_user || User.where(email: auth_info.info.email.downcase).first
-
-      api_user = OmniApi::UserFactory.from_social(auth_info)
-      UserFactory.from_social(auth_info, @user, api_user)
+      OmniApi::UserFactory.ensure_user_exists(auth_info)
+      @user = UserFactory.create_or_update(auth_info)
+      UpdateUserAccessToken.perform(@user) if @user.access_token_expired?
+      @user
     end
 
     def get_identity_info
