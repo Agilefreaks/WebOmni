@@ -33,7 +33,7 @@ module Users
     def handle_authentication(auth_info)
       OmniApi::UserFactory.ensure_user_exists(auth_info)
       @user = UserFactory.create_or_update(auth_info)
-      UpdateUserAccessToken.perform(@user) if @user.access_token_expired?
+      UpdateUserAccessToken.perform(@user) if @user.access_token_about_to_expire?
       @user
     end
 

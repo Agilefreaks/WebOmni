@@ -4,6 +4,8 @@ class User
   include Gravtastic
   include Analyzable
 
+  ACCESS_TOKEN_EXPIRY_LIMIT = 1.day
+
   is_gravtastic
 
   # Include default devise modules. Others available are:
@@ -54,7 +56,7 @@ class User
     "#{first_name} #{last_name}"
   end
 
-  def access_token_expired?
-    access_token_expires_at.blank? || access_token_expires_at < DateTime.current
+  def access_token_about_to_expire?
+    access_token_expires_at.blank? || access_token_expires_at <= (DateTime.current - ACCESS_TOKEN_EXPIRY_LIMIT)
   end
 end
