@@ -7,6 +7,12 @@ module OmniApi
   mattr_accessor :client_access_token
   self.client_access_token = ''
 
+  mattr_accessor :client_id
+  self.client_id = ''
+
+  mattr_accessor :client_secret
+  self.client_secret = ''
+
   # rubocop:disable Style/ClassVars
   def self.client_access_token=(token)
     @@client_access_token = "bearer #{token}"
