@@ -3,7 +3,7 @@ module OmniApi
     class Token < OmniApi::BaseClientModel
       attr_accessible :access_token, :refresh_token, :token_type, :expires_in
 
-      self.site = "#{OmniApi.config.base_url}/oauth2/token"
+      self.site = "#{OmniApi.config.base_url}/oauth2"
 
       def self.create_for(user_email)
         instance = self.new
@@ -21,6 +21,10 @@ module OmniApi
         instance.attributes[:refresh_token] = refresh_token
         instance.save
         instance
+      end
+
+      def self.collection_name
+        'token'
       end
     end
   end
