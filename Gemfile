@@ -79,6 +79,7 @@ group :development, :test do
   gem 'database_cleaner', '1.3.0'
   gem 'cucumber-rails', require: false
   gem 'rubocop', require: false
+  gem 'timecop'
 end
 
 group :test do
