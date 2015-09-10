@@ -1,5 +1,5 @@
 module OmniApi
-  module OAuth2
+  module Oauth2
     module GrantTypes
       AUTHORIZATION_CODE = 'authorization_code'
       REFRESH_TOKEN = 'refresh_token'
