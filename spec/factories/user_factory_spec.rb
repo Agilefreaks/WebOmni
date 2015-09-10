@@ -14,9 +14,8 @@ describe UserFactory do
                        refresh_token: 'refresh_token')
     end
     let(:auth) { Hashie::Mash.new(info: auth_info) }
-    let(:api_user) { OmniApi::User.new(access_token: '42', refresh_token: '43', access_token_expires_at: '2015-10-08T13:12:31Z') }
 
-    subject { UserFactory.from_social(auth, user, api_user) }
+    subject { UserFactory.from_social(auth, user) }
 
     before do
       auth.info = auth_info

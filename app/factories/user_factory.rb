@@ -1,12 +1,12 @@
 class UserFactory
   include Singleton
 
-  def self.from_social(auth, user, api_user)
-    UserFactory.instance.create_or_update_from_social(auth, user, api_user)
+  def self.from_social(auth, user)
+    UserFactory.instance.create_or_update_from_social(auth, user)
   end
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-  def create_or_update_from_social(auth, user, api_user)
+  def create_or_update_from_social(auth, user)
     params = sanitize_params(auth)
 
     if user
