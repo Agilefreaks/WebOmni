@@ -10,7 +10,8 @@ module OmniApi
         instance.attributes[:grant_type] = OmniApi::Oauth2::GrantTypes::CLIENT_CREDENTIALS
         instance.attributes[:client_id] = OmniApi.config.client_id
         instance.attributes[:client_secret] = OmniApi.config.client_secret
-        instance.attributes[:user_email] = user_email
+        instance.attributes[:resource_type] = OmniApi::Oauth2::ResourceTypes::USER
+        instance.attributes[:resource_id] = user_email
         instance.save
         instance
       end
