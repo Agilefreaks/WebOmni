@@ -8,18 +8,18 @@ describe JsApi::EmbedablePagesController do
       include_context :logged_in_as_user
 
       it 'searches for an api client with the given' do
-        expect(OmniApi::Client).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test'))
+        expect(OmniApi::Resources::Client).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test'))
 
         subject rescue ActiveResource::ResourceNotFound
       end
 
       context 'when a client with the given id exists' do
-        let(:api_client) { OmniApi::Client.new }
+        let(:api_client) { OmniApi::Resources::Client.new }
 
-        before { allow(OmniApi::Client).to receive(:find).and_return(api_client) }
+        before { allow(OmniApi::Resources::Client).to receive(:find).and_return(api_client) }
 
         context 'when a client association does not exist' do
-          before { allow(OmniApi::User::ClientAssociation).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test')) }
+          before { allow(OmniApi::Resources::User::ClientAssociation).to receive(:find).and_raise(ActiveResource::ResourceNotFound.new('test')) }
 
           it { is_expected.to redirect_to(new_user_client_path(api_client_id: '1')) }
 
@@ -31,10 +31,10 @@ describe JsApi::EmbedablePagesController do
         end
 
         context 'when a client association exists' do
-          before { allow(OmniApi::User::ClientAssociation).to receive(:find).with('1').and_return(OmniApi::Client.new) }
+          before { allow(OmniApi::Resources::User::ClientAssociation).to receive(:find).with('1').and_return(OmniApi::Resources::Client.new) }
 
           context 'when current user has at least one device' do
-            before { allow(OmniApi::User::Device).to receive(:all).and_return([OmniApi::User::Device.new]) }
+            before { allow(OmniApi::Resources::User::Device).to receive(:all).and_return([OmniApi::Resources::User::Device.new]) }
 
             it 'will render user_access_token' do
               subject
@@ -43,7 +43,7 @@ describe JsApi::EmbedablePagesController do
           end
 
           context 'when current user has no devices' do
-            before { allow(OmniApi::User::Device).to receive(:all).and_return([]) }
+            before { allow(OmniApi::Resources::User::Device).to receive(:all).and_return([]) }
 
             it { is_expected.to redirect_to(new_user_device_path) }
           end

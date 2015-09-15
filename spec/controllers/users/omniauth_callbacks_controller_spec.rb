@@ -5,7 +5,7 @@ describe Users::OmniauthCallbacksController do
   before do
     @request.env['devise.mapping'] = Devise.mappings[:user]
 
-    allow(OmniApi::Oauth2::Token).to receive(:create_for).and_return(sample_token)
+    allow(OmniApi::Resources::Oauth2::Token).to receive(:create_for).and_return(sample_token)
   end
 
   describe 'google_oauth2' do
@@ -30,7 +30,7 @@ describe Users::OmniauthCallbacksController do
     subject { post :google_oauth2 }
 
     it 'ensures an equivalent api user exists' do
-      expect(OmniApi::UserFactory).to receive(:ensure_user_exists).with(auth)
+      expect(OmniApi::Factories::UserFactory).to receive(:ensure_user_exists).with(auth)
 
       subject
     end
@@ -40,7 +40,7 @@ describe Users::OmniauthCallbacksController do
       let!(:user) { Fabricate(:user, email: auth_info.email) }
 
       describe 'can ensure api user exists' do
-        before { allow(OmniApi::UserFactory).to receive(:ensure_user_exists).with(auth) }
+        before { allow(OmniApi::Factories::UserFactory).to receive(:ensure_user_exists).with(auth) }
 
         it 'sets correct values on identity' do
           subject
@@ -66,7 +66,7 @@ describe Users::OmniauthCallbacksController do
 
     describe 'an equivalent user does not exist' do
       describe 'can create an api user' do
-        before { allow(OmniApi::UserFactory).to receive(:ensure_user_exists).with(auth) }
+        before { allow(OmniApi::Factories::UserFactory).to receive(:ensure_user_exists).with(auth) }
 
         it 'sets correct values on identity' do
           subject

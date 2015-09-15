@@ -13,13 +13,13 @@ describe CalendarPolicy do
     end
 
     context 'user has a free plan' do
-      before { user.plan = PaymentPlan::FREE }
+      before { user.plan = OmniApi::Resources::PaymentPlan::FREE }
 
       it { is_expected.to be(false) }
     end
 
     context 'user has a premium plan' do
-      before { user.plan = PaymentPlan::PREMIUM }
+      before { user.plan = OmniApi::Resources::PaymentPlan::PREMIUM }
 
       it { is_expected.to be(true) }
     end

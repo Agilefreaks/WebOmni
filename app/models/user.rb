@@ -48,7 +48,7 @@ class User
   field :last_name
   field :image_url
 
-  field :plan, type: String, default: PaymentPlan::FREE
+  field :plan, type: String, default: OmniApi::Resources::PaymentPlan::FREE
 
   validates :email, uniqueness: true
 

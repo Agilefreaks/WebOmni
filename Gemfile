@@ -6,7 +6,6 @@ gem 'rails', '4.2.1'
 gem 'rails-dom-testing'
 gem 'mongoid'
 gem 'mongo_session_store-rails4'
-gem 'activeresource', require: 'active_resource'
 gem 'httparty'
 
 gem 'puma'
@@ -48,6 +47,7 @@ gem 'omnikiq'
 gem 'google-api-client'
 gem 'usecasing'
 gem 'i18n-js', '>= 3.0.0.beta'
+gem 'OmniApi', git: 'git@github.com:Agilefreaks/OmniApiGem.git'
 
 group :development do
   gem 'quiet_assets'

@@ -7,13 +7,13 @@ describe SdkController do
     subject { get :show, id: id, format: :js }
 
     it 'tries to find a client with the given id' do
-      expect(OmniApi::Client).to receive(:find).with(id).and_return(OmniApi::Client.new)
+      expect(OmniApi::Resources::Client).to receive(:find).with(id).and_return(OmniApi::Resources::Client.new)
 
       subject
     end
 
     context 'can find client with given id' do
-      before { allow(OmniApi::Client).to receive(:find).with(id).and_return(OmniApi::Client.new) }
+      before { allow(OmniApi::Resources::Client).to receive(:find).with(id).and_return(OmniApi::Resources::Client.new) }
 
       its(:status) { is_expected.to eq(200) }
     end

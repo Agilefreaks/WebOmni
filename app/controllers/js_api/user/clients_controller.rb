@@ -6,12 +6,12 @@ module JsApi
       before_action :authenticate!
 
       def new
-        @client_description = OmniApi::Client.find(params[:api_client_id])
-        @client = OmniApi::User::ClientAssociation.new(client_id: params[:api_client_id])
+        @client_description = OmniApi::Resources::Client.find(params[:api_client_id])
+        @client = OmniApi::Resources::User::ClientAssociation.new(client_id: params[:api_client_id])
       end
 
       def create
-        @client = OmniApi::User::ClientAssociation.new(params[:omni_api_user_client_association])
+        @client = OmniApi::Resources::User::ClientAssociation.new(params[:omni_api_user_client_association])
         begin
           @client.save
           redirect_to session[:callback_url]

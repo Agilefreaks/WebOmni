@@ -7,10 +7,10 @@ end
 
 Fabricator(:user_without_calendar_access, from: :user) do
   email 'email@domain.com'
-  plan PaymentPlan::FREE
+  plan OmniApi::Resources::PaymentPlan::FREE
 end
 
 Fabricator(:user_with_calendar_access, from: :user) do
   email 'email@domain.com'
-  plan PaymentPlan::PREMIUM
+  plan OmniApi::Resources::PaymentPlan::PREMIUM
 end
