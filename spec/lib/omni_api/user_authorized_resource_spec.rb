@@ -16,4 +16,10 @@ describe OmniApi::UserAuthorizedResource do
       its(['Authorization']) { is_expected.to eq('bearer ') }
     end
   end
+
+  describe '.connection' do
+    subject { OmniApi::UserAuthorizedResource.connection }
+
+    it { is_expected.to be_a(OmniApi::OmniApiConnection) }
+  end
 end
