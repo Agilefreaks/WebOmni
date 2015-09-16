@@ -2,7 +2,7 @@ class CalendarPolicy < ApplicationPolicy
   attr_reader :user
 
   def access?
-    @user.plan == PaymentPlan::PREMIUM
+    @user.plan == OmniApi::Resources::PaymentPlan::PREMIUM
   end
 
   def show?
