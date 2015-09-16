@@ -8,6 +8,6 @@ class ModifyPricingPlan
   end
 
   def to(new_plan)
-    OmniApi::User.change_plan!(@email, new_plan)
+    OmniApi::Resources::User.change_plan!(@email, new_plan)
   end
 end

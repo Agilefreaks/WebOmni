@@ -12,7 +12,7 @@ describe JsApi::User::ClientsController do
       include_context :logged_in_as_user
 
       context 'a client description with the given id exists' do
-        before { allow(OmniApi::Client).to receive(:find).with('1').and_return(OmniApi::Client.new) }
+        before { allow(OmniApi::Resources::Client).to receive(:find).with('1').and_return(OmniApi::Resources::Client.new) }
 
         it { is_expected.to render_template(:new) }
 
@@ -38,13 +38,13 @@ describe JsApi::User::ClientsController do
       include_context :logged_in_as_user
 
       it 'creates a new user client' do
-        expect_any_instance_of(OmniApi::User::ClientAssociation).to receive(:save)
+        expect_any_instance_of(OmniApi::Resources::User::ClientAssociation).to receive(:save)
 
         subject
       end
 
       context 'saving the new client is successful' do
-        before { allow_any_instance_of(OmniApi::User::ClientAssociation).to receive(:save).and_return(true) }
+        before { allow_any_instance_of(OmniApi::Resources::User::ClientAssociation).to receive(:save).and_return(true) }
 
         context 'the session contains a callback_url' do
           before { session[:callback_url] = 'http://some.url' }
@@ -55,7 +55,7 @@ describe JsApi::User::ClientsController do
 
       context 'saving the new client is not successful' do
         let(:exception) { ActiveResource::ResourceNotFound.new(nil, nil) }
-        before { allow_any_instance_of(OmniApi::User::ClientAssociation).to receive(:save).and_raise(exception) }
+        before { allow_any_instance_of(OmniApi::Resources::User::ClientAssociation).to receive(:save).and_raise(exception) }
 
         it { is_expected.to redirect_to(new_user_client_path(api_client_id: 1)) }
 

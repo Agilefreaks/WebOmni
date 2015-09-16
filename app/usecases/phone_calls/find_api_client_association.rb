@@ -5,7 +5,7 @@ module PhoneCalls
     end
 
     def perform
-      context.client_association = OmniApi::User::ClientAssociation.find(@api_client_id)
+      context.client_association = OmniApi::Resources::User::ClientAssociation.find(@api_client_id)
     rescue ActiveResource::ResourceNotFound
       failure(:client_association, 'The api client association could not be found')
     end

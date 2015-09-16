@@ -27,7 +27,7 @@ module JsApi
     private
 
     def find_client!
-      @client = OmniApi::Client.find(params[:api_client_id])
+      @client = OmniApi::Resources::Client.find(params[:api_client_id])
     end
   end
 end
