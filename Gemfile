@@ -47,7 +47,7 @@ gem 'omnikiq'
 gem 'google-api-client'
 gem 'usecasing'
 gem 'i18n-js', '>= 3.0.0.beta'
-gem 'OmniApi', git: 'git@github.com:cristi-badila/OmniApiGem.git'
+gem 'OmniApi', git: 'git@github.com:Agilefreaks/OmniApiGem.git'
 
 group :development do
   gem 'quiet_assets'
