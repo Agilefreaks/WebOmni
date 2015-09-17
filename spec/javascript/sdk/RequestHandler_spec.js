@@ -32,12 +32,15 @@ define(
           });
 
           describe('after showing the call in progress dialog', function() {
+            var restAPIClient;
+
             beforeEach(function() {
               spyOn(JSAPIClient.getInstance(), 'showCallInProgress').andCallFake(PromiseHelper.resolvedPromise);
+              restAPIClient = RESTAPIClient.getInstance();
             });
 
             it('creates a new phone call using the REST API', function () {
-              var spy = spyOn(RESTAPIClient.getInstance(), 'createPhoneCall');
+              var spy = spyOn(restAPIClient, 'createPhoneCall').andReturn(PromiseHelper.rejectedPromise({status: 404}));
 
               subject();
 
@@ -52,7 +55,7 @@ define(
 
             describe('the promise obtained from the REST client is resolved', function () {
               beforeEach(function () {
-                spyOn(RESTAPIClient.getInstance(), 'createPhoneCall').andReturn(PromiseHelper.resolvedPromise({id: 'someCallId'}));
+                spyOn(restAPIClient, 'createPhoneCall').andReturn(PromiseHelper.resolvedPromise({id: 'someCallId'}));
               });
 
               it('resolves the returned promise with the call id', function () {
@@ -64,6 +67,36 @@ define(
                 waitsFor(function () {
                   return _.isEqual(call, {id: 'someCallId'});
                 }, 'the promise to be resolved', 500);
+              });
+            });
+
+            describe('the promise obtained from the REST client is rejected with a 401 status', function () {
+              beforeEach(function () {
+                spyOn(restAPIClient, 'createPhoneCall').andReturn(PromiseHelper.rejectedPromise({status: 401}));
+              });
+
+              it('tries to refresh the access token', function () {
+                var spy = spyOn(restAPIClient, 'refreshToken').andReturn(PromiseHelper.rejectedPromise());
+
+                subject();
+
+                waitsFor(function () {
+                  return spy.calls.length > 0;
+                }, 'refresh to be called', 500);
+              });
+
+              describe('refreshing the access token works', function() {
+                beforeEach(function() {
+                  spyOn(restAPIClient, 'refreshToken').andReturn(PromiseHelper.resolvedPromise());
+                });
+
+                it('tries to create a phone call again', function () {
+                  subject();
+
+                  waitsFor(function () {
+                    return restAPIClient.createPhoneCall.calls.length == 2;
+                  }, 'refresh to be called', 500);
+                });
               });
             });
           });
@@ -104,6 +137,7 @@ define(
         describe('the DataStore has a stored userAccessToken', function () {
           beforeEach(function () {
             DataStore.userAccessToken = 'someToken';
+            DataStore.userRefreshToken = 'someRefreshToken';
           });
 
           checkCreationOfCall();
