@@ -5,6 +5,7 @@
 :javascript
   var apiDataStore = require('api/DataStore');
   apiDataStore.userAccessToken = '#{@client_association.token}';
+  apiDataStore.userRefreshToken = '#{@client_association.refresh_token}';
   apiDataStore.clientId = '#{@client.id}';
   apiDataStore.clientLocale = '#{@client.locale}';
   window.onload = function() {

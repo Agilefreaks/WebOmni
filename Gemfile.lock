@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:Agilefreaks/OmniApiGem.git
+  revision: b086559bf8a270c594d6783b5488d6f1d4c06174
+  specs:
+    OmniApi (0.0.1)
+      activeresource (~> 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
