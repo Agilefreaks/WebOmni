@@ -11,7 +11,7 @@ module JsApi
       end
 
       def create
-        @client = OmniApi::Resources::User::ClientAssociation.new(params[:omni_api_user_client_association])
+        @client = OmniApi::Resources::User::ClientAssociation.new(params[:omni_api_resources_user_client_association])
         begin
           @client.save
           redirect_to session[:callback_url]

@@ -4,14 +4,22 @@ define('sdk/RequestHandler', ['lodash', './DataStore', './helpers/Promise', './J
     function getUserAccessToken() {
       var promise;
       if (_.isEmpty(DataStore.userAccessToken)) {
-        promise = JSAPIClient.getInstance().prepareForPhoneUsage().then(function(userAccessToken) {
-          DataStore.userAccessToken = userAccessToken;
+        promise = JSAPIClient.getInstance().prepareForPhoneUsage().then(function(response) {
+          DataStore.userAccessToken = response.accessToken;
+          DataStore.userRefreshToken = response.refreshToken;
         });
       } else {
         promise = PromiseHelper.resolvedPromise(DataStore.userAccessToken);
       }
 
       return promise;
+    }
+
+    function handleExpiredToken(onTokenRefreshed, response) {
+      var restAPIClient = RESTAPIClient.getInstance();
+      return response.status === 401
+        ? restAPIClient.refreshToken().then(onTokenRefreshed)
+        : PromiseHelper.rejectedPromise();
     }
 
     var RequestHandler = function () {
@@ -26,10 +34,14 @@ define('sdk/RequestHandler', ['lodash', './DataStore', './helpers/Promise', './J
         type: 'outgoing',
         state: 'starting'
       };
+
+      var showCallInProgress = _.bind(jsAPIClient.showCallInProgress, jsAPIClient);
+      var createPhoneCall = _.partial(restAPIClient.createPhoneCall, phoneCallData);
+      var onError = _.partial(handleExpiredToken, createPhoneCall);
       return getUserAccessToken()
-        .then(_.bind(jsAPIClient.showCallInProgress, jsAPIClient))
-        .then(function() {
-          return restAPIClient.createPhoneCall(phoneCallData);
+        .then(showCallInProgress)
+        .then(function () {
+          return createPhoneCall().then(PromiseHelper.resolvedPromise, onError);
         });
     }
   });

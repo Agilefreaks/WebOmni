@@ -28,7 +28,7 @@ describe JsApi::User::ClientsController do
   describe 'post #create' do
     let(:client_params) { { client_id: 1 } }
 
-    subject { post :create, api_client_id: 1, omni_api_user_client_association: client_params }
+    subject { post :create, api_client_id: 1, omni_api_resources_user_client_association: client_params }
 
     describe 'user is not authenticated' do
       it { is_expected.to redirect_to(new_user_session_path(locale: 'en')) }

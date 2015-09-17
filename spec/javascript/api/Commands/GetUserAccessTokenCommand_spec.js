@@ -19,13 +19,14 @@ define(['api/Commands/GetUserAccessTokenCommand', 'api/DataStore'], function (Ge
 
       it('sends a setUserAccessToken message to the given source with the userAccessToken', function() {
         DataStore.userAccessToken = 'someUserToken';
+        DataStore.userRefreshToken = 'someRefreshToken';
         DataStore.apiClientUrl = 'http://some.url';
 
         subject();
 
         expect(source.postMessage).toHaveBeenCalledWith(JSON.stringify({
           action: 'setUserAccessToken',
-          data: 'someUserToken'
+          data: {accessToken: 'someUserToken', refreshToken: 'someRefreshToken'}
         }), 'http://some.url');
       })
     });
