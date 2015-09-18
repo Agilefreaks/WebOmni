@@ -1,10 +1,3 @@
-GIT
-  remote: git@github.com:Agilefreaks/OmniApiGem.git
-  revision: b086559bf8a270c594d6783b5488d6f1d4c06174
-  specs:
-    OmniApi (0.0.1)
-      activeresource (~> 4.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -285,6 +278,8 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    omni_api (0.0.1)
+      activeresource (~> 4.0.0)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -470,7 +465,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  OmniApi!
   accept_values_for
   awesome_print
   capistrano
@@ -507,6 +501,7 @@ DEPENDENCIES
   mongoid
   mongoid-rspec
   newrelic_rpm
+  omni_api
   omniauth-google-oauth2
   omnikiq
   pry-rails
