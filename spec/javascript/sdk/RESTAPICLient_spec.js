@@ -17,11 +17,11 @@ define(['sdk/RESTAPIClient', 'jquery', 'sdk/DataStore', 'sdk/helpers/Promise'],
           }
         });
 
-        it('returns an instance of JSAPIClient', function () {
+        it('returns an instance of RESTAPIClient', function () {
           expect(subject() instanceof RESTAPIClient).toBe(true);
         });
 
-        it('returns the same instance of JSAPIClient on consecutive calls', function () {
+        it('returns the same instance of RESTAPIClient on consecutive calls', function () {
           var result1 = subject();
           var result2 = subject();
 
@@ -105,6 +105,69 @@ define(['sdk/RESTAPIClient', 'jquery', 'sdk/DataStore', 'sdk/helpers/Promise'],
               return result == response;
             }, 'the create call promise to finish', 500);
           });
+        });
+      });
+
+      describe('refreshToken', function() {
+        beforeEach(function () {
+          subject = function () {
+            return instance.refreshToken();
+          }
+        });
+
+        it('makes an ajax request to the token endpoint of the api', function () {
+          DataStore.omnipasteAPIUrl = 'http://some.url.com';
+          var spy = spyOn($, 'ajax');
+
+          subject();
+
+          expect(spy).toHaveBeenCalledWith(jasmine.objectContaining({url: 'http://some.url.com/oauth2/token'}));
+        });
+
+        it('sets POST as the http verb on the ajax request', function () {
+          var spy = spyOn($, 'ajax');
+
+          subject();
+
+          expect(spy).toHaveBeenCalledWith(jasmine.objectContaining({method: 'POST'}));
+        });
+
+        it('sets the user refresh token in the data', function () {
+          var spy = spyOn($, 'ajax');
+          DataStore.userRefreshToken = 'someUserToken';
+
+          subject();
+
+          var data = spy.calls[0].args[0].data;
+          expect(data.refresh_token).toEqual('someUserToken');
+        });
+
+        it('sets the grant type to refresh token', function () {
+          var spy = spyOn($, 'ajax');
+
+          subject();
+
+          var data = spy.calls[0].args[0].data;
+          expect(data.grant_type).toEqual('refresh_token');
+        });
+
+        it('sets clientId from the DataStore', function () {
+          var spy = spyOn($, 'ajax');
+          DataStore.clientId = 'someId';
+
+          subject();
+
+          var data = spy.calls[0].args[0].data;
+          expect(data.client_id).toEqual('someId');
+        });
+
+        it('sets resource_type to user_client_association', function () {
+          var spy = spyOn($, 'ajax');
+
+          subject();
+
+          var data = spy.calls[0].args[0].data;
+          expect(data.resource_type).toEqual('user_client_association');
         });
       });
     });
