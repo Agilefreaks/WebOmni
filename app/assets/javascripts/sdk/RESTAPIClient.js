@@ -24,7 +24,7 @@ define('sdk/RESTAPIClient', ['lodash', 'jquery', './DataStore'], function (_, $,
           client_id: DataStore.clientId,
           grant_type: 'refresh_token',
           refresh_token: DataStore.userRefreshToken,
-          resource_type: 'user_client_association'
+          resource_type: 'user'
         }
       });
     }
