@@ -161,13 +161,13 @@ define(['sdk/RESTAPIClient', 'jquery', 'sdk/DataStore', 'sdk/helpers/Promise'],
           expect(data.client_id).toEqual('someId');
         });
 
-        it('sets resource_type to user_client_association', function () {
+        it('sets resource_type to user', function () {
           var spy = spyOn($, 'ajax');
 
           subject();
 
           var data = spy.calls[0].args[0].data;
-          expect(data.resource_type).toEqual('user_client_association');
+          expect(data.resource_type).toEqual('user');
         });
       });
     });
