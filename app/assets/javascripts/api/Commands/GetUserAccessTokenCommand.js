@@ -7,7 +7,7 @@ define('api/Commands/GetUserAccessTokenCommand', ['lodash', './../DataStore'], f
     execute: function () {
       this.source.postMessage(JSON.stringify({
           action: 'setUserAccessToken',
-          data: DataStore.userAccessToken
+          data: {accessToken: DataStore.userAccessToken, refreshToken: DataStore.userRefreshToken}
         }),
         DataStore.apiClientUrl);
     }
