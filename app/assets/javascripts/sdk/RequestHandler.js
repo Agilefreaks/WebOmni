@@ -4,8 +4,9 @@ define('sdk/RequestHandler', ['lodash', './DataStore', './helpers/Promise', './J
     function getUserAccessToken() {
       var promise;
       if (_.isEmpty(DataStore.userAccessToken)) {
-        promise = JSAPIClient.getInstance().prepareForPhoneUsage().then(function(userAccessToken) {
-          DataStore.userAccessToken = userAccessToken;
+        promise = JSAPIClient.getInstance().prepareForPhoneUsage().then(function(response) {
+          DataStore.userAccessToken = response.accessToken;
+          DataStore.userRefreshToken = response.refreshToken;
         });
       } else {
         promise = PromiseHelper.resolvedPromise(DataStore.userAccessToken);

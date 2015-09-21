@@ -108,7 +108,7 @@ define(
           });
 
           it('calls prepareForPhoneUsage on the JSAPIClient instance', function () {
-            var spy = spyOn(JSAPIClient.getInstance(), 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise());
+            var spy = spyOn(JSAPIClient.getInstance(), 'prepareForPhoneUsage').andReturn(PromiseHelper.rejectedPromise());
 
             subject();
 
@@ -119,14 +119,17 @@ define(
 
           describe('the prepareForPhoneUsage call returns a promise which is resolved', function () {
             beforeEach(function () {
-              spyOn(JSAPIClient.getInstance(), 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise('someToken'));
+              spyOn(JSAPIClient.getInstance(), 'prepareForPhoneUsage').andReturn(PromiseHelper.resolvedPromise({
+                accessToken: 'someToken',
+                refreshToken: 'refreshToken'
+              }));
             });
 
             it('stores the obtained token', function () {
               subject();
 
               waitsFor(function () {
-                return DataStore.userAccessToken === 'someToken';
+                return DataStore.userAccessToken === 'someToken' && DataStore.userRefreshToken === 'refreshToken';
               }, 'the token to be stored', 500);
             });
 
