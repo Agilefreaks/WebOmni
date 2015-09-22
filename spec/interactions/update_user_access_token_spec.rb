@@ -40,14 +40,14 @@ describe UpdateUserAccessToken do
 
       it 'tries to refresh the token' do
         token = Hashie::Mash.new(access_token: 'randToken', refresh_token: 'someOtherToken', expires_in: '1234')
-        expect(OmniApi::Resources::Oauth2::Token).to receive(:refresh).with(user.refresh_token).and_return(token)
+        expect(OmniApi::Resources::Oauth2::Token).to receive(:refresh_for).with(user.refresh_token).and_return(token)
 
         subject
       end
 
       describe 'can refresh the token' do
         let(:token) { Hashie::Mash.new(access_token: 'randToken', refresh_token: 'someOtherToken', expires_in: '1234') }
-        before { allow(OmniApi::Resources::Oauth2::Token).to receive(:refresh).with(user.refresh_token).and_return(token) }
+        before { allow(OmniApi::Resources::Oauth2::Token).to receive(:refresh_for).with(user.refresh_token).and_return(token) }
 
         subject { -> { UpdateUserAccessToken.perform(user) } }
 

@@ -5,7 +5,7 @@ class UpdateUserAccessToken
 
   def perform(user)
     token = user.refresh_token.present? ?
-      OmniApi::Resources::Oauth2::Token.refresh(user.refresh_token) :
+      OmniApi::Resources::Oauth2::Token.refresh_for(user.refresh_token) :
       OmniApi::Resources::Oauth2::Token.create_for(user.email)
     user.access_token = token.access_token
     user.refresh_token = token.refresh_token
