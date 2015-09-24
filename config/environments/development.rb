@@ -42,8 +42,8 @@ WebOmni::Application.configure do
   # API
   OmniApi.config.base_url = 'http://localhost:9292/api/v1'
   OmniApi.config.client_access_token = 'ENAh0+Xo8+oqlDzWVQP5wAEqiW4G82ptbJBR2N5ak6DACr4TRFbVslalonwMIA1Aj/tHJvWxawBD5dix+WNsww=='
-  OmniApi.config.client_id = '55389c0f5562751ba1000000'
-  OmniApi.config.client_secret = 'jYKkDJEzmmqMyRLuOUwRpetgU2J3pwVSWS8yaZN8dbCLLfZAZAS9BbstSLvdUzLn57ccXkdxXtMVJctOwz7URw=='
+  OmniApi.config.client_id = '53fefdc36170696490010000'
+  OmniApi.config.client_secret = '2qNFvA4dRB3XSwrJQB2OlbjOGbWW6FSHCJUVVRG33fpMMt/DRGkq0RDoehHL87POkiJNS3tNul35p8651nhjeg=='
 
   OmniKiq.configure do |config|
     config.redis_url = 'redis://localhost:6379'

@@ -96,11 +96,13 @@ WebOmni::Application.configure do
   # API
   OmniApi.config.base_url = 'https://api.omnipasteapp.com/api/v1'
   OmniApi.config.client_access_token = 'JJuOfwneMP6Pf6Qci0/WLhRDqh5MGQSQPo39NyscYbQ+S07bS29i9IaeT8m6ePUbkBOjqnYH1jx233rdqdL8PA=='
+  OmniApi.config.client_id = '55f117236170693200000000'
+  OmniApi.config.client_secret = 'mb6q0HEWkyGqDasZpf+nwElz8IgULPQ7bUuHvn1X8OIYDLlPVpxK99pcDLdeFw40V4pZA8zYJZXNKk+OFktYBw=='
 
   OmniKiq.configure do |config|
     config.redis_url = 'redis://10.133.201.189:6379'
   end
 
   config.web_omni_url = 'https://www.omnipasteapp.com/'
-  config.web_omni_client_id = ''
+  config.web_omni_client_id = '55f117236170693200000000'
 end
