@@ -17,5 +17,13 @@ describe SdkController do
 
       its(:status) { is_expected.to eq(200) }
     end
+
+    context 'cannot find client with given id' do
+      let(:exception) { ActiveResource::ResourceNotFound.new('test') }
+
+      before { allow(OmniApi::Resources::Client).to receive(:find).with(id).and_raise(exception) }
+
+      its(:status) { is_expected.to eq(404) }
+    end
   end
 end
