@@ -71,7 +71,7 @@ en:
     feature:
       sms_tool:
         title: SMS messages on your PC
-        contacts: Access to your phone's contact list
+        contacts: Access your phone's contact list
         composer: Write SMS messages from your PC
         conversation: See threaded conversation history with each contact
         group: Send a SMS message to a group
@@ -79,7 +79,7 @@ en:
         title: Receive notifications on your PC
         call: When receiving a call
         sms: When receiving a SMS
-        clipping: When you copy something on your other devices
+        clipping: When you copy something on connected devices
       clipboard:
         title: Clipboard synchronization
         copy: Copy paste across your devices
@@ -91,13 +91,13 @@ en:
     founders:
       title: Co-founder
     faq:
-      subtitle: Stuff that you might need to know about Omnipaste app.
+      subtitle: Stuff that you might need to know about Omnipaste.
       title_what: What can I do with Omni?
-      title_what_content: Easily and seamlessly transfer data between devices and cut down on that phone checking because you will get all your SMSs and calls right on your laptop or tablet.
+      title_what_content: Easily and seamlessly transfer data between devices and cut down on that phone checking - you get all SMSs and calls right on your laptop/tablet.
       title_will: Will I be able to link my TV too?
-      title_will_content: Not yet, Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from you phone or laptop. Not to mention the useful notification will also show on the big screen.
-      title_why: Why can I get Omni only for Android and Windows?
-      title_why_content: "For now these are our only supported devices. More are to come. Follow us on %{twitter} or %{facebook} for updates. Checkout the %{support_forum} and share some of your ideas with us."
+      title_will_content: Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from you phone or laptop. Also, that useful notification will also show on the big screen.
+      title_why: Why can I get Omni only for Android and Windows?w
+      title_why_content: We're working to get Omnipaste to as many platforms as we can. Leave suggestions for us %{support_forum} and consider following us on  %{twitter}/%{facebook} for updates and feedback. We'd love to hear from you.
       title_is: Is Omnipaste secure?
       title_is_content: Yes, we take security very seriously. We use top of the class encryption algorithms and authentication methods used by industry giants like google and facebook.
     footer:
