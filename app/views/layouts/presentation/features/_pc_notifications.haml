@@ -5,7 +5,7 @@
         .section__column.col-xs-12.col-sm-6
           .feature__content
             .feature__container
-              = image_tag 'features/feature-two.png', { class: 'feature-two__main', alt: 'Feature two background - PC notifications', height: '320', width: '480', srcset: image_url('assets/images/features/feature-two@2x.png 2x')}
+              = image_tag 'features/feature-two.png', { class: 'feature-two__main', alt: 'Feature two background - PC notifications', height: '320', width: '480', srcset: "#{image_path('features/feature-two@2x.png')} x2"}
               %a.feature-two__incoming-call.wobble.js-feature-pointer{'data-feature' => 'feature-two-incoming-call', :href => '#', :title => "#{t('layout.feature.notifications.call')}"}
                 = image_tag 'svg/feature-pointer.svg', { class: 'js-animation-part', alt: "#{t('layout.feature.notifications.call')}", data: { animation: 'scaleIn', timeout: '100' }, height: '25', width: '25' }
               %a.feature-two__incoming-sms.wobble.js-feature-pointer{'data-feature' => 'feature-two-incoming-sms', :href => '#', :title => "#{t('layout.feature.notifications.sms')}"}
