@@ -53,8 +53,8 @@ en:
     hero:
       title: |
         Link your PC to your
-        Android device
-      subtitle: You will be able to copy and paste both ways, manage your phone calls, SMS messages and notifications straight from your PC.
+        Android devic
+      subtitle: Copy and paste both ways, manage your phone calls, SMS messages and notifications straight from your PC.
       subtitle_requirements: Works on Windows™ and Android™ mobile devices
       subtitle_requierments_link: for now.
     video:
@@ -62,7 +62,7 @@ en:
       span: Play video
       close: Close video
     button:
-      download: Get Omnipaste for free
+      download: Get Omnipaste
       authorization_code: Get Authorization Code
       learn_more: Learn more
       contact: E-mail us your question
@@ -82,9 +82,9 @@ en:
         clipping: When you copy something on connected devices
       clipboard:
         title: Clipboard synchronization
-        copy: Copy paste across your devices
+        copy: Copy paste across connected devices
         smart: Quick actions for links, phone numbers and addresses
-        history: History for clippings from all of your other devices
+        history: History of clippings from all devices, on all devices
         manage: Clipboard manager
     partners:
       title: Companies we partner with
@@ -96,7 +96,7 @@ en:
       title_what_content: Easily and seamlessly transfer data between devices and cut down on that phone checking - you get all SMSs and calls right on your laptop/tablet.
       title_will: Will I be able to link my TV too?
       title_will_content: Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from you phone or laptop. Also, that useful notification will also show on the big screen.
-      title_why: Why can I get Omni only for Android and Windows?w
+      title_why: Why can I get Omni only for Android and Windows?
       title_why_content: We're working to get Omnipaste to as many platforms as we can. Leave suggestions for us %{support_forum} and consider following us on  %{twitter}/%{facebook} for updates and feedback. We'd love to hear from you.
       title_is: Is Omnipaste secure?
       title_is_content: Yes, we take security very seriously. We use top of the class encryption algorithms and authentication methods used by industry giants like google and facebook.
