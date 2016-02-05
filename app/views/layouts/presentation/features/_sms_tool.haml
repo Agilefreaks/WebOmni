@@ -33,4 +33,4 @@
               %a.js-feature-bullet{'data-feature' => 'feature-one-group-messages', :href => '#'}
                 = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'Group messages bullet', data: { animation: 'scaleIn', timeout: '900' } }
                 #{t('layout.feature.sms_tool.group')}
-          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-sms-tool', what_else_link: 'feature-pc-notifications' }
+          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-sms-tool', what_else_link: 'feature-pc-notifications', what_else_text: t('layout.button.tell_me_more') }

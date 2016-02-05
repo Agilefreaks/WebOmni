@@ -33,4 +33,4 @@
               %a.js-feature-bullet{'data-feature' => 'feature-three-manager', :href => '#'}
                 = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'Manager bullet', data: { animation: 'scaleIn', timeout: '900' } }
                 #{t('layout.feature.clipboard.manage')}
-          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-clipboard-manager', what_else_link: 'faq' }
+          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-clipboard-manager', what_else_link: 'faq', what_else_text: t('layout.button.what_else') }

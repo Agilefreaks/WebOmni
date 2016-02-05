@@ -46,6 +46,7 @@ pt:
       learn_more: Saiba mais
       contact: Envie-nos um e-mail com a sua questão
       install: "Ok, vamos instalá-la"
+      tell_me_more: Me diga mais
       what_else: Que mais anda por aí?
     feature:
       sms_tool:

@@ -27,4 +27,4 @@
               %a.js-feature-bullet{'data-feature' => 'feature-two-new-clipping', :href => '#'}
                 = image_tag 'svg/feature-circle.svg', { class: 'feature__list__circle js-animation-part', alt: 'New clipping bullet', data: { animation: 'scaleIn', timeout: '600' } }
                 #{t('layout.feature.notifications.clipping')}
-          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-pc-notifications', what_else_link: 'feature-clipboard-manager' }
+          = render partial: 'layouts/presentation/features/buttons', locals: { feature_name: 'feature-pc-notifications', what_else_link: 'feature-clipboard-manager', what_else_text: t('layout.button.what_else') }

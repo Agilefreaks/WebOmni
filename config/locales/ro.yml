@@ -46,6 +46,7 @@ ro:
       learn_more: Învață mai mult
       contact: Trimite-ne un email cu intrebările tale
       install: "În regulă, vreau sa îl instalez"
+      tell_me_more: Ce altceva mai face?
       what_else: Ce altceva mai face?
     feature:
       sms_tool:

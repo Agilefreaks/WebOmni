@@ -1,18 +1,18 @@
 .section__button.section__button--feature
   - if user_signed_in?
-    = link_to "#{t('layout.button.install')}",
+    = link_to t('layout.button.install'),
               download_path,
               { class: 'button button--orange button--orange-feature button--download',
                 title: 'Install Omnipaste',
                 data: { trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" } }
   - else
-    = link_to "#{t('layout.button.install')}",
+    = link_to t('layout.button.install'),
               '#sign-up',
               { class: 'button button--orange button--orange-feature js-toggle-dropdown button--download',
                 title: 'Install Omnipaste',
                 data: { id: 'sign-up', trackEvent: true, trackLabel: "#{feature_name}", trackCategory: "#{EventTracking::SIGN_UP_CLICKED}" } }
 
-  = link_to "#{t('layout.button.what_else')}",
+  = link_to what_else_text,
             "##{what_else_link}",
             { class: 'button button--transparent button--transparent-feature js-goto-section',
               title: 'Go to next feature',
