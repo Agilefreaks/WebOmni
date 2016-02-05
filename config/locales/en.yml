@@ -65,7 +65,7 @@ en:
       download: Get Omnipaste
       authorization_code: Get Authorization Code
       learn_more: Learn more
-      contact: E-mail us your question
+      contact: Share your feedback
       install: "Okay, let's install it"
       tell_me_more: Tell me more
       what_else: What else is there?
@@ -94,11 +94,11 @@ en:
     social:
        title: Connect with us ...
     faq:
-      subtitle: Stuff that you might need to know about Omnipaste.
+      subtitle: Stuff that you might want to know about Omnipaste.
       title_what: What can I do with Omni?
       title_what_content: Easily and seamlessly transfer data between devices and cut down on that phone checking - you get all SMSs and calls right on your laptop/tablet.
       title_will: Will I be able to link my TV too?
-      title_will_content: Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from you phone or laptop. Also, that useful notification will also show on the big screen.
+      title_will_content: Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from your phone or laptop. Also, that useful notification will show on the big screen too.
       title_why: Why can I get Omni only for Android and Windows?
       title_why_content: We're working to get Omnipaste to as many platforms as we can. Leave suggestions for us %{support_forum} and consider following us on  %{twitter}/%{facebook} for updates and feedback. We'd love to hear from you.
       title_is: Is Omnipaste secure?
@@ -124,7 +124,7 @@ en:
     title: "Your authorization code is: %{code}"
   contacts:
     title: Get in touch with us
-    subtitle: We’ll be happy to hear your thoughts on our app.
+    subtitle: We’d be happy to hear from you.
     label_name: Your name
     label_name_validation: Please enter your name
     label_email: Your e-mail
