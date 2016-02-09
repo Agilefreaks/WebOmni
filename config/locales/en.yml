@@ -53,8 +53,8 @@ en:
     hero:
       title: |
         Link your PC to your
-        Android devic
-      subtitle: Copy and paste both ways, manage your phone calls, SMS messages and notifications straight from your PC.
+        Android device
+      subtitle: The smart way to use multiple devices. Cloud based copy-paste. Remote SMS and call handling. Enhanced Clipboard and more!
       subtitle_requirements: Works on Windows™ and Android™ mobile devices
       subtitle_requierments_link: for now.
     video:
@@ -84,7 +84,7 @@ en:
       clipboard:
         title: Clipboard synchronization
         copy: Copy paste across connected devices
-        smart: Quick actions for links, phone numbers and addresses
+        smart: Quick actions  for copied links,  phone numbers and addresses
         history: History of clippings from all devices, on all devices
         manage: Clipboard manager
     partners:
@@ -98,7 +98,7 @@ en:
       title_what: What can I do with Omni?
       title_what_content: Easily and seamlessly transfer data between devices and cut down on that phone checking - you get all SMSs and calls right on your laptop/tablet.
       title_will: Will I be able to link my TV too?
-      title_will_content: Smart TV's will be supported soon. You will be able to copy and paste your favorite show link or have that youtube video play on your smart TV by simply copying the link from your phone or laptop. Also, that useful notification will show on the big screen too.
+      title_will_content: We're working to get Omnipaste to as many platforms as we can. Leave suggestions for us here and consider following us on  Twitter/Facebook for updates and feedback. We'd love to hear from you.
       title_why: Why can I get Omni only for Android and Windows?
       title_why_content: We're working to get Omnipaste to as many platforms as we can. Leave suggestions for us %{support_forum} and consider following us on  %{twitter}/%{facebook} for updates and feedback. We'd love to hear from you.
       title_is: Is Omnipaste secure?
