@@ -2,7 +2,7 @@
   %li.header__nav__item
     = link_to "#{t('layout.menu.download')}", download_path, { class: 'button--download', title: "#{t('layout.menu.download')}", trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::DOWNLOAD_CLICKED}" }
   %li.header__nav__item
-    = link_to "#{t('layout.menu.download')}", '#sign-up', { class: 'js-toggle-dropdown button--download', title: "#{t('layout.menu.download')}", data: { id: 'sign-up', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::SIGN_UP_CLICKED}" } }
+    = link_to "#{t('layout.menu.download')}", '#sign-up', { class: 'js-toggle-dropdown', title: "#{t('layout.menu.download')}", data: { id: 'sign-up', trackEvent: true, trackLabel: 'Menu', trackCategory: "#{EventTracking::SIGN_UP_CLICKED}" } }
   = render :items
   %li.header__nav__item.header__nav__item--user
     = link_to '#' do
