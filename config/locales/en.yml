@@ -71,7 +71,7 @@ en:
       what_else: What else is there?
     feature:
       sms_tool:
-        title: SMS messages on your PC
+        title: SMS and calls on your PC
         contacts: Access your phone's contact list
         composer: Write SMS messages from your PC
         conversation: See threaded conversation history with each contact
