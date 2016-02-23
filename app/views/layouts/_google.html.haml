@@ -9,3 +9,12 @@
   ga('require', 'displayfeatures');
   ga('send', 'pageview');
 / End Google Analytics
+
+:javascript
+  $('a.js-goto-section').click(function(){
+    ga('send', 'event', 'Features', 'See more', $(this).data('tracklabel'));
+  });
+
+  $('a.button--download').click(function(){
+    ga('send', 'event', 'Features', 'Install', $(this).data('tracklabel'));
+  });
