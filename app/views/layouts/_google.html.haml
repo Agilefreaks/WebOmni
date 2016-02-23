@@ -18,3 +18,9 @@
   $('a.button--download').click(function(){
     ga('send', 'event', 'Features', 'Install', $(this).data('tracklabel'));
   });
+
+  $('a.js-omni-video-toggle').click(function(){
+    ga('send', 'event', 'Video', 'Play');
+  });
+
+
