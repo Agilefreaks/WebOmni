@@ -20,3 +20,4 @@
 //= require humane-rails
 //= require pages
 //= require mixpanel
+//= require google-analytics
